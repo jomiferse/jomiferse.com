@@ -1,0 +1,30 @@
+{
+  "basics": {
+    "name": "José Miguel Fernández",
+    "label": "Full Stack Developer",
+    "image": "/me.webp",
+    "email": "jomiferse@gmail.com",
+    "phone": "+34609221290",
+    "url": "https://jomiferse.dev",
+    "summary": "Apasionado por la programación y desarrollo de software, me destaco por mi enfoque en calidad y rendimiento. Busco constantemente desafíos técnicos y estoy entusiasmado por aprender nuevas tecnologías. Convencido de aportar valor a cualquier equipo con mi enfoque proactivo y habilidades técnicas.",
+    "location": {
+      "address": "",
+      "postalCode": "18220",
+      "city": "Granada",
+      "countryCode": "ES",
+      "region": "España"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "jomiferse",
+        "url": "https://linkedin.com/in/jomiferse"
+      },
+      {
+        "network": "GitHub",
+        "username": "jomiferse",
+        "url": "https://github.com/jomiferse"
+      }
+    ]
+  }
+}
