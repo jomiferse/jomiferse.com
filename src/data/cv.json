@@ -1,30 +1,301 @@
 {
-  "basics": {
-    "name": "José Miguel Fernández",
-    "label": "Full Stack Developer",
-    "image": "/me.png",
-    "email": "jomiferse@gmail.com",
-    "phone": "+34609221290",
-    "url": "https://jomiferse.dev",
-    "summary": "Apasionado por la programación y desarrollo de software, me destaco por mi enfoque en calidad y rendimiento. Busco constantemente desafíos técnicos y estoy entusiasmado por aprender nuevas tecnologías. Convencido de aportar valor a cualquier equipo con mi enfoque proactivo y habilidades técnicas.",
-    "location": {
-      "address": "",
-      "postalCode": "18220",
-      "city": "Granada",
-      "countryCode": "ES",
-      "region": "España"
+  "name": "José Miguel Fernández",
+  "headline": "Software Engineer | Java & Spring Boot | PHP | Docker | Microservices | SQL",
+  "location": "Granada, Spain",
+  "currentRole": "Software Engineer @ CGI",
+  "focus": "Backend, microservices & DevOps",
+  "summary": [
+    "I am a software developer with experience in the end-to-end development of web platforms, contributing across all phases of the software development lifecycle—both frontend and backend. I’ve worked with technologies like Java (Spring Boot, Spring Security), React, JUnit, SQL, PHP, JavaScript, HTML, and CSS, enabling me to deliver robust, scalable, and business-oriented solutions.",
+    "Throughout my career, I’ve been part of teams building everything from intuitive user interfaces to microservices-based architectures. I’ve contributed to database automation, internal tool development, and the implementation of automated testing practices to ensure software quality and maintainability.",
+    "I approach challenges with a proactive mindset and a strong focus on continuous improvement. I enjoy exploring multiple solutions to find the most effective and sustainable path, always aiming to optimize application performance and usability.",
+    "Looking ahead, I’m eager to continue growing technically while also stepping into leadership roles such as Lead Developer or Tech Lead, where I can combine technical expertise with mentoring and team coordination to drive both personal and collective growth."
+  ],
+  "experience": [
+    {
+      "company": "CGI",
+      "role": "Software Engineer",
+      "location": "Spain",
+      "startDate": "03/2025",
+      "endDate": "Present",
+      "description": "I’m part of a team focused on developing scalable solutions using microservices with Spring Boot, Spring Security, and PostgreSQL, contributing to a robust and secure architecture. I have also contributed to the migration of a monolithic Scala project to Spring Boot, helping modernize the system and improve maintainability. Additionally, I collaborate on building a new React-based back office, enhancing the user experience and streamlining internal management.\n\nI help define and automate the database lifecycle with Liquibase, ensuring traceability and consistency across different environments. I also create functional flow diagrams to help both the team and non-technical stakeholders better understand the system.\n\nDevelopment is supported by automated testing with JUnit, which ensures software stability and quality in every release. We maintain a collaborative, agile, and improvement-driven approach in an international environment.",
+      "skills": [
+        "Spring Boot",
+        "Java",
+        "JUnit",
+        "Scala",
+        "PostgreSQL",
+        "RabbitMQ",
+        "Git",
+        "Teamwork",
+        "Problem solving",
+        "Pact"
+      ]
     },
-    "profiles": [
-      {
-        "network": "LinkedIn",
-        "username": "jomiferse",
-        "url": "https://linkedin.com/in/jomiferse"
-      },
-      {
-        "network": "GitHub",
-        "username": "jomiferse",
-        "url": "https://github.com/jomiferse"
-      }
-    ]
-  }
+    {
+      "company": "Novatec Software",
+      "role": "Software Engineer",
+      "location": "Spain",
+      "startDate": "12/2024",
+      "endDate": "06/2025",
+      "description": "As a Software Engineer, I was part of a team focused on developing scalable solutions using microservices with Spring Boot, Spring Security and PostgreSQL, contributing to a robust and secure architecture. I also collaborated on building a new React-based back office, improving the user experience and streamlining internal management.\n\nI participated in defining and automating the database lifecycle with Liquibase, ensuring traceability and consistency across different environments. Additionally, I created a functional flow diagram to help both the team and non-technical stakeholders better understand the system.\n\nDevelopment was supported by automated testing with JUnit, which helped ensure software stability and quality in every release. Throughout the project, we maintained a collaborative, agile, and improvement-driven approach in an international environment.",
+      "skills": [
+        "Teamwork",
+        "React",
+        "Java",
+        "Spring Boot",
+        "Spring Security",
+        "Liquibase",
+        "PostgreSQL",
+        "JUnit",
+        "Docker",
+        "TypeScript",
+        "Git"
+      ]
+    },
+    {
+      "company": "EDUCA EDTECH Group",
+      "role": "Senior Software Developer",
+      "location": "Spain",
+      "startDate": "05/2023",
+      "endDate": "12/2024",
+      "description": "As a Senior Software Developer, I led key projects focused on enhancing both the technical infrastructure and the user experience. I designed the Docker-based infrastructure, optimizing scalability and replication of development environments, which enabled the team to work more efficiently. I also implemented automated deployments using Git, which reduced delivery time for new versions and minimized common errors in manual processes.\n\nI transformed Euroinnova into a multi-language and multi-portal platform, significantly expanding the website's international reach and improving the user experience for different markets. Additionally, I oversaw the migration of the website to a global domain, improving both loading speed and search engine visibility.\n\nI worked on integrating a new payment system, ensuring a smooth implementation with existing systems to efficiently manage payments. I also developed an advanced search system using the ElasticSearch API, which improved the accuracy and relevance of search results.\n\nEven though I had no prior experience in code review, I took on this responsibility and adopted continuous improvement practices, providing valuable feedback to my peers. This increased code quality and strengthened collaboration and professional development within the team.",
+      "skills": [
+        "Problem solving",
+        "Teamwork",
+        "Docker",
+        "PHPUnit",
+        "PHP",
+        "JavaScript",
+        "Phalcon",
+        "Git",
+        "Quality assurance"
+      ]
+    },
+    {
+      "company": "EDUCA EDTECH Group",
+      "role": "Junior Software Developer",
+      "location": "Spain",
+      "startDate": "02/2021",
+      "endDate": "04/2023",
+      "description": "During my time as a Junior Software Developer, I primarily worked with the Phalcon framework, using PHP as the main language, complemented by HTML, CSS, and JavaScript for web development. I focused on designing and maintaining user interfaces, ensuring they provided an intuitive and engaging experience for end users.\n\nI contributed to the implementation of Euroinnova's web designs, ensuring consistency with brand guidelines and helping to improve the site's aesthetics and functionality. I was also responsible for the continuous improvement and maintenance of the website, optimizing its performance, security, and functionality, including Core Web Vitals optimization.",
+      "skills": [
+        "Phalcon",
+        "Problem solving",
+        "Teamwork",
+        "PHP",
+        "JavaScript",
+        "HTML",
+        "MySQL",
+        "CSS"
+      ]
+    },
+    {
+      "company": "EDUCA EDTECH Group",
+      "role": "Trainee Developer",
+      "location": "Spain",
+      "startDate": "08/2020",
+      "endDate": "01/2021",
+      "description": "As a Trainee Developer, I was responsible for the development of the EduCash affiliate page, participating in all phases of the project, from design to implementation and testing. I created a functional and engaging platform that facilitated affiliate management and contributed to attracting new members. This project significantly improved the company's ability to handle affiliations, optimizing the experience for both users and the internal team.",
+      "skills": ["PHP", "HTML", "JavaScript", "CSS", "MySQL"]
+    },
+    {
+      "company": "EDUCA EDTECH Group",
+      "role": "Internship Trainee",
+      "location": "Spain",
+      "startDate": "03/2020",
+      "endDate": "05/2020",
+      "description": "During my vocational training internship, I created detailed manuals for training courses, providing clear and well-structured content to facilitate learning and understanding of the topics.",
+      "skills": []
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master's Degree in Web and Mobile Technologies Programming",
+      "institution": "INESEM Business School",
+      "location": "Online",
+      "startDate": "2020",
+      "endDate": "2020",
+      "description": "This master's program focuses on the technologies and skills necessary to develop and manage web and mobile applications, as well as digital and multimedia content.",
+      "skills": ["PHP", "HTML", "JavaScript", "CSS"],
+      "notes": "Excellent"
+    },
+    {
+      "degree": "Higher Technician in Cross-Platform Application Development",
+      "institution": "I.E.S Francisco Ayala",
+      "location": "Granada, Spain",
+      "startDate": "09/2018",
+      "endDate": "06/2020",
+      "description": "Advanced training in developing applications that operate across multiple operating systems and devices, covering languages like Java, JavaScript, Swift, and Kotlin, database management, scalable architectures, version control with Git, and testing in different environments.",
+      "skills": ["Java", "Kotlin", "SQL", "Swift", "JavaScript", "Git"],
+      "notes": "8.23 / 10"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Master Microservices with Spring Boot, Docker and Kubernetes",
+      "provider": "Udemy",
+      "year": "2025",
+      "credentialId": "UC-a8f24289-a4b5-4b51-b884-1e0b4b67aa3b",
+      "url": "http://ude.my/UC-a8f24289-a4b5-4b51-b884-1e0b4b67aa3b",
+      "skills": [
+        "Spring Boot",
+        "Docker",
+        "Kubernetes",
+        "REST API",
+        "Cloud-Native",
+        "DevOps",
+        "Observability",
+        "Resilience"
+      ]
+    },
+    {
+      "name": "Apache Maven: Beginner to Guru",
+      "provider": "Udemy",
+      "year": "2025",
+      "credentialId": "UC-79ed7666-e01b-4402-a3ca-2ef578c6bf94",
+      "url": "https://ude.my/UC-79ed7666-e01b-4402-a3ca-2ef578c6bf94",
+      "skills": [
+        "Apache Maven",
+        "Build automation",
+        "Dependency Management",
+        "Java",
+        "Spring Boot",
+        "Testing",
+        "Multi-module projects"
+      ]
+    },
+    {
+      "name": "B1 Cambridge",
+      "provider": "Cambridge Assessment English",
+      "year": "2018",
+      "credentialId": "",
+      "url": "",
+      "skills": []
+    }
+  ],
+  "skills": {
+    "languages": [
+      "Java",
+      "Scala",
+      "TypeScript",
+      "JavaScript",
+      "PHP",
+      "Kotlin",
+      "Swift",
+      "SQL",
+      "HTML",
+      "CSS"
+    ],
+    "backendMicroservices": [
+      "Spring Boot",
+      "Spring Security",
+      "REST API design",
+      "Cloud-Native development",
+      "Resilience patterns",
+      "Observability",
+      "Dependency Management",
+      "Multi-module architectures",
+      "Build automation"
+    ],
+    "databases": ["PostgreSQL", "MySQL"],
+    "messagingStreaming": ["Apache Kafka", "RabbitMQ"],
+    "identitySecurity": ["Keycloak"],
+    "testing": [
+      "JUnit",
+      "PHPUnit",
+      "Pact (Contract Testing)",
+      "Testing fundamentals"
+    ],
+    "frontend": ["React", "Astro"],
+    "otherFrameworks": ["Phalcon"],
+    "toolsDevOps": [
+      "Apache Maven",
+      "Docker",
+      "Kubernetes",
+      "Git",
+      "Liquibase",
+      "DevOps practices",
+      "CI/CD",
+      "Containerization"
+    ],
+    "soft": ["Problem solving", "Teamwork", "Quality assurance"]
+  },
+  "languagesSpoken": [
+    {
+      "language": "Spanish",
+      "level": "Native"
+    },
+    {
+      "language": "English",
+      "level": "Basic professional competence"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Microservices Modernization Platform",
+      "role": "Software Engineer",
+      "context": "Part of an international backend and DevOps team modernizing a cloud-based service platform for an enterprise client in the digital entertainment sector.",
+      "timeframe": "12/2024 – Present",
+      "summary": "Led development and migration efforts to transition a monolithic system to modern Spring Boot 3 microservices architecture. Delivered solutions across backend, DevOps, and internal tooling layers, while ensuring testing, resilience, and observability.",
+      "technologies": [
+        "Java 21",
+        "Spring Boot 3",
+        "Spring Security",
+        "Spring Cloud",
+        "PostgreSQL",
+        "Liquibase",
+        "RabbitMQ",
+        "Kafka",
+        "React",
+        "TypeScript",
+        "JUnit",
+        "Pact",
+        "Docker",
+        "Kubernetes"
+      ],
+      "highlights": [
+        "Migrated services from legacy Scala codebase to Spring Boot microservices, increasing scalability and maintainability.",
+        "Defined and automated database changes using Liquibase across multiple environments.",
+        "Built React-based internal tools for platform management, improving UX and operations.",
+        "Implemented contract and unit testing practices with JUnit and Pact to ensure delivery quality."
+      ]
+    },
+    {
+      "title": "EduCash – Affiliate Web Platform",
+      "role": "Software Developer",
+      "context": "Project related to EDUCA EDTECH Group, focused on affiliate management.",
+      "timeframe": "08/2020 – 12/2024",
+      "summary": "Comprehensive development of the company's affiliate web platform, from design to implementation and optimization, enabling effective management of affiliations and reporting.",
+      "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Git"],
+      "highlights": [
+        "Designed, developed, and implemented the affiliate platform ensuring integration with existing systems.",
+        "Continuously refined the platform to improve functionality and affiliate satisfaction.",
+        "Developed tools for managing and tracking affiliations, including dashboards, performance reports, and payment support.",
+        "Collaborated closely with marketing and affiliate management teams to align the platform with business goals."
+      ]
+    },
+    {
+      "title": "Euroinnova International Online Education",
+      "role": "Software Developer",
+      "context": "Core web platform for EDUCA EDTECH Group.",
+      "timeframe": "02/2021 – 12/2024",
+      "summary": "Design, development, and maintenance of the main Euroinnova web platform, focusing on performance, lead generation, and user experience improvements.",
+      "technologies": [
+        "PHP",
+        "Phalcon",
+        "MySQL",
+        "Docker",
+        "Git",
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "highlights": [
+        "Developed and maintained the main platform using PHP, Phalcon, JavaScript, HTML, CSS, and MySQL.",
+        "Implemented key lead generation features such as contact forms, landing pages, and conversion flows.",
+        "Improved user experience through better navigation and faster load times.",
+        "Worked closely with marketing and design teams to align development with branding and campaign strategies."
+      ]
+    }
+  ]
 }
