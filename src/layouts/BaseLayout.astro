@@ -1,0 +1,47 @@
+---
+import Footer from "@/components/common/Footer";
+import Header from "@/components/common/Header";
+import "@/styles/global.css";
+import cv from "@/data/cv.json";
+import { ThemeProvider } from "next-themes";
+
+const {
+  title, description
+} = Astro.props;
+
+const canonicalUrl = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : Astro.url.pathname;
+---
+
+<html lang="en" class="min-h-screen antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Title & description -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <meta name="theme-color" content="#020617" />
+
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content={`${cv.name}`} />
+  </head>
+
+  <body class="min-h-screen bg-slate-50 text-slate-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors flex flex-col">
+    <Header currentPath={Astro.url.pathname} />
+    <main class="flex-1 max-w-4xl mx-auto px-4 pt-10 md:pt-12 pb-12 md:pb-16 transition-opacity duration-300">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
