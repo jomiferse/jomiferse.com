@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectCard from "@/components/cards/ProjectCard";
+import cv from "@/data/cv.json";
+
+const projects = cv.projects;
+---
+
+<BaseLayout
+  title={`Projects – ${cv.name}`}
+  description={`Selection of backend, cloud and web projects by ${cv.name}.`}
+>
+  <!-- Header -->
+  <header class="mb-6 space-y-3">
+    <h1 class="text-3xl md:text-4xl font-bold">
+      Selected{" "}
+      <span class="text-purple-600 dark:text-purple-300">
+        projects
+      </span>
+    </h1>
+    <p class="text-sm md:text-base text-slate-600 dark:text-slate-300 max-w-2xl">
+      A selection of projects I have contributed to throughout my career,
+      showcasing my approach to problem-solving, technical execution, and
+      delivery.
+    </p>
+  </header>
+
+  <!-- Projects grid -->
+  <section class="grid gap-5 md:grid-cols-1">
+    {
+      projects.map((project) => (
+        <ProjectCard 
+          client:load
+          project = {project}
+        />
+      ))
+    }
+  </section>
+</BaseLayout>

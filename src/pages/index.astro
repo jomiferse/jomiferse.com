@@ -1,39 +1,213 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SkillTag from "@/components/SkillTag";
+import { Image } from "astro:assets";
+import avatar from "@/assets/avatar.avif";
+import cv from "@/data/cv.json";
 
-import About from "@/components/sections/About.astro"
-import Education from "@/components/sections/Education.astro"
-import Experience from "@/components/sections/Experience.astro"
-import Hero from "@/components/sections/Hero.astro"
-import Projects from "@/components/sections/Projects.astro"
-import Skills from "@/components/sections/Skills.astro"
-
-import { basics } from "@cv"
-const { name, label } = basics
+// Build skill buckets from JSON
+const languages = cv.skills.languages;
+const frameworks = [
+  ...cv.skills.backendMicroservices,
+  ...cv.skills.frontend,
+  ...cv.skills.otherFrameworks,
+];
+const tools = [
+  ...cv.skills.databases,
+  ...cv.skills.messagingStreaming,
+  ...cv.skills.identitySecurity,
+  ...cv.skills.toolsDevOps,
+];
 ---
 
-<Layout title={`Portafolio de ${name} - ${label}`}>
-	<main>
-		<Hero />
-		<About />
-		<Experience />
-		<Education />
-		<Projects />
-		<Skills />
-	</main>
+<BaseLayout
+  title={`${cv.name} – Software Engineer`}
+  description={cv.headline}
+>
+  {/* HERO */}
+  <header
+    class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between mb-10 md:mb-12"
+  >
+    <div class="space-y-3">
+      <h1 class="text-3xl md:text-4xl font-bold">
+        Hey! I&apos;m
+        <span class="text-purple-600 dark:text-purple-300">
+          {" "}
+          {cv.name}
+        </span>
+      </h1>
 
-</Layout>
+      <h2 class="text-xl md:text-2xl text-slate-600 dark:text-slate-300">
+        Software Engineer
+      </h2>
 
-<style>
-	main {
-		padding: 4rem;
-		margin: auto;
-		width: 100%;
-	}
+      <p class="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">
+        {cv.headline}
+      </p>
+    </div>
 
-	@media (width <= 700px) {
-		main {
-			padding: 2rem;
-		}
-	}
-</style>
+    <div
+      class="mt-2 md:mt-0 flex flex-col items-center md:items-end gap-4 text-sm text-slate-700 dark:text-slate-300"
+    >
+      <Image
+        src={avatar}
+        alt={`Portrait of ${cv.name}`}
+        width={120}
+        height={120}
+        loading={"eager"}
+        class="w-24 h-24 md:w-28 md:h-28 rounded-full border border-slate-200 dark:border-slate-700 object-cover shadow-sm"
+      />
+
+      <div class="text-center md:text-right space-y-1">
+        <p>🇪🇸 {cv.location}</p>
+        <p class="font-medium">{cv.currentRole}</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400">
+          {cv.focus}
+        </p>
+      </div>
+    </div>
+  </header>
+
+  {/* About me */}
+  <section
+    id="about"
+    class="mt-6 md:mt-8 space-y-4 md:space-y-5"
+  >
+    <h2 class="text-2xl font-semibold text-purple-600 dark:text-purple-300">
+      About me
+    </h2>
+    <div class="space-y-3 text-sm md:text-base text-slate-700 dark:text-slate-200 leading-relaxed">
+      {cv.summary.map((para) => (
+        <p>{para}</p>
+      ))}
+    </div>
+  </section>
+
+  {/* Skills */}
+  <section
+    id="skills"
+    class="mt-10 md:mt-12 pt-8 space-y-5"
+  >
+    <h2 class="text-2xl font-semibold text-purple-600 dark:text-purple-300">
+      Skills
+    </h2>
+
+    <div
+      class="grid gap-8 md:grid-cols-3 text-sm md:text-base text-slate-700 dark:text-slate-200"
+    >
+      <div class="space-y-2">
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100">
+          ☕ Languages
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {languages.map((skill) => (
+            <SkillTag className="text-xs md:text-sm" client:load>
+              {skill}
+            </SkillTag>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100">
+          ⚙️ Backend &amp; Frameworks
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {frameworks.map((skill) => (
+            <SkillTag className="text-xs md:text-sm" client:load>
+              {skill}
+            </SkillTag>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100">
+          ☁️ Databases, Messaging &amp; DevOps
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {tools.map((skill) => (
+            <SkillTag className="text-xs md:text-sm" client:load>
+              {skill}
+            </SkillTag>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-8 grid gap-8 md:grid-cols-2 text-sm md:text-base text-slate-700 dark:text-slate-200"
+    >
+      <div class="space-y-2">
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100">
+          💡 Soft skills
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {cv.skills.soft.map((skill) => (
+            <SkillTag className="text-xs md:text-sm" client:load>
+              {skill}
+            </SkillTag>
+          ))}
+        </div>
+      </div>
+      <div class="space-y-2">
+        <h3 class="font-semibold text-slate-900 dark:text-slate-100">
+          🌍 Languages
+        </h3>
+        <ul class="text-sm space-y-1">
+          {cv.languagesSpoken.map((lang) => (
+            <li>
+              <strong>{lang.language}:</strong> {lang.level}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* Contact */}
+  <section
+    id="contact"
+    class="mt-10 md:mt-12 pt-8 space-y-4"
+  >
+    <h2 class="text-2xl font-semibold text-purple-600 dark:text-purple-300">
+      Contact
+    </h2>
+    <div class="space-y-3 text-sm md:text-base text-slate-700 dark:text-slate-200 leading-relaxed">
+      <p>
+        If you want to talk about opportunities, projects or collaboration:
+      </p>
+      <ul class="text-sm space-y-1">
+        <li>
+          Email:
+          <a
+            href="mailto:jomiferse@gmail.com"
+            class="text-purple-600 dark:text-purple-300 underline ml-1"
+          >
+            jomiferse@gmail.com
+          </a>
+        </li>
+        <li>
+          GitHub:
+          <a
+            href="https://github.com/jomiferse"
+            class="text-purple-600 dark:text-purple-300 underline ml-1"
+            target="_blank"
+          >
+            @jomiferse
+          </a>
+        </li>
+        <li>
+          LinkedIn:
+          <a
+            href="https://www.linkedin.com/in/jomiferse"
+            class="text-purple-600 dark:text-purple-300 underline ml-1"
+            target="_blank"
+          >
+            /in/jomiferse
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
