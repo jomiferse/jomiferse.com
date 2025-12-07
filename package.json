@@ -13,7 +13,6 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.12",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "sharp": "^0.34.5"
