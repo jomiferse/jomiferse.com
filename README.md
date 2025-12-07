@@ -28,17 +28,18 @@ This website showcases my professional experience, projects, education, certific
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm run dev
 
 # Build for production
-npm run build
+pnpm run build
 
 # Preview the build
-npm run preview
+pnpm run preview
 ```
+
 ## 📬 Contact
 
 If you'd like to reach out, here are my official channels:
