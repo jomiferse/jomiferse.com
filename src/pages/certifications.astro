@@ -7,28 +7,30 @@ const certifications = cv.certifications;
 ---
 
 <BaseLayout
-  title={`Certifications – ${cv.name}`}
-  description={`Courses and certifications obtained by ${cv.name}.`}
+	title={`Certifications – ${cv.name}`}
+	description={`Courses and certifications obtained by ${cv.name}.`}
 >
-  <!-- Header -->
-  <header class="mb-6 space-y-3">
-    <h1 class="text-3xl md:text-4xl font-bold">
-      Courses &amp; <span class="text-purple-600 dark:text-purple-300">certifications</span>
-    </h1>
-    <p class="text-sm md:text-base text-slate-600 dark:text-slate-300 max-w-2xl">
-      A collection of courses and certifications that reflect my commitment to continuous learning and professional growth.
-    </p>
-  </header>
+	<!-- Header -->
+	<header class="mb-6 space-y-3">
+		<h1 class="text-3xl font-bold md:text-4xl">
+			Courses &amp; <span class="text-purple-600 dark:text-purple-300"
+				>certifications</span
+			>
+		</h1>
+		<p
+			class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300"
+		>
+			A collection of courses and certifications that reflect my commitment to
+			continuous learning and professional growth.
+		</p>
+	</header>
 
-  <!-- Certifications list -->
-  <section class="grid gap-5 md:grid-cols-1">
-    {
-      certifications.map((certification) => (
-        <CertificationCard
-          certification={certification}
-          client:load
-        />
-      ))
-    }
-  </section>
+	<!-- Certifications list -->
+	<section class="grid gap-5 md:grid-cols-1">
+		{
+			certifications.map((certification) => (
+				<CertificationCard certification={certification} client:load />
+			))
+		}
+	</section>
 </BaseLayout>
