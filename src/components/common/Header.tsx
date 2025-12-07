@@ -15,7 +15,13 @@ interface HeaderProps {
   currentPath: string;
 }
 
+const normalizePath = (path: string) => {
+  if (path === "/") return "/";
+  return path.endsWith("/") ? path.slice(0, -1) : path;
+};
+
 export default function Header({ currentPath }: HeaderProps) {
+  const normalizedCurrent = normalizePath(currentPath);
   return (
     <header className="sticky top-0 z-50 border-b border-slate-300/40 dark:border-zinc-700/40 bg-slate-100/80 dark:bg-zinc-900/80 backdrop-blur-md">
       <div className="max-w-4xl mx-auto px-4 py-3">
@@ -28,7 +34,7 @@ export default function Header({ currentPath }: HeaderProps) {
           "
         >
           {links.map((link) => {
-            const active = currentPath === link.href;
+            const active = normalizedCurrent === link.href;
 
             return (
               <a
