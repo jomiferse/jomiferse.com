@@ -22,7 +22,7 @@ importers:
         version: 0.34.5
     devDependencies:
       '@astrojs/check':
-        specifier: ^0.9.4
+        specifier: ^0.9.6
         version: 0.9.6(prettier@3.7.4)(typescript@5.9.3)
       '@astrojs/react':
         specifier: ^4.4.2
