@@ -1,0 +1,7 @@
+# Ignore artifacts:
+build
+coverage
+
+# Cloudflare Wrangler
+.wrangler/
+wrangler.jsonc
