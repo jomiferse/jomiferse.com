@@ -8,4 +8,5 @@ export default defineConfig({
   },
   site: "https://www.jomiferse.com",
   integrations: [react()],
+  output: "static",
 });
