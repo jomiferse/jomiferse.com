@@ -294,7 +294,7 @@ import { Icon } from "astro-icon/components";
 				<div class="grid gap-4 sm:grid-cols-3">
 					{
 						cv.skills.soft.map((s) => (
-							<div class="rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-4 text-center shadow-sm backdrop-blur transition hover:bg-zinc-950/35">
+							<div class="rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-4 text-center shadow-sm backdrop-blur transition hover:border-amber-500/25 hover:bg-zinc-950/45">
 								<div class="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-zinc-950/40 text-zinc-200 ring-1 ring-zinc-800/70">
 									{s.icon ? <Icon name={s.icon} class="h-6 w-6" /> : null}
 								</div>
@@ -306,7 +306,7 @@ import { Icon } from "astro-icon/components";
 				</div>
 
 				<div
-					class="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-5 shadow-sm backdrop-blur"
+					class="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-5 shadow-sm backdrop-blur hover:border-amber-500/25 hover:bg-zinc-950/45"
 				>
 					<div class="grid items-center gap-4 sm:grid-cols-[1.2fr_1fr_1fr]">
 						<div class="flex items-center gap-3">
