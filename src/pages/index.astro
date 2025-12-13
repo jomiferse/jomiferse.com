@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SkillTag from "@/components/SkillTag";
-import { Image } from "astro:assets";
+import {Image} from "astro:assets";
 import avatar from "@/assets/avatar.avif";
 import cv from "@/data/cv.json";
+import { Icon } from "astro-icon/components";
 
 // Build skill buckets from JSON
 const languages = cv.skills.languages;
@@ -21,62 +22,141 @@ const tools = [
 ---
 
 <BaseLayout title={`${cv.name} – Software Engineer`} description={cv.headline}>
-	{/* HERO */}
-	<header
-		class="mb-10 flex flex-col gap-6 md:mb-12 md:flex-row md:items-center md:justify-between"
-	>
-		<div class="space-y-3">
-			<h1 class="text-3xl font-bold md:text-4xl">
-				Hey! I&apos;m
-				<span class="text-purple-600 dark:text-purple-300">
-					{" "}
-					{cv.name}
-				</span>
-			</h1>
+	{/* Hero */}
+	<header class="mb-12">
+		<div class="grid gap-10 md:grid-cols-[360px_1fr] md:items-center">
+			<div class="flex flex-col items-center">
+				<div class="relative">
+					<div
+						class="absolute inset-0 -z-10 rounded-full blur-2xl opacity-70"
+						style="background: radial-gradient(circle at 50% 50%, rgba(168,85,247,0.35), transparent 60%);"
+					></div>
 
-			<h2 class="text-xl text-slate-600 md:text-2xl dark:text-slate-300">
-				Software Engineer
-			</h2>
+					<div class="rounded-full p-0.75 bg-linear-to-tr from-purple-500/60 via-purple-300/30 to-transparent">
+						<div class="rounded-full bg-slate-50 p-2 dark:bg-zinc-950">
+							<Image
+								src={avatar}
+								alt={`Portrait of ${cv.name}`}
+								width={360}
+								height={360}
+								loading="eager"
+								quality={100}
+								class="h-56 w-56 rounded-full object-cover md:h-64 md:w-64"
+							/>
+						</div>
+					</div>
 
-			<p
-				class="max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base dark:text-slate-400"
-			>
-				{cv.headline}
-			</p>
-		</div>
+					<div class="absolute right-0 bottom-6 text-center">
+						<span class="inline-flex items-center gap-3 rounded-full border border-slate-200/70 bg-white/90 px-4 py-2 shadow-sm backdrop-blur dark:border-zinc-700/40 dark:bg-zinc-900/70">
+							<span class="text-base leading-none">🇪🇸</span>
+							<span class="flex flex-col leading-tight">
+								<span class="text-[10px] font-semibold uppercase tracking-widest text-slate-500 dark:text-zinc-400">
+									Based in
+								</span>
+								<span class="text-[12px] font-semibold text-slate-900 dark:text-zinc-100">
+									{cv.location}
+								</span>
+							</span>
+						</span>
+					</div>
+				</div>
 
-		<div
-			class="mt-2 flex flex-col items-center gap-4 text-sm text-slate-700 md:mt-0 md:items-end dark:text-slate-300"
-		>
-			<Image
-				src={avatar}
-				alt={`Portrait of ${cv.name}`}
-				width={240}
-				height={240}
-				loading={"eager"}
-				quality={100}
-				class="h-24 w-24 rounded-full border border-slate-200 object-cover shadow-sm md:h-28 md:w-28 dark:border-slate-700"
-			/>
+				<div class="mt-6">
+        <span
+					class="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide text-purple-200">
+          <span class="h-2 w-2 rounded-full bg-purple-400"></span>
+					{cv.currentRole}
+        </span>
+				</div>
+			</div>
 
-			<div class="space-y-1 text-center md:text-right">
-				<p>🇪🇸 {cv.location}</p>
-				<p class="font-medium">{cv.currentRole}</p>
-				<p class="text-xs text-slate-500 dark:text-slate-400">
-					{cv.focus}
-				</p>
+			<div class="space-y-6 text-center md:text-left">
+				<h1 class="text-4xl font-extrabold tracking-tight text-zinc-50 md:text-5xl md:leading-15">
+					Hey! I&apos;m{" "}
+					<span class="text-purple-300">{cv.name}</span>
+				</h1>
+
+				<div class="flex justify-center gap-3 pt-2 md:justify-start">
+					<a
+						href="/projects"
+						class="inline-flex items-center justify-center rounded-2xl bg-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-purple-700"
+					>
+						View projects
+					</a>
+
+					<a
+						href="/experience"
+						class="inline-flex items-center justify-center rounded-2xl border border-zinc-700/60 bg-zinc-900/40 px-6 py-3 text-sm font-semibold text-zinc-200 shadow-sm transition hover:border-purple-500/30 hover:text-purple-200"
+					>
+						Experience
+					</a>
+				</div>
+
+				<div class="grid grid-cols-2 divide-x divide-zinc-800/70 border-y border-zinc-800/70 py-6 text-center">
+					<div class="space-y-1">
+						<p class="text-2xl font-extrabold tracking-tight text-zinc-50 md:text-3xl">
+							5+
+						</p>
+						<p class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400">
+							YEARS OF EXPERIENCE
+						</p>
+					</div>
+					<div class="space-y-1">
+						<p class="text-2xl font-extrabold tracking-tight text-zinc-50 md:text-3xl">
+							100%
+						</p>
+						<p class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400">
+							COMMITMENT
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</header>
 
 	{/* About me */}
-	<section id="about" class="mt-6 space-y-4 md:mt-8 md:space-y-5">
-		<h2 class="text-2xl font-semibold text-purple-600 dark:text-purple-300">
-			About me
-		</h2>
+	<section id="about" class="mt-12 md:mt-16">
+		<div class="mb-6 flex items-center gap-4">
+			<h2 class="text-xl font-semibold text-zinc-50">
+				About me
+			</h2>
+			<div class="h-px flex-1 bg-zinc-800/70"></div>
+		</div>
+
 		<div
-			class="space-y-3 text-sm leading-relaxed text-slate-700 md:text-base dark:text-slate-200"
+			class="relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-linear-to-b from-zinc-900/80 to-zinc-950/80 p-6 shadow-sm backdrop-blur md:p-8"
 		>
-			{cv.summary.map((para) => <p>{para}</p>)}
+			<div
+				class="pointer-events-none absolute inset-0 -z-10 opacity-40"
+				style="background: radial-gradient(circle at 20% 0%, rgba(168,85,247,0.15), transparent 40%);"
+			></div>
+
+			<div class="space-y-4 text-sm leading-relaxed text-zinc-300 md:text-base">
+				{cv.summary.map((para) => (
+					<p>
+						{para}
+					</p>
+				))}
+			</div>
+
+			<div class="my-6 h-px bg-zinc-800/70"></div>
+
+			<div class="flex flex-wrap gap-4 text-xs text-zinc-400">
+				<div class="flex items-center gap-2">
+					<span class="text-purple-400"><Icon name="map-pin" class="h-5 w-5" /></span>
+					<span>Granada, Spain</span>
+				</div>
+
+				<div class="flex items-center gap-2">
+					<span class="text-purple-400"><Icon name="building-2" class="h-5 w-5" /></span>
+					<span>CGI</span>
+				</div>
+
+				<div class="flex items-center gap-2">
+					<span class="text-purple-400"><Icon name="globe" class="h-5 w-5" /></span>
+					<span>Spanish / English</span>
+				</div>
+			</div>
 		</div>
 	</section>
 

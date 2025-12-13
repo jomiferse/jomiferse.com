@@ -61,19 +61,16 @@ const normalizedCurrent = normalizePath(currentPath);
 	</div>
 </header>
 
-<!-- Drawer (empieza desmontado visualmente y se controla con clases) -->
 <div
 	id="mobile-menu"
 	class="fixed inset-0 z-50 hidden md:hidden"
 	aria-hidden="true"
 >
-	<!-- overlay -->
 	<div
 		id="menu-overlay"
 		class="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 transition-opacity duration-200"
 	></div>
 
-	<!-- panel -->
 	<aside
 		id="menu-panel"
 		class="absolute right-0 top-0 h-full w-72 translate-x-full transform bg-slate-100 p-6 transition-transform duration-[250ms] ease-out dark:bg-zinc-900"
