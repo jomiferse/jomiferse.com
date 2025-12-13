@@ -1,24 +1,9 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import SkillTag from "@/components/SkillTag";
-import {Image} from "astro:assets";
+import { Image } from "astro:assets";
 import avatar from "@/assets/avatar.avif";
 import cv from "@/data/cv.json";
 import { Icon } from "astro-icon/components";
-
-// Build skill buckets from JSON
-const languages = cv.skills.languages;
-const frameworks = [
-	...cv.skills.backendMicroservices,
-	...cv.skills.frontend,
-	...cv.skills.otherFrameworks,
-];
-const tools = [
-	...cv.skills.databases,
-	...cv.skills.messagingStreaming,
-	...cv.skills.identitySecurity,
-	...cv.skills.toolsDevOps,
-];
 ---
 
 <BaseLayout title={`${cv.name} – Software Engineer`} description={cv.headline}>
@@ -62,18 +47,16 @@ const tools = [
 				</div>
 
 				<div class="mt-6">
-        <span
-					class="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide text-purple-200">
-          <span class="h-2 w-2 rounded-full bg-purple-400"></span>
-					{cv.currentRole}
-        </span>
+					<span class="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide text-purple-200">
+						<span class="h-2 w-2 rounded-full bg-purple-400"></span>
+						{cv.currentRole}
+					</span>
 				</div>
 			</div>
 
 			<div class="space-y-6 text-center md:text-left">
 				<h1 class="text-4xl font-extrabold tracking-tight text-zinc-50 md:text-5xl md:leading-15">
-					Hey! I&apos;m{" "}
-					<span class="text-purple-300">{cv.name}</span>
+					Hey! I&apos;m <span class="text-purple-300">{cv.name}</span>
 				</h1>
 
 				<div class="flex justify-center gap-3 pt-2 md:justify-start">
@@ -115,27 +98,19 @@ const tools = [
 	</header>
 
 	{/* About me */}
-	<section id="about" class="mt-12 md:mt-16">
+	<section id="about" class="mt-12 md:mt-20">
 		<div class="mb-6 flex items-center gap-4">
-			<h2 class="text-xl font-semibold text-zinc-50">
-				About me
-			</h2>
+			<h2 class="text-2xl font-semibold text-zinc-50">About me</h2>
 			<div class="h-px flex-1 bg-zinc-800/70"></div>
 		</div>
 
-		<div
-			class="relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-linear-to-b from-zinc-900/80 to-zinc-950/80 p-6 shadow-sm backdrop-blur md:p-8"
-		>
-			<div
-				class="pointer-events-none absolute inset-0 -z-10 opacity-40"
-				style="background: radial-gradient(circle at 20% 0%, rgba(168,85,247,0.15), transparent 40%);"
-			></div>
+		<div class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur md:p-8 transition hover:bg-zinc-950/45 hover:border-purple-500/30">
+			<div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-purple-500/10 blur-3xl opacity-0 transition group-hover:opacity-100"></div>
+			<div class="pointer-events-none absolute inset-0 bg-linear-to-b from-white/5 to-transparent"></div>
 
 			<div class="space-y-4 text-sm leading-relaxed text-zinc-300 md:text-base">
 				{cv.summary.map((para) => (
-					<p>
-						{para}
-					</p>
+					<p set:html={para}></p>
 				))}
 			</div>
 
@@ -161,134 +136,117 @@ const tools = [
 	</section>
 
 	{/* Skills */}
-	<section id="skills" class="mt-10 space-y-5 pt-8 md:mt-12">
-		<h2 class="text-2xl font-semibold text-purple-600 dark:text-purple-300">
-			Skills
-		</h2>
+	<section id="skills" class="mt-14">
+		<div class="mb-6 flex items-center gap-4">
+			<h2 class="text-2xl font-semibold text-zinc-50">Skills & Expertise</h2>
+			<div class="h-px flex-1 bg-zinc-800/70"></div>
+		</div>
 
-		<div
-			class="grid gap-8 text-sm text-slate-700 md:grid-cols-3 md:text-base dark:text-slate-200"
-		>
-			<div class="space-y-2">
-				<h3 class="font-semibold text-slate-900 dark:text-slate-100">
-					☕ Languages
-				</h3>
-				<div class="flex flex-wrap gap-2">
-					{
-						languages.map((skill) => (
-							<SkillTag className="text-xs md:text-sm" client:load>
-								{skill}
-							</SkillTag>
-						))
-					}
+		<div class="grid gap-6 md:grid-cols-2">
+			<div class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur md:p-8 transition hover:bg-zinc-950/45 hover:border-purple-500/30">
+				<div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-purple-500/10 blur-3xl opacity-0 transition group-hover:opacity-100"></div>
+				<div class="pointer-events-none absolute inset-0 bg-linear-to-b from-white/5 to-transparent"></div>
+
+				<div class="mb-5 flex items-center justify-between">
+					<div class="flex items-center gap-2">
+						<span class="grid h-8 w-8 place-items-center rounded-xl bg-purple-500/10 text-purple-300">
+							<Icon name="code" class="h-5 w-5" />
+						</span>
+						<h3 class="text-base font-semibold text-zinc-100">Core Tech Stack</h3>
+					</div>
+				</div>
+
+				<div class="space-y-4 text-sm">
+					{cv.skills.coreTech.map((s) => (
+						<div class="space-y-2">
+							<div class="flex items-center justify-between">
+								<div class="flex items-center gap-2">
+									<span class={`h-2 w-2 rounded-full ${s.color}`}></span>
+									<span class="text-zinc-200">{s.name}</span>
+								</div>
+								<span class="text-xs text-zinc-400">{s.value}%</span>
+							</div>
+
+							<div class="h-2 w-full rounded-full bg-zinc-900/70 ring-1 ring-white/5">
+								<div class={`h-2 rounded-full ${s.color}`} style={`width:${s.value}%`}></div>
+							</div>
+						</div>
+					))}
 				</div>
 			</div>
 
-			<div class="space-y-2">
-				<h3 class="font-semibold text-slate-900 dark:text-slate-100">
-					⚙️ Backend &amp; Frameworks
-				</h3>
-				<div class="flex flex-wrap gap-2">
-					{
-						frameworks.map((skill) => (
-							<SkillTag className="text-xs md:text-sm" client:load>
-								{skill}
-							</SkillTag>
-						))
-					}
-				</div>
-			</div>
+			<div class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur md:p-8 transition hover:bg-zinc-950/45 hover:border-emerald-500/25">
+				<div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl opacity-0 transition group-hover:opacity-100"></div>
+				<div class="pointer-events-none absolute inset-0 bg-linear-to-b from-white/5 to-transparent"></div>
 
-			<div class="space-y-2">
-				<h3 class="font-semibold text-slate-900 dark:text-slate-100">
-					☁️ Databases, Messaging &amp; DevOps
-				</h3>
-				<div class="flex flex-wrap gap-2">
-					{
-						tools.map((skill) => (
-							<SkillTag className="text-xs md:text-sm" client:load>
-								{skill}
-							</SkillTag>
-						))
-					}
+				<div class="mb-5 flex items-center gap-2">
+					<span class="grid h-8 w-8 place-items-center rounded-xl bg-emerald-500/10 text-emerald-300">
+						<Icon name="layers" class="h-5 w-5" />
+					</span>
+					<h3 class="text-base font-semibold text-zinc-100">Frameworks & Tools</h3>
 				</div>
+
+				<div class="flex flex-wrap gap-2">
+					{cv.skills.frameworksTools.map((t) => (
+						<span class={`inline-flex items-center gap-1.5 rounded-xl border px-4 py-2 text-xs font-semibold ${t.color}`}>
+							{t.icon ? <Icon name={t.icon} class="h-4 w-4" /> : null}
+							{t.label}
+						</span>
+					))}
+				</div>
+
+				<p class="mt-4 text-xs text-zinc-500">(Curated list — full stack in CV / LinkedIn)</p>
 			</div>
 		</div>
 
-		<div
-			class="mt-8 grid gap-8 text-sm text-slate-700 md:grid-cols-2 md:text-base dark:text-slate-200"
-		>
-			<div class="space-y-2">
-				<h3 class="font-semibold text-slate-900 dark:text-slate-100">
-					💡 Soft skills
-				</h3>
-				<div class="flex flex-wrap gap-2">
-					{
-						cv.skills.soft.map((skill) => (
-							<SkillTag className="text-xs md:text-sm" client:load>
-								{skill}
-							</SkillTag>
-						))
-					}
+		<div class="mt-6">
+			<div class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur md:p-8 transition hover:bg-zinc-950/45 hover:border-amber-500/25">
+				<div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-amber-500/10 blur-3xl opacity-0 transition group-hover:opacity-100"></div>
+				<div class="pointer-events-none absolute inset-0 bg-linear-to-b from-white/5 to-transparent"></div>
+
+				<div class="mb-5 flex items-center gap-2">
+					<span class="grid h-9 w-9 place-items-center rounded-xl bg-amber-500/10 text-amber-200 ring-1 ring-amber-400/15">
+						<Icon name="lightbulb" class="h-5 w-5" />
+					</span>
+					<h3 class="text-base font-semibold text-zinc-100">Soft Skills</h3>
+				</div>
+
+				<div class="grid gap-4 sm:grid-cols-3">
+					{cv.skills.soft.map((s) => (
+					<div class="rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-4 text-center shadow-sm backdrop-blur transition hover:bg-zinc-950/35">
+						<div class="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-zinc-950/40 text-zinc-200 ring-1 ring-zinc-800/70">
+							{s.icon ? <Icon name={s.icon} class="h-6 w-6" /> : null}
+						</div>
+
+						<p class="text-sm font-semibold text-zinc-200">{s.label}</p>
+					</div>
+					))}
+				</div>
+
+				<div class="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-5 shadow-sm backdrop-blur">
+					<div class="grid items-center gap-4 sm:grid-cols-[1.2fr_1fr_1fr]">
+						<div class="flex items-center gap-3">
+							<div class="grid h-11 w-11 place-items-center rounded-2xl bg-zinc-950/40 text-zinc-200 ring-1 ring-zinc-800/70">
+								<Icon name="globe" class="h-5 w-5" />
+							</div>
+
+							<div class="leading-tight">
+								<p class="text-sm font-semibold text-zinc-100">Languages</p>
+								<p class="text-[12px] text-zinc-400">Communication skills</p>
+							</div>
+						</div>
+
+						{cv.skills.languages.items.map((lang) => (
+							<div class="sm:border-l sm:border-zinc-800/70 sm:pl-5">
+								<p class="text-sm font-semibold text-zinc-100">{lang.language}</p>
+								<p class={`mt-1 text-[11px] font-semibold tracking-[0.22em] ${lang.txtColor}`}>
+									{lang.level}
+								</p>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
-			<div class="space-y-2">
-				<h3 class="font-semibold text-slate-900 dark:text-slate-100">
-					🌍 Languages
-				</h3>
-				<ul class="space-y-1 text-sm">
-					{
-						cv.languagesSpoken.map((lang) => (
-							<li>
-								<strong>{lang.language}:</strong> {lang.level}
-							</li>
-						))
-					}
-				</ul>
-			</div>
-		</div>
-	</section>
-
-	{/* Contact */}
-	<section id="contact" class="mt-10 space-y-4 pt-8 md:mt-12">
-		<h2 class="text-2xl font-semibold text-purple-600 dark:text-purple-300">
-			Contact
-		</h2>
-		<div
-			class="space-y-3 text-sm leading-relaxed text-slate-700 md:text-base dark:text-slate-200"
-		>
-			<p>If you want to talk about opportunities, projects or collaboration:</p>
-			<ul class="space-y-1 text-sm">
-				<li>
-					Email:
-					<a
-						href="mailto:jomiferse@gmail.com"
-						class="ml-1 text-purple-600 underline dark:text-purple-300"
-					>
-						jomiferse@gmail.com
-					</a>
-				</li>
-				<li>
-					GitHub:
-					<a
-						href="https://github.com/jomiferse"
-						class="ml-1 text-purple-600 underline dark:text-purple-300"
-						target="_blank"
-					>
-						@jomiferse
-					</a>
-				</li>
-				<li>
-					LinkedIn:
-					<a
-						href="https://www.linkedin.com/in/jomiferse"
-						class="ml-1 text-purple-600 underline dark:text-purple-300"
-						target="_blank"
-					>
-						/in/jomiferse
-					</a>
-				</li>
-			</ul>
 		</div>
 	</section>
 </BaseLayout>
