@@ -38,7 +38,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
 					</h2>
 
 					<p className="text-xs text-slate-400">
-						{experience.location} · {experience.startDate} – {experience.endDate}
+						{experience.location} · {experience.startDate} –{" "}
+						{experience.endDate}
 					</p>
 				</header>
 
@@ -59,7 +60,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
 					{shouldShowToggle && (
 						<button
 							onClick={() => setExpanded(!expanded)}
-							className="text-xs text-purple-300 hover:text-purple-200 transition-colors underline underline-offset-2 cursor-pointer"
+							className="cursor-pointer text-xs text-purple-300 underline underline-offset-2 transition-colors hover:text-purple-200"
 						>
 							{expanded ? "Show less" : "Read more"}
 						</button>

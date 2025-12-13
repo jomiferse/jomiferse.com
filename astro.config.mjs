@@ -9,5 +9,5 @@ export default defineConfig({
 	},
 	site: "https://www.jomiferse.com",
 	integrations: [react(), icon()],
-	output: "static"
+	output: "static",
 });

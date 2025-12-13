@@ -93,13 +93,7 @@
       "startDate": "08/2020",
       "endDate": "01/2021",
       "description": "As a Trainee Developer, I was responsible for the development of the EduCash affiliate page, participating in all phases of the project, from design to implementation and testing. I created a functional and engaging platform that facilitated affiliate management and contributed to attracting new members. This project significantly improved the company's ability to handle affiliations, optimizing the experience for both users and the internal team.",
-      "skills": [
-        "PHP",
-        "HTML",
-        "JavaScript",
-        "CSS",
-        "MySQL"
-      ]
+      "skills": ["PHP", "HTML", "JavaScript", "CSS", "MySQL"]
     },
     {
       "company": "EDUCA EDTECH Group",
@@ -119,12 +113,7 @@
       "startDate": "2020",
       "endDate": "2020",
       "description": "This master's program focuses on the technologies and skills necessary to develop and manage web and mobile applications, as well as digital and multimedia content.",
-      "skills": [
-        "PHP",
-        "HTML",
-        "JavaScript",
-        "CSS"
-      ],
+      "skills": ["PHP", "HTML", "JavaScript", "CSS"],
       "notes": "Excellent"
     },
     {
@@ -134,14 +123,7 @@
       "startDate": "09/2018",
       "endDate": "06/2020",
       "description": "Advanced training in developing applications that operate across multiple operating systems and devices, covering languages like Java, JavaScript, Swift, and Kotlin, database management, scalable architectures, version control with Git, and testing in different environments.",
-      "skills": [
-        "Java",
-        "Kotlin",
-        "SQL",
-        "Swift",
-        "JavaScript",
-        "Git"
-      ],
+      "skills": ["Java", "Kotlin", "SQL", "Swift", "JavaScript", "Git"],
       "notes": "8.23 / 10"
     }
   ],
@@ -323,14 +305,7 @@
       "context": "Project related to EDUCA EDTECH Group, focused on affiliate management.",
       "timeframe": "08/2020 – 12/2024",
       "summary": "Comprehensive development of the company's affiliate web platform, from design to implementation and optimization, enabling effective management of affiliations and reporting.",
-      "technologies": [
-        "PHP",
-        "MySQL",
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Git"
-      ],
+      "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Git"],
       "highlights": [
         "Designed, developed, and implemented the affiliate platform ensuring integration with existing systems.",
         "Continuously refined the platform to improve functionality and affiliate satisfaction.",
