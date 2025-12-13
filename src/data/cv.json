@@ -5,7 +5,7 @@
   "currentRole": "Software Engineer",
   "focus": "Backend, microservices & DevOps",
   "summary": [
-    "I'm a software engineer passionate about building things that work fast, look clean, and scale well. I work mostly with Java & Spring Boot these days, but I’ve also spent years building big PHP platforms, improving architectures, and helping teams work smarter. I love learning new tech, understanding how systems fit together, and making complex stuff feel simple."
+    "Passionate about building things that <span class=\"font-semibold text-purple-300\">work fast</span>, <span class=\"font-semibold text-purple-300\">look clean</span>, and <span class=\"font-semibold text-purple-300\">scale well</span>. I work mostly with <span class=\"font-semibold text-purple-300\">Java & Spring Boot</span> these days, but I’ve also spent years building <span class=\"font-semibold text-purple-300\">large PHP platforms</span>, improving <span class=\"font-semibold text-purple-300\">architectures</span>, and helping <span class=\"font-semibold text-purple-300\">teams work smarter</span>. I love learning <span class=\"font-semibold text-purple-300\">new tech</span>, understanding how <span class=\"font-semibold text-purple-300\">systems fit together</span>, and making <span class=\"font-semibold text-purple-300\">complex stuff feel simple</span>."
   ],
   "experience": [
     {
@@ -93,7 +93,13 @@
       "startDate": "08/2020",
       "endDate": "01/2021",
       "description": "As a Trainee Developer, I was responsible for the development of the EduCash affiliate page, participating in all phases of the project, from design to implementation and testing. I created a functional and engaging platform that facilitated affiliate management and contributed to attracting new members. This project significantly improved the company's ability to handle affiliations, optimizing the experience for both users and the internal team.",
-      "skills": ["PHP", "HTML", "JavaScript", "CSS", "MySQL"]
+      "skills": [
+        "PHP",
+        "HTML",
+        "JavaScript",
+        "CSS",
+        "MySQL"
+      ]
     },
     {
       "company": "EDUCA EDTECH Group",
@@ -113,7 +119,12 @@
       "startDate": "2020",
       "endDate": "2020",
       "description": "This master's program focuses on the technologies and skills necessary to develop and manage web and mobile applications, as well as digital and multimedia content.",
-      "skills": ["PHP", "HTML", "JavaScript", "CSS"],
+      "skills": [
+        "PHP",
+        "HTML",
+        "JavaScript",
+        "CSS"
+      ],
       "notes": "Excellent"
     },
     {
@@ -123,7 +134,14 @@
       "startDate": "09/2018",
       "endDate": "06/2020",
       "description": "Advanced training in developing applications that operate across multiple operating systems and devices, covering languages like Java, JavaScript, Swift, and Kotlin, database management, scalable architectures, version control with Git, and testing in different environments.",
-      "skills": ["Java", "Kotlin", "SQL", "Swift", "JavaScript", "Git"],
+      "skills": [
+        "Java",
+        "Kotlin",
+        "SQL",
+        "Swift",
+        "JavaScript",
+        "Git"
+      ],
       "notes": "8.23 / 10"
     }
   ],
@@ -171,62 +189,104 @@
     }
   ],
   "skills": {
-    "languages": [
-      "Java",
-      "Scala",
-      "TypeScript",
-      "JavaScript",
-      "PHP",
-      "Kotlin",
-      "Swift",
-      "SQL",
-      "HTML",
-      "CSS"
+    "coreTech": [
+      {
+        "name": "Java",
+        "value": 95,
+        "color": "bg-orange-400"
+      },
+      {
+        "name": "PHP",
+        "value": 85,
+        "color": "bg-violet-400"
+      },
+      {
+        "name": "JS / TypeScript",
+        "value": 80,
+        "color": "bg-amber-300"
+      },
+      {
+        "name": "SQL",
+        "value": 85,
+        "color": "bg-sky-400"
+      }
     ],
-    "backendMicroservices": [
-      "Spring Boot",
-      "Spring Security",
-      "REST API design",
-      "Cloud-Native development",
-      "Resilience patterns",
-      "Observability",
-      "Dependency Management",
-      "Multi-module architectures",
-      "Build automation"
+    "frameworksTools": [
+      {
+        "label": "Spring Boot",
+        "icon": "springboot",
+        "color": "bg-emerald-100 border-emerald-200 text-emerald-700"
+      },
+      {
+        "label": "Docker",
+        "icon": "docker",
+        "color": "bg-blue-100 border-blue-200 text-blue-700"
+      },
+      {
+        "label": "Kubernetes",
+        "icon": "kubernetes",
+        "color": "bg-violet-100 border-violet-200 text-violet-700"
+      },
+      {
+        "label": "PostgreSQL",
+        "icon": "postgresql",
+        "color": "bg-orange-100 border-orange-200 text-orange-700"
+      },
+      {
+        "label": "Kafka",
+        "icon": "apachekafka",
+        "color": "bg-red-100 border-red-200 text-red-700"
+      },
+      {
+        "label": "Git",
+        "icon": "git",
+        "color": "bg-slate-100 border-slate-200 text-slate-700"
+      },
+      {
+        "label": "Liquibase",
+        "icon": "liquibase",
+        "color": "bg-cyan-100 border-cyan-200 text-cyan-700"
+      },
+      {
+        "label": "RabbitMQ",
+        "icon": "rabbitmq",
+        "color": "bg-pink-100 border-pink-200 text-pink-700"
+      },
+      {
+        "label": "CI/CD",
+        "icon": "git-branch",
+        "color": "bg-indigo-100 border-indigo-200 text-indigo-700"
+      }
     ],
-    "databases": ["PostgreSQL", "MySQL"],
-    "messagingStreaming": ["Apache Kafka", "RabbitMQ"],
-    "identitySecurity": ["Keycloak"],
-    "testing": [
-      "JUnit",
-      "PHPUnit",
-      "Pact (Contract Testing)",
-      "Testing fundamentals"
+    "soft": [
+      {
+        "label": "Problem Solving",
+        "icon": "brain"
+      },
+      {
+        "label": "Teamwork",
+        "icon": "users"
+      },
+      {
+        "label": "Quality",
+        "icon": "circle-check-big"
+      }
     ],
-    "frontend": ["React", "Astro"],
-    "otherFrameworks": ["Phalcon"],
-    "toolsDevOps": [
-      "Apache Maven",
-      "Docker",
-      "Kubernetes",
-      "Git",
-      "Liquibase",
-      "DevOps practices",
-      "CI/CD",
-      "Containerization"
-    ],
-    "soft": ["Problem solving", "Teamwork", "Quality assurance"]
-  },
-  "languagesSpoken": [
-    {
-      "language": "Spanish",
-      "level": "Native"
-    },
-    {
-      "language": "English",
-      "level": "Basic professional competence"
+    "languages": {
+      "items": [
+        {
+          "language": "Spanish",
+          "level": "NATIVE",
+          "txtColor": "text-sky-600 dark:text-sky-300"
+        },
+        {
+          "language": "English",
+          "level": "PROFESSIONAL",
+          "txtColor": "text-emerald-600 dark:text-emerald-300"
+        }
+      ]
     }
-  ],
+  },
   "projects": [
     {
       "title": "Microservices Modernization Platform",
@@ -263,7 +323,14 @@
       "context": "Project related to EDUCA EDTECH Group, focused on affiliate management.",
       "timeframe": "08/2020 – 12/2024",
       "summary": "Comprehensive development of the company's affiliate web platform, from design to implementation and optimization, enabling effective management of affiliations and reporting.",
-      "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Git"],
+      "technologies": [
+        "PHP",
+        "MySQL",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Git"
+      ],
       "highlights": [
         "Designed, developed, and implemented the affiliate platform ensuring integration with existing systems.",
         "Continuously refined the platform to improve functionality and affiliate satisfaction.",
