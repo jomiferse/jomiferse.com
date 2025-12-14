@@ -19,7 +19,8 @@ import { Icon } from "astro-icon/components";
 					</div>
 
 					<div
-						class="rounded-full bg-linear-to-tr from-purple-500/60 via-purple-300/30 to-transparent p-0.75"
+						class="animate-float rounded-full bg-linear-to-tr from-purple-500/60 via-purple-300/30 to-transparent p-0.75
+         transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
 					>
 						<div class="rounded-full bg-slate-50 p-2 dark:bg-zinc-950">
 							<Image
@@ -55,14 +56,21 @@ import { Icon } from "astro-icon/components";
 					</div>
 				</div>
 
-				<div class="mt-6">
+				<div class="mt-6 relative group inline-block">
 					<span
-						class="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide text-purple-200"
+						class="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide text-purple-200 cursor-default"
 					>
 						<span class="h-2 w-2 rounded-full bg-purple-400"></span>
 						{cv.currentRole}
 					</span>
+
+					<div
+						class="pointer-events-none absolute left-1/2 top-full z-20 mt-3 w-max -translate-x-1/2 rounded-xl bg-zinc-900 px-3 py-2 text-[11px] font-medium text-zinc-100 shadow-lg opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100"
+					>
+						Currently focus in {cv.focus}
+					</div>
 				</div>
+
 			</div>
 
 			<div class="space-y-6 text-center md:text-left">
@@ -93,29 +101,56 @@ import { Icon } from "astro-icon/components";
 				>
 					<div class="space-y-1">
 						<p
-							class="text-2xl font-extrabold tracking-tight text-zinc-50 md:text-3xl"
+							class="counter text-2xl font-extrabold tracking-tight text-zinc-50 md:text-3xl"
+							data-target={cv.yearsWorking}
+							data-suffix="+"
 						>
-							5+
+							0
 						</p>
-						<p
-							class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400"
-						>
+						<p class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400">
 							YEARS OF EXPERIENCE
 						</p>
 					</div>
+
 					<div class="space-y-1">
 						<p
-							class="text-2xl font-extrabold tracking-tight text-zinc-50 md:text-3xl"
+							class="counter text-2xl font-extrabold tracking-tight text-zinc-50 md:text-3xl"
+							data-target="100"
+							data-suffix="%"
 						>
-							100%
+							0%
 						</p>
-						<p
-							class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400"
-						>
+						<p class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400">
 							COMMITMENT
 						</p>
 					</div>
 				</div>
+				<script is:inline>
+					const counters = document.querySelectorAll(".counter");
+
+					counters.forEach((counter) => {
+						const target = Number(counter.dataset.target);
+						const suffix = counter.dataset.suffix ?? "";
+						const duration = 1000; // ms
+						const startTime = performance.now();
+
+						function update(currentTime) {
+							const elapsed = Math.max(currentTime - startTime, 0);
+							const progress = Math.min(elapsed / duration, 1);
+							const value = Math.floor(progress * target);
+
+							counter.textContent = Math.max(value, 0) + suffix;
+
+							if (progress < 1) {
+								requestAnimationFrame(update);
+							} else {
+								counter.textContent = target + suffix;
+							}
+						}
+
+						requestAnimationFrame(update);
+					});
+				</script>
 			</div>
 		</div>
 	</header>
@@ -150,21 +185,35 @@ import { Icon } from "astro-icon/components";
 					<span class="text-purple-400"
 						><Icon name="map-pin" class="h-5 w-5" /></span
 					>
-					<span>Granada, Spain</span>
+					<span>{cv.location}</span>
 				</div>
 
 				<div class="flex items-center gap-2">
 					<span class="text-purple-400"
 						><Icon name="building-2" class="h-5 w-5" /></span
 					>
-					<span>CGI</span>
+					<span>{cv.currentCompany}</span>
 				</div>
 
 				<div class="flex items-center gap-2">
-					<span class="text-purple-400"
-						><Icon name="globe" class="h-5 w-5" /></span
-					>
-					<span>Spanish / English</span>
+					<span class="text-purple-400">
+						<Icon name="globe" class="h-5 w-5" />
+					</span>
+
+					<span class="flex items-center gap-1 text-sm">
+    				{
+							cv.skills.languages.items.map((item, index) => (
+								<>
+									<span>
+										{item.language}
+									</span>
+									{index < cv.skills.languages.items.length - 1 && (
+										<span>/</span>
+									)}
+								</>
+							))
+						}
+  				</span>
 				</div>
 			</div>
 		</div>
@@ -193,7 +242,7 @@ import { Icon } from "astro-icon/components";
 				<div class="mb-5 flex items-center justify-between">
 					<div class="flex items-center gap-2">
 						<span
-							class="grid h-8 w-8 place-items-center rounded-xl bg-purple-500/10 text-purple-300"
+							class="grid h-9 w-9 place-items-center rounded-xl bg-purple-500/10 text-purple-300"
 						>
 							<Icon name="code" class="h-5 w-5" />
 						</span>
@@ -241,7 +290,7 @@ import { Icon } from "astro-icon/components";
 
 				<div class="mb-5 flex items-center gap-2">
 					<span
-						class="grid h-8 w-8 place-items-center rounded-xl bg-emerald-500/10 text-emerald-300"
+						class="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-300"
 					>
 						<Icon name="layers" class="h-5 w-5" />
 					</span>
