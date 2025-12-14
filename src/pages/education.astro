@@ -1,16 +1,15 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import cv from "@/data/cv.json";
-import EducationCard from "@/components/cards/EducationCard";
+import EducationCard from "@/components/cards/EducationCard.astro";
 
-const education = cv.education;
+const education = cv.education ?? [];
 ---
 
 <BaseLayout
 	title={`Education – ${cv.name}`}
 	description={`Education background of ${cv.name}.`}
 >
-	<!-- Header -->
 	<header class="mb-6 space-y-3">
 		<h1 class="text-3xl font-bold md:text-4xl">
 			<span class="text-purple-600 dark:text-purple-300">Education</span> &amp; training
@@ -22,12 +21,11 @@ const education = cv.education;
 		</p>
 	</header>
 
-	<!-- Education entries -->
-	<section class="grid gap-5 md:grid-cols-1">
-		{
-			education.map((education) => (
-				<EducationCard education={education} client:load />
-			))
-		}
+	<section class="relative">
+		<div class="grid gap-5">
+			{education.map((item) => (
+				<EducationCard education={item} />
+			))}
+		</div>
 	</section>
 </BaseLayout>
