@@ -1,6 +1,5 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import react from "@astrojs/react";
 import icon from "astro-icon";
 
 export default defineConfig({
@@ -8,6 +7,6 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	site: "https://www.jomiferse.com",
-	integrations: [react(), icon()],
+	integrations: [icon()],
 	output: "static",
 });
