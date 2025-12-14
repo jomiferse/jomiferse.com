@@ -12,106 +12,36 @@
   "currentCompany": "CGI",
   "experience": [
     {
-      "company": "CGI",
-      "role": "Software Engineer",
-      "location": "Spain",
-      "startDate": "03/2025",
-      "endDate": "Present",
-      "description": "I’m part of a team focused on developing scalable solutions using microservices with Spring Boot, Spring Security, and PostgreSQL, contributing to a robust and secure architecture. I have also contributed to the migration of a monolithic Scala project to Spring Boot, helping modernize the system and improve maintainability. Additionally, I collaborate on building a new React-based back office, enhancing the user experience and streamlining internal management.\n\nI help define and automate the database lifecycle with Liquibase, ensuring traceability and consistency across different environments. I also create functional flow diagrams to help both the team and non-technical stakeholders better understand the system.\n\nDevelopment is supported by automated testing with JUnit, which ensures software stability and quality in every release. We maintain a collaborative, agile, and improvement-driven approach in an international environment.",
-      "skills": [
-        "Spring Boot",
-        "Java",
-        "JUnit",
-        "Scala",
-        "PostgreSQL",
-        "RabbitMQ",
-        "Git",
-        "Teamwork",
-        "Problem solving",
-        "Pact"
-      ]
-    },
-    {
-      "company": "Novatec Software",
+      "company": "CGI (formerly Novatec Software)",
       "role": "Software Engineer",
       "location": "Spain",
       "startDate": "12/2024",
-      "endDate": "06/2025",
-      "description": "As a Software Engineer, I was part of a team focused on developing scalable solutions using microservices with Spring Boot, Spring Security and PostgreSQL, contributing to a robust and secure architecture. I also collaborated on building a new React-based back office, improving the user experience and streamlining internal management.\n\nI participated in defining and automating the database lifecycle with Liquibase, ensuring traceability and consistency across different environments. Additionally, I created a functional flow diagram to help both the team and non-technical stakeholders better understand the system.\n\nDevelopment was supported by automated testing with JUnit, which helped ensure software stability and quality in every release. Throughout the project, we maintained a collaborative, agile, and improvement-driven approach in an international environment.",
-      "skills": [
-        "Teamwork",
-        "React",
-        "Java",
-        "Spring Boot",
-        "Spring Security",
-        "Liquibase",
-        "PostgreSQL",
-        "JUnit",
-        "Docker",
-        "TypeScript",
-        "Git"
+      "endDate": "Present",
+      "description": "Part of an international agile team responsible for the ongoing evolution of a backend platform undergoing long-term modernization. Contributing to architectural improvements, development standards, and collaboration across backend and frontend teams.",
+      "highlights": [
+        "Built and evolved Spring Boot microservices with Spring Security and PostgreSQL to support a secure, scalable architecture.",
+        "Contributed to the migration from a Scala monolith to Spring Boot, improving maintainability and long-term extensibility.",
+        "Implemented database versioning and lifecycle automation with Liquibase to ensure consistency across environments.",
+        "Strengthened service reliability through automated testing with JUnit and contract testing using Pact.",
+        "Collaborated on a React-based React & TypeScript back office to streamline internal operations and improve usability.",
+        "Produced functional flow diagrams to align technical and non-technical stakeholders during platform evolution."
       ]
     },
     {
       "company": "EDUCA EDTECH Group",
-      "role": "Senior Software Developer",
-      "location": "Spain",
-      "startDate": "05/2023",
-      "endDate": "12/2024",
-      "description": "As a Senior Software Developer, I led key projects focused on enhancing both the technical infrastructure and the user experience. I designed the Docker-based infrastructure, optimizing scalability and replication of development environments, which enabled the team to work more efficiently. I also implemented automated deployments using Git, which reduced delivery time for new versions and minimized common errors in manual processes.\n\nI transformed Euroinnova into a multi-language and multi-portal platform, significantly expanding the website's international reach and improving the user experience for different markets. Additionally, I oversaw the migration of the website to a global domain, improving both loading speed and search engine visibility.\n\nI worked on integrating a new payment system, ensuring a smooth implementation with existing systems to efficiently manage payments. I also developed an advanced search system using the ElasticSearch API, which improved the accuracy and relevance of search results.\n\nEven though I had no prior experience in code review, I took on this responsibility and adopted continuous improvement practices, providing valuable feedback to my peers. This increased code quality and strengthened collaboration and professional development within the team.",
-      "skills": [
-        "Problem solving",
-        "Teamwork",
-        "Docker",
-        "PHPUnit",
-        "PHP",
-        "JavaScript",
-        "Phalcon",
-        "Git",
-        "Quality assurance"
-      ]
-    },
-    {
-      "company": "EDUCA EDTECH Group",
-      "role": "Junior Software Developer",
-      "location": "Spain",
-      "startDate": "02/2021",
-      "endDate": "04/2023",
-      "description": "During my time as a Junior Software Developer, I primarily worked with the Phalcon framework, using PHP as the main language, complemented by HTML, CSS, and JavaScript for web development. I focused on designing and maintaining user interfaces, ensuring they provided an intuitive and engaging experience for end users.\n\nI contributed to the implementation of Euroinnova's web designs, ensuring consistency with brand guidelines and helping to improve the site's aesthetics and functionality. I was also responsible for the continuous improvement and maintenance of the website, optimizing its performance, security, and functionality, including Core Web Vitals optimization.",
-      "skills": [
-        "Phalcon",
-        "Problem solving",
-        "Teamwork",
-        "PHP",
-        "JavaScript",
-        "HTML",
-        "MySQL",
-        "CSS"
-      ]
-    },
-    {
-      "company": "EDUCA EDTECH Group",
-      "role": "Trainee Developer",
-      "location": "Spain",
+      "role": "Full-Stack Software Developer",
+      "location": "Granada, Spain",
       "startDate": "08/2020",
-      "endDate": "01/2021",
-      "description": "As a Trainee Developer, I was responsible for the development of the EduCash affiliate page, participating in all phases of the project, from design to implementation and testing. I created a functional and engaging platform that facilitated affiliate management and contributed to attracting new members. This project significantly improved the company's ability to handle affiliations, optimizing the experience for both users and the internal team.",
-      "skills": [
-        "PHP",
-        "HTML",
-        "JavaScript",
-        "CSS",
-        "MySQL"
+      "endDate": "12/2024",
+      "description": "Progressed from Trainee to Senior Software Developer while contributing to the design, development, and evolution of large-scale educational platforms used across multiple international markets.",
+      "highlights": [
+        "Designed and evolved a Docker-based infrastructure to standardize environments, improve scalability, and boost team productivity.",
+        "Led the transformation to a multi-language, multi-portal platform, expanding international reach and supporting global growth.",
+        "Integrated new payment systems and implemented advanced search capabilities using Elasticsearch to enhance user experience.",
+        "Developed and maintained backend and frontend features using PHP (Phalcon), JavaScript, HTML, and CSS.",
+        "Improved platform performance, security, and Core Web Vitals through continuous optimization.",
+        "Established code review and collaboration practices to raise code quality and foster continuous improvement across the team."
       ]
-    },
-    {
-      "company": "EDUCA EDTECH Group",
-      "role": "Internship Trainee",
-      "location": "Spain",
-      "startDate": "03/2020",
-      "endDate": "05/2020",
-      "description": "During my vocational training internship, I created detailed manuals for training courses, providing clear and well-structured content to facilitate learning and understanding of the topics.",
-      "skills": []
     }
   ],
   "education": [
