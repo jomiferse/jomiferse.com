@@ -23,9 +23,7 @@ const education = cv.education ?? [];
 
 	<section class="relative">
 		<div class="grid gap-5">
-			{education.map((item) => (
-				<EducationCard education={item} />
-			))}
+			{education.map((item) => <EducationCard education={item} />)}
 		</div>
 	</section>
 </BaseLayout>
