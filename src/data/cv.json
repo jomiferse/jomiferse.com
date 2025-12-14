@@ -7,6 +7,8 @@
   "summary": [
     "Passionate about building things that <span class=\"font-semibold text-purple-300\">work fast</span>, <span class=\"font-semibold text-purple-300\">look clean</span>, and <span class=\"font-semibold text-purple-300\">scale well</span>. I work mostly with <span class=\"font-semibold text-purple-300\">Java & Spring Boot</span> these days, but I’ve also spent years building <span class=\"font-semibold text-purple-300\">large PHP platforms</span>, improving <span class=\"font-semibold text-purple-300\">architectures</span>, and helping <span class=\"font-semibold text-purple-300\">teams work smarter</span>. I love learning <span class=\"font-semibold text-purple-300\">new tech</span>, understanding how <span class=\"font-semibold text-purple-300\">systems fit together</span>, and making <span class=\"font-semibold text-purple-300\">complex stuff feel simple</span>."
   ],
+  "yearsWorking": "5",
+  "currentCompany": "CGI",
   "experience": [
     {
       "company": "CGI",
