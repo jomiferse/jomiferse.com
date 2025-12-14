@@ -96,7 +96,13 @@
       "startDate": "08/2020",
       "endDate": "01/2021",
       "description": "As a Trainee Developer, I was responsible for the development of the EduCash affiliate page, participating in all phases of the project, from design to implementation and testing. I created a functional and engaging platform that facilitated affiliate management and contributed to attracting new members. This project significantly improved the company's ability to handle affiliations, optimizing the experience for both users and the internal team.",
-      "skills": ["PHP", "HTML", "JavaScript", "CSS", "MySQL"]
+      "skills": [
+        "PHP",
+        "HTML",
+        "JavaScript",
+        "CSS",
+        "MySQL"
+      ]
     },
     {
       "company": "EDUCA EDTECH Group",
@@ -116,7 +122,12 @@
       "startDate": "2020",
       "endDate": "2020",
       "description": "This master's program focuses on the technologies and skills necessary to develop and manage web and mobile applications, as well as digital and multimedia content.",
-      "skills": ["PHP", "HTML", "JavaScript", "CSS"],
+      "skills": [
+        "PHP",
+        "HTML",
+        "JavaScript",
+        "CSS"
+      ],
       "notes": "Excellent"
     },
     {
@@ -126,7 +137,14 @@
       "startDate": "09/2018",
       "endDate": "06/2020",
       "description": "Advanced training in developing applications that operate across multiple operating systems and devices, covering languages like Java, JavaScript, Swift, and Kotlin, database management, scalable architectures, version control with Git, and testing in different environments.",
-      "skills": ["Java", "Kotlin", "SQL", "Swift", "JavaScript", "Git"],
+      "skills": [
+        "Java",
+        "Kotlin",
+        "SQL",
+        "Swift",
+        "JavaScript",
+        "Git"
+      ],
       "notes": "8.23 / 10"
     }
   ],
@@ -272,72 +290,109 @@
       ]
     }
   },
-  "projects": [
-    {
-      "title": "Microservices Modernization Platform",
-      "role": "Software Engineer",
-      "context": "Part of an international backend and DevOps team modernizing a cloud-based service platform for an enterprise client in the digital entertainment sector.",
-      "timeframe": "12/2024 – Present",
-      "summary": "Led development and migration efforts to transition a monolithic system to modern Spring Boot 3 microservices architecture. Delivered solutions across backend, DevOps, and internal tooling layers, while ensuring testing, resilience, and observability.",
-      "technologies": [
-        "Java 21",
-        "Spring Boot 3",
-        "Spring Security",
-        "Spring Cloud",
-        "PostgreSQL",
-        "Liquibase",
-        "RabbitMQ",
-        "Kafka",
-        "React",
-        "TypeScript",
-        "JUnit",
-        "Pact",
-        "Docker",
-        "Kubernetes"
-      ],
-      "highlights": [
-        "Migrated services from legacy Scala codebase to Spring Boot microservices, increasing scalability and maintainability.",
-        "Defined and automated database changes using Liquibase across multiple environments.",
-        "Built React-based internal tools for platform management, improving UX and operations.",
-        "Implemented contract and unit testing practices with JUnit and Pact to ensure delivery quality."
-      ]
-    },
-    {
-      "title": "EduCash – Affiliate Web Platform",
-      "role": "Software Developer",
-      "context": "Project related to EDUCA EDTECH Group, focused on affiliate management.",
-      "timeframe": "08/2020 – 12/2024",
-      "summary": "Comprehensive development of the company's affiliate web platform, from design to implementation and optimization, enabling effective management of affiliations and reporting.",
-      "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Git"],
-      "highlights": [
-        "Designed, developed, and implemented the affiliate platform ensuring integration with existing systems.",
-        "Continuously refined the platform to improve functionality and affiliate satisfaction.",
-        "Developed tools for managing and tracking affiliations, including dashboards, performance reports, and payment support.",
-        "Collaborated closely with marketing and affiliate management teams to align the platform with business goals."
-      ]
-    },
-    {
-      "title": "Euroinnova International Online Education",
-      "role": "Software Developer",
-      "context": "Core web platform for EDUCA EDTECH Group.",
-      "timeframe": "02/2021 – 12/2024",
-      "summary": "Design, development, and maintenance of the main Euroinnova web platform, focusing on performance, lead generation, and user experience improvements.",
-      "technologies": [
-        "PHP",
-        "Phalcon",
-        "MySQL",
-        "Docker",
-        "Git",
-        "JavaScript",
-        "CSS",
-        "HTML"
-      ],
-      "highlights": [
-        "Developed and maintained the main platform using PHP, Phalcon, JavaScript, HTML, CSS, and MySQL.",
-        "Implemented key lead generation features such as contact forms, landing pages, and conversion flows.",
-        "Improved user experience through better navigation and faster load times.",
-        "Worked closely with marketing and design teams to align development with branding and campaign strategies."
-      ]
-    }
-  ]
+  "projects": {
+    "company": [
+      {
+        "title": "Microservices Modernization Platform",
+        "role": "Software Engineer",
+        "companyRelated": "CGI",
+        "link": "",
+        "context": "International backend team modernizing a cloud-based service platform for an enterprise client in the gambling sector.",
+        "timeframe": "12/2024 – Present",
+        "summary": "Contribute to the development of a Spring Boot–based microservices architecture, supporting the migration from a legacy Scala monolith to a more scalable and maintainable system. Collaborate on backend services, database lifecycle automation, and internal tooling.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/microservices-modernization-platform.avif",
+            "alt": "Microservices Modernization Platform"
+          }
+        },
+        "technologies": [
+          "Java 21",
+          "Spring Boot 3",
+          "Spring Security",
+          "PostgreSQL",
+          "Liquibase",
+          "React",
+          "JUnit",
+          "Docker",
+          "Kubernetes"
+        ],
+        "highlights": [
+          "Contributed to the migration from a Scala monolith to Spring Boot microservices.",
+          "Built and maintained secure backend services with Spring Boot and Spring Security.",
+          "Automated database changes with Liquibase across multiple environments.",
+          "Collaborated on a React-based back-office to improve internal workflows."
+        ]
+      },
+      {
+        "title": "Euroinnova International Online Education",
+        "role": "Software Developer",
+        "companyRelated": "EDUCA EDTECH Group",
+        "link": "",
+        "context": "Core web platform for EDUCA EDTECH Group.",
+        "timeframe": "02/2021 – 12/2024",
+        "summary": "Design, development, and maintenance of the main Euroinnova web platform, focusing on performance, lead generation, and user experience improvements.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/euroinnova.avif",
+            "alt": "Euroinnova International Online Education"
+          },
+          "imgHover": {
+            "src": "/images/projects/euroinnova-preview.avif",
+            "alt": "Euroinnova International Online Education preview"
+          }
+        },
+        "technologies": [
+          "PHP",
+          "Phalcon",
+          "MySQL",
+          "Docker",
+          "Git",
+          "JavaScript",
+          "CSS",
+          "HTML"
+        ],
+        "highlights": [
+          "Developed and maintained the main platform using PHP, Phalcon, JavaScript, HTML, CSS, and MySQL.",
+          "Implemented key lead generation features such as contact forms, landing pages, and conversion flows.",
+          "Improved user experience through better navigation and faster load times.",
+          "Worked closely with marketing and design teams to align development with branding and campaign strategies."
+        ]
+      },
+      {
+        "title": "EduCash – Affiliate Web Platform",
+        "role": "Software Developer",
+        "companyRelated": "EDUCA EDTECH Group",
+        "link": "",
+        "context": "Project related to EDUCA EDTECH Group, focused on affiliate management.",
+        "timeframe": "08/2020 – 12/2024",
+        "summary": "Comprehensive development of the company's affiliate web platform, from design to implementation and optimization, enabling effective management of affiliations and reporting.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/educash.avif",
+            "alt": "EduCash Affiliate Platform"
+          },
+          "imgHover": {
+            "src": "/images/projects/educash-preview.avif",
+            "alt": "EduCash Affiliate Platform preview"
+          }
+        },
+        "technologies": [
+          "PHP",
+          "MySQL",
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "Git"
+        ],
+        "highlights": [
+          "Designed, developed, and implemented the affiliate platform ensuring integration with existing systems.",
+          "Continuously refined the platform to improve functionality and affiliate satisfaction.",
+          "Developed tools for managing and tracking affiliations, including dashboards, performance reports, and payment support.",
+          "Collaborated closely with marketing and affiliate management teams to align the platform with business goals."
+        ]
+      }
+    ],
+    "personal": []
+  }
 }
