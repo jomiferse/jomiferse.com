@@ -71,6 +71,7 @@
       "name": "Master Microservices with Spring Boot, Docker and Kubernetes",
       "provider": "Udemy",
       "year": "2025",
+      "icon": "code",
       "credentialId": "UC-a8f24289-a4b5-4b51-b884-1e0b4b67aa3b",
       "url": "http://ude.my/UC-a8f24289-a4b5-4b51-b884-1e0b4b67aa3b",
       "skills": [
@@ -88,6 +89,7 @@
       "name": "Apache Maven: Beginner to Guru",
       "provider": "Udemy",
       "year": "2025",
+      "icon": "code",
       "credentialId": "UC-79ed7666-e01b-4402-a3ca-2ef578c6bf94",
       "url": "https://ude.my/UC-79ed7666-e01b-4402-a3ca-2ef578c6bf94",
       "skills": [
@@ -101,12 +103,10 @@
       ]
     },
     {
-      "name": "B1 Cambridge",
+      "name": "B1 Cambridge English",
       "provider": "Cambridge Assessment English",
       "year": "2018",
-      "credentialId": "",
-      "url": "",
-      "skills": []
+      "icon": "globe"
     }
   ],
   "skills": {
