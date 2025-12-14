@@ -19,8 +19,7 @@ import { Icon } from "astro-icon/components";
 					</div>
 
 					<div
-						class="animate-float rounded-full bg-linear-to-tr from-purple-500/60 via-purple-300/30 to-transparent p-0.75
-         transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
+						class="animate-float rounded-full bg-linear-to-tr from-purple-500/60 via-purple-300/30 to-transparent p-0.75 transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
 					>
 						<div class="rounded-full bg-slate-50 p-2 dark:bg-zinc-950">
 							<Image
@@ -56,21 +55,20 @@ import { Icon } from "astro-icon/components";
 					</div>
 				</div>
 
-				<div class="mt-6 relative group inline-block">
+				<div class="group relative mt-6 inline-block">
 					<span
-						class="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide text-purple-200 cursor-default"
+						class="inline-flex cursor-default items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide text-purple-200"
 					>
 						<span class="h-2 w-2 rounded-full bg-purple-400"></span>
 						{cv.currentRole}
 					</span>
 
 					<div
-						class="pointer-events-none absolute left-1/2 top-full z-20 mt-3 w-max -translate-x-1/2 rounded-xl bg-zinc-900 px-3 py-2 text-[11px] font-medium text-zinc-100 shadow-lg opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-100"
+						class="pointer-events-none absolute top-full left-1/2 z-20 mt-3 w-max -translate-x-1/2 scale-95 rounded-xl bg-zinc-900 px-3 py-2 text-[11px] font-medium text-zinc-100 opacity-0 shadow-lg transition-all duration-200 group-hover:scale-100 group-hover:opacity-100"
 					>
 						Currently focus in {cv.focus}
 					</div>
 				</div>
-
 			</div>
 
 			<div class="space-y-6 text-center md:text-left">
@@ -107,7 +105,9 @@ import { Icon } from "astro-icon/components";
 						>
 							0
 						</p>
-						<p class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400">
+						<p
+							class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400"
+						>
 							YEARS OF EXPERIENCE
 						</p>
 					</div>
@@ -120,7 +120,9 @@ import { Icon } from "astro-icon/components";
 						>
 							0%
 						</p>
-						<p class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400">
+						<p
+							class="text-[10px] font-semibold tracking-[0.22em] text-zinc-400"
+						>
 							COMMITMENT
 						</p>
 					</div>
@@ -201,19 +203,17 @@ import { Icon } from "astro-icon/components";
 					</span>
 
 					<span class="flex items-center gap-1">
-    				{
+						{
 							cv.skills.languages.items.map((item, index) => (
 								<>
-									<span>
-										{item.language}
-									</span>
+									<span>{item.language}</span>
 									{index < cv.skills.languages.items.length - 1 && (
 										<span>/</span>
 									)}
 								</>
 							))
 						}
-  				</span>
+					</span>
 				</div>
 			</div>
 		</div>
