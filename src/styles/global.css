@@ -12,3 +12,16 @@
 .animate-float {
 	animation: float 4s ease-in-out infinite;
 }
+
+dialog::backdrop {
+	background: rgba(0, 0, 0, 0.6);
+}
+
+dialog[open] {
+	animation: dialog-fade 160ms ease-out;
+}
+
+@keyframes dialog-fade {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}

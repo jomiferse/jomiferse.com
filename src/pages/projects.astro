@@ -1,32 +1,81 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import ProjectCard from "@/components/cards/ProjectCard";
+import ProjectCard from "@/components/cards/ProjectCard.astro";
 import cv from "@/data/cv.json";
+import { Icon } from "astro-icon/components";
 
-const projects = cv.projects;
+const companyProjects = cv.projects?.company ?? [];
+const personalProjects = cv.projects?.personal ?? [];
 ---
 
 <BaseLayout
 	title={`Projects – ${cv.name}`}
 	description={`Selection of backend, cloud and web projects by ${cv.name}.`}
 >
-	<!-- Header -->
-	<header class="mb-6 space-y-3">
+	<header class="mb-8 space-y-3">
 		<h1 class="text-3xl font-bold md:text-4xl">
-			Selected{" "}
-			<span class="text-purple-600 dark:text-purple-300"> projects </span>
+			Selected <span class="text-purple-600 dark:text-purple-300">projects</span>
 		</h1>
-		<p
-			class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300"
-		>
+
+		<p class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300">
 			A selection of projects I have contributed to throughout my career,
-			showcasing my approach to problem-solving, technical execution, and
-			delivery.
+			showcasing my approach to problem-solving, technical execution, and delivery.
 		</p>
 	</header>
 
-	<!-- Projects grid -->
-	<section class="grid gap-5 md:grid-cols-1">
-		{projects.map((project) => <ProjectCard client:load project={project} />)}
+	<section class="space-y-5">
+		<div class="flex items-center gap-3">
+      <span class="grid h-9 w-9 place-items-center rounded-2xl bg-fuchsia-500/10 text-fuchsia-200 ring-1 ring-fuchsia-500/15">
+        <Icon name="user" class="h-5 w-5" />
+      </span>
+
+			<div class="min-w-0">
+				<h2 class="text-lg font-semibold text-zinc-50">Personal Projects</h2>
+				<p class="text-xs text-zinc-400">Side projects and experiments</p>
+			</div>
+
+			<div class="h-px flex-1 bg-zinc-800/70"></div>
+		</div>
+
+		{personalProjects.length ? (
+			<div class="grid gap-6 sm:grid-cols-2">
+				{personalProjects.map((project) => (
+					<ProjectCard project={project} />
+				))}
+			</div>
+		) : (
+			<div class="rounded-3xl border border-zinc-800/70 bg-zinc-950/40 p-6 text-sm text-zinc-400">
+				Coming soon — personal projects are being curated.
+			</div>
+		)}
+	</section>
+
+	<div class="my-10 h-px bg-zinc-800/70"></div>
+	
+	<section class="space-y-5">
+		<div class="flex items-center gap-3">
+      <span class="grid h-9 w-9 place-items-center rounded-2xl bg-purple-500/10 text-purple-300 ring-1 ring-purple-500/15">
+        <Icon name="briefcase-business" class="h-5 w-5" />
+      </span>
+
+			<div class="min-w-0">
+				<h2 class="text-lg font-semibold text-zinc-50">Company Projects</h2>
+				<p class="text-xs text-zinc-400">Professional work and contributions</p>
+			</div>
+
+			<div class="h-px flex-1 bg-zinc-800/70"></div>
+		</div>
+		
+		{companyProjects.length ? (
+			<div class="grid gap-6 sm:grid-cols-2">
+				{companyProjects.map((project) => (
+					<ProjectCard project={project} />
+				))}
+			</div>
+		) : (
+			<div class="rounded-3xl border border-zinc-800/70 bg-zinc-950/40 p-6 text-sm text-zinc-400">
+				No company projects available yet.
+			</div>
+		)}
 	</section>
 </BaseLayout>
