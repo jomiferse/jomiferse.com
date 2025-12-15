@@ -11,4 +11,5 @@ export default defineConfig({
 	integrations: [icon()],
 	output: "static",
 	adapter: vercel(),
+	darkMode: "class",
 });
