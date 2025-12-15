@@ -113,7 +113,7 @@
     "coreTech": [
       {
         "name": "Java",
-        "value": 95,
+        "value": 75,
         "color": "bg-orange-400"
       },
       {
@@ -128,7 +128,7 @@
       },
       {
         "name": "SQL",
-        "value": 85,
+        "value": 75,
         "color": "bg-sky-400"
       }
     ],
