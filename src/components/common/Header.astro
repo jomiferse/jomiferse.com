@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import ThemeToggle from "@/components/common/ThemeToggle.astro";
 
 interface NavLink {
 	href: string;
@@ -51,23 +52,32 @@ const normalizedCurrent = normalizePath(currentPath);
 					);
 				})
 			}
+
+			<span id="theme-slot-desktop" class="inline-flex"></span>
 		</nav>
 
-		<button
-			id="menu-open"
-			aria-label="Open menu"
-			class="text-zinc-500 hover:text-purple-400 md:hidden"
-			type="button"
-		>
-			<Icon name="menu" class="h-6 w-6" />
-		</button>
+		<div class="flex items-center gap-3 md:hidden">
+			<span id="theme-slot-mobile" class="inline-flex"></span>
+
+			<button
+				id="menu-open"
+				aria-label="Open menu"
+				class="text-zinc-500 hover:text-purple-400"
+				type="button"
+			>
+				<Icon name="menu" class="h-6 w-6" />
+			</button>
+		</div>
 	</div>
 </header>
+
+<div class="hidden">
+	<ThemeToggle />
+</div>
 
 <div
 	id="mobile-menu"
 	class="fixed inset-0 z-50 hidden md:hidden"
-	aria-hidden="true"
 >
 	<div
 		id="menu-overlay"
@@ -122,6 +132,25 @@ const normalizedCurrent = normalizePath(currentPath);
 
 <script is:inline>
 	(() => {
+		/* Theme toggle placement */
+		const desktopSlot = document.getElementById("theme-slot-desktop");
+		const mobileSlot = document.getElementById("theme-slot-mobile");
+		const toggle = document.querySelector(".theme-toggle")?.closest("button, a, div, span") ?? document.querySelector(".theme-toggle");
+
+		const toggleBtn = document.querySelector("button.theme-toggle");
+
+		if (desktopSlot && mobileSlot && toggleBtn) {
+			const mq = window.matchMedia("(min-width: 768px)");
+
+			const place = () => {
+				(mq.matches ? desktopSlot : mobileSlot).appendChild(toggleBtn);
+			};
+
+			place();
+			mq.addEventListener?.("change", place);
+		}
+
+		/* Mobile menu */
 		const openBtn = document.getElementById("menu-open");
 		const root = document.getElementById("mobile-menu");
 		const overlay = document.getElementById("menu-overlay");

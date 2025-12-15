@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+	type="button"
+	class="theme-toggle inline-flex cursor-pointer items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 p-2 text-slate-700 shadow-sm transition hover:bg-white
+	dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-200 dark:hover:bg-zinc-900/60"
+	aria-label="Toggle theme"
+>
+	<span data-theme-icon="sun" class="hidden">
+		<Icon name="sun" class="h-5 w-5" />
+	</span>
+	<span data-theme-icon="moon" class="hidden">
+		<Icon name="moon" class="h-5 w-5" />
+	</span>
+</button>
+
+<script is:inline>
+	(() => {
+		const btn = document.querySelector("button.theme-toggle");
+		if (!btn) return;
+
+		const sun = btn.querySelector('[data-theme-icon="sun"]');
+		const moon = btn.querySelector('[data-theme-icon="moon"]');
+		if (!sun || !moon) return;
+
+		const isDark = () => document.documentElement.classList.contains("dark");
+
+		const sync = () => {
+			const dark = isDark();
+
+			sun.classList.toggle("hidden", !dark);
+			moon.classList.toggle("hidden", dark);
+
+			btn.setAttribute(
+				"aria-label",
+				dark ? "Switch to light mode" : "Switch to dark mode"
+			);
+		};
+
+		sync();
+
+		btn.addEventListener("click", () => {
+			const nextIsDark = !isDark();
+			document.documentElement.classList.toggle("dark", nextIsDark);
+			localStorage.setItem("theme", nextIsDark ? "dark" : "light");
+			sync();
+		});
+	})();
+</script>
