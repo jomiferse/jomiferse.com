@@ -1,6 +1,7 @@
 {
   "name": "José Miguel Fernández",
   "shortName": "José Miguel",
+  "email": "jomiferse@gmail.com",
   "headline": "Software Engineer | Java & Spring Boot | PHP | Docker | Microservices | SQL",
   "location": "Granada, Spain",
   "currentRole": "Software Engineer",
@@ -10,6 +11,10 @@
   ],
   "yearsWorking": "5",
   "currentCompany": "CGI",
+  "links": {
+    "linkedin": "https://www.linkedin.com/jomiferse/",
+    "github": "https://www.github.com/jomiferse/"
+  },
   "experience": [
     {
       "company": "CGI (formerly Novatec Software)",

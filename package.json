@@ -14,10 +14,12 @@
   },
   "dependencies": {
     "astro-icon": "^1.1.5",
+    "resend": "^6.6.0",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "@astrojs/vercel": "^9.0.2",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.5",
     "prettier": "3.7.4",
