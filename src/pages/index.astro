@@ -14,7 +14,8 @@ import { Icon } from "astro-icon/components";
 					<div
 						class="absolute inset-0 -z-10 rounded-full opacity-70 blur-2xl"
 						style="background: radial-gradient(circle at 50% 50%, rgba(168,85,247,0.35), transparent 60%);"
-					></div>
+					>
+					</div>
 
 					<div
 						class="animate-float rounded-full bg-linear-to-tr from-purple-500/60 via-purple-300/30 to-transparent p-0.75 transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
@@ -34,13 +35,12 @@ import { Icon } from "astro-icon/components";
 
 					<div class="absolute right-0 bottom-6 text-center">
 						<span
-							class="inline-flex items-center gap-3 rounded-full border border-slate-200/70 bg-white/90 px-4 py-2 shadow-sm backdrop-blur
-							dark:border-zinc-700/40 dark:bg-zinc-900/70"
+							class="inline-flex items-center gap-3 rounded-full border border-slate-200/70 bg-white/90 px-4 py-2 shadow-sm backdrop-blur dark:border-zinc-700/40 dark:bg-zinc-900/70"
 						>
 							<span class="text-base leading-none">🇪🇸</span>
 							<span class="flex flex-col leading-tight">
 								<span
-									class="text-[10px] font-semibold tracking-widest uppercase text-slate-500 dark:text-zinc-400"
+									class="text-[10px] font-semibold tracking-widest text-slate-500 uppercase dark:text-zinc-400"
 								>
 									Based in
 								</span>
@@ -56,18 +56,14 @@ import { Icon } from "astro-icon/components";
 
 				<div class="group relative mt-6 inline-block">
 					<span
-						class="inline-flex cursor-default items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide
-						text-purple-700 dark:text-purple-200"
+						class="inline-flex cursor-default items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide text-purple-700 dark:text-purple-200"
 					>
 						<span class="h-2 w-2 rounded-full bg-purple-400"></span>
 						{cv.currentRole}
 					</span>
 
 					<div
-						class="pointer-events-none absolute top-full left-1/2 z-20 mt-3 w-max -translate-x-1/2 scale-95 rounded-xl
-						bg-white/95 px-3 py-2 text-[11px] font-medium text-slate-900 opacity-0 shadow-lg ring-1 ring-slate-200
-						transition-all duration-200 group-hover:scale-100 group-hover:opacity-100
-						dark:bg-zinc-900 dark:text-zinc-100 dark:ring-zinc-800"
+						class="pointer-events-none absolute top-full left-1/2 z-20 mt-3 w-max -translate-x-1/2 scale-95 rounded-xl bg-white/95 px-3 py-2 text-[11px] font-medium text-slate-900 opacity-0 shadow-lg ring-1 ring-slate-200 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-900 dark:text-zinc-100 dark:ring-zinc-800"
 					>
 						Currently focused on {cv.focus}
 					</div>
@@ -76,7 +72,7 @@ import { Icon } from "astro-icon/components";
 
 			<div class="space-y-6 text-center md:text-left">
 				<h1
-					class="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-zinc-50 md:text-5xl md:leading-15"
+					class="text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl md:leading-15 dark:text-zinc-50"
 				>
 					Hey! I&apos;m{" "}
 					<span class="text-purple-600 dark:text-purple-300">{cv.name}</span>
@@ -102,12 +98,11 @@ import { Icon } from "astro-icon/components";
 				</div>
 
 				<div
-					class="grid grid-cols-2 divide-x divide-slate-200/80 border-y border-slate-200/80 py-6 text-center
-					dark:divide-zinc-800/70 dark:border-zinc-800/70"
+					class="grid grid-cols-2 divide-x divide-slate-200/80 border-y border-slate-200/80 py-6 text-center dark:divide-zinc-800/70 dark:border-zinc-800/70"
 				>
 					<div class="space-y-1">
 						<p
-							class="counter text-2xl font-extrabold tracking-tight text-slate-900 dark:text-zinc-50 md:text-3xl"
+							class="counter text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl dark:text-zinc-50"
 							data-target={cv.yearsWorking}
 							data-suffix="+"
 						>
@@ -122,7 +117,7 @@ import { Icon } from "astro-icon/components";
 
 					<div class="space-y-1">
 						<p
-							class="counter text-2xl font-extrabold tracking-tight text-slate-900 dark:text-zinc-50 md:text-3xl"
+							class="counter text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl dark:text-zinc-50"
 							data-target="100"
 							data-suffix="%"
 						>
@@ -175,16 +170,19 @@ import { Icon } from "astro-icon/components";
 		</div>
 
 		<div
-			class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30 md:p-8
-			dark:border-zinc-800 dark:bg-zinc-900/40"
+			class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30 md:p-8 dark:border-zinc-800 dark:bg-zinc-900/40"
 		>
-			<div class="space-y-4 text-sm leading-relaxed text-slate-700 md:text-base dark:text-zinc-300">
+			<div
+				class="space-y-4 text-sm leading-relaxed text-slate-700 md:text-base dark:text-zinc-300"
+			>
 				{cv.summary.map((para) => <p set:html={para} />)}
 			</div>
 
 			<div class="my-6 h-px bg-slate-200/80 dark:bg-zinc-800/70"></div>
 
-			<div class="flex flex-wrap gap-4 text-xs text-slate-600 dark:text-zinc-400">
+			<div
+				class="flex flex-wrap gap-4 text-xs text-slate-600 dark:text-zinc-400"
+			>
 				<div class="flex items-center gap-2">
 					<span class="text-purple-500">
 						<Icon name="map-pin" class="h-5 w-5" />
@@ -231,8 +229,7 @@ import { Icon } from "astro-icon/components";
 
 		<div class="grid gap-6 md:grid-cols-2">
 			<div
-				class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30 md:p-8
-				dark:border-zinc-800 dark:bg-zinc-900/40"
+				class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30 md:p-8 dark:border-zinc-800 dark:bg-zinc-900/40"
 			>
 				<div class="mb-5 flex items-center gap-2">
 					<span
@@ -274,8 +271,7 @@ import { Icon } from "astro-icon/components";
 			</div>
 
 			<div
-				class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-emerald-500/25 md:p-8
-				dark:border-zinc-800 dark:bg-zinc-900/40"
+				class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-emerald-500/25 md:p-8 dark:border-zinc-800 dark:bg-zinc-900/40"
 			>
 				<div class="mb-5 flex items-center gap-2">
 					<span
@@ -309,8 +305,7 @@ import { Icon } from "astro-icon/components";
 
 		<div class="mt-6">
 			<div
-				class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-amber-500/25 md:p-8
-				dark:border-zinc-800 dark:bg-zinc-900/40"
+				class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-amber-500/25 md:p-8 dark:border-zinc-800 dark:bg-zinc-900/40"
 			>
 				<div class="mb-5 flex items-center gap-2">
 					<span
@@ -326,14 +321,8 @@ import { Icon } from "astro-icon/components";
 				<div class="grid gap-4 sm:grid-cols-3">
 					{
 						cv.skills.soft.map((s) => (
-							<div
-								class="rounded-2xl border border-slate-200/80 bg-white/60 p-4 text-center shadow-sm backdrop-blur transition hover:border-amber-500/25
-								dark:border-zinc-800/70 dark:bg-zinc-950/25"
-							>
-								<div
-									class="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-slate-100/70 text-slate-700 ring-1 ring-slate-200
-									dark:bg-zinc-950/40 dark:text-zinc-200 dark:ring-zinc-800/70"
-								>
+							<div class="rounded-2xl border border-slate-200/80 bg-white/60 p-4 text-center shadow-sm backdrop-blur transition hover:border-amber-500/25 dark:border-zinc-800/70 dark:bg-zinc-950/25">
+								<div class="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-slate-100/70 text-slate-700 ring-1 ring-slate-200 dark:bg-zinc-950/40 dark:text-zinc-200 dark:ring-zinc-800/70">
 									{s.icon ? <Icon name={s.icon} class="h-6 w-6" /> : null}
 								</div>
 
@@ -346,20 +335,20 @@ import { Icon } from "astro-icon/components";
 				</div>
 
 				<div
-					class="mt-6 rounded-2xl border border-slate-200/80 bg-white/60 p-5 shadow-sm backdrop-blur transition hover:border-amber-500/25
-					dark:border-zinc-800/70 dark:bg-zinc-950/25"
+					class="mt-6 rounded-2xl border border-slate-200/80 bg-white/60 p-5 shadow-sm backdrop-blur transition hover:border-amber-500/25 dark:border-zinc-800/70 dark:bg-zinc-950/25"
 				>
 					<div class="grid items-center gap-4 sm:grid-cols-[1.2fr_1fr_1fr]">
 						<div class="flex items-center gap-3">
 							<div
-								class="grid h-11 w-11 place-items-center rounded-2xl bg-slate-100/70 text-slate-700 ring-1 ring-slate-200
-								dark:bg-zinc-950/40 dark:text-zinc-200 dark:ring-zinc-800/70"
+								class="grid h-11 w-11 place-items-center rounded-2xl bg-slate-100/70 text-slate-700 ring-1 ring-slate-200 dark:bg-zinc-950/40 dark:text-zinc-200 dark:ring-zinc-800/70"
 							>
 								<Icon name="globe" class="h-5 w-5" />
 							</div>
 
 							<div class="leading-tight">
-								<p class="text-sm font-semibold text-slate-900 dark:text-zinc-100">
+								<p
+									class="text-sm font-semibold text-slate-900 dark:text-zinc-100"
+								>
 									Languages
 								</p>
 								<p class="text-[12px] text-slate-600 dark:text-zinc-400">

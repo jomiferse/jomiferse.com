@@ -4,8 +4,7 @@ import { Icon } from "astro-icon/components";
 
 <button
 	type="button"
-	class="theme-toggle inline-flex cursor-pointer items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 p-2 text-slate-700 shadow-sm transition hover:bg-white
-	dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-200 dark:hover:bg-zinc-900/60"
+	class="theme-toggle inline-flex cursor-pointer items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 p-2 text-slate-700 shadow-sm transition hover:bg-white dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-200 dark:hover:bg-zinc-900/60"
 	aria-label="Toggle theme"
 >
 	<span data-theme-icon="sun" class="hidden">
@@ -35,7 +34,7 @@ import { Icon } from "astro-icon/components";
 
 			btn.setAttribute(
 				"aria-label",
-				dark ? "Switch to light mode" : "Switch to dark mode"
+				dark ? "Switch to light mode" : "Switch to dark mode",
 			);
 		};
 
