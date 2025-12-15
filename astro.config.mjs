@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
+import vercel from "@astrojs/vercel/serverless";
 
 export default defineConfig({
 	vite: {
@@ -9,4 +10,5 @@ export default defineConfig({
 	site: "https://www.jomiferse.com",
 	integrations: [icon()],
 	output: "static",
+	adapter: vercel(),
 });

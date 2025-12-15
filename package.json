@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "@astrojs/vercel": "^9.0.2",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.5",
     "prettier": "3.7.4",
