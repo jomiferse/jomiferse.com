@@ -11,12 +11,11 @@ const canonicalUrl = Astro.site
 	: Astro.url.pathname;
 ---
 
-<html lang="en" class="min-h-screen antialiased">
+<html lang="en" class="min-h-screen scroll-smooth antialiased">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<!-- Title & description -->
 		<title>{title}</title>
 		<meta name="description" content={description} />
 
@@ -26,16 +25,36 @@ const canonicalUrl = Astro.site
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-		<meta name="theme-color" content="#020617" />
+		<script is:inline>
+			(function () {
+				const stored = localStorage.getItem("theme");
+				const prefersDark = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
+				const theme = stored ?? (prefersDark ? "dark" : "light");
+				document.documentElement.classList.toggle("dark", theme === "dark");
+			})();
+		</script>
 
 		<link rel="canonical" href={canonicalUrl} />
 
 		<meta name="robots" content="index,follow" />
 		<meta name="author" content={`${cv.name}`} />
+
+		<meta
+			name="theme-color"
+			content="#f8fafc"
+			media="(prefers-color-scheme: light)"
+		/>
+		<meta
+			name="theme-color"
+			content="#09090b"
+			media="(prefers-color-scheme: dark)"
+		/>
 	</head>
 
 	<body
-		class="relative flex min-h-screen flex-col bg-zinc-950 text-zinc-100 transition-colors before:pointer-events-none before:fixed before:inset-0 before:bg-[radial-gradient(1200px_circle_at_20%_-10%,rgba(168,85,247,0.12),transparent_60%),radial-gradient(1000px_circle_at_90%_10%,rgba(99,102,241,0.10),transparent_55%)] before:content-['']"
+		class="relative flex min-h-screen flex-col bg-slate-50 text-slate-900 transition-colors before:pointer-events-none before:fixed before:inset-0 before:bg-[radial-gradient(1200px_circle_at_20%_-10%,rgba(99,102,241,0.10),transparent_60%),radial-gradient(1000px_circle_at_90%_10%,rgba(168,85,247,0.10),transparent_55%)] before:content-[''] dark:bg-zinc-950 dark:text-zinc-100 dark:before:bg-[radial-gradient(1200px_circle_at_20%_-10%,rgba(168,85,247,0.12),transparent_60%),radial-gradient(1000px_circle_at_90%_10%,rgba(99,102,241,0.10),transparent_55%)]"
 	>
 		<Header />
 		<main
