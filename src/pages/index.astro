@@ -7,7 +7,6 @@ import { Icon } from "astro-icon/components";
 ---
 
 <BaseLayout title={`Portfolio - ${cv.name}`} description={cv.headline}>
-	{/* Hero */}
 	<header class="mb-12">
 		<div class="grid gap-10 md:grid-cols-[360px_1fr] md:items-center">
 			<div class="flex flex-col items-center">
@@ -157,7 +156,6 @@ import { Icon } from "astro-icon/components";
 		</div>
 	</header>
 
-	{/* About me */}
 	<section id="about" class="mt-12 md:mt-20">
 		<div class="mb-6 flex items-center gap-4">
 			<h2 class="text-2xl font-semibold text-zinc-50">About me</h2>
@@ -165,17 +163,8 @@ import { Icon } from "astro-icon/components";
 		</div>
 
 		<div
-			class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30 hover:bg-zinc-950/45 md:p-8"
+			class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30  md:p-8"
 		>
-			<div
-				class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-purple-500/10 opacity-0 blur-3xl transition group-hover:opacity-100"
-			>
-			</div>
-			<div
-				class="pointer-events-none absolute inset-0 bg-linear-to-b from-white/5 to-transparent"
-			>
-			</div>
-
 			<div class="space-y-4 text-sm leading-relaxed text-zinc-300 md:text-base">
 				{cv.summary.map((para) => <p set:html={para} />)}
 			</div>
@@ -219,7 +208,6 @@ import { Icon } from "astro-icon/components";
 		</div>
 	</section>
 
-	{/* Skills */}
 	<section id="skills" class="mt-14">
 		<div class="mb-6 flex items-center gap-4">
 			<h2 class="text-2xl font-semibold text-zinc-50">Skills & Expertise</h2>
@@ -228,17 +216,8 @@ import { Icon } from "astro-icon/components";
 
 		<div class="grid gap-6 md:grid-cols-2">
 			<div
-				class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30 hover:bg-zinc-950/45 md:p-8"
+				class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30 md:p-8"
 			>
-				<div
-					class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-purple-500/10 opacity-0 blur-3xl transition group-hover:opacity-100"
-				>
-				</div>
-				<div
-					class="pointer-events-none absolute inset-0 bg-linear-to-b from-white/5 to-transparent"
-				>
-				</div>
-
 				<div class="mb-5 flex items-center justify-between">
 					<div class="flex items-center gap-2">
 						<span
@@ -277,17 +256,8 @@ import { Icon } from "astro-icon/components";
 			</div>
 
 			<div
-				class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur transition hover:border-emerald-500/25 hover:bg-zinc-950/45 md:p-8"
+				class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur transition hover:border-emerald-500/25  md:p-8"
 			>
-				<div
-					class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-emerald-500/10 opacity-0 blur-3xl transition group-hover:opacity-100"
-				>
-				</div>
-				<div
-					class="pointer-events-none absolute inset-0 bg-linear-to-b from-white/5 to-transparent"
-				>
-				</div>
-
 				<div class="mb-5 flex items-center gap-2">
 					<span
 						class="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-300"
@@ -320,17 +290,8 @@ import { Icon } from "astro-icon/components";
 
 		<div class="mt-6">
 			<div
-				class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur transition hover:border-amber-500/25 hover:bg-zinc-950/45 md:p-8"
+				class="group relative overflow-hidden rounded-3xl border border-zinc-800/70 bg-zinc-950/35 p-6 shadow-sm backdrop-blur transition hover:border-amber-500/25 md:p-8"
 			>
-				<div
-					class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-amber-500/10 opacity-0 blur-3xl transition group-hover:opacity-100"
-				>
-				</div>
-				<div
-					class="pointer-events-none absolute inset-0 bg-linear-to-b from-white/5 to-transparent"
-				>
-				</div>
-
 				<div class="mb-5 flex items-center gap-2">
 					<span
 						class="grid h-9 w-9 place-items-center rounded-xl bg-amber-500/10 text-amber-200 ring-1 ring-amber-400/15"
@@ -343,7 +304,7 @@ import { Icon } from "astro-icon/components";
 				<div class="grid gap-4 sm:grid-cols-3">
 					{
 						cv.skills.soft.map((s) => (
-							<div class="rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-4 text-center shadow-sm backdrop-blur transition hover:border-amber-500/25 hover:bg-zinc-950/45">
+							<div class="rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-4 text-center shadow-sm backdrop-blur transition hover:border-amber-500/25">
 								<div class="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-zinc-950/40 text-zinc-200 ring-1 ring-zinc-800/70">
 									{s.icon ? <Icon name={s.icon} class="h-6 w-6" /> : null}
 								</div>
@@ -355,7 +316,7 @@ import { Icon } from "astro-icon/components";
 				</div>
 
 				<div
-					class="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-5 shadow-sm backdrop-blur hover:border-amber-500/25 hover:bg-zinc-950/45"
+					class="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/25 p-5 shadow-sm backdrop-blur hover:border-amber-500/25"
 				>
 					<div class="grid items-center gap-4 sm:grid-cols-[1.2fr_1fr_1fr]">
 						<div class="flex items-center gap-3">
