@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import cv from "@/data/cv.json";
-import ExperienceCard from "@/components/cards/ExperienceCard";
+import ExperienceCard from "@/components/cards/ExperienceCard.astro";
+import { Icon } from "astro-icon/components";
 
 const experience = cv.experience;
 ---
@@ -10,8 +11,7 @@ const experience = cv.experience;
 	title={`Experience – ${cv.name}`}
 	description={`Professional experience of ${cv.name}.`}
 >
-	<!-- Header -->
-	<header class="mb-6 space-y-3">
+	<header class="mb-7 space-y-3">
 		<h1 class="text-3xl font-bold md:text-4xl">
 			Professional <span class="text-purple-600 dark:text-purple-300"
 				>experience</span
@@ -25,12 +25,22 @@ const experience = cv.experience;
 		</p>
 	</header>
 
-	<!-- Experience list -->
-	<section class="grid gap-5 md:grid-cols-1">
+	<ol
+		class="relative space-y-6 border-s border-slate-200 ps-10 dark:border-zinc-800"
+	>
 		{
-			experience.map((experience) => (
-				<ExperienceCard experience={experience} client:load />
+			experience.map((exp) => (
+				<li class="relative">
+					<span class="absolute -start-14.5 top-5 grid h-9 w-9 place-items-center rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+						<Icon
+							name="briefcase"
+							class="h-4 w-4 text-slate-500 dark:text-zinc-300"
+						/>
+					</span>
+
+					<ExperienceCard experience={exp} />
+				</li>
 			))
 		}
-	</section>
+	</ol>
 </BaseLayout>

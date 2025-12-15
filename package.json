@@ -1,6 +1,6 @@
 {
-  "name": "jomiferse",
-  "version": "0.0.1",
+  "name": "jomiferse.com",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,21 +13,17 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
+    "astro-icon": "^1.1.5",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
-    "@astrojs/react": "^4.4.2",
-    "@tailwindcss/vite": "^4.1.17",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.4",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.5",
     "prettier": "3.7.4",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.1.17",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
   }
 }

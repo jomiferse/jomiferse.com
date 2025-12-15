@@ -1,0 +1,172 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface NavLink {
+	href: string;
+	label: string;
+}
+
+const links: NavLink[] = [
+	{ href: "/", label: "Home" },
+	{ href: "/projects", label: "Projects" },
+	{ href: "/experience", label: "Experience" },
+	{ href: "/education", label: "Education" },
+	{ href: "/certifications", label: "Certifications" },
+];
+
+const normalizePath = (path: string) =>
+	path === "/" ? "/" : path.replace(/\/$/, "");
+
+const currentPath = Astro.url.pathname;
+const normalizedCurrent = normalizePath(currentPath);
+---
+
+<header
+	class="sticky top-0 z-50 border-b border-slate-300/40 bg-slate-100/80 backdrop-blur-md dark:border-zinc-700/40 dark:bg-zinc-900/80"
+>
+	<div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5">
+		<a
+			href="/"
+			class="text-sm font-semibold tracking-widest text-slate-900 dark:text-zinc-100"
+		>
+			JMF
+		</a>
+
+		<nav class="hidden items-center gap-6 text-sm md:flex">
+			{
+				links.map((link) => {
+					const active = normalizedCurrent === link.href;
+					return (
+						<a
+							href={link.href}
+							class={`transition-colors ${
+								active
+									? "text-purple-500 dark:text-purple-300"
+									: "text-zinc-400 hover:text-purple-400"
+							}`}
+						>
+							{link.label}
+						</a>
+					);
+				})
+			}
+		</nav>
+
+		<button
+			id="menu-open"
+			aria-label="Open menu"
+			class="text-zinc-500 hover:text-purple-400 md:hidden"
+			type="button"
+		>
+			<Icon name="menu" class="h-6 w-6" />
+		</button>
+	</div>
+</header>
+
+<div
+	id="mobile-menu"
+	class="fixed inset-0 z-50 hidden md:hidden"
+	aria-hidden="true"
+>
+	<div
+		id="menu-overlay"
+		class="absolute inset-0 bg-black/40 opacity-0 backdrop-blur-sm transition-opacity duration-200"
+	>
+	</div>
+
+	<aside
+		id="menu-panel"
+		class="absolute top-0 right-0 h-full w-72 translate-x-full transform bg-slate-100 p-6 transition-transform duration-250 ease-out dark:bg-zinc-900"
+		aria-label="Mobile navigation"
+	>
+		<div class="mb-8 flex items-center justify-between">
+			<span
+				class="text-sm font-semibold tracking-widest text-slate-900 dark:text-zinc-100"
+			>
+				JMF
+			</span>
+
+			<button
+				id="menu-close"
+				aria-label="Close menu"
+				class="text-zinc-500 hover:text-purple-400"
+				type="button"
+			>
+				<Icon name="x" class="h-6 w-6" />
+			</button>
+		</div>
+
+		<nav class="flex flex-col gap-3">
+			{
+				links.map((link) => {
+					const active = normalizedCurrent === link.href;
+					return (
+						<a
+							href={link.href}
+							class={`rounded-xl border px-4 py-3 text-sm transition ${
+								active
+									? "border-purple-400 text-purple-500 dark:text-purple-300"
+									: "border-zinc-700/40 text-zinc-400 hover:border-purple-400 hover:text-purple-400"
+							}`}
+							data-close-menu
+						>
+							{link.label}
+						</a>
+					);
+				})
+			}
+		</nav>
+	</aside>
+</div>
+
+<script is:inline>
+	(() => {
+		const openBtn = document.getElementById("menu-open");
+		const root = document.getElementById("mobile-menu");
+		const overlay = document.getElementById("menu-overlay");
+		const panel = document.getElementById("menu-panel");
+		const closeBtn = document.getElementById("menu-close");
+
+		if (!openBtn || !root || !overlay || !panel) return;
+
+		const DURATION = 250;
+
+		const openMenu = () => {
+			root.classList.remove("hidden");
+			root.setAttribute("aria-hidden", "false");
+
+			requestAnimationFrame(() => {
+				overlay.classList.add("opacity-100");
+				overlay.classList.remove("opacity-0");
+
+				panel.classList.remove("translate-x-full");
+				panel.classList.add("translate-x-0");
+			});
+		};
+
+		const closeMenu = () => {
+			overlay.classList.remove("opacity-100");
+			overlay.classList.add("opacity-0");
+
+			panel.classList.remove("translate-x-0");
+			panel.classList.add("translate-x-full");
+
+			window.setTimeout(() => {
+				root.classList.add("hidden");
+				root.setAttribute("aria-hidden", "true");
+			}, DURATION);
+		};
+
+		openBtn.addEventListener("click", openMenu);
+		closeBtn?.addEventListener("click", closeMenu);
+		overlay.addEventListener("click", closeMenu);
+
+		root.querySelectorAll("[data-close-menu]").forEach((el) => {
+			el.addEventListener("click", closeMenu);
+		});
+
+		window.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && !root.classList.contains("hidden")) closeMenu();
+		});
+	})();
+</script>
