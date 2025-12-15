@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import cv from "@cv";
 ---
 
 <footer
@@ -9,7 +10,7 @@ import { Icon } from "astro-icon/components";
 		class="mx-auto flex max-w-5xl items-center justify-center gap-6 px-4 py-6"
 	>
 		<a
-			href="https://github.com/jomiferse"
+			href={cv.links.github}
 			target="_blank"
 			rel="noopener noreferrer"
 			aria-label="GitHub"
@@ -19,7 +20,7 @@ import { Icon } from "astro-icon/components";
 		</a>
 
 		<a
-			href="https://linkedin.com/in/jomiferse"
+			href={cv.links.linkedin}
 			target="_blank"
 			rel="noopener noreferrer"
 			aria-label="LinkedIn"
@@ -29,7 +30,7 @@ import { Icon } from "astro-icon/components";
 		</a>
 
 		<a
-			href="mailto:jomiferse@gmail.com"
+			href={`mailto:${cv.email}`}
 			aria-label="Email"
 			class="text-slate-500 transition hover:text-purple-400 dark:text-zinc-400 dark:hover:text-purple-300"
 		>
