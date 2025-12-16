@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <strong>My personal website built with Astro, TypeScript & a modern component-driven UI.</strong>
+  <strong>My personal website built with Astro, TypeScript, and a modern, scalable architecture.</strong>
 </p>
 
 <p align="center">
@@ -21,24 +21,60 @@
   <img src="https://img.shields.io/badge/Status-Live-brightgreen?style=for-the-badge" />
 </p>
 
+---
+
 ## 🚀 Tech Stack
 
-- **Astro** – Ultra-fast static site framework
-- **TypeScript** – Type-safe components & utilities
-- **Astro Components (.astro)** – UI built with server-first components
+- **Astro** – Ultra-fast, server-first static site framework
+- **TypeScript** – Type-safe components, utilities, and API routes
+- **Astro Components (.astro)** – Component-driven UI architecture
 - **TailwindCSS** – Utility-first styling system
-- **JSON-Driven Content** – CV stored in `cv.json`
+- **JSON-Driven Content** – Fully localized CV data
 - **Astro Islands Architecture** – Partial hydration only where needed
+
+
+---
+
+## 🌍 Internationalization (i18n)
+
+- Locale-based routing:
+  - `/en` – English
+  - `/es` – Spanish
+- Language switcher integrated into the header
+- Translation dictionaries for UI text
+- Localized metadata (`title`, `description`, `aria-labels`)
+- Automatic redirect from `/` to the appropriate locale
+
+---
+
+## 📄 CV Localization
+
+- CV data split into fully localized files:
+  - `cv.en.json`
+  - `cv.es.json`
+- Each locale contains complete, self-contained CV content
+- No shared base or deep-merge logic (avoids data inconsistency)
+- CV data loaded dynamically based on the active locale
+- Clear separation between:
+  - **UI translations** (i18n dictionaries)
+  - **Long-form content** (CV JSON)
 
 ---
 
 ## ✨ Features
 
-- ⚡ **Fully responsive** layout for mobile & desktop
-- 🧩 **Reusable UI components** (cards, header, footer, badges…)
-- 💾 **Structured CV data** loaded directly from JSON
-- 🗂️ **Clean project structure** for easy maintenance
-- 🚀 **Optimized for SEO** (meta tags, favicons, accessible markup)
+- ⚡ **Fully responsive** layout for mobile and desktop
+- 🧩 **Reusable UI components** (cards, header, footer, dialogs, forms)
+- 🌐 **Multi-language support** with clean routing
+- 📬 **Contact form** with localized handling and backend email delivery
+- 🔍 **SEO optimized**
+  - Canonical URLs
+  - `hreflang` alternates
+  - Automatic sitemap generation
+  - Robots configuration
+- 🗂️ **Clean project structure** designed for scalability and maintenance
+
+---
 
 ## 🛠️ Running Locally
 
