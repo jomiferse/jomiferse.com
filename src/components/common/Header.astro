@@ -66,12 +66,12 @@ const normalizedCurrent = normalizePath(currentPath);
 			}
 
 			<LanguageToggle locale={locale} />
-			<span id="theme-slot-desktop" class="inline-flex"></span>
+			<ThemeToggle locale={locale} />
 		</nav>
 
 		<div class="flex items-center gap-3 md:hidden">
 			<LanguageToggle locale={locale} />
-			<span id="theme-slot-mobile" class="inline-flex"></span>
+			<ThemeToggle locale={locale} />
 
 			<button
 				id="menu-open"
@@ -84,10 +84,6 @@ const normalizedCurrent = normalizePath(currentPath);
 		</div>
 	</div>
 </header>
-
-<div class="hidden">
-	<ThemeToggle locale={locale} />
-</div>
 
 <div
 	id="mobile-menu"
@@ -147,23 +143,44 @@ const normalizedCurrent = normalizePath(currentPath);
 
 <script is:inline>
 	(() => {
-		/* Theme toggle placement */
-		const desktopSlot = document.getElementById("theme-slot-desktop");
-		const mobileSlot = document.getElementById("theme-slot-mobile");
-		const toggleBtn = document.querySelector("button.theme-toggle");
+		/* Theme toggle (support multiple buttons: desktop + mobile) */
+		const buttons = document.querySelectorAll("button.theme-toggle");
+		if (!buttons.length) return;
 
-		if (desktopSlot && mobileSlot && toggleBtn) {
-			const mq = window.matchMedia("(min-width: 768px)");
+		const isDark = () => document.documentElement.classList.contains("dark");
 
-			const place = () => {
-				(mq.matches ? desktopSlot : mobileSlot).appendChild(toggleBtn);
-			};
+		const syncButton = (btn) => {
+			const sun = btn.querySelector('[data-theme-icon="sun"]');
+			const moon = btn.querySelector('[data-theme-icon="moon"]');
+			if (!sun || !moon) return;
 
-			place();
-			mq.addEventListener?.("change", place);
-		}
+			const dark = isDark();
 
-		/* Mobile menu */
+			sun.classList.toggle("hidden", !dark);
+			moon.classList.toggle("hidden", dark);
+
+			const darkLabel =
+				btn.getAttribute("data-label-light") || "Switch to light mode";
+			const lightLabel =
+				btn.getAttribute("data-label-dark") || "Switch to dark mode";
+
+			btn.setAttribute("aria-label", dark ? darkLabel : lightLabel);
+		};
+
+		const syncAll = () => buttons.forEach(syncButton);
+
+		syncAll();
+
+		buttons.forEach((btn) => {
+			btn.addEventListener("click", () => {
+				const nextIsDark = !isDark();
+				document.documentElement.classList.toggle("dark", nextIsDark);
+				localStorage.setItem("theme", nextIsDark ? "dark" : "light");
+				syncAll();
+			});
+		});
+
+		/* Mobile menu (tu código igual) */
 		const openBtn = document.getElementById("menu-open");
 		const root = document.getElementById("mobile-menu");
 		const overlay = document.getElementById("menu-overlay");

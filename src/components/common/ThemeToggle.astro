@@ -19,39 +19,3 @@ const { locale } = Astro.props as { locale: Locale };
 		<Icon name="moon" class="h-5 w-5" />
 	</span>
 </button>
-
-<script is:inline>
-	(() => {
-		const btn = document.querySelector("button.theme-toggle");
-		if (!btn) return;
-
-		const sun = btn.querySelector('[data-theme-icon="sun"]');
-		const moon = btn.querySelector('[data-theme-icon="moon"]');
-		if (!sun || !moon) return;
-
-		const isDark = () => document.documentElement.classList.contains("dark");
-
-		const sync = () => {
-			const dark = isDark();
-
-			sun.classList.toggle("hidden", !dark);
-			moon.classList.toggle("hidden", dark);
-
-			const darkLabel =
-				btn.getAttribute("data-label-light") || "Switch to light mode";
-			const lightLabel =
-				btn.getAttribute("data-label-dark") || "Switch to dark mode";
-
-			btn.setAttribute("aria-label", dark ? darkLabel : lightLabel);
-		};
-
-		sync();
-
-		btn.addEventListener("click", () => {
-			const nextIsDark = !isDark();
-			document.documentElement.classList.toggle("dark", nextIsDark);
-			localStorage.setItem("theme", nextIsDark ? "dark" : "light");
-			sync();
-		});
-	})();
-</script>
