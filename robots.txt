@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /drafts/
+
+Sitemap: https://www.jomiferse.com/sitemap-index.xml
