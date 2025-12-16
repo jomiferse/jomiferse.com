@@ -2,16 +2,32 @@
 import Footer from "@/components/common/Footer.astro";
 import Header from "@/components/common/Header.astro";
 import "@/styles/global.css";
-import cv from "@/data/cv.json";
+import { getLocaleFromPath, type Locale } from "@/i18n";
+import { getCv } from "@cv";
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props as {
+	title: string;
+	description: string;
+};
+
+const locale: Locale = getLocaleFromPath(Astro.url.pathname);
+const cv = getCv(locale);
 
 const canonicalUrl = Astro.site
 	? new URL(Astro.url.pathname, Astro.site).toString()
 	: Astro.url.pathname;
+
+const buildAlternate = (loc: Locale) => {
+	const pathname = Astro.url.pathname.replace(/^\/(en|es)/, "");
+	const path = `/${loc}${pathname || ""}`;
+	return Astro.site ? new URL(path, Astro.site).toString() : path;
+};
+
+const alternateEn = buildAlternate("en");
+const alternateEs = buildAlternate("es");
 ---
 
-<html lang="en" class="min-h-screen scroll-smooth antialiased">
+<html lang={locale} class="min-h-screen scroll-smooth antialiased">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,8 +54,12 @@ const canonicalUrl = Astro.site
 
 		<link rel="canonical" href={canonicalUrl} />
 
+		<link rel="alternate" hreflang="en" href={alternateEn} />
+		<link rel="alternate" hreflang="es" href={alternateEs} />
+		<link rel="alternate" hreflang="x-default" href={alternateEn} />
+
 		<meta name="robots" content="index,follow" />
-		<meta name="author" content={`${cv.name}`} />
+		<meta name="author" content={cv.name} />
 
 		<meta
 			name="theme-color"
@@ -56,12 +76,12 @@ const canonicalUrl = Astro.site
 	<body
 		class="relative flex min-h-screen flex-col bg-slate-50 text-slate-900 transition-colors before:pointer-events-none before:fixed before:inset-0 before:bg-[radial-gradient(1200px_circle_at_20%_-10%,rgba(99,102,241,0.10),transparent_60%),radial-gradient(1000px_circle_at_90%_10%,rgba(168,85,247,0.10),transparent_55%)] before:content-[''] dark:bg-zinc-950 dark:text-zinc-100 dark:before:bg-[radial-gradient(1200px_circle_at_20%_-10%,rgba(168,85,247,0.12),transparent_60%),radial-gradient(1000px_circle_at_90%_10%,rgba(99,102,241,0.10),transparent_55%)]"
 	>
-		<Header />
+		<Header locale={locale} />
 		<main
-			class="mx-auto w-full max-w-5xl flex-1 px-4 pt-10 pb-12 transition-opacity duration-300 md:pt-12 md:pb-16"
+			class="mx-auto w-full max-w-5xl flex-1 px-4 pt-10 pb-12 md:pt-12 md:pb-16"
 		>
 			<slot />
 		</main>
-		<Footer />
+		<Footer locale={locale} />
 	</body>
 </html>

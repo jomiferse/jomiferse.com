@@ -1,0 +1,163 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "experience": "Experience",
+    "education": "Education",
+    "certifications": "Certifications",
+    "contact": "Contact"
+  },
+
+  "header": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mobileNav": "Mobile navigation"
+  },
+
+  "theme": {
+    "toggle": "Toggle theme",
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode"
+  },
+
+  "home": {
+    "meta": {
+      "title": "Portfolio",
+      "description": "Backend-focused engineer specialized in Java, Spring Boot and scalable systems."
+    },
+    "hero": {
+      "greeting": "Hey! I'm",
+      "cta": { "talk": "Let’s talk" },
+      "avatarAlt": "Portrait of {name}"
+    },
+    "badge": { "basedIn": "Based in", "focusedOn": "Currently focused on" },
+    "stats": { "years": "YEARS OF EXPERIENCE", "commitment": "COMMITMENT" },
+    "sections": { "about": "About me", "skills": "Skills & Expertise" }
+  },
+
+  "projects": {
+    "meta": {
+      "title": "Projects",
+      "description": "Selection of backend, cloud and web projects by {name}."
+    },
+    "hero": {
+      "titlePrefix": "Selected",
+      "titleHighlight": "projects",
+      "subtitle": "A selection of projects I have contributed to throughout my career, showcasing my approach to problem-solving, technical execution, and delivery."
+    },
+    "sections": {
+      "personal": {
+        "title": "Personal Projects",
+        "subtitle": "Side projects and experiments"
+      },
+      "company": {
+        "title": "Company Projects",
+        "subtitle": "Professional work and contributions"
+      }
+    },
+    "empty": {
+      "personal": "Coming soon — personal projects are being curated.",
+      "company": "No company projects available yet."
+    }
+  },
+
+  "experience": {
+    "meta": {
+      "title": "Experience",
+      "description": "Professional experience of {name}."
+    },
+    "hero": {
+      "titlePrefix": "Professional",
+      "titleHighlight": "experience",
+      "subtitle": "Roles and responsibilities across different companies where I have contributed as a software engineer at various stages of my career."
+    }
+  },
+
+  "education": {
+    "meta": {
+      "title": "Education",
+      "description": "Education background of {name}."
+    },
+    "hero": {
+      "titlePrimary": "Education",
+      "titleSecondary": "training",
+      "subtitle": "Academic background supporting my journey as a software engineer."
+    }
+  },
+
+  "certifications": {
+    "meta": {
+      "title": "Certifications",
+      "description": "Courses and certifications obtained by {name}."
+    },
+    "hero": {
+      "titlePrefix": "Courses",
+      "titleHighlight": "certifications",
+      "subtitle": "A collection of courses and certifications that reflect my commitment to continuous learning and professional growth."
+    }
+  },
+
+  "skills": {
+    "core": "Core Tech Stack",
+    "frameworks": "Frameworks & Tools",
+    "soft": "Soft Skills",
+    "languages": "Languages",
+    "communication": "Communication skills",
+    "curatedNote": "(Curated list — full stack in CV / LinkedIn)"
+  },
+
+  "contact": {
+    "meta": {
+      "title": "Contact",
+      "description": "Get in touch with {name} for opportunities, collaborations, or questions."
+    },
+    "hero": {
+      "titlePrefix": "Let’s",
+      "titleHighlight": "connect",
+      "subtitle": "Opportunities, side projects, or just a quick hello — my inbox is always open."
+    },
+    "emailLabel": "EMAIL ME",
+    "divider": "WRITE A MESSAGE",
+    "success": "Message sent successfully. I’ll get back to you soon 🙂",
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn"
+    }
+  },
+
+  "certificationCard": {
+    "idLabel": "ID:",
+    "viewCredential": "View credential"
+  },
+
+  "educationCard": {
+    "gradeLabel": "Grade:"
+  },
+
+  "experienceCard": {
+    "present": "Present"
+  },
+
+  "projectCard": {
+    "coverAlt": "Cover for {title}",
+    "previewAlt": "Preview for {title}",
+    "closeDialog": "Close dialog",
+    "context": "CONTEXT",
+    "summary": "SUMMARY",
+    "highlights": "HIGHLIGHTS",
+    "technologies": "TECHNOLOGIES",
+    "viewProject": "View project"
+  },
+
+  "contactForm": {
+    "nameLabel": "Your name",
+    "namePlaceholder": "Your Name",
+    "emailLabel": "Your email",
+    "emailPlaceholder": "your@email.com",
+    "messageLabel": "Message",
+    "messagePlaceholder": "How can I help you?",
+    "attachmentLabel": "Attach PDF",
+    "attachmentHint": "Optional. PDF only.",
+    "submit": "Send Message"
+  }
+}

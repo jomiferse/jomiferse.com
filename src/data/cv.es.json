@@ -1,0 +1,314 @@
+{
+  "name": "José Miguel Fernández",
+  "shortName": "José Miguel",
+  "email": "jomiferse@gmail.com",
+  "headline": "Ingeniero de Software | Java & Spring Boot | PHP | Docker | Microservicios | SQL",
+  "location": "Granada, España",
+  "currentRole": "Ingeniero de Software",
+  "focus": "Backend, microservicios & DevOps",
+  "summary": [
+    "Me apasiona construir cosas que <span class=\"font-semibold text-purple-600 dark:text-purple-300\">funcionen rápido</span>, <span class=\"font-semibold text-purple-600 dark:text-purple-300\">se vean limpias</span> y <span class=\"font-semibold text-purple-600 dark:text-purple-300\">escalen bien</span>. Actualmente trabajo sobre todo con <span class=\"font-semibold text-purple-600 dark:text-purple-300\">Java & Spring Boot</span>, pero también he pasado años desarrollando <span class=\"font-semibold text-purple-600 dark:text-purple-300\">plataformas grandes en PHP</span>, mejorando <span class=\"font-semibold text-purple-600 dark:text-purple-300\">arquitecturas</span> y ayudando a que los <span class=\"font-semibold text-purple-600 dark:text-purple-300\">equipos trabajen mejor</span>. Me encanta aprender <span class=\"font-semibold text-purple-600 dark:text-purple-300\">nuevas tecnologías</span>, entender cómo <span class=\"font-semibold text-purple-600 dark:text-purple-300\">encajan los sistemas</span> y hacer que lo <span class=\"font-semibold text-purple-600 dark:text-purple-300\">complejo se sienta simple</span>."
+  ],
+  "yearsWorking": "5",
+  "currentCompany": "CGI",
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/jomiferse/",
+    "github": "https://www.github.com/jomiferse/"
+  },
+  "experience": [
+    {
+      "company": "CGI (formerly Novatec Software)",
+      "role": "Ingeniero de Software",
+      "location": "España",
+      "startDate": "12/2024",
+      "endDate": "Present",
+      "description": "Parte de un equipo ágil internacional responsable de la evolución continua de una plataforma backend en proceso de modernización a largo plazo. Contribuyo a mejoras de arquitectura, estándares de desarrollo y colaboración entre equipos backend y frontend.",
+      "highlights": [
+        "Desarrollé y evolucioné microservicios Spring Boot con Spring Security y PostgreSQL para una arquitectura segura y escalable.",
+        "Contribuí a la migración de un monolito en Scala a Spring Boot, mejorando mantenibilidad y extensibilidad a largo plazo.",
+        "Implementé versionado y automatización del ciclo de vida de base de datos con Liquibase para asegurar consistencia entre entornos.",
+        "Reforcé la fiabilidad del servicio mediante testing automatizado con JUnit y contract testing con Pact.",
+        "Colaboré en un back office con React y TypeScript para optimizar operaciones internas y mejorar la usabilidad.",
+        "Creé diagramas de flujo funcional para alinear stakeholders técnicos y no técnicos durante la evolución de la plataforma."
+      ]
+    },
+    {
+      "company": "EDUCA EDTECH Group",
+      "role": "Desarrollador Full-Stack",
+      "location": "Granada, España",
+      "startDate": "08/2020",
+      "endDate": "12/2024",
+      "description": "Evolucioné desde Trainee hasta Senior Software Developer contribuyendo al diseño, desarrollo y evolución de plataformas educativas a gran escala utilizadas en varios mercados internacionales.",
+      "highlights": [
+        "Diseñé y evolucioné una infraestructura basada en Docker para estandarizar entornos, mejorar escalabilidad y aumentar la productividad del equipo.",
+        "Lideré la transformación hacia una plataforma multi-idioma y multi-portal, ampliando alcance internacional y apoyando el crecimiento global.",
+        "Integré nuevos sistemas de pago e implementé búsquedas avanzadas con Elasticsearch para mejorar la experiencia de usuario.",
+        "Desarrollé y mantuve funcionalidades backend y frontend con PHP (Phalcon), JavaScript, HTML y CSS.",
+        "Mejoré rendimiento, seguridad y Core Web Vitals mediante optimización continua.",
+        "Establecí prácticas de code review y colaboración para elevar la calidad del código y fomentar mejora continua en el equipo."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Máster en Programación de Tecnologías Web y Móviles",
+      "institution": "INESEM Business School",
+      "location": "Online",
+      "startDate": "2020",
+      "endDate": "2020",
+      "description": "Máster centrado en tecnologías y habilidades necesarias para desarrollar y gestionar aplicaciones web y móviles, así como contenidos digitales y multimedia.",
+      "skills": ["PHP", "HTML", "JavaScript", "CSS"],
+      "notes": "Excelente"
+    },
+    {
+      "degree": "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma",
+      "institution": "I.E.S Francisco Ayala",
+      "location": "Granada, España",
+      "startDate": "09/2018",
+      "endDate": "06/2020",
+      "description": "Formación avanzada en desarrollo de aplicaciones para múltiples sistemas operativos y dispositivos, cubriendo lenguajes como Java, JavaScript, Swift y Kotlin, gestión de bases de datos, arquitecturas escalables, control de versiones con Git y testing en distintos entornos.",
+      "skills": ["Java", "Kotlin", "SQL", "Swift", "JavaScript", "Git"],
+      "notes": "8.23 / 10"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Microservicios con Spring Boot, Docker y Kubernetes",
+      "provider": "Udemy",
+      "year": "2025",
+      "icon": "code",
+      "credentialId": "UC-a8f24289-a4b5-4b51-b884-1e0b4b67aa3b",
+      "url": "http://ude.my/UC-a8f24289-a4b5-4b51-b884-1e0b4b67aa3b",
+      "skills": [
+        "Spring Boot",
+        "Docker",
+        "Kubernetes",
+        "REST API",
+        "Cloud-Native",
+        "DevOps",
+        "Observability",
+        "Resilience"
+      ]
+    },
+    {
+      "name": "Apache Maven: de principiante a experto",
+      "provider": "Udemy",
+      "year": "2025",
+      "icon": "code",
+      "credentialId": "UC-79ed7666-e01b-4402-a3ca-2ef578c6bf94",
+      "url": "https://ude.my/UC-79ed7666-e01b-4402-a3ca-2ef578c6bf94",
+      "skills": [
+        "Apache Maven",
+        "Build automation",
+        "Dependency Management",
+        "Java",
+        "Spring Boot",
+        "Testing",
+        "Multi-module projects"
+      ]
+    },
+    {
+      "name": "Cambridge English B1",
+      "provider": "Cambridge Assessment English",
+      "year": "2018",
+      "icon": "globe"
+    }
+  ],
+  "skills": {
+    "coreTech": [
+      {
+        "name": "Java",
+        "value": 75,
+        "color": "bg-orange-400"
+      },
+      {
+        "name": "PHP",
+        "value": 85,
+        "color": "bg-violet-400"
+      },
+      {
+        "name": "JS / TypeScript",
+        "value": 80,
+        "color": "bg-amber-300"
+      },
+      {
+        "name": "SQL",
+        "value": 75,
+        "color": "bg-sky-400"
+      }
+    ],
+    "frameworksTools": [
+      {
+        "label": "Spring Boot",
+        "icon": "springboot",
+        "color": "bg-emerald-100 border-emerald-200 text-emerald-700"
+      },
+      {
+        "label": "Docker",
+        "icon": "docker",
+        "color": "bg-blue-100 border-blue-200 text-blue-700"
+      },
+      {
+        "label": "Kubernetes",
+        "icon": "kubernetes",
+        "color": "bg-violet-100 border-violet-200 text-violet-700"
+      },
+      {
+        "label": "PostgreSQL",
+        "icon": "postgresql",
+        "color": "bg-orange-100 border-orange-200 text-orange-700"
+      },
+      {
+        "label": "Kafka",
+        "icon": "apachekafka",
+        "color": "bg-red-100 border-red-200 text-red-700"
+      },
+      {
+        "label": "Git",
+        "icon": "git",
+        "color": "bg-slate-100 border-slate-200 text-slate-700"
+      },
+      {
+        "label": "Liquibase",
+        "icon": "liquibase",
+        "color": "bg-cyan-100 border-cyan-200 text-cyan-700"
+      },
+      {
+        "label": "RabbitMQ",
+        "icon": "rabbitmq",
+        "color": "bg-pink-100 border-pink-200 text-pink-700"
+      },
+      {
+        "label": "CI/CD",
+        "icon": "git-branch",
+        "color": "bg-indigo-100 border-indigo-200 text-indigo-700"
+      }
+    ],
+    "soft": [
+      {
+        "label": "Resolución de problemas",
+        "icon": "brain"
+      },
+      {
+        "label": "Trabajo en equipo",
+        "icon": "users"
+      },
+      {
+        "label": "Calidad",
+        "icon": "circle-check-big"
+      }
+    ],
+    "languages": {
+      "items": [
+        {
+          "language": "Español",
+          "level": "NATIVO",
+          "txtColor": "text-sky-600 dark:text-sky-300"
+        },
+        {
+          "language": "Inglés",
+          "level": "PROFESIONAL",
+          "txtColor": "text-emerald-600 dark:text-emerald-300"
+        }
+      ]
+    }
+  },
+  "projects": {
+    "company": [
+      {
+        "title": "Plataforma de Modernización de Microservicios",
+        "role": "Software Engineer",
+        "companyRelated": "CGI",
+        "link": "",
+        "context": "Equipo backend internacional modernizando una plataforma de servicios en la nube para un cliente enterprise del sector gambling.",
+        "timeframe": "12/2024 – Actualidad",
+        "summary": "Contribuyo al desarrollo de una arquitectura de microservicios basada en Spring Boot, apoyando la migración desde un monolito legacy en Scala hacia un sistema más escalable y mantenible. Colaboro en servicios backend, automatización del ciclo de vida de base de datos e tooling interno.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/microservices-modernization-platform.avif",
+            "alt": "Plataforma de Modernización de Microservicios"
+          }
+        },
+        "technologies": [
+          "Java 21",
+          "Spring Boot 3",
+          "Spring Security",
+          "PostgreSQL",
+          "Liquibase",
+          "React",
+          "JUnit",
+          "Docker",
+          "Kubernetes"
+        ],
+        "highlights": [
+          "Contribuí a la migración de un monolito en Scala a microservicios Spring Boot.",
+          "Desarrollé y mantuve servicios backend seguros con Spring Boot y Spring Security.",
+          "Automaticé cambios de base de datos con Liquibase en múltiples entornos.",
+          "Colaboré en un back-office en React para mejorar flujos internos."
+        ]
+      },
+      {
+        "title": "Euroinnova Educación Online Internacional",
+        "role": "Software Developer",
+        "companyRelated": "EDUCA EDTECH Group",
+        "link": "",
+        "context": "Plataforma web core de EDUCA EDTECH Group.",
+        "timeframe": "02/2021 – 12/2024",
+        "summary": "Diseño, desarrollo y mantenimiento de la plataforma principal de Euroinnova, con foco en rendimiento, captación de leads y mejoras de experiencia de usuario.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/euroinnova.avif",
+            "alt": "Euroinnova Educación Online Internacional"
+          },
+          "imgHover": {
+            "src": "/images/projects/euroinnova-preview.avif",
+            "alt": "Vista previa de Euroinnova"
+          }
+        },
+        "technologies": [
+          "PHP",
+          "Phalcon",
+          "MySQL",
+          "Docker",
+          "Git",
+          "JavaScript",
+          "CSS",
+          "HTML"
+        ],
+        "highlights": [
+          "Desarrollé y mantuve la plataforma principal con PHP, Phalcon, JavaScript, HTML, CSS y MySQL.",
+          "Implementé funcionalidades clave de captación de leads como formularios, landings y flujos de conversión.",
+          "Mejoré la experiencia de usuario con mejor navegación y tiempos de carga más rápidos.",
+          "Colaboré con marketing y diseño para alinear el desarrollo con la marca y las campañas."
+        ]
+      },
+      {
+        "title": "EduCash – Plataforma Web de Afiliados",
+        "role": "Software Developer",
+        "companyRelated": "EDUCA EDTECH Group",
+        "link": "",
+        "context": "Proyecto de EDUCA EDTECH Group enfocado en la gestión de afiliados.",
+        "timeframe": "08/2020 – 12/2024",
+        "summary": "Desarrollo integral de la plataforma web de afiliados de la empresa, desde el diseño hasta la implementación y optimización, permitiendo una gestión eficaz de afiliaciones y reporting.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/educash.avif",
+            "alt": "Plataforma de Afiliados EduCash"
+          },
+          "imgHover": {
+            "src": "/images/projects/educash-preview.avif",
+            "alt": "Vista previa de EduCash"
+          }
+        },
+        "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Git"],
+        "highlights": [
+          "Diseñé, desarrollé e implementé la plataforma de afiliados asegurando integración con sistemas existentes.",
+          "Mejoré continuamente la plataforma para aumentar funcionalidades y satisfacción de afiliados.",
+          "Desarrollé herramientas de gestión y seguimiento: dashboards, informes de rendimiento y soporte de pagos.",
+          "Colaboré con marketing y el equipo de afiliación para alinear la plataforma con objetivos de negocio."
+        ]
+      }
+    ],
+    "personal": []
+  }
+}

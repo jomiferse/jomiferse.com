@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { t, type Locale } from "@/i18n";
 
 interface Experience {
 	role: string;
@@ -11,9 +12,17 @@ interface Experience {
 	highlights?: string[];
 }
 
-const { experience } = Astro.props as { experience: Experience };
+const { experience, locale = "en" } = Astro.props as {
+	experience: Experience;
+	locale?: Locale;
+};
 
-const dateLabel = `${experience.startDate} – ${experience.endDate}`;
+const endDate =
+	experience.endDate?.toLowerCase() === "present"
+		? t(locale, "experienceCard.present")
+		: experience.endDate;
+
+const dateLabel = `${experience.startDate} – ${endDate}`;
 ---
 
 <article

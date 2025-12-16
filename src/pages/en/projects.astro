@@ -1,29 +1,36 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ProjectCard from "@/components/cards/ProjectCard.astro";
-import cv from "@/data/cv.json";
 import { Icon } from "astro-icon/components";
+import { getLocaleFromPath, t } from "@/i18n";
+import { getCv } from "@cv";
+
+const locale = getLocaleFromPath(Astro.url.pathname);
+const cv = getCv(locale);
 
 const companyProjects = cv.projects?.company ?? [];
 const personalProjects = cv.projects?.personal ?? [];
+
+const pageTitle = `${t(locale, "projects.meta.title")} – ${cv.name}`;
+const pageDescription = t(locale, "projects.meta.description").replace(
+	"{name}",
+	cv.name,
+);
 ---
 
-<BaseLayout
-	title={`Projects – ${cv.name}`}
-	description={`Selection of backend, cloud and web projects by ${cv.name}.`}
->
+<BaseLayout title={pageTitle} description={pageDescription}>
 	<header class="mb-8 space-y-3">
 		<h1 class="text-3xl font-bold md:text-4xl">
-			Selected <span class="text-purple-600 dark:text-purple-300">projects</span
-			>
+			{t(locale, "projects.hero.titlePrefix")}{" "}
+			<span class="text-purple-600 dark:text-purple-300">
+				{t(locale, "projects.hero.titleHighlight")}
+			</span>
 		</h1>
 
 		<p
 			class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300"
 		>
-			A selection of projects I have contributed to throughout my career,
-			showcasing my approach to problem-solving, technical execution, and
-			delivery.
+			{t(locale, "projects.hero.subtitle")}
 		</p>
 	</header>
 
@@ -37,10 +44,10 @@ const personalProjects = cv.projects?.personal ?? [];
 
 			<div class="min-w-0">
 				<h2 class="text-lg font-semibold text-slate-900 dark:text-zinc-50">
-					Personal Projects
+					{t(locale, "projects.sections.personal.title")}
 				</h2>
 				<p class="text-xs text-slate-600 dark:text-zinc-400">
-					Side projects and experiments
+					{t(locale, "projects.sections.personal.subtitle")}
 				</p>
 			</div>
 
@@ -51,12 +58,12 @@ const personalProjects = cv.projects?.personal ?? [];
 			personalProjects.length ? (
 				<div class="grid gap-6 sm:grid-cols-2">
 					{personalProjects.map((project) => (
-						<ProjectCard project={project} />
+						<ProjectCard project={project} locale={locale} />
 					))}
 				</div>
 			) : (
 				<div class="rounded-3xl border border-slate-200/80 bg-white/70 p-6 text-sm text-slate-600 shadow-sm backdrop-blur dark:border-zinc-800/70 dark:bg-zinc-950/40 dark:text-zinc-400">
-					Coming soon — personal projects are being curated.
+					{t(locale, "projects.empty.personal")}
 				</div>
 			)
 		}
@@ -74,10 +81,10 @@ const personalProjects = cv.projects?.personal ?? [];
 
 			<div class="min-w-0">
 				<h2 class="text-lg font-semibold text-slate-900 dark:text-zinc-50">
-					Company Projects
+					{t(locale, "projects.sections.company.title")}
 				</h2>
 				<p class="text-xs text-slate-600 dark:text-zinc-400">
-					Professional work and contributions
+					{t(locale, "projects.sections.company.subtitle")}
 				</p>
 			</div>
 
@@ -88,12 +95,12 @@ const personalProjects = cv.projects?.personal ?? [];
 			companyProjects.length ? (
 				<div class="grid gap-6 sm:grid-cols-2">
 					{companyProjects.map((project) => (
-						<ProjectCard project={project} />
+						<ProjectCard project={project} locale={locale} />
 					))}
 				</div>
 			) : (
 				<div class="rounded-3xl border border-slate-200/80 bg-white/70 p-6 text-sm text-slate-600 shadow-sm backdrop-blur dark:border-zinc-800/70 dark:bg-zinc-950/40 dark:text-zinc-400">
-					No company projects available yet.
+					{t(locale, "projects.empty.company")}
 				</div>
 			)
 		}

@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import { t, type Locale } from "@/i18n";
 
 export interface Project {
 	title: string;
@@ -21,9 +22,10 @@ export interface Project {
 
 interface Props {
 	project: Project;
+	locale?: Locale;
 }
 
-const { project } = Astro.props;
+const { project, locale = "en" } = Astro.props as Props;
 
 const dialogId =
 	"project-" +
@@ -36,6 +38,14 @@ const dialogId =
 const staticSrc = project.img?.imgStatic?.src;
 const hoverSrc = project.img?.imgHover?.src;
 const baseSrc = staticSrc ?? hoverSrc;
+
+const coverAlt =
+	project.img?.imgStatic?.alt ??
+	t(locale, "projectCard.coverAlt").replace("{title}", project.title);
+
+const previewAlt =
+	project.img?.imgHover?.alt ??
+	t(locale, "projectCard.previewAlt").replace("{title}", project.title);
 ---
 
 <div
@@ -56,7 +66,7 @@ const baseSrc = staticSrc ?? hoverSrc;
 					<>
 						<Image
 							src={baseSrc}
-							alt={project.img?.imgStatic?.alt ?? `Cover for ${project.title}`}
+							alt={coverAlt}
 							width={640}
 							height={480}
 							loading="eager"
@@ -67,9 +77,7 @@ const baseSrc = staticSrc ?? hoverSrc;
 						{hoverSrc && (
 							<Image
 								src={hoverSrc}
-								alt={
-									project.img?.imgHover?.alt ?? `Preview for ${project.title}`
-								}
+								alt={previewAlt}
 								width={640}
 								height={480}
 								loading="eager"
@@ -185,7 +193,7 @@ const baseSrc = staticSrc ?? hoverSrc;
 				<form method="dialog">
 					<button
 						class="grid h-10 w-10 cursor-pointer place-items-center rounded-full bg-slate-100/70 ring-1 ring-slate-200 transition hover:bg-slate-100 dark:bg-zinc-900/50 dark:ring-zinc-800/70 dark:hover:bg-zinc-900/70"
-						aria-label="Close dialog"
+						aria-label={t(locale, "projectCard.closeDialog")}
 					>
 						<Icon name="x" class="h-5 w-5 text-slate-700 dark:text-zinc-100" />
 					</button>
@@ -198,7 +206,7 @@ const baseSrc = staticSrc ?? hoverSrc;
 				project.context && (
 					<div>
 						<p class="text-xs font-semibold tracking-[0.18em] text-slate-500 dark:text-zinc-500">
-							CONTEXT
+							{t(locale, "projectCard.context")}
 						</p>
 						<p class="mt-2 text-sm leading-relaxed text-slate-700 dark:text-zinc-200/90">
 							{project.context}
@@ -211,7 +219,7 @@ const baseSrc = staticSrc ?? hoverSrc;
 				<p
 					class="text-xs font-semibold tracking-[0.18em] text-slate-500 dark:text-zinc-500"
 				>
-					SUMMARY
+					{t(locale, "projectCard.summary")}
 				</p>
 				<p
 					class="mt-2 text-sm leading-relaxed text-slate-700 dark:text-zinc-200/90"
@@ -224,7 +232,7 @@ const baseSrc = staticSrc ?? hoverSrc;
 				project.highlights?.length ? (
 					<div>
 						<p class="text-xs font-semibold tracking-[0.18em] text-slate-500 dark:text-zinc-500">
-							HIGHLIGHTS
+							{t(locale, "projectCard.highlights")}
 						</p>
 						<ul class="mt-2 space-y-2 text-sm text-slate-700 dark:text-zinc-200/90">
 							{project.highlights.map((h) => (
@@ -242,7 +250,7 @@ const baseSrc = staticSrc ?? hoverSrc;
 				<p
 					class="text-xs font-semibold tracking-[0.18em] text-slate-500 dark:text-zinc-500"
 				>
-					TECHNOLOGIES
+					{t(locale, "projectCard.technologies")}
 				</p>
 				<div class="mt-2 flex flex-wrap gap-2">
 					{
@@ -264,7 +272,7 @@ const baseSrc = staticSrc ?? hoverSrc;
 							rel="noreferrer"
 							class="inline-flex items-center gap-2 rounded-2xl bg-purple-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-purple-700"
 						>
-							View project
+							{t(locale, "projectCard.viewProject")}
 							<Icon name="move-up-right" class="h-4 w-4" />
 						</a>
 					</div>

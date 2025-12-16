@@ -1,11 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
+import { t, type Locale } from "@/i18n";
+
+const { locale } = Astro.props as { locale: Locale };
 ---
 
 <button
 	type="button"
 	class="theme-toggle inline-flex cursor-pointer items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 p-2 text-slate-700 shadow-sm transition hover:bg-white dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-200 dark:hover:bg-zinc-900/60"
-	aria-label="Toggle theme"
+	aria-label={t(locale, "theme.toggle")}
+	data-label-dark={t(locale, "theme.switchToDark")}
+	data-label-light={t(locale, "theme.switchToLight")}
 >
 	<span data-theme-icon="sun" class="hidden">
 		<Icon name="sun" class="h-5 w-5" />
@@ -32,10 +37,12 @@ import { Icon } from "astro-icon/components";
 			sun.classList.toggle("hidden", !dark);
 			moon.classList.toggle("hidden", dark);
 
-			btn.setAttribute(
-				"aria-label",
-				dark ? "Switch to light mode" : "Switch to dark mode",
-			);
+			const darkLabel =
+				btn.getAttribute("data-label-light") || "Switch to light mode";
+			const lightLabel =
+				btn.getAttribute("data-label-dark") || "Switch to dark mode";
+
+			btn.setAttribute("aria-label", dark ? darkLabel : lightLabel);
 		};
 
 		sync();

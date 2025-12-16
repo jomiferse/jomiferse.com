@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
-const { toEmail } = Astro.props as { toEmail: string };
+import { t, type Locale } from "@/i18n";
+
+const { locale } = Astro.props as { locale: Locale };
 ---
 
 <form
@@ -9,10 +11,12 @@ const { toEmail } = Astro.props as { toEmail: string };
 	enctype="multipart/form-data"
 	class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm backdrop-blur transition-all duration-300 hover:border-purple-400/60 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-purple-500/50"
 >
-	<input type="hidden" name="toEmail" value={toEmail} />
+	<input type="hidden" name="locale" value={locale} />
 
 	<div class="space-y-3">
-		<label for="contact-name" class="sr-only">Your name</label>
+		<label for="contact-name" class="sr-only">
+			{t(locale, "contactForm.nameLabel")}
+		</label>
 		<div
 			class="flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white/60 px-4 py-3 text-slate-700 shadow-sm transition focus-within:border-purple-500/40 dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-200"
 		>
@@ -22,12 +26,14 @@ const { toEmail } = Astro.props as { toEmail: string };
 				name="name"
 				autocomplete="name"
 				required
-				placeholder="Your Name"
+				placeholder={t(locale, "contactForm.namePlaceholder")}
 				class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:placeholder:text-zinc-500"
 			/>
 		</div>
 
-		<label for="contact-email" class="sr-only">Your email</label>
+		<label for="contact-email" class="sr-only">
+			{t(locale, "contactForm.emailLabel")}
+		</label>
 		<div
 			class="flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white/60 px-4 py-3 text-slate-700 shadow-sm transition focus-within:border-purple-500/40 dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-200"
 		>
@@ -38,12 +44,14 @@ const { toEmail } = Astro.props as { toEmail: string };
 				name="email"
 				autocomplete="email"
 				required
-				placeholder="your@email.com"
+				placeholder={t(locale, "contactForm.emailPlaceholder")}
 				class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:placeholder:text-zinc-500"
 			/>
 		</div>
 
-		<label for="contact-message" class="sr-only">Message</label>
+		<label for="contact-message" class="sr-only">
+			{t(locale, "contactForm.messageLabel")}
+		</label>
 		<div
 			class="flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white/60 px-4 py-3 text-slate-700 shadow-sm transition focus-within:border-purple-500/40 dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-200"
 		>
@@ -56,12 +64,14 @@ const { toEmail } = Astro.props as { toEmail: string };
 				name="message"
 				required
 				rows="5"
-				placeholder="How can I help you?"
+				placeholder={t(locale, "contactForm.messagePlaceholder")}
 				class="w-full resize-none bg-transparent text-sm outline-none placeholder:text-slate-400 dark:placeholder:text-zinc-500"
 			></textarea>
 		</div>
 
-		<label for="contact-attachment" class="sr-only">Attach PDF</label>
+		<label for="contact-attachment" class="sr-only">
+			{t(locale, "contactForm.attachmentLabel")}
+		</label>
 		<div
 			class="flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white/60 px-4 py-3 text-slate-700 shadow-sm transition focus-within:border-purple-500/40 dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-200"
 		>
@@ -78,14 +88,14 @@ const { toEmail } = Astro.props as { toEmail: string };
 			/>
 		</div>
 		<p class="mt-1 text-[12px] text-slate-500 dark:text-zinc-500">
-			Optional. PDF only.
+			{t(locale, "contactForm.attachmentHint")}
 		</p>
 
 		<button
 			type="submit"
 			class="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-purple-600 to-violet-500 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-purple-400/60 focus-visible:outline-none"
 		>
-			Send Message
+			{t(locale, "contactForm.submit")}
 			<Icon
 				name="arrow-right"
 				class="h-5 w-5 transition group-hover:translate-x-0.5"

@@ -1,15 +1,21 @@
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
-import cv from "@cv";
+import { getCv } from "@cv";
+import type { Locale } from "@/i18n";
 
 export const prerender = false;
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
 const MAX_PDF_BYTES = 4 * 1024 * 1024;
+
+const isLocale = (v: string): v is Locale => v === "en" || v === "es";
 
 export const POST: APIRoute = async ({ request }) => {
 	const form = await request.formData();
+
+	const localeRaw = String(form.get("locale") ?? "en");
+	const locale: Locale = isLocale(localeRaw) ? localeRaw : "en";
+	const cv = getCv(locale);
 
 	const name = String(form.get("name") ?? "").trim();
 	const email = String(form.get("email") ?? "").trim();
@@ -22,7 +28,6 @@ export const POST: APIRoute = async ({ request }) => {
 	const subject = `Portfolio contact from ${email}`;
 
 	let attachments: { filename: string; content: Buffer }[] = [];
-
 	const file = form.get("attachment");
 
 	if (file && typeof file === "object" && "arrayBuffer" in file) {
@@ -50,11 +55,7 @@ export const POST: APIRoute = async ({ request }) => {
 			}
 
 			const buffer = Buffer.from(await f.arrayBuffer());
-
-			attachments.push({
-				filename,
-				content: buffer,
-			});
+			attachments.push({ filename, content: buffer });
 		}
 	}
 
@@ -63,12 +64,12 @@ export const POST: APIRoute = async ({ request }) => {
 		to: cv.email,
 		replyTo: email,
 		subject,
-		text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+		text: `Name: ${name}\nEmail: ${email}\nLocale: ${locale}\n\n${message}`,
 		attachments,
 	});
 
 	return new Response(null, {
 		status: 303,
-		headers: { Location: "/contact?sent=1" },
+		headers: { Location: `/${locale}/contact?sent=1` },
 	});
 };
