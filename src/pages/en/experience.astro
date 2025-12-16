@@ -3,31 +3,33 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import cv from "@/data/cv.json";
 import ExperienceCard from "@/components/cards/ExperienceCard.astro";
 import { Icon } from "astro-icon/components";
+import { getLocaleFromPath, t } from "@/i18n";
 
-const experience = cv.experience;
+const locale = getLocaleFromPath(Astro.url.pathname);
+
+const experience = cv.experience ?? [];
+
+const pageTitle = `${t(locale, "experience.meta.title")} – ${cv.name}`;
+const pageDescription =
+	t(locale, "experience.meta.description").replace("{name}", cv.name);
 ---
 
-<BaseLayout
-	title={`Experience – ${cv.name}`}
-	description={`Professional experience of ${cv.name}.`}
->
+<BaseLayout title={pageTitle} description={pageDescription}>
 	<header class="mb-7 space-y-3">
 		<h1 class="text-3xl font-bold md:text-4xl">
-			Professional <span class="text-purple-600 dark:text-purple-300"
-				>experience</span
-			>
+			{t(locale, "experience.hero.titlePrefix")}{" "}
+			<span class="text-purple-600 dark:text-purple-300">
+				{t(locale, "experience.hero.titleHighlight")}
+			</span>
 		</h1>
 		<p
 			class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300"
 		>
-			Roles and responsibilities across different companies where I have
-			contributed as a software engineer at various stages of my career.
+			{t(locale, "experience.hero.subtitle")}
 		</p>
 	</header>
 
-	<ol
-		class="relative space-y-6 border-s border-slate-200 ps-10 dark:border-zinc-800"
-	>
+	<ol class="relative space-y-6 border-s border-slate-200 ps-10 dark:border-zinc-800">
 		{
 			experience.map((exp) => (
 				<li class="relative">
@@ -38,7 +40,7 @@ const experience = cv.experience;
 						/>
 					</span>
 
-					<ExperienceCard experience={exp} />
+					<ExperienceCard experience={exp} locale={locale} />
 				</li>
 			))
 		}

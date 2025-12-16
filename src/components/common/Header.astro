@@ -1,25 +1,36 @@
 ---
 import { Icon } from "astro-icon/components";
 import ThemeToggle from "@/components/common/ThemeToggle.astro";
+import LanguageToggle from "@/components/common/LanguageToggle.astro";
+import { t, type Locale } from "@/i18n";
 
 interface NavLink {
 	href: string;
-	label: string;
+	labelKey: string;
 }
 
+const { locale } = Astro.props as { locale: Locale };
+
 const links: NavLink[] = [
-	{ href: "/", label: "Home" },
-	{ href: "/projects", label: "Projects" },
-	{ href: "/experience", label: "Experience" },
-	{ href: "/education", label: "Education" },
-	{ href: "/certifications", label: "Certifications" },
-	{ href: "/contact", label: "Contact" },
+	{ href: "/", labelKey: "nav.home" },
+	{ href: "/projects", labelKey: "nav.projects" },
+	{ href: "/experience", labelKey: "nav.experience" },
+	{ href: "/education", labelKey: "nav.education" },
+	{ href: "/certifications", labelKey: "nav.certifications" },
+	{ href: "/contact", labelKey: "nav.contact" },
 ];
 
-const normalizePath = (path: string) =>
-	path === "/" ? "/" : path.replace(/\/$/, "");
+const normalizePath = (path: string) => (path === "/" ? "/" : path.replace(/\/$/, ""));
 
-const currentPath = Astro.url.pathname;
+const withLocale = (href: string, loc: Locale) => {
+	if (href.startsWith("/en") || href.startsWith("/es")) return href;
+	return href === "/" ? `/${loc}` : `/${loc}${href}`;
+};
+
+const stripLocalePrefix = (pathname: string) =>
+	pathname.replace(/^\/(en|es)(?=\/|$)/, "") || "/";
+
+const currentPath = stripLocalePrefix(Astro.url.pathname);
 const normalizedCurrent = normalizePath(currentPath);
 ---
 
@@ -28,7 +39,7 @@ const normalizedCurrent = normalizePath(currentPath);
 >
 	<div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5">
 		<a
-			href="/"
+			href={withLocale("/", locale)}
 			class="text-sm font-semibold tracking-widest text-slate-900 transition-colors hover:text-purple-700 dark:text-zinc-100 dark:hover:text-purple-200"
 		>
 			JMF
@@ -40,28 +51,30 @@ const normalizedCurrent = normalizePath(currentPath);
 					const active = normalizedCurrent === link.href;
 					return (
 						<a
-							href={link.href}
+							href={withLocale(link.href, locale)}
 							class={`transition-colors ${
 								active
 									? "text-purple-700 dark:text-purple-300"
 									: "text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-purple-200"
 							}`}
 						>
-							{link.label}
+							{t(locale, link.labelKey)}
 						</a>
 					);
 				})
 			}
 
-			<span id="theme-slot-desktop" class="ml-1 inline-flex"></span>
+			<LanguageToggle locale={locale} />
+			<span id="theme-slot-desktop" class="inline-flex"></span>
 		</nav>
 
 		<div class="flex items-center gap-3 md:hidden">
+			<LanguageToggle locale={locale} />
 			<span id="theme-slot-mobile" class="inline-flex"></span>
 
 			<button
 				id="menu-open"
-				aria-label="Open menu"
+				aria-label={t(locale, "header.openMenu")}
 				class="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-zinc-300 dark:hover:bg-zinc-800/40 dark:hover:text-zinc-50"
 				type="button"
 			>
@@ -72,35 +85,28 @@ const normalizedCurrent = normalizePath(currentPath);
 </header>
 
 <div class="hidden">
-	<ThemeToggle />
+	<ThemeToggle locale={locale} />
 </div>
 
-<div
-	id="mobile-menu"
-	class="fixed inset-0 z-50 hidden md:hidden"
-	aria-hidden="true"
->
+<div id="mobile-menu" class="fixed inset-0 z-50 hidden md:hidden" aria-hidden="true">
 	<div
 		id="menu-overlay"
 		class="absolute inset-0 bg-black/40 opacity-0 backdrop-blur-sm transition-opacity duration-200"
-	>
-	</div>
+	></div>
 
 	<aside
 		id="menu-panel"
 		class="absolute top-0 right-0 h-full w-72 translate-x-full transform border-l border-slate-200/70 bg-white/90 p-6 backdrop-blur transition-transform duration-250 ease-out dark:border-zinc-800/60 dark:bg-zinc-900/85"
-		aria-label="Mobile navigation"
+		aria-label={t(locale, "header.mobileNav")}
 	>
 		<div class="mb-8 flex items-center justify-between">
-			<span
-				class="text-sm font-semibold tracking-widest text-slate-900 dark:text-zinc-100"
-			>
+			<span class="text-sm font-semibold tracking-widest text-slate-900 dark:text-zinc-100">
 				JMF
 			</span>
 
 			<button
 				id="menu-close"
-				aria-label="Close menu"
+				aria-label={t(locale, "header.closeMenu")}
 				class="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-zinc-300 dark:hover:bg-zinc-800/40 dark:hover:text-zinc-50"
 				type="button"
 			>
@@ -114,7 +120,7 @@ const normalizedCurrent = normalizePath(currentPath);
 					const active = normalizedCurrent === link.href;
 					return (
 						<a
-							href={link.href}
+							href={withLocale(link.href, locale)}
 							class={`rounded-2xl border px-4 py-3 text-sm font-semibold transition ${
 								active
 									? "border-purple-500/25 bg-purple-500/10 text-purple-700 dark:border-purple-500/25 dark:text-purple-300"
@@ -122,7 +128,7 @@ const normalizedCurrent = normalizePath(currentPath);
 							}`}
 							data-close-menu
 						>
-							{link.label}
+							{t(locale, link.labelKey)}
 						</a>
 					);
 				})

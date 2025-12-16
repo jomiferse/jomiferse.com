@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { t, type Locale } from "@/i18n";
 
 interface Certification {
 	name: string;
@@ -11,7 +12,10 @@ interface Certification {
 	skills?: string[];
 }
 
-const { certification } = Astro.props as { certification: Certification };
+const {
+	certification,
+	locale = "en",
+} = Astro.props as { certification: Certification; locale?: Locale };
 
 const hasUrl = Boolean(certification.url);
 ---
@@ -59,7 +63,9 @@ const hasUrl = Boolean(certification.url);
 	{
 		certification.credentialId ? (
 			<p class="relative mt-2 text-xs text-slate-500 dark:text-zinc-400">
-				<span class="font-semibold text-slate-600 dark:text-zinc-300">ID:</span>{" "}
+				<span class="font-semibold text-slate-600 dark:text-zinc-300">
+					{t(locale, "certificationCard.idLabel")}
+				</span>{" "}
 				<span class="break-all">{certification.credentialId}</span>
 			</p>
 		) : null
@@ -87,7 +93,7 @@ const hasUrl = Boolean(certification.url);
 					class="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-purple-300 hover:text-purple-700 dark:border-zinc-800/70 dark:bg-zinc-900/40 dark:text-zinc-200 dark:hover:border-purple-500/40 dark:hover:text-purple-200"
 				>
 					<Icon name="badge-check" class="h-5 w-5" />
-					View credential
+					{t(locale, "certificationCard.viewCredential")}
 				</a>
 			</div>
 		) : null
