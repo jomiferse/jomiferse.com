@@ -2,8 +2,8 @@
 import Footer from "@/components/common/Footer.astro";
 import Header from "@/components/common/Header.astro";
 import "@/styles/global.css";
-import cv from "@/data/cv.json";
 import { getLocaleFromPath, type Locale } from "@/i18n";
+import { getCv } from "@cv";
 
 const { title, description } = Astro.props as {
 	title: string;
@@ -11,6 +11,7 @@ const { title, description } = Astro.props as {
 };
 
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
+const cv = getCv(locale);
 
 const canonicalUrl = Astro.site
 	? new URL(Astro.url.pathname, Astro.site).toString()
@@ -69,6 +70,6 @@ const alternateEs = buildAlternate("es");
 	<main class="mx-auto w-full max-w-5xl flex-1 px-4 pt-10 pb-12 md:pt-12 md:pb-16">
 		<slot />
 	</main>
-	<Footer />
+	<Footer locale={locale} />
 	</body>
 </html>

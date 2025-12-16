@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { t, type Locale } from "@/i18n";
 
-const { toEmail, locale } = Astro.props as { toEmail: string; locale: Locale };
+const { locale } = Astro.props as { locale: Locale };
 ---
 
 <form
@@ -11,7 +11,7 @@ const { toEmail, locale } = Astro.props as { toEmail: string; locale: Locale };
 	enctype="multipart/form-data"
 	class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm backdrop-blur transition-all duration-300 hover:border-purple-400/60 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-purple-500/50"
 >
-	<input type="hidden" name="toEmail" value={toEmail} />
+	<input type="hidden" name="locale" value={locale} />
 
 	<div class="space-y-3">
 		<label for="contact-name" class="sr-only">

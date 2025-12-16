@@ -1,13 +1,14 @@
 ---
-import cv from "@cv";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
 import { Icon } from "astro-icon/components";
 import { getLocaleFromPath, t } from "@/i18n";
+import { getCv } from "@cv";
 
 export const prerender = false;
 
 const locale = getLocaleFromPath(Astro.url.pathname);
+const cv = getCv(locale);
 
 const pageTitle = `${t(locale, "contact.meta.title")} – ${cv.name}`;
 const pageDescription = t(locale, "contact.meta.description").replace("{name}", cv.name);
