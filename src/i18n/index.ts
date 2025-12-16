@@ -20,4 +20,3 @@ export function t(locale: Locale, key: string): string {
 
 	return key;
 }
-

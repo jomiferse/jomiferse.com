@@ -30,7 +30,10 @@ const pageDescription = t(locale, "home.meta.description") || cv.headline;
 						<div class="rounded-full bg-slate-50 p-2 dark:bg-zinc-950">
 							<Image
 								src={avatar}
-								alt={t(locale, "home.hero.avatarAlt").replace("{name}", cv.name)}
+								alt={t(locale, "home.hero.avatarAlt").replace(
+									"{name}",
+									cv.name,
+								)}
 								width={360}
 								height={360}
 								loading="eager"
@@ -72,7 +75,8 @@ const pageDescription = t(locale, "home.meta.description") || cv.headline;
 					<div
 						class="pointer-events-none absolute top-full left-1/2 z-20 mt-3 w-max -translate-x-1/2 scale-95 rounded-xl bg-white/95 px-3 py-2 text-[11px] font-medium text-slate-900 opacity-0 shadow-lg ring-1 ring-slate-200 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-900 dark:text-zinc-100 dark:ring-zinc-800"
 					>
-						{t(locale, "home.badge.focusedOn")} {cv.focus}
+						{t(locale, "home.badge.focusedOn")}
+						{cv.focus}
 					</div>
 				</div>
 			</div>
@@ -353,7 +357,9 @@ const pageDescription = t(locale, "home.meta.description") || cv.headline;
 							</div>
 
 							<div class="leading-tight">
-								<p class="text-sm font-semibold text-slate-900 dark:text-zinc-100">
+								<p
+									class="text-sm font-semibold text-slate-900 dark:text-zinc-100"
+								>
 									{t(locale, "skills.languages")}
 								</p>
 								<p class="text-[12px] text-slate-600 dark:text-zinc-400">

@@ -12,10 +12,10 @@ interface Certification {
 	skills?: string[];
 }
 
-const {
-	certification,
-	locale = "en",
-} = Astro.props as { certification: Certification; locale?: Locale };
+const { certification, locale = "en" } = Astro.props as {
+	certification: Certification;
+	locale?: Locale;
+};
 
 const hasUrl = Boolean(certification.url);
 ---

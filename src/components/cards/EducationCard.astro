@@ -13,10 +13,10 @@ interface Education {
 	skills?: string[];
 }
 
-const {
-	education,
-	locale = "en",
-} = Astro.props as { education: Education; locale?: Locale };
+const { education, locale = "en" } = Astro.props as {
+	education: Education;
+	locale?: Locale;
+};
 
 const dateLabel = `${education.startDate} – ${education.endDate}`;
 ---

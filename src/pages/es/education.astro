@@ -10,8 +10,10 @@ const cv = getCv(locale);
 const education = cv.education ?? [];
 
 const pageTitle = `${t(locale, "education.meta.title")} – ${cv.name}`;
-const pageDescription =
-	t(locale, "education.meta.description").replace("{name}", cv.name);
+const pageDescription = t(locale, "education.meta.description").replace(
+	"{name}",
+	cv.name,
+);
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -32,9 +34,11 @@ const pageDescription =
 
 	<section class="relative">
 		<div class="grid gap-5">
-			{education.map((item) => (
-				<EducationCard education={item} locale={locale} />
-			))}
+			{
+				education.map((item) => (
+					<EducationCard education={item} locale={locale} />
+				))
+			}
 		</div>
 	</section>
 </BaseLayout>

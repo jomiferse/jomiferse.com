@@ -20,7 +20,8 @@ const links: NavLink[] = [
 	{ href: "/contact", labelKey: "nav.contact" },
 ];
 
-const normalizePath = (path: string) => (path === "/" ? "/" : path.replace(/\/$/, ""));
+const normalizePath = (path: string) =>
+	path === "/" ? "/" : path.replace(/\/$/, "");
 
 const withLocale = (href: string, loc: Locale) => {
 	if (href.startsWith("/en") || href.startsWith("/es")) return href;
@@ -88,11 +89,16 @@ const normalizedCurrent = normalizePath(currentPath);
 	<ThemeToggle locale={locale} />
 </div>
 
-<div id="mobile-menu" class="fixed inset-0 z-50 hidden md:hidden" aria-hidden="true">
+<div
+	id="mobile-menu"
+	class="fixed inset-0 z-50 hidden md:hidden"
+	aria-hidden="true"
+>
 	<div
 		id="menu-overlay"
 		class="absolute inset-0 bg-black/40 opacity-0 backdrop-blur-sm transition-opacity duration-200"
-	></div>
+	>
+	</div>
 
 	<aside
 		id="menu-panel"
@@ -100,7 +106,9 @@ const normalizedCurrent = normalizePath(currentPath);
 		aria-label={t(locale, "header.mobileNav")}
 	>
 		<div class="mb-8 flex items-center justify-between">
-			<span class="text-sm font-semibold tracking-widest text-slate-900 dark:text-zinc-100">
+			<span
+				class="text-sm font-semibold tracking-widest text-slate-900 dark:text-zinc-100"
+			>
 				JMF
 			</span>
 

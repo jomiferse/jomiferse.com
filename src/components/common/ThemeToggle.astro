@@ -37,8 +37,10 @@ const { locale } = Astro.props as { locale: Locale };
 			sun.classList.toggle("hidden", !dark);
 			moon.classList.toggle("hidden", dark);
 
-			const darkLabel = btn.getAttribute("data-label-light") || "Switch to light mode";
-			const lightLabel = btn.getAttribute("data-label-dark") || "Switch to dark mode";
+			const darkLabel =
+				btn.getAttribute("data-label-light") || "Switch to light mode";
+			const lightLabel =
+				btn.getAttribute("data-label-dark") || "Switch to dark mode";
 
 			btn.setAttribute("aria-label", dark ? darkLabel : lightLabel);
 		};

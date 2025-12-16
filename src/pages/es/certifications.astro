@@ -10,8 +10,10 @@ const cv = getCv(locale);
 const certifications = cv.certifications ?? [];
 
 const pageTitle = `${t(locale, "certifications.meta.title")} – ${cv.name}`;
-const pageDescription =
-	t(locale, "certifications.meta.description").replace("{name}", cv.name);
+const pageDescription = t(locale, "certifications.meta.description").replace(
+	"{name}",
+	cv.name,
+);
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -31,8 +33,10 @@ const pageDescription =
 	</header>
 
 	<section class="grid gap-5 md:grid-cols-1">
-		{certifications.map((certification) => (
-			<CertificationCard certification={certification} locale={locale} />
-		))}
+		{
+			certifications.map((certification) => (
+				<CertificationCard certification={certification} locale={locale} />
+			))
+		}
 	</section>
 </BaseLayout>

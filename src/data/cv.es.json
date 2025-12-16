@@ -57,12 +57,7 @@
       "startDate": "2020",
       "endDate": "2020",
       "description": "Máster centrado en tecnologías y habilidades necesarias para desarrollar y gestionar aplicaciones web y móviles, así como contenidos digitales y multimedia.",
-      "skills": [
-        "PHP",
-        "HTML",
-        "JavaScript",
-        "CSS"
-      ],
+      "skills": ["PHP", "HTML", "JavaScript", "CSS"],
       "notes": "Excelente"
     },
     {
@@ -72,14 +67,7 @@
       "startDate": "09/2018",
       "endDate": "06/2020",
       "description": "Formación avanzada en desarrollo de aplicaciones para múltiples sistemas operativos y dispositivos, cubriendo lenguajes como Java, JavaScript, Swift y Kotlin, gestión de bases de datos, arquitecturas escalables, control de versiones con Git y testing en distintos entornos.",
-      "skills": [
-        "Java",
-        "Kotlin",
-        "SQL",
-        "Swift",
-        "JavaScript",
-        "Git"
-      ],
+      "skills": ["Java", "Kotlin", "SQL", "Swift", "JavaScript", "Git"],
       "notes": "8.23 / 10"
     }
   ],
@@ -312,14 +300,7 @@
             "alt": "Vista previa de EduCash"
           }
         },
-        "technologies": [
-          "PHP",
-          "MySQL",
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "Git"
-        ],
+        "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Git"],
         "highlights": [
           "Diseñé, desarrollé e implementé la plataforma de afiliados asegurando integración con sistemas existentes.",
           "Mejoré continuamente la plataforma para aumentar funcionalidades y satisfacción de afiliados.",

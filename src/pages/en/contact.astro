@@ -11,7 +11,10 @@ const locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
 
 const pageTitle = `${t(locale, "contact.meta.title")} – ${cv.name}`;
-const pageDescription = t(locale, "contact.meta.description").replace("{name}", cv.name);
+const pageDescription = t(locale, "contact.meta.description").replace(
+	"{name}",
+	cv.name,
+);
 
 const isSent = Astro.url.searchParams.get("sent") === "1";
 ---
@@ -25,7 +28,9 @@ const isSent = Astro.url.searchParams.get("sent") === "1";
 			</span>
 		</h1>
 
-		<p class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300">
+		<p
+			class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300"
+		>
 			{t(locale, "contact.hero.subtitle")}
 		</p>
 	</header>
@@ -44,7 +49,9 @@ const isSent = Astro.url.searchParams.get("sent") === "1";
 					</span>
 
 					<div class="leading-tight">
-						<p class="text-[11px] font-semibold tracking-[0.26em] text-slate-500 dark:text-zinc-400">
+						<p
+							class="text-[11px] font-semibold tracking-[0.26em] text-slate-500 dark:text-zinc-400"
+						>
 							{t(locale, "contact.emailLabel")}
 						</p>
 						<p class="text-sm font-semibold text-slate-900 dark:text-zinc-100">
@@ -98,17 +105,21 @@ const isSent = Astro.url.searchParams.get("sent") === "1";
 
 		<div class="flex items-center gap-4 pt-1">
 			<div class="h-px flex-1 bg-slate-200/80 dark:bg-zinc-800/70"></div>
-			<p class="text-[11px] font-semibold tracking-[0.28em] text-slate-500 dark:text-zinc-500">
+			<p
+				class="text-[11px] font-semibold tracking-[0.28em] text-slate-500 dark:text-zinc-500"
+			>
 				{t(locale, "contact.divider")}
 			</p>
 			<div class="h-px flex-1 bg-slate-200/80 dark:bg-zinc-800/70"></div>
 		</div>
 
-		{isSent && (
-			<p class="rounded-2xl border border-emerald-400/30 bg-emerald-50 p-4 text-sm text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-200">
-				{t(locale, "contact.success")}
-			</p>
-		)}
+		{
+			isSent && (
+				<p class="rounded-2xl border border-emerald-400/30 bg-emerald-50 p-4 text-sm text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-200">
+					{t(locale, "contact.success")}
+				</p>
+			)
+		}
 
 		<ContactForm toEmail={cv.email} locale={locale} />
 	</section>

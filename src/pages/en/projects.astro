@@ -12,8 +12,10 @@ const companyProjects = cv.projects?.company ?? [];
 const personalProjects = cv.projects?.personal ?? [];
 
 const pageTitle = `${t(locale, "projects.meta.title")} – ${cv.name}`;
-const pageDescription =
-	t(locale, "projects.meta.description").replace("{name}", cv.name);
+const pageDescription = t(locale, "projects.meta.description").replace(
+	"{name}",
+	cv.name,
+);
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>

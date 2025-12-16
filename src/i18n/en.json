@@ -19,9 +19,12 @@
     "switchToDark": "Switch to dark mode",
     "switchToLight": "Switch to light mode"
   },
-  
+
   "home": {
-    "meta": { "title": "Portfolio", "description": "Backend-focused engineer specialized in Java, Spring Boot and scalable systems." },
+    "meta": {
+      "title": "Portfolio",
+      "description": "Backend-focused engineer specialized in Java, Spring Boot and scalable systems."
+    },
     "hero": {
       "greeting": "Hey! I'm",
       "cta": { "talk": "Let’s talk" },

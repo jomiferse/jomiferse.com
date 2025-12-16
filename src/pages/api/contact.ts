@@ -42,7 +42,11 @@ export const POST: APIRoute = async ({ request }) => {
 			const filename = (f.name ?? "attachment.pdf").toString();
 			const type = (f.type ?? "").toString();
 
-			if (type && type !== "application/pdf" && !filename.toLowerCase().endsWith(".pdf")) {
+			if (
+				type &&
+				type !== "application/pdf" &&
+				!filename.toLowerCase().endsWith(".pdf")
+			) {
 				return new Response("Only PDF files allowed", { status: 400 });
 			}
 

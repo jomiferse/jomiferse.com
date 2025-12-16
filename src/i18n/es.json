@@ -21,7 +21,10 @@
   },
 
   "home": {
-    "meta": { "title": "Portfolio", "description": "Ingeniero backend especializado en Java, Spring Boot y sistemas escalables." },
+    "meta": {
+      "title": "Portfolio",
+      "description": "Ingeniero backend especializado en Java, Spring Boot y sistemas escalables."
+    },
     "hero": {
       "greeting": "¡Hey! Soy",
       "cta": { "talk": "Hablemos" },
@@ -29,7 +32,10 @@
     },
     "badge": { "basedIn": "Vivo en", "focusedOn": "Actualmente enfocado en" },
     "stats": { "years": "AÑOS DE EXPERIENCIA", "commitment": "COMPROMISO" },
-    "sections": { "about": "Sobre mí", "skills": "Habilidades y especialización" }
+    "sections": {
+      "about": "Sobre mí",
+      "skills": "Habilidades y especialización"
+    }
   },
 
   "projects": {

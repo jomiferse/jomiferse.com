@@ -11,8 +11,10 @@ const cv = getCv(locale);
 const experience = cv.experience ?? [];
 
 const pageTitle = `${t(locale, "experience.meta.title")} – ${cv.name}`;
-const pageDescription =
-	t(locale, "experience.meta.description").replace("{name}", cv.name);
+const pageDescription = t(locale, "experience.meta.description").replace(
+	"{name}",
+	cv.name,
+);
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -30,7 +32,9 @@ const pageDescription =
 		</p>
 	</header>
 
-	<ol class="relative space-y-6 border-s border-slate-200 ps-10 dark:border-zinc-800">
+	<ol
+		class="relative space-y-6 border-s border-slate-200 ps-10 dark:border-zinc-800"
+	>
 		{
 			experience.map((exp) => (
 				<li class="relative">
