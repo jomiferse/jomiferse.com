@@ -4,7 +4,6 @@
     "projects": "Proyectos",
     "experience": "Experiencia",
     "education": "Formación",
-    "certifications": "Certificaciones",
     "contact": "Contacto"
   },
 
@@ -78,13 +77,17 @@
 
   "education": {
     "meta": {
-      "title": "Formación",
-      "description": "Formación académica de {name}."
+      "title": "Formación y certificaciones",
+      "description": "Formación académica y certificaciones profesionales de {name}."
     },
     "hero": {
-      "titlePrimary": "Formación",
-      "titleSecondary": "académica",
-      "subtitle": "Trayectoria académica que respalda mi desarrollo como ingeniero de software."
+      "titlePrefix": "Formación",
+      "titleHighlight": "y certificaciones",
+      "subtitle": "Trayectoria académica y aprendizaje continuo que respaldan mi desarrollo como ingeniero de software."
+    },
+    "sections": {
+      "certifications": "Certificaciones",
+      "education": "Formación"
     }
   },
 
