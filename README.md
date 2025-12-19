@@ -32,7 +32,6 @@
 - **JSON-Driven Content** – Fully localized CV data
 - **Astro Islands Architecture** – Partial hydration only where needed
 
-
 ---
 
 ## 🌍 Internationalization (i18n)
