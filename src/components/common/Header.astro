@@ -143,7 +143,19 @@ const normalizedCurrent = normalizePath(currentPath);
 
 <script is:inline>
 	(() => {
-		/* Theme toggle (support multiple buttons: desktop + mobile) */
+		/* Lang toggle */
+		document.querySelectorAll('a[data-lang]').forEach((el) => {
+			el.addEventListener("click", () => {
+				const lang = el.getAttribute("data-lang");
+				if (lang !== "en" && lang !== "es") return;
+
+				try {
+					localStorage.setItem("lang", lang);
+				} catch {}
+			});
+		});
+
+		/* Theme toggle */
 		const buttons = document.querySelectorAll("button.theme-toggle");
 		if (!buttons.length) return;
 
