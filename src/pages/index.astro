@@ -1,14 +1,9 @@
 ---
+
 ---
-<html lang="en">
-	<head>
-		<script>
-			(() => {
-				const lang = navigator.language || "en";
-				const prefersEs = lang.toLowerCase().startsWith("es");
-				window.location.replace(prefersEs ? "/es" : "/en");
-			})();
-		</script>
-	</head>
-	<body></body>
-</html>
+
+<script>
+	const storedLang = localStorage.getItem("lang");
+	const lang = storedLang === "es" ? "es" : "en";
+	window.location.replace(`/${lang}`);
+</script>
