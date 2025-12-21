@@ -28,49 +28,46 @@ const extraTags = cleanTags.length > 3 ? cleanTags.length - 3 : 0;
 
 <a href={href} class="group block focus:outline-none">
 	<article
-		class="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 backdrop-blur transition-all duration-300
-           hover:-translate-y-1 hover:border-purple-500/30
-           focus-visible:ring-2 focus-visible:ring-purple-500/40 focus-visible:outline-none
-           dark:border-zinc-800/70 dark:bg-zinc-900/40 dark:hover:border-purple-500/40"
+		class="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-purple-500/30 focus-visible:ring-2 focus-visible:ring-purple-500/40 focus-visible:outline-none dark:border-zinc-800/70 dark:bg-zinc-900/40 dark:hover:border-purple-500/40"
 	>
-		{featured && (
-			<div class="absolute top-0 right-0 -mr-px -mt-px overflow-hidden rounded-bl-3xl rounded-tr-3xl">
-				<div class="relative">
-					<div class="absolute inset-0 bg-linear-to-br from-purple-500 to-purple-600 opacity-90"></div>
-					<div class="relative px-4 py-2">
-            <span class="flex items-center gap-1.5 text-xs font-bold text-white">
-              <Icon name="sparkles" class="h-3.5 w-3.5" />
-              Featured
-            </span>
+		{
+			featured && (
+				<div class="absolute top-0 right-0 -mt-px -mr-px overflow-hidden rounded-tr-3xl rounded-bl-3xl">
+					<div class="relative">
+						<div class="absolute inset-0 bg-linear-to-br from-purple-500 to-purple-600 opacity-90" />
+						<div class="relative px-4 py-2">
+							<span class="flex items-center gap-1.5 text-xs font-bold text-white">
+								<Icon name="sparkles" class="h-3.5 w-3.5" />
+								Featured
+							</span>
+						</div>
 					</div>
 				</div>
-			</div>
-		)}
+			)
+		}
 
 		<header class="relative">
 			<div class="flex flex-wrap items-center gap-3 text-xs">
-        <span
-					class="inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-slate-50/80 px-3 py-1.5 font-medium text-slate-600
-                 transition-colors group-hover:border-purple-500/20 group-hover:bg-purple-50/50 group-hover:text-purple-700
-                 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-300 dark:group-hover:border-purple-500/30 dark:group-hover:bg-purple-950/30 dark:group-hover:text-purple-300"
+				<span
+					class="inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-slate-50/80 px-3 py-1.5 font-medium text-slate-600 transition-colors group-hover:border-purple-500/20 group-hover:bg-purple-50/50 group-hover:text-purple-700 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-300 dark:group-hover:border-purple-500/30 dark:group-hover:bg-purple-950/30 dark:group-hover:text-purple-300"
 				>
-          <Icon name="calendar" class="h-3.5 w-3.5" />
+					<Icon name="calendar" class="h-3.5 w-3.5" />
 					{dateLabel}
-        </span>
+				</span>
 
-				{readingTime && (
-					<span
-						class="inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-slate-50/80 px-3 py-1.5 font-medium text-slate-600
-                   transition-colors group-hover:border-purple-500/20 group-hover:bg-purple-50/50 group-hover:text-purple-700
-                   dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-300 dark:group-hover:border-purple-500/30 dark:group-hover:bg-purple-950/30 dark:group-hover:text-purple-300"
-					>
-            <Icon name="clock" class="h-3.5 w-3.5" />
-						{readingTime}
-          </span>
-				)}
+				{
+					readingTime && (
+						<span class="inline-flex items-center gap-1.5 rounded-full border border-slate-200/80 bg-slate-50/80 px-3 py-1.5 font-medium text-slate-600 transition-colors group-hover:border-purple-500/20 group-hover:bg-purple-50/50 group-hover:text-purple-700 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-300 dark:group-hover:border-purple-500/30 dark:group-hover:bg-purple-950/30 dark:group-hover:text-purple-300">
+							<Icon name="clock" class="h-3.5 w-3.5" />
+							{readingTime}
+						</span>
+					)
+				}
 			</div>
 
-			<h3 class="mt-5 text-xl font-bold tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-purple-700 md:text-2xl dark:text-zinc-50 dark:group-hover:text-purple-300">
+			<h3
+				class="mt-5 text-xl font-bold tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-purple-700 md:text-2xl dark:text-zinc-50 dark:group-hover:text-purple-300"
+			>
 				{title}
 				<span
 					class="mt-2 block h-1 w-0 rounded-full bg-linear-to-r from-purple-600 to-purple-400 transition-all duration-300 group-hover:w-16 dark:from-purple-400 dark:to-purple-300"
@@ -78,40 +75,39 @@ const extraTags = cleanTags.length > 3 ? cleanTags.length - 3 : 0;
 			</h3>
 		</header>
 
-		<p class="mt-4 leading-relaxed text-slate-600 line-clamp-3 dark:text-zinc-300">
+		<p
+			class="mt-4 line-clamp-3 leading-relaxed text-slate-600 dark:text-zinc-300"
+		>
 			{description}
 		</p>
 
-		{cleanTags.length > 0 && (
-			<footer class="mt-6 flex flex-wrap items-center gap-2">
-				{visibleTags.map((tag) => (
-					<span
-						class="inline-flex items-center gap-1 rounded-xl border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold
-                   text-slate-700 backdrop-blur transition-all duration-200
-                   group-hover:border-purple-500/30 group-hover:bg-purple-50/50 group-hover:text-purple-700
-                   dark:border-zinc-800/70 dark:bg-zinc-950/50 dark:text-zinc-300 dark:group-hover:border-purple-500/40 dark:group-hover:bg-purple-950/30 dark:group-hover:text-purple-300"
-					>
-            <Icon name="hash" class="h-3 w-3 opacity-60" />
-						{tag}
-          </span>
-				))}
+		{
+			cleanTags.length > 0 && (
+				<footer class="mt-6 flex flex-wrap items-center gap-2">
+					{visibleTags.map((tag) => (
+						<span class="inline-flex items-center gap-1 rounded-xl border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 backdrop-blur transition-all duration-200 group-hover:border-purple-500/30 group-hover:bg-purple-50/50 group-hover:text-purple-700 dark:border-zinc-800/70 dark:bg-zinc-950/50 dark:text-zinc-300 dark:group-hover:border-purple-500/40 dark:group-hover:bg-purple-950/30 dark:group-hover:text-purple-300">
+							<Icon name="hash" class="h-3 w-3 opacity-60" />
+							{tag}
+						</span>
+					))}
 
-				{extraTags > 0 && (
-					<span
-						class="inline-flex h-7 w-7 items-center justify-center rounded-full border border-slate-200/80 bg-slate-100/80 text-xs font-bold
-                   text-slate-600 transition-all duration-200
-                   group-hover:border-purple-500/30 group-hover:bg-purple-100/50 group-hover:text-purple-700
-                   dark:border-zinc-800/70 dark:bg-zinc-900/60 dark:text-zinc-400 dark:group-hover:border-purple-500/40 dark:group-hover:bg-purple-950/40 dark:group-hover:text-purple-300"
-					>
-            +{extraTags}
-          </span>
-				)}
-			</footer>
-		)}
+					{extraTags > 0 && (
+						<span class="inline-flex h-7 w-7 items-center justify-center rounded-full border border-slate-200/80 bg-slate-100/80 text-xs font-bold text-slate-600 transition-all duration-200 group-hover:border-purple-500/30 group-hover:bg-purple-100/50 group-hover:text-purple-700 dark:border-zinc-800/70 dark:bg-zinc-900/60 dark:text-zinc-400 dark:group-hover:border-purple-500/40 dark:group-hover:bg-purple-950/40 dark:group-hover:text-purple-300">
+							+{extraTags}
+						</span>
+					)}
+				</footer>
+			)
+		}
 
-		<div class="mt-6 flex items-center gap-2 text-sm font-semibold text-purple-600 transition-all duration-300 group-hover:gap-3 dark:text-purple-400">
+		<div
+			class="mt-6 flex items-center gap-2 text-sm font-semibold text-purple-600 transition-all duration-300 group-hover:gap-3 dark:text-purple-400"
+		>
 			<span>Leer más</span>
-			<Icon name="arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+			<Icon
+				name="arrow-right"
+				class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+			/>
 		</div>
 	</article>
 </a>
