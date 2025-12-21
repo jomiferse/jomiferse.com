@@ -1,0 +1,114 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getLocaleStaticPaths, t } from "@/i18n";
+import { getCollection } from "astro:content";
+import { getCv } from "@cv";
+import BlogPostCard from "@/components/cards/BlogPostCard.astro";
+
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
+
+const { locale } = Astro.params;
+const cv = getCv(locale);
+
+const posts = (await getCollection("blog"))
+	.filter((p) => p.slug.startsWith(`${locale}/`))
+	.filter((p) => !p.data.draft)
+	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const toLocalSlug = (slug: string) =>
+	slug.replace(new RegExp(`^${locale}/`), "");
+
+const featuredPosts = posts
+	.filter((p) => p.data.tags?.includes("featured"))
+	.slice(0, 4);
+
+const latestPosts = posts.filter((p) => !p.data.tags?.includes("featured"));
+
+const pageTitle = `${t(locale, "blog.meta.title")} – ${cv.name}`;
+const pageDescription = t(locale, "blog.meta.description").replace(
+	"{name}",
+	cv.name,
+);
+
+const blogBasePath = `/${locale}/blog`;
+const dateLocale = locale === "es" ? "es-ES" : "en-GB";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+	<header class="mb-6 space-y-3">
+		<h1 class="text-3xl font-bold md:text-4xl">
+			{t(locale, "blog.hero.titlePrefix")}{" "}
+			<span class="text-purple-600 dark:text-purple-300">
+				{t(locale, "blog.hero.titleHighlight")}
+			</span>
+		</h1>
+
+		<p class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300">
+			{t(locale, "blog.hero.subtitle")}
+		</p>
+	</header>
+
+	{featuredPosts.length > 0 && (
+		<section class="mt-2">
+			<div class="mb-4 flex items-center gap-4">
+				<h2 class="text-lg font-semibold text-slate-900 dark:text-zinc-50">
+					{t(locale, "blog.sections.featured.title")}
+				</h2>
+				<div class="h-px flex-1 bg-slate-200 dark:bg-zinc-800/70"></div>
+			</div>
+
+			<div class="grid gap-5 md:grid-cols-2">
+				{featuredPosts.map((post) => (
+					<BlogPostCard
+						href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
+						title={post.data.title}
+						description={post.data.description}
+						dateLabel={post.data.date.toLocaleDateString(dateLocale, {
+							year: "numeric",
+							month: "short",
+							day: "numeric",
+						})}
+						tags={post.data.tags ?? []}
+						featured={true}
+						readingTime={post.data.readingTime}
+					/>
+				))}
+			</div>
+		</section>
+	)}
+
+	<section class="mt-10">
+		<div class="mb-4 flex items-center gap-4">
+			<h2 class="text-lg font-semibold text-slate-900 dark:text-zinc-50">
+				{t(locale, "blog.sections.latest.title")}
+			</h2>
+			<div class="h-px flex-1 bg-slate-200 dark:bg-zinc-800/70"></div>
+		</div>
+
+		{latestPosts.length > 0 ? (
+			<div class="grid gap-5 md:grid-cols-2">
+				{latestPosts.map((post) => (
+					<BlogPostCard
+						href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
+						title={post.data.title}
+						description={post.data.description}
+						dateLabel={post.data.date.toLocaleDateString(dateLocale, {
+							year: "numeric",
+							month: "short",
+							day: "numeric",
+						})}
+						tags={post.data.tags ?? []}
+						featured={false}
+						readingTime={post.data.readingTime}
+					/>
+				))}
+			</div>
+		) : (
+			<div class="rounded-3xl border border-slate-200/80 bg-white/70 p-6 text-sm text-slate-600 shadow-sm backdrop-blur dark:border-zinc-800/70 dark:bg-zinc-950/40 dark:text-zinc-400">
+				{t(locale, "blog.empty.latest")}
+			</div>
+		)}
+	</section>
+</BaseLayout>

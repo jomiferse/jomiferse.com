@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogPostLayout from "@/layouts/BlogPostLayout.astro";
+import { getCollection, getEntry } from "astro:content";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+
+	return posts.map((p) => {
+		const slugParts = p.slug.split("/");
+		const locale = slugParts[0];
+		const slug = slugParts.slice(1).join("/");
+
+		return {
+			params: {
+				locale,
+				slug
+			},
+			props: {
+				fullSlug: p.slug
+			},
+		};
+	});
+}
+
+const { locale, slug } = Astro.params;
+const { fullSlug } = Astro.props;
+
+const post = await getEntry("blog", fullSlug);
+if (!post) throw new Error(`Post not found: ${fullSlug}`);
+
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+	<BlogPostLayout frontmatter={post.data} locale={locale}>
+		<Content />
+	</BlogPostLayout>
+</BaseLayout>

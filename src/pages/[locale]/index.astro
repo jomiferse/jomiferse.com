@@ -1,12 +1,15 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
-import avatar from "@/assets/avatar.avif";
 import { Icon } from "astro-icon/components";
-import { getLocaleFromPath, t } from "@/i18n";
+import { t, getLocaleStaticPaths } from "@/i18n";
 import { getCv } from "@cv";
 
-const locale = getLocaleFromPath(Astro.url.pathname);
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
+
+const { locale } = Astro.params;
 const cv = getCv(locale);
 
 const pageTitle = `${t(locale, "home.meta.title")} - ${cv.name}`;
@@ -29,7 +32,7 @@ const pageDescription = t(locale, "home.meta.description") || cv.headline;
 					>
 						<div class="rounded-full bg-slate-50 p-2 dark:bg-zinc-950">
 							<Image
-								src={avatar}
+								src={"/images/avatar.avif"}
 								alt={t(locale, "home.hero.avatarAlt").replace(
 									"{name}",
 									cv.name,

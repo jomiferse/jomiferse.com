@@ -9,15 +9,20 @@ interface NavLink {
 	labelKey: string;
 }
 
-const { locale } = Astro.props as { locale: Locale };
-
 const links: NavLink[] = [
 	{ href: "/", labelKey: "nav.home" },
 	{ href: "/projects", labelKey: "nav.projects" },
 	{ href: "/experience", labelKey: "nav.experience" },
 	{ href: "/education", labelKey: "nav.education" },
+	{ href: "/blog", labelKey: "nav.blog" },
 	{ href: "/contact", labelKey: "nav.contact" },
 ];
+
+interface Props {
+	locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props as Props;
 
 const normalizePath = (path: string) =>
 	path === "/" ? "/" : path.replace(/\/$/, "");
@@ -148,9 +153,7 @@ const normalizedCurrent = normalizePath(currentPath);
 				const lang = el.getAttribute("data-lang");
 				if (lang !== "en" && lang !== "es") return;
 
-				try {
-					localStorage.setItem("lang", lang);
-				} catch {}
+				document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
 			});
 		});
 

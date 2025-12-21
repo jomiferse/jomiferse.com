@@ -4,7 +4,8 @@
     "projects": "Proyectos",
     "experience": "Experiencia",
     "education": "Formación",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "blog": "Blog"
   },
 
   "header": {
@@ -165,5 +166,37 @@
     "attachmentLabel": "Adjuntar PDF",
     "attachmentHint": "Opcional. Solo PDF.",
     "submit": "Enviar mensaje"
+  },
+
+  "blog": {
+    "meta": {
+      "title": "Blog",
+      "description": "Notas técnicas y artículos de {name}."
+    },
+    "hero": {
+      "titlePrefix": "Mi",
+      "titleHighlight": "Blog",
+      "subtitle": "Notas técnicas, aprendizajes y análisis en profundidad."
+    },
+    "post": {
+      "back": "Volver al blog",
+      "tags": "Etiquetas",
+      "footer": "¿Te gustó este artículo?",
+      "backToList": "Ver todos los posts"
+    },
+    "sections": {
+      "featured": {
+        "title": "Destacados",
+        "subtitle": "Artículos seleccionados."
+      },
+      "latest": {
+        "title": "Recientes",
+        "subtitle": "Publicaciones más recientes."
+      }
+    },
+    "empty": {
+      "featured": "Todavía no hay artículos destacados.",
+      "latest": "Aún no hay artículos publicados."
+    }
   }
 }
