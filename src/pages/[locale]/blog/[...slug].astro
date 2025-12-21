@@ -14,10 +14,10 @@ export async function getStaticPaths() {
 		return {
 			params: {
 				locale,
-				slug
+				slug,
 			},
 			props: {
-				fullSlug: p.slug
+				fullSlug: p.slug,
 			},
 		};
 	});

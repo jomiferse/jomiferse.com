@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* Estilos mejorados para contenido Markdown */
+/* Enhanced styles for Markdown content */
 .prose-wrapper {
 	@apply text-base leading-7 text-slate-700 dark:text-zinc-300;
 }
@@ -38,7 +38,7 @@
 	@apply mt-8 mb-2 text-base font-semibold text-slate-900 dark:text-zinc-100;
 }
 
-/* Párrafos */
+/* Paragraphs */
 .prose-wrapper p {
 	@apply my-6 leading-relaxed;
 }
@@ -61,16 +61,16 @@
 	@apply underline decoration-2 underline-offset-2;
 }
 
-/* Strong y énfasis */
+/* Strong and emphasis */
 .prose-wrapper strong {
 	@apply font-semibold text-slate-900 dark:text-zinc-50;
 }
 
 .prose-wrapper em {
-	@apply italic text-slate-700 dark:text-zinc-300;
+	@apply text-slate-700 italic dark:text-zinc-300;
 }
 
-/* Listas */
+/* Lists */
 .prose-wrapper ul,
 .prose-wrapper ol {
 	@apply my-6 space-y-2 pl-6;
@@ -96,7 +96,7 @@
 	@apply text-purple-500;
 }
 
-/* Listas anidadas */
+/* Nested lists */
 .prose-wrapper ul ul,
 .prose-wrapper ul ol,
 .prose-wrapper ol ul,
@@ -106,7 +106,7 @@
 
 /* Blockquotes */
 .prose-wrapper blockquote {
-	@apply my-8 border-l-4 border-purple-500 bg-purple-50/50 py-4 px-6 not-italic rounded-r-xl dark:bg-purple-950/20;
+	@apply my-8 rounded-r-xl border-l-4 border-purple-500 bg-purple-50/50 px-6 py-4 not-italic dark:bg-purple-950/20;
 }
 
 .prose-wrapper blockquote p {
@@ -128,13 +128,13 @@
 
 .prose-wrapper pre code {
 	@apply bg-transparent p-0 text-sm leading-relaxed text-slate-50;
-	font-family: 'Fira Code', 'Cascadia Code', 'Monaco', 'Courier New', monospace;
+	font-family: "Fira Code", "Cascadia Code", "Monaco", "Courier New", monospace;
 }
 
 /* Inline code */
 .prose-wrapper :not(pre) > code {
 	@apply rounded-md bg-purple-100 px-1.5 py-0.5 text-sm font-medium text-purple-800 dark:bg-purple-950/50 dark:text-purple-300;
-	font-family: 'Fira Code', 'Cascadia Code', 'Monaco', 'Courier New', monospace;
+	font-family: "Fira Code", "Cascadia Code", "Monaco", "Courier New", monospace;
 }
 
 .prose-wrapper :not(pre) > code::before,
@@ -214,7 +214,7 @@
 	@apply border-emerald-200 bg-emerald-50/50 dark:border-emerald-900/50 dark:bg-emerald-950/20;
 }
 
-/* Details/Summary (acordeones) */
+/* Details / Summary (accordions) */
 .prose-wrapper details {
 	@apply my-6 rounded-xl border border-slate-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900/50;
 }
@@ -224,7 +224,7 @@
 }
 
 .prose-wrapper details[open] summary {
-	@apply mb-4 pb-4 border-b border-slate-200 dark:border-zinc-800;
+	@apply mb-4 border-b border-slate-200 pb-4 dark:border-zinc-800;
 }
 
 /* Footnotes */

@@ -5,28 +5,33 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
-    "start": "astro preview",
     "check": "astro check",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "lint": "eslint . --cache --cache-location .eslintcache --max-warnings 0",
+    "lint:fix": "eslint . --cache --cache-location .eslintcache --fix",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/vercel": "^9.0.2",
+    "astro": "^5.16.6",
     "astro-icon": "^1.1.5",
     "resend": "^6.6.0",
     "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/vercel": "^9.0.2",
     "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.5",
-    "prettier": "3.7.4",
+    "@typescript-eslint/parser": "^8.50.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
+    "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vercel": "^50.1.3"
   }
 }

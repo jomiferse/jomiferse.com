@@ -45,39 +45,43 @@ const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 			</span>
 		</h1>
 
-		<p class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300">
+		<p
+			class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300"
+		>
 			{t(locale, "blog.hero.subtitle")}
 		</p>
 	</header>
 
-	{featuredPosts.length > 0 && (
-		<section class="mt-2">
-			<div class="mb-4 flex items-center gap-4">
-				<h2 class="text-lg font-semibold text-slate-900 dark:text-zinc-50">
-					{t(locale, "blog.sections.featured.title")}
-				</h2>
-				<div class="h-px flex-1 bg-slate-200 dark:bg-zinc-800/70"></div>
-			</div>
+	{
+		featuredPosts.length > 0 && (
+			<section class="mt-2">
+				<div class="mb-4 flex items-center gap-4">
+					<h2 class="text-lg font-semibold text-slate-900 dark:text-zinc-50">
+						{t(locale, "blog.sections.featured.title")}
+					</h2>
+					<div class="h-px flex-1 bg-slate-200 dark:bg-zinc-800/70" />
+				</div>
 
-			<div class="grid gap-5 md:grid-cols-2">
-				{featuredPosts.map((post) => (
-					<BlogPostCard
-						href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
-						title={post.data.title}
-						description={post.data.description}
-						dateLabel={post.data.date.toLocaleDateString(dateLocale, {
-							year: "numeric",
-							month: "short",
-							day: "numeric",
-						})}
-						tags={post.data.tags ?? []}
-						featured={true}
-						readingTime={post.data.readingTime}
-					/>
-				))}
-			</div>
-		</section>
-	)}
+				<div class="grid gap-5 md:grid-cols-2">
+					{featuredPosts.map((post) => (
+						<BlogPostCard
+							href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
+							title={post.data.title}
+							description={post.data.description}
+							dateLabel={post.data.date.toLocaleDateString(dateLocale, {
+								year: "numeric",
+								month: "short",
+								day: "numeric",
+							})}
+							tags={post.data.tags ?? []}
+							featured={true}
+							readingTime={post.data.readingTime}
+						/>
+					))}
+				</div>
+			</section>
+		)
+	}
 
 	<section class="mt-10">
 		<div class="mb-4 flex items-center gap-4">
@@ -87,28 +91,30 @@ const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 			<div class="h-px flex-1 bg-slate-200 dark:bg-zinc-800/70"></div>
 		</div>
 
-		{latestPosts.length > 0 ? (
-			<div class="grid gap-5 md:grid-cols-2">
-				{latestPosts.map((post) => (
-					<BlogPostCard
-						href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
-						title={post.data.title}
-						description={post.data.description}
-						dateLabel={post.data.date.toLocaleDateString(dateLocale, {
-							year: "numeric",
-							month: "short",
-							day: "numeric",
-						})}
-						tags={post.data.tags ?? []}
-						featured={false}
-						readingTime={post.data.readingTime}
-					/>
-				))}
-			</div>
-		) : (
-			<div class="rounded-3xl border border-slate-200/80 bg-white/70 p-6 text-sm text-slate-600 shadow-sm backdrop-blur dark:border-zinc-800/70 dark:bg-zinc-950/40 dark:text-zinc-400">
-				{t(locale, "blog.empty.latest")}
-			</div>
-		)}
+		{
+			latestPosts.length > 0 ? (
+				<div class="grid gap-5 md:grid-cols-2">
+					{latestPosts.map((post) => (
+						<BlogPostCard
+							href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
+							title={post.data.title}
+							description={post.data.description}
+							dateLabel={post.data.date.toLocaleDateString(dateLocale, {
+								year: "numeric",
+								month: "short",
+								day: "numeric",
+							})}
+							tags={post.data.tags ?? []}
+							featured={false}
+							readingTime={post.data.readingTime}
+						/>
+					))}
+				</div>
+			) : (
+				<div class="rounded-3xl border border-slate-200/80 bg-white/70 p-6 text-sm text-slate-600 shadow-sm backdrop-blur dark:border-zinc-800/70 dark:bg-zinc-950/40 dark:text-zinc-400">
+					{t(locale, "blog.empty.latest")}
+				</div>
+			)
+		}
 	</section>
 </BaseLayout>
