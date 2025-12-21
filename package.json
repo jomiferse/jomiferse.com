@@ -11,8 +11,7 @@
     "lint": "eslint . --cache --cache-location .eslintcache --max-warnings 0",
     "lint:fix": "eslint . --cache --cache-location .eslintcache --fix",
     "format": "prettier . --write",
-    "format:check": "prettier . --check",
-    "clean": "rm -rf dist .astro .eslintcache node_modules/.cache"
+    "format:check": "prettier . --check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
