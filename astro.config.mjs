@@ -26,5 +26,9 @@ export default defineConfig({
 	},
 	output: "static",
 	adapter: vercel(),
+	i18n: {
+		locales: ["es", "en"],
+		defaultLocale: "en",
+	},
 	darkMode: "class",
 });

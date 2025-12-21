@@ -15,6 +15,7 @@
     "clean": "rm -rf dist .astro .eslintcache node_modules/.cache"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.6",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/vercel": "^9.0.2",
     "astro": "^5.16.6",
@@ -31,6 +32,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vercel": "^50.1.3"
   }
 }
