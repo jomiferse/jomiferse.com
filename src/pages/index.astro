@@ -1,0 +1,8 @@
+---
+---
+
+<script>
+	const storedLang = localStorage.getItem("lang");
+	const lang = storedLang === "es" ? "es" : "en";
+	window.location.replace(`/${lang}`);
+</script>

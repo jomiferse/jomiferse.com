@@ -153,8 +153,9 @@ const normalizedCurrent = normalizePath(currentPath);
 				const lang = el.getAttribute("data-lang");
 				if (lang !== "en" && lang !== "es") return;
 
-				document.cookie = `lang=${lang}; path=/; max-age=31536000; samesite=lax`;
-			});
+				try {
+					localStorage.setItem("lang", lang);
+				} catch {}			});
 		});
 
 		/* Theme toggle */
