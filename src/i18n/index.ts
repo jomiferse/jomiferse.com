@@ -10,6 +10,9 @@ export function getLocaleFromPath(pathname: string): Locale {
 	return pathname.startsWith("/es") ? "es" : "en";
 }
 
+export const getLocaleStaticPaths = () =>
+	locales.map((locale) => ({ params: { locale } }));
+
 export function t(locale: Locale, key: string): string {
 	const parts = key.split(".");
 	let cur: any = dict[locale];

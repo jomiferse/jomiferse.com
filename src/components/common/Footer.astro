@@ -1,9 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
-import { getLocaleFromPath, type Locale } from "@/i18n";
+import { type Locale } from "@/i18n";
 import { getCv } from "@cv";
 
-const locale: Locale = getLocaleFromPath(Astro.url.pathname);
+interface Props {
+	locale?: Locale;
+}
+
+const { locale = "en" } = Astro.props as Props;
 const cv = getCv(locale);
 ---
 

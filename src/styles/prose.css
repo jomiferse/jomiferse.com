@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+/* Estilos mejorados para contenido Markdown */
+.prose-wrapper {
+	@apply text-base leading-7 text-slate-700 dark:text-zinc-300;
+}
+
+/* Headings */
+.prose-wrapper h1 {
+	@apply mt-0 mb-8 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-zinc-50;
+	scroll-margin-top: 5rem;
+}
+
+.prose-wrapper h2 {
+	@apply mt-16 mb-6 text-3xl font-bold tracking-tight text-slate-900 dark:text-zinc-50;
+	scroll-margin-top: 5rem;
+}
+
+.prose-wrapper h2:first-child {
+	@apply mt-0;
+}
+
+.prose-wrapper h3 {
+	@apply mt-12 mb-4 text-2xl font-semibold tracking-tight text-slate-900 dark:text-zinc-100;
+	scroll-margin-top: 5rem;
+}
+
+.prose-wrapper h4 {
+	@apply mt-10 mb-3 text-xl font-semibold text-slate-900 dark:text-zinc-100;
+	scroll-margin-top: 5rem;
+}
+
+.prose-wrapper h5 {
+	@apply mt-8 mb-2 text-lg font-semibold text-slate-900 dark:text-zinc-100;
+}
+
+.prose-wrapper h6 {
+	@apply mt-8 mb-2 text-base font-semibold text-slate-900 dark:text-zinc-100;
+}
+
+/* Párrafos */
+.prose-wrapper p {
+	@apply my-6 leading-relaxed;
+}
+
+.prose-wrapper p:first-child {
+	@apply mt-0;
+}
+
+.prose-wrapper p:last-child {
+	@apply mb-0;
+}
+
+/* Links */
+.prose-wrapper a {
+	@apply font-medium text-purple-600 no-underline transition-colors hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300;
+	text-decoration-skip-ink: auto;
+}
+
+.prose-wrapper a:hover {
+	@apply underline decoration-2 underline-offset-2;
+}
+
+/* Strong y énfasis */
+.prose-wrapper strong {
+	@apply font-semibold text-slate-900 dark:text-zinc-50;
+}
+
+.prose-wrapper em {
+	@apply italic text-slate-700 dark:text-zinc-300;
+}
+
+/* Listas */
+.prose-wrapper ul,
+.prose-wrapper ol {
+	@apply my-6 space-y-2 pl-6;
+}
+
+.prose-wrapper ul {
+	@apply list-disc;
+}
+
+.prose-wrapper ol {
+	@apply list-decimal;
+}
+
+.prose-wrapper li {
+	@apply pl-2;
+}
+
+.prose-wrapper li > p {
+	@apply my-2;
+}
+
+.prose-wrapper li::marker {
+	@apply text-purple-500;
+}
+
+/* Listas anidadas */
+.prose-wrapper ul ul,
+.prose-wrapper ul ol,
+.prose-wrapper ol ul,
+.prose-wrapper ol ol {
+	@apply my-3;
+}
+
+/* Blockquotes */
+.prose-wrapper blockquote {
+	@apply my-8 border-l-4 border-purple-500 bg-purple-50/50 py-4 px-6 not-italic rounded-r-xl dark:bg-purple-950/20;
+}
+
+.prose-wrapper blockquote p {
+	@apply my-3 text-slate-700 dark:text-zinc-300;
+}
+
+.prose-wrapper blockquote p:first-child {
+	@apply mt-0;
+}
+
+.prose-wrapper blockquote p:last-child {
+	@apply mb-0;
+}
+
+/* Code blocks */
+.prose-wrapper pre {
+	@apply my-8 overflow-x-auto rounded-2xl border border-slate-200 bg-slate-900 p-6 shadow-xl dark:border-zinc-800 dark:shadow-2xl;
+}
+
+.prose-wrapper pre code {
+	@apply bg-transparent p-0 text-sm leading-relaxed text-slate-50;
+	font-family: 'Fira Code', 'Cascadia Code', 'Monaco', 'Courier New', monospace;
+}
+
+/* Inline code */
+.prose-wrapper :not(pre) > code {
+	@apply rounded-md bg-purple-100 px-1.5 py-0.5 text-sm font-medium text-purple-800 dark:bg-purple-950/50 dark:text-purple-300;
+	font-family: 'Fira Code', 'Cascadia Code', 'Monaco', 'Courier New', monospace;
+}
+
+.prose-wrapper :not(pre) > code::before,
+.prose-wrapper :not(pre) > code::after {
+	content: none;
+}
+
+/* Images */
+.prose-wrapper img {
+	@apply my-8 rounded-2xl shadow-lg;
+}
+
+.prose-wrapper figure {
+	@apply my-8;
+}
+
+.prose-wrapper figcaption {
+	@apply mt-3 text-center text-sm text-slate-500 dark:text-zinc-500;
+}
+
+/* Horizontal rules */
+.prose-wrapper hr {
+	@apply my-12 border-0 border-t border-slate-200 dark:border-zinc-800;
+}
+
+/* Tables */
+.prose-wrapper table {
+	@apply my-8 w-full table-auto border-collapse text-sm;
+	display: block;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.prose-wrapper thead {
+	@apply border-b border-slate-200 dark:border-zinc-800;
+}
+
+.prose-wrapper th {
+	@apply bg-slate-50 px-4 py-3 text-left font-semibold text-slate-900 dark:bg-zinc-900 dark:text-zinc-100;
+}
+
+.prose-wrapper td {
+	@apply border-b border-slate-200 px-4 py-3 dark:border-zinc-800;
+}
+
+.prose-wrapper tbody tr:last-child td {
+	@apply border-b-0;
+}
+
+.prose-wrapper tbody tr:hover {
+	@apply bg-slate-50/50 dark:bg-zinc-900/50;
+}
+
+/* Kbd (keyboard keys) */
+.prose-wrapper kbd {
+	@apply rounded-md border border-slate-300 bg-slate-100 px-2 py-1 text-xs font-semibold text-slate-800 shadow-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200;
+}
+
+/* Admonitions / Callouts */
+.prose-wrapper .callout {
+	@apply my-6 rounded-xl border p-4;
+}
+
+.prose-wrapper .callout.info {
+	@apply border-blue-200 bg-blue-50/50 dark:border-blue-900/50 dark:bg-blue-950/20;
+}
+
+.prose-wrapper .callout.warning {
+	@apply border-amber-200 bg-amber-50/50 dark:border-amber-900/50 dark:bg-amber-950/20;
+}
+
+.prose-wrapper .callout.danger {
+	@apply border-red-200 bg-red-50/50 dark:border-red-900/50 dark:bg-red-950/20;
+}
+
+.prose-wrapper .callout.success {
+	@apply border-emerald-200 bg-emerald-50/50 dark:border-emerald-900/50 dark:bg-emerald-950/20;
+}
+
+/* Details/Summary (acordeones) */
+.prose-wrapper details {
+	@apply my-6 rounded-xl border border-slate-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900/50;
+}
+
+.prose-wrapper summary {
+	@apply cursor-pointer font-semibold text-slate-900 transition-colors hover:text-purple-600 dark:text-zinc-100 dark:hover:text-purple-400;
+}
+
+.prose-wrapper details[open] summary {
+	@apply mb-4 pb-4 border-b border-slate-200 dark:border-zinc-800;
+}
+
+/* Footnotes */
+.prose-wrapper .footnotes {
+	@apply mt-12 border-t border-slate-200 pt-8 text-sm dark:border-zinc-800;
+}
+
+.prose-wrapper .footnotes ol {
+	@apply space-y-2;
+}
+
+/* Video embeds */
+.prose-wrapper iframe {
+	@apply my-8 aspect-video w-full rounded-2xl shadow-lg;
+}
+
+/* Task lists */
+.prose-wrapper input[type="checkbox"] {
+	@apply mr-2 h-4 w-4 rounded border-slate-300 text-purple-600 focus:ring-purple-500 dark:border-zinc-700;
+}
+
+.prose-wrapper ul > li:has(input[type="checkbox"]) {
+	@apply list-none;
+}
+
+/* Mark (highlighted text) */
+.prose-wrapper mark {
+	@apply bg-yellow-200 px-1 dark:bg-yellow-900/50;
+}
+
+/* Subscript and superscript */
+.prose-wrapper sub,
+.prose-wrapper sup {
+	@apply text-xs;
+}

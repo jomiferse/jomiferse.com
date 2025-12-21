@@ -4,7 +4,8 @@
     "projects": "Projects",
     "experience": "Experience",
     "education": "Education",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog"
   },
 
   "header": {
@@ -162,5 +163,31 @@
     "attachmentLabel": "Attach PDF",
     "attachmentHint": "Optional. PDF only.",
     "submit": "Send Message"
+  },
+
+  "blog": {
+    "meta": {
+      "title": "Blog",
+      "description": "Technical notes and articles by {name}."
+    },
+    "hero": {
+      "titlePrefix": "My",
+      "titleHighlight": "Blog",
+      "subtitle": "Technical notes, learnings, and in-depth analysis."
+    },
+    "post": {
+      "back": "Back to blog",
+      "tags": "Tags",
+      "footer": "Did you enjoy this article?",
+      "backToList": "View all posts"
+    },
+    "sections": {
+      "featured": { "title": "Featured", "subtitle": "Hand-picked posts." },
+      "latest": { "title": "Latest", "subtitle": "Most recent writing." }
+    },
+    "empty": {
+      "featured": "No featured posts yet.",
+      "latest": "No posts published yet."
+    }
   }
 }

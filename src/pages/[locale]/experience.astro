@@ -2,10 +2,14 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ExperienceCard from "@/components/cards/ExperienceCard.astro";
 import { Icon } from "astro-icon/components";
-import { getLocaleFromPath, t } from "@/i18n";
+import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCv } from "@cv";
 
-const locale = getLocaleFromPath(Astro.url.pathname);
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
+
+const { locale } = Astro.params;
 const cv = getCv(locale);
 
 const experience = cv.experience ?? [];
