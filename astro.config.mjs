@@ -21,6 +21,9 @@ export default defineConfig({
 			},
 		}),
 	],
+	build: {
+		inlineStylesheets: 'always',
+	},
 	output: "static",
 	adapter: vercel(),
 	darkMode: "class",

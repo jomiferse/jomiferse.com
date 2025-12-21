@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# eslint
+.eslintcache
+
+# ignore vercel build
+.vercel
+.env*.local
