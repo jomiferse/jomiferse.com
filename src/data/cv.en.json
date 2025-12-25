@@ -309,6 +309,43 @@
         ]
       }
     ],
-    "personal": []
+    "personal": [
+      {
+        "title": "CV Studio",
+        "role": "Full-Stack Developer",
+        "companyRelated": "Personal Project",
+        "link": "https://github.com/jomiferse/cv-studio",
+        "context": "Personal project focused on building a modern, professional CV builder with live preview and PDF export, aimed at developers and tech professionals.",
+        "timeframe": "12/2025 – Present",
+        "summary": "Designed and developed a web-based CV builder that allows users to create, preview, and export professional resumes in real time. The project emphasizes clean UI, structured data, and high-quality PDF output suitable for technical job applications.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/cv-studio.avif",
+            "alt": "CV Studio – Professional CV Builder"
+          },
+          "imgHover": {
+            "src": "/images/projects/cv-studio-preview.avif",
+            "alt": "CV Studio live preview and PDF export"
+          }
+        },
+        "technologies": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Zod",
+          "React Hook Form",
+          "Puppeteer",
+          "PDF Generation"
+        ],
+        "highlights": [
+          "Built a real-time CV editor with live preview synchronized to structured JSON data.",
+          "Implemented professional PDF export optimized for A4 layout and ATS-friendly formatting.",
+          "Designed a clean, modern UI using Tailwind CSS with a focus on usability and clarity.",
+          "Structured the project for scalability with strong typing and schema validation using Zod.",
+          "Created reusable CV templates suitable for software engineers and technical roles."
+        ]
+      }
+    ]
   }
 }
