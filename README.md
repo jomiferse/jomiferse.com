@@ -1,7 +1,7 @@
 # 🌐 jomiferse.com — Personal Website
 
 <p align="center">
-  <img src="public/favicon.svg" width="80" />
+  <img src="public/apple-touch-icon.png" width="80" />
 </p>
 
 <p align="center">
