@@ -309,6 +309,43 @@
         ]
       }
     ],
-    "personal": []
+    "personal": [
+      {
+        "title": "CV Studio",
+        "role": "Full-Stack Developer",
+        "companyRelated": "Proyecto personal",
+        "link": "https://github.com/jomiferse/cv-studio",
+        "context": "Proyecto personal enfocado en la creación de un generador de currículums moderno y profesional con vista previa en tiempo real y exportación a PDF, dirigido a desarrolladores y perfiles tecnológicos.",
+        "timeframe": "12/2025 – Presente",
+        "summary": "Diseño y desarrollo de una aplicación web para crear, previsualizar y exportar currículums profesionales en tiempo real. El proyecto prioriza una interfaz limpia, datos bien estructurados y una salida en PDF de alta calidad, adecuada para procesos de selección técnicos.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/cv-studio.avif",
+            "alt": "CV Studio – Generador profesional de currículums"
+          },
+          "imgHover": {
+            "src": "/images/projects/cv-studio-preview.avif",
+            "alt": "CV Studio con vista previa en tiempo real y exportación a PDF"
+          }
+        },
+        "technologies": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Zod",
+          "React Hook Form",
+          "Puppeteer",
+          "Generación de PDF"
+        ],
+        "highlights": [
+          "Desarrollo de un editor de CV en tiempo real con vista previa sincronizada a datos estructurados en JSON.",
+          "Implementación de exportación a PDF profesional optimizada para formato A4 y compatible con sistemas ATS.",
+          "Diseño de una interfaz moderna y limpia utilizando Tailwind CSS, con enfoque en usabilidad y claridad.",
+          "Estructuración del proyecto para facilitar la escalabilidad mediante tipado fuerte y validación de esquemas con Zod.",
+          "Creación de plantillas de CV reutilizables orientadas a ingenieros de software y perfiles técnicos."
+        ]
+      }
+    ]
   }
 }
