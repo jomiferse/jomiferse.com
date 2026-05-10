@@ -10,7 +10,7 @@ export const prerender = false;
 const locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
 
-const pageTitle = `${t(locale, "contact.meta.title")} – ${cv.name}`;
+const pageTitle = `${t(locale, "contact.meta.title")} - ${cv.name}`;
 const pageDescription = t(locale, "contact.meta.description").replace(
 	"{name}",
 	cv.name,
@@ -20,107 +20,160 @@ const isSent = Astro.url.searchParams.get("sent") === "1";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-	<header class="mb-7 space-y-3">
-		<h1 class="text-3xl font-bold tracking-tight md:text-4xl">
-			{t(locale, "contact.hero.titlePrefix")}{" "}
-			<span class="text-purple-600 dark:text-purple-300">
-				{t(locale, "contact.hero.titleHighlight")}
-			</span>
-		</h1>
-
-		<p
-			class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300"
-		>
-			{t(locale, "contact.hero.subtitle")}
-		</p>
-	</header>
-
-	<section class="space-y-6">
-		<a
-			href={`mailto:${cv.email}`}
-			class="group block rounded-3xl border border-slate-200 bg-white p-5 shadow-sm backdrop-blur transition-all duration-300 hover:border-purple-400/60 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-purple-500/50"
-		>
-			<div class="flex items-center justify-between gap-4">
-				<div class="flex items-center gap-4">
-					<span
-						class="grid h-11 w-11 place-items-center rounded-2xl bg-purple-500/10 text-purple-700 ring-1 ring-purple-500/20 dark:bg-purple-500/10 dark:text-purple-200 dark:ring-purple-500/20"
+	<section class="section-reveal pt-4 md:pt-8">
+		<div class="glass-panel surface-ring rounded-[2rem] p-6 md:p-8">
+			<div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+				<div>
+					<p
+						class="text-xs font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
 					>
-						<Icon name="mail" class="h-5 w-5" />
-					</span>
+						{t(locale, "contact.hero.titlePrefix")}
+					</p>
+					<h1
+						class="mt-4 text-4xl font-semibold text-slate-950 md:text-5xl dark:text-slate-50"
+					>
+						{t(locale, "contact.hero.titleHighlight")}
+					</h1>
+					<p
+						class="mt-5 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300"
+					>
+						{t(locale, "contact.hero.subtitle")}
+					</p>
+				</div>
 
-					<div class="leading-tight">
+				<div class="grid gap-3 sm:grid-cols-2">
+					<a
+						href={`mailto:${cv.email}`}
+						class="rounded-[1.5rem] border border-slate-200/80 bg-white/75 p-5 dark:border-slate-800/70 dark:bg-slate-950/35"
+					>
 						<p
-							class="text-[11px] font-semibold tracking-[0.26em] text-slate-500 dark:text-zinc-400"
+							class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
 						>
 							{t(locale, "contact.emailLabel")}
 						</p>
-						<p class="text-sm font-semibold text-slate-900 dark:text-zinc-100">
+						<p
+							class="mt-3 text-sm font-semibold text-slate-950 dark:text-slate-50"
+						>
 							{cv.email}
+						</p>
+					</a>
+					<div
+						class="rounded-[1.5rem] border border-slate-200/80 bg-white/75 p-5 dark:border-slate-800/70 dark:bg-slate-950/35"
+					>
+						<p
+							class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
+						>
+							{t(locale, "skills.languages")}
+						</p>
+						<p
+							class="mt-3 text-sm font-semibold text-slate-950 dark:text-slate-50"
+						>
+							{
+								cv.skills.languages.items
+									.map((item) => item.language)
+									.join(" / ")
+							}
 						</p>
 					</div>
 				</div>
-
-				<span
-					class="grid h-9 w-9 place-items-center rounded-2xl border border-slate-200/80 bg-white/60 text-slate-500 transition group-hover:text-slate-900 dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-400 dark:group-hover:text-zinc-100"
-					aria-hidden="true"
-				>
-					<Icon name="arrow-right" class="h-5 w-5" />
-				</span>
 			</div>
-		</a>
-
-		<div class="grid gap-4 sm:grid-cols-2">
-			<a
-				href={cv.links.github}
-				target="_blank"
-				rel="noreferrer"
-				class="group rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-sm backdrop-blur transition-all duration-300 hover:border-purple-400/60 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-purple-500/50"
-			>
-				<span
-					class="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-zinc-900/5 text-slate-700 ring-1 ring-slate-200/70 dark:bg-zinc-950/30 dark:text-zinc-100 dark:ring-zinc-800/70"
-				>
-					<Icon name="github" class="h-6 w-6" />
-				</span>
-				<p class="font-semibold text-slate-900 dark:text-zinc-100">
-					{t(locale, "contact.social.github")}
-				</p>
-			</a>
-
-			<a
-				href={cv.links.linkedin}
-				target="_blank"
-				rel="noreferrer"
-				class="group rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-sm backdrop-blur transition-all duration-300 hover:border-purple-400/60 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-purple-500/50"
-			>
-				<span
-					class="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-sky-500/10 text-sky-700 ring-1 ring-sky-500/20 dark:bg-sky-500/10 dark:text-sky-200 dark:ring-sky-500/20"
-				>
-					<Icon name="linkedin" class="h-6 w-6" />
-				</span>
-				<p class="font-semibold text-slate-900 dark:text-zinc-100">
-					{t(locale, "contact.social.linkedin")}
-				</p>
-			</a>
 		</div>
+	</section>
 
-		<div class="flex items-center gap-4 pt-1">
-			<div class="h-px flex-1 bg-slate-200/80 dark:bg-zinc-800/70"></div>
-			<p
-				class="text-[11px] font-semibold tracking-[0.28em] text-slate-500 dark:text-zinc-500"
-			>
-				{t(locale, "contact.divider")}
-			</p>
-			<div class="h-px flex-1 bg-slate-200/80 dark:bg-zinc-800/70"></div>
+	<section class="section-reveal mt-10 md:mt-14">
+		<div class="grid gap-6 lg:grid-cols-[0.88fr_1.12fr]">
+			<div class="stagger-children grid gap-4">
+				<a
+					href={`mailto:${cv.email}`}
+					class="glass-panel surface-ring rounded-[2rem] p-5"
+				>
+					<div class="flex items-center justify-between gap-4">
+						<div class="flex items-center gap-4">
+							<span
+								class="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[var(--accent-line)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
+							>
+								<Icon name="mail" class="h-5 w-5" />
+							</span>
+							<div>
+								<p
+									class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
+								>
+									{t(locale, "contact.emailLabel")}
+								</p>
+								<p
+									class="mt-2 text-sm font-semibold text-slate-950 dark:text-slate-50"
+								>
+									{cv.email}
+								</p>
+							</div>
+						</div>
+						<Icon
+							name="arrow-right"
+							class="h-5 w-5 text-slate-400 dark:text-slate-500"
+						/>
+					</div>
+				</a>
+
+				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+					<a
+						href={cv.links.github}
+						target="_blank"
+						rel="noreferrer"
+						class="glass-panel surface-ring rounded-[2rem] p-5"
+					>
+						<span
+							class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200"
+						>
+							<Icon name="github" class="h-5 w-5" />
+						</span>
+						<p
+							class="mt-4 text-lg font-semibold text-slate-950 dark:text-slate-50"
+						>
+							{t(locale, "contact.social.github")}
+						</p>
+					</a>
+
+					<a
+						href={cv.links.linkedin}
+						target="_blank"
+						rel="noreferrer"
+						class="glass-panel surface-ring rounded-[2rem] p-5"
+					>
+						<span
+							class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200"
+						>
+							<Icon name="linkedin" class="h-5 w-5" />
+						</span>
+						<p
+							class="mt-4 text-lg font-semibold text-slate-950 dark:text-slate-50"
+						>
+							{t(locale, "contact.social.linkedin")}
+						</p>
+					</a>
+				</div>
+			</div>
+
+			<div>
+				<div class="mb-4 flex items-center gap-4">
+					<div class="h-px flex-1 bg-slate-200/80 dark:bg-slate-800/70"></div>
+					<p
+						class="text-[11px] font-semibold tracking-[0.28em] text-slate-500 uppercase dark:text-slate-400"
+					>
+						{t(locale, "contact.divider")}
+					</p>
+					<div class="h-px flex-1 bg-slate-200/80 dark:bg-slate-800/70"></div>
+				</div>
+
+				{
+					isSent && (
+						<p class="mb-4 rounded-[1.5rem] border border-emerald-400/30 bg-emerald-50 px-5 py-4 text-sm text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-200">
+							{t(locale, "contact.success")}
+						</p>
+					)
+				}
+
+				<ContactForm locale={locale} />
+			</div>
 		</div>
-
-		{
-			isSent && (
-				<p class="rounded-2xl border border-emerald-400/30 bg-emerald-50 p-4 text-sm text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-200">
-					{t(locale, "contact.success")}
-				</p>
-			)
-		}
-
-		<ContactForm toEmail={cv.email} locale={locale} />
 	</section>
 </BaseLayout>
