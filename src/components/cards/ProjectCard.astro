@@ -13,7 +13,7 @@ export interface Project {
 	summary: string;
 	highlights?: string[];
 	link?: string;
-
+	status?: string;
 	img?: {
 		imgStatic?: { src: string; alt?: string };
 		imgHover?: { src: string; alt?: string };
@@ -51,102 +51,96 @@ const previewAlt =
 <div
 	role="button"
 	tabindex="0"
-	class="group block w-full cursor-pointer text-left focus:outline-none"
+	class="group block w-full cursor-pointer text-left"
 	aria-haspopup="dialog"
 	aria-controls={dialogId}
 	onclick={`document.getElementById('${dialogId}')?.showModal()`}
 	onkeydown={`if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); document.getElementById('${dialogId}')?.showModal(); }`}
 >
 	<article
-		class="relative overflow-hidden rounded-4xl border border-slate-200/80 bg-white/70 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-purple-500/30 hover:bg-white/80 focus-visible:ring-2 focus-visible:ring-purple-500/40 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-purple-500/40 dark:hover:bg-zinc-950/55"
+		class="glass-panel surface-ring relative overflow-hidden rounded-[2rem]"
 	>
-		<div class="relative aspect-4/3 w-full overflow-hidden rounded-t-4xl">
+		<div class="relative aspect-[1.2/1] w-full overflow-hidden">
 			{
 				baseSrc ? (
 					<>
 						<Image
 							src={baseSrc}
 							alt={coverAlt}
-							width={640}
-							height={480}
-							loading="eager"
-							quality={100}
-							class="absolute inset-0 h-full w-full object-cover opacity-90"
+							width={720}
+							height={600}
+							loading="lazy"
+							quality={92}
+							class="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
 						/>
 
 						{hoverSrc && (
 							<Image
 								src={hoverSrc}
 								alt={previewAlt}
-								width={640}
-								height={480}
-								loading="eager"
-								quality={100}
-								class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+								width={720}
+								height={600}
+								loading="lazy"
+								quality={92}
+								class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
 							/>
 						)}
 					</>
 				) : (
-					<div class="h-full w-full bg-linear-to-br from-purple-500/20 via-sky-400/10 to-transparent" />
+					<div class="h-full w-full bg-[radial-gradient(circle_at_top_left,rgba(29,78,216,0.18),transparent_45%),linear-gradient(180deg,rgba(255,255,255,0.3),transparent)] dark:bg-[radial-gradient(circle_at_top_left,rgba(127,176,255,0.24),transparent_45%),linear-gradient(180deg,rgba(255,255,255,0.05),transparent)]" />
 				)
 			}
 
 			<div
-				class="absolute inset-0 opacity-0 transition group-hover:opacity-100"
-			>
-				<div class="absolute inset-0 bg-purple-500/5"></div>
-			</div>
-
-			<div
-				class="pointer-events-none absolute -inset-10 rounded-[48px] bg-[radial-gradient(closest-side,rgba(168,85,247,0.22),transparent)] opacity-70"
+				class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/55 to-transparent"
 			>
 			</div>
 
-			<div
-				class="absolute right-4 bottom-4 grid h-10 w-10 place-items-center rounded-full bg-white/70 ring-1 ring-slate-200/80 backdrop-blur transition-all duration-300 group-hover:bg-white/85 group-hover:ring-purple-500/30 dark:bg-zinc-900/60 dark:ring-zinc-800/70 dark:group-hover:bg-zinc-900/80 dark:group-hover:ring-purple-500/40"
+			{
+				project.status && (
+					<span class="absolute top-4 left-4 inline-flex min-h-9 items-center rounded-full border border-white/25 bg-slate-950/55 px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-white uppercase backdrop-blur">
+						{project.status}
+					</span>
+				)
+			}
+
+			<span
+				class="absolute right-4 bottom-4 inline-flex min-h-10 min-w-10 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white backdrop-blur"
 				aria-hidden="true"
 			>
-				<Icon name="plus" class="h-6 w-6 text-slate-700 dark:text-zinc-100" />
-			</div>
+				<Icon name="plus" class="h-5 w-5" />
+			</span>
 		</div>
 
-		<div class="px-5 pt-4 pb-5">
-			<h3
-				class="text-lg font-semibold tracking-tight text-slate-900 md:text-xl dark:text-zinc-50"
-			>
+		<div class="p-5">
+			<h3 class="text-xl font-semibold text-slate-950 dark:text-slate-50">
 				{project.title}
 			</h3>
 
-			<p class="mt-1 text-xs text-slate-600 dark:text-zinc-400">
-				{
-					project.companyRelated ? (
-						<span class="text-purple-700 dark:text-purple-200/90">
-							{project.companyRelated}
-						</span>
-					) : null
+			<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+				{project.companyRelated ? `${project.companyRelated} - ` : ""}{
+					project.role
 				}
-				{
-					project.companyRelated ? (
-						<span class="text-slate-400 dark:text-zinc-600"> · </span>
-					) : null
-				}
-				{project.role}
-				{project.timeframe ? <span> · {project.timeframe}</span> : null}
+				{project.timeframe ? <span>{` - ${project.timeframe}`}</span> : null}
 			</p>
 
-			<div class="mt-4 flex flex-wrap gap-2">
+			<p class="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
+				{project.summary}
+			</p>
+
+			<div class="mt-5 flex flex-wrap gap-2">
 				{
 					project.technologies
 						.slice(0, 4)
 						.map((tech) => (
-							<span class="inline-flex items-center rounded-full border border-purple-500/20 bg-purple-500/10 px-2.5 py-1 text-[11px] font-semibold text-purple-700 dark:text-purple-200/90">
+							<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
 								{tech}
 							</span>
 						))
 				}
 				{
 					project.technologies.length > 4 && (
-						<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/60 px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-300/90">
+						<span class="inline-flex items-center rounded-full border border-[var(--accent-line)] bg-[var(--accent-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--accent-strong)]">
 							+{project.technologies.length - 4}
 						</span>
 					)
@@ -158,44 +152,47 @@ const previewAlt =
 
 <dialog
 	id={dialogId}
-	class="fixed inset-0 m-auto w-[min(720px,92vw)] rounded-[28px] border border-slate-200/80 bg-white/95 p-0 text-slate-900 shadow-xl dark:border-zinc-800/70 dark:bg-zinc-950/95 dark:text-zinc-100"
+	class="glass-panel m-auto w-[min(760px,92vw)] rounded-[2rem] p-0 text-slate-950 dark:text-slate-50"
 >
-	<div class="overflow-hidden rounded-[28px]">
+	<div class="overflow-hidden rounded-[2rem]">
 		<div
-			class="border-b border-slate-200/80 p-5 md:p-6 dark:border-zinc-800/70"
+			class="border-b border-slate-200/80 p-5 md:p-6 dark:border-slate-800/70"
 		>
 			<div class="flex items-start justify-between gap-4">
 				<div class="min-w-0">
-					<h3
-						class="text-xl font-semibold tracking-tight text-slate-900 dark:text-zinc-50"
-					>
-						{project.title}
-					</h3>
-
-					<p class="mt-1 text-sm text-slate-600 dark:text-zinc-400">
+					<div class="flex flex-wrap items-center gap-3">
+						<h3
+							class="text-2xl font-semibold text-slate-950 dark:text-slate-50"
+						>
+							{project.title}
+						</h3>
 						{
-							project.companyRelated ? (
-								<span class="text-purple-700 dark:text-purple-200/90">
-									{project.companyRelated}
+							project.status && (
+								<span class="inline-flex min-h-9 items-center rounded-full border border-[var(--accent-line)] bg-[var(--accent-soft)] px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-[var(--accent-strong)] uppercase">
+									{project.status}
 								</span>
-							) : null
+							)
+						}
+					</div>
+
+					<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+						{project.companyRelated ? `${project.companyRelated} - ` : ""}{
+							project.role
 						}
 						{
-							project.companyRelated ? (
-								<span class="text-slate-400 dark:text-zinc-600"> · </span>
+							project.timeframe ? (
+								<span>{` - ${project.timeframe}`}</span>
 							) : null
 						}
-						{project.role}
-						{project.timeframe ? <span> · {project.timeframe}</span> : null}
 					</p>
 				</div>
 
 				<form method="dialog">
 					<button
-						class="grid h-10 w-10 cursor-pointer place-items-center rounded-full bg-slate-100/70 ring-1 ring-slate-200 transition hover:bg-slate-100 dark:bg-zinc-900/50 dark:ring-zinc-800/70 dark:hover:bg-zinc-900/70"
+						class="inline-flex min-h-10 min-w-10 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-100"
 						aria-label={t(locale, "projectCard.closeDialog")}
 					>
-						<Icon name="x" class="h-5 w-5 text-slate-700 dark:text-zinc-100" />
+						<Icon name="x" class="h-5 w-5" />
 					</button>
 				</form>
 			</div>
@@ -205,10 +202,10 @@ const previewAlt =
 			{
 				project.context && (
 					<div>
-						<p class="text-xs font-semibold tracking-[0.18em] text-slate-500 dark:text-zinc-500">
+						<p class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400">
 							{t(locale, "projectCard.context")}
 						</p>
-						<p class="mt-2 text-sm leading-relaxed text-slate-700 dark:text-zinc-200/90">
+						<p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
 							{project.context}
 						</p>
 					</div>
@@ -217,13 +214,11 @@ const previewAlt =
 
 			<div>
 				<p
-					class="text-xs font-semibold tracking-[0.18em] text-slate-500 dark:text-zinc-500"
+					class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400"
 				>
 					{t(locale, "projectCard.summary")}
 				</p>
-				<p
-					class="mt-2 text-sm leading-relaxed text-slate-700 dark:text-zinc-200/90"
-				>
+				<p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
 					{project.summary}
 				</p>
 			</div>
@@ -231,14 +226,14 @@ const previewAlt =
 			{
 				project.highlights?.length ? (
 					<div>
-						<p class="text-xs font-semibold tracking-[0.18em] text-slate-500 dark:text-zinc-500">
+						<p class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400">
 							{t(locale, "projectCard.highlights")}
 						</p>
-						<ul class="mt-2 space-y-2 text-sm text-slate-700 dark:text-zinc-200/90">
-							{project.highlights.map((h) => (
-								<li class="flex gap-2">
-									<span class="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-purple-500/80" />
-									<span>{h}</span>
+						<ul class="mt-3 grid gap-3 md:grid-cols-2">
+							{project.highlights.map((highlight) => (
+								<li class="flex gap-3 rounded-[1.25rem] border border-slate-200/80 bg-white/75 px-4 py-4 text-sm leading-7 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
+									<span class="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
+									<span>{highlight}</span>
 								</li>
 							))}
 						</ul>
@@ -248,14 +243,14 @@ const previewAlt =
 
 			<div>
 				<p
-					class="text-xs font-semibold tracking-[0.18em] text-slate-500 dark:text-zinc-500"
+					class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400"
 				>
 					{t(locale, "projectCard.technologies")}
 				</p>
-				<div class="mt-2 flex flex-wrap gap-2">
+				<div class="mt-3 flex flex-wrap gap-2">
 					{
 						project.technologies.map((tech) => (
-							<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white px-2.5 py-1 text-[11px] font-semibold text-slate-700 dark:border-zinc-800/70 dark:bg-zinc-950/30 dark:text-zinc-200">
+							<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
 								{tech}
 							</span>
 						))
@@ -270,7 +265,7 @@ const previewAlt =
 							href={project.link}
 							target="_blank"
 							rel="noreferrer"
-							class="inline-flex items-center gap-2 rounded-2xl bg-purple-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-purple-700"
+							class="inline-flex min-h-11 items-center gap-2 rounded-2xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
 						>
 							{t(locale, "projectCard.viewProject")}
 							<Icon name="move-up-right" class="h-4 w-4" />

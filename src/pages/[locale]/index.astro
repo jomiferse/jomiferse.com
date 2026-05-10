@@ -2,7 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { t, getLocaleStaticPaths } from "@/i18n";
+import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCv } from "@cv";
 
 export function getStaticPaths() {
@@ -13,378 +13,676 @@ const { locale } = Astro.params;
 const cv = getCv(locale);
 
 const pageTitle = `${t(locale, "home.meta.title")} - ${cv.name}`;
-const pageDescription = t(locale, "home.meta.description") || cv.headline;
+const pageDescription = t(locale, "home.meta.description");
+
+const companyProjects = cv.projects?.company ?? [];
+const personalProjects = cv.projects?.personal ?? [];
+const featuredProject = personalProjects[0] ?? companyProjects[0];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-	<header class="mb-12">
-		<div class="grid gap-10 md:grid-cols-[360px_1fr] md:items-center">
-			<div class="flex flex-col items-center">
-				<div class="relative">
-					<div
-						class="absolute inset-0 -z-10 rounded-full opacity-70 blur-2xl"
-						style="background: radial-gradient(circle at 50% 50%, rgba(168,85,247,0.35), transparent 60%);"
-					>
-					</div>
-
-					<div
-						class="animate-float rounded-full bg-linear-to-tr from-purple-500/60 via-purple-300/30 to-transparent p-0.75 transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
-					>
-						<div class="rounded-full bg-slate-50 p-2 dark:bg-zinc-950">
-							<Image
-								src={"/images/avatar.avif"}
-								alt={t(locale, "home.hero.avatarAlt").replace(
-									"{name}",
-									cv.name,
-								)}
-								width={360}
-								height={360}
-								loading="eager"
-								quality={100}
-								class="h-56 w-56 rounded-full object-cover md:h-64 md:w-64"
-							/>
-						</div>
-					</div>
-
-					<div class="absolute right-0 bottom-6 text-center">
-						<span
-							class="inline-flex items-center gap-3 rounded-full border border-slate-200/70 bg-white/90 px-4 py-2 shadow-sm backdrop-blur dark:border-zinc-700/40 dark:bg-zinc-900/70"
-						>
-							<span class="text-base leading-none">🇪🇸</span>
-							<span class="flex flex-col leading-tight">
-								<span
-									class="text-[10px] font-semibold tracking-widest text-slate-500 uppercase dark:text-zinc-400"
-								>
-									{t(locale, "home.badge.basedIn")}
-								</span>
-								<span
-									class="text-[12px] font-semibold text-slate-900 dark:text-zinc-100"
-								>
-									{cv.location}
-								</span>
-							</span>
-						</span>
-					</div>
-				</div>
-
-				<div class="group relative mt-6 inline-block">
-					<span
-						class="inline-flex cursor-default items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/10 px-5 py-2 text-xs font-semibold tracking-wide text-purple-700 dark:text-purple-200"
-					>
-						<span class="h-2 w-2 rounded-full bg-purple-400"></span>
-						{cv.currentRole}
-					</span>
-
-					<div
-						class="pointer-events-none absolute top-full left-1/2 z-20 mt-3 w-max -translate-x-1/2 scale-95 rounded-xl bg-white/95 px-3 py-2 text-[11px] font-medium text-slate-900 opacity-0 shadow-lg ring-1 ring-slate-200 transition-all duration-200 group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-900 dark:text-zinc-100 dark:ring-zinc-800"
-					>
-						{t(locale, "home.badge.focusedOn")}
-						{cv.focus}
-					</div>
-				</div>
-			</div>
-
-			<div class="space-y-6 text-center md:text-left">
-				<h1
-					class="text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl md:leading-15 dark:text-zinc-50"
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	image={featuredProject?.img?.imgStatic?.src ?? "/images/avatar.avif"}
+>
+	<section class="section-reveal pt-4 md:pt-8">
+		<div class="grid gap-6 lg:grid-cols-[1.35fr_0.9fr]">
+			<div
+				class="glass-panel surface-ring rounded-[2rem] px-6 py-7 md:px-8 md:py-9"
+			>
+				<p
+					class="text-xs font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
 				>
-					{t(locale, "home.hero.greeting")}{" "}
-					<span class="text-purple-600 dark:text-purple-300">{cv.name}</span>
+					{t(locale, "home.hero.eyebrow")}
+				</p>
+
+				<h1
+					class="mt-5 max-w-4xl text-4xl leading-tight font-semibold text-slate-950 md:text-6xl md:leading-[1.02] dark:text-slate-50"
+				>
+					{t(locale, "home.hero.titleLead")}{" "}
+					<span class="text-[var(--accent-strong)]"
+						>{t(locale, "home.hero.titleHighlight")}</span
+					>{" "}
+					{t(locale, "home.hero.titleTail")}
 				</h1>
 
-				<div class="mt-5 flex flex-col gap-4">
-					<div class="flex justify-center md:justify-start">
-						<a
-							href={`/${locale}/contact`}
-							class="group inline-flex w-fit items-center gap-3 rounded-2xl bg-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-600/20 transition hover:bg-purple-700 focus-visible:ring-2 focus-visible:ring-purple-400/60 focus-visible:outline-none"
-						>
-							{t(locale, "home.hero.cta.talk")}
-							<span
-								class="grid h-7 w-7 place-items-center rounded-xl bg-white/10 transition group-hover:bg-white/15"
-							>
-								<Icon
-									name="arrow-right"
-									class="h-4.5 w-4.5 transition group-hover:translate-x-0.5"
-								/>
+				<p
+					class="mt-6 max-w-2xl text-base leading-8 text-slate-600 md:text-lg dark:text-slate-300"
+				>
+					{t(locale, "home.hero.description")}
+				</p>
+
+				<div class="mt-6 flex flex-wrap gap-2">
+					{
+						cv.signals.map((signal) => (
+							<span class="inline-flex min-h-11 items-center rounded-full border border-[var(--accent-line)] bg-[var(--accent-soft)] px-4 py-2 text-sm font-medium text-[var(--accent-strong)]">
+								{signal}
 							</span>
-						</a>
-					</div>
+						))
+					}
+				</div>
+
+				<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+					<a
+						href={`/${locale}/projects`}
+						class="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
+					>
+						{t(locale, "home.hero.primaryCta")}
+						<Icon name="arrow-right" class="h-4 w-4" />
+					</a>
+					<a
+						href={`/${locale}/contact`}
+						class="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-slate-200/80 bg-white/70 px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-white dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-100 dark:hover:bg-slate-900/70"
+					>
+						{t(locale, "home.hero.secondaryCta")}
+					</a>
 				</div>
 
 				<div
-					class="grid grid-cols-2 divide-x divide-slate-200/80 border-y border-slate-200/80 py-6 text-center dark:divide-zinc-800/70 dark:border-zinc-800/70"
+					class="mt-8 flex flex-wrap items-center gap-5 border-t border-slate-200/80 pt-6 dark:border-slate-800/70"
 				>
-					<div class="space-y-1">
+					<div>
 						<p
-							class="counter text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl dark:text-zinc-50"
-							data-target={cv.yearsWorking}
-							data-suffix="+"
+							class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
 						>
-							0
+							{t(locale, "home.hero.availability")}
 						</p>
 						<p
-							class="text-[10px] font-semibold tracking-[0.22em] text-slate-500 dark:text-zinc-400"
+							class="mt-2 text-sm font-medium text-slate-800 dark:text-slate-100"
 						>
-							{t(locale, "home.stats.years")}
+							{cv.currentCompany}
 						</p>
 					</div>
 
-					<div class="space-y-1">
+					<div class="h-10 w-px bg-slate-200/80 dark:bg-slate-800/70"></div>
+
+					<div>
 						<p
-							class="counter text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl dark:text-zinc-50"
-							data-target="100"
-							data-suffix="%"
+							class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
 						>
-							0%
+							{t(locale, "home.hero.social")}
 						</p>
-						<p
-							class="text-[10px] font-semibold tracking-[0.22em] text-slate-500 dark:text-zinc-400"
+						<div class="mt-2 flex items-center gap-2">
+							<a
+								href={cv.links.github}
+								target="_blank"
+								rel="noreferrer"
+								class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 text-slate-700 hover:-translate-y-0.5 hover:text-slate-950 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200 dark:hover:text-white"
+								aria-label="GitHub"
+							>
+								<Icon name="github" class="h-5 w-5" />
+							</a>
+							<a
+								href={cv.links.linkedin}
+								target="_blank"
+								rel="noreferrer"
+								class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 text-slate-700 hover:-translate-y-0.5 hover:text-slate-950 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200 dark:hover:text-white"
+								aria-label="LinkedIn"
+							>
+								<Icon name="linkedin" class="h-5 w-5" />
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="stagger-children flex flex-col gap-4">
+				<div class="glass-panel surface-ring rounded-[2rem] p-5 md:p-6">
+					<div class="flex items-center justify-between gap-4">
+						<div>
+							<p
+								class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
+							>
+								{t(locale, "home.stats.years")}
+							</p>
+							<p
+								class="mt-3 text-4xl font-semibold text-slate-950 dark:text-slate-50"
+							>
+								{cv.yearsWorking}+
+							</p>
+						</div>
+						<div
+							class="rounded-2xl border border-[var(--accent-line)] bg-[var(--accent-soft)] p-3 text-[var(--accent-strong)]"
 						>
-							{t(locale, "home.stats.commitment")}
-						</p>
+							<Icon name="briefcase-business" class="h-6 w-6" />
+						</div>
 					</div>
 				</div>
 
-				<script is:inline>
-					const counters = document.querySelectorAll(".counter");
-
-					counters.forEach((counter) => {
-						const target = Number(counter.dataset.target);
-						const suffix = counter.dataset.suffix ?? "";
-						const duration = 1000;
-						const startTime = performance.now();
-
-						function update(currentTime) {
-							const elapsed = Math.max(currentTime - startTime, 0);
-							const progress = Math.min(elapsed / duration, 1);
-							const value = Math.floor(progress * target);
-
-							counter.textContent = Math.max(value, 0) + suffix;
-
-							if (progress < 1) {
-								requestAnimationFrame(update);
-							} else {
-								counter.textContent = target + suffix;
-							}
-						}
-
-						requestAnimationFrame(update);
-					});
-				</script>
-			</div>
-		</div>
-	</header>
-
-	<section id="about" class="mt-12 md:mt-20">
-		<div class="mb-6 flex items-center gap-4">
-			<h2 class="text-2xl font-semibold text-slate-900 dark:text-zinc-50">
-				{t(locale, "home.sections.about")}
-			</h2>
-			<div class="h-px flex-1 bg-slate-200/80 dark:bg-zinc-800/70"></div>
-		</div>
-
-		<div
-			class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30 md:p-8 dark:border-zinc-800 dark:bg-zinc-900/40"
-		>
-			<div
-				class="space-y-4 text-sm leading-relaxed text-slate-700 md:text-base dark:text-zinc-300"
-			>
-				{cv.summary.map((para) => <p set:html={para} />)}
-			</div>
-
-			<div class="my-6 h-px bg-slate-200/80 dark:bg-zinc-800/70"></div>
-
-			<div
-				class="flex flex-wrap gap-4 text-xs text-slate-600 dark:text-zinc-400"
-			>
-				<div class="flex items-center gap-2">
-					<span class="text-purple-500">
-						<Icon name="map-pin" class="h-5 w-5" />
-					</span>
-					<span>{cv.location}</span>
-				</div>
-
-				<div class="flex items-center gap-2">
-					<span class="text-purple-500">
-						<Icon name="building-2" class="h-5 w-5" />
-					</span>
-					<span>{cv.currentCompany}</span>
-				</div>
-
-				<div class="flex items-center gap-2">
-					<span class="text-purple-500">
-						<Icon name="globe" class="h-5 w-5" />
-					</span>
-
-					<span class="flex items-center gap-1">
+				<div class="glass-panel surface-ring rounded-[2rem] p-5 md:p-6">
+					<p
+						class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
+					>
+						{t(locale, "home.stats.focus")}
+					</p>
+					<p
+						class="mt-3 text-lg font-semibold text-slate-950 dark:text-slate-50"
+					>
+						{cv.focus}
+					</p>
+					<div class="mt-5 flex flex-wrap gap-2">
 						{
-							cv.skills.languages.items.map((item, index) => (
-								<>
-									<span>{item.language}</span>
-									{index < cv.skills.languages.items.length - 1 && (
-										<span>/</span>
-									)}
-								</>
+							cv.skills.frameworksTools
+								.slice(0, 6)
+								.map((tag) => (
+									<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
+										{tag.label}
+									</span>
+								))
+						}
+					</div>
+				</div>
+
+				<div class="glass-panel surface-ring rounded-[2rem] p-5 md:p-6">
+					<p
+						class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
+					>
+						{t(locale, "home.stats.scope")}
+					</p>
+					<p
+						class="mt-3 text-lg font-semibold text-slate-950 dark:text-slate-50"
+					>
+						{t(locale, "home.stats.scopeValue")}
+					</p>
+					<ul class="mt-5 space-y-3">
+						{
+							cv.focusAreas.slice(0, 3).map((area) => (
+								<li class="flex gap-3 text-sm text-slate-600 dark:text-slate-300">
+									<span class="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
+									<span>{area.title}</span>
+								</li>
 							))
 						}
-					</span>
+					</ul>
+				</div>
+
+				<div class="glass-panel surface-ring rounded-[2rem] p-5 md:p-6">
+					<div class="flex items-center gap-4">
+						<div class="min-w-0 flex-1">
+							<p
+								class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
+							>
+								{t(locale, "home.explorations.title")}
+							</p>
+							<ul class="mt-4 space-y-2">
+								{
+									cv.currentExplorations.map((item) => (
+										<li class="flex gap-3 text-sm text-slate-600 dark:text-slate-300">
+											<span class="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
+											<span>{item}</span>
+										</li>
+									))
+								}
+							</ul>
+						</div>
+						<Image
+							src="/images/avatar.avif"
+							alt={cv.name}
+							width={120}
+							height={120}
+							loading="eager"
+							class="hidden h-20 w-20 rounded-[1.5rem] object-cover md:block"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section id="skills" class="mt-14">
-		<div class="mb-6 flex items-center gap-4">
-			<h2 class="text-2xl font-semibold text-slate-900 dark:text-zinc-50">
-				{t(locale, "home.sections.skills")}
-			</h2>
-			<div class="h-px flex-1 bg-slate-200/80 dark:bg-zinc-800/70"></div>
-		</div>
-
-		<div class="grid gap-6 md:grid-cols-2">
-			<div
-				class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-purple-500/30 md:p-8 dark:border-zinc-800 dark:bg-zinc-900/40"
-			>
-				<div class="mb-5 flex items-center gap-2">
-					<span
-						class="grid h-9 w-9 place-items-center rounded-xl bg-purple-500/10 text-purple-500 dark:text-purple-300"
+	<section class="section-reveal mt-8 md:mt-12">
+		<div class="glass-panel surface-ring rounded-[2rem] p-6 md:p-8">
+			<div class="grid gap-6 lg:grid-cols-[1.1fr_1fr]">
+				<div>
+					<p
+						class="text-xs font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
 					>
-						<Icon name="code" class="h-5 w-5" />
-					</span>
-					<h3 class="text-base font-semibold text-slate-900 dark:text-zinc-100">
-						{t(locale, "skills.core")}
-					</h3>
+						{t(locale, "home.about.eyebrow")}
+					</p>
+					<h2
+						class="mt-4 text-3xl font-semibold text-slate-950 md:text-4xl dark:text-slate-50"
+					>
+						{t(locale, "home.about.title")}
+					</h2>
+					<p
+						class="mt-5 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300"
+					>
+						{t(locale, "home.about.intro")}
+					</p>
 				</div>
 
-				<div class="space-y-4 text-sm">
+				<div class="grid gap-3 sm:grid-cols-2">
 					{
-						cv.skills.coreTech.map((s) => (
-							<div class="space-y-2">
-								<div class="flex items-center justify-between">
-									<div class="flex items-center gap-2">
-										<span class={`h-2 w-2 rounded-full ${s.color}`} />
-										<span class="text-slate-800 dark:text-zinc-200">
-											{s.name}
+						cv.summary.map((paragraph) => (
+							<div class="rounded-[1.5rem] border border-slate-200/80 bg-white/70 p-5 text-sm leading-7 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
+								<p set:html={paragraph} />
+							</div>
+						))
+					}
+					<div
+						class="rounded-[1.5rem] border border-slate-200/80 bg-white/70 p-5 dark:border-slate-800/70 dark:bg-slate-950/35"
+					>
+						<p
+							class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
+						>
+							{cv.location}
+						</p>
+						<p
+							class="mt-3 text-sm leading-7 text-slate-700 dark:text-slate-200"
+						>
+							{cv.availability}
+						</p>
+					</div>
+					<div
+						class="rounded-[1.5rem] border border-slate-200/80 bg-white/70 p-5 dark:border-slate-800/70 dark:bg-slate-950/35"
+					>
+						<p
+							class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
+						>
+							{t(locale, "skills.languages")}
+						</p>
+						<div class="mt-3 space-y-2">
+							{
+								cv.skills.languages.items.map((language) => (
+									<div class="flex items-center justify-between gap-4 text-sm">
+										<span class="text-slate-800 dark:text-slate-100">
+											{language.language}
+										</span>
+										<span
+											class={`font-semibold tracking-[0.18em] ${language.txtColor}`}
+										>
+											{language.level}
 										</span>
 									</div>
-									<span class="text-xs text-slate-500 dark:text-zinc-400">
-										{s.value}%
-									</span>
-								</div>
-
-								<div class="h-2 w-full rounded-full bg-slate-200/70 ring-1 ring-slate-900/5 dark:bg-zinc-900/70 dark:ring-white/5">
-									<div
-										class={`h-2 rounded-full ${s.color}`}
-										style={`width:${s.value}%`}
-									/>
-								</div>
-							</div>
-						))
-					}
+								))
+							}
+						</div>
+					</div>
 				</div>
-			</div>
-
-			<div
-				class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-emerald-500/25 md:p-8 dark:border-zinc-800 dark:bg-zinc-900/40"
-			>
-				<div class="mb-5 flex items-center gap-2">
-					<span
-						class="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
-					>
-						<Icon name="layers" class="h-5 w-5" />
-					</span>
-					<h3 class="text-base font-semibold text-slate-900 dark:text-zinc-100">
-						{t(locale, "skills.frameworks")}
-					</h3>
-				</div>
-
-				<div class="flex flex-wrap gap-2">
-					{
-						cv.skills.frameworksTools.map((tag) => (
-							<span
-								class={`inline-flex items-center gap-1.5 rounded-xl border px-4 py-2 text-xs font-semibold ${tag.color}`}
-							>
-								{tag.icon ? <Icon name={tag.icon} class="h-4 w-4" /> : null}
-								{tag.label}
-							</span>
-						))
-					}
-				</div>
-
-				<p class="mt-4 text-xs text-slate-500 dark:text-zinc-500">
-					{t(locale, "skills.curatedNote")}
-				</p>
 			</div>
 		</div>
+	</section>
 
-		<div class="mt-6">
-			<div
-				class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/70 p-6 shadow-sm backdrop-blur transition hover:border-amber-500/25 md:p-8 dark:border-zinc-800 dark:bg-zinc-900/40"
+	<section class="section-reveal mt-16 md:mt-24">
+		<div class="max-w-3xl">
+			<p
+				class="text-xs font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
 			>
-				<div class="mb-5 flex items-center gap-2">
-					<span
-						class="grid h-9 w-9 place-items-center rounded-xl bg-amber-500/10 text-amber-700 dark:text-amber-200"
-					>
-						<Icon name="lightbulb" class="h-5 w-5" />
-					</span>
-					<h3 class="text-base font-semibold text-slate-900 dark:text-zinc-100">
-						{t(locale, "skills.soft")}
-					</h3>
-				</div>
+				{t(locale, "home.experience.eyebrow")}
+			</p>
+			<h2
+				class="mt-4 text-3xl font-semibold text-slate-950 md:text-4xl dark:text-slate-50"
+			>
+				{t(locale, "home.experience.title")}
+			</h2>
+			<p class="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
+				{t(locale, "home.experience.summary")}
+			</p>
+		</div>
 
-				<div class="grid gap-4 sm:grid-cols-3">
-					{
-						cv.skills.soft.map((s) => (
-							<div class="rounded-2xl border border-slate-200/80 bg-white/60 p-4 text-center shadow-sm backdrop-blur transition hover:border-amber-500/25 dark:border-zinc-800/70 dark:bg-zinc-950/25">
-								<div class="mx-auto mb-3 grid h-12 w-12 place-items-center rounded-2xl bg-slate-100/70 text-slate-700 ring-1 ring-slate-200 dark:bg-zinc-950/40 dark:text-zinc-200 dark:ring-zinc-800/70">
-									{s.icon ? <Icon name={s.icon} class="h-6 w-6" /> : null}
+		<div class="stagger-children mt-8 grid gap-5">
+			{
+				cv.experience.map((exp) => (
+					<article class="glass-panel surface-ring rounded-[2rem] p-6 md:p-7">
+						<div class="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+							<div class="max-w-3xl">
+								<div class="flex flex-wrap items-center gap-3">
+									<span class="inline-flex min-h-10 items-center rounded-full border border-[var(--accent-line)] bg-[var(--accent-soft)] px-4 py-2 text-xs font-semibold text-[var(--accent-strong)]">
+										{exp.startDate} -{" "}
+										{exp.endDate === "Present"
+											? t(locale, "experienceCard.present")
+											: exp.endDate}
+									</span>
+									<span class="text-sm text-slate-500 dark:text-slate-400">
+										{exp.location}
+									</span>
 								</div>
-
-								<p class="text-sm font-semibold text-slate-900 dark:text-zinc-200">
-									{s.label}
+								<h3 class="mt-5 text-2xl font-semibold text-slate-950 dark:text-slate-50">
+									{exp.role}
+								</h3>
+								<p class="mt-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+									{exp.company}
+								</p>
+								<p class="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
+									{exp.description}
 								</p>
 							</div>
-						))
-					}
-				</div>
 
-				<div
-					class="mt-6 rounded-2xl border border-slate-200/80 bg-white/60 p-5 shadow-sm backdrop-blur transition hover:border-amber-500/25 dark:border-zinc-800/70 dark:bg-zinc-950/25"
-				>
-					<div class="grid items-center gap-4 sm:grid-cols-[1.2fr_1fr_1fr]">
-						<div class="flex items-center gap-3">
-							<div
-								class="grid h-11 w-11 place-items-center rounded-2xl bg-slate-100/70 text-slate-700 ring-1 ring-slate-200 dark:bg-zinc-950/40 dark:text-zinc-200 dark:ring-zinc-800/70"
-							>
-								<Icon name="globe" class="h-5 w-5" />
-							</div>
-
-							<div class="leading-tight">
-								<p
-									class="text-sm font-semibold text-slate-900 dark:text-zinc-100"
-								>
-									{t(locale, "skills.languages")}
+							<div class="rounded-[1.5rem] border border-slate-200/80 bg-white/75 p-4 dark:border-slate-800/70 dark:bg-slate-950/35">
+								<p class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400">
+									Stack
 								</p>
-								<p class="text-[12px] text-slate-600 dark:text-zinc-400">
-									{t(locale, "skills.communication")}
-								</p>
+								<div class="mt-3 flex max-w-xs flex-wrap gap-2">
+									{(exp.company.includes("CGI")
+										? ["Java", "Spring Boot", "PostgreSQL", "Liquibase", "Pact"]
+										: [
+												"PHP",
+												"Docker",
+												"JavaScript",
+												"Elasticsearch",
+												"Web Performance",
+											]
+									).map((item) => (
+										<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-800/70 dark:bg-slate-900/60 dark:text-slate-200">
+											{item}
+										</span>
+									))}
+								</div>
 							</div>
 						</div>
 
-						{
-							cv.skills.languages.items.map((lang) => (
-								<div class="sm:border-l sm:border-slate-200/80 sm:pl-5 dark:sm:border-zinc-800/70">
-									<p class="text-sm font-semibold text-slate-900 dark:text-zinc-100">
-										{lang.language}
-									</p>
-									<p
-										class={`mt-1 text-[11px] font-semibold tracking-[0.22em] ${lang.txtColor}`}
+						<ul class="mt-6 grid gap-3 md:grid-cols-2">
+							{exp.highlights?.map((highlight) => (
+								<li class="flex gap-3 rounded-[1.25rem] border border-slate-200/80 bg-white/75 px-4 py-4 text-sm leading-7 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
+									<span class="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[var(--accent-soft)] text-[var(--accent-strong)]">
+										<Icon name="check" class="h-3.5 w-3.5" />
+									</span>
+									<span>{highlight}</span>
+								</li>
+							))}
+						</ul>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-reveal mt-16 md:mt-24">
+		<div class="max-w-3xl">
+			<p
+				class="text-xs font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
+			>
+				{t(locale, "home.projects.eyebrow")}
+			</p>
+			<h2
+				class="mt-4 text-3xl font-semibold text-slate-950 md:text-4xl dark:text-slate-50"
+			>
+				{t(locale, "home.projects.title")}
+			</h2>
+			<p class="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
+				{t(locale, "home.projects.summary")}
+			</p>
+		</div>
+
+		<div class="stagger-children mt-8 grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+			{
+				featuredProject && (
+					<article class="glass-panel surface-ring overflow-hidden rounded-[2rem]">
+						<div class="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+							<div class="relative min-h-[280px] overflow-hidden">
+								<Image
+									src={
+										featuredProject.img?.imgStatic?.src ?? "/images/avatar.avif"
+									}
+									alt={
+										featuredProject.img?.imgStatic?.alt ?? featuredProject.title
+									}
+									width={900}
+									height={700}
+									loading="eager"
+									class="h-full w-full object-cover"
+								/>
+							</div>
+							<div class="p-6 md:p-7">
+								<div class="flex flex-wrap items-center gap-3">
+									<span class="inline-flex min-h-10 items-center rounded-full border border-[var(--accent-line)] bg-[var(--accent-soft)] px-4 py-2 text-xs font-semibold text-[var(--accent-strong)]">
+										{featuredProject.status}
+									</span>
+									<span class="text-sm text-slate-500 dark:text-slate-400">
+										{featuredProject.timeframe}
+									</span>
+								</div>
+								<h3 class="mt-5 text-2xl font-semibold text-slate-950 dark:text-slate-50">
+									{featuredProject.title}
+								</h3>
+								<p class="mt-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+									{featuredProject.role} - {featuredProject.companyRelated}
+								</p>
+								<p class="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
+									{featuredProject.summary}
+								</p>
+								<ul class="mt-5 space-y-3">
+									{featuredProject.highlights?.slice(0, 3).map((highlight) => (
+										<li class="flex gap-3 text-sm text-slate-700 dark:text-slate-200">
+											<span class="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
+											<span>{highlight}</span>
+										</li>
+									))}
+								</ul>
+								<div class="mt-6 flex flex-wrap gap-2">
+									{featuredProject.technologies.slice(0, 6).map((tech) => (
+										<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
+											{tech}
+										</span>
+									))}
+								</div>
+								{featuredProject.link && (
+									<a
+										href={featuredProject.link}
+										target="_blank"
+										rel="noreferrer"
+										class="mt-6 inline-flex min-h-11 items-center gap-2 rounded-2xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
 									>
-										{lang.level}
+										{t(locale, "projectCard.viewProject")}
+										<Icon name="move-up-right" class="h-4 w-4" />
+									</a>
+								)}
+							</div>
+						</div>
+					</article>
+				)
+			}
+
+			<div class="grid gap-5">
+				{
+					companyProjects.slice(0, 2).map((project) => (
+						<article class="glass-panel surface-ring rounded-[2rem] p-5">
+							<div class="flex items-start justify-between gap-4">
+								<div>
+									<span class="inline-flex min-h-9 items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-slate-600 uppercase dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-300">
+										{project.status}
+									</span>
+									<h3 class="mt-4 text-xl font-semibold text-slate-950 dark:text-slate-50">
+										{project.title}
+									</h3>
+									<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
+										{project.companyRelated}
+									</p>
+								</div>
+								<span class="rounded-2xl border border-[var(--accent-line)] bg-[var(--accent-soft)] p-3 text-[var(--accent-strong)]">
+									<Icon name="briefcase" class="h-5 w-5" />
+								</span>
+							</div>
+							<p class="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
+								{project.summary}
+							</p>
+							<div class="mt-5 flex flex-wrap gap-2">
+								{project.technologies.slice(0, 5).map((tech) => (
+									<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
+										{tech}
+									</span>
+								))}
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal mt-16 md:mt-24">
+		<div class="max-w-3xl">
+			<p
+				class="text-xs font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
+			>
+				{t(locale, "home.skills.eyebrow")}
+			</p>
+			<h2
+				class="mt-4 text-3xl font-semibold text-slate-950 md:text-4xl dark:text-slate-50"
+			>
+				{t(locale, "home.skills.title")}
+			</h2>
+			<p class="mt-4 text-base leading-8 text-slate-600 dark:text-slate-300">
+				{t(locale, "home.skills.summary")}
+			</p>
+		</div>
+
+		<div class="stagger-children mt-8 grid gap-5 lg:grid-cols-[1fr_1fr]">
+			<div class="grid gap-5">
+				{
+					cv.focusAreas.map((area) => (
+						<article class="glass-panel surface-ring rounded-[2rem] p-5">
+							<div class="flex items-start justify-between gap-4">
+								<div>
+									<h3 class="text-xl font-semibold text-slate-950 dark:text-slate-50">
+										{area.title}
+									</h3>
+									<p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+										{area.description}
+									</p>
+								</div>
+								<span class="rounded-2xl border border-[var(--accent-line)] bg-[var(--accent-soft)] p-3 text-[var(--accent-strong)]">
+									<Icon name="layers" class="h-5 w-5" />
+								</span>
+							</div>
+							<div class="mt-5 flex flex-wrap gap-2">
+								{area.items.map((item) => (
+									<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
+										{item}
+									</span>
+								))}
+							</div>
+						</article>
+					))
+				}
+			</div>
+
+			<div class="grid gap-5">
+				<article class="glass-panel surface-ring rounded-[2rem] p-5 md:p-6">
+					<h3 class="text-xl font-semibold text-slate-950 dark:text-slate-50">
+						{t(locale, "skills.core")}
+					</h3>
+					<div class="mt-6 space-y-4">
+						{
+							cv.skills.coreTech.map((skill) => (
+								<div>
+									<div class="flex items-center justify-between gap-4 text-sm">
+										<span class="font-medium text-slate-800 dark:text-slate-100">
+											{skill.name}
+										</span>
+										<span class="text-slate-500 dark:text-slate-400">
+											{skill.value}%
+										</span>
+									</div>
+									<div class="mt-2 h-2.5 rounded-full bg-slate-200/80 dark:bg-slate-800/70">
+										<div
+											class={`h-2.5 rounded-full ${skill.color}`}
+											style={`width:${skill.value}%`}
+										/>
+									</div>
+								</div>
+							))
+						}
+					</div>
+				</article>
+
+				<article class="glass-panel surface-ring rounded-[2rem] p-5 md:p-6">
+					<h3 class="text-xl font-semibold text-slate-950 dark:text-slate-50">
+						{t(locale, "skills.frameworks")}
+					</h3>
+					<div class="mt-6 flex flex-wrap gap-2">
+						{
+							cv.skills.frameworksTools.map((tag) => (
+								<span
+									class={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-semibold ${tag.color}`}
+								>
+									{tag.icon ? <Icon name={tag.icon} class="h-4 w-4" /> : null}
+									{tag.label}
+								</span>
+							))
+						}
+					</div>
+				</article>
+
+				<article class="glass-panel surface-ring rounded-[2rem] p-5 md:p-6">
+					<h3 class="text-xl font-semibold text-slate-950 dark:text-slate-50">
+						{t(locale, "skills.soft")}
+					</h3>
+					<div class="mt-6 grid gap-3 sm:grid-cols-3">
+						{
+							cv.skills.soft.map((item) => (
+								<div class="rounded-[1.35rem] border border-slate-200/80 bg-white/75 p-4 text-center dark:border-slate-800/70 dark:bg-slate-950/35">
+									<span class="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--accent-soft)] text-[var(--accent-strong)]">
+										{item.icon ? (
+											<Icon name={item.icon} class="h-5 w-5" />
+										) : null}
+									</span>
+									<p class="mt-3 text-sm font-semibold text-slate-900 dark:text-slate-100">
+										{item.label}
 									</p>
 								</div>
 							))
 						}
+					</div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal mt-16 md:mt-24">
+		<div class="glass-panel surface-ring rounded-[2rem] p-6 md:p-8">
+			<div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+				<div>
+					<p
+						class="text-xs font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
+					>
+						{t(locale, "home.contact.eyebrow")}
+					</p>
+					<h2
+						class="mt-4 max-w-2xl text-3xl font-semibold text-slate-950 md:text-4xl dark:text-slate-50"
+					>
+						{t(locale, "home.contact.title")}
+					</h2>
+					<p
+						class="mt-4 max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300"
+					>
+						{t(locale, "home.contact.summary")}
+					</p>
+				</div>
+
+				<div class="grid gap-4">
+					<a
+						href={`mailto:${cv.email}`}
+						class="rounded-[1.5rem] border border-slate-200/80 bg-white/80 px-5 py-5 text-sm shadow-sm hover:-translate-y-0.5 dark:border-slate-800/70 dark:bg-slate-950/35"
+					>
+						<span
+							class="block text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
+						>
+							{t(locale, "contact.emailLabel")}
+						</span>
+						<span
+							class="mt-2 block text-lg font-semibold text-slate-950 dark:text-slate-50"
+						>
+							{cv.email}
+						</span>
+					</a>
+
+					<div class="flex flex-col gap-3 sm:flex-row">
+						<a
+							href={`mailto:${cv.email}`}
+							class="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
+						>
+							{t(locale, "home.contact.primaryCta")}
+							<Icon name="mail" class="h-4 w-4" />
+						</a>
+						<a
+							href={cv.links.linkedin}
+							target="_blank"
+							rel="noreferrer"
+							class="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-200/80 bg-white/70 px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-white dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-100 dark:hover:bg-slate-900/70"
+						>
+							{t(locale, "home.contact.secondaryCta")}
+							<Icon name="move-up-right" class="h-4 w-4" />
+						</a>
 					</div>
 				</div>
 			</div>
