@@ -4,6 +4,7 @@ import CertificationCard from "@/components/cards/CertificationCard.astro";
 import EducationCard from "@/components/cards/EducationCard.astro";
 import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCv } from "@cv";
+import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
@@ -20,9 +21,27 @@ const pageDescription = t(locale, "education.meta.description").replace(
 	"{name}",
 	cv.name,
 );
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const structuredData = [
+	buildCollectionPage(site, `/${locale}/education`, pageTitle, pageDescription),
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
+		{ name: t(locale, "nav.education"), path: `/${locale}/education` },
+	]),
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	structuredData={structuredData}
+	keywords={[
+		"Education",
+		"Certifications",
+		"Software Engineering",
+		"Technical Background",
+	]}
+>
 	<section class="section-reveal pt-4 md:pt-8">
 		<div class="max-w-3xl">
 			<p

@@ -2,6 +2,8 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import BlogPostLayout from "@/layouts/BlogPostLayout.astro";
 import { getCollection, getEntry } from "astro:content";
+import { buildBlogPosting, buildBreadcrumbList } from "@/lib/seo";
+import type { Locale } from "@/i18n";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
@@ -23,16 +25,42 @@ export async function getStaticPaths() {
 	});
 }
 
-const { locale } = Astro.params;
+const locale = Astro.params.locale as Locale;
 const { fullSlug } = Astro.props;
 
 const post = await getEntry("blog", fullSlug);
 if (!post) throw new Error(`Post not found: ${fullSlug}`);
 
 const { Content } = await post.render();
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const postPath = `/${locale}/blog/${Astro.params.slug}`;
+const structuredData = [
+	buildBlogPosting({
+		site,
+		locale,
+		path: postPath,
+		title: post.data.title,
+		description: post.data.description,
+		datePublished: post.data.date,
+		author: post.data.author ?? "José Miguel Fernández",
+		tags: post.data.tags,
+		readingTime: post.data.readingTime,
+	}),
+	buildBreadcrumbList(site, [
+		{ name: locale === "es" ? "Inicio" : "Home", path: `/${locale}` },
+		{ name: locale === "es" ? "Blog" : "Blog", path: `/${locale}/blog` },
+		{ name: post.data.title, path: postPath },
+	]),
+];
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+	title={post.data.title}
+	description={post.data.description}
+	ogType="article"
+	structuredData={structuredData}
+	keywords={post.data.tags ?? []}
+>
 	<BlogPostLayout frontmatter={post.data} locale={locale}>
 		<Content />
 	</BlogPostLayout>

@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCv } from "@cv";
+import { buildBreadcrumbList, buildProfilePage } from "@/lib/seo";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
@@ -19,12 +20,37 @@ const companyProjects = cv.projects?.company ?? [];
 const personalProjects = cv.projects?.personal ?? [];
 const featuredProject = personalProjects[0] ?? companyProjects[0];
 const featuredExperience = cv.experience[0];
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const structuredData = [
+	buildProfilePage(site, locale, {
+		name: cv.name,
+		description: cv.tagline,
+		email: cv.email,
+		location: cv.location,
+		links: cv.links,
+	}),
+	buildBreadcrumbList(site, [
+		{
+			name: t(locale, "nav.home"),
+			path: `/${locale}`,
+		},
+	]),
+];
 ---
 
 <BaseLayout
 	title={pageTitle}
 	description={pageDescription}
 	image={featuredProject?.img?.imgStatic?.src ?? "/images/og/portfolio-og.svg"}
+	imageAlt={featuredProject?.img?.imgStatic?.alt ?? cv.name}
+	structuredData={structuredData}
+	keywords={[
+		"Software Engineer",
+		"Systems Engineering",
+		"Product Engineering",
+		"Backend Architecture",
+		"Automation",
+	]}
 >
 	<section class="section-reveal pt-10 md:pt-16">
 		<div class="grid gap-12 lg:grid-cols-[1.18fr_0.82fr] lg:gap-16">

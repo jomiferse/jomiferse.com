@@ -4,6 +4,7 @@ import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCollection } from "astro:content";
 import { getCv } from "@cv";
 import BlogPostCard from "@/components/cards/BlogPostCard.astro";
+import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
@@ -35,9 +36,28 @@ const pageDescription = t(locale, "blog.meta.description").replace(
 const blogBasePath = `/${locale}/blog`;
 const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 const featuredLabel = locale === "es" ? "Seleccionado" : "Selected";
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const structuredData = [
+	buildCollectionPage(site, blogBasePath, pageTitle, pageDescription),
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
+		{ name: t(locale, "nav.blog"), path: blogBasePath },
+	]),
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	structuredData={structuredData}
+	keywords={[
+		"Engineering Blog",
+		"Systems Thinking",
+		"Architecture",
+		"Automation",
+		"Product Engineering",
+	]}
+>
 	<section class="section-reveal pt-4 md:pt-8">
 		<div class="max-w-3xl">
 			<p

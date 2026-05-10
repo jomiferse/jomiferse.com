@@ -4,6 +4,12 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCv } from "@cv";
+import {
+	buildBreadcrumbList,
+	buildCollectionPage,
+	buildCreativeWork,
+	buildSoftwareApplication,
+} from "@/lib/seo";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
@@ -24,13 +30,47 @@ const pageDescription = t(locale, "projects.meta.description").replace(
 	"{name}",
 	cv.name,
 );
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const structuredData = [
+	buildCollectionPage(site, `/${locale}/projects`, pageTitle, pageDescription),
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
+		{ name: t(locale, "nav.projects"), path: `/${locale}/projects` },
+	]),
+	...personalProjects.map((project) =>
+		buildSoftwareApplication({
+			name: project.title,
+			description: project.summary,
+			url: project.link || undefined,
+			technologies: project.technologies,
+		}),
+	),
+	...companyProjects.map((project) =>
+		buildCreativeWork(site, {
+			name: project.title,
+			description: project.summary,
+			technologies: project.technologies,
+		}),
+	),
+];
 
 const featuredLabel =
 	locale === "es" ? "Proyecto protagonista" : "Featured build";
 const archiveLabel = locale === "es" ? "Trabajo adicional" : "Additional work";
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	structuredData={structuredData}
+	keywords={[
+		"Software Projects",
+		"Case Studies",
+		"Product Delivery",
+		"Backend Systems",
+		"Internal Tooling",
+	]}
+>
 	<section class="section-reveal pt-4 md:pt-8">
 		<div class="max-w-3xl">
 			<p

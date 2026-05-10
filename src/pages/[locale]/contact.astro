@@ -4,6 +4,7 @@ import ContactForm from "@/components/forms/ContactForm.astro";
 import { Icon } from "astro-icon/components";
 import { getLocaleFromPath, t } from "@/i18n";
 import { getCv } from "@cv";
+import { buildBreadcrumbList } from "@/lib/seo";
 
 export const prerender = false;
 
@@ -17,9 +18,32 @@ const pageDescription = t(locale, "contact.meta.description").replace(
 );
 
 const isSent = Astro.url.searchParams.get("sent") === "1";
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const structuredData = [
+	{
+		"@context": "https://schema.org",
+		"@type": "ContactPage",
+		name: pageTitle,
+		description: pageDescription,
+		url: new URL(`/${locale}/contact`, site).toString(),
+	},
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
+		{ name: t(locale, "nav.contact"), path: `/${locale}/contact` },
+	]),
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	structuredData={structuredData}
+	keywords={[
+		"Contact Software Engineer",
+		"Technical Collaboration",
+		"Product Engineering",
+	]}
+>
 	<section class="section-reveal pt-4 md:pt-8">
 		<div class="max-w-3xl">
 			<p

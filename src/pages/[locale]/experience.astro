@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCv } from "@cv";
+import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
@@ -17,9 +18,32 @@ const pageDescription = t(locale, "experience.meta.description").replace(
 	"{name}",
 	cv.name,
 );
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const structuredData = [
+	buildCollectionPage(
+		site,
+		`/${locale}/experience`,
+		pageTitle,
+		pageDescription,
+	),
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
+		{ name: t(locale, "nav.experience"), path: `/${locale}/experience` },
+	]),
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout
+	title={pageTitle}
+	description={pageDescription}
+	structuredData={structuredData}
+	keywords={[
+		"Software Engineer Experience",
+		"Backend Engineering",
+		"Platform Engineering",
+		"Distributed Systems",
+	]}
+>
 	<section class="section-reveal pt-4 md:pt-8">
 		<div class="max-w-3xl">
 			<p
