@@ -23,6 +23,7 @@ interface Props {
 }
 
 const { locale = "en" } = Astro.props as Props;
+const isSpanish = locale === "es";
 
 const normalizePath = (path: string) =>
 	path === "/" ? "/" : path.replace(/\/$/, "");
@@ -41,7 +42,9 @@ const normalizedCurrent = normalizePath(currentPath);
 
 <header class="sticky top-0 z-50 px-3 pt-3 md:px-6">
 	<div class="header-bar mx-auto max-w-6xl">
-		<div class="flex items-center justify-between gap-4 px-4 py-3 md:px-6">
+		<div
+			class="flex items-center justify-between gap-3 px-4 py-3 md:px-5 xl:px-6"
+		>
 			<a
 				href={withLocale("/", locale)}
 				class="flex min-w-0 items-center gap-3 px-1 py-1"
@@ -52,13 +55,15 @@ const normalizedCurrent = normalizePath(currentPath);
 				>
 					JMF
 				</span>
-				<span class="hidden leading-tight sm:block">
+				<span class="hidden leading-tight md:block">
 					<span
 						class="block text-sm font-semibold text-slate-900 dark:text-slate-50"
 					>
 						José Miguel Fernández
 					</span>
-					<span class="block text-xs text-slate-500 dark:text-slate-400">
+					<span
+						class="hidden text-xs text-slate-500 2xl:block dark:text-slate-400"
+					>
 						{t(locale, "header.availability")}
 					</span>
 				</span>
@@ -66,7 +71,10 @@ const normalizedCurrent = normalizePath(currentPath);
 
 			<nav
 				aria-label="Main"
-				class="header-nav hidden items-center gap-1 lg:flex"
+				class:list={[
+					"header-nav hidden items-center gap-0.5 lg:flex",
+					isSpanish ? "xl:gap-0" : null,
+				]}
 			>
 				{
 					links.map((link) => {
@@ -76,7 +84,9 @@ const normalizedCurrent = normalizePath(currentPath);
 								href={withLocale(link.href, locale)}
 								aria-current={active ? "page" : undefined}
 								class:list={[
-									"header-nav-link px-3 py-2 text-sm font-medium",
+									isSpanish
+										? "header-nav-link px-2.5 py-2 text-[13px] font-medium xl:px-3"
+										: "header-nav-link px-3 py-2 text-sm font-medium",
 									active
 										? "is-active text-slate-950 dark:text-slate-50"
 										: "text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white",
@@ -89,14 +99,14 @@ const normalizedCurrent = normalizePath(currentPath);
 				}
 			</nav>
 
-			<div class="hidden items-center gap-1.5 md:flex">
+			<div class="hidden items-center gap-1 md:flex">
 				<LanguageToggle locale={locale} />
 				<ThemeToggle locale={locale} />
 				<a
 					href={withLocale("/contact", locale)}
-					class="header-cta inline-flex min-h-10 items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold"
+					class="header-cta inline-flex min-h-10 items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap xl:px-4"
 				>
-					{t(locale, "header.contactCta")}
+					{t(locale, "header.contactCtaShort")}
 					<Icon name="arrow-right" class="h-4 w-4" />
 				</a>
 			</div>

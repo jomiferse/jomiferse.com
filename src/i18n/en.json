@@ -14,8 +14,9 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "mobileNav": "Mobile navigation",
-    "availability": "Engineering partner for selected teams",
-    "contactCta": "Discuss a project"
+    "availability": "Technical partner",
+    "contactCta": "Discuss a project",
+    "contactCtaShort": "Let's talk"
   },
   "theme": {
     "toggle": "Toggle theme",
