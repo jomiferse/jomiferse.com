@@ -12,9 +12,7 @@ const cv = getCv(locale);
 ---
 
 <footer class="px-3 pb-3 md:px-6 md:pb-6">
-	<div
-		class="glass-panel surface-ring mx-auto max-w-6xl rounded-[2rem] px-5 py-6 md:px-7 md:py-7"
-	>
+	<div class="footer-bar mx-auto max-w-6xl px-5 py-6 md:px-6 md:py-6">
 		<div
 			class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between"
 		>
@@ -38,7 +36,7 @@ const cv = getCv(locale);
 				</p>
 			</div>
 
-			<div class="flex flex-col gap-3 md:items-end">
+			<div class="flex flex-col gap-4 md:items-end">
 				<a
 					href={`mailto:${cv.email}`}
 					class="text-base font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
@@ -46,13 +44,13 @@ const cv = getCv(locale);
 					{cv.email}
 				</a>
 
-				<div class="flex items-center gap-2">
+				<div class="flex items-center gap-1.5">
 					<a
 						href={cv.links.github}
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="GitHub"
-						class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 text-slate-700 hover:-translate-y-0.5 hover:text-slate-950 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200 dark:hover:text-white"
+						class="header-utility inline-flex min-h-10 min-w-10 items-center justify-center rounded-full text-slate-600 dark:text-slate-300"
 					>
 						<Icon name="github" class="h-5 w-5" />
 					</a>
@@ -62,7 +60,7 @@ const cv = getCv(locale);
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="LinkedIn"
-						class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 text-slate-700 hover:-translate-y-0.5 hover:text-slate-950 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200 dark:hover:text-white"
+						class="header-utility inline-flex min-h-10 min-w-10 items-center justify-center rounded-full text-slate-600 dark:text-slate-300"
 					>
 						<Icon name="linkedin" class="h-5 w-5" />
 					</a>

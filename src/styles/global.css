@@ -184,6 +184,18 @@ select:focus {
 	box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
 }
 
+.footer-bar {
+	background: color-mix(in srgb, var(--bg-elevated) 72%, transparent);
+	border: 1px solid color-mix(in srgb, var(--surface-border) 74%, transparent);
+	border-radius: 1.75rem;
+	box-shadow: 0 12px 34px rgba(15, 23, 42, 0.05);
+	backdrop-filter: blur(18px);
+}
+
+.dark .footer-bar {
+	box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
+}
+
 .header-nav {
 	padding: 0.2rem;
 }
