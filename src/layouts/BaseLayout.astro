@@ -2,13 +2,24 @@
 import Footer from "@/components/common/Footer.astro";
 import Header from "@/components/common/Header.astro";
 import "@/styles/global.css";
-import { getLocaleFromPath, type Locale } from "@/i18n";
+import { getLocaleFromPath, t, type Locale } from "@/i18n";
 import { getCv } from "@cv";
 
-const { title, description } = Astro.props as {
+interface LayoutProps {
 	title: string;
 	description: string;
-};
+	image?: string;
+	noindex?: boolean;
+	structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
+}
+
+const {
+	title,
+	description,
+	image = "/images/avatar.avif",
+	noindex = false,
+	structuredData,
+} = Astro.props as LayoutProps;
 
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
@@ -25,6 +36,53 @@ const buildAlternate = (loc: Locale) => {
 
 const alternateEn = buildAlternate("en");
 const alternateEs = buildAlternate("es");
+const ogImage = Astro.site ? new URL(image, Astro.site).toString() : image;
+const robots = noindex ? "noindex,nofollow" : "index,follow";
+
+const baseStructuredData = [
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		name: cv.name,
+		jobTitle: cv.currentRole,
+		description: cv.tagline,
+		url: Astro.site
+			? new URL(`/${locale}`, Astro.site).toString()
+			: `/${locale}`,
+		email: `mailto:${cv.email}`,
+		address: {
+			"@type": "PostalAddress",
+			addressLocality: cv.location,
+		},
+		sameAs: [cv.links.linkedin, cv.links.github],
+		knowsAbout: [
+			"Java",
+			"Spring Boot",
+			"Distributed Systems",
+			"Microservices",
+			"Kubernetes",
+			"Docker",
+			"PostgreSQL",
+			"CI/CD",
+			"Backend Engineering",
+		],
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		name: cv.name,
+		url: Astro.site?.toString() ?? "/",
+		inLanguage: locale,
+	},
+];
+
+const extraStructuredData = structuredData
+	? Array.isArray(structuredData)
+		? structuredData
+		: [structuredData]
+	: [];
+
+const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 ---
 
 <html lang={locale} class="min-h-screen scroll-smooth antialiased">
@@ -34,25 +92,42 @@ const alternateEs = buildAlternate("es");
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<meta name="author" content={cv.name} />
+		<meta name="robots" content={robots} />
+
+		<link rel="canonical" href={canonicalUrl} />
+		<link rel="alternate" hreflang="en" href={alternateEn} />
+		<link rel="alternate" hreflang="es" href={alternateEs} />
+		<link rel="alternate" hreflang="x-default" href={alternateEn} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:site_name" content={cv.name} />
+		<meta property="og:locale" content={locale === "es" ? "es_ES" : "en_US"} />
+		<meta property="og:image" content={ogImage} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 
 		<link rel="shortcut icon" href="/favicon.ico" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="/favicon-32x32.png"
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+		<meta
+			name="theme-color"
+			content="#f5f7fb"
+			media="(prefers-color-scheme: light)"
 		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="/favicon-16x16.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="/apple-touch-icon.png"
+		<meta
+			name="theme-color"
+			content="#090d16"
+			media="(prefers-color-scheme: dark)"
 		/>
 
 		<script is:inline>
@@ -66,36 +141,53 @@ const alternateEs = buildAlternate("es");
 			})();
 		</script>
 
-		<link rel="canonical" href={canonicalUrl} />
-
-		<link rel="alternate" hreflang="en" href={alternateEn} />
-		<link rel="alternate" hreflang="es" href={alternateEs} />
-		<link rel="alternate" hreflang="x-default" href={alternateEn} />
-
-		<meta name="robots" content="index,follow" />
-		<meta name="author" content={cv.name} />
-
-		<meta
-			name="theme-color"
-			content="#f8fafc"
-			media="(prefers-color-scheme: light)"
-		/>
-		<meta
-			name="theme-color"
-			content="#09090b"
-			media="(prefers-color-scheme: dark)"
-		/>
+		<script is:inline type="application/ld+json" set:html={jsonLd} />
 	</head>
 
 	<body
-		class="relative flex min-h-screen flex-col bg-slate-50 text-slate-900 transition-colors before:pointer-events-none before:fixed before:inset-0 before:bg-[radial-gradient(1200px_circle_at_20%_-10%,rgba(99,102,241,0.10),transparent_60%),radial-gradient(1000px_circle_at_90%_10%,rgba(168,85,247,0.10),transparent_55%)] before:content-[''] dark:bg-zinc-950 dark:text-zinc-100 dark:before:bg-[radial-gradient(1200px_circle_at_20%_-10%,rgba(168,85,247,0.12),transparent_60%),radial-gradient(1000px_circle_at_90%_10%,rgba(99,102,241,0.10),transparent_55%)]"
+		class="relative flex min-h-screen flex-col text-slate-950 dark:text-slate-50"
 	>
+		<a href="#main-content" class="skip-link"
+			>{t(locale, "a11y.skipToContent")}</a
+		>
 		<Header locale={locale} />
 		<main
-			class="mx-auto w-full max-w-5xl flex-1 px-4 pt-10 pb-12 md:pt-12 md:pb-16"
+			id="main-content"
+			class="mx-auto w-full max-w-6xl flex-1 px-4 pt-8 pb-14 md:px-6 md:pt-10 md:pb-18"
 		>
 			<slot />
 		</main>
 		<Footer locale={locale} />
+
+		<script is:inline>
+			(() => {
+				const elements = document.querySelectorAll(
+					".section-reveal, .stagger-children",
+				);
+				if (
+					!elements.length ||
+					window.matchMedia("(prefers-reduced-motion: reduce)").matches
+				) {
+					elements.forEach((element) => element.classList.add("is-visible"));
+					return;
+				}
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) return;
+							entry.target.classList.add("is-visible");
+							observer.unobserve(entry.target);
+						});
+					},
+					{
+						threshold: 0.12,
+						rootMargin: "0px 0px -8% 0px",
+					},
+				);
+
+				elements.forEach((element) => observer.observe(element));
+			})();
+		</script>
 	</body>
 </html>

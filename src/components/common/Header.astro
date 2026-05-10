@@ -39,52 +39,80 @@ const currentPath = stripLocalePrefix(Astro.url.pathname);
 const normalizedCurrent = normalizePath(currentPath);
 ---
 
-<header
-	class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/70 backdrop-blur-md dark:border-zinc-800/60 dark:bg-zinc-900/70"
->
-	<div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5">
-		<a
-			href={withLocale("/", locale)}
-			class="text-sm font-semibold tracking-widest text-slate-900 transition-colors hover:text-purple-700 dark:text-zinc-100 dark:hover:text-purple-200"
-		>
-			JMF
-		</a>
-
-		<nav class="hidden items-center gap-6 text-sm md:flex">
-			{
-				links.map((link) => {
-					const active = normalizedCurrent === link.href;
-					return (
-						<a
-							href={withLocale(link.href, locale)}
-							class={`transition-colors ${
-								active
-									? "text-purple-700 dark:text-purple-300"
-									: "text-slate-600 hover:text-slate-900 dark:text-zinc-400 dark:hover:text-purple-200"
-							}`}
-						>
-							{t(locale, link.labelKey)}
-						</a>
-					);
-				})
-			}
-
-			<LanguageToggle locale={locale} />
-			<ThemeToggle locale={locale} />
-		</nav>
-
-		<div class="flex items-center gap-3 md:hidden">
-			<LanguageToggle locale={locale} />
-			<ThemeToggle locale={locale} />
-
-			<button
-				id="menu-open"
-				aria-label={t(locale, "header.openMenu")}
-				class="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-zinc-300 dark:hover:bg-zinc-800/40 dark:hover:text-zinc-50"
-				type="button"
+<header class="sticky top-0 z-50 px-3 pt-3 md:px-6">
+	<div class="glass-panel surface-ring mx-auto max-w-6xl rounded-[1.75rem]">
+		<div class="flex items-center justify-between gap-4 px-4 py-3 md:px-5">
+			<a
+				href={withLocale("/", locale)}
+				class="flex min-w-0 items-center gap-3 rounded-2xl px-2 py-1.5"
+				aria-label={t(locale, "nav.home")}
 			>
-				<Icon name="menu" class="h-6 w-6" />
-			</button>
+				<span
+					class="grid h-11 w-11 place-items-center rounded-2xl border border-[var(--accent-line)] bg-[var(--accent-soft)] text-sm font-bold tracking-[0.18em] text-[var(--accent-strong)]"
+				>
+					JMF
+				</span>
+				<span class="hidden leading-tight sm:block">
+					<span
+						class="block text-sm font-semibold text-slate-900 dark:text-slate-50"
+					>
+						José Miguel Fernández
+					</span>
+					<span class="block text-xs text-slate-500 dark:text-slate-400">
+						{t(locale, "header.availability")}
+					</span>
+				</span>
+			</a>
+
+			<nav
+				aria-label="Main"
+				class="hidden items-center gap-1 rounded-full border border-slate-200/70 bg-white/55 px-2 py-2 lg:flex dark:border-slate-800/70 dark:bg-slate-950/35"
+			>
+				{
+					links.map((link) => {
+						const active = normalizedCurrent === link.href;
+						return (
+							<a
+								href={withLocale(link.href, locale)}
+								aria-current={active ? "page" : undefined}
+								class:list={[
+									"rounded-full px-4 py-2 text-sm font-medium",
+									active
+										? "bg-slate-950 text-white dark:bg-slate-100 dark:text-slate-950"
+										: "text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white",
+								]}
+							>
+								{t(locale, link.labelKey)}
+							</a>
+						);
+					})
+				}
+			</nav>
+
+			<div class="hidden items-center gap-2 md:flex">
+				<LanguageToggle locale={locale} />
+				<ThemeToggle locale={locale} />
+				<a
+					href={withLocale("/contact", locale)}
+					class="inline-flex min-h-11 items-center gap-2 rounded-2xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
+				>
+					{t(locale, "header.contactCta")}
+					<Icon name="arrow-right" class="h-4 w-4" />
+				</a>
+			</div>
+
+			<div class="flex items-center gap-2 md:hidden">
+				<LanguageToggle locale={locale} />
+				<ThemeToggle locale={locale} />
+				<button
+					id="menu-open"
+					aria-label={t(locale, "header.openMenu")}
+					class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-100"
+					type="button"
+				>
+					<Icon name="menu" class="h-5 w-5" />
+				</button>
+			</div>
 		</div>
 	</div>
 </header>
@@ -96,44 +124,49 @@ const normalizedCurrent = normalizePath(currentPath);
 >
 	<div
 		id="menu-overlay"
-		class="absolute inset-0 bg-black/40 opacity-0 backdrop-blur-sm transition-opacity duration-200"
+		class="absolute inset-0 bg-slate-950/50 opacity-0 backdrop-blur-sm transition-opacity duration-200"
 	>
 	</div>
 
 	<aside
 		id="menu-panel"
-		class="absolute top-0 right-0 h-full w-72 translate-x-full transform border-l border-slate-200/70 bg-white/90 p-6 backdrop-blur transition-transform duration-250 ease-out dark:border-zinc-800/60 dark:bg-zinc-900/85"
+		class="glass-panel absolute top-3 right-3 bottom-3 w-[min(22rem,calc(100vw-1.5rem))] translate-x-[105%] rounded-[2rem] p-5 transition-transform duration-250 ease-out"
 		aria-label={t(locale, "header.mobileNav")}
 	>
-		<div class="mb-8 flex items-center justify-between">
-			<span
-				class="text-sm font-semibold tracking-widest text-slate-900 dark:text-zinc-100"
-			>
-				JMF
-			</span>
+		<div class="mb-8 flex items-center justify-between gap-3">
+			<div>
+				<p class="text-sm font-semibold text-slate-950 dark:text-slate-50">
+					José Miguel Fernández
+				</p>
+				<p class="text-xs text-slate-500 dark:text-slate-400">
+					{t(locale, "header.availability")}
+				</p>
+			</div>
 
 			<button
 				id="menu-close"
 				aria-label={t(locale, "header.closeMenu")}
-				class="rounded-xl p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-zinc-300 dark:hover:bg-zinc-800/40 dark:hover:text-zinc-50"
+				class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-100"
 				type="button"
 			>
-				<Icon name="x" class="h-6 w-6" />
+				<Icon name="x" class="h-5 w-5" />
 			</button>
 		</div>
 
-		<nav class="flex flex-col gap-3">
+		<nav class="flex flex-col gap-2">
 			{
 				links.map((link) => {
 					const active = normalizedCurrent === link.href;
 					return (
 						<a
 							href={withLocale(link.href, locale)}
-							class={`rounded-2xl border px-4 py-3 text-sm font-semibold transition ${
+							aria-current={active ? "page" : undefined}
+							class:list={[
+								"rounded-2xl border px-4 py-3 text-sm font-semibold",
 								active
-									? "border-purple-500/25 bg-purple-500/10 text-purple-700 dark:border-purple-500/25 dark:text-purple-300"
-									: "border-slate-200/80 bg-white/60 text-slate-700 hover:border-purple-500/25 hover:text-purple-700 dark:border-zinc-800/70 dark:bg-zinc-950/25 dark:text-zinc-300 dark:hover:border-purple-500/30 dark:hover:text-purple-200"
-							}`}
+									? "border-slate-950 bg-slate-950 text-white dark:border-slate-100 dark:bg-slate-100 dark:text-slate-950"
+									: "border-slate-200/70 bg-white/55 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200",
+							]}
 							data-close-menu
 						>
 							{t(locale, link.labelKey)}
@@ -142,12 +175,20 @@ const normalizedCurrent = normalizePath(currentPath);
 				})
 			}
 		</nav>
+
+		<a
+			href={withLocale("/contact", locale)}
+			class="mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-2xl bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-white"
+			data-close-menu
+		>
+			{t(locale, "header.contactCta")}
+			<Icon name="arrow-right" class="h-4 w-4" />
+		</a>
 	</aside>
 </div>
 
 <script is:inline>
 	(() => {
-		/* Lang toggle */
 		document.querySelectorAll("a[data-lang]").forEach((el) => {
 			el.addEventListener("click", () => {
 				const lang = el.getAttribute("data-lang");
@@ -159,44 +200,40 @@ const normalizedCurrent = normalizePath(currentPath);
 			});
 		});
 
-		/* Theme toggle */
 		const buttons = document.querySelectorAll("button.theme-toggle");
-		if (!buttons.length) return;
+		if (buttons.length) {
+			const isDark = () => document.documentElement.classList.contains("dark");
 
-		const isDark = () => document.documentElement.classList.contains("dark");
+			const syncButton = (btn) => {
+				const sun = btn.querySelector('[data-theme-icon="sun"]');
+				const moon = btn.querySelector('[data-theme-icon="moon"]');
+				if (!sun || !moon) return;
 
-		const syncButton = (btn) => {
-			const sun = btn.querySelector('[data-theme-icon="sun"]');
-			const moon = btn.querySelector('[data-theme-icon="moon"]');
-			if (!sun || !moon) return;
+				const dark = isDark();
+				sun.classList.toggle("hidden", !dark);
+				moon.classList.toggle("hidden", dark);
 
-			const dark = isDark();
+				const darkLabel =
+					btn.getAttribute("data-label-light") || "Switch to light mode";
+				const lightLabel =
+					btn.getAttribute("data-label-dark") || "Switch to dark mode";
 
-			sun.classList.toggle("hidden", !dark);
-			moon.classList.toggle("hidden", dark);
+				btn.setAttribute("aria-label", dark ? darkLabel : lightLabel);
+			};
 
-			const darkLabel =
-				btn.getAttribute("data-label-light") || "Switch to light mode";
-			const lightLabel =
-				btn.getAttribute("data-label-dark") || "Switch to dark mode";
+			const syncAll = () => buttons.forEach(syncButton);
+			syncAll();
 
-			btn.setAttribute("aria-label", dark ? darkLabel : lightLabel);
-		};
-
-		const syncAll = () => buttons.forEach(syncButton);
-
-		syncAll();
-
-		buttons.forEach((btn) => {
-			btn.addEventListener("click", () => {
-				const nextIsDark = !isDark();
-				document.documentElement.classList.toggle("dark", nextIsDark);
-				localStorage.setItem("theme", nextIsDark ? "dark" : "light");
-				syncAll();
+			buttons.forEach((btn) => {
+				btn.addEventListener("click", () => {
+					const nextIsDark = !isDark();
+					document.documentElement.classList.toggle("dark", nextIsDark);
+					localStorage.setItem("theme", nextIsDark ? "dark" : "light");
+					syncAll();
+				});
 			});
-		});
+		}
 
-		/* Mobile menu (tu código igual) */
 		const openBtn = document.getElementById("menu-open");
 		const root = document.getElementById("mobile-menu");
 		const overlay = document.getElementById("menu-overlay");
@@ -210,22 +247,20 @@ const normalizedCurrent = normalizePath(currentPath);
 		const openMenu = () => {
 			root.classList.remove("hidden");
 			root.setAttribute("aria-hidden", "false");
+			document.body.style.overflow = "hidden";
 
 			requestAnimationFrame(() => {
-				overlay.classList.add("opacity-100");
 				overlay.classList.remove("opacity-0");
-
-				panel.classList.remove("translate-x-full");
-				panel.classList.add("translate-x-0");
+				overlay.classList.add("opacity-100");
+				panel.classList.remove("translate-x-[105%]");
 			});
 		};
 
 		const closeMenu = () => {
 			overlay.classList.remove("opacity-100");
 			overlay.classList.add("opacity-0");
-
-			panel.classList.remove("translate-x-0");
-			panel.classList.add("translate-x-full");
+			panel.classList.add("translate-x-[105%]");
+			document.body.style.overflow = "";
 
 			window.setTimeout(() => {
 				root.classList.add("hidden");
