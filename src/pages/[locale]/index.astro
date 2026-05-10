@@ -122,6 +122,9 @@ const structuredData = [
 						width={720}
 						height={920}
 						loading="eager"
+						fetchpriority="high"
+						decoding="async"
+						sizes="(min-width: 1024px) 32rem, 100vw"
 						class="h-[24rem] w-full object-cover grayscale-[0.08] md:h-[31rem]"
 					/>
 				</div>
@@ -273,7 +276,9 @@ const structuredData = [
 									}
 									width={1280}
 									height={920}
-									loading="eager"
+									loading="lazy"
+									decoding="async"
+									sizes="(min-width: 1024px) 52rem, 100vw"
 									class="h-[23rem] w-full object-cover transition duration-500 group-hover:scale-[1.02] md:h-[31rem]"
 								/>
 							</div>
