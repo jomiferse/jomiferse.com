@@ -62,8 +62,8 @@ const { locale } = Astro.props as { locale: Locale };
 			>
 				{t(locale, "contactForm.messageLabel")}
 			</label>
-			<div class="form-shell items-start">
-				<Icon name="pencil" class="form-icon mt-1 h-5 w-5" />
+			<div class="form-shell form-shell-textarea">
+				<Icon name="pencil" class="form-icon form-textarea-icon h-5 w-5" />
 				<textarea
 					id="contact-message"
 					name="message"
