@@ -14,8 +14,8 @@
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "mobileNav": "Navegación móvil",
-    "availability": "Abierto a oportunidades seleccionadas",
-    "contactCta": "Iniciar conversación"
+    "availability": "Partner técnico para equipos seleccionados",
+    "contactCta": "Hablar de un proyecto"
   },
   "theme": {
     "toggle": "Cambiar tema",
@@ -24,18 +24,18 @@
   },
   "home": {
     "meta": {
-      "title": "Portfolio de Backend Software Engineer",
-      "description": "Backend Software Engineer especializado en Java, Spring Boot, sistemas distribuidos y product engineering moderno."
+      "title": "Portfolio de Software Engineer",
+      "description": "Software engineer orientado a sistemas, entrega de producto, arquitectura y ejecución técnica moderna."
     },
     "hero": {
-      "eyebrow": "Backend Software Engineer · Java · Spring Boot · Sistemas Distribuidos",
-      "titleLead": "Sistemas backend,",
-      "titleHighlight": "hechos para durar.",
+      "eyebrow": "Software Engineer · Systems · Product Delivery",
+      "titleLead": "Sistemas fiables,",
+      "titleHighlight": "ejecución clara.",
       "titleTail": "",
-      "description": "Java, Spring Boot y sistemas distribuidos para equipos de producto serios.",
+      "description": "Ingeniería para equipos de producto que construyen plataformas, tooling y productos digitales que tienen que sostenerse en el mundo real.",
       "primaryCta": "Ver trabajo seleccionado",
-      "secondaryCta": "Contactar",
-      "availability": "CGI para The Workshop"
+      "secondaryCta": "Hablar de un proyecto",
+      "availability": "Actualmente construyendo en CGI para The Workshop"
     },
     "stats": {
       "years": "Años entregando software",
@@ -47,35 +47,35 @@
       "about": "Posicionamiento",
       "experience": "Experiencia",
       "projects": "Proyectos seleccionados",
-      "skills": "Stack y ejecución",
+      "skills": "Colaboración",
       "contact": "Construyamos algo sólido"
     },
     "about": {
-      "eyebrow": "Por qué este perfil encaja",
-      "title": "Profundidad técnica, criterio de producto y ejecución limpia.",
-      "intro": "Aporto más valor donde la complejidad backend se cruza con presión de producto: los servicios tienen que escalar, la entrega debe mantenerse estable y la arquitectura seguir siendo entendible."
+      "eyebrow": "Posicionamiento",
+      "title": "Profundidad de ingeniería con criterio de producto.",
+      "intro": "Aporto más valor donde arquitectura, entrega y claridad del sistema importan a la vez: plataformas backend, tooling interno, automatización y ejecución de producto que necesita seguir siendo fiable bajo presión."
     },
     "experience": {
-      "eyebrow": "Experiencia reciente",
-      "title": "Trabajo orientado a sistemas, ownership y entrega.",
-      "summary": "Desde modernización backend en entorno enterprise hasta plataformas de producto multi-mercado, mi recorrido ha estado siempre cerca de sistemas que importan en producción."
+      "eyebrow": "Experiencia",
+      "title": "Construido dentro de entornos de producto y plataforma.",
+      "summary": "Mi recorrido ha estado cerca de sistemas en producción, evolución de plataformas y trabajo de entrega donde la fiabilidad y la claridad pesan más que la complejidad superficial."
     },
     "projects": {
-      "eyebrow": "Trabajo real",
-      "title": "Una mezcla de delivery enterprise y side projects con mentalidad de producto.",
-      "summary": "La mejor señal no es la cantidad de tecnologías. Es la capacidad de entregar sistemas que resuelven problemas reales de operación o producto."
+      "eyebrow": "Trabajo seleccionado",
+      "title": "Proyectos que muestran ejecución, criterio y sentido de producto.",
+      "summary": "La señal está en las decisiones detrás del build: qué había que mejorar, qué debía seguir siendo mantenible y cómo el sistema servía un caso de uso real."
     },
     "skills": {
-      "eyebrow": "Modelo de ejecución",
-      "title": "Agrupado como trabajo de verdad, no como una nube plana de logos.",
-      "summary": "Pienso en arquitectura, patrones de comunicación, pipelines de entrega y restricciones de producto."
+      "eyebrow": "Colaboración",
+      "title": "Dónde puedo aportar valor.",
+      "summary": "Encajo mejor cuando un equipo necesita a alguien que piense en sistemas, haga legibles las decisiones técnicas y mantenga el delivery avanzando."
     },
     "contact": {
       "eyebrow": "Contacto",
-      "title": "Abierto a equipos de producto que valoren ownership backend fuerte.",
-      "summary": "Si estás contratando para backend, plataforma o product engineering con inclinación fullstack, me interesan especialmente los equipos que construyen sistemas relevantes con estándares técnicos claros.",
+      "title": "Abierto a equipos de producto, colaboraciones técnicas y build work seleccionado.",
+      "summary": "Recruiting, modernización de plataformas, tooling interno o conversaciones de product engineering encajan aquí, siempre que el trabajo sea serio y el listón de ejecución sea alto.",
       "primaryCta": "Enviar email",
-      "secondaryCta": "Abrir LinkedIn"
+      "secondaryCta": "Ver LinkedIn"
     },
     "explorations": {
       "title": "Líneas actuales de side projects",
@@ -90,12 +90,12 @@
   "projects": {
     "meta": {
       "title": "Proyectos",
-      "description": "Selección de proyectos backend, cloud y orientados a producto de {name}."
+      "description": "Selección de trabajo de ingeniería de {name}, centrado en sistemas, ejecución de producto y delivery técnico."
     },
     "hero": {
-      "titlePrefix": "Proyectos",
-      "titleHighlight": "seleccionados",
-      "subtitle": "Una selección de trabajo profesional y personal que muestra ejecución backend, ownership de producto y calidad de entrega."
+      "titlePrefix": "Trabajo seleccionado",
+      "titleHighlight": "proyectos",
+      "subtitle": "Una vista curada de trabajo en producto, plataforma y tooling interno marcada por decisiones de arquitectura, calidad de ejecución y contexto de entrega."
     },
     "sections": {
       "personal": {
@@ -118,9 +118,9 @@
       "description": "Experiencia profesional de {name}."
     },
     "hero": {
-      "titlePrefix": "Experiencia",
-      "titleHighlight": "profesional",
-      "subtitle": "Roles marcados por ownership backend, evolución de plataforma y entrega en entornos reales de producción."
+      "titlePrefix": "Producto y plataforma",
+      "titleHighlight": "experiencia",
+      "subtitle": "Roles marcados por evolución de plataforma, ownership de sistemas y entrega en entornos reales de producción."
     }
   },
   "education": {
@@ -129,9 +129,9 @@
       "description": "Formación académica y certificaciones profesionales de {name}."
     },
     "hero": {
-      "titlePrefix": "Formación",
-      "titleHighlight": "y certificaciones",
-      "subtitle": "Base académica y aprendizaje continuo que respaldan mi camino como ingeniero."
+      "titlePrefix": "Base",
+      "titleHighlight": "y aprendizaje",
+      "subtitle": "Una base académica y técnica curada detrás de cómo diseño sistemas y construyo productos digitales."
     },
     "sections": {
       "certifications": "Certificaciones",
@@ -144,9 +144,9 @@
       "description": "Cursos y certificaciones obtenidos por {name}."
     },
     "hero": {
-      "titlePrefix": "Cursos",
-      "titleHighlight": "y certificaciones",
-      "subtitle": "Aprendizaje continuo orientado a backend engineering, entrega y arquitectura."
+      "titlePrefix": "Certificaciones",
+      "titleHighlight": "técnicas",
+      "subtitle": "Aprendizaje continuo alrededor de arquitectura, delivery y la cara de sistemas del software engineering."
     }
   },
   "skills": {
@@ -160,12 +160,12 @@
   "contact": {
     "meta": {
       "title": "Contacto",
-      "description": "Contacta con {name} para oportunidades, colaboraciones o conversaciones de product engineering."
+      "description": "Contacta con {name} para colaboraciones técnicas, conversaciones de product engineering u oportunidades seleccionadas."
     },
     "hero": {
-      "titlePrefix": "Conectemos",
-      "titleHighlight": "",
-      "subtitle": "Oportunidades, conversaciones de producto o un simple hola — mantengo el inbox abierto para las discusiones adecuadas."
+      "titlePrefix": "Abramos una",
+      "titleHighlight": "conversación",
+      "subtitle": "Buen encaje para equipos de producto, trabajo de plataforma, esfuerzos de modernización y colaboraciones técnicas con criterio."
     },
     "emailLabel": "EMAIL",
     "divider": "ESCRIBE UN MENSAJE",
@@ -176,9 +176,9 @@
     }
   },
   "footer": {
-    "title": "Backend engineer con criterio de producto.",
-    "description": "Enfocado en sistemas robustos, arquitectura mantenible y ejecución de alta señal.",
-    "location": "Ubicado en",
+    "title": "Sistemas, producto y ejecución.",
+    "description": "Software engineering para plataformas robustas, arquitectura más clara y delivery técnico que aguanta.",
+    "location": "Ubicado en ",
     "contact": "Contacto"
   },
   "certificationCard": {
@@ -219,9 +219,9 @@
       "description": "Notas técnicas y artículos de {name}."
     },
     "hero": {
-      "titlePrefix": "Mi",
-      "titleHighlight": "Blog",
-      "subtitle": "Notas técnicas, aprendizajes y artículos de ingeniería con más profundidad."
+      "titlePrefix": "Engineering",
+      "titleHighlight": "journal",
+      "subtitle": "Notas sobre sistemas, arquitectura, delivery, criterio de producto y automatización."
     },
     "post": {
       "back": "Volver al blog",
@@ -231,11 +231,11 @@
     },
     "sections": {
       "featured": {
-        "title": "Destacados",
+        "title": "Notas seleccionadas",
         "subtitle": "Artículos seleccionados."
       },
       "latest": {
-        "title": "Recientes",
+        "title": "Escritura reciente",
         "subtitle": "Publicaciones más recientes."
       }
     },

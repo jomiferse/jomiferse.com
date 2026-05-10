@@ -7,6 +7,7 @@ interface Props {
 	tags?: string[];
 	featured?: boolean;
 	readingTime?: string;
+	featuredLabel?: string;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
 	tags = [],
 	featured = false,
 	readingTime,
+	featuredLabel = "Selected",
 } = Astro.props as Props;
 
 const cleanTags = tags.filter((tag) => tag !== "featured").slice(0, 3);
@@ -34,7 +36,7 @@ const cleanTags = tags.filter((tag) => tag !== "featured").slice(0, 3);
 			{
 				featured ? (
 					<span class="font-semibold text-slate-700 dark:text-slate-200">
-						Featured
+						{featuredLabel}
 					</span>
 				) : null
 			}

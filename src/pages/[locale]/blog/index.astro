@@ -34,6 +34,7 @@ const pageDescription = t(locale, "blog.meta.description").replace(
 
 const blogBasePath = `/${locale}/blog`;
 const dateLocale = locale === "es" ? "es-ES" : "en-GB";
+const featuredLabel = locale === "es" ? "Seleccionado" : "Selected";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -80,6 +81,7 @@ const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 							tags={post.data.tags ?? []}
 							featured={true}
 							readingTime={post.data.readingTime}
+							featuredLabel={featuredLabel}
 						/>
 					))}
 				</div>
@@ -112,6 +114,7 @@ const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 							tags={post.data.tags ?? []}
 							featured={false}
 							readingTime={post.data.readingTime}
+							featuredLabel={featuredLabel}
 						/>
 					))}
 				</div>

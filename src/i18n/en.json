@@ -14,8 +14,8 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "mobileNav": "Mobile navigation",
-    "availability": "Open to selected opportunities",
-    "contactCta": "Start a conversation"
+    "availability": "Engineering partner for selected teams",
+    "contactCta": "Discuss a project"
   },
   "theme": {
     "toggle": "Toggle theme",
@@ -24,18 +24,18 @@
   },
   "home": {
     "meta": {
-      "title": "Backend Software Engineer Portfolio",
-      "description": "Backend Software Engineer specialized in Java, Spring Boot, distributed systems and modern product engineering."
+      "title": "Software Engineer Portfolio",
+      "description": "Software engineer focused on systems, product delivery, architecture and modern technical execution."
     },
     "hero": {
-      "eyebrow": "Backend Software Engineer · Java · Spring Boot · Distributed Systems",
-      "titleLead": "Backend systems,",
-      "titleHighlight": "built to last.",
+      "eyebrow": "Software Engineer · Systems · Product Delivery",
+      "titleLead": "Reliable systems,",
+      "titleHighlight": "clear execution.",
       "titleTail": "",
-      "description": "Java, Spring Boot and distributed systems for serious product teams.",
-      "primaryCta": "View selected work",
-      "secondaryCta": "Contact me",
-      "availability": "CGI for The Workshop"
+      "description": "Engineering for product teams building platforms, tooling and digital products that need to hold up in the real world.",
+      "primaryCta": "See selected work",
+      "secondaryCta": "Discuss a project",
+      "availability": "Currently building at CGI for The Workshop"
     },
     "stats": {
       "years": "Years shipping software",
@@ -47,35 +47,35 @@
       "about": "Positioning",
       "experience": "Experience",
       "projects": "Selected projects",
-      "skills": "Stack and execution",
-      "contact": "Let’s build something solid"
+      "skills": "Collaboration",
+      "contact": "Let's build something solid"
     },
     "about": {
-      "eyebrow": "Why this profile works",
-      "title": "Technical depth, product awareness and clean execution.",
-      "intro": "I’m most valuable where backend complexity meets product pressure: services have to scale, delivery has to stay calm, and architecture needs to remain understandable."
+      "eyebrow": "Positioning",
+      "title": "Engineering depth with product judgment.",
+      "intro": "I work where architecture, delivery and system clarity matter at the same time: backend platforms, internal tooling, automation and product execution that need to stay reliable under pressure."
     },
     "experience": {
-      "eyebrow": "Recent experience",
-      "title": "Work shaped around systems, ownership and delivery.",
-      "summary": "From enterprise backend modernization to multi-market product platforms, my path has been consistently close to systems that matter in production."
+      "eyebrow": "Experience",
+      "title": "Built inside product and platform environments.",
+      "summary": "My path has been shaped by production systems, platform evolution and delivery work where reliability and clarity matter more than surface complexity."
     },
     "projects": {
-      "eyebrow": "Real work",
-      "title": "A mix of enterprise delivery and product-minded side builds.",
-      "summary": "The strongest signal is not the number of technologies. It’s the ability to ship systems that solve real operational or product problems."
+      "eyebrow": "Selected work",
+      "title": "Projects that show execution, judgment and product sense.",
+      "summary": "The signal is in the decisions behind the build: what needed to be improved, what had to stay maintainable and how the system served a real use case."
     },
     "skills": {
-      "eyebrow": "Execution model",
-      "title": "Grouped by how I actually work, not as a flat logo cloud.",
-      "summary": "I think in architecture, communication patterns, delivery pipelines and product constraints."
+      "eyebrow": "Collaboration",
+      "title": "Where I can be useful.",
+      "summary": "Best fit when a team needs an engineer who can think in systems, make technical decisions legible and keep delivery moving."
     },
     "contact": {
       "eyebrow": "Contact",
-      "title": "Open to product teams that value strong backend ownership.",
-      "summary": "If you’re hiring for backend, platform or fullstack-leaning product engineering, I’m interested in teams shipping meaningful systems with clear technical standards.",
+      "title": "Open to product teams, technical collaborations and selected build work.",
+      "summary": "Recruiting, platform modernization, internal tooling or product engineering conversations all fit here, as long as the work is serious and the execution bar is high.",
       "primaryCta": "Send an email",
-      "secondaryCta": "Open LinkedIn"
+      "secondaryCta": "View LinkedIn"
     },
     "explorations": {
       "title": "Current side-project directions",
@@ -90,12 +90,12 @@
   "projects": {
     "meta": {
       "title": "Projects",
-      "description": "Selected backend, cloud and product-oriented projects by {name}."
+      "description": "Selected engineering work by {name}, focused on systems, product execution and technical delivery."
     },
     "hero": {
-      "titlePrefix": "Selected",
+      "titlePrefix": "Selected work",
       "titleHighlight": "projects",
-      "subtitle": "A selection of company and personal work showing backend execution, product ownership and delivery quality."
+      "subtitle": "A curated view of product, platform and internal-tooling work shaped by architecture decisions, execution quality and delivery context."
     },
     "sections": {
       "personal": {
@@ -118,9 +118,9 @@
       "description": "Professional experience of {name}."
     },
     "hero": {
-      "titlePrefix": "Professional",
+      "titlePrefix": "Product and platform",
       "titleHighlight": "experience",
-      "subtitle": "Roles shaped by backend ownership, platform evolution and delivery in real production environments."
+      "subtitle": "Roles shaped by platform evolution, system ownership and delivery inside real production environments."
     }
   },
   "education": {
@@ -129,9 +129,9 @@
       "description": "Education background and professional certifications of {name}."
     },
     "hero": {
-      "titlePrefix": "Education",
-      "titleHighlight": "& certifications",
-      "subtitle": "Academic background and continuous learning supporting my engineering path."
+      "titlePrefix": "Background",
+      "titleHighlight": "& learning",
+      "subtitle": "A curated academic and technical foundation behind the way I design systems and ship digital products."
     },
     "sections": {
       "certifications": "Certifications",
@@ -144,9 +144,9 @@
       "description": "Courses and certifications obtained by {name}."
     },
     "hero": {
-      "titlePrefix": "Courses",
-      "titleHighlight": "and certifications",
-      "subtitle": "Continuous learning focused on backend engineering, delivery and architecture."
+      "titlePrefix": "Technical",
+      "titleHighlight": "certifications",
+      "subtitle": "Continuous learning around architecture, delivery and the systems side of software engineering."
     }
   },
   "skills": {
@@ -160,24 +160,24 @@
   "contact": {
     "meta": {
       "title": "Contact",
-      "description": "Get in touch with {name} for opportunities, collaborations or product engineering conversations."
+      "description": "Get in touch with {name} for technical collaborations, product engineering conversations or selected opportunities."
     },
     "hero": {
-      "titlePrefix": "Let’s",
-      "titleHighlight": "connect",
-      "subtitle": "Opportunities, product conversations or a quick hello — I keep the inbox open for the right discussions."
+      "titlePrefix": "Start a",
+      "titleHighlight": "conversation",
+      "subtitle": "A good fit for product teams, platform work, modernization efforts and thoughtful technical collaborations."
     },
     "emailLabel": "EMAIL",
     "divider": "WRITE A MESSAGE",
-    "success": "Message sent successfully. I’ll get back to you soon.",
+    "success": "Message sent successfully. I'll get back to you soon.",
     "social": {
       "github": "GitHub",
       "linkedin": "LinkedIn"
     }
   },
   "footer": {
-    "title": "Backend engineer with product judgment.",
-    "description": "Focused on resilient systems, maintainable architecture and high-signal execution.",
+    "title": "Systems, product and execution.",
+    "description": "Software engineering for resilient platforms, clearer architecture and technical delivery that holds up.",
     "location": "Based in",
     "contact": "Contact"
   },
@@ -219,9 +219,9 @@
       "description": "Technical notes and articles by {name}."
     },
     "hero": {
-      "titlePrefix": "My",
-      "titleHighlight": "Blog",
-      "subtitle": "Technical notes, learnings and deeper engineering write-ups."
+      "titlePrefix": "Engineering",
+      "titleHighlight": "journal",
+      "subtitle": "Notes on systems, architecture, delivery, product thinking and automation."
     },
     "post": {
       "back": "Back to blog",
@@ -230,8 +230,14 @@
       "backToList": "View all posts"
     },
     "sections": {
-      "featured": { "title": "Featured", "subtitle": "Hand-picked posts." },
-      "latest": { "title": "Latest", "subtitle": "Most recent writing." }
+      "featured": {
+        "title": "Selected notes",
+        "subtitle": "Hand-picked posts."
+      },
+      "latest": {
+        "title": "Recent writing",
+        "subtitle": "Most recent writing."
+      }
     },
     "empty": {
       "featured": "No featured posts yet.",

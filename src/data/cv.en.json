@@ -2,15 +2,15 @@
   "name": "José Miguel Fernández",
   "shortName": "José Miguel",
   "email": "jomiferse@gmail.com",
-  "headline": "Backend Software Engineer | Java, Spring Boot, Distributed Systems, Microservices",
-  "tagline": "Backend engineer focused on resilient services, clean architecture and product-minded execution.",
+  "headline": "Software Engineer | Systems, Product Delivery, Architecture, Automation",
+  "tagline": "Software engineer focused on resilient systems, product delivery, technical clarity and modern execution.",
   "location": "Granada, Spain",
-  "currentRole": "Backend Software Engineer",
-  "focus": "Distributed systems, microservices, cloud delivery and backend reliability",
-  "availability": "Open to product-focused engineering conversations and backend-heavy roles.",
+  "currentRole": "Software Engineer",
+  "focus": "Systems engineering, product delivery, technical architecture and platform reliability",
+  "availability": "Open to product-focused roles, technical collaborations and selected build engagements.",
   "summary": [
-    "I build backend systems that need to stay <span class=\"font-semibold text-[var(--accent-strong)]\">reliable under change</span>, remain <span class=\"font-semibold text-[var(--accent-strong)]\">clear to evolve</span>, and support teams that ship continuously without losing control of quality.",
-    "My main stack is <span class=\"font-semibold text-[var(--accent-strong)]\">Java, Spring Boot, PostgreSQL, Docker and Kubernetes</span>, with hands-on work across <span class=\"font-semibold text-[var(--accent-strong)]\">microservices, observability, CI/CD, database automation and internal tooling</span>. I also bring fullstack judgment when a product needs backend ownership with pragmatic frontend support."
+    "I build systems that need to stay <span class=\"font-semibold text-[var(--accent-strong)]\">reliable under change</span>, remain <span class=\"font-semibold text-[var(--accent-strong)]\">clear to evolve</span>, and help teams move product work forward without losing technical control.",
+    "My core is still strong in <span class=\"font-semibold text-[var(--accent-strong)]\">backend engineering, distributed systems and platform work</span>, but I also contribute across <span class=\"font-semibold text-[var(--accent-strong)]\">architecture, automation, internal tooling and pragmatic product execution</span> when that creates more leverage."
   ],
   "yearsWorking": "5",
   "currentCompany": "CGI for The Workshop",
@@ -19,37 +19,37 @@
     "github": "https://www.github.com/jomiferse/"
   },
   "signals": [
-    "Enterprise backend delivery",
-    "Distributed systems mindset",
-    "Microservices and platform modernization",
-    "Fullstack support when product execution needs it"
+    "Production systems and platform evolution",
+    "Architecture and technical decision-making",
+    "Automation, tooling and modernization work",
+    "Product execution with backend depth"
   ],
   "focusAreas": [
     {
-      "title": "Backend Architecture",
-      "description": "Service design, API boundaries, security and maintainable domain logic.",
+      "title": "Platform Architecture",
+      "description": "Service boundaries, API design, security and technical decisions that keep products understandable as they evolve.",
       "items": ["Java", "Spring Boot", "REST APIs", "Spring Security"]
     },
     {
-      "title": "Distributed Systems",
-      "description": "Systems that communicate reliably, scale predictably and are observable in production.",
+      "title": "Modernization and Delivery",
+      "description": "Migration paths, release confidence and delivery workflows for systems that need to improve without losing operational trust.",
+      "items": ["Liquibase", "CI/CD", "Docker", "Kubernetes"]
+    },
+    {
+      "title": "Internal Tooling and Automation",
+      "description": "Operational tooling, workflow automation and pragmatic product support that remove friction for teams and systems.",
+      "items": ["TypeScript", "React", "Astro", "Automation"]
+    },
+    {
+      "title": "Distributed and Realtime Systems",
+      "description": "Systems that communicate reliably, scale predictably and remain observable in production.",
       "items": ["Kafka", "RabbitMQ", "Redis", "PostgreSQL"]
-    },
-    {
-      "title": "Cloud Delivery",
-      "description": "Build, deploy and operate with an emphasis on repeatability and operational confidence.",
-      "items": ["Docker", "Kubernetes", "CI/CD", "Liquibase"]
-    },
-    {
-      "title": "Product Engineering",
-      "description": "I can move from backend depth to internal tools and polished user-facing flows when needed.",
-      "items": ["TypeScript", "React", "Astro", "Tailwind CSS"]
     }
   ],
   "currentExplorations": [
-    "AI and workflow automation",
-    "Telegram bots and operational tooling",
-    "Trading-related tools",
+    "AI-assisted workflows",
+    "Operational tooling and bots",
+    "Trading and automation experiments",
     "Real-time and event-driven systems"
   ],
   "experience": [
@@ -59,14 +59,12 @@
       "location": "Spain",
       "startDate": "12/2024",
       "endDate": "Present",
-      "description": "Working in an international product environment on the modernization of an enterprise backend platform, contributing to architecture evolution, service reliability and developer workflow quality.",
+      "description": "Working in an international product environment on the modernization of an enterprise platform, contributing across architecture evolution, service reliability and developer workflow quality.",
       "highlights": [
-        "Built and evolved Spring Boot microservices with Spring Security and PostgreSQL in a security-sensitive product environment.",
-        "Contributed to the migration path from a legacy Scala monolith to a more modular microservices architecture with better maintainability and delivery speed.",
-        "Automated database lifecycle changes with Liquibase to keep multiple environments aligned and reduce release friction.",
-        "Improved confidence in backend changes through JUnit coverage and contract testing with Pact.",
-        "Supported internal product operations through React and TypeScript back-office work when backend ownership required end-to-end execution.",
-        "Translated complex flows into shared diagrams and implementation discussions to align engineers and stakeholders."
+        "Worked on the migration path from a legacy Scala monolith toward a more modular service architecture with clearer boundaries and maintainability.",
+        "Built secure Spring Boot services and tightened database delivery workflows in a product environment with high reliability expectations.",
+        "Improved release confidence through automated tests, contract testing and better environment alignment with Liquibase.",
+        "Supported internal product operations through React and TypeScript when end-to-end execution was the pragmatic path."
       ]
     },
     {
@@ -75,14 +73,12 @@
       "location": "Granada, Spain",
       "startDate": "08/2020",
       "endDate": "12/2024",
-      "description": "Grew from trainee to senior contributor while shipping features, infrastructure improvements and platform evolutions for large educational products operating across multiple international markets.",
+      "description": "Grew from trainee to senior contributor while shipping features, infrastructure improvements and platform evolutions for large digital products operating across multiple international markets.",
       "highlights": [
-        "Drove a Docker-based development workflow that standardized environments and improved team productivity across projects.",
-        "Helped lead the evolution to a multi-language, multi-portal platform supporting broader international growth.",
-        "Integrated payment flows and advanced search capabilities, balancing product goals with technical maintainability.",
-        "Worked across backend and frontend layers with PHP, JavaScript, HTML and CSS on high-traffic business-critical platforms.",
-        "Improved performance, security and Core Web Vitals through iterative optimization work.",
-        "Raised engineering quality through code review practices, collaboration habits and continuous improvement."
+        "Helped evolve the platform toward a multi-language, multi-portal structure that supported broader international growth.",
+        "Shipped business-critical flows across product, search and payments while balancing delivery speed with maintainability.",
+        "Standardized local delivery with Docker-based workflows and improved day-to-day engineering confidence across projects.",
+        "Worked across backend, frontend and performance layers on platforms directly tied to business outcomes."
       ]
     }
   ],
@@ -275,7 +271,7 @@
         "link": "",
         "context": "International backend team modernizing a cloud platform for a product organization operating at enterprise scale.",
         "timeframe": "12/2024 – Present",
-        "summary": "Backend modernization work centered on Spring Boot services, secure APIs, database delivery workflows and operational confidence during the transition away from a legacy monolith.",
+        "summary": "Platform modernization work centered on service boundaries, secure APIs, database delivery workflows and release confidence during the transition away from a legacy monolith.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/microservices-modernization-platform.avif",
@@ -293,10 +289,9 @@
           "Kubernetes"
         ],
         "highlights": [
-          "Contributed to a long-term migration from a Scala monolith to a more maintainable service architecture.",
-          "Developed secure backend services with Spring Boot and Spring Security.",
-          "Automated database change delivery with Liquibase across multiple environments.",
-          "Improved release confidence with automated tests and contract testing."
+          "Contributed to a long-term migration from a Scala monolith to a cleaner and more maintainable service architecture.",
+          "Improved release confidence through secure service work, automated database delivery and contract testing.",
+          "Supported a product platform where technical clarity mattered as much as feature progress."
         ]
       },
       {
@@ -307,7 +302,7 @@
         "link": "",
         "context": "Core digital product used to capture, convert and serve educational demand across multiple markets.",
         "timeframe": "02/2021 – 12/2024",
-        "summary": "Large-scale platform work across backend, frontend and infrastructure, focused on performance, business delivery and maintainable feature evolution.",
+        "summary": "Large-scale product work across backend, frontend and infrastructure, focused on performance, business delivery and maintainable platform evolution.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/euroinnova.avif",
@@ -329,10 +324,9 @@
           "CSS"
         ],
         "highlights": [
-          "Worked on lead generation, search, payment and UX-critical flows.",
-          "Helped evolve the platform toward a multi-language, multi-portal product structure.",
-          "Improved performance and Core Web Vitals through iterative optimization.",
-          "Collaborated with product, marketing and design stakeholders on business-facing delivery."
+          "Worked on lead generation, search, payment and UX-critical flows with direct product impact.",
+          "Helped evolve the platform toward a multi-language, multi-portal structure for international growth.",
+          "Balanced performance, maintainability and business delivery across a high-traffic digital product."
         ]
       },
       {
@@ -343,7 +337,7 @@
         "link": "",
         "context": "Affiliate management product supporting operational reporting, partner workflows and payment-related processes.",
         "timeframe": "08/2020 – 12/2024",
-        "summary": "End-to-end delivery of a web platform used to manage affiliate relationships, reporting flows and internal operations tied to growth channels.",
+        "summary": "End-to-end delivery of an internal digital product used to manage affiliate relationships, reporting flows and operational processes tied to growth channels.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/educash.avif",
@@ -356,10 +350,9 @@
         },
         "technologies": ["PHP", "MySQL", "JavaScript", "HTML", "CSS", "Git"],
         "highlights": [
-          "Built the platform from implementation to ongoing improvement.",
-          "Delivered dashboards, reporting tools and partner management workflows.",
-          "Integrated the product with existing company systems and business processes.",
-          "Balanced operational usability with product and marketing requirements."
+          "Built the product from implementation through ongoing iteration and operational adoption.",
+          "Delivered reporting, partner workflows and internal operations tooling connected to business processes.",
+          "Balanced practical usability with the realities of product, operations and growth."
         ]
       }
     ],
@@ -372,7 +365,7 @@
         "link": "https://github.com/jomiferse/cv-studio",
         "context": "A professional CV builder designed for technical profiles with live editing, strong data modeling and polished PDF output.",
         "timeframe": "12/2025 – Present",
-        "summary": "A product-oriented side project combining frontend UX, validation, document generation and structured resume data. Built to solve a real problem with a high-quality developer-facing experience.",
+        "summary": "A product build around structured CV data, live editing and document generation. The focus was not just interface quality, but modeling, validation and delivery of a clear end-user workflow.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/cv-studio.avif",
@@ -394,10 +387,9 @@
           "PDF Generation"
         ],
         "highlights": [
-          "Built a real-time editor with synchronized preview over structured JSON data.",
-          "Implemented ATS-friendly PDF export optimized for A4 output.",
-          "Designed reusable templates and a scalable typed architecture.",
-          "Combined product polish with strong validation and document-generation logic."
+          "Built a real-time editor with synchronized preview over structured JSON data and reusable templates.",
+          "Implemented ATS-friendly PDF export with a strong focus on layout consistency and document quality.",
+          "Combined product polish with typed validation and document-generation architecture."
         ]
       }
     ]
