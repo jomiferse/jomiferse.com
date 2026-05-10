@@ -21,17 +21,15 @@ const { locale } = Astro.props as { locale: Locale };
 			>
 				{t(locale, "contactForm.nameLabel")}
 			</label>
-			<div
-				class="flex min-h-13 items-center gap-3 rounded-[1.25rem] border border-slate-200/80 bg-white/80 px-4 py-3 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200"
-			>
-				<Icon name="user" class="h-5 w-5 text-slate-400 dark:text-slate-500" />
+			<div class="form-shell">
+				<Icon name="user" class="form-icon h-5 w-5" />
 				<input
 					id="contact-name"
 					name="name"
 					autocomplete="name"
 					required
 					placeholder={t(locale, "contactForm.namePlaceholder")}
-					class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
+					class="form-input"
 				/>
 			</div>
 		</div>
@@ -43,10 +41,8 @@ const { locale } = Astro.props as { locale: Locale };
 			>
 				{t(locale, "contactForm.emailLabel")}
 			</label>
-			<div
-				class="flex min-h-13 items-center gap-3 rounded-[1.25rem] border border-slate-200/80 bg-white/80 px-4 py-3 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200"
-			>
-				<Icon name="mail" class="h-5 w-5 text-slate-400 dark:text-slate-500" />
+			<div class="form-shell">
+				<Icon name="mail" class="form-icon h-5 w-5" />
 				<input
 					id="contact-email"
 					type="email"
@@ -54,7 +50,7 @@ const { locale } = Astro.props as { locale: Locale };
 					autocomplete="email"
 					required
 					placeholder={t(locale, "contactForm.emailPlaceholder")}
-					class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
+					class="form-input"
 				/>
 			</div>
 		</div>
@@ -66,21 +62,15 @@ const { locale } = Astro.props as { locale: Locale };
 			>
 				{t(locale, "contactForm.messageLabel")}
 			</label>
-			<div
-				class="flex gap-3 rounded-[1.25rem] border border-slate-200/80 bg-white/80 px-4 py-3 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200"
-			>
-				<Icon
-					name="pencil"
-					class="mt-1 h-5 w-5 text-slate-400 dark:text-slate-500"
-				/>
+			<div class="form-shell items-start">
+				<Icon name="pencil" class="form-icon mt-1 h-5 w-5" />
 				<textarea
 					id="contact-message"
 					name="message"
 					required
 					rows="6"
 					placeholder={t(locale, "contactForm.messagePlaceholder")}
-					class="w-full resize-none bg-transparent text-sm leading-7 outline-none placeholder:text-slate-400 dark:placeholder:text-slate-500"
-				></textarea>
+					class="form-input form-textarea resize-none leading-7"></textarea>
 			</div>
 		</div>
 
@@ -91,19 +81,14 @@ const { locale } = Astro.props as { locale: Locale };
 			>
 				{t(locale, "contactForm.attachmentLabel")}
 			</label>
-			<div
-				class="flex min-h-13 items-center gap-3 rounded-[1.25rem] border border-slate-200/80 bg-white/80 px-4 py-3 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200"
-			>
-				<Icon
-					name="paperclip"
-					class="h-5 w-5 text-slate-400 dark:text-slate-500"
-				/>
+			<div class="form-shell">
+				<Icon name="paperclip" class="form-icon h-5 w-5" />
 				<input
 					id="contact-attachment"
 					type="file"
 					name="attachment"
 					accept="application/pdf,.pdf"
-					class="w-full cursor-pointer text-sm file:mr-4 file:cursor-pointer file:rounded-xl file:border file:border-slate-200/80 file:bg-white/90 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-slate-700 dark:file:border-slate-800/70 dark:file:bg-slate-900/60 dark:file:text-slate-200"
+					class="form-input form-file cursor-pointer"
 				/>
 			</div>
 			<p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
@@ -114,7 +99,7 @@ const { locale } = Astro.props as { locale: Locale };
 
 	<button
 		type="submit"
-		class="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-slate-950 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800 focus-visible:outline-none dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
+		class="form-button mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-slate-950 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
 	>
 		{t(locale, "contactForm.submit")}
 		<Icon name="arrow-right" class="h-4 w-4" />
