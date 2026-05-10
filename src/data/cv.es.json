@@ -59,12 +59,14 @@
       "location": "España",
       "startDate": "12/2024",
       "endDate": "Present",
-      "description": "Trabajo en un entorno internacional orientado a producto sobre la modernización de una plataforma enterprise, contribuyendo a la evolución de arquitectura, la fiabilidad de servicios y la calidad del flujo de desarrollo.",
+      "description": "Contribuyo al desarrollo y mantenimiento de sistemas backend cloud-native de gran escala para The Workshop, colaborando con equipos cross-functional en un entorno ágil, distribuido y crítico en seguridad.",
       "highlights": [
-        "Trabajé sobre la ruta de migración desde un monolito legacy en Scala hacia una arquitectura de servicios más clara y mantenible.",
-        "Construí servicios Spring Boot seguros y mejoré los workflows de entrega sobre base de datos en un entorno con expectativas altas de fiabilidad.",
-        "Mejoré la confianza en releases mediante tests automatizados, contract testing y mejor alineación de entornos con Liquibase.",
-        "Apoyé operaciones internas con React y TypeScript cuando la ejecución end to end era el camino más pragmático."
+        "Desarrollo y mantengo servicios backend en Java y Spring Boot siguiendo principios de arquitectura limpia, DDD y estándares altos de mantenibilidad.",
+        "Diseño e implemento APIs REST e integraciones internas priorizando fiabilidad, testabilidad y observabilidad en producción.",
+        "Trabajo con RabbitMQ y patrones de comunicación asíncrona para soportar integraciones fiables en sistemas distribuidos.",
+        "Colaboro con SRE y Platform en despliegues sobre Kubernetes, observabilidad con Grafana y Kibana, health checks automatizados y mejora de la consistencia operativa.",
+        "Refuerzo pipelines de CI/CD mediante testing automatizado, controles de seguridad, versionado de artefactos y procesos de despliegue más robustos.",
+        "Diagnostico y resuelvo incidencias en sistemas distribuidos con foco en rendimiento, resiliencia y mantenibilidad."
       ]
     },
     {
@@ -73,12 +75,14 @@
       "location": "Granada, España",
       "startDate": "08/2020",
       "endDate": "12/2024",
-      "description": "Evolucioné desde perfil trainee hasta contribuidor senior entregando funcionalidades, mejoras de infraestructura y evolución de plataforma para productos digitales con presencia en varios mercados.",
+      "description": "Evolucioné desde perfil trainee hasta desarrollador senior participando en el diseño, desarrollo y evolución de plataformas educativas de gran escala para múltiples mercados internacionales.",
       "highlights": [
-        "Ayudé a evolucionar la plataforma hacia una estructura multiidioma y multiportal que soportó crecimiento internacional.",
-        "Entregué flujos críticos de producto, búsqueda y pagos equilibrando velocidad de entrega con mantenibilidad.",
-        "Estandaricé el trabajo local con workflows basados en Docker y mejoré la confianza diaria del equipo.",
-        "Trabajé sobre backend, frontend y rendimiento en plataformas directamente ligadas a resultados de negocio."
+        "Diseñé e implementé una infraestructura basada en Docker que mejoró la consistencia entre entornos, la escalabilidad y la productividad del equipo.",
+        "Contribuí a mejoras en procesos de despliegue y entrega, dando soporte a flujos de release más eficientes y fiables.",
+        "Lideré la transformación hacia una plataforma multiidioma y multiportal que facilitó la expansión internacional.",
+        "Integré sistemas de pago y desarrollé búsqueda avanzada con Elasticsearch, mejorando precisión de resultados y experiencia de usuario.",
+        "Mejoré rendimiento, escalabilidad y Core Web Vitals, con impacto positivo en SEO y engagement.",
+        "Desarrollé y mantuve funcionalidades backend y frontend con PHP, Phalcon, JavaScript, HTML y CSS, implantando además prácticas de code review y estándares de desarrollo."
       ]
     }
   ],
