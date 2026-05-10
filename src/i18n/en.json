@@ -7,52 +7,105 @@
     "contact": "Contact",
     "blog": "Blog"
   },
-
+  "a11y": {
+    "skipToContent": "Skip to content"
+  },
   "header": {
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "mobileNav": "Mobile navigation"
+    "mobileNav": "Mobile navigation",
+    "availability": "Open to selected opportunities",
+    "contactCta": "Start a conversation"
   },
-
   "theme": {
     "toggle": "Toggle theme",
     "switchToDark": "Switch to dark mode",
     "switchToLight": "Switch to light mode"
   },
-
   "home": {
     "meta": {
-      "title": "Portfolio",
-      "description": "Backend-focused engineer specialized in Java, Spring Boot and scalable systems."
+      "title": "Backend Software Engineer Portfolio",
+      "description": "Backend Software Engineer specialized in Java, Spring Boot, distributed systems and modern product engineering."
     },
     "hero": {
-      "greeting": "Hey! I'm",
-      "cta": { "talk": "Let’s talk" },
-      "avatarAlt": "Portrait of {name}"
+      "eyebrow": "Backend Software Engineer · Java · Spring Boot · Distributed Systems",
+      "titleLead": "I build backend systems for",
+      "titleHighlight": "modern product teams",
+      "titleTail": "that need reliability, clarity and speed.",
+      "description": "Enterprise-grade backend engineering with hands-on experience in microservices, cloud delivery, internal tooling and pragmatic fullstack execution.",
+      "primaryCta": "View selected work",
+      "secondaryCta": "Contact me",
+      "availability": "Currently at CGI for The Workshop",
+      "social": "Profiles"
     },
-    "badge": { "basedIn": "Based in", "focusedOn": "Currently focused on" },
-    "stats": { "years": "YEARS OF EXPERIENCE", "commitment": "COMMITMENT" },
-    "sections": { "about": "About me", "skills": "Skills & Expertise" }
+    "stats": {
+      "years": "Years shipping software",
+      "focus": "Primary focus",
+      "scope": "Scope",
+      "scopeValue": "Backend + product support"
+    },
+    "sections": {
+      "about": "Positioning",
+      "experience": "Experience",
+      "projects": "Selected projects",
+      "skills": "Stack and execution",
+      "contact": "Let’s build something solid"
+    },
+    "about": {
+      "eyebrow": "Why this profile works",
+      "title": "Technical depth, product awareness and clean execution.",
+      "intro": "I’m most valuable where backend complexity meets product pressure: services have to scale, delivery has to stay calm, and architecture needs to remain understandable."
+    },
+    "experience": {
+      "eyebrow": "Recent experience",
+      "title": "Work shaped around systems, ownership and delivery.",
+      "summary": "From enterprise backend modernization to multi-market product platforms, my path has been consistently close to systems that matter in production."
+    },
+    "projects": {
+      "eyebrow": "Real work",
+      "title": "A mix of enterprise delivery and product-minded side builds.",
+      "summary": "The strongest signal is not the number of technologies. It’s the ability to ship systems that solve real operational or product problems."
+    },
+    "skills": {
+      "eyebrow": "Execution model",
+      "title": "Grouped by how I actually work, not as a flat logo cloud.",
+      "summary": "I think in architecture, communication patterns, delivery pipelines and product constraints."
+    },
+    "contact": {
+      "eyebrow": "Contact",
+      "title": "Open to product teams that value strong backend ownership.",
+      "summary": "If you’re hiring for backend, platform or fullstack-leaning product engineering, I’m interested in teams shipping meaningful systems with clear technical standards.",
+      "primaryCta": "Send an email",
+      "secondaryCta": "Open LinkedIn"
+    },
+    "explorations": {
+      "title": "Current side-project directions",
+      "items": [
+        "AI and workflow automation",
+        "Telegram bots and operational tooling",
+        "Trading-related tools",
+        "Real-time and event-driven systems"
+      ]
+    }
   },
-
   "projects": {
     "meta": {
       "title": "Projects",
-      "description": "Selection of backend, cloud and web projects by {name}."
+      "description": "Selected backend, cloud and product-oriented projects by {name}."
     },
     "hero": {
       "titlePrefix": "Selected",
       "titleHighlight": "projects",
-      "subtitle": "A selection of projects I have contributed to throughout my career, showcasing my approach to problem-solving, technical execution, and delivery."
+      "subtitle": "A selection of company and personal work showing backend execution, product ownership and delivery quality."
     },
     "sections": {
       "personal": {
         "title": "Personal Projects",
-        "subtitle": "Side projects and experiments"
+        "subtitle": "Side builds and technical explorations"
       },
       "company": {
         "title": "Company Projects",
-        "subtitle": "Professional work and contributions"
+        "subtitle": "Professional product delivery"
       }
     },
     "empty": {
@@ -60,7 +113,6 @@
       "company": "No company projects available yet."
     }
   },
-
   "experience": {
     "meta": {
       "title": "Experience",
@@ -69,10 +121,9 @@
     "hero": {
       "titlePrefix": "Professional",
       "titleHighlight": "experience",
-      "subtitle": "Roles and responsibilities across different companies where I have contributed as a software engineer at various stages of my career."
+      "subtitle": "Roles shaped by backend ownership, platform evolution and delivery in real production environments."
     }
   },
-
   "education": {
     "meta": {
       "title": "Education & Certifications",
@@ -80,15 +131,14 @@
     },
     "hero": {
       "titlePrefix": "Education",
-      "titleHighlight": "& Certifications",
-      "subtitle": "Academic background and continuous learning that support my journey as a software engineer."
+      "titleHighlight": "& certifications",
+      "subtitle": "Academic background and continuous learning supporting my engineering path."
     },
     "sections": {
       "certifications": "Certifications",
       "education": "Education"
     }
   },
-
   "certifications": {
     "meta": {
       "title": "Certifications",
@@ -96,52 +146,52 @@
     },
     "hero": {
       "titlePrefix": "Courses",
-      "titleHighlight": "certifications",
-      "subtitle": "A collection of courses and certifications that reflect my commitment to continuous learning and professional growth."
+      "titleHighlight": "and certifications",
+      "subtitle": "Continuous learning focused on backend engineering, delivery and architecture."
     }
   },
-
   "skills": {
-    "core": "Core Tech Stack",
-    "frameworks": "Frameworks & Tools",
-    "soft": "Soft Skills",
+    "core": "Core stack",
+    "frameworks": "Technologies and tooling",
+    "soft": "Working style",
     "languages": "Languages",
-    "communication": "Communication skills",
-    "curatedNote": "(Curated list — full stack in CV / LinkedIn)"
+    "communication": "Professional communication",
+    "curatedNote": "Curated view — broader stack available on CV and LinkedIn."
   },
-
   "contact": {
     "meta": {
       "title": "Contact",
-      "description": "Get in touch with {name} for opportunities, collaborations, or questions."
+      "description": "Get in touch with {name} for opportunities, collaborations or product engineering conversations."
     },
     "hero": {
       "titlePrefix": "Let’s",
       "titleHighlight": "connect",
-      "subtitle": "Opportunities, side projects, or just a quick hello — my inbox is always open."
+      "subtitle": "Opportunities, product conversations or a quick hello — I keep the inbox open for the right discussions."
     },
-    "emailLabel": "EMAIL ME",
+    "emailLabel": "EMAIL",
     "divider": "WRITE A MESSAGE",
-    "success": "Message sent successfully. I’ll get back to you soon 🙂",
+    "success": "Message sent successfully. I’ll get back to you soon.",
     "social": {
       "github": "GitHub",
       "linkedin": "LinkedIn"
     }
   },
-
+  "footer": {
+    "title": "Backend engineer with product judgment.",
+    "description": "Focused on resilient systems, maintainable architecture and high-signal execution.",
+    "location": "Based in",
+    "contact": "Contact"
+  },
   "certificationCard": {
     "idLabel": "ID:",
     "viewCredential": "View credential"
   },
-
   "educationCard": {
     "gradeLabel": "Grade:"
   },
-
   "experienceCard": {
     "present": "Present"
   },
-
   "projectCard": {
     "coverAlt": "Cover for {title}",
     "previewAlt": "Preview for {title}",
@@ -150,21 +200,20 @@
     "summary": "SUMMARY",
     "highlights": "HIGHLIGHTS",
     "technologies": "TECHNOLOGIES",
-    "viewProject": "View project"
+    "viewProject": "View project",
+    "status": "STATUS"
   },
-
   "contactForm": {
     "nameLabel": "Your name",
-    "namePlaceholder": "Your Name",
+    "namePlaceholder": "Your name",
     "emailLabel": "Your email",
     "emailPlaceholder": "your@email.com",
     "messageLabel": "Message",
-    "messagePlaceholder": "How can I help you?",
+    "messagePlaceholder": "Tell me about the role, team or project.",
     "attachmentLabel": "Attach PDF",
     "attachmentHint": "Optional. PDF only.",
-    "submit": "Send Message"
+    "submit": "Send message"
   },
-
   "blog": {
     "meta": {
       "title": "Blog",
@@ -173,7 +222,7 @@
     "hero": {
       "titlePrefix": "My",
       "titleHighlight": "Blog",
-      "subtitle": "Technical notes, learnings, and in-depth analysis."
+      "subtitle": "Technical notes, learnings and deeper engineering write-ups."
     },
     "post": {
       "back": "Back to blog",

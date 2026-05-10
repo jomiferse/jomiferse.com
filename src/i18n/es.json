@@ -7,55 +7,105 @@
     "contact": "Contacto",
     "blog": "Blog"
   },
-
+  "a11y": {
+    "skipToContent": "Saltar al contenido"
+  },
   "header": {
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "mobileNav": "Navegación móvil"
+    "mobileNav": "Navegación móvil",
+    "availability": "Abierto a oportunidades seleccionadas",
+    "contactCta": "Iniciar conversación"
   },
-
   "theme": {
     "toggle": "Cambiar tema",
     "switchToDark": "Cambiar a modo oscuro",
     "switchToLight": "Cambiar a modo claro"
   },
-
   "home": {
     "meta": {
-      "title": "Portfolio",
-      "description": "Ingeniero backend especializado en Java, Spring Boot y sistemas escalables."
+      "title": "Portfolio de Backend Software Engineer",
+      "description": "Backend Software Engineer especializado en Java, Spring Boot, sistemas distribuidos y product engineering moderno."
     },
     "hero": {
-      "greeting": "¡Hey! Soy",
-      "cta": { "talk": "Hablemos" },
-      "avatarAlt": "Retrato de {name}"
+      "eyebrow": "Backend Software Engineer · Java · Spring Boot · Sistemas Distribuidos",
+      "titleLead": "Construyo sistemas backend para",
+      "titleHighlight": "equipos de producto modernos",
+      "titleTail": "que necesitan fiabilidad, claridad y velocidad.",
+      "description": "Ingeniería backend con señal enterprise, experiencia real en microservicios, cloud delivery, tooling interno y ejecución fullstack pragmática cuando el producto lo requiere.",
+      "primaryCta": "Ver trabajo seleccionado",
+      "secondaryCta": "Contactar",
+      "availability": "Actualmente en CGI para The Workshop",
+      "social": "Perfiles"
     },
-    "badge": { "basedIn": "Vivo en", "focusedOn": "Actualmente enfocado en" },
-    "stats": { "years": "AÑOS DE EXPERIENCIA", "commitment": "COMPROMISO" },
+    "stats": {
+      "years": "Años entregando software",
+      "focus": "Foco principal",
+      "scope": "Alcance",
+      "scopeValue": "Backend + soporte de producto"
+    },
     "sections": {
-      "about": "Sobre mí",
-      "skills": "Habilidades y especialización"
+      "about": "Posicionamiento",
+      "experience": "Experiencia",
+      "projects": "Proyectos seleccionados",
+      "skills": "Stack y ejecución",
+      "contact": "Construyamos algo sólido"
+    },
+    "about": {
+      "eyebrow": "Por qué este perfil encaja",
+      "title": "Profundidad técnica, criterio de producto y ejecución limpia.",
+      "intro": "Aporto más valor donde la complejidad backend se cruza con presión de producto: los servicios tienen que escalar, la entrega debe mantenerse estable y la arquitectura seguir siendo entendible."
+    },
+    "experience": {
+      "eyebrow": "Experiencia reciente",
+      "title": "Trabajo orientado a sistemas, ownership y entrega.",
+      "summary": "Desde modernización backend en entorno enterprise hasta plataformas de producto multi-mercado, mi recorrido ha estado siempre cerca de sistemas que importan en producción."
+    },
+    "projects": {
+      "eyebrow": "Trabajo real",
+      "title": "Una mezcla de delivery enterprise y side projects con mentalidad de producto.",
+      "summary": "La mejor señal no es la cantidad de tecnologías. Es la capacidad de entregar sistemas que resuelven problemas reales de operación o producto."
+    },
+    "skills": {
+      "eyebrow": "Modelo de ejecución",
+      "title": "Agrupado como trabajo de verdad, no como una nube plana de logos.",
+      "summary": "Pienso en arquitectura, patrones de comunicación, pipelines de entrega y restricciones de producto."
+    },
+    "contact": {
+      "eyebrow": "Contacto",
+      "title": "Abierto a equipos de producto que valoren ownership backend fuerte.",
+      "summary": "Si estás contratando para backend, plataforma o product engineering con inclinación fullstack, me interesan especialmente los equipos que construyen sistemas relevantes con estándares técnicos claros.",
+      "primaryCta": "Enviar email",
+      "secondaryCta": "Abrir LinkedIn"
+    },
+    "explorations": {
+      "title": "Líneas actuales de side projects",
+      "items": [
+        "IA y automatización de workflows",
+        "Telegram bots y tooling operativo",
+        "Herramientas relacionadas con trading",
+        "Sistemas realtime y event-driven"
+      ]
     }
   },
-
   "projects": {
     "meta": {
       "title": "Proyectos",
-      "description": "Selección de proyectos backend, cloud y web de {name}."
+      "description": "Selección de proyectos backend, cloud y orientados a producto de {name}."
     },
     "hero": {
       "titlePrefix": "Proyectos",
-      "titleHighlight": "destacados",
-      "subtitle": "Una selección de proyectos en los que he contribuido a lo largo de mi carrera, mostrando mi enfoque en la resolución de problemas, la ejecución técnica y la entrega."
+      "titleHighlight": "seleccionados",
+      "subtitle": "Una selección de trabajo profesional y personal que muestra ejecución backend, ownership de producto y calidad de entrega."
     },
     "sections": {
       "personal": {
         "title": "Proyectos personales",
-        "subtitle": "Side projects y experimentos"
+        "subtitle": "Side builds y exploraciones técnicas"
       },
       "company": {
         "title": "Proyectos en empresa",
-        "subtitle": "Trabajo profesional y contribuciones"
+        "subtitle": "Entrega profesional en producto"
       }
     },
     "empty": {
@@ -63,7 +113,6 @@
       "company": "Aún no hay proyectos de empresa disponibles."
     }
   },
-
   "experience": {
     "meta": {
       "title": "Experiencia",
@@ -72,10 +121,9 @@
     "hero": {
       "titlePrefix": "Experiencia",
       "titleHighlight": "profesional",
-      "subtitle": "Roles y responsabilidades en distintas empresas donde he contribuido como ingeniero de software en diferentes etapas de mi carrera."
+      "subtitle": "Roles marcados por ownership backend, evolución de plataforma y entrega en entornos reales de producción."
     }
   },
-
   "education": {
     "meta": {
       "title": "Formación y certificaciones",
@@ -84,14 +132,13 @@
     "hero": {
       "titlePrefix": "Formación",
       "titleHighlight": "y certificaciones",
-      "subtitle": "Trayectoria académica y aprendizaje continuo que respaldan mi desarrollo como ingeniero de software."
+      "subtitle": "Base académica y aprendizaje continuo que respaldan mi camino como ingeniero."
     },
     "sections": {
       "certifications": "Certificaciones",
       "education": "Formación"
     }
   },
-
   "certifications": {
     "meta": {
       "title": "Certificaciones",
@@ -99,75 +146,74 @@
     },
     "hero": {
       "titlePrefix": "Cursos",
-      "titleHighlight": "certificaciones",
-      "subtitle": "Una colección de cursos y certificaciones que reflejan mi compromiso con el aprendizaje continuo y el crecimiento profesional."
+      "titleHighlight": "y certificaciones",
+      "subtitle": "Aprendizaje continuo orientado a backend engineering, entrega y arquitectura."
     }
   },
-
   "skills": {
-    "core": "Stack tecnológico principal",
-    "frameworks": "Frameworks y herramientas",
-    "soft": "Soft skills",
+    "core": "Stack principal",
+    "frameworks": "Tecnologías y tooling",
+    "soft": "Forma de trabajar",
     "languages": "Idiomas",
-    "communication": "Habilidades comunicativas",
-    "curatedNote": "(Lista curada — stack completo en CV / LinkedIn)"
+    "communication": "Comunicación profesional",
+    "curatedNote": "Vista curada — stack más amplio disponible en CV y LinkedIn."
   },
-
   "contact": {
     "meta": {
       "title": "Contacto",
-      "description": "Contacta con {name} para oportunidades, colaboraciones o cualquier duda."
+      "description": "Contacta con {name} para oportunidades, colaboraciones o conversaciones de product engineering."
     },
     "hero": {
       "titlePrefix": "Conectemos",
       "titleHighlight": "",
-      "subtitle": "Oportunidades, side projects o un simple hola — mi bandeja de entrada siempre está abierta."
+      "subtitle": "Oportunidades, conversaciones de producto o un simple hola — mantengo el inbox abierto para las discusiones adecuadas."
     },
-    "emailLabel": "ESCRÍBEME",
+    "emailLabel": "EMAIL",
     "divider": "ESCRIBE UN MENSAJE",
-    "success": "Mensaje enviado. Te responderé pronto 🙂",
+    "success": "Mensaje enviado correctamente. Te responderé pronto.",
     "social": {
       "github": "GitHub",
       "linkedin": "LinkedIn"
     }
   },
-
+  "footer": {
+    "title": "Backend engineer con criterio de producto.",
+    "description": "Enfocado en sistemas robustos, arquitectura mantenible y ejecución de alta señal.",
+    "location": "Ubicado en",
+    "contact": "Contacto"
+  },
   "certificationCard": {
     "idLabel": "ID:",
     "viewCredential": "Ver credencial"
   },
-
   "educationCard": {
     "gradeLabel": "Nota:"
   },
-
   "experienceCard": {
     "present": "Actualidad"
   },
-
   "projectCard": {
     "coverAlt": "Portada de {title}",
     "previewAlt": "Vista previa de {title}",
-    "closeDialog": "Cerrar",
+    "closeDialog": "Cerrar diálogo",
     "context": "CONTEXTO",
     "summary": "RESUMEN",
     "highlights": "PUNTOS CLAVE",
     "technologies": "TECNOLOGÍAS",
-    "viewProject": "Ver proyecto"
+    "viewProject": "Ver proyecto",
+    "status": "ESTADO"
   },
-
   "contactForm": {
     "nameLabel": "Tu nombre",
     "namePlaceholder": "Tu nombre",
     "emailLabel": "Tu email",
     "emailPlaceholder": "tu@email.com",
     "messageLabel": "Mensaje",
-    "messagePlaceholder": "¿En qué puedo ayudarte?",
+    "messagePlaceholder": "Cuéntame sobre el rol, el equipo o el proyecto.",
     "attachmentLabel": "Adjuntar PDF",
     "attachmentHint": "Opcional. Solo PDF.",
     "submit": "Enviar mensaje"
   },
-
   "blog": {
     "meta": {
       "title": "Blog",
@@ -176,7 +222,7 @@
     "hero": {
       "titlePrefix": "Mi",
       "titleHighlight": "Blog",
-      "subtitle": "Notas técnicas, aprendizajes y análisis en profundidad."
+      "subtitle": "Notas técnicas, aprendizajes y artículos de ingeniería con más profundidad."
     },
     "post": {
       "back": "Volver al blog",

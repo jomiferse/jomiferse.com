@@ -2,50 +2,87 @@
   "name": "José Miguel Fernández",
   "shortName": "José Miguel",
   "email": "jomiferse@gmail.com",
-  "headline": "Software Engineer | Java & Spring Boot | PHP | Docker | Microservices | SQL",
+  "headline": "Backend Software Engineer | Java, Spring Boot, Distributed Systems, Microservices",
+  "tagline": "Backend engineer focused on resilient services, clean architecture and product-minded execution.",
   "location": "Granada, Spain",
-  "currentRole": "Software Engineer",
-  "focus": "Backend, microservices & DevOps",
+  "currentRole": "Backend Software Engineer",
+  "focus": "Distributed systems, microservices, cloud delivery and backend reliability",
+  "availability": "Open to product-focused engineering conversations and backend-heavy roles.",
   "summary": [
-    "Passionate about building things that <span class=\"font-semibold text-purple-600 dark:text-purple-300\">work fast</span>, <span class=\"font-semibold text-purple-600 dark:text-purple-300\">look clean</span>, and <span class=\"font-semibold text-purple-600 dark:text-purple-300\">scale well</span>. I work mostly with <span class=\"font-semibold text-purple-600 dark:text-purple-300\">Java & Spring Boot</span> these days, but I’ve also spent years building <span class=\"font-semibold text-purple-600 dark:text-purple-300\">large PHP platforms</span>, improving <span class=\"font-semibold text-purple-600 dark:text-purple-300\">architectures</span>, and helping <span class=\"font-semibold text-purple-600 dark:text-purple-300\">teams work smarter</span>. I love learning <span class=\"font-semibold text-purple-600 dark:text-purple-300\">new tech</span>, understanding how <span class=\"font-semibold text-purple-600 dark:text-purple-300\">systems fit together</span>, and making <span class=\"font-semibold text-purple-600 dark:text-purple-300\">complex stuff feel simple</span>."
+    "I build backend systems that need to stay <span class=\"font-semibold text-[var(--accent-strong)]\">reliable under change</span>, remain <span class=\"font-semibold text-[var(--accent-strong)]\">clear to evolve</span>, and support teams that ship continuously without losing control of quality.",
+    "My main stack is <span class=\"font-semibold text-[var(--accent-strong)]\">Java, Spring Boot, PostgreSQL, Docker and Kubernetes</span>, with hands-on work across <span class=\"font-semibold text-[var(--accent-strong)]\">microservices, observability, CI/CD, database automation and internal tooling</span>. I also bring fullstack judgment when a product needs backend ownership with pragmatic frontend support."
   ],
   "yearsWorking": "5",
-  "currentCompany": "CGI",
+  "currentCompany": "CGI for The Workshop",
   "links": {
     "linkedin": "https://www.linkedin.com/in/jomiferse/",
     "github": "https://www.github.com/jomiferse/"
   },
+  "signals": [
+    "Enterprise backend delivery",
+    "Distributed systems mindset",
+    "Microservices and platform modernization",
+    "Fullstack support when product execution needs it"
+  ],
+  "focusAreas": [
+    {
+      "title": "Backend Architecture",
+      "description": "Service design, API boundaries, security and maintainable domain logic.",
+      "items": ["Java", "Spring Boot", "REST APIs", "Spring Security"]
+    },
+    {
+      "title": "Distributed Systems",
+      "description": "Systems that communicate reliably, scale predictably and are observable in production.",
+      "items": ["Kafka", "RabbitMQ", "Redis", "PostgreSQL"]
+    },
+    {
+      "title": "Cloud Delivery",
+      "description": "Build, deploy and operate with an emphasis on repeatability and operational confidence.",
+      "items": ["Docker", "Kubernetes", "CI/CD", "Liquibase"]
+    },
+    {
+      "title": "Product Engineering",
+      "description": "I can move from backend depth to internal tools and polished user-facing flows when needed.",
+      "items": ["TypeScript", "React", "Astro", "Tailwind CSS"]
+    }
+  ],
+  "currentExplorations": [
+    "AI and workflow automation",
+    "Telegram bots and operational tooling",
+    "Trading-related tools",
+    "Real-time and event-driven systems"
+  ],
   "experience": [
     {
-      "company": "CGI (formerly Novatec Software)",
-      "role": "Software Engineer",
+      "company": "CGI (for The Workshop)",
+      "role": "Backend Software Engineer",
       "location": "Spain",
       "startDate": "12/2024",
       "endDate": "Present",
-      "description": "Part of an international agile team responsible for the ongoing evolution of a backend platform undergoing long-term modernization. Contributing to architectural improvements, development standards, and collaboration across backend and frontend teams.",
+      "description": "Working in an international product environment on the modernization of an enterprise backend platform, contributing to architecture evolution, service reliability and developer workflow quality.",
       "highlights": [
-        "Built and evolved Spring Boot microservices with Spring Security and PostgreSQL to support a secure, scalable architecture.",
-        "Contributed to the migration from a Scala monolith to Spring Boot, improving maintainability and long-term extensibility.",
-        "Implemented database versioning and lifecycle automation with Liquibase to ensure consistency across environments.",
-        "Strengthened service reliability through automated testing with JUnit and contract testing using Pact.",
-        "Collaborated on a React-based React & TypeScript back office to streamline internal operations and improve usability.",
-        "Produced functional flow diagrams to align technical and non-technical stakeholders during platform evolution."
+        "Built and evolved Spring Boot microservices with Spring Security and PostgreSQL in a security-sensitive product environment.",
+        "Contributed to the migration path from a legacy Scala monolith to a more modular microservices architecture with better maintainability and delivery speed.",
+        "Automated database lifecycle changes with Liquibase to keep multiple environments aligned and reduce release friction.",
+        "Improved confidence in backend changes through JUnit coverage and contract testing with Pact.",
+        "Supported internal product operations through React and TypeScript back-office work when backend ownership required end-to-end execution.",
+        "Translated complex flows into shared diagrams and implementation discussions to align engineers and stakeholders."
       ]
     },
     {
       "company": "EDUCA EDTECH Group",
-      "role": "Full-Stack Software Developer",
+      "role": "Full-Stack Software Engineer",
       "location": "Granada, Spain",
       "startDate": "08/2020",
       "endDate": "12/2024",
-      "description": "Progressed from Trainee to Senior Software Developer while contributing to the design, development, and evolution of large-scale educational platforms used across multiple international markets.",
+      "description": "Grew from trainee to senior contributor while shipping features, infrastructure improvements and platform evolutions for large educational products operating across multiple international markets.",
       "highlights": [
-        "Designed and evolved a Docker-based infrastructure to standardize environments, improve scalability, and boost team productivity.",
-        "Led the transformation to a multi-language, multi-portal platform, expanding international reach and supporting global growth.",
-        "Integrated new payment systems and implemented advanced search capabilities using Elasticsearch to enhance user experience.",
-        "Developed and maintained backend and frontend features using PHP (Phalcon), JavaScript, HTML, and CSS.",
-        "Improved platform performance, security, and Core Web Vitals through continuous optimization.",
-        "Established code review and collaboration practices to raise code quality and foster continuous improvement across the team."
+        "Drove a Docker-based development workflow that standardized environments and improved team productivity across projects.",
+        "Helped lead the evolution to a multi-language, multi-portal platform supporting broader international growth.",
+        "Integrated payment flows and advanced search capabilities, balancing product goals with technical maintainability.",
+        "Worked across backend and frontend layers with PHP, JavaScript, HTML and CSS on high-traffic business-critical platforms.",
+        "Improved performance, security and Core Web Vitals through iterative optimization work.",
+        "Raised engineering quality through code review practices, collaboration habits and continuous improvement."
       ]
     }
   ],
@@ -56,7 +93,7 @@
       "location": "Online",
       "startDate": "2020",
       "endDate": "2020",
-      "description": "This master's program focuses on the technologies and skills necessary to develop and manage web and mobile applications, as well as digital and multimedia content.",
+      "description": "Graduate program focused on web and mobile development, application architecture and digital product delivery.",
       "skills": ["PHP", "HTML", "JavaScript", "CSS"],
       "notes": "Excellent"
     },
@@ -66,7 +103,7 @@
       "location": "Granada, Spain",
       "startDate": "09/2018",
       "endDate": "06/2020",
-      "description": "Advanced training in developing applications that operate across multiple operating systems and devices, covering languages like Java, JavaScript, Swift, and Kotlin, database management, scalable architectures, version control with Git, and testing in different environments.",
+      "description": "Advanced technical training in software development across platforms, covering Java, databases, testing, version control and application architecture.",
       "skills": ["Java", "Kotlin", "SQL", "Swift", "JavaScript", "Git"],
       "notes": "8.23 / 10"
     }
@@ -118,84 +155,99 @@
     "coreTech": [
       {
         "name": "Java",
-        "value": 75,
-        "color": "bg-orange-400"
+        "value": 90,
+        "color": "bg-[var(--signal-amber)]"
       },
       {
-        "name": "PHP",
-        "value": 85,
-        "color": "bg-violet-400"
+        "name": "Spring Boot",
+        "value": 88,
+        "color": "bg-[var(--signal-emerald)]"
       },
       {
-        "name": "JS / TypeScript",
-        "value": 80,
-        "color": "bg-amber-300"
+        "name": "Distributed Systems",
+        "value": 84,
+        "color": "bg-[var(--signal-blue)]"
       },
       {
-        "name": "SQL",
-        "value": 75,
-        "color": "bg-sky-400"
+        "name": "TypeScript",
+        "value": 73,
+        "color": "bg-[var(--signal-sky)]"
       }
     ],
     "frameworksTools": [
       {
+        "label": "Java",
+        "icon": "code",
+        "color": "bg-amber-50 border-amber-200 text-amber-800 dark:bg-amber-500/10 dark:border-amber-500/20 dark:text-amber-200"
+      },
+      {
         "label": "Spring Boot",
         "icon": "springboot",
-        "color": "bg-emerald-100 border-emerald-200 text-emerald-700"
+        "color": "bg-emerald-50 border-emerald-200 text-emerald-800 dark:bg-emerald-500/10 dark:border-emerald-500/20 dark:text-emerald-200"
       },
       {
         "label": "Docker",
         "icon": "docker",
-        "color": "bg-blue-100 border-blue-200 text-blue-700"
+        "color": "bg-sky-50 border-sky-200 text-sky-800 dark:bg-sky-500/10 dark:border-sky-500/20 dark:text-sky-200"
       },
       {
         "label": "Kubernetes",
         "icon": "kubernetes",
-        "color": "bg-violet-100 border-violet-200 text-violet-700"
+        "color": "bg-indigo-50 border-indigo-200 text-indigo-800 dark:bg-indigo-500/10 dark:border-indigo-500/20 dark:text-indigo-200"
       },
       {
         "label": "PostgreSQL",
         "icon": "postgresql",
-        "color": "bg-orange-100 border-orange-200 text-orange-700"
+        "color": "bg-blue-50 border-blue-200 text-blue-800 dark:bg-blue-500/10 dark:border-blue-500/20 dark:text-blue-200"
+      },
+      {
+        "label": "Redis",
+        "icon": "hash",
+        "color": "bg-rose-50 border-rose-200 text-rose-800 dark:bg-rose-500/10 dark:border-rose-500/20 dark:text-rose-200"
       },
       {
         "label": "Kafka",
         "icon": "apachekafka",
-        "color": "bg-red-100 border-red-200 text-red-700"
-      },
-      {
-        "label": "Git",
-        "icon": "git",
-        "color": "bg-slate-100 border-slate-200 text-slate-700"
-      },
-      {
-        "label": "Liquibase",
-        "icon": "liquibase",
-        "color": "bg-cyan-100 border-cyan-200 text-cyan-700"
+        "color": "bg-zinc-100 border-zinc-200 text-zinc-800 dark:bg-zinc-800/60 dark:border-zinc-700 dark:text-zinc-100"
       },
       {
         "label": "RabbitMQ",
         "icon": "rabbitmq",
-        "color": "bg-pink-100 border-pink-200 text-pink-700"
+        "color": "bg-orange-50 border-orange-200 text-orange-800 dark:bg-orange-500/10 dark:border-orange-500/20 dark:text-orange-200"
+      },
+      {
+        "label": "Liquibase",
+        "icon": "liquibase",
+        "color": "bg-cyan-50 border-cyan-200 text-cyan-800 dark:bg-cyan-500/10 dark:border-cyan-500/20 dark:text-cyan-200"
       },
       {
         "label": "CI/CD",
         "icon": "git-branch",
-        "color": "bg-indigo-100 border-indigo-200 text-indigo-700"
+        "color": "bg-violet-50 border-violet-200 text-violet-800 dark:bg-violet-500/10 dark:border-violet-500/20 dark:text-violet-200"
+      },
+      {
+        "label": "Grafana",
+        "icon": "clock",
+        "color": "bg-fuchsia-50 border-fuchsia-200 text-fuchsia-800 dark:bg-fuchsia-500/10 dark:border-fuchsia-500/20 dark:text-fuchsia-200"
+      },
+      {
+        "label": "Kibana",
+        "icon": "layers",
+        "color": "bg-teal-50 border-teal-200 text-teal-800 dark:bg-teal-500/10 dark:border-teal-500/20 dark:text-teal-200"
       }
     ],
     "soft": [
       {
-        "label": "Problem Solving",
-        "icon": "brain"
+        "label": "Systems thinking",
+        "icon": "layers"
       },
       {
-        "label": "Teamwork",
-        "icon": "users"
+        "label": "Ownership",
+        "icon": "badge-check"
       },
       {
-        "label": "Quality",
-        "icon": "circle-check-big"
+        "label": "Pragmatic delivery",
+        "icon": "sparkles"
       }
     ],
     "languages": {
@@ -217,12 +269,13 @@
     "company": [
       {
         "title": "Microservices Modernization Platform",
-        "role": "Software Engineer",
-        "companyRelated": "CGI",
+        "role": "Backend Software Engineer",
+        "companyRelated": "CGI for The Workshop",
+        "status": "Enterprise product",
         "link": "",
-        "context": "International backend team modernizing a cloud-based service platform for an enterprise client in the gambling sector.",
+        "context": "International backend team modernizing a cloud platform for a product organization operating at enterprise scale.",
         "timeframe": "12/2024 – Present",
-        "summary": "Contribute to the development of a Spring Boot–based microservices architecture, supporting the migration from a legacy Scala monolith to a more scalable and maintainable system. Collaborate on backend services, database lifecycle automation, and internal tooling.",
+        "summary": "Backend modernization work centered on Spring Boot services, secure APIs, database delivery workflows and operational confidence during the transition away from a legacy monolith.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/microservices-modernization-platform.avif",
@@ -235,34 +288,34 @@
           "Spring Security",
           "PostgreSQL",
           "Liquibase",
-          "React",
-          "JUnit",
+          "Pact",
           "Docker",
           "Kubernetes"
         ],
         "highlights": [
-          "Contributed to the migration from a Scala monolith to Spring Boot microservices.",
-          "Built and maintained secure backend services with Spring Boot and Spring Security.",
-          "Automated database changes with Liquibase across multiple environments.",
-          "Collaborated on a React-based back-office to improve internal workflows."
+          "Contributed to a long-term migration from a Scala monolith to a more maintainable service architecture.",
+          "Developed secure backend services with Spring Boot and Spring Security.",
+          "Automated database change delivery with Liquibase across multiple environments.",
+          "Improved release confidence with automated tests and contract testing."
         ]
       },
       {
-        "title": "Euroinnova International Online Education",
-        "role": "Software Developer",
+        "title": "Euroinnova International Education Platform",
+        "role": "Full-Stack Software Engineer",
         "companyRelated": "EDUCA EDTECH Group",
+        "status": "Production platform",
         "link": "",
-        "context": "Core web platform for EDUCA EDTECH Group.",
+        "context": "Core digital product used to capture, convert and serve educational demand across multiple markets.",
         "timeframe": "02/2021 – 12/2024",
-        "summary": "Design, development, and maintenance of the main Euroinnova web platform, focusing on performance, lead generation, and user experience improvements.",
+        "summary": "Large-scale platform work across backend, frontend and infrastructure, focused on performance, business delivery and maintainable feature evolution.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/euroinnova.avif",
-            "alt": "Euroinnova International Online Education"
+            "alt": "Euroinnova International Education Platform"
           },
           "imgHover": {
             "src": "/images/projects/euroinnova-preview.avif",
-            "alt": "Euroinnova International Online Education preview"
+            "alt": "Euroinnova platform preview"
           }
         },
         "technologies": [
@@ -270,26 +323,27 @@
           "Phalcon",
           "MySQL",
           "Docker",
-          "Git",
           "JavaScript",
-          "CSS",
-          "HTML"
+          "Elasticsearch",
+          "HTML",
+          "CSS"
         ],
         "highlights": [
-          "Developed and maintained the main platform using PHP, Phalcon, JavaScript, HTML, CSS, and MySQL.",
-          "Implemented key lead generation features such as contact forms, landing pages, and conversion flows.",
-          "Improved user experience through better navigation and faster load times.",
-          "Worked closely with marketing and design teams to align development with branding and campaign strategies."
+          "Worked on lead generation, search, payment and UX-critical flows.",
+          "Helped evolve the platform toward a multi-language, multi-portal product structure.",
+          "Improved performance and Core Web Vitals through iterative optimization.",
+          "Collaborated with product, marketing and design stakeholders on business-facing delivery."
         ]
       },
       {
-        "title": "EduCash – Affiliate Web Platform",
-        "role": "Software Developer",
+        "title": "EduCash Affiliate Platform",
+        "role": "Software Engineer",
         "companyRelated": "EDUCA EDTECH Group",
+        "status": "Business tool",
         "link": "",
-        "context": "Project related to EDUCA EDTECH Group, focused on affiliate management.",
+        "context": "Affiliate management product supporting operational reporting, partner workflows and payment-related processes.",
         "timeframe": "08/2020 – 12/2024",
-        "summary": "Comprehensive development of the company's affiliate web platform, from design to implementation and optimization, enabling effective management of affiliations and reporting.",
+        "summary": "End-to-end delivery of a web platform used to manage affiliate relationships, reporting flows and internal operations tied to growth channels.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/educash.avif",
@@ -300,12 +354,12 @@
             "alt": "EduCash Affiliate Platform preview"
           }
         },
-        "technologies": ["PHP", "MySQL", "HTML", "CSS", "JavaScript", "Git"],
+        "technologies": ["PHP", "MySQL", "JavaScript", "HTML", "CSS", "Git"],
         "highlights": [
-          "Designed, developed, and implemented the affiliate platform ensuring integration with existing systems.",
-          "Continuously refined the platform to improve functionality and affiliate satisfaction.",
-          "Developed tools for managing and tracking affiliations, including dashboards, performance reports, and payment support.",
-          "Collaborated closely with marketing and affiliate management teams to align the platform with business goals."
+          "Built the platform from implementation to ongoing improvement.",
+          "Delivered dashboards, reporting tools and partner management workflows.",
+          "Integrated the product with existing company systems and business processes.",
+          "Balanced operational usability with product and marketing requirements."
         ]
       }
     ],
@@ -313,15 +367,16 @@
       {
         "title": "CV Studio",
         "role": "Full-Stack Developer",
-        "companyRelated": "Personal Project",
+        "companyRelated": "Personal project",
+        "status": "Active build",
         "link": "https://github.com/jomiferse/cv-studio",
-        "context": "Personal project focused on building a modern, professional CV builder with live preview and PDF export, aimed at developers and tech professionals.",
+        "context": "A professional CV builder designed for technical profiles with live editing, strong data modeling and polished PDF output.",
         "timeframe": "12/2025 – Present",
-        "summary": "Designed and developed a web-based CV builder that allows users to create, preview, and export professional resumes in real time. The project emphasizes clean UI, structured data, and high-quality PDF output suitable for technical job applications.",
+        "summary": "A product-oriented side project combining frontend UX, validation, document generation and structured resume data. Built to solve a real problem with a high-quality developer-facing experience.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/cv-studio.avif",
-            "alt": "CV Studio – Professional CV Builder"
+            "alt": "CV Studio – professional CV builder"
           },
           "imgHover": {
             "src": "/images/projects/cv-studio-preview.avif",
@@ -339,11 +394,10 @@
           "PDF Generation"
         ],
         "highlights": [
-          "Built a real-time CV editor with live preview synchronized to structured JSON data.",
-          "Implemented professional PDF export optimized for A4 layout and ATS-friendly formatting.",
-          "Designed a clean, modern UI using Tailwind CSS with a focus on usability and clarity.",
-          "Structured the project for scalability with strong typing and schema validation using Zod.",
-          "Created reusable CV templates suitable for software engineers and technical roles."
+          "Built a real-time editor with synchronized preview over structured JSON data.",
+          "Implemented ATS-friendly PDF export optimized for A4 output.",
+          "Designed reusable templates and a scalable typed architecture.",
+          "Combined product polish with strong validation and document-generation logic."
         ]
       }
     ]
