@@ -32,3 +32,8 @@ pnpm-debug.log*
 
 .vercel
 .env*.local
+
+# agent files
+.agents/
+skills-lock.json
+AGENTS.md
