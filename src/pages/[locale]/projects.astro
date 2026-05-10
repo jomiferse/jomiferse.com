@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import ProjectCard from "@/components/cards/ProjectCard.astro";
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCv } from "@cv";
@@ -14,6 +14,10 @@ const cv = getCv(locale);
 
 const companyProjects = cv.projects?.company ?? [];
 const personalProjects = cv.projects?.personal ?? [];
+const featuredProject = personalProjects[0] ?? companyProjects[0];
+const archiveProjects = [...personalProjects, ...companyProjects].filter(
+	(project) => project.title !== featuredProject?.title,
+);
 
 const pageTitle = `${t(locale, "projects.meta.title")} - ${cv.name}`;
 const pageDescription = t(locale, "projects.meta.description").replace(
@@ -24,123 +28,139 @@ const pageDescription = t(locale, "projects.meta.description").replace(
 
 <BaseLayout title={pageTitle} description={pageDescription}>
 	<section class="section-reveal pt-4 md:pt-8">
-		<div class="glass-panel surface-ring rounded-[2rem] p-6 md:p-8">
-			<div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-				<div>
-					<p
-						class="text-xs font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
-					>
-						{t(locale, "projects.hero.titlePrefix")}
-					</p>
-					<h1
-						class="mt-4 text-4xl font-semibold text-slate-950 md:text-5xl dark:text-slate-50"
-					>
-						<span class="text-[var(--accent-strong)]">
-							{t(locale, "projects.hero.titleHighlight")}
-						</span>
-					</h1>
-					<p
-						class="mt-5 max-w-3xl text-base leading-8 text-slate-600 dark:text-slate-300"
-					>
-						{t(locale, "projects.hero.subtitle")}
-					</p>
-				</div>
-
-				<div class="grid gap-3 sm:grid-cols-2">
-					<div
-						class="rounded-[1.5rem] border border-slate-200/80 bg-white/75 p-5 dark:border-slate-800/70 dark:bg-slate-950/35"
-					>
-						<p
-							class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
-						>
-							Personal
-						</p>
-						<p
-							class="mt-3 text-3xl font-semibold text-slate-950 dark:text-slate-50"
-						>
-							{personalProjects.length}
-						</p>
-					</div>
-					<div
-						class="rounded-[1.5rem] border border-slate-200/80 bg-white/75 p-5 dark:border-slate-800/70 dark:bg-slate-950/35"
-					>
-						<p
-							class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
-						>
-							Company
-						</p>
-						<p
-							class="mt-3 text-3xl font-semibold text-slate-950 dark:text-slate-50"
-						>
-							{companyProjects.length}
-						</p>
-					</div>
-				</div>
-			</div>
+		<div class="max-w-3xl">
+			<p
+				class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
+			>
+				{t(locale, "projects.hero.titlePrefix")}
+			</p>
+			<h1
+				class="mt-5 text-4xl leading-tight font-semibold tracking-[-0.045em] text-slate-950 md:text-6xl dark:text-slate-50"
+			>
+				{t(locale, "projects.hero.titleHighlight")}
+			</h1>
+			<p
+				class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300"
+			>
+				{t(locale, "projects.hero.subtitle")}
+			</p>
 		</div>
 	</section>
 
-	<section class="section-reveal mt-10 md:mt-14">
-		<div class="mb-6 flex items-center gap-3">
-			<span
-				class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--accent-line)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
+	{
+		featuredProject && (
+			<section class="section-reveal mt-20 md:mt-28">
+				<div class="max-w-3xl">
+					<h2 class="text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50">
+						{featuredProject.title}
+					</h2>
+				</div>
+
+				<div class="stagger-children mt-10 grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
+					<div class="overflow-hidden rounded-[2.6rem]">
+						<Image
+							src={featuredProject.img?.imgStatic?.src ?? "/images/avatar.avif"}
+							alt={featuredProject.img?.imgStatic?.alt ?? featuredProject.title}
+							width={1280}
+							height={920}
+							loading="eager"
+							class="h-[23rem] w-full object-cover md:h-[31rem]"
+						/>
+					</div>
+
+					<div class="flex max-w-2xl flex-col justify-center">
+						<p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
+							{featuredProject.status} - {featuredProject.timeframe}
+						</p>
+						<p class="mt-4 text-base text-slate-500 dark:text-slate-400">
+							{featuredProject.role} - {featuredProject.companyRelated}
+						</p>
+						<p class="mt-6 max-w-lg text-base leading-7 text-slate-600 dark:text-slate-300">
+							{featuredProject.summary}
+						</p>
+
+						<ul class="mt-7 space-y-4">
+							{featuredProject.highlights?.slice(0, 3).map((highlight) => (
+								<li class="flex gap-4 text-sm leading-7 text-slate-700 dark:text-slate-200">
+									<span class="mt-3 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+									<span>{highlight}</span>
+								</li>
+							))}
+						</ul>
+
+						<div class="mt-7 flex flex-wrap gap-2">
+							{featuredProject.technologies.slice(0, 5).map((tech) => (
+								<span class="inline-flex items-center rounded-full bg-slate-200/65 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:bg-slate-800/70 dark:text-slate-200">
+									{tech}
+								</span>
+							))}
+						</div>
+
+						{featuredProject.link ? (
+							<a
+								href={featuredProject.link}
+								target="_blank"
+								rel="noreferrer"
+								class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
+							>
+								{t(locale, "projectCard.viewProject")}
+								<Icon name="move-up-right" class="h-4 w-4" />
+							</a>
+						) : null}
+					</div>
+				</div>
+			</section>
+		)
+	}
+
+	<section class="section-reveal mt-24 md:mt-36">
+		<div class="max-w-3xl">
+			<h2
+				class="text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50"
 			>
-				<Icon name="user" class="h-5 w-5" />
-			</span>
-			<div>
-				<h2 class="text-2xl font-semibold text-slate-950 dark:text-slate-50">
-					{t(locale, "projects.sections.personal.title")}
-				</h2>
-				<p class="text-sm text-slate-600 dark:text-slate-300">
-					{t(locale, "projects.sections.personal.subtitle")}
-				</p>
-			</div>
+				Archive
+			</h2>
 		</div>
 
-		{
-			personalProjects.length ? (
-				<div class="stagger-children grid gap-6 lg:grid-cols-2">
-					{personalProjects.map((project) => (
-						<ProjectCard project={project} locale={locale} />
-					))}
-				</div>
-			) : (
-				<div class="glass-panel surface-ring rounded-[2rem] p-6 text-sm text-slate-600 dark:text-slate-300">
-					{t(locale, "projects.empty.personal")}
-				</div>
-			)
-		}
-	</section>
+		<div class="stagger-children mt-10 space-y-10 md:mt-14">
+			{
+				archiveProjects.map((project) => (
+					<article class="border-t border-slate-200/70 pt-8 dark:border-slate-800/70">
+						<div class="grid gap-6 lg:grid-cols-[0.34fr_1fr] lg:gap-12">
+							<div class="space-y-3">
+								<p class="text-sm font-semibold text-slate-950 dark:text-slate-50">
+									{project.companyRelated}
+								</p>
+								<p class="text-sm text-slate-500 dark:text-slate-400">
+									{project.status}
+								</p>
+								<p class="text-sm text-slate-500 dark:text-slate-400">
+									{project.timeframe}
+								</p>
+							</div>
 
-	<section class="section-reveal mt-12 md:mt-16">
-		<div class="mb-6 flex items-center gap-3">
-			<span
-				class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--accent-line)] bg-[var(--accent-soft)] text-[var(--accent-strong)]"
-			>
-				<Icon name="briefcase-business" class="h-5 w-5" />
-			</span>
-			<div>
-				<h2 class="text-2xl font-semibold text-slate-950 dark:text-slate-50">
-					{t(locale, "projects.sections.company.title")}
-				</h2>
-				<p class="text-sm text-slate-600 dark:text-slate-300">
-					{t(locale, "projects.sections.company.subtitle")}
-				</p>
-			</div>
+							<div class="max-w-4xl">
+								<h3 class="text-2xl leading-tight font-semibold tracking-[-0.03em] text-slate-950 md:text-4xl dark:text-slate-50">
+									{project.title}
+								</h3>
+								<p class="mt-4 text-base text-slate-500 dark:text-slate-400">
+									{project.role}
+								</p>
+								<p class="mt-5 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
+									{project.summary}
+								</p>
+								<div class="mt-6 flex flex-wrap gap-2">
+									{project.technologies.slice(0, 4).map((tech) => (
+										<span class="inline-flex items-center rounded-full bg-slate-200/65 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:bg-slate-800/70 dark:text-slate-200">
+											{tech}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
+					</article>
+				))
+			}
 		</div>
-
-		{
-			companyProjects.length ? (
-				<div class="stagger-children grid gap-6 lg:grid-cols-2">
-					{companyProjects.map((project) => (
-						<ProjectCard project={project} locale={locale} />
-					))}
-				</div>
-			) : (
-				<div class="glass-panel surface-ring rounded-[2rem] p-6 text-sm text-slate-600 dark:text-slate-300">
-					{t(locale, "projects.empty.company")}
-				</div>
-			)
-		}
 	</section>
 </BaseLayout>
