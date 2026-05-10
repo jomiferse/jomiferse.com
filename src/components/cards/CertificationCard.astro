@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
 import { t, type Locale } from "@/i18n";
 
 interface Certification {
@@ -16,86 +15,55 @@ const { certification, locale = "en" } = Astro.props as {
 	certification: Certification;
 	locale?: Locale;
 };
-
-const hasUrl = Boolean(certification.url);
 ---
 
-<article
-	class="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-purple-400/60 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-purple-500/50"
->
-	<div
-		aria-hidden="true"
-		class="pointer-events-none absolute top-6 right-6 opacity-10 dark:opacity-10"
-	>
-		<Icon
-			name="graduation-cap"
-			class="h-16 w-16 text-slate-900 dark:text-white"
-		/>
+<article class="grid gap-6 lg:grid-cols-[0.36fr_1fr] lg:gap-12">
+	<div class="space-y-3">
+		<p class="text-sm font-semibold text-slate-950 dark:text-slate-50">
+			{certification.provider}
+		</p>
+		<p class="text-sm text-slate-500 dark:text-slate-400">
+			{certification.year}
+		</p>
+		{
+			certification.credentialId ? (
+				<p class="max-w-xs text-xs leading-6 text-slate-400 dark:text-slate-500">
+					{t(locale, "certificationCard.idLabel")} {certification.credentialId}
+				</p>
+			) : null
+		}
 	</div>
 
-	<div class="relative flex flex-wrap items-center gap-x-3 gap-y-1">
-		<div class="inline-flex items-center gap-2">
-			<span
-				class="grid h-10 w-10 place-items-center rounded-2xl bg-purple-50 text-purple-700 ring-1 ring-slate-200 dark:bg-purple-500/10 dark:text-purple-200 dark:ring-zinc-800/70"
-			>
-				<Icon name={certification.icon} class="h-5 w-5" />
-			</span>
+	<div class="max-w-4xl">
+		<h3
+			class="text-2xl leading-tight font-semibold tracking-[-0.03em] text-slate-950 md:text-4xl dark:text-slate-50"
+		>
+			{certification.name}
+		</h3>
 
-			<div class="leading-tight">
-				<p
-					class="text-[11px] font-extrabold tracking-[0.22em] text-purple-600 dark:text-purple-300"
-				>
-					{certification.provider?.toUpperCase?.() ?? certification.provider}
-				</p>
-				<p class="text-xs text-slate-500 dark:text-zinc-400">
-					{certification.year}
-				</p>
-			</div>
+		<div class="mt-6 flex flex-wrap gap-2">
+			{
+				certification.skills
+					?.slice(0, 5)
+					.map((skill) => (
+						<span class="inline-flex items-center rounded-full bg-slate-200/65 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:bg-slate-800/70 dark:text-slate-200">
+							{skill}
+						</span>
+					))
+			}
 		</div>
-	</div>
 
-	<h2
-		class="relative mt-4 text-lg leading-snug font-semibold text-slate-900 dark:text-zinc-50"
-	>
-		{certification.name}
-	</h2>
-
-	{
-		certification.credentialId ? (
-			<p class="relative mt-2 text-xs text-slate-500 dark:text-zinc-400">
-				<span class="font-semibold text-slate-600 dark:text-zinc-300">
-					{t(locale, "certificationCard.idLabel")}
-				</span>{" "}
-				<span class="break-all">{certification.credentialId}</span>
-			</p>
-		) : null
-	}
-
-	{
-		certification.skills && certification.skills.length > 0 ? (
-			<div class="relative mt-4 flex flex-wrap gap-2">
-				{certification.skills.map((skill) => (
-					<span class="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold text-slate-700 dark:border-zinc-800/70 dark:bg-zinc-900/40 dark:text-zinc-200">
-						{skill}
-					</span>
-				))}
-			</div>
-		) : null
-	}
-
-	{
-		hasUrl ? (
-			<div class="relative mt-5">
+		{
+			certification.url ? (
 				<a
 					href={certification.url}
 					target="_blank"
 					rel="noreferrer"
-					class="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-purple-300 hover:text-purple-700 dark:border-zinc-800/70 dark:bg-zinc-900/40 dark:text-zinc-200 dark:hover:border-purple-500/40 dark:hover:text-purple-200"
+					class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
 				>
-					<Icon name="badge-check" class="h-5 w-5" />
 					{t(locale, "certificationCard.viewCredential")}
 				</a>
-			</div>
-		) : null
-	}
+			) : null
+		}
+	</div>
 </article>

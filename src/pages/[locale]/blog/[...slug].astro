@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 	});
 }
 
-const { locale, slug } = Astro.params;
+const { locale } = Astro.params;
 const { fullSlug } = Astro.props;
 
 const post = await getEntry("blog", fullSlug);

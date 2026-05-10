@@ -22,11 +22,11 @@ const toLocalSlug = (slug: string) =>
 
 const featuredPosts = posts
 	.filter((p) => p.data.tags?.includes("featured"))
-	.slice(0, 4);
+	.slice(0, 2);
 
 const latestPosts = posts.filter((p) => !p.data.tags?.includes("featured"));
 
-const pageTitle = `${t(locale, "blog.meta.title")} – ${cv.name}`;
+const pageTitle = `${t(locale, "blog.meta.title")} - ${cv.name}`;
 const pageDescription = t(locale, "blog.meta.description").replace(
 	"{name}",
 	cv.name,
@@ -37,32 +37,36 @@ const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-	<header class="mb-6 space-y-3">
-		<h1 class="text-3xl font-bold md:text-4xl">
-			{t(locale, "blog.hero.titlePrefix")}{" "}
-			<span class="text-purple-600 dark:text-purple-300">
+	<section class="section-reveal pt-4 md:pt-8">
+		<div class="max-w-3xl">
+			<p
+				class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
+			>
+				{t(locale, "blog.hero.titlePrefix")}
+			</p>
+			<h1
+				class="mt-5 text-4xl leading-tight font-semibold tracking-[-0.045em] text-slate-950 md:text-6xl dark:text-slate-50"
+			>
 				{t(locale, "blog.hero.titleHighlight")}
-			</span>
-		</h1>
-
-		<p
-			class="max-w-2xl text-sm text-slate-600 md:text-base dark:text-slate-300"
-		>
-			{t(locale, "blog.hero.subtitle")}
-		</p>
-	</header>
+			</h1>
+			<p
+				class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300"
+			>
+				{t(locale, "blog.hero.subtitle")}
+			</p>
+		</div>
+	</section>
 
 	{
 		featuredPosts.length > 0 && (
-			<section class="mt-2">
-				<div class="mb-4 flex items-center gap-4">
-					<h2 class="text-lg font-semibold text-slate-900 dark:text-zinc-50">
+			<section class="section-reveal mt-20 md:mt-28">
+				<div class="max-w-3xl">
+					<h2 class="text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50">
 						{t(locale, "blog.sections.featured.title")}
 					</h2>
-					<div class="h-px flex-1 bg-slate-200 dark:bg-zinc-800/70" />
 				</div>
 
-				<div class="grid gap-5 md:grid-cols-2">
+				<div class="stagger-children mt-10 space-y-10 md:mt-14">
 					{featuredPosts.map((post) => (
 						<BlogPostCard
 							href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
@@ -83,17 +87,18 @@ const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 		)
 	}
 
-	<section class="mt-10">
-		<div class="mb-4 flex items-center gap-4">
-			<h2 class="text-lg font-semibold text-slate-900 dark:text-zinc-50">
+	<section class="section-reveal mt-24 md:mt-36">
+		<div class="max-w-3xl">
+			<h2
+				class="text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50"
+			>
 				{t(locale, "blog.sections.latest.title")}
 			</h2>
-			<div class="h-px flex-1 bg-slate-200 dark:bg-zinc-800/70"></div>
 		</div>
 
 		{
 			latestPosts.length > 0 ? (
-				<div class="grid gap-5 md:grid-cols-2">
+				<div class="stagger-children mt-10 space-y-10 md:mt-14">
 					{latestPosts.map((post) => (
 						<BlogPostCard
 							href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
@@ -111,7 +116,7 @@ const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 					))}
 				</div>
 			) : (
-				<div class="rounded-3xl border border-slate-200/80 bg-white/70 p-6 text-sm text-slate-600 shadow-sm backdrop-blur dark:border-zinc-800/70 dark:bg-zinc-950/40 dark:text-zinc-400">
+				<div class="mt-10 text-base text-slate-600 dark:text-slate-300">
 					{t(locale, "blog.empty.latest")}
 				</div>
 			)
