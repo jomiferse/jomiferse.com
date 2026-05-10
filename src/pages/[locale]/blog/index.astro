@@ -14,12 +14,11 @@ const { locale } = Astro.params;
 const cv = getCv(locale);
 
 const posts = (await getCollection("blog"))
-	.filter((p) => p.slug.startsWith(`${locale}/`))
+	.filter((p) => p.id.startsWith(`${locale}/`))
 	.filter((p) => !p.data.draft)
 	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const toLocalSlug = (slug: string) =>
-	slug.replace(new RegExp(`^${locale}/`), "");
+const toLocalSlug = (id: string) => id.replace(new RegExp(`^${locale}/`), "");
 
 const featuredPosts = posts
 	.filter((p) => p.data.tags?.includes("featured"))
@@ -90,7 +89,7 @@ const structuredData = [
 				<div class="stagger-children mt-10 space-y-10 md:mt-14">
 					{featuredPosts.map((post) => (
 						<BlogPostCard
-							href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
+							href={`${blogBasePath}/${toLocalSlug(post.id)}`}
 							title={post.data.title}
 							description={post.data.description}
 							dateLabel={post.data.date.toLocaleDateString(dateLocale, {
@@ -123,7 +122,7 @@ const structuredData = [
 				<div class="stagger-children mt-10 space-y-10 md:mt-14">
 					{latestPosts.map((post) => (
 						<BlogPostCard
-							href={`${blogBasePath}/${toLocalSlug(post.slug)}`}
+							href={`${blogBasePath}/${toLocalSlug(post.id)}`}
 							title={post.data.title}
 							description={post.data.description}
 							dateLabel={post.data.date.toLocaleDateString(dateLocale, {
