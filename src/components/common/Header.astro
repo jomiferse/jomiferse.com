@@ -40,15 +40,15 @@ const normalizedCurrent = normalizePath(currentPath);
 ---
 
 <header class="sticky top-0 z-50 px-3 pt-3 md:px-6">
-	<div class="glass-panel surface-ring mx-auto max-w-6xl rounded-[1.75rem]">
-		<div class="flex items-center justify-between gap-4 px-4 py-3 md:px-5">
+	<div class="header-bar mx-auto max-w-6xl">
+		<div class="flex items-center justify-between gap-4 px-4 py-3 md:px-6">
 			<a
 				href={withLocale("/", locale)}
-				class="flex min-w-0 items-center gap-3 rounded-2xl px-2 py-1.5"
+				class="flex min-w-0 items-center gap-3 px-1 py-1"
 				aria-label={t(locale, "nav.home")}
 			>
 				<span
-					class="grid h-11 w-11 place-items-center rounded-2xl border border-[var(--accent-line)] bg-[var(--accent-soft)] text-sm font-bold tracking-[0.18em] text-[var(--accent-strong)]"
+					class="grid h-10 w-10 place-items-center rounded-[1.15rem] bg-[var(--accent-soft)] text-sm font-bold tracking-[0.18em] text-[var(--accent-strong)]"
 				>
 					JMF
 				</span>
@@ -66,7 +66,7 @@ const normalizedCurrent = normalizePath(currentPath);
 
 			<nav
 				aria-label="Main"
-				class="hidden items-center gap-1 rounded-full border border-slate-200/70 bg-white/55 px-2 py-2 lg:flex dark:border-slate-800/70 dark:bg-slate-950/35"
+				class="header-nav hidden items-center gap-1 lg:flex"
 			>
 				{
 					links.map((link) => {
@@ -76,10 +76,10 @@ const normalizedCurrent = normalizePath(currentPath);
 								href={withLocale(link.href, locale)}
 								aria-current={active ? "page" : undefined}
 								class:list={[
-									"rounded-full px-4 py-2 text-sm font-medium",
+									"header-nav-link px-3 py-2 text-sm font-medium",
 									active
-										? "bg-slate-950 text-white dark:bg-slate-100 dark:text-slate-950"
-										: "text-slate-600 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white",
+										? "is-active text-slate-950 dark:text-slate-50"
+										: "text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white",
 								]}
 							>
 								{t(locale, link.labelKey)}
@@ -89,25 +89,25 @@ const normalizedCurrent = normalizePath(currentPath);
 				}
 			</nav>
 
-			<div class="hidden items-center gap-2 md:flex">
+			<div class="hidden items-center gap-1.5 md:flex">
 				<LanguageToggle locale={locale} />
 				<ThemeToggle locale={locale} />
 				<a
 					href={withLocale("/contact", locale)}
-					class="inline-flex min-h-11 items-center gap-2 rounded-2xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
+					class="header-cta inline-flex min-h-10 items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold"
 				>
 					{t(locale, "header.contactCta")}
 					<Icon name="arrow-right" class="h-4 w-4" />
 				</a>
 			</div>
 
-			<div class="flex items-center gap-2 md:hidden">
+			<div class="flex items-center gap-1.5 md:hidden">
 				<LanguageToggle locale={locale} />
 				<ThemeToggle locale={locale} />
 				<button
 					id="menu-open"
 					aria-label={t(locale, "header.openMenu")}
-					class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-100"
+					class="header-utility inline-flex min-h-10 min-w-10 items-center justify-center rounded-full"
 					type="button"
 				>
 					<Icon name="menu" class="h-5 w-5" />
@@ -146,7 +146,7 @@ const normalizedCurrent = normalizePath(currentPath);
 			<button
 				id="menu-close"
 				aria-label={t(locale, "header.closeMenu")}
-				class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-100"
+				class="header-utility inline-flex min-h-10 min-w-10 items-center justify-center rounded-full"
 				type="button"
 			>
 				<Icon name="x" class="h-5 w-5" />
@@ -162,10 +162,10 @@ const normalizedCurrent = normalizePath(currentPath);
 							href={withLocale(link.href, locale)}
 							aria-current={active ? "page" : undefined}
 							class:list={[
-								"rounded-2xl border px-4 py-3 text-sm font-semibold",
+								"rounded-[1.1rem] px-4 py-3 text-sm font-semibold transition-colors",
 								active
-									? "border-slate-950 bg-slate-950 text-white dark:border-slate-100 dark:bg-slate-100 dark:text-slate-950"
-									: "border-slate-200/70 bg-white/55 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200",
+									? "bg-slate-950/8 text-slate-950 dark:bg-white/8 dark:text-slate-50"
+									: "text-slate-600 hover:bg-white/45 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white",
 							]}
 							data-close-menu
 						>
@@ -178,7 +178,7 @@ const normalizedCurrent = normalizePath(currentPath);
 
 		<a
 			href={withLocale("/contact", locale)}
-			class="mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-2xl bg-[var(--accent)] px-4 py-3 text-sm font-semibold text-white"
+			class="header-cta mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold"
 			data-close-menu
 		>
 			{t(locale, "header.contactCta")}

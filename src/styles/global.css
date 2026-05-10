@@ -172,6 +172,124 @@ select:focus {
 	backdrop-filter: blur(18px);
 }
 
+.header-bar {
+	background: color-mix(in srgb, var(--bg-elevated) 78%, transparent);
+	border: 1px solid color-mix(in srgb, var(--surface-border) 78%, transparent);
+	border-radius: 1.6rem;
+	box-shadow: 0 12px 34px rgba(15, 23, 42, 0.05);
+	backdrop-filter: blur(18px);
+}
+
+.dark .header-bar {
+	box-shadow: 0 16px 38px rgba(0, 0, 0, 0.2);
+}
+
+.header-nav {
+	padding: 0.2rem;
+}
+
+.header-nav-link {
+	position: relative;
+	border-radius: 999px;
+	letter-spacing: -0.01em;
+	transition:
+		color 180ms ease,
+		background-color 180ms ease,
+		opacity 180ms ease;
+}
+
+.header-nav-link::after {
+	content: "";
+	position: absolute;
+	left: 0.9rem;
+	right: 0.9rem;
+	bottom: 0.35rem;
+	height: 1px;
+	background: color-mix(in srgb, var(--accent-strong) 46%, transparent);
+	opacity: 0;
+	transform: scaleX(0.7);
+	transition:
+		opacity 180ms ease,
+		transform 180ms ease;
+}
+
+.header-nav-link:hover::after,
+.header-nav-link.is-active::after {
+	opacity: 1;
+	transform: scaleX(1);
+}
+
+.header-nav-link.is-active {
+	background: color-mix(in srgb, var(--accent-soft) 72%, transparent);
+}
+
+.dark .header-nav-link.is-active {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.header-utility {
+	border: 1px solid transparent;
+	background: transparent;
+	transition:
+		color 180ms ease,
+		background-color 180ms ease,
+		border-color 180ms ease,
+		transform 180ms ease,
+		box-shadow 180ms ease;
+}
+
+.header-utility:hover {
+	background: rgba(255, 255, 255, 0.48);
+	color: var(--text);
+}
+
+.dark .header-utility:hover {
+	background: rgba(255, 255, 255, 0.05);
+	color: white;
+}
+
+.header-utility:focus-visible {
+	outline: none;
+	border-color: var(--accent-line);
+	background: color-mix(in srgb, var(--accent-soft) 72%, transparent);
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.header-cta {
+	background: rgba(15, 23, 42, 0.92);
+	color: white;
+	box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+	transition:
+		background-color 180ms ease,
+		color 180ms ease,
+		transform 180ms ease,
+		box-shadow 180ms ease;
+}
+
+.dark .header-cta {
+	background: rgba(255, 255, 255, 0.9);
+	color: rgb(15 23 42);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.header-cta:hover {
+	transform: translateY(-1px);
+	background: rgb(15 23 42);
+	box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
+.dark .header-cta:hover {
+	background: white;
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+.header-cta:focus-visible {
+	outline: none;
+	box-shadow:
+		0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent),
+		0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
 .section-reveal {
 	opacity: 0;
 	transform: translateY(24px);
