@@ -1,15 +1,20 @@
 {
   "name": "José Miguel Fernández",
   "shortName": "José Miguel",
+  "email": "jomiferse@gmail.com",
   "headline": "Software Engineer | Java & Spring Boot | PHP | Docker | Microservices | SQL",
   "location": "Granada, Spain",
   "currentRole": "Software Engineer",
   "focus": "Backend, microservices & DevOps",
   "summary": [
-    "Passionate about building things that <span class=\"font-semibold text-purple-300\">work fast</span>, <span class=\"font-semibold text-purple-300\">look clean</span>, and <span class=\"font-semibold text-purple-300\">scale well</span>. I work mostly with <span class=\"font-semibold text-purple-300\">Java & Spring Boot</span> these days, but I’ve also spent years building <span class=\"font-semibold text-purple-300\">large PHP platforms</span>, improving <span class=\"font-semibold text-purple-300\">architectures</span>, and helping <span class=\"font-semibold text-purple-300\">teams work smarter</span>. I love learning <span class=\"font-semibold text-purple-300\">new tech</span>, understanding how <span class=\"font-semibold text-purple-300\">systems fit together</span>, and making <span class=\"font-semibold text-purple-300\">complex stuff feel simple</span>."
+    "Passionate about building things that <span class=\"font-semibold text-purple-600 dark:text-purple-300\">work fast</span>, <span class=\"font-semibold text-purple-600 dark:text-purple-300\">look clean</span>, and <span class=\"font-semibold text-purple-600 dark:text-purple-300\">scale well</span>. I work mostly with <span class=\"font-semibold text-purple-600 dark:text-purple-300\">Java & Spring Boot</span> these days, but I’ve also spent years building <span class=\"font-semibold text-purple-600 dark:text-purple-300\">large PHP platforms</span>, improving <span class=\"font-semibold text-purple-600 dark:text-purple-300\">architectures</span>, and helping <span class=\"font-semibold text-purple-600 dark:text-purple-300\">teams work smarter</span>. I love learning <span class=\"font-semibold text-purple-600 dark:text-purple-300\">new tech</span>, understanding how <span class=\"font-semibold text-purple-600 dark:text-purple-300\">systems fit together</span>, and making <span class=\"font-semibold text-purple-600 dark:text-purple-300\">complex stuff feel simple</span>."
   ],
   "yearsWorking": "5",
   "currentCompany": "CGI",
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/jomiferse/",
+    "github": "https://www.github.com/jomiferse/"
+  },
   "experience": [
     {
       "company": "CGI (formerly Novatec Software)",
@@ -304,6 +309,43 @@
         ]
       }
     ],
-    "personal": []
+    "personal": [
+      {
+        "title": "CV Studio",
+        "role": "Full-Stack Developer",
+        "companyRelated": "Personal Project",
+        "link": "https://github.com/jomiferse/cv-studio",
+        "context": "Personal project focused on building a modern, professional CV builder with live preview and PDF export, aimed at developers and tech professionals.",
+        "timeframe": "12/2025 – Present",
+        "summary": "Designed and developed a web-based CV builder that allows users to create, preview, and export professional resumes in real time. The project emphasizes clean UI, structured data, and high-quality PDF output suitable for technical job applications.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/cv-studio.avif",
+            "alt": "CV Studio – Professional CV Builder"
+          },
+          "imgHover": {
+            "src": "/images/projects/cv-studio-preview.avif",
+            "alt": "CV Studio live preview and PDF export"
+          }
+        },
+        "technologies": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Zod",
+          "React Hook Form",
+          "Puppeteer",
+          "PDF Generation"
+        ],
+        "highlights": [
+          "Built a real-time CV editor with live preview synchronized to structured JSON data.",
+          "Implemented professional PDF export optimized for A4 layout and ATS-friendly formatting.",
+          "Designed a clean, modern UI using Tailwind CSS with a focus on usability and clarity.",
+          "Structured the project for scalability with strong typing and schema validation using Zod.",
+          "Created reusable CV templates suitable for software engineers and technical roles."
+        ]
+      }
+    ]
   }
 }

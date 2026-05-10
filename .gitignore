@@ -22,3 +22,18 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# eslint
+.eslintcache
+
+# ignore vercel build
+.vercel
+.env*.local
+
+.vercel
+.env*.local
+
+# agent files
+.agents/
+skills-lock.json
+AGENTS.md
