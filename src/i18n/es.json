@@ -29,14 +29,13 @@
     },
     "hero": {
       "eyebrow": "Backend Software Engineer · Java · Spring Boot · Sistemas Distribuidos",
-      "titleLead": "Construyo sistemas backend para",
-      "titleHighlight": "equipos de producto modernos",
-      "titleTail": "que necesitan fiabilidad, claridad y velocidad.",
-      "description": "Ingeniería backend con señal enterprise, experiencia real en microservicios, cloud delivery, tooling interno y ejecución fullstack pragmática cuando el producto lo requiere.",
+      "titleLead": "Sistemas backend,",
+      "titleHighlight": "hechos para durar.",
+      "titleTail": "",
+      "description": "Java, Spring Boot y sistemas distribuidos para equipos de producto serios.",
       "primaryCta": "Ver trabajo seleccionado",
       "secondaryCta": "Contactar",
-      "availability": "Actualmente en CGI para The Workshop",
-      "social": "Perfiles"
+      "availability": "CGI para The Workshop"
     },
     "stats": {
       "years": "Años entregando software",

@@ -19,6 +19,7 @@ const companyProjects = cv.projects?.company ?? [];
 const personalProjects = cv.projects?.personal ?? [];
 const featuredProject = personalProjects[0] ?? companyProjects[0];
 const featuredExperience = cv.experience[0];
+const yearsLabel = locale === "es" ? "años" : "years";
 ---
 
 <BaseLayout
@@ -27,7 +28,7 @@ const featuredExperience = cv.experience[0];
 	image={featuredProject?.img?.imgStatic?.src ?? "/images/og/portfolio-og.svg"}
 >
 	<section class="section-reveal pt-10 md:pt-16">
-		<div class="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:gap-12">
+		<div class="grid gap-12 lg:grid-cols-[1.18fr_0.82fr] lg:gap-16">
 			<div class="max-w-4xl">
 				<p
 					class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
@@ -36,17 +37,21 @@ const featuredExperience = cv.experience[0];
 				</p>
 
 				<h1
-					class="mt-6 max-w-5xl text-5xl leading-[0.96] font-semibold tracking-[-0.055em] text-slate-950 md:mt-8 md:text-7xl xl:text-[5.7rem] dark:text-slate-50"
+					class="mt-8 max-w-4xl text-4xl leading-[0.98] font-semibold tracking-[-0.06em] text-slate-950 md:text-6xl xl:text-[4.9rem] dark:text-slate-50"
 				>
 					{t(locale, "home.hero.titleLead")}
 					<span class="block text-[var(--accent-strong)]">
 						{t(locale, "home.hero.titleHighlight")}
 					</span>
-					<span class="block">{t(locale, "home.hero.titleTail")}</span>
+					{
+						t(locale, "home.hero.titleTail") ? (
+							<span class="block">{t(locale, "home.hero.titleTail")}</span>
+						) : null
+					}
 				</h1>
 
 				<p
-					class="mt-8 max-w-xl text-lg leading-8 text-slate-600 md:text-xl dark:text-slate-300"
+					class="mt-7 max-w-lg text-base leading-8 text-slate-600 md:text-lg dark:text-slate-300"
 				>
 					{t(locale, "home.hero.description")}
 				</p>
@@ -67,64 +72,27 @@ const featuredExperience = cv.experience[0];
 					</a>
 				</div>
 
-				<div
-					class="mt-16 grid gap-8 border-t border-slate-200/70 pt-7 md:grid-cols-3 dark:border-slate-800/70"
-				>
-					<div>
-						<p
-							class="text-[11px] font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
-						>
-							{t(locale, "home.stats.years")}
-						</p>
-						<p
-							class="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-50"
-						>
-							{cv.yearsWorking}+
-						</p>
-					</div>
-
-					<div>
-						<p
-							class="text-[11px] font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
-						>
-							{t(locale, "home.hero.availability")}
-						</p>
-						<p
-							class="mt-2 text-base font-semibold text-slate-950 dark:text-slate-50"
-						>
-							{cv.currentCompany}
-						</p>
-					</div>
-
-					<div>
-						<p
-							class="text-[11px] font-semibold tracking-[0.24em] text-slate-500 uppercase dark:text-slate-400"
-						>
-							{t(locale, "home.hero.social")}
-						</p>
-						<div class="mt-2 flex items-center gap-4">
-							<a
-								href={cv.links.github}
-								target="_blank"
-								rel="noreferrer"
-								class="text-sm font-semibold text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
-							>
-								GitHub
-							</a>
-							<a
-								href={cv.links.linkedin}
-								target="_blank"
-								rel="noreferrer"
-								class="text-sm font-semibold text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
-							>
-								LinkedIn
-							</a>
-						</div>
-					</div>
+				<div class="mt-14 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
+					<span class="font-semibold text-slate-950 dark:text-slate-50">
+						{cv.yearsWorking}+ {yearsLabel}
+					</span>
+					<span class="text-slate-300 dark:text-slate-700">/</span>
+					<span class="text-slate-600 dark:text-slate-300">
+						{t(locale, "home.hero.availability")}
+					</span>
+					<span class="text-slate-300 dark:text-slate-700">/</span>
+					<a
+						href={cv.links.linkedin}
+						target="_blank"
+						rel="noreferrer"
+						class="font-semibold text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
+					>
+						LinkedIn
+					</a>
 				</div>
 			</div>
 
-			<div class="stagger-children flex flex-col justify-end gap-6 lg:pt-16">
+			<div class="stagger-children flex flex-col justify-end gap-8 lg:pt-10">
 				<div class="relative overflow-hidden rounded-[2.5rem]">
 					<div
 						class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(127,176,255,0.24),transparent_46%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(9,13,22,0.38))]"
@@ -136,15 +104,9 @@ const featuredExperience = cv.experience[0];
 						width={720}
 						height={920}
 						loading="eager"
-						class="h-[28rem] w-full object-cover grayscale-[0.08] md:h-[34rem]"
+						class="h-[24rem] w-full object-cover grayscale-[0.08] md:h-[31rem]"
 					/>
 				</div>
-
-				<p
-					class="max-w-xs text-sm leading-7 text-slate-500 dark:text-slate-400"
-				>
-					{cv.tagline}
-				</p>
 			</div>
 		</div>
 	</section>
