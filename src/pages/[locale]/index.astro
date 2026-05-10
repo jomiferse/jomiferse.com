@@ -18,7 +18,7 @@ const pageDescription = t(locale, "home.meta.description");
 const companyProjects = cv.projects?.company ?? [];
 const personalProjects = cv.projects?.personal ?? [];
 const featuredProject = personalProjects[0] ?? companyProjects[0];
-const secondaryProject = companyProjects[0] ?? personalProjects[0];
+const featuredExperience = cv.experience[0];
 ---
 
 <BaseLayout
@@ -209,46 +209,54 @@ const secondaryProject = companyProjects[0] ?? personalProjects[0];
 			</p>
 		</div>
 
-		<div class="stagger-children mt-12 space-y-16 md:mt-16 md:space-y-24">
-			{
-				cv.experience.map((exp) => (
-					<article class="grid gap-6 lg:grid-cols-[0.42fr_1fr] lg:gap-12">
+		{
+			featuredExperience && (
+				<div class="stagger-children mt-12 md:mt-16">
+					<article class="grid gap-8 lg:grid-cols-[0.38fr_1fr] lg:gap-14">
 						<div class="space-y-4">
 							<p class="text-sm font-semibold text-slate-950 dark:text-slate-50">
-								{exp.company}
+								{featuredExperience.company}
 							</p>
 							<p class="text-sm text-slate-500 dark:text-slate-400">
-								{exp.startDate} -{" "}
-								{exp.endDate === "Present"
+								{featuredExperience.startDate} -{" "}
+								{featuredExperience.endDate === "Present"
 									? t(locale, "experienceCard.present")
-									: exp.endDate}
+									: featuredExperience.endDate}
 							</p>
 							<p class="text-sm text-slate-500 dark:text-slate-400">
-								{exp.location}
+								{featuredExperience.location}
 							</p>
 						</div>
 
 						<div class="max-w-4xl">
-							<h3 class="text-2xl leading-tight font-semibold tracking-[-0.03em] text-slate-950 md:text-4xl dark:text-slate-50">
-								{exp.role}
+							<h3 class="text-3xl leading-tight font-semibold tracking-[-0.035em] text-slate-950 md:text-5xl dark:text-slate-50">
+								{featuredExperience.role}
 							</h3>
-							<p class="mt-5 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
-								{exp.description}
+							<p class="mt-6 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
+								{featuredExperience.description}
 							</p>
 
-							<ul class="mt-7 space-y-4">
-								{exp.highlights?.slice(0, 2).map((highlight) => (
+							<ul class="mt-8 max-w-2xl space-y-4">
+								{featuredExperience.highlights?.slice(0, 2).map((highlight) => (
 									<li class="flex gap-4 text-sm leading-7 text-slate-700 dark:text-slate-200">
 										<span class="mt-3 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
 										<span>{highlight}</span>
 									</li>
 								))}
 							</ul>
+
+							<a
+								href={`/${locale}/experience`}
+								class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
+							>
+								{t(locale, "nav.experience")}
+								<Icon name="arrow-right" class="h-4 w-4" />
+							</a>
 						</div>
 					</article>
-				))
-			}
-		</div>
+				</div>
+			)
+		}
 	</section>
 
 	<section class="section-reveal mt-32 md:mt-48">
@@ -312,52 +320,30 @@ const secondaryProject = companyProjects[0] ?? personalProjects[0];
 									))}
 								</div>
 
-								{featuredProject.link && (
+								<div class="mt-8 flex flex-wrap items-center gap-5">
+									{featuredProject.link && (
+										<a
+											href={featuredProject.link}
+											target="_blank"
+											rel="noreferrer"
+											class="inline-flex items-center gap-2 text-sm font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
+										>
+											{t(locale, "projectCard.viewProject")}
+											<Icon name="move-up-right" class="h-4 w-4" />
+										</a>
+									)}
 									<a
-										href={featuredProject.link}
-										target="_blank"
-										rel="noreferrer"
-										class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
+										href={`/${locale}/projects`}
+										class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-50"
 									>
-										{t(locale, "projectCard.viewProject")}
-										<Icon name="move-up-right" class="h-4 w-4" />
+										{t(locale, "nav.projects")}
+										<Icon name="arrow-right" class="h-4 w-4" />
 									</a>
-								)}
+								</div>
 							</div>
 						</div>
 					</article>
 				)
-			}
-
-			{
-				secondaryProject &&
-					secondaryProject.title !== featuredProject?.title && (
-						<article class="border-t border-slate-200/70 pt-10 dark:border-slate-800/70">
-							<div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-								<div>
-									<p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
-										{secondaryProject.status}
-									</p>
-									<h3 class="mt-4 text-2xl leading-tight font-semibold tracking-[-0.03em] text-slate-950 md:text-4xl dark:text-slate-50">
-										{secondaryProject.title}
-									</h3>
-								</div>
-
-								<div class="max-w-3xl">
-									<p class="max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
-										{secondaryProject.summary}
-									</p>
-									<div class="mt-6 flex flex-wrap gap-2">
-										{secondaryProject.technologies.slice(0, 4).map((tech) => (
-											<span class="inline-flex items-center rounded-full bg-slate-200/65 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:bg-slate-800/70 dark:text-slate-200">
-												{tech}
-											</span>
-										))}
-									</div>
-								</div>
-							</div>
-						</article>
-					)
 			}
 		</div>
 	</section>
