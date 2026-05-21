@@ -154,21 +154,21 @@ That last step is underrated. If nobody remembers why the numbers exist, they wi
 
 ## Quick checklist
 
-- [ ] I know the real workload shape for this service
-- [ ] CPU and memory are measured separately
-- [ ] I checked p95/p99, not only averages
-- [ ] I know whether the service is latency sensitive
-- [ ] I know if throttling is happening
-- [ ] I know if OOMKills are happening
-- [ ] I have a reason for each request and limit value
-- [ ] I will revisit the numbers after traffic changes
+- [ ] Real workload shape
+- [ ] CPU and memory measured separately
+- [ ] p95/p99 checked, not just averages
+- [ ] Latency-sensitive or not
+- [ ] Throttling checked
+- [ ] OOMKills checked
+- [ ] Clear reason for every request and limit
+- [ ] Numbers will be revisited after traffic changes
 
 ## My take
 
 If you want a practical default, think like this:
 
-- Request = what the service really needs to stay healthy
-- Limit = the boundary you use to protect the rest of the system
+- Request = what the service really needs
+- Limit = the boundary that protects the rest of the system
 
 The mistake is to treat both as a way to “make Kubernetes happy.” Kubernetes is already happy. Your users care whether the service is fast, stable, and cheap.
 

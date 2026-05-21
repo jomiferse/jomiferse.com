@@ -154,20 +154,20 @@ Ese último punto importa más de lo que parece. Si nadie sabe por qué se eligi
 
 ## Checklist rápido
 
-- [ ] Conozco la forma real de carga de este servicio
-- [ ] CPU y memoria las he medido por separado
-- [ ] He mirado p95/p99, no solo medias
-- [ ] Sé si el servicio es sensible a latencia
-- [ ] Sé si hay *throttling*
-- [ ] Sé si hay `OOMKilled`
-- [ ] Tengo una razón para cada `request` y cada `limit`
+- [ ] Forma real de carga
+- [ ] CPU y memoria medidas por separado
+- [ ] p95/p99 mirados, no solo medias
+- [ ] Sé si es sensible a latencia
+- [ ] He comprobado el *throttling*
+- [ ] He comprobado `OOMKilled`
+- [ ] Tengo una razón para cada `request` y `limit`
 - [ ] Revisaré los valores cuando cambie el tráfico
 
 ## Mi lectura práctica
 
 Si quieres una regla sencilla, piensa así:
 
-- **Request** = lo que el servicio necesita para mantenerse sano
+- **Request** = lo que el servicio necesita
 - **Limit** = el borde que protege al resto del sistema
 
 El error es usar ambos solo para “dejar contento a Kubernetes”. Kubernetes ya está contento. Los que importan son tus usuarios: quieren que el servicio vaya rápido, estable y sin sorpresas en la factura.
