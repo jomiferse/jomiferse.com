@@ -19,31 +19,31 @@ const posts = (await getCollection("blog"))
 
 const toLocalSlug = (id: string) => id.replace(new RegExp(`^${locale}/`), "");
 const blogBasePath = `/${locale}/blog`;
-const dateLocale = locale === "es" ? "es-ES" : "en-GB";
-const copy =
-	locale === "es"
-		? {
-				pageTitle: `Blog - ${cv.name}`,
-				pageDescription:
-					"Notas técnicas breves sobre software engineering, sistemas, herramientas y construcción práctica de producto.",
-				eyebrow: "Escritura",
-				title: "Notas de",
-				titleAccent: "construir software.",
-				intro:
-					"Artículos cortos, notas de proyectos y aprendizajes trabajando con sistemas, herramientas y productos web.",
-				empty: "Todavía no hay artículos publicados.",
-			}
-		: {
-				pageTitle: `Blog - ${cv.name}`,
-				pageDescription:
-					"Short technical notes about software engineering, systems, tools and practical product building.",
-				eyebrow: "Writing",
-				title: "Notes from",
-				titleAccent: "building software.",
-				intro:
-					"Short articles, project notes and lessons from working with systems, tools and web products.",
-				empty: "No articles published yet.",
-			};
+const isEs = locale === "es";
+const dateLocale = isEs ? "es-ES" : "en-GB";
+const copy = isEs
+	? {
+			pageTitle: `Blog - ${cv.name}`,
+			pageDescription:
+				"Notas breves sobre software engineering, sistemas, herramientas y construcción práctica de producto.",
+			eyebrow: "Escritura",
+			title: "Notas de",
+			titleAccent: "construir software.",
+			intro:
+				"Notas cortas sobre proyectos, herramientas, backend y cosas que aprendo mientras construyo.",
+			empty: "Todavía no hay artículos publicados.",
+		}
+	: {
+			pageTitle: `Blog - ${cv.name}`,
+			pageDescription:
+				"Short notes about software engineering, systems, tools and practical product building.",
+			eyebrow: "Writing",
+			title: "Notes from",
+			titleAccent: "building software.",
+			intro:
+				"Short notes about projects, tools, backend work and things I learn while building.",
+			empty: "No articles published yet.",
+		};
 const pageTitle = copy.pageTitle;
 const pageDescription = copy.pageDescription;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";

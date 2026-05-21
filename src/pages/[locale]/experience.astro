@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCv } from "@cv";
 import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
@@ -10,14 +11,125 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const cv = getCv(locale);
+const isEs = locale === "es";
 
 const experience = cv.experience ?? [];
+const copy = isEs
+	? {
+			pageTitle: `Experiencia - ${cv.name}`,
+			pageDescription:
+				"Experiencia profesional de José Miguel Fernández en backend, delivery full-stack, microservicios, plataformas web y sistemas en producción.",
+			eyebrow: "Experiencia",
+			title: "Sistemas reales, equipos reales y",
+			titleAccent: "software práctico.",
+			intro:
+				"Trabajo en productos y plataformas donde la claridad, la fiabilidad y la mantenibilidad importan. Backend es mi base, con capacidad para moverme por todo el stack cuando hace falta.",
+			currentLabel: "Ahora",
+			timelineLabel: "Recorrido",
+			stackLabel: "Stack usado",
+			impactLabel: "Trabajo destacado",
+			ctaEyebrow: "Contacto",
+			ctaTitle: "¿Quieres trabajar conmigo?",
+			ctaText:
+				"Estoy abierto a proyectos freelance, colaboraciones y oportunidades donde pueda aportar software claro y fiable.",
+			ctaPrimary: "Hablemos",
+			ctaSecondary: "Ver proyectos",
+			signals: [
+				{
+					title: "Backend en producción",
+					body: "APIs, servicios, integraciones y sistemas distribuidos pensados para mantenerse en marcha.",
+				},
+				{
+					title: "Delivery full-stack",
+					body: "Frontend, backend e infraestructura cuando el producto necesita una solución completa.",
+				},
+				{
+					title: "Trabajo con equipos",
+					body: "Contribución dentro de entornos reales de producto, plataforma, SRE y negocio.",
+				},
+			],
+			roleStacks: [
+				[
+					"Java",
+					"Spring Boot",
+					"Microservicios",
+					"RabbitMQ",
+					"Kubernetes",
+					"Grafana",
+					"Kibana",
+					"CI/CD",
+				],
+				[
+					"PHP",
+					"Phalcon",
+					"JavaScript",
+					"Docker",
+					"Elasticsearch",
+					"Pagos",
+					"SEO técnico",
+					"Core Web Vitals",
+				],
+			],
+		}
+	: {
+			pageTitle: `Experience - ${cv.name}`,
+			pageDescription:
+				"Professional experience of José Miguel Fernández across backend engineering, full-stack delivery, microservices, web platforms and production systems.",
+			eyebrow: "Experience",
+			title: "Real systems, real teams and",
+			titleAccent: "practical software.",
+			intro:
+				"I work on products and platforms where clarity, reliability and maintainability matter. Backend is my base, with enough full-stack range to move where the product needs me.",
+			currentLabel: "Now",
+			timelineLabel: "Timeline",
+			stackLabel: "Stack used",
+			impactLabel: "Selected work",
+			ctaEyebrow: "Contact",
+			ctaTitle: "Want to work together?",
+			ctaText:
+				"I’m open to freelance projects, collaborations and opportunities where clear, reliable software matters.",
+			ctaPrimary: "Let’s talk",
+			ctaSecondary: "View projects",
+			signals: [
+				{
+					title: "Production backend",
+					body: "APIs, services, integrations and distributed systems designed to keep running.",
+				},
+				{
+					title: "Full-stack delivery",
+					body: "Frontend, backend and infrastructure when the product needs a complete solution.",
+				},
+				{
+					title: "Team context",
+					body: "Contribution inside real product, platform, SRE and business environments.",
+				},
+			],
+			roleStacks: [
+				[
+					"Java",
+					"Spring Boot",
+					"Microservices",
+					"RabbitMQ",
+					"Kubernetes",
+					"Grafana",
+					"Kibana",
+					"CI/CD",
+				],
+				[
+					"PHP",
+					"Phalcon",
+					"JavaScript",
+					"Docker",
+					"Elasticsearch",
+					"Payments",
+					"Technical SEO",
+					"Core Web Vitals",
+				],
+			],
+		};
 
-const pageTitle = `${t(locale, "experience.meta.title")} - ${cv.name}`;
-const pageDescription = t(locale, "experience.meta.description").replace(
-	"{name}",
-	cv.name,
-);
+const pageTitle = copy.pageTitle;
+const pageDescription = copy.pageDescription;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	buildCollectionPage(
@@ -45,65 +157,142 @@ const structuredData = [
 	]}
 >
 	<section class="section-reveal pt-4 md:pt-8">
-		<div class="max-w-3xl">
-			<p
-				class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
-			>
-				{t(locale, "experience.hero.titlePrefix")}
-			</p>
-			<h1
-				class="mt-5 text-4xl leading-tight font-semibold tracking-[-0.045em] text-slate-950 md:text-6xl dark:text-slate-50"
-			>
-				{t(locale, "experience.hero.titleHighlight")}
+		<div class="max-w-4xl">
+			<p class="eyebrow">{copy.eyebrow}</p>
+			<h1 class="mt-5 text-5xl font-black text-[var(--text)] md:text-7xl">
+				{copy.title}
+				<span class="accent-text">{copy.titleAccent}</span>
 			</h1>
-			<p
-				class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300"
-			>
-				{t(locale, "experience.hero.subtitle")}
+			<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
+				{copy.intro}
 			</p>
 		</div>
 	</section>
 
-	<section class="section-reveal mt-20 md:mt-28">
-		<div class="stagger-children space-y-16 md:space-y-24">
+	<section class="section-reveal py-16 md:py-24">
+		<div class="stagger-children grid gap-4 md:grid-cols-3">
 			{
-				experience.map((exp) => (
-					<article class="grid gap-8 lg:grid-cols-[0.36fr_1fr] lg:gap-14">
-						<div class="space-y-3">
-							<p class="text-sm font-semibold text-slate-950 dark:text-slate-50">
-								{exp.company}
-							</p>
-							<p class="text-sm text-slate-500 dark:text-slate-400">
-								{exp.startDate} -{" "}
-								{exp.endDate === "Present"
-									? t(locale, "experienceCard.present")
-									: exp.endDate}
-							</p>
-							<p class="text-sm text-slate-500 dark:text-slate-400">
-								{exp.location}
-							</p>
-						</div>
-
-						<div class="max-w-4xl">
-							<h2 class="text-3xl leading-tight font-semibold tracking-[-0.035em] text-slate-950 md:text-5xl dark:text-slate-50">
-								{exp.role}
-							</h2>
-							<p class="mt-6 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
-								{exp.description}
-							</p>
-
-							<ul class="mt-8 max-w-2xl space-y-4">
-								{exp.highlights?.map((highlight) => (
-									<li class="flex gap-4 text-sm leading-7 text-slate-700 dark:text-slate-200">
-										<span class="mt-3 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-										<span>{highlight}</span>
-									</li>
-								))}
-							</ul>
-						</div>
+				copy.signals.map((signal) => (
+					<article class="dark-card hover-card p-5 md:p-6">
+						<h2 class="text-xl font-black text-[var(--text)]">
+							{signal.title}
+						</h2>
+						<p class="muted-copy mt-3 text-sm leading-7">{signal.body}</p>
 					</article>
 				))
 			}
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16 md:py-28">
+		<div class="grid gap-10 lg:grid-cols-[0.32fr_1fr] lg:gap-14">
+			<div>
+				<p class="eyebrow">{copy.timelineLabel}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{cv.yearsWorking}+ {
+						isEs ? "años construyendo software" : "years building software"
+					}
+				</h2>
+				<p class="muted-copy mt-5 leading-7">
+					{
+						isEs
+							? "Una vista corta de los entornos, responsabilidades y sistemas en los que he trabajado."
+							: "A short view of the environments, responsibilities and systems I have worked on."
+					}
+				</p>
+			</div>
+
+			<div class="stagger-children space-y-5">
+				{
+					experience.map((exp, index) => {
+						const endDate =
+							exp.endDate?.toLowerCase() === "present"
+								? t(locale, "experienceCard.present")
+								: exp.endDate;
+						const roleStack = copy.roleStacks[index] ?? [];
+
+						return (
+							<article class="dark-card hover-card p-5 md:p-7">
+								<div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+									<div>
+										<p class="eyebrow">
+											{exp.startDate} - {endDate}
+										</p>
+										<h3 class="mt-4 text-2xl font-black text-[var(--text)] md:text-3xl">
+											{exp.role}
+										</h3>
+										<p class="muted-copy mt-2 text-sm font-bold">
+											{exp.company} · {exp.location}
+										</p>
+									</div>
+									{index === 0 ? (
+										<span class="tag-pill">{copy.currentLabel}</span>
+									) : null}
+								</div>
+
+								<p class="muted-copy mt-6 max-w-3xl leading-7">
+									{exp.description}
+								</p>
+
+								<div class="mt-7 grid gap-6 lg:grid-cols-[0.65fr_0.35fr]">
+									<div>
+										<p class="eyebrow">{copy.impactLabel}</p>
+										<ul class="mt-4 grid gap-3">
+											{exp.highlights?.map((highlight) => (
+												<li class="flex gap-3 text-sm leading-7 text-[var(--text)]">
+													<span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+													<span class="text-[var(--text-muted)]">
+														{highlight}
+													</span>
+												</li>
+											))}
+										</ul>
+									</div>
+
+									<div>
+										<p class="eyebrow">{copy.stackLabel}</p>
+										<div class="mt-4 flex flex-wrap gap-2">
+											{roleStack.map((tech) => (
+												<span class="tag-pill">{tech}</span>
+											))}
+										</div>
+									</div>
+								</div>
+							</article>
+						);
+					})
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 text-center md:py-28">
+		<div class="dark-card px-5 py-12 sm:px-8 md:py-16">
+			<p class="eyebrow">{copy.ctaEyebrow}</p>
+			<h2
+				class="mx-auto mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-6xl"
+			>
+				{copy.ctaTitle}
+			</h2>
+			<p
+				class="muted-copy mx-auto mt-5 max-w-xl text-base leading-8 md:text-lg"
+			>
+				{copy.ctaText}
+			</p>
+			<div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+				<a href={`/${locale}/contact`} class="button-primary w-full sm:w-auto">
+					{copy.ctaPrimary}
+					<Icon name="arrow-right" class="h-4 w-4" />
+				</a>
+				<a
+					href={`/${locale}/projects`}
+					class="button-secondary w-full sm:w-auto"
+				>
+					{copy.ctaSecondary}
+				</a>
+			</div>
 		</div>
 	</section>
 </BaseLayout>

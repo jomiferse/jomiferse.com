@@ -10,32 +10,32 @@ export const prerender = false;
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
-const copy =
-	locale === "es"
-		? {
-				pageTitle: `Contacto - ${cv.name}`,
-				pageDescription:
-					"Contacta con José Miguel Fernández para proyectos freelance, colaboraciones, oportunidades profesionales y software práctico.",
-				eyebrow: "Contacto",
-				title: "Hablemos sobre lo que necesitas",
-				titleAccent: "construir.",
-				intro:
-					"Envíame una idea de proyecto, una pregunta, una oportunidad o una colaboración. Estoy abierto a software práctico, proyectos freelance y oportunidades profesionales.",
-				linkedin: "Conectar profesionalmente",
-				github: "Ver mi código",
-			}
-		: {
-				pageTitle: `Contact - ${cv.name}`,
-				pageDescription:
-					"Contact José Miguel Fernández for freelance projects, collaborations, professional opportunities and practical software work.",
-				eyebrow: "Get in touch",
-				title: "Let’s talk about what you need to",
-				titleAccent: "build.",
-				intro:
-					"Send a project idea, a question, a role, or a collaboration note. I’m open to practical software work, freelance projects and professional opportunities.",
-				linkedin: "Connect professionally",
-				github: "View my code",
-			};
+const isEs = locale === "es";
+const copy = isEs
+	? {
+			pageTitle: `Contacto - ${cv.name}`,
+			pageDescription:
+				"Contacta con José Miguel Fernández para proyectos freelance, colaboraciones, oportunidades profesionales y software práctico.",
+			eyebrow: "Contacto",
+			title: "Hablemos sobre lo que quieres",
+			titleAccent: "construir.",
+			intro:
+				"Envíame una idea de proyecto, una pregunta o una oportunidad. Leo cada mensaje y responderé cuando haya buen encaje.",
+			linkedin: "Conectar en LinkedIn",
+			github: "Ver mi código",
+		}
+	: {
+			pageTitle: `Contact - ${cv.name}`,
+			pageDescription:
+				"Contact José Miguel Fernández for freelance projects, collaborations, professional opportunities and practical software work.",
+			eyebrow: "Contact",
+			title: "Let’s talk about what you want to",
+			titleAccent: "build.",
+			intro:
+				"Send a project idea, a question or an opportunity. I read every message and I’ll reply when there’s a good fit.",
+			linkedin: "Connect on LinkedIn",
+			github: "View my code",
+		};
 const pageTitle = copy.pageTitle;
 const pageDescription = copy.pageDescription;
 const isSent = Astro.url.searchParams.get("sent") === "1";

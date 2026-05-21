@@ -17,75 +17,145 @@ const projects = [
 ];
 const featuredProjects = projects.slice(0, 3);
 const focusAreas = cv.focusAreas.slice(0, 4);
+const isEs = locale === "es";
+const skillGroups = isEs
+	? [
+			{
+				title: "Backend / Bases de datos",
+				items: [
+					"Java",
+					"Spring Boot",
+					"Microservicios",
+					"PostgreSQL",
+					"REST APIs",
+				],
+			},
+			{
+				title: "Infraestructura",
+				items: ["Docker", "Kubernetes", "CI/CD", "Liquibase"],
+			},
+			{
+				title: "Frontend",
+				items: ["TypeScript", "React", "Astro", "Tailwind CSS"],
+			},
+			{
+				title: "Observabilidad",
+				items: ["Grafana", "Kibana", "Health checks", "Logs"],
+			},
+			{
+				title: "Mensajería",
+				items: ["RabbitMQ", "Kafka", "Patrones async", "Event-driven"],
+			},
+			{
+				title: "Herramientas",
+				items: ["Git", "Maven", "Testing", "Automatización"],
+			},
+		]
+	: [
+			{
+				title: "Backend / Databases",
+				items: [
+					"Java",
+					"Spring Boot",
+					"Microservices",
+					"PostgreSQL",
+					"REST APIs",
+				],
+			},
+			{
+				title: "Infrastructure",
+				items: ["Docker", "Kubernetes", "CI/CD", "Liquibase"],
+			},
+			{
+				title: "Frontend",
+				items: ["TypeScript", "React", "Astro", "Tailwind CSS"],
+			},
+			{
+				title: "Observability",
+				items: ["Grafana", "Kibana", "Health checks", "Logs"],
+			},
+			{
+				title: "Messaging",
+				items: ["RabbitMQ", "Kafka", "Async patterns", "Event-driven"],
+			},
+			{
+				title: "Tools",
+				items: ["Git", "Maven", "Testing", "Automation"],
+			},
+		];
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
-const copy =
-	locale === "es"
-		? {
-				pageTitle: `Portfolio de Software Engineer - ${cv.name}`,
-				pageDescription:
-					"Software engineer que construye software limpio y fiable para backend, productos web, automatizaciones y herramientas internas.",
-				eyebrow: "Software Engineer · Backend · Productos web",
-				title: "Construyo software limpio y fiable para",
-				titleAccent: "problemas reales.",
-				intro:
-					"Sistemas backend, microservicios, webs, automatizaciones y herramientas internas. Software útil, fácil de mantener y preparado para durar.",
-				primaryCta: "Ver proyectos",
-				secondaryCta: "Contactar",
-				years: "Años construyendo software",
-				projects: "Proyectos seleccionados",
-				full: "Completo",
-				scope: "Backend, frontend y delivery",
-				aboutEyebrow: "Sobre mí",
-				aboutTitle: "Ingeniería práctica con producción en mente.",
-				aboutP1:
-					"Soy software engineer en Granada. Mi trabajo principal está en backend con Java, Spring Boot y sistemas distribuidos.",
-				aboutP2:
-					"También trabajo en frontend cuando el producto lo necesita: interfaces, automatización, CI/CD, Docker, Kubernetes y tooling para que los equipos avancen mejor.",
-				workEyebrow: "Trabajo seleccionado",
-				workTitle: "Algunas cosas que he construido",
-				viewAll: "Ver todo",
-				buildEyebrow: "Qué puedo construir",
-				buildTitle:
-					"Software para resolver los problemas importantes, incluso los menos visibles.",
-				ctaEyebrow: "Trabajemos juntos",
-				ctaTitle:
-					"¿Tienes un producto, flujo de trabajo o sistema que construir?",
-				ctaText:
-					"Cuéntame qué necesitas. Puedo ayudarte a darle forma, construirlo y hacerlo fácil de mantener.",
-				ctaButton: "Empezar una conversación",
-			}
-		: {
-				pageTitle: `Software Engineer Portfolio - ${cv.name}`,
-				pageDescription:
-					"Software engineer building clean, reliable software for backend systems, web products, automations and internal tools.",
-				eyebrow: "Software Engineer · Backend · Web Products",
-				title: "I build clean, reliable software for",
-				titleAccent: "real-world problems.",
-				intro:
-					"Backend systems, microservices, websites, automations and internal tools. Useful software that is simple to run, easy to change and built to last.",
-				primaryCta: "View Projects",
-				secondaryCta: "Contact Me",
-				years: "Years building software",
-				projects: "Selected projects",
-				full: "Full",
-				scope: "Backend, frontend and delivery",
-				aboutEyebrow: "About me",
-				aboutTitle: "Practical engineering with production in mind.",
-				aboutP1:
-					"I am a software engineer based in Granada, Spain. My core work is backend development with Java, Spring Boot and distributed systems.",
-				aboutP2:
-					"I also move across the stack when it helps the product: frontend interfaces, automation, CI/CD, Docker, Kubernetes and the tooling that keeps teams moving.",
-				workEyebrow: "Selected work",
-				workTitle: "A few things I’ve built",
-				viewAll: "View all",
-				buildEyebrow: "What I can build",
-				buildTitle: "Software that solves the boring, important problems.",
-				ctaEyebrow: "Let’s work together",
-				ctaTitle: "Have a product, workflow or system that needs to be built?",
-				ctaText:
-					"Tell me what you need. I can help shape it, build it and make it practical to maintain.",
-				ctaButton: "Start a Conversation",
-			};
+const copy = isEs
+	? {
+			pageTitle: `Portfolio Full-Stack Developer - ${cv.name}`,
+			pageDescription:
+				"Full-stack developer con base sólida en backend. Construyo webs, herramientas, automatizaciones, sistemas backend y productos web simples, fiables y útiles.",
+			eyebrow: "Full-Stack Developer · Software Engineer · Productos web",
+			title: "Me gusta construir software simple, fiable y",
+			titleAccent: "realmente útil.",
+			intro:
+				"Full-stack developer con bases fuertes en backend. Construyendo productos, herramientas y webs por el camino.",
+			primaryCta: "Ver proyectos",
+			secondaryCta: "Contactar",
+			years: "Años construyendo software",
+			projects: "Proyectos seleccionados",
+			full: "Full-stack",
+			scope: "De backend a producto",
+			aboutEyebrow: "Sobre mí",
+			aboutTitle: "Delivery full-stack con profundidad backend.",
+			aboutP1:
+				"Soy full-stack developer en Granada. Mi base más fuerte está en backend con Java, Spring Boot y sistemas en producción.",
+			aboutP2:
+				"También trabajo en frontend, automatización, CI/CD, Docker y Kubernetes cuando eso ayuda a construir algo útil.",
+			workEyebrow: "Trabajo seleccionado",
+			workTitle: "Algunas cosas en las que he trabajado",
+			viewAll: "Ver todo",
+			buildEyebrow: "Qué puedo construir",
+			buildTitle: "Software para flujos reales, herramientas y productos web.",
+			skillsEyebrow: "Stack",
+			skillsTitle: "Tecnologías con las que trabajo",
+			skillsText:
+				"Backend es mi base, pero puedo moverme por todo el stack cuando el proyecto lo necesita.",
+			ctaEyebrow: "Contacto",
+			ctaTitle: "¿Tienes algo útil que construir?",
+			ctaText:
+				"Cuéntame qué necesitas. Te ayudo a dar forma al siguiente paso.",
+			ctaButton: "Hablemos",
+		}
+	: {
+			pageTitle: `Full-Stack Developer Portfolio - ${cv.name}`,
+			pageDescription:
+				"Full-stack developer with strong backend foundations, building websites, tools, automations, backend systems and web products that are simple, reliable and useful.",
+			eyebrow: "Full-Stack Developer · Software Engineer · Web Products",
+			title: "I like building software that is simple, reliable, and",
+			titleAccent: "actually useful.",
+			intro:
+				"Full-stack developer with strong backend foundations. Building products, tools and websites along the way.",
+			primaryCta: "View Projects",
+			secondaryCta: "Contact Me",
+			years: "Years building software",
+			projects: "Selected projects",
+			full: "Full-stack",
+			scope: "Backend to product",
+			aboutEyebrow: "About me",
+			aboutTitle: "Full-stack delivery with backend depth.",
+			aboutP1:
+				"I’m a full-stack developer based in Granada, Spain. My strongest foundation is backend development with Java, Spring Boot and production systems.",
+			aboutP2:
+				"I also work across frontend, automation, CI/CD, Docker and Kubernetes when that helps ship something useful.",
+			workEyebrow: "Selected work",
+			workTitle: "A few things I’ve worked on",
+			viewAll: "View all",
+			buildEyebrow: "What I can build",
+			buildTitle: "Software for real workflows, tools and web products.",
+			skillsEyebrow: "Stack",
+			skillsTitle: "Technologies I work with",
+			skillsText:
+				"Backend is my base, but I can move across the stack when the project needs it.",
+			ctaEyebrow: "Contact",
+			ctaTitle: "Have something useful to build?",
+			ctaText: "Tell me what you need. I’ll help shape the next step.",
+			ctaButton: "Let’s talk",
+		};
 const pageTitle = copy.pageTitle;
 const pageDescription = copy.pageDescription;
 const structuredData = [
@@ -117,51 +187,61 @@ const structuredData = [
 	<section class="section-reveal py-10 md:py-20">
 		<p class="eyebrow">{copy.eyebrow}</p>
 		<h1
-			class="mt-6 max-w-5xl text-5xl leading-[1.02] font-black text-[var(--text)] md:text-7xl"
+			class="mt-6 max-w-5xl text-4xl leading-[1.04] font-black text-[var(--text)] sm:text-5xl md:text-7xl"
 		>
 			{copy.title}
 			<span class="accent-text">{copy.titleAccent}</span>
 		</h1>
-		<p class="muted-copy mt-7 max-w-2xl text-lg leading-8 md:text-xl">
+		<p class="muted-copy mt-7 max-w-2xl text-base leading-8 md:text-xl">
 			{copy.intro}
 		</p>
-		<div class="mt-10 flex flex-col gap-3 sm:flex-row">
-			<a href={`/${locale}/projects`} class="button-primary">
+		<div class="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row">
+			<a href={`/${locale}/projects`} class="button-primary w-full sm:w-auto">
 				{copy.primaryCta}
 				<Icon name="arrow-right" class="h-4 w-4" />
 			</a>
-			<a href={`/${locale}/contact`} class="button-secondary"
+			<a href={`/${locale}/contact`} class="button-secondary w-full sm:w-auto"
 				>{copy.secondaryCta}</a
 			>
 		</div>
 	</section>
 
-	<section class="section-reveal full-bleed-divider py-10">
-		<div class="grid gap-8 sm:grid-cols-3">
+	<section class="section-reveal full-bleed-divider py-8 sm:py-10">
+		<div class="grid gap-6 sm:grid-cols-3 sm:gap-7">
 			<div>
-				<p class="text-4xl font-black text-[var(--text)]">{cv.yearsWorking}+</p>
+				<p class="text-3xl font-black text-[var(--text)] md:text-4xl">
+					{cv.yearsWorking}+
+				</p>
 				<p class="muted-copy mt-1 text-sm">{copy.years}</p>
 			</div>
 			<div>
-				<p class="text-4xl font-black text-[var(--text)]">{projects.length}+</p>
+				<p class="text-3xl font-black text-[var(--text)] md:text-4xl">
+					{projects.length}+
+				</p>
 				<p class="muted-copy mt-1 text-sm">{copy.projects}</p>
 			</div>
 			<div>
-				<p class="text-4xl font-black text-[var(--text)]">{copy.full}</p>
+				<p class="text-3xl font-black text-[var(--text)] md:text-4xl">
+					{copy.full}
+				</p>
 				<p class="muted-copy mt-1 text-sm">{copy.scope}</p>
 			</div>
 		</div>
 	</section>
 
-	<section class="section-reveal py-20 md:py-28">
+	<section class="section-reveal py-16 md:py-28">
 		<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
 			<div>
 				<p class="eyebrow">{copy.aboutEyebrow}</p>
-				<h2 class="mt-4 text-4xl font-black text-[var(--text)] md:text-5xl">
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
 					{copy.aboutTitle}
 				</h2>
 			</div>
-			<div class="space-y-6 text-lg leading-8 text-[var(--text-muted)]">
+			<div
+				class="space-y-5 text-base leading-8 text-[var(--text-muted)] md:text-lg"
+			>
 				<p>
 					{copy.aboutP1}
 				</p>
@@ -172,13 +252,15 @@ const structuredData = [
 		</div>
 	</section>
 
-	<section class="section-band section-reveal py-20 md:py-28">
+	<section class="section-band section-reveal py-16 md:py-28">
 		<div
 			class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
 		>
 			<div>
 				<p class="eyebrow">{copy.workEyebrow}</p>
-				<h2 class="mt-4 text-4xl font-black text-[var(--text)] md:text-5xl">
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
 					{copy.workTitle}
 				</h2>
 			</div>
@@ -187,16 +269,18 @@ const structuredData = [
 			>
 		</div>
 
-		<div class="stagger-children mt-10 grid gap-5 md:grid-cols-3">
+		<div
+			class="stagger-children mt-8 grid gap-4 sm:mt-10 md:grid-cols-3 md:gap-5"
+		>
 			{
 				featuredProjects.map((project) => (
-					<article class="dark-card hover-card p-6">
+					<article class="dark-card hover-card p-5 md:p-6">
 						<div class="mb-6 flex flex-wrap gap-2">
 							{project.technologies.slice(0, 3).map((tech) => (
 								<span class="tag-pill">{tech}</span>
 							))}
 						</div>
-						<h3 class="text-2xl font-black text-[var(--text)]">
+						<h3 class="text-xl font-black text-[var(--text)] md:text-2xl">
 							{project.title}
 						</h3>
 						<p class="muted-copy mt-4 text-sm leading-6">{project.summary}</p>
@@ -209,17 +293,19 @@ const structuredData = [
 		</div>
 	</section>
 
-	<section class="section-reveal py-20 md:py-28">
+	<section class="section-reveal py-16 md:py-28">
 		<p class="eyebrow">{copy.buildEyebrow}</p>
 		<h2
-			class="mt-4 max-w-3xl text-4xl font-black text-[var(--text)] md:text-5xl"
+			class="mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
 		>
 			{copy.buildTitle}
 		</h2>
-		<div class="stagger-children mt-10 grid gap-5 md:grid-cols-2">
+		<div
+			class="stagger-children mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 md:gap-5"
+		>
 			{
 				focusAreas.map((area) => (
-					<article class="dark-card hover-card p-6">
+					<article class="dark-card hover-card p-5 md:p-6">
 						<h3 class="text-xl font-black text-[var(--text)]">{area.title}</h3>
 						<p class="muted-copy mt-3 leading-7">{area.description}</p>
 						<div class="mt-5 flex flex-wrap gap-2">
@@ -233,18 +319,57 @@ const structuredData = [
 		</div>
 	</section>
 
-	<section class="section-band section-reveal py-20 text-center md:py-28">
-		<p class="eyebrow">{copy.ctaEyebrow}</p>
-		<h2
-			class="mx-auto mt-4 max-w-3xl text-4xl font-black text-[var(--text)] md:text-6xl"
-		>
-			{copy.ctaTitle}
-		</h2>
-		<p class="muted-copy mx-auto mt-6 max-w-xl text-lg leading-8">
-			{copy.ctaText}
-		</p>
-		<div class="mt-10 flex justify-center">
-			<a href={`/${locale}/contact`} class="button-primary">{copy.ctaButton}</a>
+	<section class="section-band section-reveal py-16 md:py-28">
+		<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+			<div>
+				<p class="eyebrow">{copy.skillsEyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{copy.skillsTitle}
+				</h2>
+				<p class="muted-copy mt-5 max-w-xl text-base leading-8">
+					{copy.skillsText}
+				</p>
+			</div>
+
+			<div class="stagger-children grid gap-4 sm:grid-cols-2">
+				{
+					skillGroups.map((group) => (
+						<article class="dark-card p-5">
+							<h3 class="text-lg font-black text-[var(--text)]">
+								{group.title}
+							</h3>
+							<div class="mt-4 flex flex-wrap gap-2">
+								{group.items.map((item) => (
+									<span class="tag-pill">{item}</span>
+								))}
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 text-center md:py-28">
+		<div class="dark-card px-5 py-12 sm:px-8 md:py-16">
+			<p class="eyebrow">{copy.ctaEyebrow}</p>
+			<h2
+				class="mx-auto mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-6xl"
+			>
+				{copy.ctaTitle}
+			</h2>
+			<p
+				class="muted-copy mx-auto mt-5 max-w-xl text-base leading-8 md:text-lg"
+			>
+				{copy.ctaText}
+			</p>
+			<div class="mt-10 flex justify-center">
+				<a href={`/${locale}/contact`} class="button-primary w-full sm:w-auto"
+					>{copy.ctaButton}</a
+				>
+			</div>
 		</div>
 	</section>
 </BaseLayout>

@@ -2,70 +2,70 @@
   "name": "José Miguel Fernández",
   "shortName": "José Miguel",
   "email": "jomiferse@gmail.com",
-  "headline": "Software Engineer | Sistemas, Product Delivery, Arquitectura, Automatización",
-  "tagline": "Software engineer centrado en sistemas robustos, entrega de producto, claridad técnica y ejecución moderna.",
+  "headline": "Full-Stack Developer | Backend, Productos Web, Automatización",
+  "tagline": "Full-stack developer con base sólida en backend, construyendo software simple, fiable y útil.",
   "location": "Granada, España",
   "currentRole": "Software Engineer",
-  "focus": "Systems engineering, entrega de producto, arquitectura técnica y fiabilidad de plataforma",
-  "availability": "Abierto a roles product-focused, colaboraciones técnicas y build engagements seleccionados.",
+  "focus": "Sistemas backend, delivery full-stack, automatización y productos web prácticos",
+  "availability": "Abierto a proyectos freelance, colaboraciones y oportunidades como software engineer.",
   "summary": [
-    "Construyo sistemas que necesitan seguir siendo <span class=\"font-semibold text-[var(--accent-strong)]\">fiables mientras cambian</span>, mantenerse <span class=\"font-semibold text-[var(--accent-strong)]\">claros para evolucionar</span> y ayudar a los equipos a mover producto sin perder control técnico.",
-    "Mi núcleo sigue siendo fuerte en <span class=\"font-semibold text-[var(--accent-strong)]\">backend engineering, sistemas distribuidos y trabajo de plataforma</span>, pero también aporto en <span class=\"font-semibold text-[var(--accent-strong)]\">arquitectura, automatización, tooling interno y ejecución pragmática de producto</span> cuando eso genera más valor."
+    "Construyo webs, herramientas, automatizaciones y sistemas backend que son <span class=\"font-semibold text-[var(--accent-strong)]\">simples de usar</span>, fiables en la práctica y <span class=\"font-semibold text-[var(--accent-strong)]\">fáciles de mantener</span>.",
+    "Mi base más fuerte está en <span class=\"font-semibold text-[var(--accent-strong)]\">backend con Java, Spring Boot y sistemas en producción</span>, pero puedo moverme por todo el stack cuando el producto lo necesita."
   ],
   "yearsWorking": "5",
-  "currentCompany": "CGI para The Workshop",
+  "currentCompany": "CGI for The Workshop",
   "links": {
     "linkedin": "https://www.linkedin.com/in/jomiferse/",
     "github": "https://www.github.com/jomiferse/"
   },
   "signals": [
-    "Sistemas en producción y evolución de plataformas",
-    "Arquitectura y toma de decisiones técnicas",
-    "Automatización, tooling y trabajo de modernización",
-    "Ejecución de producto con profundidad backend"
+    "Sistemas backend y APIs",
+    "Delivery full-stack de producto",
+    "Automatización y herramientas internas",
+    "Fiabilidad y mantenibilidad en producción"
   ],
   "focusAreas": [
     {
-      "title": "Arquitectura de Plataforma",
-      "description": "Límites de servicios, diseño de APIs, seguridad y decisiones de sistema que mantienen un producto entendible mientras evoluciona.",
+      "title": "Sistemas Backend",
+      "description": "APIs, servicios, integraciones y flujos de datos construidos con fiabilidad y mantenibilidad en mente.",
       "items": ["Java", "Spring Boot", "REST APIs", "Spring Security"]
     },
     {
-      "title": "Modernización y Delivery",
-      "description": "Rutas de migración, confianza en releases y workflows de entrega para sistemas que necesitan mejorar sin perder fiabilidad operativa.",
+      "title": "Delivery e Infraestructura",
+      "description": "Flujos de release, contenedores, CI/CD y prácticas de despliegue para mover software de código a producción con confianza.",
       "items": ["Liquibase", "CI/CD", "Docker", "Kubernetes"]
     },
     {
-      "title": "Tooling Interno y Automatización",
-      "description": "Tooling operativo, automatización de workflows y soporte pragmático a producto para reducir fricción en equipos y sistemas.",
+      "title": "Productos Web y Herramientas",
+      "description": "Interfaces útiles, herramientas internas y automatizaciones que reducen trabajo manual y hacen los flujos más fáciles de ejecutar.",
       "items": ["TypeScript", "React", "Astro", "Automatización"]
     },
     {
-      "title": "Sistemas Distribuidos y Realtime",
-      "description": "Sistemas que se comunican con fiabilidad, escalan con criterio y siguen siendo observables en producción.",
+      "title": "Sistemas Distribuidos",
+      "description": "Servicios, colas y flujos event-driven que se comunican con claridad y siguen siendo observables en producción.",
       "items": ["Kafka", "RabbitMQ", "Redis", "PostgreSQL"]
     }
   ],
   "currentExplorations": [
-    "Workflows asistidos por IA",
+    "Flujos con IA",
     "Tooling operativo y bots",
     "Experimentos de trading y automatización",
     "Sistemas realtime y event-driven"
   ],
   "experience": [
     {
-      "company": "CGI (para The Workshop)",
+      "company": "CGI (for The Workshop)",
       "role": "Backend Software Engineer",
       "location": "España",
       "startDate": "12/2024",
-      "endDate": "Present",
-      "description": "Contribuyo al desarrollo y mantenimiento de sistemas backend cloud-native de gran escala para The Workshop, colaborando con equipos cross-functional en un entorno ágil, distribuido y crítico en seguridad.",
+      "endDate": "Presente",
+      "description": "Contribuyo a sistemas backend cloud-native de gran escala para The Workshop, trabajando con equipos cross-functional en un entorno de producción sensible a seguridad.",
       "highlights": [
-        "Desarrollo y mantengo servicios backend en Java y Spring Boot siguiendo principios de arquitectura limpia, DDD y estándares altos de mantenibilidad.",
-        "Diseño e implemento APIs REST e integraciones internas priorizando fiabilidad, testabilidad y observabilidad en producción.",
-        "Trabajo con RabbitMQ y patrones de comunicación asíncrona para soportar integraciones fiables en sistemas distribuidos.",
-        "Colaboro con SRE y Platform en despliegues sobre Kubernetes, observabilidad con Grafana y Kibana, health checks automatizados y mejora de la consistencia operativa.",
-        "Refuerzo pipelines de CI/CD mediante testing automatizado, controles de seguridad, versionado de artefactos y procesos de despliegue más robustos.",
+        "Desarrollo y mantengo servicios backend en Java y Spring Boot, con foco en arquitectura clara, DDD y código mantenible.",
+        "Diseño e implemento APIs REST e integraciones internas priorizando fiabilidad, testabilidad y visibilidad en producción.",
+        "Trabajo con RabbitMQ y patrones de comunicación asíncrona para dar soporte a integraciones fiables en sistemas distribuidos.",
+        "Colaboro con SRE y Platform en despliegues sobre Kubernetes, observabilidad con Grafana y Kibana, health checks automatizados y consistencia operativa.",
+        "Contribuyo a mejoras de CI/CD mediante testing automatizado, controles de seguridad, versionado de artefactos y flujos de despliegue más robustos.",
         "Diagnostico y resuelvo incidencias en sistemas distribuidos con foco en rendimiento, resiliencia y mantenibilidad."
       ]
     },
@@ -75,14 +75,14 @@
       "location": "Granada, España",
       "startDate": "08/2020",
       "endDate": "12/2024",
-      "description": "Evolucioné desde perfil trainee hasta desarrollador senior participando en el diseño, desarrollo y evolución de plataformas educativas de gran escala para múltiples mercados internacionales.",
+      "description": "Trabajé en backend, frontend e infraestructura para plataformas educativas utilizadas en varios mercados internacionales.",
       "highlights": [
-        "Diseñé e implementé una infraestructura basada en Docker que mejoró la consistencia entre entornos, la escalabilidad y la productividad del equipo.",
-        "Contribuí a mejoras en procesos de despliegue y entrega, dando soporte a flujos de release más eficientes y fiables.",
-        "Lideré la transformación hacia una plataforma multiidioma y multiportal que facilitó la expansión internacional.",
-        "Integré sistemas de pago y desarrollé búsqueda avanzada con Elasticsearch, mejorando precisión de resultados y experiencia de usuario.",
+        "Diseñé e implementé infraestructura basada en Docker que mejoró la consistencia entre entornos, la escalabilidad y la productividad del equipo.",
+        "Contribuí a mejoras de despliegue y delivery, dando soporte a flujos de release más eficientes y fiables.",
+        "Ayudé a mover la plataforma hacia una estructura multiidioma y multiportal para crecimiento internacional.",
+        "Integré sistemas de pago y construí búsqueda avanzada con Elasticsearch, mejorando la calidad de resultados y la experiencia de usuario.",
         "Mejoré rendimiento, escalabilidad y Core Web Vitals, con impacto positivo en SEO y engagement.",
-        "Desarrollé y mantuve funcionalidades backend y frontend con PHP, Phalcon, JavaScript, HTML y CSS, implantando además prácticas de code review y estándares de desarrollo."
+        "Desarrollé y mantuve funcionalidades backend y frontend con PHP, Phalcon, JavaScript, HTML y CSS, reforzando también code review y estándares de desarrollo."
       ]
     }
   ],
@@ -93,9 +93,9 @@
       "location": "Online",
       "startDate": "2020",
       "endDate": "2020",
-      "description": "Programa orientado al desarrollo web y móvil, arquitectura de aplicaciones y entrega de producto digital.",
+      "description": "Programa de posgrado centrado en desarrollo web y móvil, arquitectura de aplicaciones y delivery de producto digital.",
       "skills": ["PHP", "HTML", "JavaScript", "CSS"],
-      "notes": "Excelente"
+      "notes": "Sobresaliente"
     },
     {
       "degree": "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma",
@@ -103,14 +103,14 @@
       "location": "Granada, España",
       "startDate": "09/2018",
       "endDate": "06/2020",
-      "description": "Formación técnica avanzada en desarrollo de software, bases de datos, testing, control de versiones y arquitectura de aplicaciones.",
+      "description": "Formación técnica avanzada en desarrollo de software multiplataforma, bases de datos, testing, control de versiones y arquitectura de aplicaciones.",
       "skills": ["Java", "Kotlin", "SQL", "Swift", "JavaScript", "Git"],
       "notes": "8.23 / 10"
     }
   ],
   "certifications": [
     {
-      "name": "Microservicios con Spring Boot, Docker y Kubernetes",
+      "name": "Master Microservices with Spring Boot, Docker and Kubernetes",
       "provider": "Udemy",
       "year": "2025",
       "icon": "code",
@@ -128,7 +128,7 @@
       ]
     },
     {
-      "name": "Apache Maven: de principiante a experto",
+      "name": "Apache Maven: Beginner to Guru",
       "provider": "Udemy",
       "year": "2025",
       "icon": "code",
@@ -145,7 +145,7 @@
       ]
     },
     {
-      "name": "Cambridge English B1",
+      "name": "B1 Cambridge English",
       "provider": "Cambridge Assessment English",
       "year": "2018",
       "icon": "globe"
@@ -164,7 +164,7 @@
         "color": "bg-[var(--signal-emerald)]"
       },
       {
-        "name": "Sistemas distribuidos",
+        "name": "Distributed Systems",
         "value": 84,
         "color": "bg-[var(--signal-blue)]"
       },
@@ -242,11 +242,11 @@
         "icon": "layers"
       },
       {
-        "label": "Ownership",
+        "label": "Responsabilidad",
         "icon": "badge-check"
       },
       {
-        "label": "Entrega pragmática",
+        "label": "Delivery pragmático",
         "icon": "sparkles"
       }
     ],
@@ -268,18 +268,18 @@
   "projects": {
     "company": [
       {
-        "title": "Plataforma de Modernización de Microservicios",
+        "title": "Modernización de Plataforma de Microservicios",
         "role": "Backend Software Engineer",
-        "companyRelated": "CGI para The Workshop",
+        "companyRelated": "CGI for The Workshop",
         "status": "Producto enterprise",
         "link": "",
         "context": "Equipo backend internacional modernizando una plataforma cloud para una organización de producto a escala enterprise.",
-        "timeframe": "12/2024 – Actualidad",
-        "summary": "Trabajo de modernización de plataforma centrado en límites de servicios, APIs seguras, flujos de entrega sobre base de datos y confianza en releases durante la transición desde un sistema legacy.",
+        "timeframe": "12/2024 – Presente",
+        "summary": "Contribución a trabajo de modernización de plataforma alrededor de límites de servicio, APIs seguras, flujos de delivery de base de datos y confianza en releases durante la salida de un monolito legacy.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/microservices-modernization-platform.avif",
-            "alt": "Plataforma de Modernización de Microservicios"
+            "alt": "Modernización de Plataforma de Microservicios"
           }
         },
         "technologies": [
@@ -294,8 +294,8 @@
         ],
         "highlights": [
           "Contribuí a una migración a largo plazo desde un monolito en Scala hacia una arquitectura de servicios más limpia y mantenible.",
-          "Mejoré la confianza en releases mediante trabajo en servicios seguros, automatización de base de datos y contract testing.",
-          "Apoyé una plataforma de producto donde la claridad técnica importaba tanto como el avance funcional."
+          "Mejoré la confianza en releases mediante trabajo en servicios seguros, delivery automatizado de base de datos y contract testing.",
+          "Di soporte a una plataforma de producto donde la claridad técnica importaba tanto como el avance funcional."
         ]
       },
       {
@@ -304,9 +304,9 @@
         "companyRelated": "EDUCA EDTECH Group",
         "status": "Plataforma en producción",
         "link": "",
-        "context": "Producto digital principal orientado a captación, conversión y experiencia educativa en varios mercados.",
+        "context": "Producto digital principal utilizado para captar, convertir y atender demanda educativa en varios mercados.",
         "timeframe": "02/2021 – 12/2024",
-        "summary": "Trabajo sobre un producto digital a gran escala combinando backend, frontend e infraestructura, con foco en rendimiento, entrega de negocio y evolución mantenible de plataforma.",
+        "summary": "Contribución en backend, frontend e infraestructura sobre una plataforma educativa a gran escala, con foco en rendimiento, delivery de negocio y evolución mantenible.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/euroinnova.avif",
@@ -328,9 +328,9 @@
           "CSS"
         ],
         "highlights": [
-          "Trabajé en flujos críticos de captación, búsqueda, pago y experiencia con impacto directo en producto.",
+          "Trabajé en flujos críticos de captación, búsqueda, pago y experiencia de usuario con impacto directo en producto.",
           "Ayudé a evolucionar la plataforma hacia una estructura multiidioma y multiportal para crecimiento internacional.",
-          "Equilibré rendimiento, mantenibilidad y entrega de negocio en un producto digital de alto tráfico."
+          "Equilibré rendimiento, mantenibilidad y delivery de negocio en un producto digital de alto tráfico."
         ]
       },
       {
@@ -339,13 +339,13 @@
         "companyRelated": "EDUCA EDTECH Group",
         "status": "Herramienta de negocio",
         "link": "",
-        "context": "Producto de gestión de afiliación que soporta reporting operativo, workflows internos y procesos ligados a pagos.",
+        "context": "Producto de gestión de afiliación para reporting operativo, workflows de partners y procesos relacionados con pagos.",
         "timeframe": "08/2020 – 12/2024",
-        "summary": "Entrega end to end de un producto digital interno para gestionar relaciones de afiliación, reporting y operaciones conectadas con canales de crecimiento.",
+        "summary": "Contribución a la entrega y evolución de un producto digital interno usado para gestionar relaciones de afiliación, reporting y procesos operativos conectados a canales de crecimiento.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/educash.avif",
-            "alt": "Plataforma de Afiliación EduCash"
+            "alt": "EduCash · Plataforma de Afiliación"
           },
           "imgHover": {
             "src": "/images/projects/educash-preview.avif",
@@ -354,8 +354,8 @@
         },
         "technologies": ["PHP", "MySQL", "JavaScript", "HTML", "CSS", "Git"],
         "highlights": [
-          "Construí el producto desde la implementación inicial hasta su iteración y adopción operativa.",
-          "Entregué reporting, workflows de partners y tooling interno conectado a procesos de negocio.",
+          "Contribuí desde la implementación inicial hasta la iteración continua y adopción operativa.",
+          "Trabajé en reporting, workflows de partners y tooling interno conectado a procesos de negocio.",
           "Equilibré usabilidad práctica con las realidades de producto, operaciones y crecimiento."
         ]
       }
@@ -365,15 +365,15 @@
         "title": "CV Studio",
         "role": "Full-Stack Developer",
         "companyRelated": "Proyecto personal",
-        "status": "En desarrollo activo",
+        "status": "En desarrollo",
         "link": "https://github.com/jomiferse/cv-studio",
-        "context": "Generador de CV profesional pensado para perfiles técnicos, con edición en vivo, modelado sólido de datos y salida PDF cuidada.",
-        "timeframe": "12/2025 – Actualidad",
-        "summary": "Producto construido alrededor de datos estructurados de CV, edición en vivo y generación documental. El foco no era solo la interfaz, sino el modelado, la validación y la entrega de un flujo claro para el usuario final.",
+        "context": "Generador profesional de CV para perfiles técnicos con edición en vivo, modelado sólido de datos y salida PDF cuidada.",
+        "timeframe": "12/2025 – Presente",
+        "summary": "Producto personal construido alrededor de datos estructurados de CV, edición en vivo y generación documental. El foco no era solo la interfaz, sino el modelo de datos, la validación y un flujo claro para el usuario.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/cv-studio.avif",
-            "alt": "CV Studio · generador profesional de currículums"
+            "alt": "CV Studio · generador profesional de CV"
           },
           "imgHover": {
             "src": "/images/projects/cv-studio-preview.avif",
@@ -392,7 +392,7 @@
         ],
         "highlights": [
           "Construí un editor en tiempo real con preview sincronizada sobre datos JSON estructurados y plantillas reutilizables.",
-          "Implementé exportación PDF ATS-friendly con foco fuerte en consistencia de layout y calidad documental.",
+          "Implementé exportación PDF ATS-friendly con foco en consistencia de layout y calidad documental.",
           "Combiné acabado de producto con validación tipada y arquitectura de generación documental."
         ]
       }

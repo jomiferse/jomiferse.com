@@ -13,6 +13,7 @@ const links: NavLink[] = [
 	{ href: "/", labelKey: "nav.home" },
 	{ href: "/about", labelKey: "nav.about" },
 	{ href: "/projects", labelKey: "nav.projects" },
+	{ href: "/experience", labelKey: "nav.experience" },
 	{ href: "/blog", labelKey: "nav.blog" },
 	{ href: "/services", labelKey: "nav.services" },
 	{ href: "/contact", labelKey: "nav.contact" },
@@ -38,7 +39,9 @@ const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 
 <header class="header-bar sticky top-0 z-50">
 	<div class="site-shell px-4 md:px-6">
-		<div class="flex min-h-18 items-center justify-between gap-4">
+		<div
+			class="flex min-h-16 items-center justify-between gap-3 md:min-h-18 md:gap-4"
+		>
 			<a
 				href={withLocale("/", locale)}
 				class="flex min-w-0 items-center gap-3 py-3"
@@ -85,7 +88,7 @@ const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 				</a>
 			</div>
 
-			<div class="flex items-center gap-1.5 md:hidden">
+			<div class="flex shrink-0 items-center gap-1 md:hidden">
 				<LanguageToggle locale={locale} />
 				<ThemeToggle locale={locale} />
 				<button

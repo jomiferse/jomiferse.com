@@ -2,15 +2,15 @@
   "name": "José Miguel Fernández",
   "shortName": "José Miguel",
   "email": "jomiferse@gmail.com",
-  "headline": "Software Engineer | Systems, Product Delivery, Architecture, Automation",
-  "tagline": "Software engineer focused on resilient systems, product delivery, technical clarity and modern execution.",
+  "headline": "Full-Stack Developer | Backend Foundations, Web Products, Automation",
+  "tagline": "Full-stack developer with strong backend foundations, building simple, reliable and useful software.",
   "location": "Granada, Spain",
   "currentRole": "Software Engineer",
-  "focus": "Systems engineering, product delivery, technical architecture and platform reliability",
-  "availability": "Open to product-focused roles, technical collaborations and selected build engagements.",
+  "focus": "Backend systems, full-stack delivery, automation and practical web products",
+  "availability": "Open to freelance projects, collaborations and software engineering opportunities.",
   "summary": [
-    "I build systems that need to stay <span class=\"font-semibold text-[var(--accent-strong)]\">reliable under change</span>, remain <span class=\"font-semibold text-[var(--accent-strong)]\">clear to evolve</span>, and help teams move product work forward without losing technical control.",
-    "My core is still strong in <span class=\"font-semibold text-[var(--accent-strong)]\">backend engineering, distributed systems and platform work</span>, but I also contribute across <span class=\"font-semibold text-[var(--accent-strong)]\">architecture, automation, internal tooling and pragmatic product execution</span> when that creates more leverage."
+    "I build websites, tools, automations and backend systems that are <span class=\"font-semibold text-[var(--accent-strong)]\">simple to use</span>, reliable in practice and <span class=\"font-semibold text-[var(--accent-strong)]\">easy to maintain</span>.",
+    "My strongest base is <span class=\"font-semibold text-[var(--accent-strong)]\">backend development with Java, Spring Boot and production systems</span>, but I can move across the stack when a product needs it."
   ],
   "yearsWorking": "5",
   "currentCompany": "CGI for The Workshop",
@@ -19,30 +19,30 @@
     "github": "https://www.github.com/jomiferse/"
   },
   "signals": [
-    "Production systems and platform evolution",
-    "Architecture and technical decision-making",
-    "Automation, tooling and modernization work",
-    "Product execution with backend depth"
+    "Backend systems and APIs",
+    "Full-stack product delivery",
+    "Automation and internal tools",
+    "Production reliability and maintainability"
   ],
   "focusAreas": [
     {
-      "title": "Platform Architecture",
-      "description": "Service boundaries, API design, security and technical decisions that keep products understandable as they evolve.",
+      "title": "Backend Systems",
+      "description": "APIs, services, integrations and data workflows built with reliability and maintainability in mind.",
       "items": ["Java", "Spring Boot", "REST APIs", "Spring Security"]
     },
     {
-      "title": "Modernization and Delivery",
-      "description": "Migration paths, release confidence and delivery workflows for systems that need to improve without losing operational trust.",
+      "title": "Delivery and Infrastructure",
+      "description": "Release workflows, containers, CI/CD and deployment practices that help software move safely from code to production.",
       "items": ["Liquibase", "CI/CD", "Docker", "Kubernetes"]
     },
     {
-      "title": "Internal Tooling and Automation",
-      "description": "Operational tooling, workflow automation and pragmatic product support that remove friction for teams and systems.",
+      "title": "Web Products and Tools",
+      "description": "Useful interfaces, internal tools and automations that reduce manual work and make workflows easier to run.",
       "items": ["TypeScript", "React", "Astro", "Automation"]
     },
     {
-      "title": "Distributed and Realtime Systems",
-      "description": "Systems that communicate reliably, scale predictably and remain observable in production.",
+      "title": "Distributed Systems",
+      "description": "Services, queues and event-driven flows that communicate clearly and remain observable in production.",
       "items": ["Kafka", "RabbitMQ", "Redis", "PostgreSQL"]
     }
   ],
@@ -59,13 +59,13 @@
       "location": "Spain",
       "startDate": "12/2024",
       "endDate": "Present",
-      "description": "Contributing to the development and maintenance of large-scale cloud-native backend systems for The Workshop, working with cross-functional teams in an agile, security-critical environment.",
+      "description": "Contributing to large-scale cloud-native backend systems for The Workshop, working with cross-functional teams in a security-conscious production environment.",
       "highlights": [
-        "Develop and maintain backend services in Java and Spring Boot, following clean architecture principles, DDD and strong maintainability standards.",
-        "Design and implement REST APIs and internal integrations with an emphasis on reliability, testability and production observability.",
+        "Develop and maintain backend services in Java and Spring Boot, with a focus on clear architecture, DDD and maintainable code.",
+        "Design and implement REST APIs and internal integrations with an emphasis on reliability, testability and production visibility.",
         "Work with RabbitMQ and asynchronous communication patterns to support reliable integrations in distributed systems.",
         "Collaborate with SRE and Platform on Kubernetes-based deployments, Grafana and Kibana observability, automated health checks and operational consistency.",
-        "Strengthen CI/CD pipelines through automated testing, security controls, artifact versioning and more robust deployment workflows.",
+        "Contribute to CI/CD improvements through automated testing, security checks, artifact versioning and more robust deployment workflows.",
         "Diagnose and resolve incidents in distributed systems with a focus on performance, resilience and maintainability."
       ]
     },
@@ -75,11 +75,11 @@
       "location": "Granada, Spain",
       "startDate": "08/2020",
       "endDate": "12/2024",
-      "description": "Grew from trainee to senior developer while contributing to the design, development and evolution of large-scale education platforms serving multiple international markets.",
+      "description": "Worked across backend, frontend and infrastructure for education platforms serving multiple international markets.",
       "highlights": [
-        "Designed and implemented a Docker-based infrastructure that improved environment consistency, scalability and team productivity.",
+        "Designed and implemented Docker-based infrastructure that improved environment consistency, scalability and team productivity.",
         "Contributed to deployment and delivery improvements, supporting more efficient and reliable release flows.",
-        "Led the transformation toward a multi-language, multi-portal platform that enabled international expansion.",
+        "Helped move the platform toward a multi-language, multi-portal structure for international growth.",
         "Integrated payment systems and built advanced search with Elasticsearch, improving result quality and user experience.",
         "Improved platform performance, scalability and Core Web Vitals, with positive impact on SEO and engagement.",
         "Developed and maintained backend and frontend features with PHP, Phalcon, JavaScript, HTML and CSS, while also reinforcing code review and development standards."
@@ -275,7 +275,7 @@
         "link": "",
         "context": "International backend team modernizing a cloud platform for a product organization operating at enterprise scale.",
         "timeframe": "12/2024 – Present",
-        "summary": "Platform modernization work centered on service boundaries, secure APIs, database delivery workflows and release confidence during the transition away from a legacy monolith.",
+        "summary": "Contributed to platform modernization work around service boundaries, secure APIs, database delivery workflows and release confidence during the move away from a legacy monolith.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/microservices-modernization-platform.avif",
@@ -306,7 +306,7 @@
         "link": "",
         "context": "Core digital product used to capture, convert and serve educational demand across multiple markets.",
         "timeframe": "02/2021 – 12/2024",
-        "summary": "Large-scale product work across backend, frontend and infrastructure, focused on performance, business delivery and maintainable platform evolution.",
+        "summary": "Contributed across backend, frontend and infrastructure on a large-scale education platform, with focus on performance, business delivery and maintainable evolution.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/euroinnova.avif",
@@ -341,7 +341,7 @@
         "link": "",
         "context": "Affiliate management product supporting operational reporting, partner workflows and payment-related processes.",
         "timeframe": "08/2020 – 12/2024",
-        "summary": "End-to-end delivery of an internal digital product used to manage affiliate relationships, reporting flows and operational processes tied to growth channels.",
+        "summary": "Contributed to the delivery and evolution of an internal digital product used to manage affiliate relationships, reporting flows and operational processes tied to growth channels.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/educash.avif",
@@ -354,8 +354,8 @@
         },
         "technologies": ["PHP", "MySQL", "JavaScript", "HTML", "CSS", "Git"],
         "highlights": [
-          "Built the product from implementation through ongoing iteration and operational adoption.",
-          "Delivered reporting, partner workflows and internal operations tooling connected to business processes.",
+          "Contributed from initial implementation through ongoing iteration and operational adoption.",
+          "Worked on reporting, partner workflows and internal operations tooling connected to business processes.",
           "Balanced practical usability with the realities of product, operations and growth."
         ]
       }
@@ -369,7 +369,7 @@
         "link": "https://github.com/jomiferse/cv-studio",
         "context": "A professional CV builder designed for technical profiles with live editing, strong data modeling and polished PDF output.",
         "timeframe": "12/2025 – Present",
-        "summary": "A product build around structured CV data, live editing and document generation. The focus was not just interface quality, but modeling, validation and delivery of a clear end-user workflow.",
+        "summary": "A personal product built around structured CV data, live editing and document generation. The focus was not just the interface, but the data model, validation and a clear user workflow.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/cv-studio.avif",

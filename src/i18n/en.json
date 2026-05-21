@@ -16,7 +16,7 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "mobileNav": "Mobile navigation",
-    "availability": "Software Engineer",
+    "availability": "Full-Stack Developer",
     "contactCta": "Start a project",
     "contactCtaShort": "Let's talk"
   },
@@ -27,24 +27,24 @@
   },
   "home": {
     "meta": {
-      "title": "Software Engineer Portfolio",
-      "description": "Software engineer focused on systems, product delivery, architecture and modern technical execution."
+      "title": "Full-Stack Developer Portfolio",
+      "description": "Full-stack developer with strong backend foundations, building practical software for real products and workflows."
     },
     "hero": {
-      "eyebrow": "Software Engineer · Systems · Product Delivery",
-      "titleLead": "Reliable systems,",
-      "titleHighlight": "clear execution.",
+      "eyebrow": "Full-Stack Developer · Software Engineer · Web Products",
+      "titleLead": "Simple software,",
+      "titleHighlight": "built for real use.",
       "titleTail": "",
-      "description": "Engineering for product teams building platforms, tooling and digital products that need to hold up in the real world.",
-      "primaryCta": "See selected work",
-      "secondaryCta": "Discuss a project",
+      "description": "Full-stack developer with strong backend foundations. I build websites, tools, automations and backend systems that are easy to use and maintain.",
+      "primaryCta": "View projects",
+      "secondaryCta": "Contact me",
       "availability": "Currently building at CGI for The Workshop"
     },
     "stats": {
-      "years": "Years shipping software",
+      "years": "Years building software",
       "focus": "Primary focus",
       "scope": "Scope",
-      "scopeValue": "Backend + product support"
+      "scopeValue": "Full-stack delivery"
     },
     "sections": {
       "about": "Positioning",
@@ -55,29 +55,29 @@
     },
     "about": {
       "eyebrow": "Positioning",
-      "title": "Engineering depth with product judgment.",
-      "intro": "I work where architecture, delivery and system clarity matter at the same time: backend platforms, internal tooling, automation and product execution that need to stay reliable under pressure."
+      "title": "Backend depth with full-stack range.",
+      "intro": "I work across backend systems, web products, internal tools and automation. The goal is always the same: useful software that stays clear as it grows."
     },
     "experience": {
       "eyebrow": "Experience",
       "title": "Built inside product and platform environments.",
-      "summary": "My path has been shaped by production systems, platform evolution and delivery work where reliability and clarity matter more than surface complexity."
+      "summary": "My path has been shaped by production systems, platform evolution and delivery work where reliability and clarity matter more than extra complexity."
     },
     "projects": {
       "eyebrow": "Selected work",
-      "title": "Projects that show execution, judgment and product sense.",
-      "summary": "The signal is in the decisions behind the build: what needed to be improved, what had to stay maintainable and how the system served a real use case."
+      "title": "Projects that solve real workflows.",
+      "summary": "Selected work across personal products and professional projects I contributed to, with a focus on useful outcomes and maintainable systems."
     },
     "skills": {
       "eyebrow": "Collaboration",
-      "title": "Where I can be useful.",
-      "summary": "Best fit when a team needs an engineer who can think in systems, make technical decisions legible and keep delivery moving."
+      "title": "Where I can help.",
+      "summary": "Best fit when a team or client needs someone who can understand the workflow, build the right thing and keep the code easy to maintain."
     },
     "contact": {
       "eyebrow": "Contact",
-      "title": "Open to product teams, technical collaborations and selected build work.",
-      "summary": "Recruiting, platform modernization, internal tooling or product engineering conversations all fit here, as long as the work is serious and the execution bar is high.",
-      "primaryCta": "Send an email",
+      "title": "Open to useful projects and good teams.",
+      "summary": "Freelance work, internal tools, web products, backend systems and professional opportunities all fit here.",
+      "primaryCta": "Send a message",
       "secondaryCta": "View LinkedIn"
     },
     "explorations": {
@@ -96,9 +96,9 @@
       "description": "Selected engineering work by {name}, focused on systems, product execution and technical delivery."
     },
     "hero": {
-      "titlePrefix": "Selected work",
+      "titlePrefix": "Selected",
       "titleHighlight": "projects",
-      "subtitle": "A curated view of product, platform and internal-tooling work shaped by architecture decisions, execution quality and delivery context."
+      "subtitle": "A clear view of personal projects and professional work I contributed to, from backend systems to practical web products."
     },
     "sections": {
       "personal": {
@@ -118,12 +118,12 @@
   "experience": {
     "meta": {
       "title": "Experience",
-      "description": "Professional experience of {name}."
+      "description": "Professional experience across backend engineering, full-stack delivery, microservices, web platforms and production systems."
     },
     "hero": {
-      "titlePrefix": "Product and platform",
+      "titlePrefix": "Software",
       "titleHighlight": "experience",
-      "subtitle": "Roles shaped by platform evolution, system ownership and delivery inside real production environments."
+      "subtitle": "Roles shaped by production systems, full-stack delivery and maintainable product work."
     }
   },
   "education": {
@@ -132,9 +132,9 @@
       "description": "Education background and professional certifications of {name}."
     },
     "hero": {
-      "titlePrefix": "Background",
+      "titlePrefix": "Education",
       "titleHighlight": "& learning",
-      "subtitle": "A curated academic and technical foundation behind the way I design systems and ship digital products."
+      "subtitle": "Academic and technical foundations behind how I build and maintain software."
     },
     "sections": {
       "certifications": "Certifications",
@@ -154,33 +154,33 @@
   },
   "skills": {
     "core": "Core stack",
-    "frameworks": "Technologies and tooling",
+    "frameworks": "Technologies and tools",
     "soft": "Working style",
     "languages": "Languages",
-    "communication": "Professional communication",
+    "communication": "Languages",
     "curatedNote": "Curated view — broader stack available on CV and LinkedIn."
   },
   "contact": {
     "meta": {
       "title": "Contact",
-      "description": "Get in touch with {name} for technical collaborations, product engineering conversations or selected opportunities."
+      "description": "Get in touch with {name} for freelance projects, collaborations, professional opportunities and practical software work."
     },
     "hero": {
       "titlePrefix": "Start a",
       "titleHighlight": "conversation",
-      "subtitle": "A good fit for product teams, platform work, modernization efforts and thoughtful technical collaborations."
+      "subtitle": "A good fit for projects, questions, opportunities and collaborations around practical software."
     },
     "emailLabel": "EMAIL",
     "divider": "WRITE A MESSAGE",
-    "success": "Message sent successfully. I'll get back to you soon.",
+    "success": "Message sent. I’ll get back to you soon.",
     "social": {
       "github": "GitHub",
       "linkedin": "LinkedIn"
     }
   },
   "footer": {
-    "title": "Systems, product and execution.",
-    "description": "Software engineering for resilient platforms, clearer architecture and technical delivery that holds up.",
+    "title": "Simple, reliable software.",
+    "description": "Full-stack development with strong backend foundations for real products and workflows.",
     "location": "Based in",
     "contact": "Contact"
   },
@@ -206,25 +206,25 @@
     "status": "STATUS"
   },
   "contactForm": {
-    "nameLabel": "Your name",
+    "nameLabel": "Name",
     "namePlaceholder": "Your name",
-    "emailLabel": "Your email",
-    "emailPlaceholder": "your@email.com",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
     "messageLabel": "Message",
-    "messagePlaceholder": "Tell me about the role, team or project.",
-    "attachmentLabel": "Attach PDF",
+    "messagePlaceholder": "Tell me what you’re building, what you need, or where I can help.",
+    "attachmentLabel": "Attachment",
     "attachmentHint": "Optional. PDF only.",
     "submit": "Send message"
   },
   "blog": {
     "meta": {
       "title": "Blog",
-      "description": "Technical notes and articles by {name}."
+      "description": "Short notes and articles by {name}."
     },
     "hero": {
-      "titlePrefix": "Engineering",
-      "titleHighlight": "journal",
-      "subtitle": "Notes on systems, architecture, delivery, product thinking and automation."
+      "titlePrefix": "Notes from",
+      "titleHighlight": "building software",
+      "subtitle": "Short notes about projects, tools, backend work and things I learn while building."
     },
     "post": {
       "back": "Back to blog",

@@ -19,36 +19,36 @@ const cv = getCv(locale);
 const personalProjects = cv.projects?.personal ?? [];
 const companyProjects = cv.projects?.company ?? [];
 const projects = [...personalProjects, ...companyProjects];
-const copy =
-	locale === "es"
-		? {
-				pageTitle: `Proyectos - ${cv.name}`,
-				pageDescription:
-					"Proyectos de software seleccionados sobre backend, productos web, herramientas internas y delivery práctico.",
-				eyebrow: "Proyectos",
-				title: "Trabajo seleccionado, construido para",
-				titleAccent: "uso real.",
-				intro:
-					"Una mezcla de plataformas en producción, herramientas internas y productos personales. Cada proyecto resuelve un problema práctico con software limpio y mantenible.",
-				result: "Resultado",
-				fallback:
-					"Software práctico entregado con un flujo claro y una estructura mantenible.",
-				view: "Ver proyecto",
-			}
-		: {
-				pageTitle: `Projects - ${cv.name}`,
-				pageDescription:
-					"Selected software projects covering backend systems, web products, internal tools and practical product delivery.",
-				eyebrow: "Projects",
-				title: "Selected work, built for",
-				titleAccent: "real use.",
-				intro:
-					"A mix of production platforms, internal tools and personal products. Each one is about solving a practical problem with clean, maintainable software.",
-				result: "Result",
-				fallback:
-					"Delivered practical software with a clear workflow and maintainable structure.",
-				view: "View project",
-			};
+const isEs = locale === "es";
+const copy = isEs
+	? {
+			pageTitle: `Proyectos - ${cv.name}`,
+			pageDescription:
+				"Proyectos seleccionados de software sobre backend, productos web, herramientas internas y delivery full-stack práctico.",
+			eyebrow: "Proyectos",
+			title: "Trabajo seleccionado, construido para",
+			titleAccent: "uso real.",
+			intro:
+				"Una mezcla de proyectos personales y trabajo profesional en el que he contribuido. Problemas claros, decisiones prácticas y software mantenible.",
+			result: "Qué cambió",
+			fallback:
+				"Software práctico con un flujo claro y una estructura mantenible.",
+			view: "Ver proyecto",
+		}
+	: {
+			pageTitle: `Projects - ${cv.name}`,
+			pageDescription:
+				"Selected software projects covering backend systems, web products, internal tools and practical full-stack delivery.",
+			eyebrow: "Projects",
+			title: "Selected work, built for",
+			titleAccent: "real use.",
+			intro:
+				"A mix of personal projects and professional work I contributed to. Clear problems, practical decisions and maintainable software.",
+			result: "What changed",
+			fallback:
+				"Practical software with a clear workflow and maintainable structure.",
+			view: "View project",
+		};
 const pageTitle = copy.pageTitle;
 const pageDescription = copy.pageDescription;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
@@ -99,7 +99,7 @@ const structuredData = [
 		<div class="stagger-children grid gap-5 md:grid-cols-2">
 			{
 				projects.map((project) => (
-					<article class="dark-card hover-card flex min-h-[22rem] flex-col p-6">
+					<article class="dark-card hover-card flex flex-col p-5 md:min-h-[22rem] md:p-6">
 						<div class="mb-6 flex flex-wrap gap-2">
 							{project.status ? (
 								<span class="tag-pill">{project.status}</span>
@@ -108,7 +108,7 @@ const structuredData = [
 								<span class="tag-pill">{tech}</span>
 							))}
 						</div>
-						<h2 class="text-2xl font-black text-[var(--text)]">
+						<h2 class="text-xl font-black text-[var(--text)] md:text-2xl">
 							{project.title}
 						</h2>
 						<p class="muted-copy mt-3 text-sm font-semibold">

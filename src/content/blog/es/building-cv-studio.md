@@ -1,6 +1,6 @@
 ---
-title: "CV Studio: Construyendo un generador de CV moderno y enfocado en desarrolladores"
-description: "Una mirada interna a CV Studio, un generador de currículums pensado para desarrolladores, con vista previa en tiempo real, datos estructurados y exportación profesional a PDF."
+title: "CV Studio: construyendo una forma más clara de escribir un CV developer"
+description: "Notas sobre la construcción de CV Studio, un generador de CV para developers con vista previa en vivo, datos estructurados y exportación PDF."
 date: 2025-12-25
 tags:
   - cv
@@ -12,82 +12,84 @@ author: "José Miguel Fernández"
 readingTime: "5 min"
 ---
 
-En el competitivo mercado tecnológico actual, un currículum es más que un documento: es un producto. Mientras preparaba mi propio CV para distintos puestos y revisaba innumerables herramientas, detecté un problema recurrente: la mayoría de los generadores de CV o te obligan a usar plantillas rígidas, o generan PDFs que no reflejan un perfil limpio, profesional y orientado a desarrolladores.
+Empecé CV Studio porque escribir un CV developer sigue siendo más difícil de lo que debería.
 
-Ese vacío fue lo que me llevó a crear **CV Studio**.
+La mayoría de generadores te dan plantillas rígidas, demasiado ruido visual o PDFs que cambian al descargarlos. Quería algo más limpio: datos estructurados, vista previa en vivo y una salida en la que pudiera confiar.
+
+Ese hueco fue lo que me llevó a crear **CV Studio**.
 
 👉 **Repositorio del proyecto:**  
 [https://github.com/jomiferse/cv-studio](https://github.com/jomiferse/cv-studio)
 
 ---
 
-## ¿Por qué CV Studio?
+## Por qué lo construí
 
-CV Studio es un proyecto personal diseñado con un objetivo claro:  
-**dar a los desarrolladores control total sobre su CV sin sacrificar la calidad del diseño ni la salida en PDF.**
+CV Studio es un proyecto personal con un objetivo simple:  
+**ayudar a developers a escribir un CV claro sin perder control sobre la estructura ni el PDF final.**
 
-Muchas herramientas existentes se centran casi exclusivamente en la edición visual, ocultando la estructura subyacente. Otras generan PDFs que pueden verse aceptables en pantalla, pero fallan al imprimirlos, al ser procesados por sistemas ATS o al compartirse en procesos de selección profesionales.
+Quería que la experiencia de edición fuese sencilla, pero apoyada en un modelo de datos sólido. El CV debía ser fácil de cambiar, fácil de validar y fiable al exportarlo.
 
-CV Studio adopta un enfoque diferente: trata el CV como **datos estructurados primero**, y como un documento pulido después.
+Por eso CV Studio trata el CV como **datos estructurados primero**, y como documento pulido después.
 
-![CV Studio – Editor con vista previa en tiempo real](/images/blog/cv-studio-editor.avif)
+![CV Studio – editor de CV con vista previa en tiempo real](/images/blog/cv-studio-editor.avif)
 
 ---
 
-## Principios clave
+## Principios principales
 
-Desde el inicio, el proyecto se guió por una serie de principios muy claros:
+Desde el principio mantuve unos pocos principios claros:
 
-- **Datos estructurados como base** — cada CV está respaldado por un esquema JSON bien definido.
-- **Feedback en tiempo real** — los cambios se reflejan instantáneamente mediante una vista previa en vivo.
-- **Salida profesional** — los PDFs están optimizados para formato A4, impresión y compatibilidad con ATS.
-- **Arquitectura orientada a desarrolladores** — tipado fuerte, validación y facilidad de mantenimiento.
+- **Datos estructurados primero**. Cada CV se apoya en un esquema JSON claro.
+- **Feedback en tiempo real**. Los cambios aparecen al instante en la vista previa.
+- **Salida fiable**. Los PDFs están optimizados para A4, impresión y lectura ATS.
+- **Arquitectura mantenible**. Tipado fuerte, validación y plantillas reutilizables importan.
 
-## Funcionalidades principales
+## Funcionalidades clave
 
 ### Editor de CV con vista previa en tiempo real
 
-CV Studio permite editar el currículum viendo el resultado final al instante. La vista previa no es un simple mockup: representa exactamente lo que se exportará a PDF.
+CV Studio permite editar el CV mientras ves el resultado final al instante. La vista previa no es un mockup. Representa lo que se exportará a PDF.
 
-Este enfoque elimina la incertidumbre y aporta confianza en el resultado final.
+Eso elimina dudas y hace que cada cambio sea más fácil de validar.
 
-### Exportación a PDF de alta calidad
+### Exportación PDF de calidad
 
-Los PDFs generados están diseñados para mantenerse consistentes en distintas plataformas, impresoras y dispositivos. Los layouts siguen estándares profesionales habituales en procesos de selección técnicos.
+Los PDFs generados están pensados para mantenerse consistentes entre plataformas, impresoras y dispositivos. El layout sigue expectativas habituales en procesos técnicos de selección.
 
-Sin márgenes rotos ni cambios inesperados de tipografía: solo una salida limpia y fiable.
+Sin márgenes rotos. Sin cambios inesperados de fuente. Solo una salida limpia y fiable.
 
-![CV Studio – Exportación profesional a PDF](/images/blog/cv-studio-pdf.avif)
+![CV Studio – exportación profesional a PDF](/images/blog/cv-studio-pdf.avif)
 
-### Interfaz limpia y minimalista
+### Interfaz limpia y mínima
 
-La interfaz es intencionadamente minimalista. El foco está en la claridad y la usabilidad, evitando distracciones innecesarias y ruido visual. El objetivo es que escribir y refinar un CV sea una experiencia sencilla y profesional.
+La interfaz es intencionadamente mínima. El foco está en escribir, editar y revisar el resultado final sin distracciones.
 
 ### Validación sólida y escalabilidad
 
-El uso de validación por esquemas y tipado fuerte garantiza que los datos del CV sean consistentes y extensibles. Esto facilita añadir nuevas secciones, plantillas o formatos de exportación con el tiempo sin comprometer la estabilidad.
+La validación por esquemas y el tipado fuerte mantienen los datos del CV consistentes. Eso facilita añadir secciones, plantillas o formatos de exportación más adelante sin volver frágil la aplicación.
 
-## ¿Para quién es CV Studio?
+## Para quién es CV Studio
 
-- Ingenieros de software y perfiles técnicos
-- Desarrolladores que valoran el control sobre sus datos
-- Usuarios que buscan CVs compatibles con ATS y listos para imprimir
-- Personas que prefieren diseño limpio frente a plantillas recargadas
+- Software engineers y perfiles técnicos
+- Developers que valoran el control sobre sus datos
+- Personas que buscan CVs ATS-friendly y listos para imprimir
+- Cualquiera que prefiera estructura limpia frente a plantillas recargadas
 
-## ¿Qué viene después?
+## Qué viene después
 
-CV Studio es un proyecto en evolución. Entre las mejoras previstas se encuentran:
+CV Studio sigue evolucionando. Algunas mejoras previstas:
 
-- Múltiples plantillas de CV profesionales
-- Más opciones de personalización manteniendo la estructura
-- Capacidades de exportación mejoradas
+- Varias plantillas profesionales de CV
+- Más personalización manteniendo la estructura
+- Mejoras en la exportación
 - Internacionalización y soporte multiidioma
 
-## Reflexión final
+## Cierre
 
-CV Studio no es solo un generador de currículums: es un reflejo de cómo los desarrolladores pensamos los productos — estructurados, escalables y diseñados con intención. Está construido para crecer y adaptarse junto a los profesionales que lo utilizan.
+CV Studio es un producto pequeño, pero refleja cómo me gusta construir: interfaz simple, datos claros, salida fiable y margen para mejorar.
 
-Si quieres explorar el proyecto o revisar el código, puedes hacerlo aquí:  
-👉 **[CV Studio en GitHub](https://github.com/jomiferse/cv-studio)**
+Puedes explorar el proyecto aquí:  
+**[CV Studio en GitHub](https://github.com/jomiferse/cv-studio)**
 
-Habrá más actualizaciones y artículos técnicos a medida que el proyecto evolucione 🚀
+Publicaré más notas conforme el proyecto evolucione.

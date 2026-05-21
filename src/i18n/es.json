@@ -16,7 +16,7 @@
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "mobileNav": "Navegación móvil",
-    "availability": "Software Engineer",
+    "availability": "Full-Stack Developer",
     "contactCta": "Empezar un proyecto",
     "contactCtaShort": "Hablemos"
   },
@@ -27,24 +27,24 @@
   },
   "home": {
     "meta": {
-      "title": "Portfolio de Software Engineer",
-      "description": "Software engineer orientado a sistemas, entrega de producto, arquitectura y ejecución técnica moderna."
+      "title": "Portfolio Full-Stack Developer",
+      "description": "Full-stack developer con base sólida en backend, construyendo software práctico para productos y flujos reales."
     },
     "hero": {
-      "eyebrow": "Software Engineer · Systems · Product Delivery",
-      "titleLead": "Sistemas fiables,",
-      "titleHighlight": "ejecución clara.",
+      "eyebrow": "Full-Stack Developer · Software Engineer · Productos web",
+      "titleLead": "Software simple,",
+      "titleHighlight": "construido para uso real.",
       "titleTail": "",
-      "description": "Ingeniería para equipos de producto que construyen plataformas, tooling y productos digitales que tienen que sostenerse en el mundo real.",
-      "primaryCta": "Ver trabajo seleccionado",
-      "secondaryCta": "Hablar de un proyecto",
+      "description": "Full-stack developer con bases fuertes en backend. Construyo webs, herramientas, automatizaciones y sistemas backend fáciles de usar y mantener.",
+      "primaryCta": "Ver proyectos",
+      "secondaryCta": "Contactar",
       "availability": "Actualmente construyendo en CGI para The Workshop"
     },
     "stats": {
-      "years": "Años entregando software",
+      "years": "Años construyendo software",
       "focus": "Foco principal",
       "scope": "Alcance",
-      "scopeValue": "Backend + soporte de producto"
+      "scopeValue": "Delivery full-stack"
     },
     "sections": {
       "about": "Posicionamiento",
@@ -55,36 +55,36 @@
     },
     "about": {
       "eyebrow": "Posicionamiento",
-      "title": "Profundidad de ingeniería con criterio de producto.",
-      "intro": "Aporto más valor donde arquitectura, entrega y claridad del sistema importan a la vez: plataformas backend, tooling interno, automatización y ejecución de producto que necesita seguir siendo fiable bajo presión."
+      "title": "Profundidad backend con rango full-stack.",
+      "intro": "Trabajo en sistemas backend, productos web, herramientas internas y automatización. El objetivo siempre es el mismo: software útil que se mantenga claro al crecer."
     },
     "experience": {
       "eyebrow": "Experiencia",
-      "title": "Construido dentro de entornos de producto y plataforma.",
-      "summary": "Mi recorrido ha estado cerca de sistemas en producción, evolución de plataformas y trabajo de entrega donde la fiabilidad y la claridad pesan más que la complejidad superficial."
+      "title": "Trabajo dentro de entornos de producto y plataforma.",
+      "summary": "Mi recorrido está marcado por sistemas en producción, evolución de plataforma y delivery donde la fiabilidad y la claridad importan más que la complejidad extra."
     },
     "projects": {
       "eyebrow": "Trabajo seleccionado",
-      "title": "Proyectos que muestran ejecución, criterio y sentido de producto.",
-      "summary": "La señal está en las decisiones detrás del build: qué había que mejorar, qué debía seguir siendo mantenible y cómo el sistema servía un caso de uso real."
+      "title": "Proyectos que resuelven flujos reales.",
+      "summary": "Trabajo seleccionado entre proyectos personales y profesionales en los que he contribuido, con foco en resultados útiles y sistemas mantenibles."
     },
     "skills": {
       "eyebrow": "Colaboración",
-      "title": "Dónde puedo aportar valor.",
-      "summary": "Encajo mejor cuando un equipo necesita a alguien que piense en sistemas, haga legibles las decisiones técnicas y mantenga el delivery avanzando."
+      "title": "Dónde puedo ayudar.",
+      "summary": "Buen encaje cuando un equipo o cliente necesita entender un flujo, construir lo correcto y mantener el código fácil de evolucionar."
     },
     "contact": {
       "eyebrow": "Contacto",
-      "title": "Abierto a equipos de producto, colaboraciones técnicas y build work seleccionado.",
-      "summary": "Recruiting, modernización de plataformas, tooling interno o conversaciones de product engineering encajan aquí, siempre que el trabajo sea serio y el listón de ejecución sea alto.",
-      "primaryCta": "Enviar email",
+      "title": "Abierto a proyectos útiles y buenos equipos.",
+      "summary": "Proyectos freelance, herramientas internas, productos web, sistemas backend y oportunidades profesionales encajan aquí.",
+      "primaryCta": "Enviar mensaje",
       "secondaryCta": "Ver LinkedIn"
     },
     "explorations": {
       "title": "Líneas actuales de side projects",
       "items": [
-        "IA y automatización de workflows",
-        "Telegram bots y tooling operativo",
+        "Flujos con IA y automatización",
+        "Bots y tooling operativo",
         "Herramientas relacionadas con trading",
         "Sistemas realtime y event-driven"
       ]
@@ -93,12 +93,12 @@
   "projects": {
     "meta": {
       "title": "Proyectos",
-      "description": "Selección de trabajo de ingeniería de {name}, centrado en sistemas, ejecución de producto y delivery técnico."
+      "description": "Trabajo de ingeniería seleccionado de {name}, centrado en sistemas, producto y delivery técnico."
     },
     "hero": {
-      "titlePrefix": "Trabajo seleccionado",
-      "titleHighlight": "proyectos",
-      "subtitle": "Una vista curada de trabajo en producto, plataforma y tooling interno marcada por decisiones de arquitectura, calidad de ejecución y contexto de entrega."
+      "titlePrefix": "Proyectos",
+      "titleHighlight": "seleccionados",
+      "subtitle": "Una vista clara de proyectos personales y trabajo profesional en el que he contribuido, desde sistemas backend hasta productos web prácticos."
     },
     "sections": {
       "personal": {
@@ -106,24 +106,24 @@
         "subtitle": "Side builds y exploraciones técnicas"
       },
       "company": {
-        "title": "Proyectos en empresa",
-        "subtitle": "Entrega profesional en producto"
+        "title": "Proyectos de empresa",
+        "subtitle": "Delivery de producto profesional"
       }
     },
     "empty": {
-      "personal": "Próximamente — proyectos personales en desarrollo.",
+      "personal": "Próximamente — proyectos personales en progreso.",
       "company": "Aún no hay proyectos de empresa disponibles."
     }
   },
   "experience": {
     "meta": {
       "title": "Experiencia",
-      "description": "Experiencia profesional de {name}."
+      "description": "Experiencia profesional en backend, delivery full-stack, microservicios, plataformas web y sistemas en producción."
     },
     "hero": {
-      "titlePrefix": "Producto y plataforma",
-      "titleHighlight": "experiencia",
-      "subtitle": "Roles marcados por evolución de plataforma, ownership de sistemas y entrega en entornos reales de producción."
+      "titlePrefix": "Experiencia",
+      "titleHighlight": "software",
+      "subtitle": "Roles marcados por sistemas en producción, delivery full-stack y trabajo de producto mantenible."
     }
   },
   "education": {
@@ -132,9 +132,9 @@
       "description": "Formación académica y certificaciones profesionales de {name}."
     },
     "hero": {
-      "titlePrefix": "Base",
+      "titlePrefix": "Formación",
       "titleHighlight": "y aprendizaje",
-      "subtitle": "Una base académica y técnica curada detrás de cómo diseño sistemas y construyo productos digitales."
+      "subtitle": "Base académica y técnica detrás de cómo construyo y mantengo software."
     },
     "sections": {
       "certifications": "Certificaciones",
@@ -144,44 +144,44 @@
   "certifications": {
     "meta": {
       "title": "Certificaciones",
-      "description": "Cursos y certificaciones obtenidos por {name}."
+      "description": "Cursos y certificaciones obtenidas por {name}."
     },
     "hero": {
       "titlePrefix": "Certificaciones",
       "titleHighlight": "técnicas",
-      "subtitle": "Aprendizaje continuo alrededor de arquitectura, delivery y la cara de sistemas del software engineering."
+      "subtitle": "Aprendizaje continuo alrededor de arquitectura, delivery y la parte de sistemas del software engineering."
     }
   },
   "skills": {
     "core": "Stack principal",
-    "frameworks": "Tecnologías y tooling",
+    "frameworks": "Tecnologías y herramientas",
     "soft": "Forma de trabajar",
     "languages": "Idiomas",
-    "communication": "Comunicación profesional",
-    "curatedNote": "Vista curada — stack más amplio disponible en CV y LinkedIn."
+    "communication": "Idiomas",
+    "curatedNote": "Vista resumida — stack más amplio disponible en CV y LinkedIn."
   },
   "contact": {
     "meta": {
       "title": "Contacto",
-      "description": "Contacta con {name} para colaboraciones técnicas, conversaciones de product engineering u oportunidades seleccionadas."
+      "description": "Contacta con {name} para proyectos freelance, colaboraciones, oportunidades profesionales y software práctico."
     },
     "hero": {
-      "titlePrefix": "Abramos una",
+      "titlePrefix": "Empezar una",
       "titleHighlight": "conversación",
-      "subtitle": "Buen encaje para equipos de producto, trabajo de plataforma, esfuerzos de modernización y colaboraciones técnicas con criterio."
+      "subtitle": "Buen encaje para proyectos, preguntas, oportunidades y colaboraciones alrededor de software práctico."
     },
     "emailLabel": "EMAIL",
     "divider": "ESCRIBE UN MENSAJE",
-    "success": "Mensaje enviado correctamente. Te responderé pronto.",
+    "success": "Mensaje enviado. Te responderé pronto.",
     "social": {
       "github": "GitHub",
       "linkedin": "LinkedIn"
     }
   },
   "footer": {
-    "title": "Sistemas, producto y ejecución.",
-    "description": "Software engineering para plataformas robustas, arquitectura más clara y delivery técnico que aguanta.",
-    "location": "Ubicado en ",
+    "title": "Software simple y fiable.",
+    "description": "Desarrollo full-stack con base sólida en backend para productos y flujos reales.",
+    "location": "Ubicado en",
     "contact": "Contacto"
   },
   "certificationCard": {
@@ -192,10 +192,10 @@
     "gradeLabel": "Nota:"
   },
   "experienceCard": {
-    "present": "Actualidad"
+    "present": "Presente"
   },
   "projectCard": {
-    "coverAlt": "Portada de {title}",
+    "coverAlt": "Imagen de {title}",
     "previewAlt": "Vista previa de {title}",
     "closeDialog": "Cerrar diálogo",
     "context": "CONTEXTO",
@@ -206,25 +206,25 @@
     "status": "ESTADO"
   },
   "contactForm": {
-    "nameLabel": "Tu nombre",
+    "nameLabel": "Nombre",
     "namePlaceholder": "Tu nombre",
-    "emailLabel": "Tu email",
+    "emailLabel": "Email",
     "emailPlaceholder": "tu@email.com",
     "messageLabel": "Mensaje",
-    "messagePlaceholder": "Cuéntame sobre el rol, el equipo o el proyecto.",
-    "attachmentLabel": "Adjuntar PDF",
+    "messagePlaceholder": "Cuéntame qué estás construyendo, qué necesitas o dónde puedo ayudar.",
+    "attachmentLabel": "Adjunto",
     "attachmentHint": "Opcional. Solo PDF.",
     "submit": "Enviar mensaje"
   },
   "blog": {
     "meta": {
       "title": "Blog",
-      "description": "Notas técnicas y artículos de {name}."
+      "description": "Notas y artículos breves de {name}."
     },
     "hero": {
-      "titlePrefix": "Engineering",
-      "titleHighlight": "journal",
-      "subtitle": "Notas sobre sistemas, arquitectura, delivery, criterio de producto y automatización."
+      "titlePrefix": "Notas de",
+      "titleHighlight": "construir software",
+      "subtitle": "Notas cortas sobre proyectos, herramientas, backend y cosas que aprendo mientras construyo."
     },
     "post": {
       "back": "Volver al blog",
@@ -235,7 +235,7 @@
     "sections": {
       "featured": {
         "title": "Notas seleccionadas",
-        "subtitle": "Artículos seleccionados."
+        "subtitle": "Artículos destacados."
       },
       "latest": {
         "title": "Escritura reciente",
@@ -244,7 +244,7 @@
     },
     "empty": {
       "featured": "Todavía no hay artículos destacados.",
-      "latest": "Aún no hay artículos publicados."
+      "latest": "Todavía no hay artículos publicados."
     }
   }
 }
