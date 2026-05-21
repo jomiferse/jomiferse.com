@@ -154,14 +154,14 @@ Ese último punto importa más de lo que parece. Si nadie sabe por qué se eligi
 
 ## Checklist rápido
 
-- [ ] Forma real de carga
-- [ ] CPU y memoria medidas por separado
-- [ ] p95/p99 mirados, no solo medias
-- [ ] Sé si es sensible a latencia
-- [ ] He comprobado el *throttling*
-- [ ] He comprobado `OOMKilled`
-- [ ] Tengo una razón para cada `request` y `limit`
-- [ ] Revisaré los valores cuando cambie el tráfico
+1. Forma real de carga
+2. CPU y memoria medidas por separado
+3. p95/p99 mirados, no solo medias
+4. Sé si es sensible a latencia
+5. He comprobado el *throttling*
+6. He comprobado `OOMKilled`
+7. Tengo una razón para cada `request` y `limit`
+8. Revisaré los valores cuando cambie el tráfico
 
 ## Mi lectura práctica
 

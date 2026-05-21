@@ -154,14 +154,14 @@ That last step is underrated. If nobody remembers why the numbers exist, they wi
 
 ## Quick checklist
 
-- [ ] Real workload shape
-- [ ] CPU and memory measured separately
-- [ ] p95/p99 checked, not just averages
-- [ ] Latency-sensitive or not
-- [ ] Throttling checked
-- [ ] OOMKills checked
-- [ ] Clear reason for every request and limit
-- [ ] Numbers will be revisited after traffic changes
+1. Real workload shape
+2. CPU and memory measured separately
+3. p95/p99 checked, not just averages
+4. Latency-sensitive or not
+5. Throttling checked
+6. OOMKills checked
+7. Clear reason for every request and limit
+8. Numbers will be revisited after traffic changes
 
 ## My take
 
