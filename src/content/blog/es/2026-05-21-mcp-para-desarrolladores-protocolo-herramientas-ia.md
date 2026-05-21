@@ -5,7 +5,6 @@ date: "2026-05-21"
 language: "es"
 slug: "mcp-para-desarrolladores-protocolo-herramientas-ia"
 tags: [mcp, ia, codigo, claude-code, codex, cursor, productividad]
-draft: true
 ---
 
 ## Hero image concept
