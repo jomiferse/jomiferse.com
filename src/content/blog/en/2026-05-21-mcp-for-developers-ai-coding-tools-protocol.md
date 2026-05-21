@@ -6,8 +6,6 @@ language: "en"
 tags: [mcp, ai-coding, claude-code, codex, cursor, developer-productivity]
 ---
 
-# MCP for developers: why AI coding tools are converging on one protocol
-
 The interesting thing about MCP is not the acronym. It is the shift it points to.
 
 People are moving from “which AI editor should I use?” to “how do I connect these tools to the rest of my stack without building fragile glue every time?” That is a much better question, and it is the one full-stack developers actually need to answer.

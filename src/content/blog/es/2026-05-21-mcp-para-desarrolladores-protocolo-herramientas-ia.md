@@ -6,8 +6,6 @@ language: "es"
 tags: [mcp, ia, codigo, claude-code, codex, cursor, productividad]
 ---
 
-# MCP para desarrolladores: por qué las herramientas de código con IA se están unificando en un mismo protocolo
-
 Lo interesante de MCP no es el acrónimo. Es el cambio que sugiere.
 
 La conversación ya no va tanto de “qué editor con IA uso” como de “cómo conecto estas herramientas con el resto de mi stack sin montar pegamento frágil cada vez”. Esa es una pregunta mucho más útil, sobre todo si trabajas como full-stack developer.
