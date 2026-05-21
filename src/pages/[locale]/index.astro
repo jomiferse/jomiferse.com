@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, t } from "@/i18n";
 import { getCv } from "@cv";
@@ -12,28 +11,93 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const cv = getCv(locale);
-
-const pageTitle = `${t(locale, "home.meta.title")} - ${cv.name}`;
-const pageDescription = t(locale, "home.meta.description");
-
-const companyProjects = cv.projects?.company ?? [];
-const personalProjects = cv.projects?.personal ?? [];
-const featuredProject = personalProjects[0] ?? companyProjects[0];
-const featuredExperience = cv.experience[0];
+const projects = [
+	...(cv.projects?.personal ?? []),
+	...(cv.projects?.company ?? []),
+];
+const featuredProjects = projects.slice(0, 3);
+const focusAreas = cv.focusAreas.slice(0, 4);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const copy =
+	locale === "es"
+		? {
+				pageTitle: `Portfolio de Software Engineer - ${cv.name}`,
+				pageDescription:
+					"Software engineer que construye software limpio y fiable para backend, productos web, automatizaciones y herramientas internas.",
+				eyebrow: "Software Engineer · Backend · Productos web",
+				title: "Construyo software limpio y fiable para",
+				titleAccent: "problemas reales.",
+				intro:
+					"Sistemas backend, microservicios, webs, automatizaciones y herramientas internas. Software útil, fácil de mantener y preparado para durar.",
+				primaryCta: "Ver proyectos",
+				secondaryCta: "Contactar",
+				years: "Años construyendo software",
+				projects: "Proyectos seleccionados",
+				full: "Completo",
+				scope: "Backend, frontend y delivery",
+				aboutEyebrow: "Sobre mí",
+				aboutTitle: "Ingeniería práctica con producción en mente.",
+				aboutP1:
+					"Soy software engineer en Granada. Mi trabajo principal está en backend con Java, Spring Boot y sistemas distribuidos.",
+				aboutP2:
+					"También trabajo en frontend cuando el producto lo necesita: interfaces, automatización, CI/CD, Docker, Kubernetes y tooling para que los equipos avancen mejor.",
+				workEyebrow: "Trabajo seleccionado",
+				workTitle: "Algunas cosas que he construido",
+				viewAll: "Ver todo",
+				buildEyebrow: "Qué puedo construir",
+				buildTitle:
+					"Software para resolver los problemas importantes, incluso los menos visibles.",
+				ctaEyebrow: "Trabajemos juntos",
+				ctaTitle:
+					"¿Tienes un producto, flujo de trabajo o sistema que construir?",
+				ctaText:
+					"Cuéntame qué necesitas. Puedo ayudarte a darle forma, construirlo y hacerlo fácil de mantener.",
+				ctaButton: "Empezar una conversación",
+			}
+		: {
+				pageTitle: `Software Engineer Portfolio - ${cv.name}`,
+				pageDescription:
+					"Software engineer building clean, reliable software for backend systems, web products, automations and internal tools.",
+				eyebrow: "Software Engineer · Backend · Web Products",
+				title: "I build clean, reliable software for",
+				titleAccent: "real-world problems.",
+				intro:
+					"Backend systems, microservices, websites, automations and internal tools. Useful software that is simple to run, easy to change and built to last.",
+				primaryCta: "View Projects",
+				secondaryCta: "Contact Me",
+				years: "Years building software",
+				projects: "Selected projects",
+				full: "Full",
+				scope: "Backend, frontend and delivery",
+				aboutEyebrow: "About me",
+				aboutTitle: "Practical engineering with production in mind.",
+				aboutP1:
+					"I am a software engineer based in Granada, Spain. My core work is backend development with Java, Spring Boot and distributed systems.",
+				aboutP2:
+					"I also move across the stack when it helps the product: frontend interfaces, automation, CI/CD, Docker, Kubernetes and the tooling that keeps teams moving.",
+				workEyebrow: "Selected work",
+				workTitle: "A few things I’ve built",
+				viewAll: "View all",
+				buildEyebrow: "What I can build",
+				buildTitle: "Software that solves the boring, important problems.",
+				ctaEyebrow: "Let’s work together",
+				ctaTitle: "Have a product, workflow or system that needs to be built?",
+				ctaText:
+					"Tell me what you need. I can help shape it, build it and make it practical to maintain.",
+				ctaButton: "Start a Conversation",
+			};
+const pageTitle = copy.pageTitle;
+const pageDescription = copy.pageDescription;
 const structuredData = [
 	buildProfilePage(site, locale, {
 		name: cv.name,
-		description: cv.tagline,
+		description: pageDescription,
 		email: cv.email,
 		location: cv.location,
 		links: cv.links,
 	}),
 	buildBreadcrumbList(site, [
-		{
-			name: t(locale, "nav.home"),
-			path: `/${locale}`,
-		},
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
 	]),
 ];
 ---
@@ -41,383 +105,146 @@ const structuredData = [
 <BaseLayout
 	title={pageTitle}
 	description={pageDescription}
-	image={featuredProject?.img?.imgStatic?.src ?? "/images/og/portfolio-og.svg"}
-	imageAlt={featuredProject?.img?.imgStatic?.alt ?? cv.name}
 	structuredData={structuredData}
 	keywords={[
 		"Software Engineer",
-		"Systems Engineering",
-		"Product Engineering",
-		"Backend Architecture",
-		"Automation",
+		"Backend Development",
+		"Spring Boot",
+		"Microservices",
+		"Freelance Web Development",
 	]}
 >
-	<section class="section-reveal pt-10 md:pt-16">
-		<div class="grid gap-12 lg:grid-cols-[1.18fr_0.82fr] lg:gap-16">
-			<div class="max-w-4xl">
-				<p
-					class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
-				>
-					{t(locale, "home.hero.eyebrow")}
-				</p>
+	<section class="section-reveal py-10 md:py-20">
+		<p class="eyebrow">{copy.eyebrow}</p>
+		<h1
+			class="mt-6 max-w-5xl text-5xl leading-[1.02] font-black text-[var(--text)] md:text-7xl"
+		>
+			{copy.title}
+			<span class="accent-text">{copy.titleAccent}</span>
+		</h1>
+		<p class="muted-copy mt-7 max-w-2xl text-lg leading-8 md:text-xl">
+			{copy.intro}
+		</p>
+		<div class="mt-10 flex flex-col gap-3 sm:flex-row">
+			<a href={`/${locale}/projects`} class="button-primary">
+				{copy.primaryCta}
+				<Icon name="arrow-right" class="h-4 w-4" />
+			</a>
+			<a href={`/${locale}/contact`} class="button-secondary"
+				>{copy.secondaryCta}</a
+			>
+		</div>
+	</section>
 
-				<h1
-					class="mt-8 max-w-4xl text-4xl leading-[0.98] font-semibold tracking-[-0.06em] text-slate-950 md:text-6xl xl:text-[4.9rem] dark:text-slate-50"
-				>
-					{t(locale, "home.hero.titleLead")}
-					<span class="block text-[var(--accent-strong)]">
-						{t(locale, "home.hero.titleHighlight")}
-					</span>
-					{
-						t(locale, "home.hero.titleTail") ? (
-							<span class="block">{t(locale, "home.hero.titleTail")}</span>
-						) : null
-					}
-				</h1>
-
-				<p
-					class="mt-7 max-w-xl text-base leading-8 text-slate-600 md:text-lg dark:text-slate-300"
-				>
-					{t(locale, "home.hero.description")}
-				</p>
-
-				<div class="mt-10 flex flex-col gap-4 sm:flex-row">
-					<a
-						href={`/${locale}/projects`}
-						class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
-					>
-						{t(locale, "home.hero.primaryCta")}
-						<Icon name="arrow-right" class="h-4 w-4" />
-					</a>
-					<a
-						href={`/${locale}/contact`}
-						class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full text-sm font-semibold text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
-					>
-						{t(locale, "home.hero.secondaryCta")}
-					</a>
-				</div>
-
-				<p
-					class="mt-14 max-w-2xl text-sm leading-7 text-slate-500 dark:text-slate-400"
-				>
-					<span class="font-semibold text-slate-800 dark:text-slate-200">
-						{t(locale, "home.hero.availability")}
-					</span>
-					{" "}
-					<span>·</span>
-					{" "}
-					<span>{cv.availability}</span>
-				</p>
+	<section class="section-reveal full-bleed-divider py-10">
+		<div class="grid gap-8 sm:grid-cols-3">
+			<div>
+				<p class="text-4xl font-black text-[var(--text)]">{cv.yearsWorking}+</p>
+				<p class="muted-copy mt-1 text-sm">{copy.years}</p>
 			</div>
-
-			<div class="stagger-children flex flex-col justify-end gap-8 lg:pt-10">
-				<div class="relative overflow-hidden rounded-[2.5rem]">
-					<div
-						class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(127,176,255,0.24),transparent_46%),linear-gradient(180deg,rgba(255,255,255,0.08),rgba(9,13,22,0.38))]"
-					>
-					</div>
-					<Image
-						src="/images/avatar.avif"
-						alt={cv.name}
-						width={720}
-						height={920}
-						loading="eager"
-						fetchpriority="high"
-						decoding="async"
-						sizes="(min-width: 1024px) 32rem, 100vw"
-						class="h-[24rem] w-full object-cover grayscale-[0.08] md:h-[31rem]"
-					/>
-				</div>
+			<div>
+				<p class="text-4xl font-black text-[var(--text)]">{projects.length}+</p>
+				<p class="muted-copy mt-1 text-sm">{copy.projects}</p>
+			</div>
+			<div>
+				<p class="text-4xl font-black text-[var(--text)]">{copy.full}</p>
+				<p class="muted-copy mt-1 text-sm">{copy.scope}</p>
 			</div>
 		</div>
 	</section>
 
-	<section class="section-reveal mt-28 md:mt-44">
+	<section class="section-reveal py-20 md:py-28">
 		<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
 			<div>
-				<p
-					class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
-				>
-					{t(locale, "home.about.eyebrow")}
-				</p>
-				<h2
-					class="mt-5 max-w-xl text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50"
-				>
-					{t(locale, "home.about.title")}
+				<p class="eyebrow">{copy.aboutEyebrow}</p>
+				<h2 class="mt-4 text-4xl font-black text-[var(--text)] md:text-5xl">
+					{copy.aboutTitle}
 				</h2>
 			</div>
-
-			<div class="max-w-3xl space-y-8">
-				<p
-					class="max-w-2xl text-xl leading-10 text-slate-700 dark:text-slate-200"
-				>
-					{t(locale, "home.about.intro")}
+			<div class="space-y-6 text-lg leading-8 text-[var(--text-muted)]">
+				<p>
+					{copy.aboutP1}
 				</p>
-
-				<div class="flex flex-wrap gap-x-8 gap-y-3 pt-2">
-					<span class="text-sm font-semibold text-slate-950 dark:text-slate-50">
-						{cv.location}
-					</span>
-					<span class="text-sm text-slate-500 dark:text-slate-400">
-						{
-							cv.skills.languages.items
-								.map((language) => language.language)
-								.join(" / ")
-						}
-					</span>
-					<span class="text-sm text-slate-500 dark:text-slate-400">
-						{cv.focus}
-					</span>
-				</div>
+				<p>
+					{copy.aboutP2}
+				</p>
 			</div>
 		</div>
 	</section>
 
-	<section class="section-reveal mt-32 md:mt-48">
-		<div class="max-w-3xl">
-			<p
-				class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
+	<section class="section-band section-reveal py-20 md:py-28">
+		<div
+			class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
+		>
+			<div>
+				<p class="eyebrow">{copy.workEyebrow}</p>
+				<h2 class="mt-4 text-4xl font-black text-[var(--text)] md:text-5xl">
+					{copy.workTitle}
+				</h2>
+			</div>
+			<a href={`/${locale}/projects`} class="button-secondary w-fit"
+				>{copy.viewAll}</a
 			>
-				{t(locale, "home.experience.eyebrow")}
-			</p>
-			<h2
-				class="mt-5 text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50"
-			>
-				{t(locale, "home.experience.title")}
-			</h2>
-			<p
-				class="mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300"
-			>
-				{t(locale, "home.experience.summary")}
-			</p>
 		</div>
 
-		{
-			featuredExperience && (
-				<div class="stagger-children mt-12 md:mt-16">
-					<article class="grid gap-8 lg:grid-cols-[0.38fr_1fr] lg:gap-14">
-						<div class="space-y-4">
-							<p class="text-sm font-semibold text-slate-950 dark:text-slate-50">
-								{featuredExperience.company}
-							</p>
-							<p class="text-sm text-slate-500 dark:text-slate-400">
-								{featuredExperience.startDate} -{" "}
-								{featuredExperience.endDate === "Present"
-									? t(locale, "experienceCard.present")
-									: featuredExperience.endDate}
-							</p>
-							<p class="text-sm text-slate-500 dark:text-slate-400">
-								{featuredExperience.location}
-							</p>
-						</div>
-
-						<div class="max-w-4xl">
-							<h3 class="text-3xl leading-tight font-semibold tracking-[-0.035em] text-slate-950 md:text-5xl dark:text-slate-50">
-								{featuredExperience.role}
-							</h3>
-							<p class="mt-6 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
-								{featuredExperience.description}
-							</p>
-
-							<ul class="mt-8 max-w-2xl space-y-4">
-								{featuredExperience.highlights?.slice(0, 3).map((highlight) => (
-									<li class="flex gap-4 text-sm leading-7 text-slate-700 dark:text-slate-200">
-										<span class="mt-3 h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
-										<span>{highlight}</span>
-									</li>
-								))}
-							</ul>
-
-							<a
-								href={`/${locale}/experience`}
-								class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
-							>
-								{t(locale, "nav.experience")}
-								<Icon name="arrow-right" class="h-4 w-4" />
-							</a>
-						</div>
-					</article>
-				</div>
-			)
-		}
-	</section>
-
-	<section class="section-reveal mt-32 md:mt-48">
-		<div class="max-w-3xl">
-			<p
-				class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
-			>
-				{t(locale, "home.projects.eyebrow")}
-			</p>
-			<h2
-				class="mt-5 text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50"
-			>
-				{t(locale, "home.projects.title")}
-			</h2>
-			<p
-				class="mt-5 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300"
-			>
-				{t(locale, "home.projects.summary")}
-			</p>
-		</div>
-
-		<div class="stagger-children mt-12 space-y-12 md:mt-16">
+		<div class="stagger-children mt-10 grid gap-5 md:grid-cols-3">
 			{
-				featuredProject && (
-					<article class="group">
-						<div class="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
-							<div class="overflow-hidden rounded-[2.6rem]">
-								<Image
-									src={
-										featuredProject.img?.imgStatic?.src ?? "/images/avatar.avif"
-									}
-									alt={
-										featuredProject.img?.imgStatic?.alt ?? featuredProject.title
-									}
-									width={1280}
-									height={920}
-									loading="lazy"
-									decoding="async"
-									sizes="(min-width: 1024px) 52rem, 100vw"
-									class="h-[23rem] w-full object-cover transition duration-500 group-hover:scale-[1.02] md:h-[31rem]"
-								/>
-							</div>
-
-							<div class="flex max-w-2xl flex-col justify-center">
-								<p class="text-sm font-semibold text-slate-500 dark:text-slate-400">
-									{featuredProject.status} · {featuredProject.timeframe}
-								</p>
-								<h3 class="mt-4 text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50">
-									{featuredProject.title}
-								</h3>
-								<p class="mt-4 text-base text-slate-500 dark:text-slate-400">
-									{featuredProject.role} - {featuredProject.companyRelated}
-								</p>
-								<p class="mt-6 max-w-lg text-base leading-7 text-slate-600 dark:text-slate-300">
-									{featuredProject.summary}
-								</p>
-
-								<div class="mt-7 flex flex-wrap gap-2">
-									{featuredProject.technologies.slice(0, 4).map((tech) => (
-										<span class="inline-flex items-center rounded-full bg-slate-200/65 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:bg-slate-800/70 dark:text-slate-200">
-											{tech}
-										</span>
-									))}
-								</div>
-
-								<div class="mt-8 flex flex-wrap items-center gap-5">
-									{featuredProject.link && (
-										<a
-											href={featuredProject.link}
-											target="_blank"
-											rel="noreferrer"
-											class="inline-flex items-center gap-2 text-sm font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
-										>
-											{t(locale, "projectCard.viewProject")}
-											<Icon name="move-up-right" class="h-4 w-4" />
-										</a>
-									)}
-									<a
-										href={`/${locale}/projects`}
-										class="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-50"
-									>
-										{t(locale, "nav.projects")}
-										<Icon name="arrow-right" class="h-4 w-4" />
-									</a>
-								</div>
-							</div>
+				featuredProjects.map((project) => (
+					<article class="dark-card hover-card p-6">
+						<div class="mb-6 flex flex-wrap gap-2">
+							{project.technologies.slice(0, 3).map((tech) => (
+								<span class="tag-pill">{tech}</span>
+							))}
 						</div>
+						<h3 class="text-2xl font-black text-[var(--text)]">
+							{project.title}
+						</h3>
+						<p class="muted-copy mt-4 text-sm leading-6">{project.summary}</p>
+						<p class="mt-5 text-sm font-bold text-[var(--accent-strong)] dark:text-[var(--accent)]">
+							{project.highlights?.[0] ?? project.status}
+						</p>
 					</article>
-				)
+				))
 			}
 		</div>
 	</section>
 
-	<section class="section-reveal mt-32 md:mt-48">
-		<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-			<div>
-				<p
-					class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
-				>
-					{t(locale, "home.skills.eyebrow")}
-				</p>
-				<h2
-					class="mt-5 text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50"
-				>
-					{t(locale, "home.skills.title")}
-				</h2>
-			</div>
-
-			<div class="max-w-4xl">
-				<p
-					class="max-w-2xl text-xl leading-10 text-slate-700 dark:text-slate-200"
-				>
-					{t(locale, "home.skills.summary")}
-				</p>
-
-				<div class="mt-12 space-y-10">
-					{
-						cv.focusAreas.map((area) => (
-							<div class="border-t border-slate-200/70 pt-7 dark:border-slate-800/70">
-								<div class="flex flex-col gap-4">
-									<h3 class="text-2xl font-semibold tracking-[-0.03em] text-slate-950 dark:text-slate-50">
-										{area.title}
-									</h3>
-									<p class="max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300">
-										{area.description}
-									</p>
-									<div class="flex flex-wrap gap-2 pt-1">
-										{area.items.slice(0, 4).map((item) => (
-											<span class="inline-flex items-center rounded-full bg-slate-200/65 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:bg-slate-800/70 dark:text-slate-200">
-												{item}
-											</span>
-										))}
-									</div>
-								</div>
-							</div>
-						))
-					}
-				</div>
-			</div>
+	<section class="section-reveal py-20 md:py-28">
+		<p class="eyebrow">{copy.buildEyebrow}</p>
+		<h2
+			class="mt-4 max-w-3xl text-4xl font-black text-[var(--text)] md:text-5xl"
+		>
+			{copy.buildTitle}
+		</h2>
+		<div class="stagger-children mt-10 grid gap-5 md:grid-cols-2">
+			{
+				focusAreas.map((area) => (
+					<article class="dark-card hover-card p-6">
+						<h3 class="text-xl font-black text-[var(--text)]">{area.title}</h3>
+						<p class="muted-copy mt-3 leading-7">{area.description}</p>
+						<div class="mt-5 flex flex-wrap gap-2">
+							{area.items.map((item) => (
+								<span class="tag-pill">{item}</span>
+							))}
+						</div>
+					</article>
+				))
+			}
 		</div>
 	</section>
 
-	<section class="section-reveal mt-32 mb-10 md:mt-48">
-		<div class="max-w-4xl">
-			<p
-				class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
-			>
-				{t(locale, "home.contact.eyebrow")}
-			</p>
-			<h2
-				class="mt-5 max-w-3xl text-4xl leading-tight font-semibold tracking-[-0.045em] text-slate-950 md:text-6xl dark:text-slate-50"
-			>
-				{t(locale, "home.contact.title")}
-			</h2>
-			<p
-				class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300"
-			>
-				{t(locale, "home.contact.summary")}
-			</p>
-
-			<div class="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-				<a
-					href={`mailto:${cv.email}`}
-					class="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
-				>
-					{t(locale, "home.contact.primaryCta")}
-					<Icon name="mail" class="h-4 w-4" />
-				</a>
-				<a
-					href={cv.links.linkedin}
-					target="_blank"
-					rel="noreferrer"
-					class="inline-flex min-h-12 items-center gap-2 text-sm font-semibold text-slate-700 hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
-				>
-					{t(locale, "home.contact.secondaryCta")}
-					<Icon name="move-up-right" class="h-4 w-4" />
-				</a>
-			</div>
+	<section class="section-band section-reveal py-20 text-center md:py-28">
+		<p class="eyebrow">{copy.ctaEyebrow}</p>
+		<h2
+			class="mx-auto mt-4 max-w-3xl text-4xl font-black text-[var(--text)] md:text-6xl"
+		>
+			{copy.ctaTitle}
+		</h2>
+		<p class="muted-copy mx-auto mt-6 max-w-xl text-lg leading-8">
+			{copy.ctaText}
+		</p>
+		<div class="mt-10 flex justify-center">
+			<a href={`/${locale}/contact`} class="button-primary">{copy.ctaButton}</a>
 		</div>
 	</section>
 </BaseLayout>

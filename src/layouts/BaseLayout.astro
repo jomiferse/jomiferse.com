@@ -151,10 +151,7 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		<script is:inline>
 			(function () {
 				const stored = localStorage.getItem("theme");
-				const prefersDark = window.matchMedia(
-					"(prefers-color-scheme: dark)",
-				).matches;
-				const theme = stored ?? (prefersDark ? "dark" : "light");
+				const theme = stored ?? "dark";
 				document.documentElement.classList.toggle("dark", theme === "dark");
 			})();
 		</script>
@@ -162,16 +159,14 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		<script is:inline type="application/ld+json" set:html={jsonLd} />
 	</head>
 
-	<body
-		class="relative flex min-h-screen flex-col text-slate-950 dark:text-slate-50"
-	>
+	<body class="relative flex min-h-screen flex-col">
 		<a href="#main-content" class="skip-link"
 			>{t(locale, "a11y.skipToContent")}</a
 		>
 		<Header locale={locale} />
 		<main
 			id="main-content"
-			class="mx-auto w-full max-w-6xl flex-1 px-4 pt-8 pb-14 md:px-6 md:pt-10 md:pb-18"
+			class="site-shell w-full flex-1 px-4 py-14 md:px-6 md:py-20"
 		>
 			<slot />
 		</main>

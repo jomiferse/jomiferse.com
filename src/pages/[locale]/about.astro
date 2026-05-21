@@ -1,0 +1,211 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getLocaleStaticPaths, t } from "@/i18n";
+import { getCv } from "@cv";
+import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
+
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
+
+const { locale } = Astro.params;
+const cv = getCv(locale);
+const isEs = locale === "es";
+const copy = isEs
+	? {
+			pageTitle: `Sobre mí - ${cv.name}`,
+			pageDescription:
+				"Sobre José Miguel Fernández, software engineer enfocado en backend, microservicios, automatización y productos web prácticos.",
+			eyebrow: "Sobre mí",
+			title: "Un software engineer que construye con",
+			titleAccent: "claridad.",
+			intro:
+				"Construyo sistemas backend, productos web y herramientas internas. Mi enfoque es práctico: entender el problema, mantener la solución limpia y hacerla fiable para uso real.",
+			what: "Qué hago",
+			how: "Cómo trabajo",
+			background: "Trayectoria",
+			backgroundTitle:
+				"Profundidad backend, criterio de producto y foco en software útil.",
+			backgroundP1:
+				"Actualmente trabajo como software engineer en sistemas en producción, con foco en Java, Spring Boot, arquitectura distribuida, CI/CD y observabilidad.",
+			backgroundP2:
+				"Antes trabajé en delivery full-stack dentro del sector edtech. Esa mezcla define mi forma de construir: entender la necesidad, elegir el nivel correcto de sistema y mantenerlo fácil de evolucionar.",
+			blocks: [
+				{
+					title: "Backend Development",
+					body: "Java, Spring Boot, APIs, modelos de datos y servicios que deben seguir siendo fiables en producción.",
+				},
+				{
+					title: "Frontend Development",
+					body: "Interfaces claras con Astro, React y TypeScript cuando el producto necesita una experiencia usable.",
+				},
+				{
+					title: "Automatización y herramientas internas",
+					body: "Pequeños sistemas que eliminan trabajo manual, conectan flujos y hacen que los equipos avancen más rápido.",
+				},
+				{
+					title: "Proyectos freelance",
+					body: "Webs, rediseños y aplicaciones a medida para personas que necesitan software práctico y bien hecho.",
+				},
+			],
+			steps: [
+				[
+					"01",
+					"Entender el problema",
+					"Empezar por el flujo de trabajo, las personas que lo usan y las restricciones reales.",
+				],
+				[
+					"02",
+					"Mantenerlo simple",
+					"Elegir el sistema útil más pequeño antes de añadir más piezas.",
+				],
+				[
+					"03",
+					"Construir soluciones fiables",
+					"Hacer que el código sea claro, observable y preparado para uso real.",
+				],
+				[
+					"04",
+					"Iterar y mejorar",
+					"Enviar, aprender del feedback y mejorar las partes que importan.",
+				],
+			],
+		}
+	: {
+			pageTitle: `About - ${cv.name}`,
+			pageDescription:
+				"About José Miguel Fernández, a software engineer focused on backend systems, microservices, automation and practical web products.",
+			eyebrow: "About",
+			title: "A software engineer who builds with",
+			titleAccent: "clarity.",
+			intro:
+				"I build backend systems, web products and internal tools. My work is practical: understand the problem, keep the solution clean and make it reliable enough for real people to use.",
+			what: "What I do",
+			how: "How I work",
+			background: "Background",
+			backgroundTitle:
+				"Backend depth, product sense and a bias for useful software.",
+			backgroundP1:
+				"I currently work as a software engineer on production systems, with a strong focus on Java, Spring Boot, distributed architecture, CI/CD and observability.",
+			backgroundP2:
+				"Before that, I worked across full-stack product delivery in the edtech space. That mix shaped how I approach software: understand the business need, build the right level of system, and keep it maintainable.",
+			blocks: [
+				{
+					title: "Backend Development",
+					body: "Java, Spring Boot, APIs, data models and services that need to stay reliable in production.",
+				},
+				{
+					title: "Frontend Development",
+					body: "Clear interfaces with Astro, React and TypeScript when the product needs a usable front door.",
+				},
+				{
+					title: "Automation & Internal Tools",
+					body: "Small systems that remove manual work, connect workflows and make teams faster.",
+				},
+				{
+					title: "Freelance Projects",
+					body: "Websites, redesigns and custom applications for people who need practical software done well.",
+				},
+			],
+			steps: [
+				[
+					"01",
+					"Understand the problem",
+					"Start with the workflow, the people using it and the constraints around it.",
+				],
+				[
+					"02",
+					"Keep it simple",
+					"Choose the smallest useful system before adding more moving parts.",
+				],
+				[
+					"03",
+					"Build reliable solutions",
+					"Make the code clear, observable and ready for real usage.",
+				],
+				[
+					"04",
+					"Iterate and improve",
+					"Ship, learn from feedback and improve the parts that matter.",
+				],
+			],
+		};
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const structuredData = [
+	buildCollectionPage(
+		site,
+		`/${locale}/about`,
+		copy.pageTitle,
+		copy.pageDescription,
+	),
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
+		{ name: t(locale, "nav.about"), path: `/${locale}/about` },
+	]),
+];
+---
+
+<BaseLayout
+	title={copy.pageTitle}
+	description={copy.pageDescription}
+	structuredData={structuredData}
+>
+	<section class="section-reveal py-10 md:py-20">
+		<p class="eyebrow">{copy.eyebrow}</p>
+		<h1
+			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+		>
+			{copy.title}
+			<span class="accent-text">{copy.titleAccent}</span>
+		</h1>
+		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">{copy.intro}</p>
+	</section>
+
+	<section class="section-band section-reveal py-20 md:py-28">
+		<p class="eyebrow">{copy.what}</p>
+		<div class="stagger-children mt-8 grid gap-5 md:grid-cols-2">
+			{
+				copy.blocks.map((block) => (
+					<article class="dark-card hover-card p-6">
+						<h2 class="text-2xl font-black text-[var(--text)]">
+							{block.title}
+						</h2>
+						<p class="muted-copy mt-4 leading-7">{block.body}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-reveal py-20 md:py-28">
+		<h2 class="text-4xl font-black text-[var(--text)] md:text-5xl">
+			{copy.how}
+		</h2>
+		<div class="hairline mt-10 divide-y border-y">
+			{
+				copy.steps.map(([number, title, body]) => (
+					<div class="grid gap-4 py-6 md:grid-cols-[6rem_0.55fr_1fr] md:items-center">
+						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
+							{number}
+						</p>
+						<h3 class="text-xl font-black text-[var(--text)]">{title}</h3>
+						<p class="muted-copy leading-7">{body}</p>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-20 md:py-28">
+		<p class="eyebrow">{copy.background}</p>
+		<h2
+			class="mt-4 max-w-3xl text-4xl font-black text-[var(--text)] md:text-5xl"
+		>
+			{copy.backgroundTitle}
+		</h2>
+		<div class="muted-copy mt-8 max-w-3xl space-y-5 text-lg leading-8">
+			<p>{copy.backgroundP1}</p>
+			<p>{copy.backgroundP2}</p>
+		</div>
+	</section>
+</BaseLayout>

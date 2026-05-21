@@ -9,16 +9,13 @@ const { locale } = Astro.props as { locale: Locale };
 	action="/api/contact"
 	method="post"
 	enctype="multipart/form-data"
-	class="glass-panel surface-ring rounded-[2rem] p-5 md:p-6"
+	class="dark-card p-5 md:p-6"
 >
 	<input type="hidden" name="locale" value={locale} />
 
-	<div class="grid gap-4 md:grid-cols-2">
-		<div class="md:col-span-1">
-			<label
-				for="contact-name"
-				class="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
-			>
+	<div class="grid gap-5 md:grid-cols-2">
+		<div>
+			<label for="contact-name" class="eyebrow mb-2 block">
 				{t(locale, "contactForm.nameLabel")}
 			</label>
 			<div class="form-shell">
@@ -34,11 +31,8 @@ const { locale } = Astro.props as { locale: Locale };
 			</div>
 		</div>
 
-		<div class="md:col-span-1">
-			<label
-				for="contact-email"
-				class="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
-			>
+		<div>
+			<label for="contact-email" class="eyebrow mb-2 block">
 				{t(locale, "contactForm.emailLabel")}
 			</label>
 			<div class="form-shell">
@@ -56,10 +50,7 @@ const { locale } = Astro.props as { locale: Locale };
 		</div>
 
 		<div class="md:col-span-2">
-			<label
-				for="contact-message"
-				class="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
-			>
+			<label for="contact-message" class="eyebrow mb-2 block">
 				{t(locale, "contactForm.messageLabel")}
 			</label>
 			<div class="form-shell form-shell-textarea">
@@ -70,15 +61,12 @@ const { locale } = Astro.props as { locale: Locale };
 					required
 					rows="6"
 					placeholder={t(locale, "contactForm.messagePlaceholder")}
-					class="form-input form-textarea resize-none leading-7"></textarea>
+					class="form-input form-textarea leading-7"></textarea>
 			</div>
 		</div>
 
 		<div class="md:col-span-2">
-			<label
-				for="contact-attachment"
-				class="mb-2 block text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
-			>
+			<label for="contact-attachment" class="eyebrow mb-2 block">
 				{t(locale, "contactForm.attachmentLabel")}
 			</label>
 			<div class="form-shell">
@@ -91,16 +79,13 @@ const { locale } = Astro.props as { locale: Locale };
 					class="form-input form-file cursor-pointer"
 				/>
 			</div>
-			<p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
+			<p class="mt-2 text-xs text-[var(--text-muted)]">
 				{t(locale, "contactForm.attachmentHint")}
 			</p>
 		</div>
 	</div>
 
-	<button
-		type="submit"
-		class="form-button mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-slate-950 px-6 py-3 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
-	>
+	<button type="submit" class="button-primary form-button mt-6 w-full">
 		{t(locale, "contactForm.submit")}
 		<Icon name="arrow-right" class="h-4 w-4" />
 	</button>

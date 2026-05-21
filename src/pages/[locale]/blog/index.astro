@@ -12,29 +12,40 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const cv = getCv(locale);
-
 const posts = (await getCollection("blog"))
 	.filter((p) => p.id.startsWith(`${locale}/`))
 	.filter((p) => !p.data.draft)
 	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const toLocalSlug = (id: string) => id.replace(new RegExp(`^${locale}/`), "");
-
-const featuredPosts = posts
-	.filter((p) => p.data.tags?.includes("featured"))
-	.slice(0, 2);
-
-const latestPosts = posts.filter((p) => !p.data.tags?.includes("featured"));
-
-const pageTitle = `${t(locale, "blog.meta.title")} - ${cv.name}`;
-const pageDescription = t(locale, "blog.meta.description").replace(
-	"{name}",
-	cv.name,
-);
-
 const blogBasePath = `/${locale}/blog`;
 const dateLocale = locale === "es" ? "es-ES" : "en-GB";
-const featuredLabel = locale === "es" ? "Seleccionado" : "Selected";
+const copy =
+	locale === "es"
+		? {
+				pageTitle: `Blog - ${cv.name}`,
+				pageDescription:
+					"Notas técnicas breves sobre software engineering, sistemas, herramientas y construcción práctica de producto.",
+				eyebrow: "Escritura",
+				title: "Notas de",
+				titleAccent: "construir software.",
+				intro:
+					"Artículos cortos, notas de proyectos y aprendizajes trabajando con sistemas, herramientas y productos web.",
+				empty: "Todavía no hay artículos publicados.",
+			}
+		: {
+				pageTitle: `Blog - ${cv.name}`,
+				pageDescription:
+					"Short technical notes about software engineering, systems, tools and practical product building.",
+				eyebrow: "Writing",
+				title: "Notes from",
+				titleAccent: "building software.",
+				intro:
+					"Short articles, project notes and lessons from working with systems, tools and web products.",
+				empty: "No articles published yet.",
+			};
+const pageTitle = copy.pageTitle;
+const pageDescription = copy.pageDescription;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	buildCollectionPage(site, blogBasePath, pageTitle, pageDescription),
@@ -49,78 +60,26 @@ const structuredData = [
 	title={pageTitle}
 	description={pageDescription}
 	structuredData={structuredData}
-	keywords={[
-		"Engineering Blog",
-		"Systems Thinking",
-		"Architecture",
-		"Automation",
-		"Product Engineering",
-	]}
+	keywords={["Engineering Blog", "Software Engineering", "Automation"]}
 >
-	<section class="section-reveal pt-4 md:pt-8">
-		<div class="max-w-3xl">
-			<p
-				class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
-			>
-				{t(locale, "blog.hero.titlePrefix")}
-			</p>
-			<h1
-				class="mt-5 text-4xl leading-tight font-semibold tracking-[-0.045em] text-slate-950 md:text-6xl dark:text-slate-50"
-			>
-				{t(locale, "blog.hero.titleHighlight")}
-			</h1>
-			<p
-				class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300"
-			>
-				{t(locale, "blog.hero.subtitle")}
-			</p>
-		</div>
+	<section class="section-reveal py-10 md:py-20">
+		<p class="eyebrow">{copy.eyebrow}</p>
+		<h1
+			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+		>
+			{copy.title}
+			<span class="accent-text">{copy.titleAccent}</span>
+		</h1>
+		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
+			{copy.intro}
+		</p>
 	</section>
 
-	{
-		featuredPosts.length > 0 && (
-			<section class="section-reveal mt-20 md:mt-28">
-				<div class="max-w-3xl">
-					<h2 class="text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50">
-						{t(locale, "blog.sections.featured.title")}
-					</h2>
-				</div>
-
-				<div class="stagger-children mt-10 space-y-10 md:mt-14">
-					{featuredPosts.map((post) => (
-						<BlogPostCard
-							href={`${blogBasePath}/${toLocalSlug(post.id)}`}
-							title={post.data.title}
-							description={post.data.description}
-							dateLabel={post.data.date.toLocaleDateString(dateLocale, {
-								year: "numeric",
-								month: "short",
-								day: "numeric",
-							})}
-							tags={post.data.tags ?? []}
-							featured={true}
-							readingTime={post.data.readingTime}
-							featuredLabel={featuredLabel}
-						/>
-					))}
-				</div>
-			</section>
-		)
-	}
-
-	<section class="section-reveal mt-24 md:mt-36">
-		<div class="max-w-3xl">
-			<h2
-				class="text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50"
-			>
-				{t(locale, "blog.sections.latest.title")}
-			</h2>
-		</div>
-
+	<section class="section-reveal pb-20 md:pb-28">
 		{
-			latestPosts.length > 0 ? (
-				<div class="stagger-children mt-10 space-y-10 md:mt-14">
-					{latestPosts.map((post) => (
+			posts.length > 0 ? (
+				<div class="stagger-children grid gap-5 md:grid-cols-2">
+					{posts.map((post) => (
 						<BlogPostCard
 							href={`${blogBasePath}/${toLocalSlug(post.id)}`}
 							title={post.data.title}
@@ -131,16 +90,12 @@ const structuredData = [
 								day: "numeric",
 							})}
 							tags={post.data.tags ?? []}
-							featured={false}
 							readingTime={post.data.readingTime}
-							featuredLabel={featuredLabel}
 						/>
 					))}
 				</div>
 			) : (
-				<div class="mt-10 text-base text-slate-600 dark:text-slate-300">
-					{t(locale, "blog.empty.latest")}
-				</div>
+				<div class="dark-card p-6 text-[var(--text-muted)]">{copy.empty}</div>
 			)
 		}
 	</section>

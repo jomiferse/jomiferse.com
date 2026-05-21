@@ -11,10 +11,10 @@ interface NavLink {
 
 const links: NavLink[] = [
 	{ href: "/", labelKey: "nav.home" },
+	{ href: "/about", labelKey: "nav.about" },
 	{ href: "/projects", labelKey: "nav.projects" },
-	{ href: "/experience", labelKey: "nav.experience" },
-	{ href: "/education", labelKey: "nav.education" },
 	{ href: "/blog", labelKey: "nav.blog" },
+	{ href: "/services", labelKey: "nav.services" },
 	{ href: "/contact", labelKey: "nav.contact" },
 ];
 
@@ -23,59 +23,38 @@ interface Props {
 }
 
 const { locale = "en" } = Astro.props as Props;
-const isSpanish = locale === "es";
 
 const normalizePath = (path: string) =>
 	path === "/" ? "/" : path.replace(/\/$/, "");
 
-const withLocale = (href: string, loc: Locale) => {
-	if (href.startsWith("/en") || href.startsWith("/es")) return href;
-	return href === "/" ? `/${loc}` : `/${loc}${href}`;
-};
+const withLocale = (href: string, loc: Locale) =>
+	href === "/" ? `/${loc}` : `/${loc}${href}`;
 
 const stripLocalePrefix = (pathname: string) =>
 	pathname.replace(/^\/(en|es)(?=\/|$)/, "") || "/";
 
-const currentPath = stripLocalePrefix(Astro.url.pathname);
-const normalizedCurrent = normalizePath(currentPath);
+const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 ---
 
-<header class="sticky top-0 z-50 px-3 pt-3 md:px-6">
-	<div class="header-bar mx-auto max-w-6xl">
-		<div
-			class="flex items-center justify-between gap-3 px-4 py-3 md:px-5 xl:px-6"
-		>
+<header class="header-bar sticky top-0 z-50">
+	<div class="site-shell px-4 md:px-6">
+		<div class="flex min-h-18 items-center justify-between gap-4">
 			<a
 				href={withLocale("/", locale)}
-				class="flex min-w-0 items-center gap-3 px-1 py-1"
+				class="flex min-w-0 items-center gap-3 py-3"
 				aria-label={t(locale, "nav.home")}
 			>
 				<span
-					class="grid h-10 w-10 place-items-center rounded-[1.15rem] bg-[var(--accent-soft)] text-sm font-bold tracking-[0.18em] text-[var(--accent-strong)]"
+					class="grid h-9 w-9 place-items-center rounded-full border border-[var(--surface-border)] bg-[var(--surface)] text-xs font-black text-[var(--accent-strong)] dark:text-[var(--accent)]"
 				>
 					JMF
 				</span>
-				<span class="hidden leading-tight md:block">
-					<span
-						class="block text-sm font-semibold text-slate-900 dark:text-slate-50"
-					>
-						José Miguel Fernández
-					</span>
-					<span
-						class="hidden text-xs text-slate-500 2xl:block dark:text-slate-400"
-					>
-						{t(locale, "header.availability")}
-					</span>
+				<span class="hidden text-sm font-bold text-[var(--text)] sm:block">
+					José Miguel Fernández
 				</span>
 			</a>
 
-			<nav
-				aria-label="Main"
-				class:list={[
-					"header-nav hidden items-center gap-0.5 lg:flex",
-					isSpanish ? "xl:gap-0" : null,
-				]}
-			>
+			<nav aria-label="Main" class="hidden items-center gap-1 lg:flex">
 				{
 					links.map((link) => {
 						const active = normalizedCurrent === link.href;
@@ -84,12 +63,8 @@ const normalizedCurrent = normalizePath(currentPath);
 								href={withLocale(link.href, locale)}
 								aria-current={active ? "page" : undefined}
 								class:list={[
-									isSpanish
-										? "header-nav-link px-2.5 py-2 text-[13px] font-medium xl:px-3"
-										: "header-nav-link px-3 py-2 text-sm font-medium",
-									active
-										? "is-active text-slate-950 dark:text-slate-50"
-										: "text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white",
+									"header-nav-link px-3.5 py-2 text-sm font-semibold",
+									active ? "is-active" : null,
 								]}
 							>
 								{t(locale, link.labelKey)}
@@ -104,10 +79,9 @@ const normalizedCurrent = normalizePath(currentPath);
 				<ThemeToggle locale={locale} />
 				<a
 					href={withLocale("/contact", locale)}
-					class="header-cta inline-flex min-h-10 items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap xl:px-4"
+					class="button-primary ml-2 min-h-10 px-4 py-2 text-sm"
 				>
 					{t(locale, "header.contactCtaShort")}
-					<Icon name="arrow-right" class="h-4 w-4" />
 				</a>
 			</div>
 
@@ -134,21 +108,21 @@ const normalizedCurrent = normalizePath(currentPath);
 >
 	<div
 		id="menu-overlay"
-		class="absolute inset-0 bg-slate-950/50 opacity-0 backdrop-blur-sm transition-opacity duration-200"
+		class="absolute inset-0 bg-black/60 opacity-0 backdrop-blur-sm transition-opacity duration-200"
 	>
 	</div>
 
 	<aside
 		id="menu-panel"
-		class="glass-panel absolute top-3 right-3 bottom-3 w-[min(22rem,calc(100vw-1.5rem))] translate-x-[105%] rounded-[2rem] p-5 transition-transform duration-250 ease-out"
+		class="dark-card absolute top-3 right-3 bottom-3 w-[min(22rem,calc(100vw-1.5rem))] translate-x-[105%] p-5 transition-transform duration-250 ease-out"
 		aria-label={t(locale, "header.mobileNav")}
 	>
 		<div class="mb-8 flex items-center justify-between gap-3">
 			<div>
-				<p class="text-sm font-semibold text-slate-950 dark:text-slate-50">
+				<p class="text-sm font-bold text-[var(--text)]">
 					José Miguel Fernández
 				</p>
-				<p class="text-xs text-slate-500 dark:text-slate-400">
+				<p class="text-xs text-[var(--text-muted)]">
 					{t(locale, "header.availability")}
 				</p>
 			</div>
@@ -172,10 +146,10 @@ const normalizedCurrent = normalizePath(currentPath);
 							href={withLocale(link.href, locale)}
 							aria-current={active ? "page" : undefined}
 							class:list={[
-								"rounded-[1.1rem] px-4 py-3 text-sm font-semibold transition-colors",
+								"rounded-2xl px-4 py-3 text-sm font-bold",
 								active
-									? "bg-slate-950/8 text-slate-950 dark:bg-white/8 dark:text-slate-50"
-									: "text-slate-600 hover:bg-white/45 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white",
+									? "bg-[var(--surface-strong)] text-[var(--text)]"
+									: "text-[var(--text-muted)] hover:bg-[var(--surface-strong)] hover:text-[var(--text)]",
 							]}
 							data-close-menu
 						>
@@ -188,7 +162,7 @@ const normalizedCurrent = normalizePath(currentPath);
 
 		<a
 			href={withLocale("/contact", locale)}
-			class="header-cta mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold"
+			class="button-primary mt-6 w-full"
 			data-close-menu
 		>
 			{t(locale, "header.contactCta")}

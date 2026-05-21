@@ -1,0 +1,254 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getLocaleStaticPaths, t } from "@/i18n";
+import { getCv } from "@cv";
+import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
+
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
+
+const { locale } = Astro.params;
+const cv = getCv(locale);
+const isEs = locale === "es";
+const copy = isEs
+	? {
+			pageTitle: `Servicios - ${cv.name}`,
+			pageDescription:
+				"Servicios freelance para webs de negocio, rediseños, aplicaciones web a medida, automatizaciones y herramientas internas.",
+			eyebrow: "Servicios freelance",
+			title: "Qué puedo construir",
+			titleAccent: "para ti.",
+			intro:
+				"Ayudo con proyectos web y software prácticos: webs, rediseños, aplicaciones a medida, automatizaciones y herramientas internas limpias y fiables.",
+			bestForLead: "Ideal para:",
+			bestForText:
+				"founders, pequeños negocios, startups y equipos profesionales que necesitan software útil sin complejidad innecesaria.",
+			included: "Incluye",
+			bestFor: "Ideal para",
+			ctaTitle: "¿Listo para empezar algo?",
+			ctaText:
+				"Cuéntame en qué estás trabajando y te ayudaré a encontrar el siguiente paso más simple y útil.",
+			ctaButton: "Empezar un proyecto",
+			services: [
+				{
+					number: "01",
+					title: "Web de negocio",
+					description:
+						"Una web limpia y rápida que explica lo que haces y ayuda a que te contacten.",
+					included: [
+						"Diseño responsive",
+						"Estructura de contenido",
+						"SEO básico",
+						"Despliegue en producción",
+					],
+					bestFor:
+						"Freelancers, pequeños negocios y equipos que necesitan una presencia online fiable.",
+				},
+				{
+					number: "02",
+					title: "Rediseño web",
+					description:
+						"Una versión más clara de una web existente, más rápida y fácil de usar.",
+					included: [
+						"Refresco visual",
+						"Limpieza de layout",
+						"Mejoras de rendimiento",
+						"Soporte de migración",
+					],
+					bestFor:
+						"Webs existentes que se sienten antiguas, lentas o difíciles de entender.",
+				},
+				{
+					number: "03",
+					title: "Aplicación web a medida",
+					description:
+						"Una aplicación enfocada en tu flujo de trabajo, tus usuarios y tus datos.",
+					included: [
+						"Planificación de funcionalidades",
+						"Frontend y backend",
+						"Base de datos",
+						"Documentación de despliegue",
+					],
+					bestFor: "Equipos que necesitan algo más que una web estándar.",
+				},
+				{
+					number: "04",
+					title: "Automatización / herramienta interna",
+					description:
+						"Una herramienta práctica que elimina trabajo repetitivo y conecta sistemas que ya usas.",
+					included: [
+						"Mapeo del flujo",
+						"Integraciones API",
+						"Interfaz de administración",
+						"Bases de monitorización",
+					],
+					bestFor:
+						"Equipos de operaciones, soporte o negocio con trabajo manual recurrente.",
+				},
+			],
+		}
+	: {
+			pageTitle: `Services - ${cv.name}`,
+			pageDescription:
+				"Freelance services for business websites, redesigns, custom web applications, automations and internal tools.",
+			eyebrow: "Freelance services",
+			title: "What I can build",
+			titleAccent: "for you.",
+			intro:
+				"I help with practical web and software projects: websites, redesigns, custom applications, automations and internal tools that need to be clean and reliable.",
+			bestForLead: "Best for:",
+			bestForText:
+				"founders, small businesses, startups and professional teams who need useful software without unnecessary complexity.",
+			included: "Included",
+			bestFor: "Best for",
+			ctaTitle: "Ready to start something?",
+			ctaText:
+				"Tell me what you’re working on and I’ll help you find the simplest useful next step.",
+			ctaButton: "Start a Project",
+			services: [
+				{
+					number: "01",
+					title: "Business Website",
+					description:
+						"A clean, fast website that explains what you do and helps people contact you.",
+					included: [
+						"Responsive design",
+						"Content structure",
+						"Basic SEO setup",
+						"Production deployment",
+					],
+					bestFor:
+						"Freelancers, small businesses and teams that need a reliable online presence.",
+				},
+				{
+					number: "02",
+					title: "Website Redesign",
+					description:
+						"A sharper version of an existing site that feels clearer, faster and easier to use.",
+					included: [
+						"Design refresh",
+						"Layout cleanup",
+						"Performance improvements",
+						"Migration support",
+					],
+					bestFor:
+						"Existing websites that feel outdated, slow or hard to understand.",
+				},
+				{
+					number: "03",
+					title: "Custom Web Application",
+					description:
+						"A focused application built around your workflow, users and data.",
+					included: [
+						"Feature planning",
+						"Frontend and backend development",
+						"Database setup",
+						"Deployment documentation",
+					],
+					bestFor: "Teams that need more than a standard website.",
+				},
+				{
+					number: "04",
+					title: "Automation / Internal Tool",
+					description:
+						"A practical tool that removes repetitive work and connects the systems you already use.",
+					included: [
+						"Workflow mapping",
+						"API integrations",
+						"Admin interface",
+						"Monitoring basics",
+					],
+					bestFor:
+						"Operations, support or business teams with recurring manual work.",
+				},
+			],
+		};
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const structuredData = [
+	buildCollectionPage(
+		site,
+		`/${locale}/services`,
+		copy.pageTitle,
+		copy.pageDescription,
+	),
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
+		{ name: t(locale, "nav.services"), path: `/${locale}/services` },
+	]),
+];
+---
+
+<BaseLayout
+	title={copy.pageTitle}
+	description={copy.pageDescription}
+	structuredData={structuredData}
+>
+	<section class="section-reveal py-10 md:py-20">
+		<p class="eyebrow">{copy.eyebrow}</p>
+		<h1
+			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+		>
+			{copy.title}
+			<span class="accent-text">{copy.titleAccent}</span>
+		</h1>
+		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">{copy.intro}</p>
+	</section>
+
+	<section class="section-band section-reveal py-16">
+		<p class="muted-copy text-lg leading-8">
+			<span class="font-bold text-[var(--text)]">{copy.bestForLead}</span>
+			{" "}
+			{copy.bestForText}
+		</p>
+	</section>
+
+	<section class="section-reveal py-20 md:py-28">
+		<div class="stagger-children grid gap-5 md:grid-cols-2">
+			{
+				copy.services.map((service) => (
+					<article class="dark-card hover-card p-6">
+						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
+							{service.number}
+						</p>
+						<h2 class="mt-6 text-3xl font-black text-[var(--text)]">
+							{service.title}
+						</h2>
+						<p class="muted-copy mt-4 leading-7">{service.description}</p>
+						<div class="hairline mt-7 border-t pt-5">
+							<p class="eyebrow">{copy.included}</p>
+							<ul class="mt-4 space-y-3">
+								{service.included.map((item) => (
+									<li class="flex gap-3 text-sm text-[var(--text-muted)]">
+										<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+											✓
+										</span>
+										<span>{item}</span>
+									</li>
+								))}
+							</ul>
+						</div>
+						<div class="hairline mt-7 rounded-2xl border p-4">
+							<p class="eyebrow">{copy.bestFor}</p>
+							<p class="mt-3 text-sm leading-6 text-[var(--text)]">
+								{service.bestFor}
+							</p>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-20 text-center md:py-28">
+		<h2 class="text-4xl font-black text-[var(--text)] md:text-6xl">
+			{copy.ctaTitle}
+		</h2>
+		<p class="muted-copy mx-auto mt-5 max-w-xl text-lg leading-8">
+			{copy.ctaText}
+		</p>
+		<a href={`/${locale}/contact`} class="button-primary mt-9">
+			{copy.ctaButton}
+		</a>
+	</section>
+</BaseLayout>

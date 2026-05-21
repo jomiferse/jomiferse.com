@@ -10,13 +10,34 @@ export const prerender = false;
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
-
-const pageTitle = `${t(locale, "contact.meta.title")} - ${cv.name}`;
-const pageDescription = t(locale, "contact.meta.description").replace(
-	"{name}",
-	cv.name,
-);
-
+const copy =
+	locale === "es"
+		? {
+				pageTitle: `Contacto - ${cv.name}`,
+				pageDescription:
+					"Contacta con José Miguel Fernández para proyectos freelance, colaboraciones, oportunidades profesionales y software práctico.",
+				eyebrow: "Contacto",
+				title: "Hablemos sobre lo que necesitas",
+				titleAccent: "construir.",
+				intro:
+					"Envíame una idea de proyecto, una pregunta, una oportunidad o una colaboración. Estoy abierto a software práctico, proyectos freelance y oportunidades profesionales.",
+				linkedin: "Conectar profesionalmente",
+				github: "Ver mi código",
+			}
+		: {
+				pageTitle: `Contact - ${cv.name}`,
+				pageDescription:
+					"Contact José Miguel Fernández for freelance projects, collaborations, professional opportunities and practical software work.",
+				eyebrow: "Get in touch",
+				title: "Let’s talk about what you need to",
+				titleAccent: "build.",
+				intro:
+					"Send a project idea, a question, a role, or a collaboration note. I’m open to practical software work, freelance projects and professional opportunities.",
+				linkedin: "Connect professionally",
+				github: "View my code",
+			};
+const pageTitle = copy.pageTitle;
+const pageDescription = copy.pageDescription;
 const isSent = Astro.url.searchParams.get("sent") === "1";
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
@@ -38,96 +59,70 @@ const structuredData = [
 	title={pageTitle}
 	description={pageDescription}
 	structuredData={structuredData}
-	keywords={[
-		"Contact Software Engineer",
-		"Technical Collaboration",
-		"Product Engineering",
-	]}
+	keywords={["Contact Software Engineer", "Freelance Developer"]}
 >
-	<section class="section-reveal pt-4 md:pt-8">
-		<div class="max-w-3xl">
-			<p
-				class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
-			>
-				{t(locale, "contact.hero.titlePrefix")}
-			</p>
-			<h1
-				class="mt-5 text-4xl leading-tight font-semibold tracking-[-0.045em] text-slate-950 md:text-6xl dark:text-slate-50"
-			>
-				{t(locale, "contact.hero.titleHighlight")}
-			</h1>
-			<p
-				class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300"
-			>
-				{t(locale, "contact.hero.subtitle")}
-			</p>
-		</div>
+	<section class="section-reveal py-10 md:py-20">
+		<p class="eyebrow">{copy.eyebrow}</p>
+		<h1
+			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+		>
+			{copy.title}
+			<span class="accent-text">{copy.titleAccent}</span>
+		</h1>
+		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
+			{copy.intro}
+		</p>
 	</section>
 
-	<section class="section-reveal mt-20 md:mt-28">
-		<div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-			<div class="stagger-children space-y-8">
-				<div class="border-t border-slate-200/70 pt-6 dark:border-slate-800/70">
-					<p
-						class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
-					>
-						{t(locale, "contact.emailLabel")}
-					</p>
-					<a
-						href={`mailto:${cv.email}`}
-						class="mt-3 inline-flex text-lg font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
-					>
-						{cv.email}
-					</a>
-				</div>
-
-				<div class="border-t border-slate-200/70 pt-6 dark:border-slate-800/70">
-					<p
-						class="max-w-sm text-base leading-7 text-slate-600 dark:text-slate-300"
-					>
-						{cv.availability}
-					</p>
-				</div>
-
-				<div class="border-t border-slate-200/70 pt-6 dark:border-slate-800/70">
-					<p
-						class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
-					>
-						{t(locale, "contact.social.linkedin")}
-					</p>
-					<a
-						href={cv.links.linkedin}
-						target="_blank"
-						rel="noreferrer"
-						class="social-link mt-3 inline-flex items-center gap-2 text-lg font-semibold text-slate-950 dark:text-slate-50"
-					>
-						<span>LinkedIn</span>
-						<Icon name="move-up-right" class="social-link-icon h-4 w-4" />
-					</a>
-				</div>
-
-				<div class="border-t border-slate-200/70 pt-6 dark:border-slate-800/70">
-					<p
-						class="text-[11px] font-semibold tracking-[0.22em] text-slate-500 uppercase dark:text-slate-400"
-					>
-						{t(locale, "contact.social.github")}
-					</p>
-					<a
-						href={cv.links.github}
-						target="_blank"
-						rel="noreferrer"
-						class="social-link mt-3 inline-flex items-center gap-2 text-lg font-semibold text-slate-950 dark:text-slate-50"
-					>
-						<span>GitHub</span>
-						<Icon name="move-up-right" class="social-link-icon h-4 w-4" />
-					</a>
-				</div>
-			</div>
+	<section class="section-reveal pb-20 md:pb-28">
+		<div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
+			<aside class="space-y-4">
+				<a
+					href={`mailto:${cv.email}`}
+					class="dark-card hover-card flex items-center justify-between gap-4 p-5"
+				>
+					<span>
+						<span class="eyebrow block">Email</span>
+						<span class="mt-2 block font-bold text-[var(--text)]"
+							>{cv.email}</span
+						>
+					</span>
+					<Icon name="move-up-right" class="h-4 w-4" />
+				</a>
+				<a
+					href={cv.links.linkedin}
+					target="_blank"
+					rel="noreferrer"
+					class="dark-card hover-card flex items-center justify-between gap-4 p-5"
+				>
+					<span>
+						<span class="eyebrow block">LinkedIn</span>
+						<span class="mt-2 block font-bold text-[var(--text)]">
+							{copy.linkedin}
+						</span>
+					</span>
+					<Icon name="move-up-right" class="h-4 w-4" />
+				</a>
+				<a
+					href={cv.links.github}
+					target="_blank"
+					rel="noreferrer"
+					class="dark-card hover-card flex items-center justify-between gap-4 p-5"
+				>
+					<span>
+						<span class="eyebrow block">GitHub</span>
+						<span class="mt-2 block font-bold text-[var(--text)]">
+							{copy.github}
+						</span>
+					</span>
+					<Icon name="move-up-right" class="h-4 w-4" />
+				</a>
+			</aside>
 
 			<div>
 				{
 					isSent && (
-						<p class="mb-6 rounded-[1.5rem] border border-emerald-400/30 bg-emerald-50 px-5 py-4 text-sm text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-200">
+						<p class="mb-6 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 px-5 py-4 text-sm font-semibold text-emerald-200">
 							{t(locale, "contact.success")}
 						</p>
 					)

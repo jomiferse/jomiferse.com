@@ -1,11 +1,13 @@
 {
   "nav": {
     "home": "Inicio",
+    "about": "Sobre mí",
     "projects": "Proyectos",
     "experience": "Experiencia",
     "education": "Formación",
     "contact": "Contacto",
-    "blog": "Blog"
+    "blog": "Blog",
+    "services": "Servicios"
   },
   "a11y": {
     "skipToContent": "Saltar al contenido"
@@ -14,8 +16,8 @@
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "mobileNav": "Navegación móvil",
-    "availability": "Partner técnico",
-    "contactCta": "Hablar de un proyecto",
+    "availability": "Software Engineer",
+    "contactCta": "Empezar un proyecto",
     "contactCtaShort": "Hablemos"
   },
   "theme": {
