@@ -6,16 +6,6 @@ language: "es"
 tags: [mcp, ia, codigo, claude-code, codex, cursor, productividad]
 ---
 
-## Hero image concept
-
-Espacio de trabajo moderno de desarrollador con una capa de protocolo central conectando Claude Code, Codex, Cursor y herramientas internas. Limpio, técnico, sobrio y nada parecido a una foto de stock.
-
-- Prompt: `Create a modern editorial illustration for a developer portfolio blog post about MCP. Show a clean full-stack workspace with a laptop, terminal windows, code editor panels, API cards, and a central protocol layer connecting Claude Code, Codex, Cursor and internal tools. Dark background, subtle neon accents, crisp lines, minimal clutter, highly technical, premium SaaS aesthetic, no people, no stock-photo feel, landscape composition.`
-- Alt text EN: `Developer workspace showing MCP connecting AI coding tools and internal systems`
-- Alt text ES: `Espacio de trabajo de desarrollador donde MCP conecta herramientas de código con IA y sistemas internos`
-- Caption: `Un protocolo, muchas herramientas.`
-- Suggested file path: `/public/images/blog/es/2026-05-21-mcp-para-desarrolladores-protocolo-herramientas-ia/hero.webp`
-
 # MCP para desarrolladores: por qué las herramientas de código con IA se están unificando en un mismo protocolo
 
 Lo interesante de MCP no es el acrónimo. Es el cambio que sugiere.
@@ -50,7 +40,6 @@ En Hacker News, Reddit y X la conversación también ha madurado. Ya no interesa
 
 Esa es la versión útil de la historia. La versión hype dice que los agentes lo escribirán todo. La versión práctica dice que los desarrolladores quieren menos pegamento y mejor gestión del contexto.
 
-> **Visual sugerido:** `diagram-1.webp` — un cliente de IA conectado a varios servidores MCP, cada uno exponiendo herramientas o datos.
 
 ## Por qué debería importarte como full-stack developer
 
