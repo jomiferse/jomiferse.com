@@ -3,7 +3,6 @@ title: "MCP para desarrolladores: por qué las herramientas de código con IA se
 description: "Una visión práctica de MCP, Claude Code, Codex y Cursor desde la perspectiva de un full-stack developer."
 date: "2026-05-21"
 language: "es"
-slug: "mcp-para-desarrolladores-protocolo-herramientas-ia"
 tags: [mcp, ia, codigo, claude-code, codex, cursor, productividad]
 ---
 
