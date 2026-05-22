@@ -16,7 +16,7 @@ The good news: you do not need perfect math to get this right. You need a repeat
 
 ## The short version
 
-Kubernetes treats *requests* and *limits* very differently:
+Kubernetes treats _requests_ and _limits_ very differently:
 
 - **Requests** tell the scheduler where a Pod can run.
 - **Limits** tell the runtime what a container is not allowed to exceed.
@@ -31,12 +31,12 @@ That means right-sizing is not just about saving resources. It is about matching
 
 A lot of Kubernetes confusion comes from mixing these two up.
 
-| Setting | What it affects | What happens if you set it badly |
-|---|---|---|
-| **CPU request** | Scheduling and guaranteed capacity | Too high: pods stay Pending longer or waste node capacity |
-| **CPU limit** | Runtime throttling | Too low: containers get throttled during spikes |
-| **Memory request** | Scheduling and node fit | Too high: inefficient bin packing |
-| **Memory limit** | OOM protection | Too low: the container gets killed |
+| Setting            | What it affects                    | What happens if you set it badly                          |
+| ------------------ | ---------------------------------- | --------------------------------------------------------- |
+| **CPU request**    | Scheduling and guaranteed capacity | Too high: pods stay Pending longer or waste node capacity |
+| **CPU limit**      | Runtime throttling                 | Too low: containers get throttled during spikes           |
+| **Memory request** | Scheduling and node fit            | Too high: inefficient bin packing                         |
+| **Memory limit**   | OOM protection                     | Too low: the container gets killed                        |
 
 For CPU, Kubernetes can throttle a container once it reaches its limit. For memory, the failure mode is harsher: if a container goes over its limit, it can be OOMKilled.
 
@@ -206,4 +206,3 @@ No. HPA scales replicas. It does not fix bad requests or memory limits.
 - Kubernetes: Vertical Pod Autoscaling — https://kubernetes.io/docs/concepts/workloads/autoscaling/vertical-pod-autoscale/
 - Kubernetes: Assign Pod-level CPU and memory resources — https://kubernetes.io/docs/tasks/configure-pod-container/assign-pod-level-resources/
 - Kubernetes blog: v1.36 in-place vertical scaling for pod-level resources — https://kubernetes.io/blog/2026/04/30/kubernetes-v1-36-inplace-pod-level-resources-beta/
-

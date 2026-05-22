@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
-import { getLocaleStaticPaths, t } from "@/i18n";
+import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
 import { buildBreadcrumbList, buildProfilePage } from "@/lib/seo";
 
@@ -17,147 +17,11 @@ const projects = [
 ];
 const featuredProjects = projects.slice(0, 3);
 const focusAreas = cv.focusAreas.slice(0, 4);
-const isEs = locale === "es";
-const skillGroups = isEs
-	? [
-			{
-				title: "Backend / Bases de datos",
-				items: [
-					"Java",
-					"Spring Boot",
-					"Microservicios",
-					"PostgreSQL",
-					"REST APIs",
-				],
-			},
-			{
-				title: "Infraestructura",
-				items: ["Docker", "Kubernetes", "CI/CD", "Liquibase"],
-			},
-			{
-				title: "Frontend",
-				items: ["TypeScript", "React", "Astro", "Tailwind CSS"],
-			},
-			{
-				title: "Observabilidad",
-				items: ["Grafana", "Kibana", "Health checks", "Logs"],
-			},
-			{
-				title: "Mensajería",
-				items: ["RabbitMQ", "Kafka", "Patrones async", "Event-driven"],
-			},
-			{
-				title: "Herramientas",
-				items: ["Git", "Maven", "Testing", "Automatización"],
-			},
-		]
-	: [
-			{
-				title: "Backend / Databases",
-				items: [
-					"Java",
-					"Spring Boot",
-					"Microservices",
-					"PostgreSQL",
-					"REST APIs",
-				],
-			},
-			{
-				title: "Infrastructure",
-				items: ["Docker", "Kubernetes", "CI/CD", "Liquibase"],
-			},
-			{
-				title: "Frontend",
-				items: ["TypeScript", "React", "Astro", "Tailwind CSS"],
-			},
-			{
-				title: "Observability",
-				items: ["Grafana", "Kibana", "Health checks", "Logs"],
-			},
-			{
-				title: "Messaging",
-				items: ["RabbitMQ", "Kafka", "Async patterns", "Event-driven"],
-			},
-			{
-				title: "Tools",
-				items: ["Git", "Maven", "Testing", "Automation"],
-			},
-		];
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
-const copy = isEs
-	? {
-			pageTitle: `Portfolio Full-Stack Developer - ${cv.name}`,
-			pageDescription:
-				"Full-stack developer con base sólida en backend. Construyo webs, herramientas, automatizaciones, sistemas backend y productos web simples, fiables y útiles.",
-			eyebrow: "Full-Stack Developer · Software Engineer · Productos web",
-			title: "Me gusta construir software simple, fiable y",
-			titleAccent: "realmente útil.",
-			intro:
-				"Full-stack developer con bases fuertes en backend. Construyendo productos, herramientas y webs por el camino.",
-			primaryCta: "Ver proyectos",
-			secondaryCta: "Contactar",
-			years: "Años construyendo software",
-			projects: "Proyectos seleccionados",
-			full: "Full-stack",
-			scope: "De backend a producto",
-			aboutEyebrow: "Sobre mí",
-			aboutTitle: "Delivery full-stack con profundidad backend.",
-			aboutP1:
-				"Soy full-stack developer en Granada. Mi base más fuerte está en backend con Java, Spring Boot y sistemas en producción.",
-			aboutP2:
-				"También trabajo en frontend, automatización, CI/CD, Docker y Kubernetes cuando eso ayuda a construir algo útil.",
-			workEyebrow: "Trabajo seleccionado",
-			workTitle: "Algunas cosas en las que he trabajado",
-			viewAll: "Ver todo",
-			buildEyebrow: "Qué puedo construir",
-			buildTitle: "Software para flujos reales, herramientas y productos web.",
-			skillsEyebrow: "Stack",
-			skillsTitle: "Tecnologías con las que trabajo",
-			skillsText:
-				"Backend es mi base, pero puedo moverme por todo el stack cuando el proyecto lo necesita.",
-			ctaEyebrow: "Contacto",
-			ctaTitle: "¿Tienes algo útil que construir?",
-			ctaText:
-				"Cuéntame qué necesitas. Te ayudo a dar forma al siguiente paso.",
-			ctaButton: "Hablemos",
-		}
-	: {
-			pageTitle: `Full-Stack Developer Portfolio - ${cv.name}`,
-			pageDescription:
-				"Full-stack developer with strong backend foundations, building websites, tools, automations, backend systems and web products that are simple, reliable and useful.",
-			eyebrow: "Full-Stack Developer · Software Engineer · Web Products",
-			title: "I like building software that is simple, reliable, and",
-			titleAccent: "actually useful.",
-			intro:
-				"Full-stack developer with strong backend foundations. Building products, tools and websites along the way.",
-			primaryCta: "View Projects",
-			secondaryCta: "Contact Me",
-			years: "Years building software",
-			projects: "Selected projects",
-			full: "Full-stack",
-			scope: "Backend to product",
-			aboutEyebrow: "About me",
-			aboutTitle: "Full-stack delivery with backend depth.",
-			aboutP1:
-				"I’m a full-stack developer based in Granada, Spain. My strongest foundation is backend development with Java, Spring Boot and production systems.",
-			aboutP2:
-				"I also work across frontend, automation, CI/CD, Docker and Kubernetes when that helps ship something useful.",
-			workEyebrow: "Selected work",
-			workTitle: "A few things I’ve worked on",
-			viewAll: "View all",
-			buildEyebrow: "What I can build",
-			buildTitle: "Software for real workflows, tools and web products.",
-			skillsEyebrow: "Stack",
-			skillsTitle: "Technologies I work with",
-			skillsText:
-				"Backend is my base, but I can move across the stack when the project needs it.",
-			ctaEyebrow: "Contact",
-			ctaTitle: "Have something useful to build?",
-			ctaText: "Tell me what you need. I’ll help shape the next step.",
-			ctaButton: "Let’s talk",
-		};
-const pageTitle = copy.pageTitle;
-const pageDescription = copy.pageDescription;
+const page = getTranslations(locale).home.page;
+const skillGroups = page.skills.groups;
+const pageTitle = page.meta.title;
+const pageDescription = page.meta.description;
 const structuredData = [
 	buildProfilePage(site, locale, {
 		name: cv.name,
@@ -185,23 +49,23 @@ const structuredData = [
 	]}
 >
 	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{copy.eyebrow}</p>
+		<p class="eyebrow">{page.eyebrow}</p>
 		<h1
 			class="mt-6 max-w-5xl text-4xl leading-[1.04] font-black text-[var(--text)] sm:text-5xl md:text-7xl"
 		>
-			{copy.title}
-			<span class="accent-text">{copy.titleAccent}</span>
+			{page.title}
+			<span class="accent-text">{page.titleAccent}</span>
 		</h1>
 		<p class="muted-copy mt-7 max-w-2xl text-base leading-8 md:text-xl">
-			{copy.intro}
+			{page.intro}
 		</p>
 		<div class="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row">
 			<a href={`/${locale}/projects`} class="button-primary w-full sm:w-auto">
-				{copy.primaryCta}
+				{page.primaryCta}
 				<Icon name="arrow-right" class="h-4 w-4" />
 			</a>
 			<a href={`/${locale}/contact`} class="button-secondary w-full sm:w-auto"
-				>{copy.secondaryCta}</a
+				>{page.secondaryCta}</a
 			>
 		</div>
 	</section>
@@ -212,19 +76,19 @@ const structuredData = [
 				<p class="text-3xl font-black text-[var(--text)] md:text-4xl">
 					{cv.yearsWorking}+
 				</p>
-				<p class="muted-copy mt-1 text-sm">{copy.years}</p>
+				<p class="muted-copy mt-1 text-sm">{page.stats.years}</p>
 			</div>
 			<div class="text-center">
 				<p class="text-3xl font-black text-[var(--text)] md:text-4xl">
 					{projects.length}+
 				</p>
-				<p class="muted-copy mt-1 text-sm">{copy.projects}</p>
+				<p class="muted-copy mt-1 text-sm">{page.stats.projects}</p>
 			</div>
 			<div class="text-center">
 				<p class="text-3xl font-black text-[var(--text)] md:text-4xl">
-					{copy.full}
+					{page.stats.full}
 				</p>
-				<p class="muted-copy mt-1 text-sm">{copy.scope}</p>
+				<p class="muted-copy mt-1 text-sm">{page.stats.scope}</p>
 			</div>
 		</div>
 	</section>
@@ -232,21 +96,21 @@ const structuredData = [
 	<section class="section-reveal py-16 md:py-28">
 		<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
 			<div>
-				<p class="eyebrow">{copy.aboutEyebrow}</p>
+				<p class="eyebrow">{page.about.eyebrow}</p>
 				<h2
 					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
 				>
-					{copy.aboutTitle}
+					{page.about.title}
 				</h2>
 			</div>
 			<div
 				class="space-y-5 text-base leading-8 text-[var(--text-muted)] md:text-lg"
 			>
 				<p>
-					{copy.aboutP1}
+					{page.about.p1}
 				</p>
 				<p>
-					{copy.aboutP2}
+					{page.about.p2}
 				</p>
 			</div>
 		</div>
@@ -257,15 +121,15 @@ const structuredData = [
 			class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
 		>
 			<div>
-				<p class="eyebrow">{copy.workEyebrow}</p>
+				<p class="eyebrow">{page.work.eyebrow}</p>
 				<h2
 					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
 				>
-					{copy.workTitle}
+					{page.work.title}
 				</h2>
 			</div>
 			<a href={`/${locale}/projects`} class="button-secondary w-fit"
-				>{copy.viewAll}</a
+				>{page.work.viewAll}</a
 			>
 		</div>
 
@@ -294,11 +158,11 @@ const structuredData = [
 	</section>
 
 	<section class="section-reveal py-16 md:py-28">
-		<p class="eyebrow">{copy.buildEyebrow}</p>
+		<p class="eyebrow">{page.build.eyebrow}</p>
 		<h2
 			class="mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
 		>
-			{copy.buildTitle}
+			{page.build.title}
 		</h2>
 		<div
 			class="stagger-children mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 md:gap-5"
@@ -317,19 +181,27 @@ const structuredData = [
 				))
 			}
 		</div>
+		<div class="mt-9 flex flex-col gap-3 sm:flex-row">
+			<a href={`/${locale}/services`} class="button-primary w-full sm:w-auto">
+				{page.build.servicesLink}
+			</a>
+			<a href={`/${locale}/blog`} class="button-secondary w-full sm:w-auto">
+				{page.build.blogLink}
+			</a>
+		</div>
 	</section>
 
 	<section class="section-band section-reveal py-16 md:py-28">
 		<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
 			<div>
-				<p class="eyebrow">{copy.skillsEyebrow}</p>
+				<p class="eyebrow">{page.skills.eyebrow}</p>
 				<h2
 					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
 				>
-					{copy.skillsTitle}
+					{page.skills.title}
 				</h2>
 				<p class="muted-copy mt-5 max-w-xl text-base leading-8">
-					{copy.skillsText}
+					{page.skills.text}
 				</p>
 			</div>
 
@@ -354,20 +226,20 @@ const structuredData = [
 
 	<section class="section-reveal py-16 text-center md:py-28">
 		<div class="dark-card px-5 py-12 sm:px-8 md:py-16">
-			<p class="eyebrow">{copy.ctaEyebrow}</p>
+			<p class="eyebrow">{page.cta.eyebrow}</p>
 			<h2
 				class="mx-auto mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-6xl"
 			>
-				{copy.ctaTitle}
+				{page.cta.title}
 			</h2>
 			<p
 				class="muted-copy mx-auto mt-5 max-w-xl text-base leading-8 md:text-lg"
 			>
-				{copy.ctaText}
+				{page.cta.text}
 			</p>
 			<div class="mt-10 flex justify-center">
 				<a href={`/${locale}/contact`} class="button-primary w-full sm:w-auto"
-					>{copy.ctaButton}</a
+					>{page.cta.button}</a
 				>
 			</div>
 		</div>

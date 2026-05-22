@@ -25,7 +25,89 @@
     "switchToDark": "Switch to dark mode",
     "switchToLight": "Switch to light mode"
   },
+  "languageToggle": {
+    "en": "Switch to English",
+    "es": "Cambiar a Español"
+  },
   "home": {
+    "page": {
+      "meta": {
+        "title": "Full-Stack Developer Portfolio - José Miguel Fernández",
+        "description": "Full-stack developer with strong backend foundations, building websites, tools, automations, backend systems and web products that are simple, reliable and useful."
+      },
+      "eyebrow": "Full-Stack Developer · Software Engineer · Web Products",
+      "title": "I like building software that is simple, reliable, and",
+      "titleAccent": "actually useful.",
+      "intro": "Full-stack developer with strong backend foundations. Building products, tools and websites along the way.",
+      "primaryCta": "View Projects",
+      "secondaryCta": "Contact Me",
+      "stats": {
+        "years": "Years building software",
+        "projects": "Selected projects",
+        "full": "Full-stack",
+        "scope": "Backend to product"
+      },
+      "about": {
+        "eyebrow": "About me",
+        "title": "Full-stack delivery with backend depth.",
+        "p1": "I’m a full-stack developer based in Granada, Spain. My strongest foundation is backend development with Java, Spring Boot and production systems.",
+        "p2": "I also work across frontend, automation, CI/CD, Docker and Kubernetes when that helps ship something useful."
+      },
+      "work": {
+        "eyebrow": "Selected work",
+        "title": "A few things I’ve worked on",
+        "viewAll": "View all"
+      },
+      "build": {
+        "eyebrow": "What I can build",
+        "title": "Software for real workflows, tools and web products.",
+        "servicesLink": "View services",
+        "blogLink": "Read blog"
+      },
+      "skills": {
+        "eyebrow": "Stack",
+        "title": "Technologies I work with",
+        "text": "Backend is my base, but I can move across the stack when the project needs it.",
+        "groups": [
+          {
+            "title": "Backend / Databases",
+            "items": [
+              "Java",
+              "Spring Boot",
+              "Microservices",
+              "PostgreSQL",
+              "REST APIs"
+            ]
+          },
+          {
+            "title": "Infrastructure",
+            "items": ["Docker", "Kubernetes", "CI/CD", "Liquibase"]
+          },
+          {
+            "title": "Frontend",
+            "items": ["TypeScript", "React", "Astro", "Tailwind CSS"]
+          },
+          {
+            "title": "Observability",
+            "items": ["Grafana", "Kibana", "Health checks", "Logs"]
+          },
+          {
+            "title": "Messaging",
+            "items": ["RabbitMQ", "Kafka", "Async patterns", "Event-driven"]
+          },
+          {
+            "title": "Tools",
+            "items": ["Git", "Maven", "Testing", "Automation"]
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Contact",
+        "title": "Have something useful to build?",
+        "text": "Tell me what you need. I’ll help shape the next step.",
+        "button": "Let’s talk"
+      }
+    },
     "meta": {
       "title": "Full-Stack Developer Portfolio",
       "description": "Full-stack developer with strong backend foundations, building practical software for real products and workflows."
@@ -91,6 +173,19 @@
     }
   },
   "projects": {
+    "page": {
+      "meta": {
+        "title": "Projects - José Miguel Fernández",
+        "description": "Selected software projects covering backend systems, web products, internal tools and practical full-stack delivery."
+      },
+      "eyebrow": "Projects",
+      "title": "Selected work, built for",
+      "titleAccent": "real use.",
+      "intro": "A mix of personal projects and professional work I contributed to. Clear problems, practical decisions and maintainable software.",
+      "result": "What changed",
+      "fallback": "Practical software with a clear workflow and maintainable structure.",
+      "view": "View project"
+    },
     "meta": {
       "title": "Projects",
       "description": "Selected engineering work by {name}, focused on systems, product execution and technical delivery."
@@ -116,6 +211,65 @@
     }
   },
   "experience": {
+    "page": {
+      "meta": {
+        "title": "Experience - José Miguel Fernández",
+        "description": "Professional experience of José Miguel Fernández across backend engineering, full-stack delivery, microservices, web platforms and production systems."
+      },
+      "eyebrow": "Experience",
+      "title": "Real systems, real teams and",
+      "titleAccent": "practical software.",
+      "intro": "I work on products and platforms where clarity, reliability and maintainability matter. Backend is my base, with enough full-stack range to move where the product needs me.",
+      "currentLabel": "Now",
+      "timelineLabel": "Timeline",
+      "yearsSuffix": "years building software",
+      "timelineText": "A short view of the environments, responsibilities and systems I have worked on.",
+      "stackLabel": "Stack used",
+      "impactLabel": "Selected work",
+      "cta": {
+        "eyebrow": "Contact",
+        "title": "Want to work together?",
+        "text": "I’m open to freelance projects, collaborations and opportunities where clear, reliable software matters.",
+        "primary": "Let’s talk",
+        "secondary": "View projects"
+      },
+      "signals": [
+        {
+          "title": "Production backend",
+          "body": "APIs, services, integrations and distributed systems designed to keep running."
+        },
+        {
+          "title": "Full-stack delivery",
+          "body": "Frontend, backend and infrastructure when the product needs a complete solution."
+        },
+        {
+          "title": "Team context",
+          "body": "Contribution inside real product, platform, SRE and business environments."
+        }
+      ],
+      "roleStacks": [
+        [
+          "Java",
+          "Spring Boot",
+          "Microservices",
+          "RabbitMQ",
+          "Kubernetes",
+          "Grafana",
+          "Kibana",
+          "CI/CD"
+        ],
+        [
+          "PHP",
+          "Phalcon",
+          "JavaScript",
+          "Docker",
+          "Elasticsearch",
+          "Payments",
+          "Technical SEO",
+          "Core Web Vitals"
+        ]
+      ]
+    },
     "meta": {
       "title": "Experience",
       "description": "Professional experience across backend engineering, full-stack delivery, microservices, web platforms and production systems."
@@ -161,6 +315,18 @@
     "curatedNote": "Curated view — broader stack available on CV and LinkedIn."
   },
   "contact": {
+    "page": {
+      "meta": {
+        "title": "Contact - José Miguel Fernández",
+        "description": "Contact José Miguel Fernández for freelance projects, collaborations, professional opportunities and practical software work."
+      },
+      "eyebrow": "Contact",
+      "title": "Let’s talk about what you want to",
+      "titleAccent": "build.",
+      "intro": "Send a project idea, a question or an opportunity. I read every message and I’ll reply when there’s a good fit.",
+      "linkedin": "Connect on LinkedIn",
+      "github": "View my code"
+    },
     "meta": {
       "title": "Contact",
       "description": "Get in touch with {name} for freelance projects, collaborations, professional opportunities and practical software work."
@@ -182,7 +348,9 @@
     "title": "Simple, reliable software.",
     "description": "Full-stack development with strong backend foundations for real products and workflows.",
     "location": "Based in",
-    "contact": "Contact"
+    "contact": "Contact",
+    "tagline": "Simple, reliable software for real products.",
+    "backToTop": "Back to top ↑"
   },
   "certificationCard": {
     "idLabel": "ID:",
@@ -217,6 +385,23 @@
     "submit": "Send message"
   },
   "blog": {
+    "page": {
+      "meta": {
+        "title": "Blog - José Miguel Fernández",
+        "description": "Short notes about software engineering, systems, tools and practical product building."
+      },
+      "eyebrow": "Writing",
+      "title": "Notes from",
+      "titleAccent": "building software.",
+      "intro": "Short notes about projects, tools, backend work and things I learn while building.",
+      "empty": "No articles published yet.",
+      "cta": {
+        "title": "Need help with a website or tool?",
+        "text": "These notes show how I think while building. If you have a concrete problem, you can view services or contact me directly.",
+        "services": "View services",
+        "contact": "Contact me"
+      }
+    },
     "meta": {
       "title": "Blog",
       "description": "Short notes and articles by {name}."
@@ -230,7 +415,14 @@
       "back": "Back to blog",
       "tags": "Tags",
       "footer": "Did you enjoy this article?",
-      "backToList": "View all posts"
+      "backToList": "View all posts",
+      "cta": {
+        "eyebrow": "Have a similar project?",
+        "title": "I can help turn a technical idea into something useful.",
+        "text": "I work on websites, internal tools, automation workflows, API integrations and focused web applications. If you have a concrete problem, send it over.",
+        "services": "View services",
+        "contact": "Contact me"
+      }
     },
     "sections": {
       "featured": {
@@ -245,6 +437,314 @@
     "empty": {
       "featured": "No featured posts yet.",
       "latest": "No posts published yet."
+    }
+  },
+  "about": {
+    "page": {
+      "meta": {
+        "title": "About - José Miguel Fernández",
+        "description": "About José Miguel Fernández, a full-stack developer with strong backend foundations, focused on practical software, automation and web products."
+      },
+      "eyebrow": "About",
+      "title": "Full-stack developer with a",
+      "titleAccent": "backend base.",
+      "intro": "I build websites, tools, automations and backend systems that are simple to use and easy to maintain.",
+      "what": "What I do",
+      "how": "How I work",
+      "background": "Background",
+      "backgroundTitle": "Backend depth, product sense and a practical way of building.",
+      "backgroundP1": "I currently work on production backend systems with Java, Spring Boot, distributed architecture, CI/CD and observability.",
+      "backgroundP2": "Before that, I worked across full-stack delivery in edtech. That mix shaped how I build: understand the need, choose the right level of system and keep it easy to evolve.",
+      "blocks": [
+        {
+          "title": "Backend Development",
+          "body": "APIs, services, data models and integrations with Java, Spring Boot and production reliability in mind."
+        },
+        {
+          "title": "Frontend Development",
+          "body": "Clean interfaces with Astro, React and TypeScript when the product needs a useful front end."
+        },
+        {
+          "title": "Automation & Internal Tools",
+          "body": "Small tools that reduce manual work, connect workflows and help teams move faster."
+        },
+        {
+          "title": "Freelance Projects",
+          "body": "Websites, redesigns and custom web apps for people who need practical software, not extra complexity."
+        }
+      ],
+      "steps": [
+        {
+          "number": "01",
+          "title": "Understand the problem",
+          "body": "Start with the workflow, the people using it and the constraints around it."
+        },
+        {
+          "number": "02",
+          "title": "Keep it simple",
+          "body": "Build the smallest useful version before adding more moving parts."
+        },
+        {
+          "number": "03",
+          "title": "Make it reliable",
+          "body": "Write clear code, keep the system observable and avoid surprises in production."
+        },
+        {
+          "number": "04",
+          "title": "Improve what matters",
+          "body": "Ship, learn from real use and refine the parts that create value."
+        }
+      ]
+    }
+  },
+  "services": {
+    "hub": {
+      "meta": {
+        "title": "Freelance Full-Stack Services - José Miguel Fernández",
+        "description": "Freelance full-stack web development services for business websites, redesigns, custom applications, internal tools, automation workflows and API integrations."
+      },
+      "eyebrow": "Freelance services",
+      "title": "Useful software",
+      "titleAccent": "for real workflows.",
+      "intro": "I help turn a concrete need into a maintainable website, tool or integration. No agency layer: direct communication, technical clarity and practical delivery.",
+      "bestForLead": "Best for:",
+      "bestForText": "founders, small businesses and teams that need to improve a website, validate an idea or remove manual work without building an unnecessary platform.",
+      "included": "Where I can help",
+      "bestFor": "Best for",
+      "viewService": "View service",
+      "ctaTitle": "Need to improve a site or build a tool?",
+      "ctaText": "Send the context, the problem and what you want to achieve. I’ll reply with the most reasonable next step.",
+      "ctaButton": "Start a Project"
+    },
+    "detail": {
+      "eyebrow": "Freelance service",
+      "problem": "Problem",
+      "whoFor": "Who it is for",
+      "builds": "What I can build",
+      "process": "Process",
+      "faq": "FAQ",
+      "contactEyebrow": "Contact",
+      "contactTitle": "Does this fit your project?",
+      "contactText": "Tell me what you want to build, what you have now and what outcome you need. If it fits, I’ll suggest a clear next step.",
+      "contactButton": "Contact me",
+      "servicesButton": "View all services",
+      "relatedTitle": "This may also fit",
+      "blogTitle": "Read technical notes",
+      "blogText": "I write about backend work, tools, automation and practical decisions while building software.",
+      "blogButton": "Go to blog",
+      "areaServed": "Spain and remote"
+    },
+    "items": {
+      "business-website": {
+        "title": "Business Website",
+        "shortTitle": "Business site",
+        "description": "A clean, fast website that explains what you do, builds trust and makes it easy for the right client to contact you.",
+        "metaTitle": "Business Website Development - José Miguel Fernández",
+        "metaDescription": "Freelance business website development for small teams and solo professionals who need a clear, fast and maintainable website.",
+        "problem": "Your current online presence does not explain the offer clearly, or you are relying on scattered profiles instead of a focused website.",
+        "whoFor": [
+          "Freelancers and consultants who need a credible home for their work.",
+          "Small businesses that want a simple site clients can understand quickly.",
+          "Founders validating a service before investing in a larger product."
+        ],
+        "builds": [
+          "Landing pages and small websites with clear sections and CTAs.",
+          "Responsive Astro pages that are fast and easy to maintain.",
+          "Basic SEO structure, metadata, internal links and deployment notes.",
+          "Contact paths that point people to email, LinkedIn or the existing form."
+        ],
+        "process": [
+          "Clarify the offer, audience and main action you want visitors to take.",
+          "Shape the page structure and copy before writing code.",
+          "Build the responsive site using the current stack and keep it simple.",
+          "Validate build, links, metadata and mobile layout before handoff."
+        ],
+        "faq": [
+          {
+            "question": "Do I need all the content ready before starting?",
+            "answer": "No. A rough outline is enough to start. I can help turn it into clear website copy."
+          },
+          {
+            "question": "Can this be expanded later?",
+            "answer": "Yes. I keep the structure maintainable so service pages, blog posts or product sections can be added later."
+          }
+        ]
+      },
+      "website-redesign": {
+        "title": "Website Redesign",
+        "shortTitle": "Redesign",
+        "description": "A focused redesign for an existing website that feels dated, unclear, slow or difficult to update.",
+        "metaTitle": "Website Redesign for Clearer Conversion - José Miguel Fernández",
+        "metaDescription": "Freelance website redesign for existing sites that need better structure, performance, messaging and conversion paths.",
+        "problem": "Your website exists, but it no longer reflects the quality of your work or makes the next step obvious for visitors.",
+        "whoFor": [
+          "Professionals with an old portfolio or service site.",
+          "Small teams with pages that grew without a clear structure.",
+          "Businesses that want better performance and clearer conversion paths."
+        ],
+        "builds": [
+          "Information architecture cleanup and stronger page hierarchy.",
+          "Responsive layout improvements using the existing visual direction.",
+          "Performance, accessibility and SEO fixes where they matter.",
+          "Clearer calls to action across home, services, blog and contact."
+        ],
+        "process": [
+          "Review the current pages, content, conversion paths and technical issues.",
+          "Decide what to keep, remove, rewrite or reorganize.",
+          "Implement the redesign without changing the identity from scratch.",
+          "Run validation and document any remaining improvement opportunities."
+        ],
+        "faq": [
+          {
+            "question": "Will you redesign everything from zero?",
+            "answer": "Not unless that is the right move. I prefer preserving what works and improving the parts that block clarity or trust."
+          },
+          {
+            "question": "Can you work with an existing Astro or React site?",
+            "answer": "Yes. I can work inside an existing codebase and keep changes focused instead of rebuilding unnecessarily."
+          }
+        ]
+      },
+      "custom-web-application": {
+        "title": "Custom Web Application",
+        "shortTitle": "Web app",
+        "description": "A focused web application built around a real workflow, with the right amount of frontend, backend and data modeling.",
+        "metaTitle": "Custom Web Application Development - José Miguel Fernández",
+        "metaDescription": "Freelance custom web application development with TypeScript, backend systems, databases and practical product delivery.",
+        "problem": "Off-the-shelf tools do not fit the workflow, but a large product build would be too much for the current stage.",
+        "whoFor": [
+          "Founders testing a focused product workflow.",
+          "Teams replacing spreadsheets or manual coordination with a web app.",
+          "Businesses that need a practical tool connected to real data."
+        ],
+        "builds": [
+          "Authenticated dashboards, forms, workflows and data views.",
+          "Backend APIs, databases and integrations when the app needs them.",
+          "Admin areas for managing content, users or operational records.",
+          "Deployment, environment notes and a maintainable project structure."
+        ],
+        "process": [
+          "Map the workflow, users, permissions and data that matter first.",
+          "Define a small first version that can be built and validated.",
+          "Build iteratively with clear interfaces between frontend and backend.",
+          "Validate the critical paths and leave the codebase ready to evolve."
+        ],
+        "faq": [
+          {
+            "question": "Can you build both frontend and backend?",
+            "answer": "Yes. My strongest base is backend, and I can work across the full stack when that helps ship a useful product."
+          },
+          {
+            "question": "Do you build large platforms?",
+            "answer": "I prefer starting with a focused version. If the scope is large, I help split it into realistic phases."
+          }
+        ]
+      },
+      "internal-tools": {
+        "title": "Internal Tools",
+        "shortTitle": "Internal tools",
+        "description": "Small, practical tools for teams that need to manage operations without forcing everything through spreadsheets.",
+        "metaTitle": "Internal Tool Development - José Miguel Fernández",
+        "metaDescription": "Freelance internal tool development for teams that need dashboards, admin panels and operational workflows.",
+        "problem": "Important work is handled manually across spreadsheets, messages and repeated checks, which makes errors easier and progress harder to see.",
+        "whoFor": [
+          "Operations, support or admin teams with repeated manual work.",
+          "Small companies that need a private dashboard or admin panel.",
+          "Teams that want clarity without buying a complex platform."
+        ],
+        "builds": [
+          "Admin panels, dashboards, review queues and simple CRMs.",
+          "Role-aware views for internal workflows.",
+          "Data import, export and reporting screens.",
+          "Small backend services that support daily operations."
+        ],
+        "process": [
+          "Understand the current manual process and where mistakes happen.",
+          "Define the smallest useful tool with clear input and output.",
+          "Build the interface, data model and backend behavior.",
+          "Test the real workflow with the people who will use it."
+        ],
+        "faq": [
+          {
+            "question": "Does an internal tool need to look polished?",
+            "answer": "It needs to be clear, fast and hard to misuse. Visual polish matters when it helps people work better."
+          },
+          {
+            "question": "Can it connect to existing systems?",
+            "answer": "Yes, if those systems expose APIs, exports or another stable integration path."
+          }
+        ]
+      },
+      "automation-workflows": {
+        "title": "Automation Workflows",
+        "shortTitle": "Automation",
+        "description": "Practical automation for repeated work: moving data, sending notifications, generating outputs and keeping systems in sync.",
+        "metaTitle": "Automation Workflow Development - José Miguel Fernández",
+        "metaDescription": "Freelance automation workflow development for repeated business tasks, integrations, notifications and operational tooling.",
+        "problem": "People are spending time on repeatable tasks that software can handle more reliably, but the workflow is too specific for a generic tool.",
+        "whoFor": [
+          "Teams copying data between systems by hand.",
+          "Businesses that need reliable notifications, reports or generated files.",
+          "Founders who want to remove operational drag from a process."
+        ],
+        "builds": [
+          "Scheduled jobs, webhooks and workflow triggers.",
+          "Data cleanup, transformation and synchronization scripts.",
+          "Notifications through email, Slack-like tools or custom channels.",
+          "Simple monitoring and error reporting for critical automations."
+        ],
+        "process": [
+          "Map the manual workflow and define what should happen automatically.",
+          "Identify the trigger, data source, output and failure cases.",
+          "Build the automation with logging and safe fallback behavior.",
+          "Test it with real examples before relying on it."
+        ],
+        "faq": [
+          {
+            "question": "Can everything be automated?",
+            "answer": "No. I focus on the repeatable parts and keep human review where judgment is needed."
+          },
+          {
+            "question": "How do you avoid fragile automations?",
+            "answer": "I prefer APIs, explicit inputs and visible errors over hidden scripts that silently fail."
+          }
+        ]
+      },
+      "api-integrations": {
+        "title": "API Integrations",
+        "shortTitle": "API integrations",
+        "description": "Reliable connections between tools, platforms and internal systems so data can move without manual copying.",
+        "metaTitle": "API Integration Development - José Miguel Fernández",
+        "metaDescription": "Freelance API integration development for connecting products, internal tools, data flows and third-party services.",
+        "problem": "Your tools hold useful data, but they do not talk to each other in the way your workflow needs.",
+        "whoFor": [
+          "Teams connecting CRMs, forms, payments, dashboards or internal systems.",
+          "Products that need to consume or expose an API.",
+          "Businesses replacing manual copy-paste with a reliable data flow."
+        ],
+        "builds": [
+          "REST API clients, server endpoints and webhook receivers.",
+          "Data mapping between third-party tools and internal models.",
+          "Retry, validation and error handling for important flows.",
+          "Documentation for environment variables and operational behavior."
+        ],
+        "process": [
+          "Review the API docs, authentication and limits before committing to the flow.",
+          "Define the data contract and failure behavior.",
+          "Build the integration in a way that is testable and observable.",
+          "Validate real requests and document how to maintain it."
+        ],
+        "faq": [
+          {
+            "question": "Can you work with messy API documentation?",
+            "answer": "Usually, yes. I start by validating the real requests and constraints before building too much around assumptions."
+          },
+          {
+            "question": "Do you only build backend integrations?",
+            "answer": "No. I can build the backend integration and the frontend screens needed to use or monitor it."
+          }
+        ]
+      }
     }
   }
 }

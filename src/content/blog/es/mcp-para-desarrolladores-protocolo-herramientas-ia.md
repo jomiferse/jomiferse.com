@@ -40,7 +40,6 @@ En Hacker News, Reddit y X la conversación también ha madurado. Ya no interesa
 
 Esa es la versión útil de la historia. La versión hype dice que los agentes lo escribirán todo. La versión práctica dice que los desarrolladores quieren menos pegamento y mejor gestión del contexto.
 
-
 ## Por qué debería importarte como full-stack developer
 
 Si trabajas full stack, ya vives justo en el desorden que MCP intenta mejorar.
@@ -77,12 +76,12 @@ Tú sigues revisando la salida. Tú sigues tomando la decisión. Pero el context
 
 ## Dónde ayuda MCP y dónde no
 
-| Herramienta o patrón | Mejor para | Punto débil | Mi lectura |
-| --- | --- | --- | --- |
-| Claude Code | Trabajo en terminal y repos | Sigue necesitando límites claros | Muy fuerte cuando el repo es el contexto principal |
-| Cursor | Edición dentro del IDE y visibilidad | Es fácil depender demasiado de la UI | Muy útil para el día a día |
-| Codex | Tareas estructuradas entre CLI, app y web | Necesita límites bien definidos | Interesante cuando quieres un flujo más amplio |
-| MCP | Acceso compartido a herramientas, docs y sistemas | No sustituye el diseño ni los permisos | Para mí es la capa de pegamento |
+| Herramienta o patrón | Mejor para                                        | Punto débil                            | Mi lectura                                         |
+| -------------------- | ------------------------------------------------- | -------------------------------------- | -------------------------------------------------- |
+| Claude Code          | Trabajo en terminal y repos                       | Sigue necesitando límites claros       | Muy fuerte cuando el repo es el contexto principal |
+| Cursor               | Edición dentro del IDE y visibilidad              | Es fácil depender demasiado de la UI   | Muy útil para el día a día                         |
+| Codex                | Tareas estructuradas entre CLI, app y web         | Necesita límites bien definidos        | Interesante cuando quieres un flujo más amplio     |
+| MCP                  | Acceso compartido a herramientas, docs y sistemas | No sustituye el diseño ni los permisos | Para mí es la capa de pegamento                    |
 
 MCP ayuda cuando hay tareas repetidas, varias herramientas y una buena razón para reutilizar integraciones. Es útil para herramientas internas, soporte, búsqueda en documentación, inspección de código y automatización controlada.
 

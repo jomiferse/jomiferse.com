@@ -1,0 +1,203 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getService, getServices } from "@/lib/services";
+import { getTranslations, locales, t, type Locale } from "@/i18n";
+import { getCv } from "@cv";
+import { buildBreadcrumbList, buildFaqPage, buildServicePage } from "@/lib/seo";
+
+export function getStaticPaths() {
+	return locales.flatMap((locale) =>
+		getServices(locale).map((service) => ({
+			params: { locale, service: service.slug },
+		})),
+	);
+}
+
+const locale = Astro.params.locale as Locale;
+const slug = Astro.params.service ?? "";
+const service = getService(locale, slug);
+if (!service) throw new Error(`Service not found: ${locale}/${slug}`);
+
+const cv = getCv(locale);
+const relatedServices = getServices(locale).filter(
+	(item) => item.slug !== service.slug,
+);
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const servicePath = `/${locale}/services/${service.slug}`;
+const serviceCopy = getTranslations(locale).services.detail;
+const structuredData = [
+	buildServicePage({
+		site,
+		path: servicePath,
+		name: service.title,
+		description: service.description,
+		providerName: cv.name,
+		areaServed: serviceCopy.areaServed,
+	}),
+	buildFaqPage(service.faq),
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
+		{ name: t(locale, "nav.services"), path: `/${locale}/services` },
+		{ name: service.title, path: servicePath },
+	]),
+];
+---
+
+<BaseLayout
+	title={service.metaTitle}
+	description={service.metaDescription}
+	structuredData={structuredData}
+	keywords={[
+		service.title,
+		"Freelance Full-Stack Developer",
+		"Astro",
+		"TypeScript",
+		"Backend Development",
+	]}
+>
+	<section class="section-reveal py-10 md:py-20">
+		<p class="eyebrow">{serviceCopy.eyebrow}</p>
+		<h1
+			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+		>
+			{service.title}
+		</h1>
+		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
+			{service.description}
+		</p>
+		<div class="mt-9 flex flex-col gap-3 sm:flex-row">
+			<a href={`/${locale}/contact`} class="button-primary w-full sm:w-auto">
+				{serviceCopy.contactButton}
+			</a>
+			<a href={`/${locale}/services`} class="button-secondary w-full sm:w-auto">
+				{serviceCopy.servicesButton}
+			</a>
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16">
+		<p class="eyebrow">{serviceCopy.problem}</p>
+		<p class="mt-5 max-w-3xl text-lg leading-8 text-[var(--text)]">
+			{service.problem}
+		</p>
+	</section>
+
+	<section class="section-reveal py-16 md:py-24">
+		<div class="grid gap-5 lg:grid-cols-2">
+			<article class="dark-card p-6">
+				<h2 class="text-3xl font-black text-[var(--text)]">
+					{serviceCopy.whoFor}
+				</h2>
+				<ul class="mt-6 space-y-4">
+					{
+						service.whoFor.map((item) => (
+							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+									✓
+								</span>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</article>
+
+			<article class="dark-card p-6">
+				<h2 class="text-3xl font-black text-[var(--text)]">
+					{serviceCopy.builds}
+				</h2>
+				<ul class="mt-6 space-y-4">
+					{
+						service.builds.map((item) => (
+							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+									✓
+								</span>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</article>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 md:py-24">
+		<p class="eyebrow">{serviceCopy.process}</p>
+		<div class="stagger-children mt-8 grid gap-4 md:grid-cols-4">
+			{
+				service.process.map((step, index) => (
+					<article class="dark-card p-5">
+						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
+							{String(index + 1).padStart(2, "0")}
+						</p>
+						<p class="mt-5 leading-7 text-[var(--text-muted)]">{step}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16 md:py-24">
+		<h2 class="text-3xl font-black text-[var(--text)] md:text-5xl">
+			{serviceCopy.faq}
+		</h2>
+		<div class="mt-8 grid gap-4 md:grid-cols-2">
+			{
+				service.faq.map((item) => (
+					<article class="rounded-3xl border border-[var(--surface-border)] bg-[var(--surface)] p-6">
+						<h3 class="text-xl font-black text-[var(--text)]">
+							{item.question}
+						</h3>
+						<p class="muted-copy mt-4 leading-7">{item.answer}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 md:py-24">
+		<div class="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
+			<article class="dark-card p-6 md:p-8">
+				<p class="eyebrow">{serviceCopy.relatedTitle}</p>
+				<div class="mt-6 flex flex-wrap gap-3">
+					{
+						relatedServices.slice(0, 3).map((item) => (
+							<a
+								href={`/${locale}/services/${item.slug}`}
+								class="tag-pill hover:border-[var(--accent-strong)]"
+							>
+								{item.shortTitle}
+							</a>
+						))
+					}
+				</div>
+			</article>
+
+			<article class="dark-card p-6 md:p-8">
+				<h2 class="text-2xl font-black text-[var(--text)]">
+					{serviceCopy.blogTitle}
+				</h2>
+				<p class="muted-copy mt-4 leading-7">{serviceCopy.blogText}</p>
+				<a href={`/${locale}/blog`} class="button-secondary mt-6">
+					{serviceCopy.blogButton}
+				</a>
+			</article>
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-20 text-center md:py-28">
+		<p class="eyebrow">{serviceCopy.contactEyebrow}</p>
+		<h2
+			class="mx-auto mt-4 max-w-3xl text-4xl font-black text-[var(--text)] md:text-6xl"
+		>
+			{serviceCopy.contactTitle}
+		</h2>
+		<p class="muted-copy mx-auto mt-5 max-w-xl text-lg leading-8">
+			{serviceCopy.contactText}
+		</p>
+		<a href={`/${locale}/contact`} class="button-primary mt-9">
+			{serviceCopy.contactButton}
+		</a>
+	</section>
+</BaseLayout>

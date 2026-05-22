@@ -25,7 +25,89 @@
     "switchToDark": "Cambiar a modo oscuro",
     "switchToLight": "Cambiar a modo claro"
   },
+  "languageToggle": {
+    "en": "Switch to English",
+    "es": "Cambiar a Español"
+  },
   "home": {
+    "page": {
+      "meta": {
+        "title": "Portfolio Full-Stack Developer - José Miguel Fernández",
+        "description": "Full-stack developer con base sólida en backend. Construyo webs, herramientas, automatizaciones, sistemas backend y productos web simples, fiables y útiles."
+      },
+      "eyebrow": "Full-Stack Developer · Software Engineer · Productos web",
+      "title": "Me gusta construir software simple, fiable y",
+      "titleAccent": "realmente útil.",
+      "intro": "Full-stack developer con bases fuertes en backend. Construyendo productos, herramientas y webs por el camino.",
+      "primaryCta": "Ver proyectos",
+      "secondaryCta": "Contactar",
+      "stats": {
+        "years": "Años construyendo software",
+        "projects": "Proyectos seleccionados",
+        "full": "Full-stack",
+        "scope": "De backend a producto"
+      },
+      "about": {
+        "eyebrow": "Sobre mí",
+        "title": "Delivery full-stack con profundidad backend.",
+        "p1": "Soy full-stack developer en Granada. Mi base más fuerte está en backend con Java, Spring Boot y sistemas en producción.",
+        "p2": "También trabajo en frontend, automatización, CI/CD, Docker y Kubernetes cuando eso ayuda a construir algo útil."
+      },
+      "work": {
+        "eyebrow": "Trabajo seleccionado",
+        "title": "Algunas cosas en las que he trabajado",
+        "viewAll": "Ver todo"
+      },
+      "build": {
+        "eyebrow": "Qué puedo construir",
+        "title": "Software para flujos reales, herramientas y productos web.",
+        "servicesLink": "Ver servicios",
+        "blogLink": "Leer blog"
+      },
+      "skills": {
+        "eyebrow": "Stack",
+        "title": "Tecnologías con las que trabajo",
+        "text": "Backend es mi base, pero puedo moverme por todo el stack cuando el proyecto lo necesita.",
+        "groups": [
+          {
+            "title": "Backend / Bases de datos",
+            "items": [
+              "Java",
+              "Spring Boot",
+              "Microservicios",
+              "PostgreSQL",
+              "REST APIs"
+            ]
+          },
+          {
+            "title": "Infraestructura",
+            "items": ["Docker", "Kubernetes", "CI/CD", "Liquibase"]
+          },
+          {
+            "title": "Frontend",
+            "items": ["TypeScript", "React", "Astro", "Tailwind CSS"]
+          },
+          {
+            "title": "Observabilidad",
+            "items": ["Grafana", "Kibana", "Health checks", "Logs"]
+          },
+          {
+            "title": "Mensajería",
+            "items": ["RabbitMQ", "Kafka", "Patrones async", "Event-driven"]
+          },
+          {
+            "title": "Herramientas",
+            "items": ["Git", "Maven", "Testing", "Automatización"]
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Contacto",
+        "title": "¿Tienes algo útil que construir?",
+        "text": "Cuéntame qué necesitas. Te ayudo a dar forma al siguiente paso.",
+        "button": "Hablemos"
+      }
+    },
     "meta": {
       "title": "Portfolio Full-Stack Developer",
       "description": "Full-stack developer con base sólida en backend, construyendo software práctico para productos y flujos reales."
@@ -91,6 +173,19 @@
     }
   },
   "projects": {
+    "page": {
+      "meta": {
+        "title": "Proyectos - José Miguel Fernández",
+        "description": "Proyectos seleccionados de software sobre backend, productos web, herramientas internas y delivery full-stack práctico."
+      },
+      "eyebrow": "Proyectos",
+      "title": "Trabajo seleccionado, construido para",
+      "titleAccent": "uso real.",
+      "intro": "Una mezcla de proyectos personales y trabajo profesional en el que he contribuido. Problemas claros, decisiones prácticas y software mantenible.",
+      "result": "Qué cambió",
+      "fallback": "Software práctico con un flujo claro y una estructura mantenible.",
+      "view": "Ver proyecto"
+    },
     "meta": {
       "title": "Proyectos",
       "description": "Trabajo de ingeniería seleccionado de {name}, centrado en sistemas, producto y delivery técnico."
@@ -116,6 +211,65 @@
     }
   },
   "experience": {
+    "page": {
+      "meta": {
+        "title": "Experiencia - José Miguel Fernández",
+        "description": "Experiencia profesional de José Miguel Fernández en backend, delivery full-stack, microservicios, plataformas web y sistemas en producción."
+      },
+      "eyebrow": "Experiencia",
+      "title": "Sistemas reales, equipos reales y",
+      "titleAccent": "software práctico.",
+      "intro": "Trabajo en productos y plataformas donde la claridad, la fiabilidad y la mantenibilidad importan. Backend es mi base, con capacidad para moverme por todo el stack cuando hace falta.",
+      "currentLabel": "Ahora",
+      "timelineLabel": "Recorrido",
+      "yearsSuffix": "años construyendo software",
+      "timelineText": "Una vista corta de los entornos, responsabilidades y sistemas en los que he trabajado.",
+      "stackLabel": "Stack usado",
+      "impactLabel": "Trabajo destacado",
+      "cta": {
+        "eyebrow": "Contacto",
+        "title": "¿Quieres trabajar conmigo?",
+        "text": "Estoy abierto a proyectos freelance, colaboraciones y oportunidades donde pueda aportar software claro y fiable.",
+        "primary": "Hablemos",
+        "secondary": "Ver proyectos"
+      },
+      "signals": [
+        {
+          "title": "Backend en producción",
+          "body": "APIs, servicios, integraciones y sistemas distribuidos pensados para mantenerse en marcha."
+        },
+        {
+          "title": "Delivery full-stack",
+          "body": "Frontend, backend e infraestructura cuando el producto necesita una solución completa."
+        },
+        {
+          "title": "Trabajo con equipos",
+          "body": "Contribución dentro de entornos reales de producto, plataforma, SRE y negocio."
+        }
+      ],
+      "roleStacks": [
+        [
+          "Java",
+          "Spring Boot",
+          "Microservicios",
+          "RabbitMQ",
+          "Kubernetes",
+          "Grafana",
+          "Kibana",
+          "CI/CD"
+        ],
+        [
+          "PHP",
+          "Phalcon",
+          "JavaScript",
+          "Docker",
+          "Elasticsearch",
+          "Pagos",
+          "SEO técnico",
+          "Core Web Vitals"
+        ]
+      ]
+    },
     "meta": {
       "title": "Experiencia",
       "description": "Experiencia profesional en backend, delivery full-stack, microservicios, plataformas web y sistemas en producción."
@@ -161,6 +315,18 @@
     "curatedNote": "Vista resumida — stack más amplio disponible en CV y LinkedIn."
   },
   "contact": {
+    "page": {
+      "meta": {
+        "title": "Contacto - José Miguel Fernández",
+        "description": "Contacta con José Miguel Fernández para proyectos freelance, colaboraciones, oportunidades profesionales y software práctico."
+      },
+      "eyebrow": "Contacto",
+      "title": "Hablemos sobre lo que quieres",
+      "titleAccent": "construir.",
+      "intro": "Envíame una idea de proyecto, una pregunta o una oportunidad. Leo cada mensaje y responderé cuando haya buen encaje.",
+      "linkedin": "Conectar en LinkedIn",
+      "github": "Ver mi código"
+    },
     "meta": {
       "title": "Contacto",
       "description": "Contacta con {name} para proyectos freelance, colaboraciones, oportunidades profesionales y software práctico."
@@ -182,7 +348,9 @@
     "title": "Software simple y fiable.",
     "description": "Desarrollo full-stack con base sólida en backend para productos y flujos reales.",
     "location": "Ubicado en",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "tagline": "Software simple y fiable para productos reales.",
+    "backToTop": "Volver arriba ↑"
   },
   "certificationCard": {
     "idLabel": "ID:",
@@ -217,6 +385,23 @@
     "submit": "Enviar mensaje"
   },
   "blog": {
+    "page": {
+      "meta": {
+        "title": "Blog - José Miguel Fernández",
+        "description": "Notas breves sobre software engineering, sistemas, herramientas y construcción práctica de producto."
+      },
+      "eyebrow": "Escritura",
+      "title": "Notas de",
+      "titleAccent": "construir software.",
+      "intro": "Notas cortas sobre proyectos, herramientas, backend y cosas que aprendo mientras construyo.",
+      "empty": "Todavía no hay artículos publicados.",
+      "cta": {
+        "title": "¿Buscas ayuda con una web o herramienta?",
+        "text": "Estos artículos muestran cómo pienso al construir. Si tienes un problema concreto, puedes ver servicios o escribirme directamente.",
+        "services": "Ver servicios",
+        "contact": "Contactar"
+      }
+    },
     "meta": {
       "title": "Blog",
       "description": "Notas y artículos breves de {name}."
@@ -230,7 +415,14 @@
       "back": "Volver al blog",
       "tags": "Etiquetas",
       "footer": "¿Te gustó este artículo?",
-      "backToList": "Ver todos los posts"
+      "backToList": "Ver todos los posts",
+      "cta": {
+        "eyebrow": "¿Tienes un proyecto parecido?",
+        "title": "Puedo ayudarte a convertir una idea técnica en algo útil.",
+        "text": "Trabajo en webs, herramientas internas, automatizaciones, integraciones API y aplicaciones web enfocadas. Si tienes un problema concreto, cuéntamelo.",
+        "services": "Ver servicios",
+        "contact": "Contactar"
+      }
     },
     "sections": {
       "featured": {
@@ -245,6 +437,314 @@
     "empty": {
       "featured": "Todavía no hay artículos destacados.",
       "latest": "Todavía no hay artículos publicados."
+    }
+  },
+  "about": {
+    "page": {
+      "meta": {
+        "title": "Sobre mí - José Miguel Fernández",
+        "description": "Sobre José Miguel Fernández, full-stack developer con base sólida en backend, enfocado en software práctico, automatización y productos web."
+      },
+      "eyebrow": "Sobre mí",
+      "title": "Full-stack developer con base",
+      "titleAccent": "backend.",
+      "intro": "Construyo webs, herramientas, automatizaciones y sistemas backend simples de usar y fáciles de mantener.",
+      "what": "Qué hago",
+      "how": "Cómo trabajo",
+      "background": "Trayectoria",
+      "backgroundTitle": "Profundidad backend, criterio de producto y una forma práctica de construir.",
+      "backgroundP1": "Actualmente trabajo en sistemas backend en producción con Java, Spring Boot, arquitectura distribuida, CI/CD y observabilidad.",
+      "backgroundP2": "Antes trabajé en delivery full-stack dentro del sector edtech. Esa mezcla define cómo construyo: entender la necesidad, elegir el nivel correcto de sistema y mantenerlo fácil de evolucionar.",
+      "blocks": [
+        {
+          "title": "Backend Development",
+          "body": "APIs, servicios, modelos de datos e integraciones con Java, Spring Boot y fiabilidad en producción."
+        },
+        {
+          "title": "Frontend Development",
+          "body": "Interfaces limpias con Astro, React y TypeScript cuando el producto necesita un frontend útil."
+        },
+        {
+          "title": "Automatización y herramientas internas",
+          "body": "Herramientas pequeñas que reducen trabajo manual, conectan flujos y ayudan a los equipos a avanzar mejor."
+        },
+        {
+          "title": "Proyectos freelance",
+          "body": "Webs, rediseños y aplicaciones a medida para personas que necesitan software práctico, sin complejidad extra."
+        }
+      ],
+      "steps": [
+        {
+          "number": "01",
+          "title": "Entender el problema",
+          "body": "Empezar por el flujo de trabajo, las personas que lo usan y las restricciones reales."
+        },
+        {
+          "number": "02",
+          "title": "Mantenerlo simple",
+          "body": "Construir la versión útil más pequeña antes de añadir más piezas."
+        },
+        {
+          "number": "03",
+          "title": "Hacerlo fiable",
+          "body": "Escribir código claro, mantener el sistema observable y evitar sorpresas en producción."
+        },
+        {
+          "number": "04",
+          "title": "Mejorar lo importante",
+          "body": "Enviar, aprender del uso real y refinar las partes que aportan valor."
+        }
+      ]
+    }
+  },
+  "services": {
+    "hub": {
+      "meta": {
+        "title": "Servicios freelance full-stack - José Miguel Fernández",
+        "description": "Servicios freelance de desarrollo web full-stack para webs de negocio, rediseños, aplicaciones, herramientas internas, automatizaciones e integraciones API."
+      },
+      "eyebrow": "Servicios freelance",
+      "title": "Software útil",
+      "titleAccent": "para flujos reales.",
+      "intro": "Ayudo a convertir una necesidad concreta en una web, herramienta o integración mantenible. Sin enfoque de agencia: trabajo directo, claridad técnica y entregables prácticos.",
+      "bestForLead": "Ideal para:",
+      "bestForText": "founders, pequeños negocios y equipos que necesitan mejorar una web, validar una idea o quitar trabajo manual sin montar una plataforma innecesaria.",
+      "included": "Dónde puedo ayudar",
+      "bestFor": "Ideal para",
+      "viewService": "Ver servicio",
+      "ctaTitle": "¿Quieres mejorar una web o construir una herramienta?",
+      "ctaText": "Envíame el contexto, el problema y lo que quieres conseguir. Te responderé con el siguiente paso más razonable.",
+      "ctaButton": "Empezar un proyecto"
+    },
+    "detail": {
+      "eyebrow": "Servicio freelance",
+      "problem": "Problema",
+      "whoFor": "Para quién es",
+      "builds": "Qué puedo construir",
+      "process": "Proceso",
+      "faq": "FAQ",
+      "contactEyebrow": "Contacto",
+      "contactTitle": "¿Tiene sentido para tu proyecto?",
+      "contactText": "Cuéntame qué quieres construir, qué tienes ahora y qué resultado buscas. Si encaja, te propondré un siguiente paso claro.",
+      "contactButton": "Contactar",
+      "servicesButton": "Ver todos los servicios",
+      "relatedTitle": "También puede encajar",
+      "blogTitle": "Leer notas técnicas",
+      "blogText": "Escribo sobre backend, herramientas, automatización y decisiones prácticas al construir software.",
+      "blogButton": "Ir al blog",
+      "areaServed": "España y remoto"
+    },
+    "items": {
+      "business-website": {
+        "title": "Web de negocio",
+        "shortTitle": "Web de negocio",
+        "description": "Una web clara y rápida que explica qué haces, genera confianza y facilita que el cliente adecuado contacte contigo.",
+        "metaTitle": "Desarrollo de web de negocio - José Miguel Fernández",
+        "metaDescription": "Desarrollo freelance de webs de negocio para profesionales y equipos pequeños que necesitan una web clara, rápida y mantenible.",
+        "problem": "Tu presencia online no explica bien tu oferta, o dependes de perfiles sueltos en vez de tener una web enfocada.",
+        "whoFor": [
+          "Freelancers y consultores que necesitan una base creíble para su trabajo.",
+          "Pequeños negocios que quieren una web fácil de entender.",
+          "Founders que están validando un servicio antes de invertir en algo más grande."
+        ],
+        "builds": [
+          "Landing pages y webs pequeñas con secciones claras y llamadas a la acción.",
+          "Páginas Astro responsive, rápidas y fáciles de mantener.",
+          "Estructura SEO básica, metadata, enlaces internos y notas de despliegue.",
+          "Caminos de contacto hacia email, LinkedIn o el formulario actual."
+        ],
+        "process": [
+          "Aclarar la oferta, la audiencia y la acción principal que debe tomar el visitante.",
+          "Dar forma a la estructura y el copy antes de escribir código.",
+          "Construir la web responsive con el stack actual y sin complejidad extra.",
+          "Validar build, enlaces, metadata y vista móvil antes de cerrar."
+        ],
+        "faq": [
+          {
+            "question": "¿Necesito tener todo el contenido listo antes de empezar?",
+            "answer": "No. Con un esquema inicial basta para empezar. Puedo ayudarte a convertirlo en copy claro para la web."
+          },
+          {
+            "question": "¿Se puede ampliar más adelante?",
+            "answer": "Sí. Mantengo una estructura que permita añadir páginas de servicio, blog o secciones de producto después."
+          }
+        ]
+      },
+      "website-redesign": {
+        "title": "Rediseño web",
+        "shortTitle": "Rediseño",
+        "description": "Un rediseño enfocado para una web que se siente antigua, confusa, lenta o difícil de actualizar.",
+        "metaTitle": "Rediseño web para mejorar claridad - José Miguel Fernández",
+        "metaDescription": "Rediseño web freelance para sitios existentes que necesitan mejor estructura, rendimiento, mensaje y caminos de conversión.",
+        "problem": "Tu web existe, pero ya no refleja la calidad de tu trabajo o no deja claro cuál es el siguiente paso.",
+        "whoFor": [
+          "Profesionales con un portfolio o web de servicios antigua.",
+          "Equipos pequeños con páginas que crecieron sin una estructura clara.",
+          "Negocios que quieren mejorar rendimiento y caminos de conversión."
+        ],
+        "builds": [
+          "Limpieza de arquitectura de información y jerarquía de página.",
+          "Mejoras responsive respetando la dirección visual existente.",
+          "Ajustes de rendimiento, accesibilidad y SEO donde tengan impacto.",
+          "Llamadas a la acción más claras entre inicio, servicios, blog y contacto."
+        ],
+        "process": [
+          "Revisar páginas actuales, contenido, caminos de conversión y problemas técnicos.",
+          "Decidir qué mantener, eliminar, reescribir o reorganizar.",
+          "Implementar el rediseño sin cambiar la identidad desde cero.",
+          "Ejecutar validaciones y documentar oportunidades pendientes."
+        ],
+        "faq": [
+          {
+            "question": "¿Rediseñas todo desde cero?",
+            "answer": "No salvo que sea lo correcto. Prefiero conservar lo que funciona y mejorar lo que bloquea claridad o confianza."
+          },
+          {
+            "question": "¿Puedes trabajar con una web Astro o React existente?",
+            "answer": "Sí. Puedo trabajar dentro de una base existente y mantener cambios enfocados en vez de rehacer sin necesidad."
+          }
+        ]
+      },
+      "custom-web-application": {
+        "title": "Aplicación web a medida",
+        "shortTitle": "App web",
+        "description": "Una aplicación web enfocada en un flujo real, con el frontend, backend y modelo de datos que hagan falta.",
+        "metaTitle": "Desarrollo de aplicación web a medida - José Miguel Fernández",
+        "metaDescription": "Desarrollo freelance de aplicaciones web a medida con TypeScript, backend, bases de datos y delivery práctico.",
+        "problem": "Las herramientas estándar no encajan con el flujo, pero construir un producto grande sería demasiado para la fase actual.",
+        "whoFor": [
+          "Founders validando un flujo de producto concreto.",
+          "Equipos que quieren sustituir hojas de cálculo o coordinación manual por una app.",
+          "Negocios que necesitan una herramienta práctica conectada a datos reales."
+        ],
+        "builds": [
+          "Dashboards, formularios, flujos y vistas de datos con autenticación.",
+          "APIs backend, bases de datos e integraciones cuando hagan falta.",
+          "Zonas de administración para contenido, usuarios o registros operativos.",
+          "Despliegue, notas de entorno y estructura mantenible."
+        ],
+        "process": [
+          "Mapear flujo, usuarios, permisos y datos importantes.",
+          "Definir una primera versión pequeña que se pueda construir y validar.",
+          "Construir iterativamente con interfaces claras entre frontend y backend.",
+          "Validar los caminos críticos y dejar la base lista para evolucionar."
+        ],
+        "faq": [
+          {
+            "question": "¿Puedes construir frontend y backend?",
+            "answer": "Sí. Mi base más fuerte es backend, y puedo moverme por todo el stack cuando eso ayuda a entregar algo útil."
+          },
+          {
+            "question": "¿Construyes plataformas grandes?",
+            "answer": "Prefiero empezar por una versión enfocada. Si el alcance es grande, ayudo a dividirlo en fases realistas."
+          }
+        ]
+      },
+      "internal-tools": {
+        "title": "Herramientas internas",
+        "shortTitle": "Herramientas internas",
+        "description": "Herramientas pequeñas y prácticas para equipos que necesitan gestionar operaciones sin depender de hojas de cálculo.",
+        "metaTitle": "Desarrollo de herramientas internas - José Miguel Fernández",
+        "metaDescription": "Desarrollo freelance de herramientas internas para dashboards, paneles de administración y flujos operativos.",
+        "problem": "Trabajo importante se gestiona manualmente entre hojas, mensajes y comprobaciones repetidas, lo que facilita errores y oculta el progreso.",
+        "whoFor": [
+          "Equipos de operaciones, soporte o administración con trabajo manual recurrente.",
+          "Pequeñas empresas que necesitan un dashboard privado o panel interno.",
+          "Equipos que quieren claridad sin comprar una plataforma compleja."
+        ],
+        "builds": [
+          "Paneles de administración, dashboards, colas de revisión y CRMs simples.",
+          "Vistas según rol para flujos internos.",
+          "Pantallas de importación, exportación y reporting.",
+          "Pequeños servicios backend para operaciones del día a día."
+        ],
+        "process": [
+          "Entender el proceso manual actual y dónde aparecen errores.",
+          "Definir la herramienta mínima útil con entrada y salida claras.",
+          "Construir interfaz, modelo de datos y comportamiento backend.",
+          "Probar el flujo real con las personas que lo usarán."
+        ],
+        "faq": [
+          {
+            "question": "¿Una herramienta interna necesita estar muy pulida?",
+            "answer": "Necesita ser clara, rápida y difícil de usar mal. El acabado visual importa cuando ayuda a trabajar mejor."
+          },
+          {
+            "question": "¿Puede conectarse a sistemas existentes?",
+            "answer": "Sí, si esos sistemas ofrecen APIs, exportaciones u otra vía estable de integración."
+          }
+        ]
+      },
+      "automation-workflows": {
+        "title": "Automatización de flujos",
+        "shortTitle": "Automatización",
+        "description": "Automatización práctica para trabajo repetitivo: mover datos, enviar avisos, generar salidas y sincronizar sistemas.",
+        "metaTitle": "Desarrollo de automatizaciones - José Miguel Fernández",
+        "metaDescription": "Desarrollo freelance de automatizaciones para tareas repetitivas, integraciones, notificaciones y tooling operativo.",
+        "problem": "El equipo dedica tiempo a tareas repetibles que el software puede hacer de forma más fiable, pero el flujo es demasiado específico para una herramienta genérica.",
+        "whoFor": [
+          "Equipos copiando datos entre sistemas a mano.",
+          "Negocios que necesitan avisos, informes o archivos generados de forma fiable.",
+          "Founders que quieren quitar fricción operativa de un proceso."
+        ],
+        "builds": [
+          "Jobs programados, webhooks y disparadores de flujo.",
+          "Scripts de limpieza, transformación y sincronización de datos.",
+          "Notificaciones por email, herramientas tipo Slack o canales personalizados.",
+          "Monitorización simple y reporte de errores para automatizaciones críticas."
+        ],
+        "process": [
+          "Mapear el flujo manual y definir qué debe ocurrir automáticamente.",
+          "Identificar disparador, fuente de datos, salida y casos de fallo.",
+          "Construir la automatización con logs y comportamiento seguro ante errores.",
+          "Probarla con ejemplos reales antes de depender de ella."
+        ],
+        "faq": [
+          {
+            "question": "¿Se puede automatizar todo?",
+            "answer": "No. Me centro en las partes repetibles y dejo revisión humana donde hace falta criterio."
+          },
+          {
+            "question": "¿Cómo evitas automatizaciones frágiles?",
+            "answer": "Prefiero APIs, entradas explícitas y errores visibles antes que scripts ocultos que fallan en silencio."
+          }
+        ]
+      },
+      "api-integrations": {
+        "title": "Integraciones API",
+        "shortTitle": "APIs",
+        "description": "Conexiones fiables entre herramientas, plataformas y sistemas internos para que los datos se muevan sin copia manual.",
+        "metaTitle": "Desarrollo de integraciones API - José Miguel Fernández",
+        "metaDescription": "Desarrollo freelance de integraciones API para conectar productos, herramientas internas, flujos de datos y servicios externos.",
+        "problem": "Tus herramientas tienen datos útiles, pero no se comunican de la forma que necesita tu flujo de trabajo.",
+        "whoFor": [
+          "Equipos conectando CRMs, formularios, pagos, dashboards o sistemas internos.",
+          "Productos que necesitan consumir o exponer una API.",
+          "Negocios que quieren sustituir copy-paste manual por un flujo fiable."
+        ],
+        "builds": [
+          "Clientes REST, endpoints de servidor y receptores de webhooks.",
+          "Mapeo de datos entre herramientas externas y modelos internos.",
+          "Reintentos, validación y manejo de errores para flujos importantes.",
+          "Documentación de variables de entorno y comportamiento operativo."
+        ],
+        "process": [
+          "Revisar documentación API, autenticación y límites antes de comprometer el flujo.",
+          "Definir contrato de datos y comportamiento ante fallos.",
+          "Construir la integración de forma testeable y observable.",
+          "Validar peticiones reales y documentar cómo mantenerla."
+        ],
+        "faq": [
+          {
+            "question": "¿Puedes trabajar con documentación API poco clara?",
+            "answer": "Normalmente sí. Empiezo validando peticiones y límites reales antes de construir demasiado sobre suposiciones."
+          },
+          {
+            "question": "¿Solo haces integraciones backend?",
+            "answer": "No. Puedo construir la integración backend y las pantallas frontend necesarias para usarla o monitorizarla."
+          }
+        ]
+      }
     }
   }
 }

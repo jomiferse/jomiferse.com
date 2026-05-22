@@ -47,6 +47,20 @@ export interface CreativeWorkSeo {
 	technologies?: string[];
 }
 
+export interface ServiceSeo {
+	site: string;
+	path: string;
+	name: string;
+	description: string;
+	providerName: string;
+	areaServed?: string;
+}
+
+export interface FaqSeo {
+	question: string;
+	answer: string;
+}
+
 export const absoluteUrl = (site: string, path: string) =>
 	new URL(path, site).toString();
 
@@ -172,4 +186,37 @@ export const buildCreativeWork = (
 	},
 	keywords: project.technologies?.join(", "),
 	url: absoluteUrl(site, "/projects"),
+});
+
+export const buildServicePage = ({
+	site,
+	path,
+	name,
+	description,
+	providerName,
+	areaServed = "Remote",
+}: ServiceSeo): StructuredData => ({
+	"@context": "https://schema.org",
+	"@type": "Service",
+	name,
+	description,
+	url: absoluteUrl(site, path),
+	areaServed,
+	provider: {
+		"@type": "Person",
+		name: providerName,
+	},
+});
+
+export const buildFaqPage = (faqs: FaqSeo[]): StructuredData => ({
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqs.map((faq) => ({
+		"@type": "Question",
+		name: faq.question,
+		acceptedAnswer: {
+			"@type": "Answer",
+			text: faq.answer,
+		},
+	})),
 });

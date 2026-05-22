@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getLocaleStaticPaths, t } from "@/i18n";
-import { getCv } from "@cv";
+import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
 export function getStaticPaths() {
@@ -9,134 +8,14 @@ export function getStaticPaths() {
 }
 
 const { locale } = Astro.params;
-const cv = getCv(locale);
-const isEs = locale === "es";
-const copy = isEs
-	? {
-			pageTitle: `Sobre mí - ${cv.name}`,
-			pageDescription:
-				"Sobre José Miguel Fernández, full-stack developer con base sólida en backend, enfocado en software práctico, automatización y productos web.",
-			eyebrow: "Sobre mí",
-			title: "Full-stack developer con base",
-			titleAccent: "backend.",
-			intro:
-				"Construyo webs, herramientas, automatizaciones y sistemas backend simples de usar y fáciles de mantener.",
-			what: "Qué hago",
-			how: "Cómo trabajo",
-			background: "Trayectoria",
-			backgroundTitle:
-				"Profundidad backend, criterio de producto y una forma práctica de construir.",
-			backgroundP1:
-				"Actualmente trabajo en sistemas backend en producción con Java, Spring Boot, arquitectura distribuida, CI/CD y observabilidad.",
-			backgroundP2:
-				"Antes trabajé en delivery full-stack dentro del sector edtech. Esa mezcla define cómo construyo: entender la necesidad, elegir el nivel correcto de sistema y mantenerlo fácil de evolucionar.",
-			blocks: [
-				{
-					title: "Backend Development",
-					body: "APIs, servicios, modelos de datos e integraciones con Java, Spring Boot y fiabilidad en producción.",
-				},
-				{
-					title: "Frontend Development",
-					body: "Interfaces limpias con Astro, React y TypeScript cuando el producto necesita un frontend útil.",
-				},
-				{
-					title: "Automatización y herramientas internas",
-					body: "Herramientas pequeñas que reducen trabajo manual, conectan flujos y ayudan a los equipos a avanzar mejor.",
-				},
-				{
-					title: "Proyectos freelance",
-					body: "Webs, rediseños y aplicaciones a medida para personas que necesitan software práctico, sin complejidad extra.",
-				},
-			],
-			steps: [
-				[
-					"01",
-					"Entender el problema",
-					"Empezar por el flujo de trabajo, las personas que lo usan y las restricciones reales.",
-				],
-				[
-					"02",
-					"Mantenerlo simple",
-					"Construir la versión útil más pequeña antes de añadir más piezas.",
-				],
-				[
-					"03",
-					"Hacerlo fiable",
-					"Escribir código claro, mantener el sistema observable y evitar sorpresas en producción.",
-				],
-				[
-					"04",
-					"Mejorar lo importante",
-					"Enviar, aprender del uso real y refinar las partes que aportan valor.",
-				],
-			],
-		}
-	: {
-			pageTitle: `About - ${cv.name}`,
-			pageDescription:
-				"About José Miguel Fernández, a full-stack developer with strong backend foundations, focused on practical software, automation and web products.",
-			eyebrow: "About",
-			title: "Full-stack developer with a",
-			titleAccent: "backend base.",
-			intro:
-				"I build websites, tools, automations and backend systems that are simple to use and easy to maintain.",
-			what: "What I do",
-			how: "How I work",
-			background: "Background",
-			backgroundTitle:
-				"Backend depth, product sense and a practical way of building.",
-			backgroundP1:
-				"I currently work on production backend systems with Java, Spring Boot, distributed architecture, CI/CD and observability.",
-			backgroundP2:
-				"Before that, I worked across full-stack delivery in edtech. That mix shaped how I build: understand the need, choose the right level of system and keep it easy to evolve.",
-			blocks: [
-				{
-					title: "Backend Development",
-					body: "APIs, services, data models and integrations with Java, Spring Boot and production reliability in mind.",
-				},
-				{
-					title: "Frontend Development",
-					body: "Clean interfaces with Astro, React and TypeScript when the product needs a useful front end.",
-				},
-				{
-					title: "Automation & Internal Tools",
-					body: "Small tools that reduce manual work, connect workflows and help teams move faster.",
-				},
-				{
-					title: "Freelance Projects",
-					body: "Websites, redesigns and custom web apps for people who need practical software, not extra complexity.",
-				},
-			],
-			steps: [
-				[
-					"01",
-					"Understand the problem",
-					"Start with the workflow, the people using it and the constraints around it.",
-				],
-				[
-					"02",
-					"Keep it simple",
-					"Build the smallest useful version before adding more moving parts.",
-				],
-				[
-					"03",
-					"Make it reliable",
-					"Write clear code, keep the system observable and avoid surprises in production.",
-				],
-				[
-					"04",
-					"Improve what matters",
-					"Ship, learn from real use and refine the parts that create value.",
-				],
-			],
-		};
+const page = getTranslations(locale).about.page;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	buildCollectionPage(
 		site,
 		`/${locale}/about`,
-		copy.pageTitle,
-		copy.pageDescription,
+		page.meta.title,
+		page.meta.description,
 	),
 	buildBreadcrumbList(site, [
 		{ name: t(locale, "nav.home"), path: `/${locale}` },
@@ -146,26 +25,26 @@ const structuredData = [
 ---
 
 <BaseLayout
-	title={copy.pageTitle}
-	description={copy.pageDescription}
+	title={page.meta.title}
+	description={page.meta.description}
 	structuredData={structuredData}
 >
 	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{copy.eyebrow}</p>
+		<p class="eyebrow">{page.eyebrow}</p>
 		<h1
 			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
 		>
-			{copy.title}
-			<span class="accent-text">{copy.titleAccent}</span>
+			{page.title}
+			<span class="accent-text">{page.titleAccent}</span>
 		</h1>
-		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">{copy.intro}</p>
+		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">{page.intro}</p>
 	</section>
 
 	<section class="section-band section-reveal py-20 md:py-28">
-		<p class="eyebrow">{copy.what}</p>
+		<p class="eyebrow">{page.what}</p>
 		<div class="stagger-children mt-8 grid gap-5 md:grid-cols-2">
 			{
-				copy.blocks.map((block) => (
+				page.blocks.map((block) => (
 					<article class="dark-card hover-card p-6">
 						<h2 class="text-2xl font-black text-[var(--text)]">
 							{block.title}
@@ -179,17 +58,17 @@ const structuredData = [
 
 	<section class="section-reveal py-20 md:py-28">
 		<h2 class="text-4xl font-black text-[var(--text)] md:text-5xl">
-			{copy.how}
+			{page.how}
 		</h2>
 		<div class="hairline mt-10 divide-y border-y">
 			{
-				copy.steps.map(([number, title, body]) => (
+				page.steps.map((step) => (
 					<div class="grid gap-4 py-6 md:grid-cols-[6rem_0.55fr_1fr] md:items-center">
 						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
-							{number}
+							{step.number}
 						</p>
-						<h3 class="text-xl font-black text-[var(--text)]">{title}</h3>
-						<p class="muted-copy leading-7">{body}</p>
+						<h3 class="text-xl font-black text-[var(--text)]">{step.title}</h3>
+						<p class="muted-copy leading-7">{step.body}</p>
 					</div>
 				))
 			}
@@ -197,15 +76,15 @@ const structuredData = [
 	</section>
 
 	<section class="section-band section-reveal py-20 md:py-28">
-		<p class="eyebrow">{copy.background}</p>
+		<p class="eyebrow">{page.background}</p>
 		<h2
 			class="mt-4 max-w-3xl text-4xl font-black text-[var(--text)] md:text-5xl"
 		>
-			{copy.backgroundTitle}
+			{page.backgroundTitle}
 		</h2>
 		<div class="muted-copy mt-8 max-w-3xl space-y-5 text-lg leading-8">
-			<p>{copy.backgroundP1}</p>
-			<p>{copy.backgroundP2}</p>
+			<p>{page.backgroundP1}</p>
+			<p>{page.backgroundP2}</p>
 		</div>
 	</section>
 </BaseLayout>

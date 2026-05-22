@@ -2,7 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
 import { Icon } from "astro-icon/components";
-import { getLocaleFromPath, t } from "@/i18n";
+import { getLocaleFromPath, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
 import { buildBreadcrumbList } from "@/lib/seo";
 
@@ -10,34 +10,9 @@ export const prerender = false;
 
 const locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
-const isEs = locale === "es";
-const copy = isEs
-	? {
-			pageTitle: `Contacto - ${cv.name}`,
-			pageDescription:
-				"Contacta con José Miguel Fernández para proyectos freelance, colaboraciones, oportunidades profesionales y software práctico.",
-			eyebrow: "Contacto",
-			title: "Hablemos sobre lo que quieres",
-			titleAccent: "construir.",
-			intro:
-				"Envíame una idea de proyecto, una pregunta o una oportunidad. Leo cada mensaje y responderé cuando haya buen encaje.",
-			linkedin: "Conectar en LinkedIn",
-			github: "Ver mi código",
-		}
-	: {
-			pageTitle: `Contact - ${cv.name}`,
-			pageDescription:
-				"Contact José Miguel Fernández for freelance projects, collaborations, professional opportunities and practical software work.",
-			eyebrow: "Contact",
-			title: "Let’s talk about what you want to",
-			titleAccent: "build.",
-			intro:
-				"Send a project idea, a question or an opportunity. I read every message and I’ll reply when there’s a good fit.",
-			linkedin: "Connect on LinkedIn",
-			github: "View my code",
-		};
-const pageTitle = copy.pageTitle;
-const pageDescription = copy.pageDescription;
+const page = getTranslations(locale).contact.page;
+const pageTitle = page.meta.title;
+const pageDescription = page.meta.description;
 const isSent = Astro.url.searchParams.get("sent") === "1";
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
@@ -62,15 +37,15 @@ const structuredData = [
 	keywords={["Contact Software Engineer", "Freelance Developer"]}
 >
 	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{copy.eyebrow}</p>
+		<p class="eyebrow">{page.eyebrow}</p>
 		<h1
 			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
 		>
-			{copy.title}
-			<span class="accent-text">{copy.titleAccent}</span>
+			{page.title}
+			<span class="accent-text">{page.titleAccent}</span>
 		</h1>
 		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
-			{copy.intro}
+			{page.intro}
 		</p>
 	</section>
 
@@ -98,7 +73,7 @@ const structuredData = [
 					<span>
 						<span class="eyebrow block">LinkedIn</span>
 						<span class="mt-2 block font-bold text-[var(--text)]">
-							{copy.linkedin}
+							{page.linkedin}
 						</span>
 					</span>
 					<Icon name="move-up-right" class="h-4 w-4" />
@@ -112,7 +87,7 @@ const structuredData = [
 					<span>
 						<span class="eyebrow block">GitHub</span>
 						<span class="mt-2 block font-bold text-[var(--text)]">
-							{copy.github}
+							{page.github}
 						</span>
 					</span>
 					<Icon name="move-up-right" class="h-4 w-4" />

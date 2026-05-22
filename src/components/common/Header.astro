@@ -59,7 +59,10 @@ const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 			<nav aria-label="Main" class="hidden items-center gap-1 lg:flex">
 				{
 					links.map((link) => {
-						const active = normalizedCurrent === link.href;
+						const active =
+							normalizedCurrent === link.href ||
+							(link.href !== "/" &&
+								normalizedCurrent.startsWith(`${link.href}/`));
 						return (
 							<a
 								href={withLocale(link.href, locale)}
@@ -142,7 +145,10 @@ const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 		<nav class="flex flex-col gap-2">
 			{
 				links.map((link) => {
-					const active = normalizedCurrent === link.href;
+					const active =
+						normalizedCurrent === link.href ||
+						(link.href !== "/" &&
+							normalizedCurrent.startsWith(`${link.href}/`));
 					return (
 						<a
 							href={withLocale(link.href, locale)}
@@ -167,7 +173,7 @@ const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 			class="button-primary mt-6 w-full"
 			data-close-menu
 		>
-			{t(locale, "header.contactCta")}
+			{t(locale, "header.contactCtaShort")}
 			<Icon name="arrow-right" class="h-4 w-4" />
 		</a>
 	</aside>

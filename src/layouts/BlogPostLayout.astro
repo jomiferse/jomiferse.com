@@ -1,5 +1,5 @@
 ---
-import { getLocaleFromPath, type Locale, t } from "@/i18n";
+import { getLocaleFromPath, getTranslations, type Locale, t } from "@/i18n";
 
 interface Frontmatter {
 	title: string;
@@ -15,6 +15,7 @@ const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
 
 const blogPath = `/${locale}/blog`;
 const dateLocale = locale === "es" ? "es-ES" : "en-GB";
+const postCta = getTranslations(locale).blog.post.cta;
 ---
 
 <article>
@@ -76,6 +77,24 @@ const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 			<slot />
 		</div>
 	</div>
+
+	<section class="section-band mt-20 rounded-3xl px-5 py-10 sm:px-8 md:px-10">
+		<p class="eyebrow">{postCta.eyebrow}</p>
+		<h2
+			class="mt-4 max-w-2xl text-3xl font-black text-[var(--text)] md:text-4xl"
+		>
+			{postCta.title}
+		</h2>
+		<p class="muted-copy mt-5 max-w-2xl leading-7">{postCta.text}</p>
+		<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+			<a href={`/${locale}/services`} class="button-primary w-full sm:w-auto">
+				{postCta.services}
+			</a>
+			<a href={`/${locale}/contact`} class="button-secondary w-full sm:w-auto">
+				{postCta.contact}
+			</a>
+		</div>
+	</section>
 
 	<footer
 		class="mt-20 border-t border-slate-200/70 pt-10 dark:border-slate-800/70"

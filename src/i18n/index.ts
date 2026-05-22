@@ -13,6 +13,14 @@ export function getLocaleFromPath(pathname: string): Locale {
 export const getLocaleStaticPaths = () =>
 	locales.map((locale) => ({ params: { locale } }));
 
+export function getServiceItems(locale: Locale) {
+	return dict[locale].services.items;
+}
+
+export function getTranslations(locale: Locale) {
+	return dict[locale];
+}
+
 export function t(locale: Locale, key: string): string {
 	const parts = key.split(".");
 	let cur: any = dict[locale];

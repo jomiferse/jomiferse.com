@@ -40,7 +40,6 @@ On Hacker News, Reddit, and X, the discussion has also matured. People are less 
 
 That is the useful version of the story. The hype version says agents will write everything. The practical version says developers want less glue code and better context handling.
 
-
 ## Why full-stack developers should care
 
 If you work full stack, you already live in the exact mess MCP tries to improve.
@@ -77,12 +76,12 @@ You still review the output. You still make the call. But the context is not sca
 
 ## Where MCP helps, and where it does not
 
-| Tool or pattern | Best for | Weak spot | My take |
-| --- | --- | --- | --- |
-| Claude Code | Terminal-first coding and repo work | Still needs guardrails | Strong when the repo is the main context |
-| Cursor | IDE-native editing and visibility | Easy to over-rely on the UI | Good for day-to-day editing |
-| Codex | Structured tasks across CLI, app, and web | Needs clear task boundaries | Useful when you want a broader workflow |
-| MCP | Shared access to tools, docs, and systems | Not a replacement for design or permissions | Best as the glue layer |
+| Tool or pattern | Best for                                  | Weak spot                                   | My take                                  |
+| --------------- | ----------------------------------------- | ------------------------------------------- | ---------------------------------------- |
+| Claude Code     | Terminal-first coding and repo work       | Still needs guardrails                      | Strong when the repo is the main context |
+| Cursor          | IDE-native editing and visibility         | Easy to over-rely on the UI                 | Good for day-to-day editing              |
+| Codex           | Structured tasks across CLI, app, and web | Needs clear task boundaries                 | Useful when you want a broader workflow  |
+| MCP             | Shared access to tools, docs, and systems | Not a replacement for design or permissions | Best as the glue layer                   |
 
 MCP helps when you have repeated tasks, multiple tools, and a reason to reuse integrations. It is useful for internal tools, support workflows, documentation lookup, codebase inspection, and controlled automation.
 

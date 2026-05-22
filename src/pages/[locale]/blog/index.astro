@@ -1,8 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getLocaleStaticPaths, t } from "@/i18n";
+import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCollection } from "astro:content";
-import { getCv } from "@cv";
 import BlogPostCard from "@/components/cards/BlogPostCard.astro";
 import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
@@ -11,7 +10,6 @@ export function getStaticPaths() {
 }
 
 const { locale } = Astro.params;
-const cv = getCv(locale);
 const posts = (await getCollection("blog"))
 	.filter((p) => p.id.startsWith(`${locale}/`))
 	.filter((p) => !p.data.draft)
@@ -19,33 +17,10 @@ const posts = (await getCollection("blog"))
 
 const toLocalSlug = (id: string) => id.replace(new RegExp(`^${locale}/`), "");
 const blogBasePath = `/${locale}/blog`;
-const isEs = locale === "es";
-const dateLocale = isEs ? "es-ES" : "en-GB";
-const copy = isEs
-	? {
-			pageTitle: `Blog - ${cv.name}`,
-			pageDescription:
-				"Notas breves sobre software engineering, sistemas, herramientas y construcción práctica de producto.",
-			eyebrow: "Escritura",
-			title: "Notas de",
-			titleAccent: "construir software.",
-			intro:
-				"Notas cortas sobre proyectos, herramientas, backend y cosas que aprendo mientras construyo.",
-			empty: "Todavía no hay artículos publicados.",
-		}
-	: {
-			pageTitle: `Blog - ${cv.name}`,
-			pageDescription:
-				"Short notes about software engineering, systems, tools and practical product building.",
-			eyebrow: "Writing",
-			title: "Notes from",
-			titleAccent: "building software.",
-			intro:
-				"Short notes about projects, tools, backend work and things I learn while building.",
-			empty: "No articles published yet.",
-		};
-const pageTitle = copy.pageTitle;
-const pageDescription = copy.pageDescription;
+const dateLocale = locale === "es" ? "es-ES" : "en-GB";
+const page = getTranslations(locale).blog.page;
+const pageTitle = page.meta.title;
+const pageDescription = page.meta.description;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	buildCollectionPage(site, blogBasePath, pageTitle, pageDescription),
@@ -63,15 +38,15 @@ const structuredData = [
 	keywords={["Engineering Blog", "Software Engineering", "Automation"]}
 >
 	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{copy.eyebrow}</p>
+		<p class="eyebrow">{page.eyebrow}</p>
 		<h1
 			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
 		>
-			{copy.title}
-			<span class="accent-text">{copy.titleAccent}</span>
+			{page.title}
+			<span class="accent-text">{page.titleAccent}</span>
 		</h1>
 		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
-			{copy.intro}
+			{page.intro}
 		</p>
 	</section>
 
@@ -95,8 +70,25 @@ const structuredData = [
 					))}
 				</div>
 			) : (
-				<div class="dark-card p-6 text-[var(--text-muted)]">{copy.empty}</div>
+				<div class="dark-card p-6 text-[var(--text-muted)]">{page.empty}</div>
 			)
 		}
+	</section>
+
+	<section class="section-band section-reveal py-16 text-center md:py-20">
+		<h2 class="text-3xl font-black text-[var(--text)] md:text-5xl">
+			{page.cta.title}
+		</h2>
+		<p class="muted-copy mx-auto mt-5 max-w-2xl leading-7">
+			{page.cta.text}
+		</p>
+		<div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+			<a href={`/${locale}/services`} class="button-primary w-full sm:w-auto">
+				{page.cta.services}
+			</a>
+			<a href={`/${locale}/contact`} class="button-secondary w-full sm:w-auto">
+				{page.cta.contact}
+			</a>
+		</div>
 	</section>
 </BaseLayout>

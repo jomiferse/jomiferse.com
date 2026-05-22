@@ -10,13 +10,13 @@ tags: [kubernetes, devops, cloud-native, rendimiento, platform-engineering]
 
 Si alguna vez has copiado el bloque `resources:` de otro servicio y has cruzado los dedos, este artículo es para ti.
 
-Ajustar el tamaño de los pods en Kubernetes parece un detalle menor, pero en la práctica decide si tu plataforma va fina o si acabas pagando de más, viendo *throttling* en CPU, `OOMKilled` y latencias raras que nadie entiende del todo.
+Ajustar el tamaño de los pods en Kubernetes parece un detalle menor, pero en la práctica decide si tu plataforma va fina o si acabas pagando de más, viendo _throttling_ en CPU, `OOMKilled` y latencias raras que nadie entiende del todo.
 
 La buena noticia: no necesitas una fórmula mágica. Necesitas un método razonable para leer tu carga real y entender qué hacen de verdad los `requests` y los `limits`.
 
 ## La idea corta
 
-Kubernetes trata *requests* y *limits* como cosas distintas:
+Kubernetes trata _requests_ y _limits_ como cosas distintas:
 
 - **Requests**: le dicen al scheduler dónde puede colocar el Pod.
 - **Limits**: marcan el tope que un contenedor no debería superar.
@@ -25,20 +25,20 @@ Eso significa que ajustar un Pod no va solo de ahorrar recursos. Va de encajar l
 
 > **Regla práctica:** parte del uso real, no de una convención del equipo.
 >
-> Los peores valores suelen salir de copiar un YAML anterior sin mirar tráfico, memoria en uso o *throttling*.
+> Los peores valores suelen salir de copiar un YAML anterior sin mirar tráfico, memoria en uso o _throttling_.
 
 ## Qué hacen realmente requests y limits
 
 Gran parte de la confusión con Kubernetes viene de mezclar estas dos ideas.
 
-| Ajuste | Qué afecta | Qué pasa si lo pones mal |
-|---|---|---|
-| **CPU request** | Scheduling y capacidad garantizada | Demasiado alto: los Pods tardan más en arrancar o desperdicias capacidad del nodo |
-| **CPU limit** | *Throttling* en ejecución | Demasiado bajo: el contenedor se estrangula en picos |
-| **Memory request** | Scheduling y encaje en el nodo | Demasiado alto: mala utilización del nodo |
-| **Memory limit** | Protección frente a memoria excesiva | Demasiado bajo: el contenedor acaba en `OOMKilled` |
+| Ajuste             | Qué afecta                           | Qué pasa si lo pones mal                                                          |
+| ------------------ | ------------------------------------ | --------------------------------------------------------------------------------- |
+| **CPU request**    | Scheduling y capacidad garantizada   | Demasiado alto: los Pods tardan más en arrancar o desperdicias capacidad del nodo |
+| **CPU limit**      | _Throttling_ en ejecución            | Demasiado bajo: el contenedor se estrangula en picos                              |
+| **Memory request** | Scheduling y encaje en el nodo       | Demasiado alto: mala utilización del nodo                                         |
+| **Memory limit**   | Protección frente a memoria excesiva | Demasiado bajo: el contenedor acaba en `OOMKilled`                                |
 
-Para CPU, Kubernetes puede limitar el contenedor mediante *throttling* cuando llega al límite. Para memoria, el fallo suele ser más brusco: si te pasas del límite, el contenedor puede morir con `OOMKilled`.
+Para CPU, Kubernetes puede limitar el contenedor mediante _throttling_ cuando llega al límite. Para memoria, el fallo suele ser más brusco: si te pasas del límite, el contenedor puede morir con `OOMKilled`.
 
 Así que si solo te quedas con una idea, que sea esta:
 
@@ -65,8 +65,8 @@ Parece obvio, pero muchísimos equipos se saltan el paso 1 y van directos al YAM
 Si quieres dimensionar bien un servicio, no te quedes con la media del gráfico de CPU:
 
 - Uso de CPU en el tiempo, sobre todo p95 y picos cortos
-- *Working set* de memoria, no solo el tamaño residente
-- Tiempo de CPU *throttled*
+- _Working set_ de memoria, no solo el tamaño residente
+- Tiempo de CPU _throttled_
 - Eventos `OOMKilled` y reinicios
 - Latencia a nivel de petición
 - Comportamiento del HPA si ya hay autoscaling
@@ -79,7 +79,7 @@ Una forma razonable de pensar en esto es:
 
 - **CPU request**: empieza cerca del p95 estable del servicio con carga real.
 - **CPU limit**: ponlo por encima de los picos normales, o déjalo sin definir si tu política de plataforma lo permite y el servicio es sensible a latencia.
-- **Memory request**: usa el *working set* observado con algo de margen.
+- **Memory request**: usa el _working set_ observado con algo de margen.
 - **Memory limit**: pon un techo realista, pero no tan apretado que un pico corto o un GC te manden el contenedor a reiniciarse.
 
 No es una fórmula mágica. Es una forma de dejar de inventarte los números.
@@ -160,7 +160,7 @@ Ese último punto importa más de lo que parece. Si nadie sabe por qué se eligi
 2. CPU y memoria medidas por separado
 3. p95/p99 mirados, no solo medias
 4. Sé si es sensible a latencia
-5. He comprobado el *throttling*
+5. He comprobado el _throttling_
 6. He comprobado `OOMKilled`
 7. Tengo una razón para cada `request` y `limit`
 8. Revisaré los valores cuando cambie el tráfico
@@ -188,7 +188,7 @@ Así mantienes el cluster eficiente sin convertir cada despliegue en una apuesta
 ## FAQ
 
 **¿Siempre tengo que definir requests y limits?**  
-No necesariamente. Los `requests` son importantes para el scheduling. Los `limits` dependen de la carga y de la política de tu plataforma. En CPU, un límite duro a veces ayuda y a veces solo introduce *throttling*.
+No necesariamente. Los `requests` son importantes para el scheduling. Los `limits` dependen de la carga y de la política de tu plataforma. En CPU, un límite duro a veces ayuda y a veces solo introduce _throttling_.
 
 **¿Qué optimizo primero: CPU o memoria?**  
 Normalmente, memoria primero si tienes `OOMKilled` o presión de memoria. La CPU suele ser más fácil de observar, pero los fallos de memoria suelen ser más molestos.
@@ -206,4 +206,3 @@ No. HPA escala réplicas. No arregla malos `requests` ni malos límites de memor
 - Kubernetes: Vertical Pod Autoscaling — https://kubernetes.io/docs/concepts/workloads/autoscaling/vertical-pod-autoscale/
 - Kubernetes: Assign Pod-level CPU and memory resources — https://kubernetes.io/docs/tasks/configure-pod-container/assign-pod-level-resources/
 - Kubernetes blog: v1.36 in-place vertical scaling for pod-level resources — https://kubernetes.io/blog/2026/04/30/kubernetes-v1-36-inplace-pod-level-resources-beta/
-

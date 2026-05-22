@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
-import { getLocaleStaticPaths, t } from "@/i18n";
+import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
 import {
 	buildBreadcrumbList,
@@ -19,38 +19,9 @@ const cv = getCv(locale);
 const personalProjects = cv.projects?.personal ?? [];
 const companyProjects = cv.projects?.company ?? [];
 const projects = [...personalProjects, ...companyProjects];
-const isEs = locale === "es";
-const copy = isEs
-	? {
-			pageTitle: `Proyectos - ${cv.name}`,
-			pageDescription:
-				"Proyectos seleccionados de software sobre backend, productos web, herramientas internas y delivery full-stack práctico.",
-			eyebrow: "Proyectos",
-			title: "Trabajo seleccionado, construido para",
-			titleAccent: "uso real.",
-			intro:
-				"Una mezcla de proyectos personales y trabajo profesional en el que he contribuido. Problemas claros, decisiones prácticas y software mantenible.",
-			result: "Qué cambió",
-			fallback:
-				"Software práctico con un flujo claro y una estructura mantenible.",
-			view: "Ver proyecto",
-		}
-	: {
-			pageTitle: `Projects - ${cv.name}`,
-			pageDescription:
-				"Selected software projects covering backend systems, web products, internal tools and practical full-stack delivery.",
-			eyebrow: "Projects",
-			title: "Selected work, built for",
-			titleAccent: "real use.",
-			intro:
-				"A mix of personal projects and professional work I contributed to. Clear problems, practical decisions and maintainable software.",
-			result: "What changed",
-			fallback:
-				"Practical software with a clear workflow and maintainable structure.",
-			view: "View project",
-		};
-const pageTitle = copy.pageTitle;
-const pageDescription = copy.pageDescription;
+const page = getTranslations(locale).projects.page;
+const pageTitle = page.meta.title;
+const pageDescription = page.meta.description;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	buildCollectionPage(site, `/${locale}/projects`, pageTitle, pageDescription),
@@ -83,15 +54,15 @@ const structuredData = [
 	keywords={["Software Projects", "Backend Systems", "Web Applications"]}
 >
 	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{copy.eyebrow}</p>
+		<p class="eyebrow">{page.eyebrow}</p>
 		<h1
 			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
 		>
-			{copy.title}
-			<span class="accent-text">{copy.titleAccent}</span>
+			{page.title}
+			<span class="accent-text">{page.titleAccent}</span>
 		</h1>
 		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
-			{copy.intro}
+			{page.intro}
 		</p>
 	</section>
 
@@ -117,9 +88,9 @@ const structuredData = [
 						</p>
 						<p class="muted-copy mt-5 leading-7">{project.summary}</p>
 						<div class="hairline mt-6 border-t pt-5">
-							<p class="eyebrow">{copy.result}</p>
+							<p class="eyebrow">{page.result}</p>
 							<p class="mt-3 text-sm leading-6 font-bold text-[var(--accent-strong)] dark:text-[var(--accent)]">
-								{project.highlights?.[0] ?? copy.fallback}
+								{project.highlights?.[0] ?? page.fallback}
 							</p>
 						</div>
 						{project.link ? (
@@ -129,7 +100,7 @@ const structuredData = [
 								rel="noopener noreferrer nofollow"
 								class="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-[var(--text)] hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
 							>
-								{copy.view}
+								{page.view}
 								<Icon name="move-up-right" class="h-4 w-4" />
 							</a>
 						) : null}
