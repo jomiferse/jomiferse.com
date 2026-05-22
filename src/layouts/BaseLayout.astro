@@ -174,32 +174,56 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 
 		<script is:inline>
 			(() => {
-				const elements = document.querySelectorAll(
-					".section-reveal, .stagger-children",
-				);
-				if (
-					!elements.length ||
-					window.matchMedia("(prefers-reduced-motion: reduce)").matches
-				) {
-					elements.forEach((element) => element.classList.add("is-visible"));
+				const runWhenIdle = (callback) => {
+					if ("requestIdleCallback" in window) {
+						window.requestIdleCallback(callback, { timeout: 1200 });
+						return;
+					}
+
+					window.setTimeout(callback, 1);
+				};
+
+				const initReveal = () => {
+					runWhenIdle(() => {
+						window.requestAnimationFrame(() => {
+							const elements = document.querySelectorAll(
+								".section-reveal, .stagger-children",
+							);
+							if (
+								!elements.length ||
+								window.matchMedia("(prefers-reduced-motion: reduce)").matches
+							) {
+								elements.forEach((element) =>
+									element.classList.add("is-visible"),
+								);
+								return;
+							}
+
+							const observer = new IntersectionObserver(
+								(entries) => {
+									entries.forEach((entry) => {
+										if (!entry.isIntersecting) return;
+										entry.target.classList.add("is-visible");
+										observer.unobserve(entry.target);
+									});
+								},
+								{
+									threshold: 0.12,
+									rootMargin: "0px 0px -8% 0px",
+								},
+							);
+
+							elements.forEach((element) => observer.observe(element));
+						});
+					});
+				};
+
+				if (document.readyState === "complete") {
+					initReveal();
 					return;
 				}
 
-				const observer = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							if (!entry.isIntersecting) return;
-							entry.target.classList.add("is-visible");
-							observer.unobserve(entry.target);
-						});
-					},
-					{
-						threshold: 0.12,
-						rootMargin: "0px 0px -8% 0px",
-					},
-				);
-
-				elements.forEach((element) => observer.observe(element));
+				window.addEventListener("load", initReveal, { once: true });
 			})();
 		</script>
 	</body>

@@ -278,9 +278,11 @@ const previewAlt =
 </dialog>
 
 <script is:inline>
-	document.querySelectorAll("dialog").forEach((dialog) => {
-		dialog.addEventListener("click", (e) => {
-			if (e.target === dialog) dialog.close();
+	if (!document.documentElement.dataset.projectDialogHandler) {
+		document.documentElement.dataset.projectDialogHandler = "true";
+		document.addEventListener("click", (event) => {
+			const target = event.target;
+			if (target instanceof HTMLDialogElement) target.close();
 		});
-	});
+	}
 </script>
