@@ -3,6 +3,8 @@ title: "MCP for developers: why AI coding tools are converging on one protocol"
 description: "A practical take on MCP, Claude Code, Codex and Cursor from a full-stack developer perspective."
 date: "2026-05-21"
 language: "en"
+author: "José Miguel Fernández"
+readingTime: "6 min"
 tags: [mcp, ai-coding, claude-code, codex, cursor, developer-productivity]
 ---
 

@@ -3,6 +3,8 @@ title: "Spring Boot performance tuning: the changes that actually move the needl
 description: "A practical guide to Spring Boot performance tuning focused on measurement, caching, async work, connection pools, and observability."
 date: "2026-05-22"
 language: "en"
+author: "José Miguel Fernández"
+readingTime: "7 min"
 tags: [spring-boot, java, performance, backend, observability]
 ---
 
@@ -212,7 +214,7 @@ You expose metrics so the next change is easier.
 
 That is the real skill: not making the app look tuned, but making it behave better under load.
 
-If you also care about how this fits into the rest of a practical backend stack, I think this pairs well with my post on [right-sizing Kubernetes pods](/en/blog/right-sizing-kubernetes-pods-requests-limits/) and the one on [MCP for developers](/en/blog/2026-05-21-mcp-for-developers-ai-coding-tools-protocol/).
+If you also care about how this fits into the rest of a practical backend stack, I think this pairs well with my post on [right-sizing Kubernetes pods](/en/blog/right-sizing-kubernetes-pods-requests-limits/) and the one on MCP for developers.
 
 ## Bottom line
 

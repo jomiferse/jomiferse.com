@@ -3,7 +3,9 @@ title: "MCP para desarrolladores: por qué las herramientas de código con IA se
 description: "Una visión práctica de MCP, Claude Code, Codex y Cursor desde la perspectiva de un full-stack developer."
 date: "2026-05-21"
 language: "es"
-tags: [mcp, ia, codigo, claude-code, codex, cursor, productividad]
+author: "José Miguel Fernández"
+readingTime: "6 min"
+tags: [mcp, ia-coding, claude-code, codex, cursor, productividad-desarrollador]
 ---
 
 Lo interesante de MCP no es el acrónimo. Es el cambio que sugiere.

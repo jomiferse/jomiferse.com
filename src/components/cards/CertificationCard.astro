@@ -58,7 +58,7 @@ const { certification, locale = "en" } = Astro.props as {
 				<a
 					href={certification.url}
 					target="_blank"
-					rel="noreferrer"
+					rel="noopener noreferrer nofollow"
 					class="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-slate-950 hover:text-[var(--accent-strong)] dark:text-slate-50 dark:hover:text-[var(--accent-strong)]"
 				>
 					{t(locale, "certificationCard.viewCredential")}

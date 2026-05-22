@@ -3,6 +3,8 @@ title: "Cómo ajustar el tamaño de los pods en Kubernetes sin ir a ciegas"
 description: "Guía práctica para dimensionar pods en Kubernetes con datos reales: requests, limits, HPA y VPA sin adivinar."
 date: "2026-05-21"
 language: "es"
+author: "José Miguel Fernández"
+readingTime: "7 min"
 tags: [kubernetes, devops, cloud-native, rendimiento, platform-engineering]
 ---
 
