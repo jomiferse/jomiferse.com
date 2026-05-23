@@ -1,0 +1,85 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8FAFF"/>
+      <stop offset="1" stop-color="#F2F5FB"/>
+    </linearGradient>
+    <linearGradient id="leftGlow" x1="170" y1="100" x2="520" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E86C6C" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#E86C6C" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rightGlow" x1="700" y1="180" x2="1060" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5FBF8A" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#5FBF8A" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#182238" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" rx="40" fill="url(#bg)"/>
+  <circle cx="260" cy="120" r="220" fill="url(#leftGlow)"/>
+  <circle cx="950" cy="560" r="260" fill="url(#rightGlow)"/>
+
+  <text x="76" y="84" fill="#11203A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Unsafe retries vs idempotent retries</text>
+  <text x="76" y="118" fill="#62708E" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">Same action, very different outcome when the network retries the request.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="175" width="500" height="392" rx="32" fill="#FFF8F8" stroke="#F1D0D0"/>
+    <rect x="630" y="175" width="500" height="392" rx="32" fill="#F7FFFB" stroke="#D0E8DA"/>
+  </g>
+
+  <path d="M600 186V566" stroke="#CAD3E3" stroke-width="2" stroke-dasharray="8 10"/>
+
+  <text x="106" y="224" fill="#A73838" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">Without idempotency</text>
+  <text x="666" y="224" fill="#1D7A4E" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700">With idempotency</text>
+
+  <g>
+    <rect x="108" y="266" width="178" height="68" rx="18" fill="#FFFFFF" stroke="#E8B6B6"/>
+    <text x="132" y="296" fill="#23304A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="600">first request</text>
+    <text x="132" y="318" fill="#73809A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15">creates one side effect</text>
+
+    <path d="M196 342V382" stroke="#E86C6C" stroke-width="6" stroke-linecap="round"/>
+    <path d="M196 382L185 370M196 382L207 370" stroke="#E86C6C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="108" y="396" width="178" height="68" rx="18" fill="#FFFFFF" stroke="#E8B6B6"/>
+    <text x="138" y="426" fill="#23304A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="600">retry arrives</text>
+    <text x="132" y="448" fill="#73809A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15">server cannot tell</text>
+
+    <rect x="332" y="266" width="176" height="68" rx="18" fill="#FFFFFF" stroke="#E8B6B6"/>
+    <text x="357" y="296" fill="#23304A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="600">duplicate side effect</text>
+    <circle cx="378" cy="420" r="30" fill="#FFF" stroke="#E86C6C" stroke-width="4"/>
+    <circle cx="450" cy="420" r="30" fill="#FFF" stroke="#E86C6C" stroke-width="4"/>
+    <path d="M366 420H462" stroke="#E86C6C" stroke-width="5" stroke-linecap="round"/>
+    <path d="M442 406L454 420L442 434" stroke="#E86C6C" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="346" y="477" fill="#A73838" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">unsafe</text>
+  </g>
+
+  <g>
+    <rect x="668" y="266" width="178" height="68" rx="18" fill="#FFFFFF" stroke="#BFE3CF"/>
+    <text x="692" y="296" fill="#23304A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="600">first request</text>
+    <text x="692" y="318" fill="#73809A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15">stores result once</text>
+
+    <path d="M756 342V382" stroke="#5FBF8A" stroke-width="6" stroke-linecap="round"/>
+    <path d="M756 382L745 370M756 382L767 370" stroke="#5FBF8A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="668" y="396" width="178" height="68" rx="18" fill="#FFFFFF" stroke="#BFE3CF"/>
+    <text x="696" y="426" fill="#23304A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="600">retry with same key</text>
+    <text x="692" y="448" fill="#73809A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15">returns original result</text>
+
+    <rect x="892" y="266" width="176" height="134" rx="20" fill="#FFFFFF" stroke="#BFE3CF"/>
+    <text x="916" y="300" fill="#23304A" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="600">same result</text>
+    <rect x="916" y="322" width="128" height="32" rx="12" fill="#EEF9F2" stroke="#BFE3CF"/>
+    <text x="936" y="343" fill="#1D7A4E" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">no duplicate</text>
+    <path d="M938 366L956 384L994 346" stroke="#5FBF8A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <circle cx="938" cy="426" r="30" fill="#FFF" stroke="#5FBF8A" stroke-width="4"/>
+    <circle cx="1010" cy="426" r="30" fill="#FFF" stroke="#5FBF8A" stroke-width="4"/>
+    <path d="M926 426H1022" stroke="#5FBF8A" stroke-width="5" stroke-linecap="round"/>
+    <path d="M1002 412L1014 426L1002 440" stroke="#5FBF8A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="918" y="477" fill="#1D7A4E" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">safe</text>
+  </g>
+
+  <rect x="76" y="590" width="1048" height="54" rx="18" fill="#FFFFFF" stroke="#D6DFEC"/>
+  <text x="102" y="623" fill="#44546B" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18">The whole trick is simple: the retry must resolve to the same business outcome, not to a second execution.</text>
+</svg>
