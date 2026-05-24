@@ -110,6 +110,15 @@
   ],
   "certifications": [
     {
+      "name": "Testing Spring Boot: Beginner to Guru",
+      "provider": "Udemy",
+      "year": "2026",
+      "icon": "code",
+      "credentialId": "UC-9b2cfe8e-142a-4ec5-98b8-891118846f56",
+      "url": "https://ude.my/UC-9b2cfe8e-142a-4ec5-98b8-891118846f56",
+      "skills": ["Spring Boot", "JUnit", "Mockito"]
+    },
+    {
       "name": "Master Microservices with Spring Boot, Docker and Kubernetes",
       "provider": "Udemy",
       "year": "2025",
@@ -143,12 +152,6 @@
         "Testing",
         "Multi-module projects"
       ]
-    },
-    {
-      "name": "B1 Cambridge English",
-      "provider": "Cambridge Assessment English",
-      "year": "2018",
-      "icon": "globe"
     }
   ],
   "skills": {

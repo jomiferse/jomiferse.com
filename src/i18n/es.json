@@ -281,9 +281,53 @@
     }
   },
   "education": {
+    "page": {
+      "meta": {
+        "title": "Formación y cursos técnicos",
+        "description": "Formación académica y cursos técnicos completados por {name}."
+      },
+      "eyebrow": "Formación",
+      "title": "Base técnica para",
+      "titleAccent": "software práctico.",
+      "intro": "Una vista compacta de la formación y el aprendizaje continuo detrás de cómo construyo, mantengo y entrego software.",
+      "signals": [
+        {
+          "label": "Base",
+          "title": "Desarrollo de software",
+          "body": "Formación en desarrollo de aplicaciones, bases de datos, testing, control de versiones y delivery de producto."
+        },
+        {
+          "label": "Foco actual",
+          "title": "Sistemas backend",
+          "body": "El aprendizaje reciente está centrado en Spring Boot, microservicios, delivery cloud-native y operación fiable."
+        },
+        {
+          "label": "Forma de trabajar",
+          "title": "Salida útil y mantenible",
+          "body": "Elijo qué aprender según los sistemas que quiero construir: claros, resilientes y fáciles de evolucionar."
+        }
+      ],
+      "certifications": {
+        "eyebrow": "Cursos técnicos",
+        "title": "Aprendizaje técnico continuo",
+        "text": "Cursos elegidos alrededor de profundidad backend, testing, disciplina de delivery y sistemas orientados a producción."
+      },
+      "education": {
+        "eyebrow": "Formación reglada",
+        "title": "Base académica",
+        "text": "La base estructurada detrás de mi rango full-stack, desde desarrollo de aplicaciones hasta tecnologías web y móviles."
+      },
+      "cta": {
+        "eyebrow": "Siguiente",
+        "title": "Mira cómo se traduce en trabajo real.",
+        "text": "La formación importa cuando ayuda a tomar mejores decisiones en sistemas en producción y delivery de producto.",
+        "primary": "Ver experiencia",
+        "secondary": "Contactar"
+      }
+    },
     "meta": {
-      "title": "Formación y certificaciones",
-      "description": "Formación académica y certificaciones profesionales de {name}."
+      "title": "Formación y cursos técnicos",
+      "description": "Formación académica y cursos técnicos completados por {name}."
     },
     "hero": {
       "titlePrefix": "Formación",
@@ -291,18 +335,18 @@
       "subtitle": "Base académica y técnica detrás de cómo construyo y mantengo software."
     },
     "sections": {
-      "certifications": "Certificaciones",
+      "certifications": "Cursos técnicos",
       "education": "Formación"
     }
   },
   "certifications": {
     "meta": {
-      "title": "Certificaciones",
-      "description": "Cursos y certificaciones obtenidas por {name}."
+      "title": "Cursos técnicos",
+      "description": "Cursos técnicos completados por {name}."
     },
     "hero": {
-      "titlePrefix": "Certificaciones",
-      "titleHighlight": "técnicas",
+      "titlePrefix": "Cursos",
+      "titleHighlight": "técnicos",
       "subtitle": "Aprendizaje continuo alrededor de arquitectura, delivery y la parte de sistemas del software engineering."
     }
   },
@@ -354,7 +398,7 @@
   },
   "certificationCard": {
     "idLabel": "ID:",
-    "viewCredential": "Ver credencial"
+    "viewCredential": "Ver curso"
   },
   "educationCard": {
     "gradeLabel": "Nota:"
@@ -455,6 +499,7 @@
       "backgroundTitle": "Profundidad backend, criterio de producto y una forma práctica de construir.",
       "backgroundP1": "Actualmente trabajo en sistemas backend en producción con Java, Spring Boot, arquitectura distribuida, CI/CD y observabilidad.",
       "backgroundP2": "Antes trabajé en delivery full-stack dentro del sector edtech. Esa mezcla define cómo construyo: entender la necesidad, elegir el nivel correcto de sistema y mantenerlo fácil de evolucionar.",
+      "educationLink": "Ver formación y cursos técnicos",
       "blocks": [
         {
           "title": "Backend Development",

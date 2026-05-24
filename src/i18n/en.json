@@ -281,9 +281,53 @@
     }
   },
   "education": {
+    "page": {
+      "meta": {
+        "title": "Education & Technical Courses",
+        "description": "Education background and technical courses completed by {name}."
+      },
+      "eyebrow": "Education",
+      "title": "Technical foundation for",
+      "titleAccent": "practical software.",
+      "intro": "A compact view of the formal training and continuous learning behind how I build, maintain and ship software.",
+      "signals": [
+        {
+          "label": "Foundation",
+          "title": "Software development",
+          "body": "Formal training in application development, databases, testing, version control and product delivery."
+        },
+        {
+          "label": "Current focus",
+          "title": "Backend systems",
+          "body": "Recent learning is focused on Spring Boot, microservices, cloud-native delivery and reliable operations."
+        },
+        {
+          "label": "Working style",
+          "title": "Useful, maintainable output",
+          "body": "Learning choices are tied to the kind of systems I want to build: clear, resilient and easy to evolve."
+        }
+      ],
+      "certifications": {
+        "eyebrow": "Technical courses",
+        "title": "Continuous technical learning",
+        "text": "Courses selected around backend depth, testing, delivery discipline and production-oriented systems."
+      },
+      "education": {
+        "eyebrow": "Formal education",
+        "title": "Academic background",
+        "text": "The structured base behind my full-stack range, from application development to web and mobile technologies."
+      },
+      "cta": {
+        "eyebrow": "Next",
+        "title": "See how this translates into real work.",
+        "text": "The education path matters most when it supports practical decisions in production systems and product delivery.",
+        "primary": "View experience",
+        "secondary": "Contact me"
+      }
+    },
     "meta": {
-      "title": "Education & Certifications",
-      "description": "Education background and professional certifications of {name}."
+      "title": "Education & Technical Courses",
+      "description": "Education background and technical courses completed by {name}."
     },
     "hero": {
       "titlePrefix": "Education",
@@ -291,18 +335,18 @@
       "subtitle": "Academic and technical foundations behind how I build and maintain software."
     },
     "sections": {
-      "certifications": "Certifications",
+      "certifications": "Technical courses",
       "education": "Education"
     }
   },
   "certifications": {
     "meta": {
-      "title": "Certifications",
-      "description": "Courses and certifications obtained by {name}."
+      "title": "Technical courses",
+      "description": "Technical courses completed by {name}."
     },
     "hero": {
       "titlePrefix": "Technical",
-      "titleHighlight": "certifications",
+      "titleHighlight": "courses",
       "subtitle": "Continuous learning around architecture, delivery and the systems side of software engineering."
     }
   },
@@ -354,7 +398,7 @@
   },
   "certificationCard": {
     "idLabel": "ID:",
-    "viewCredential": "View credential"
+    "viewCredential": "View course"
   },
   "educationCard": {
     "gradeLabel": "Grade:"
@@ -455,6 +499,7 @@
       "backgroundTitle": "Backend depth, product sense and a practical way of building.",
       "backgroundP1": "I currently work on production backend systems with Java, Spring Boot, distributed architecture, CI/CD and observability.",
       "backgroundP2": "Before that, I worked across full-stack delivery in edtech. That mix shaped how I build: understand the need, choose the right level of system and keep it easy to evolve.",
+      "educationLink": "View education and technical courses",
       "blocks": [
         {
           "title": "Backend Development",

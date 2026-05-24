@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
 import CertificationCard from "@/components/cards/CertificationCard.astro";
 import EducationCard from "@/components/cards/EducationCard.astro";
-import { getLocaleStaticPaths, t } from "@/i18n";
+import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
 import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
@@ -12,15 +13,13 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const cv = getCv(locale);
+const page = getTranslations(locale).education.page;
 
 const certifications = cv.certifications ?? [];
 const education = cv.education ?? [];
 
-const pageTitle = `${t(locale, "education.meta.title")} - ${cv.name}`;
-const pageDescription = t(locale, "education.meta.description").replace(
-	"{name}",
-	cv.name,
-);
+const pageTitle = `${page.meta.title} - ${cv.name}`;
+const pageDescription = page.meta.description.replace("{name}", cv.name);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	buildCollectionPage(site, `/${locale}/education`, pageTitle, pageDescription),
@@ -37,64 +36,110 @@ const structuredData = [
 	structuredData={structuredData}
 	keywords={[
 		"Education",
-		"Certifications",
+		"Technical Courses",
 		"Software Engineering",
 		"Technical Background",
 	]}
 >
 	<section class="section-reveal pt-4 md:pt-8">
-		<div class="max-w-3xl">
-			<p
-				class="text-[11px] font-semibold tracking-[0.32em] text-slate-500 uppercase dark:text-slate-400"
-			>
-				{t(locale, "education.hero.titlePrefix")}
-			</p>
-			<h1
-				class="mt-5 text-4xl leading-tight font-semibold tracking-[-0.045em] text-slate-950 md:text-6xl dark:text-slate-50"
-			>
-				{t(locale, "education.hero.titleHighlight")}
+		<div class="max-w-4xl">
+			<p class="eyebrow">{page.eyebrow}</p>
+			<h1 class="mt-5 text-5xl font-black text-[var(--text)] md:text-7xl">
+				{page.title}
+				<span class="accent-text">{page.titleAccent}</span>
 			</h1>
-			<p
-				class="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300"
-			>
-				{t(locale, "education.hero.subtitle")}
+			<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
+				{page.intro}
 			</p>
 		</div>
 	</section>
 
-	<section class="section-reveal mt-20 md:mt-28">
-		<div class="max-w-3xl">
-			<h2
-				class="text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50"
-			>
-				{t(locale, "education.sections.certifications")}
-			</h2>
-		</div>
-
-		<div class="stagger-children mt-10 space-y-14 md:mt-14">
+	<section class="section-reveal py-16 md:py-24">
+		<div class="stagger-children grid gap-4 md:grid-cols-3">
 			{
-				certifications.map((certification) => (
-					<CertificationCard certification={certification} locale={locale} />
+				page.signals.map((signal) => (
+					<article class="dark-card hover-card p-5 md:p-6">
+						<p class="eyebrow">{signal.label}</p>
+						<h2 class="mt-4 text-xl font-black text-[var(--text)]">
+							{signal.title}
+						</h2>
+						<p class="muted-copy mt-3 text-sm leading-7">{signal.body}</p>
+					</article>
 				))
 			}
 		</div>
 	</section>
 
-	<section class="section-reveal mt-24 md:mt-36">
-		<div class="max-w-3xl">
-			<h2
-				class="text-3xl leading-tight font-semibold tracking-[-0.04em] text-slate-950 md:text-5xl dark:text-slate-50"
-			>
-				{t(locale, "education.sections.education")}
-			</h2>
-		</div>
+	<section class="section-band section-reveal py-16 md:py-28">
+		<div class="grid gap-10 lg:grid-cols-[0.32fr_1fr] lg:gap-14">
+			<div>
+				<p class="eyebrow">{page.certifications.eyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.certifications.title}
+				</h2>
+				<p class="muted-copy mt-5 leading-7">{page.certifications.text}</p>
+			</div>
 
-		<div class="stagger-children mt-10 space-y-14 md:mt-14">
-			{
-				education.map((item) => (
-					<EducationCard education={item} locale={locale} />
-				))
-			}
+			<div class="stagger-children space-y-5">
+				{
+					certifications.map((certification) => (
+						<CertificationCard certification={certification} locale={locale} />
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 md:py-28">
+		<div class="grid gap-10 lg:grid-cols-[0.32fr_1fr] lg:gap-14">
+			<div>
+				<p class="eyebrow">{page.education.eyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.education.title}
+				</h2>
+				<p class="muted-copy mt-5 leading-7">{page.education.text}</p>
+			</div>
+
+			<div class="stagger-children space-y-5">
+				{
+					education.map((item) => (
+						<EducationCard education={item} locale={locale} />
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16 text-center md:py-24">
+		<div class="dark-card px-5 py-12 sm:px-8 md:py-14">
+			<p class="eyebrow">{page.cta.eyebrow}</p>
+			<h2
+				class="mx-auto mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+			>
+				{page.cta.title}
+			</h2>
+			<p class="muted-copy mx-auto mt-5 max-w-xl leading-8">
+				{page.cta.text}
+			</p>
+			<div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+				<a
+					href={`/${locale}/experience`}
+					class="button-primary w-full sm:w-auto"
+				>
+					{page.cta.primary}
+					<Icon name="arrow-right" class="h-4 w-4" />
+				</a>
+				<a
+					href={`/${locale}/contact`}
+					class="button-secondary w-full sm:w-auto"
+				>
+					{page.cta.secondary}
+				</a>
+			</div>
 		</div>
 	</section>
 </BaseLayout>

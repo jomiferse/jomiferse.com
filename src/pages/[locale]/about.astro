@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
@@ -86,5 +87,12 @@ const structuredData = [
 			<p>{page.backgroundP1}</p>
 			<p>{page.backgroundP2}</p>
 		</div>
+		<a
+			href={`/${locale}/education`}
+			class="button-secondary mt-9 w-full sm:w-fit"
+		>
+			{page.educationLink}
+			<Icon name="arrow-right" class="h-4 w-4" />
+		</a>
 	</section>
 </BaseLayout>
