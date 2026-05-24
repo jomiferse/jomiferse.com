@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 .prose-wrapper {
 	color: var(--text-muted);
 	font-size: 1rem;
@@ -63,6 +61,8 @@
 .prose-wrapper a {
 	color: var(--accent-strong);
 	font-weight: 700;
+	overflow-wrap: anywhere;
+	word-break: break-word;
 	text-decoration-line: underline;
 	text-decoration-color: color-mix(
 		in srgb,
@@ -95,6 +95,14 @@
 .prose-wrapper ol {
 	margin-block: 1.45rem;
 	padding-left: 1.45rem;
+}
+
+.prose-wrapper ul {
+	list-style: disc;
+}
+
+.prose-wrapper ol {
+	list-style: decimal;
 }
 
 .prose-wrapper li {

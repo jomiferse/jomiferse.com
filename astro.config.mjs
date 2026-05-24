@@ -69,7 +69,7 @@ export default defineConfig({
 		}),
 	],
 	build: {
-		inlineStylesheets: "auto",
+		inlineStylesheets: "always",
 	},
 	output: "static",
 	adapter: vercel(),
