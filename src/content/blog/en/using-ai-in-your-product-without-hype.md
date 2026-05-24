@@ -5,6 +5,7 @@ date: "2026-05-24"
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+featured: true
 tags: [ai, product, automation, developer-productivity, product-thinking]
 ---
 
@@ -63,7 +64,7 @@ Examples:
 - generating first drafts
 - sorting feedback into buckets
 
-The key word is *first draft*. AI is usually better as a starting point than as the final answer.
+The key word is _first draft_. AI is usually better as a starting point than as the final answer.
 
 ### Decision support
 
@@ -188,7 +189,7 @@ That usually means:
 - moderate risk
 - human oversight when needed
 
-It usually does *not* mean:
+It usually does _not_ mean:
 
 - adding a chatbot because it looks modern
 - automating a risky workflow without controls

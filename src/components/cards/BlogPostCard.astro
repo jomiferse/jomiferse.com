@@ -22,29 +22,35 @@ const {
 } = Astro.props as Props;
 
 const cleanTags = tags.filter((tag) => tag !== "featured").slice(0, 3);
+const articleClass = [
+	"dark-card hover-card relative flex min-h-[16rem] flex-col overflow-hidden p-6",
+	featured ? "blog-card-featured md:min-h-[20rem] md:p-8" : "",
+]
+	.filter(Boolean)
+	.join(" ");
 ---
 
 <a href={href} class="group block">
-	<article class="dark-card hover-card flex min-h-[16rem] flex-col p-6">
+	<article class={articleClass}>
 		<div
-			class="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-bold text-[var(--text-muted)]"
+			class="relative z-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-bold text-[var(--text-muted)]"
 		>
 			<span>{dateLabel}</span>
 			{readingTime ? <span>{readingTime}</span> : null}
-			{featured ? <span>{featuredLabel}</span> : null}
+			{featured ? <span class="featured-pill">{featuredLabel}</span> : null}
 		</div>
 
 		<h2
-			class="mt-6 text-2xl font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] dark:group-hover:text-[var(--accent)]"
+			class="relative z-10 mt-6 text-2xl font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] md:text-3xl dark:group-hover:text-[var(--accent)]"
 		>
 			{title}
 		</h2>
 
-		<p class="muted-copy mt-4 leading-7">
+		<p class="muted-copy relative z-10 mt-4 leading-7">
 			{description}
 		</p>
 
-		<div class="mt-auto flex flex-wrap gap-2 pt-6">
+		<div class="relative z-10 mt-auto flex flex-wrap gap-2 pt-6">
 			{cleanTags.map((tag) => <span class="tag-pill">{tag}</span>)}
 		</div>
 	</article>

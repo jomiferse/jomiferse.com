@@ -14,11 +14,16 @@ const posts = (await getCollection("blog"))
 	.filter((p) => p.id.startsWith(`${locale}/`))
 	.filter((p) => !p.data.draft)
 	.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const featuredPosts = posts.filter((post) => post.data.featured);
+const latestPosts = posts.filter((post) => !post.data.featured);
 
 const toLocalSlug = (id: string) => id.replace(new RegExp(`^${locale}/`), "");
 const blogBasePath = `/${locale}/blog`;
 const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 const page = getTranslations(locale).blog.page;
+const sections = getTranslations(locale).blog.sections;
+const empty = getTranslations(locale).blog.empty;
+const featuredLabel = locale === "es" ? "Destacado" : "Featured";
 const pageTitle = page.meta.title;
 const pageDescription = page.meta.description;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
@@ -50,11 +55,52 @@ const structuredData = [
 		</p>
 	</section>
 
-	<section class="section-reveal pb-20 md:pb-28">
+	<section class="section-reveal pb-10 md:pb-14">
+		<div class="mb-7 flex flex-col gap-2">
+			<h2 class="text-3xl font-black text-[var(--text)] md:text-4xl">
+				{sections.featured.title}
+			</h2>
+			<p class="muted-copy">{sections.featured.subtitle}</p>
+		</div>
 		{
-			posts.length > 0 ? (
+			featuredPosts.length > 0 ? (
+				<div class="stagger-children grid gap-5 lg:grid-cols-2">
+					{featuredPosts.map((post) => (
+						<BlogPostCard
+							href={`${blogBasePath}/${toLocalSlug(post.id)}`}
+							title={post.data.title}
+							description={post.data.description}
+							dateLabel={post.data.date.toLocaleDateString(dateLocale, {
+								year: "numeric",
+								month: "short",
+								day: "numeric",
+							})}
+							tags={post.data.tags ?? []}
+							readingTime={post.data.readingTime}
+							featured={post.data.featured}
+							featuredLabel={featuredLabel}
+						/>
+					))}
+				</div>
+			) : (
+				<div class="dark-card p-6 text-[var(--text-muted)]">
+					{empty.featured}
+				</div>
+			)
+		}
+	</section>
+
+	<section class="section-reveal pb-20 md:pb-28">
+		<div class="mb-7 flex flex-col gap-2">
+			<h2 class="text-3xl font-black text-[var(--text)] md:text-4xl">
+				{sections.latest.title}
+			</h2>
+			<p class="muted-copy">{sections.latest.subtitle}</p>
+		</div>
+		{
+			latestPosts.length > 0 ? (
 				<div class="stagger-children grid gap-5 md:grid-cols-2">
-					{posts.map((post) => (
+					{latestPosts.map((post) => (
 						<BlogPostCard
 							href={`${blogBasePath}/${toLocalSlug(post.id)}`}
 							title={post.data.title}
@@ -70,7 +116,9 @@ const structuredData = [
 					))}
 				</div>
 			) : (
-				<div class="dark-card p-6 text-[var(--text-muted)]">{page.empty}</div>
+				<div class="dark-card p-6 text-[var(--text-muted)]">
+					{posts.length > 0 ? empty.latest : page.empty}
+				</div>
 			)
 		}
 	</section>

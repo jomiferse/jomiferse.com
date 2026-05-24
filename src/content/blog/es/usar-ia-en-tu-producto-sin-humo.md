@@ -5,6 +5,7 @@ date: "2026-05-24"
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+featured: true
 tags: [ia, producto, automatizacion, productividad-desarrollador, producto]
 ---
 
@@ -63,7 +64,7 @@ Ejemplos:
 - generar primeros borradores
 - ordenar feedback por grupos
 
-La palabra clave aquí es *primer borrador*. La IA suele funcionar mejor como punto de partida que como respuesta final.
+La palabra clave aquí es _primer borrador_. La IA suele funcionar mejor como punto de partida que como respuesta final.
 
 ### Apoyo a decisiones
 
@@ -188,7 +189,7 @@ Normalmente eso significa:
 - riesgo moderado
 - supervisión humana cuando haga falta
 
-Normalmente *no* significa:
+Normalmente _no_ significa:
 
 - añadir un chatbot porque parece moderno
 - automatizar un flujo delicado sin controles

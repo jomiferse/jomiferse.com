@@ -28,7 +28,7 @@ Eso **no** significa que todas las respuestas sean idénticas, ni que todos los 
 
 El problema aparece sobre todo con `POST`, porque `POST` suele crear algo o disparar trabajo. Si el cliente reintenta esa petición después de un timeout, el servidor puede no saber si el primer intento llegó a completarse.
 
-Ahí entra la *idempotency key*.
+Ahí entra la _idempotency key_.
 
 [![Un flujo que muestra cómo un reintento idempotente devuelve el mismo resultado en vez de crear un duplicado](/images/blog/idempotency-flow.svg)](/images/blog/idempotency-flow.svg)
 
