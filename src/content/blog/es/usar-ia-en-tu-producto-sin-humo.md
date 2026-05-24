@@ -195,5 +195,3 @@ Normalmente *no* significa:
 - esconder una idea floja detrás de un modelo brillante
 
 Mi regla es simple: empieza por el problema y usa IA solo si mejora el producto de una forma que puedas demostrar.
-
-Si quieres, puedo convertir este mismo enfoque en un segundo artículo centrado en *funciones de IA para SaaS* o en *cómo usar IA como freelance para entregar más rápido sin bajar calidad*.
