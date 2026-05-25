@@ -128,7 +128,7 @@ Spring Boot resuelve bastantes problemas aburridos que en sistemas legacy suelen
 - un ecosistema grande para seguridad, acceso a datos, mensajería e integración
 - contratación más fácil porque mucha gente ya conoce el stack
 
-Lo que *no* resuelve:
+Lo que _no_ resuelve:
 
 - mal modelado del dominio
 - prioridades de producto poco claras

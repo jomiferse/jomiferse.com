@@ -53,7 +53,27 @@ export interface ServiceSeo {
 	name: string;
 	description: string;
 	providerName: string;
+	providerUrl?: string;
 	areaServed?: string;
+	audience?: string[];
+	serviceType?: string;
+	sameAs?: string[];
+}
+
+export interface ProfessionalServiceSeo {
+	site: string;
+	path: string;
+	name: string;
+	description: string;
+	providerName: string;
+	providerUrl: string;
+	areaServed: string;
+	sameAs: string[];
+	services: Array<{
+		name: string;
+		description: string;
+		path: string;
+	}>;
 }
 
 export interface FaqSeo {
@@ -194,19 +214,79 @@ export const buildServicePage = ({
 	name,
 	description,
 	providerName,
+	providerUrl,
 	areaServed = "Remote",
+	audience = [],
+	serviceType,
+	sameAs = [],
 }: ServiceSeo): StructuredData => ({
 	"@context": "https://schema.org",
 	"@type": "Service",
 	name,
 	description,
 	url: absoluteUrl(site, path),
+	serviceType: serviceType ?? name,
 	areaServed,
+	audience: audience.map((audienceType) => ({
+		"@type": "Audience",
+		audienceType,
+	})),
 	provider: {
 		"@type": "Person",
 		name: providerName,
+		url: providerUrl,
+		sameAs,
 	},
 });
+
+export const buildProfessionalService = ({
+	site,
+	path,
+	name,
+	description,
+	providerName,
+	providerUrl,
+	areaServed,
+	sameAs,
+	services,
+}: ProfessionalServiceSeo): StructuredData => {
+	const offers = services.map((service) => ({
+		"@type": "Offer",
+		url: absoluteUrl(site, service.path),
+		itemOffered: {
+			"@type": "Service",
+			name: service.name,
+			description: service.description,
+			provider: {
+				"@type": "Person",
+				name: providerName,
+				url: providerUrl,
+				sameAs,
+			},
+		},
+	}));
+
+	return {
+		"@context": "https://schema.org",
+		"@type": "ProfessionalService",
+		name,
+		description,
+		url: absoluteUrl(site, path),
+		areaServed,
+		founder: {
+			"@type": "Person",
+			name: providerName,
+			url: providerUrl,
+			sameAs,
+		},
+		hasOfferCatalog: {
+			"@type": "OfferCatalog",
+			name,
+			itemListElement: offers,
+		},
+		makesOffer: offers,
+	};
+};
 
 export const buildFaqPage = (faqs: FaqSeo[]): StructuredData => ({
 	"@context": "https://schema.org",

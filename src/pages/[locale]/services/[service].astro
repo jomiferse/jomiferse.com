@@ -32,7 +32,11 @@ const structuredData = [
 		name: service.title,
 		description: service.description,
 		providerName: cv.name,
+		providerUrl: new URL(`/${locale}`, site).toString(),
 		areaServed: serviceCopy.areaServed,
+		audience: service.whoFor,
+		serviceType: service.shortTitle,
+		sameAs: [cv.links.linkedin, cv.links.github],
 	}),
 	buildFaqPage(service.faq),
 	buildBreadcrumbList(site, [

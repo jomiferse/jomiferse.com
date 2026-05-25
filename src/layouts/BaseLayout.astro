@@ -61,6 +61,29 @@ const baseStructuredData = [
 			addressLocality: cv.location,
 		},
 		sameAs: [cv.links.linkedin, cv.links.github],
+		knowsLanguage: locale === "es" ? ["es", "en"] : ["en", "es"],
+		hasOccupation: {
+			"@type": "Occupation",
+			name:
+				locale === "es"
+					? "Desarrollador full-stack freelance"
+					: "Freelance full-stack developer",
+			occupationLocation: {
+				"@type": "Country",
+				name: locale === "es" ? "España" : "Spain",
+			},
+			skills:
+				"Full-stack development, internal tools, workflow automation, API integrations, Java, Spring Boot, TypeScript, Astro",
+		},
+		makesOffer: [
+			"Business websites",
+			"Website redesign",
+			"Custom web applications",
+			"Internal tools",
+			"Workflow automation",
+			"API integrations",
+			"Spring Boot backend development",
+		],
 		knowsAbout: [
 			"Java",
 			"Spring Boot",

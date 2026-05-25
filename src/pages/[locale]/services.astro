@@ -2,17 +2,38 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getServices } from "@/lib/services";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
-import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
+import {
+	buildBreadcrumbList,
+	buildCollectionPage,
+	buildProfessionalService,
+} from "@/lib/seo";
+import { getCv } from "@cv";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
 }
 
 const { locale } = Astro.params;
+const cv = getCv(locale);
 const services = getServices(locale);
 const page = getTranslations(locale).services.hub;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
+	buildProfessionalService({
+		site,
+		path: `/${locale}/services`,
+		name: page.schema.name,
+		description: page.schema.description,
+		providerName: cv.name,
+		providerUrl: new URL(`/${locale}`, site).toString(),
+		areaServed: page.schema.areaServed,
+		sameAs: [cv.links.linkedin, cv.links.github],
+		services: services.map((service) => ({
+			name: service.title,
+			description: service.description,
+			path: `/${locale}/services/${service.slug}`,
+		})),
+	}),
 	buildCollectionPage(
 		site,
 		`/${locale}/services`,
@@ -168,6 +189,54 @@ const structuredData = [
 						))
 					}
 				</div>
+			</article>
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-20 md:py-28">
+		<p class="eyebrow">{page.recommendationEyebrow}</p>
+		<h2
+			class="mt-4 max-w-4xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+		>
+			{page.recommendationTitle}
+		</h2>
+		<p class="muted-copy mt-5 max-w-2xl text-lg leading-8">
+			{page.recommendationIntro}
+		</p>
+		<div class="mt-10 grid gap-5 lg:grid-cols-2">
+			<article class="dark-card p-6">
+				<h3 class="text-2xl font-black text-[var(--text)]">
+					{page.recommendedForTitle}
+				</h3>
+				<ul class="mt-6 space-y-4">
+					{
+						page.recommendedFor.map((item) => (
+							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+									✓
+								</span>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</article>
+			<article class="dark-card p-6">
+				<h3 class="text-2xl font-black text-[var(--text)]">
+					{page.notRecommendedForTitle}
+				</h3>
+				<ul class="mt-6 space-y-4">
+					{
+						page.notRecommendedFor.map((item) => (
+							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+									-
+								</span>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
 			</article>
 		</div>
 	</section>

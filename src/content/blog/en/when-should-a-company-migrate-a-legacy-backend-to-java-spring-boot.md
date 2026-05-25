@@ -126,7 +126,7 @@ Spring Boot solves a lot of boring problems that legacy systems tend to make pai
 - a large ecosystem for security, data access, messaging, and integration
 - easier hiring because more engineers already know the stack
 
-What it does *not* solve:
+What it does _not_ solve:
 
 - poor domain modelling
 - unclear product priorities
