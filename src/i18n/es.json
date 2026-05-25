@@ -65,14 +65,14 @@
   "home": {
     "page": {
       "meta": {
-        "title": "Portfolio Full-Stack Developer - José Miguel Fernández",
-        "description": "Full-stack developer con base sólida en backend. Construyo webs, herramientas, automatizaciones, sistemas backend y productos web simples, fiables y útiles."
+        "title": "Desarrollador full-stack freelance - José Miguel Fernández",
+        "description": "Desarrollador full-stack freelance en España. Construyo webs, herramientas internas, automatizaciones, integraciones API y backend mantenible."
       },
-      "eyebrow": "Full-Stack Developer · Software Engineer · Productos web",
-      "title": "Me gusta construir software simple, fiable y",
-      "titleAccent": "realmente útil.",
-      "intro": "Full-stack developer con bases fuertes en backend. Construyendo productos, herramientas y webs por el camino.",
-      "primaryCta": "Ver proyectos",
+      "eyebrow": "Desarrollo full-stack freelance · Backend · Automatización",
+      "title": "Software simple, fiable y",
+      "titleAccent": "útil para negocios reales.",
+      "intro": "Ayudo a founders, profesionales y equipos pequeños a convertir una necesidad concreta en una web, herramienta interna, automatización, integración API o backend mantenible.",
+      "primaryCta": "Ver servicios",
       "secondaryCta": "Contactar",
       "stats": {
         "years": "Años construyendo software",
@@ -82,9 +82,9 @@
       },
       "about": {
         "eyebrow": "Sobre mí",
-        "title": "Delivery full-stack con profundidad backend.",
+        "title": "Trato directo, criterio técnico y profundidad backend.",
         "p1": "Soy full-stack developer en Granada. Mi base más fuerte está en backend con Java, Spring Boot y sistemas en producción.",
-        "p2": "También trabajo en frontend, automatización, CI/CD, Docker y Kubernetes cuando eso ayuda a construir algo útil."
+        "p2": "Trabajo en frontend, automatización, CI/CD, Docker y Kubernetes cuando eso ayuda a entregar algo útil. No vendo paquetes cerrados: primero entiendo el flujo, luego construyo la pieza que realmente hace falta."
       },
       "work": {
         "eyebrow": "Trabajo seleccionado",
@@ -93,7 +93,7 @@
       },
       "build": {
         "eyebrow": "Qué puedo construir",
-        "title": "Software para flujos reales, herramientas y productos web.",
+        "title": "Servicios concretos para mejorar una web, automatizar trabajo o construir una herramienta.",
         "servicesLink": "Ver servicios",
         "blogLink": "Leer blog"
       },
@@ -136,9 +136,9 @@
       },
       "cta": {
         "eyebrow": "Contacto",
-        "title": "¿Tienes algo útil que construir?",
-        "text": "Cuéntame qué necesitas. Te ayudo a dar forma al siguiente paso.",
-        "button": "Hablemos"
+        "title": "¿Quieres saber si tiene sentido construirlo?",
+        "text": "Cuéntame qué tienes ahora, qué problema quieres resolver y qué resultado buscas. Te responderé con el siguiente paso más razonable.",
+        "button": "Contar mi caso"
       }
     },
     "meta": {
@@ -395,12 +395,12 @@
     "page": {
       "meta": {
         "title": "Contacto - José Miguel Fernández",
-        "description": "Contacta con José Miguel Fernández para proyectos freelance, colaboraciones, oportunidades profesionales y software práctico."
+        "description": "Contacta con José Miguel Fernández para desarrollo full-stack freelance, herramientas internas, automatizaciones, integraciones API y backend."
       },
       "eyebrow": "Contacto",
       "title": "Hablemos sobre lo que quieres",
       "titleAccent": "construir.",
-      "intro": "Envíame una idea de proyecto, una pregunta o una oportunidad. Leo cada mensaje y responderé cuando haya buen encaje.",
+      "intro": "Cuéntame qué tienes ahora, qué problema quieres resolver y qué resultado buscas. Si encaja, te propondré un siguiente paso claro.",
       "linkedin": "Conectar en LinkedIn",
       "github": "Ver mi código"
     },
@@ -455,8 +455,18 @@
     "namePlaceholder": "Tu nombre",
     "emailLabel": "Email",
     "emailPlaceholder": "tu@email.com",
+    "projectTypeLabel": "Tipo de proyecto",
+    "projectTypePlaceholder": "Elige el encaje principal",
+    "projectTypes": [
+      "Web de negocio o rediseño",
+      "Aplicación web a medida",
+      "Herramienta interna",
+      "Automatización o integración API",
+      "Backend / Spring Boot",
+      "Oportunidad profesional"
+    ],
     "messageLabel": "Mensaje",
-    "messagePlaceholder": "Cuéntame qué estás construyendo, qué necesitas o dónde puedo ayudar.",
+    "messagePlaceholder": "Cuéntame qué tienes ahora, qué problema quieres resolver y qué resultado buscas.",
     "attachmentLabel": "Adjunto",
     "attachmentHint": "Opcional. Solo PDF.",
     "submit": "Enviar mensaje"
@@ -578,21 +588,66 @@
   "services": {
     "hub": {
       "meta": {
-        "title": "Servicios freelance full-stack - José Miguel Fernández",
-        "description": "Servicios freelance de desarrollo web full-stack para webs de negocio, rediseños, aplicaciones, herramientas internas, automatizaciones e integraciones API."
+        "title": "Servicios de desarrollo full-stack freelance - José Miguel Fernández",
+        "description": "Servicios de desarrollo full-stack freelance para webs de negocio, aplicaciones web, herramientas internas, automatizaciones, integraciones API y backend Spring Boot."
       },
       "eyebrow": "Servicios freelance",
-      "title": "Software útil",
-      "titleAccent": "para flujos reales.",
-      "intro": "Ayudo a convertir una necesidad concreta en una web, herramienta o integración mantenible. Sin enfoque de agencia: trabajo directo, claridad técnica y entregables prácticos.",
+      "title": "Desarrollo full-stack",
+      "titleAccent": "para problemas concretos.",
+      "intro": "Construyo webs, herramientas internas, automatizaciones, integraciones API y backend mantenible para personas que necesitan resolver un flujo real sin montar una plataforma innecesaria.",
       "bestForLead": "Ideal para:",
-      "bestForText": "founders, pequeños negocios y equipos que necesitan mejorar una web, validar una idea o quitar trabajo manual sin montar una plataforma innecesaria.",
+      "bestForText": "founders, profesionales, pequeños negocios y equipos que necesitan criterio técnico, ejecución directa y software fácil de mantener.",
       "included": "Dónde puedo ayudar",
       "bestFor": "Ideal para",
       "viewService": "Ver servicio",
-      "ctaTitle": "¿Quieres mejorar una web o construir una herramienta?",
+      "processEyebrow": "Cómo trabajo",
+      "processTitle": "Primero claridad, después código.",
+      "process": [
+        {
+          "title": "Diagnóstico",
+          "body": "Aterrizamos el problema, los usuarios, el flujo actual y el resultado que debería cambiar."
+        },
+        {
+          "title": "Alcance útil",
+          "body": "Defino una primera versión pequeña, construible y fácil de validar antes de añadir complejidad."
+        },
+        {
+          "title": "Construcción",
+          "body": "Desarrollo frontend, backend, automatización o integración con entregables claros y código mantenible."
+        },
+        {
+          "title": "Cierre",
+          "body": "Valido caminos críticos, metadata, despliegue y dejo notas para operar o ampliar el trabajo."
+        }
+      ],
+      "useCasesEyebrow": "Casos de uso",
+      "useCasesTitle": "Problemas que encajan bien.",
+      "useCases": [
+        "Una web que no explica bien tu oferta ni convierte visitas en conversaciones.",
+        "Un equipo gestionando operaciones con hojas de cálculo, emails y copy-paste.",
+        "Una idea de producto que necesita una primera aplicación web enfocada.",
+        "Herramientas que no se comunican y obligan a mover datos a mano.",
+        "Un backend legacy que empieza a bloquear cambios, fiabilidad o mantenimiento."
+      ],
+      "contentEyebrow": "Contenido de apoyo",
+      "contentTitle": "Artículos que explican cómo pienso al construir.",
+      "contentLinks": [
+        {
+          "label": "Cuándo construir una herramienta interna en vez de usar Excel",
+          "href": "/blog/cuando-construir-herramienta-interna-en-vez-de-usar-excel"
+        },
+        {
+          "label": "Migrar un backend legacy a Spring Boot",
+          "href": "/blog/cuando-deberia-una-empresa-migrar-un-backend-legacy-a-java-spring-boot"
+        },
+        {
+          "label": "APIs idempotentes que sobreviven a reintentos",
+          "href": "/blog/apis-idempotentes-que-sobreviven-a-reintentos"
+        }
+      ],
+      "ctaTitle": "¿Quieres mejorar una web, automatizar un flujo o construir una herramienta?",
       "ctaText": "Envíame el contexto, el problema y lo que quieres conseguir. Te responderé con el siguiente paso más razonable.",
-      "ctaButton": "Empezar un proyecto"
+      "ctaButton": "Contar mi caso"
     },
     "detail": {
       "eyebrow": "Servicio freelance",
@@ -820,6 +875,41 @@
           {
             "question": "¿Solo haces integraciones backend?",
             "answer": "No. Puedo construir la integración backend y las pantallas frontend necesarias para usarla o monitorizarla."
+          }
+        ]
+      },
+      "backend-spring-boot": {
+        "title": "Backend con Spring Boot",
+        "shortTitle": "Backend Spring",
+        "description": "Desarrollo y evolución de APIs, servicios backend e integraciones con Java y Spring Boot, priorizando mantenibilidad, testabilidad y fiabilidad.",
+        "metaTitle": "Desarrollo backend con Spring Boot - José Miguel Fernández",
+        "metaDescription": "Desarrollo freelance de backend con Java y Spring Boot para APIs, servicios, integraciones, migraciones legacy y sistemas mantenibles.",
+        "problem": "El backend sostiene el negocio, pero cada cambio cuesta demasiado, las integraciones son frágiles o la arquitectura ya no acompaña al producto.",
+        "whoFor": [
+          "Equipos que necesitan reforzar o evolucionar un backend Java/Spring Boot existente.",
+          "Negocios con una aplicación legacy que empieza a bloquear cambios o mantenimiento.",
+          "Founders que necesitan una API fiable para una aplicación web o herramienta interna."
+        ],
+        "builds": [
+          "APIs REST con contratos claros, validación, seguridad y manejo de errores.",
+          "Servicios Spring Boot con estructura mantenible, tests y separación de responsabilidades.",
+          "Integraciones con bases de datos, colas, servicios externos y procesos internos.",
+          "Mejoras de observabilidad, health checks, migraciones con Liquibase y documentación operativa."
+        ],
+        "process": [
+          "Entender dominio, datos, contratos existentes y puntos donde el sistema duele.",
+          "Definir una intervención acotada: nueva API, refactor dirigido, integración o migración por fases.",
+          "Implementar con tests, logs útiles y decisiones explícitas sobre errores y reintentos.",
+          "Validar comportamiento crítico y dejar notas claras para operar o seguir evolucionando."
+        ],
+        "faq": [
+          {
+            "question": "¿Trabajas solo con Spring Boot?",
+            "answer": "Spring Boot es mi base principal para backend, pero puedo integrarlo con frontend, bases de datos, colas, APIs externas y despliegues cuando el proyecto lo necesita."
+          },
+          {
+            "question": "¿Puedes ayudar en una migración legacy?",
+            "answer": "Sí. Prefiero migraciones por fases: identificar límites, extraer flujos de valor y reducir riesgo antes de reescribir más de la cuenta."
           }
         ]
       }

@@ -65,14 +65,14 @@
   "home": {
     "page": {
       "meta": {
-        "title": "Full-Stack Developer Portfolio - José Miguel Fernández",
-        "description": "Full-stack developer with strong backend foundations, building websites, tools, automations, backend systems and web products that are simple, reliable and useful."
+        "title": "Freelance Full-Stack Developer - José Miguel Fernández",
+        "description": "Freelance full-stack developer in Spain. I build business websites, internal tools, automation workflows, API integrations and maintainable backend systems."
       },
-      "eyebrow": "Full-Stack Developer · Software Engineer · Web Products",
-      "title": "I like building software that is simple, reliable, and",
-      "titleAccent": "actually useful.",
-      "intro": "Full-stack developer with strong backend foundations. Building products, tools and websites along the way.",
-      "primaryCta": "View Projects",
+      "eyebrow": "Freelance full-stack development · Backend · Automation",
+      "title": "Simple, reliable software",
+      "titleAccent": "for real business workflows.",
+      "intro": "I help founders, solo professionals and small teams turn a concrete need into a website, internal tool, automation workflow, API integration or maintainable backend system.",
+      "primaryCta": "View Services",
       "secondaryCta": "Contact Me",
       "stats": {
         "years": "Years building software",
@@ -82,9 +82,9 @@
       },
       "about": {
         "eyebrow": "About me",
-        "title": "Full-stack delivery with backend depth.",
+        "title": "Direct collaboration, technical judgment and backend depth.",
         "p1": "I’m a full-stack developer based in Granada, Spain. My strongest foundation is backend development with Java, Spring Boot and production systems.",
-        "p2": "I also work across frontend, automation, CI/CD, Docker and Kubernetes when that helps ship something useful."
+        "p2": "I also work across frontend, automation, CI/CD, Docker and Kubernetes when that helps ship something useful. I do not sell fixed packages: first I understand the workflow, then I build the piece that actually needs to exist."
       },
       "work": {
         "eyebrow": "Selected work",
@@ -93,7 +93,7 @@
       },
       "build": {
         "eyebrow": "What I can build",
-        "title": "Software for real workflows, tools and web products.",
+        "title": "Concrete services for improving a website, automating work or building a tool.",
         "servicesLink": "View services",
         "blogLink": "Read blog"
       },
@@ -136,9 +136,9 @@
       },
       "cta": {
         "eyebrow": "Contact",
-        "title": "Have something useful to build?",
-        "text": "Tell me what you need. I’ll help shape the next step.",
-        "button": "Let’s talk"
+        "title": "Want to know if it is worth building?",
+        "text": "Tell me what you have now, what problem you want to solve and what result you need. I’ll reply with the most reasonable next step.",
+        "button": "Share my case"
       }
     },
     "meta": {
@@ -395,12 +395,12 @@
     "page": {
       "meta": {
         "title": "Contact - José Miguel Fernández",
-        "description": "Contact José Miguel Fernández for freelance projects, collaborations, professional opportunities and practical software work."
+        "description": "Contact José Miguel Fernández for freelance full-stack development, internal tools, automation workflows, API integrations and backend systems."
       },
       "eyebrow": "Contact",
       "title": "Let’s talk about what you want to",
       "titleAccent": "build.",
-      "intro": "Send a project idea, a question or an opportunity. I read every message and I’ll reply when there’s a good fit.",
+      "intro": "Tell me what you have now, what problem you want to solve and what result you need. If it fits, I’ll suggest a clear next step.",
       "linkedin": "Connect on LinkedIn",
       "github": "View my code"
     },
@@ -455,8 +455,18 @@
     "namePlaceholder": "Your name",
     "emailLabel": "Email",
     "emailPlaceholder": "you@example.com",
+    "projectTypeLabel": "Project type",
+    "projectTypePlaceholder": "Choose the main fit",
+    "projectTypes": [
+      "Business website or redesign",
+      "Custom web application",
+      "Internal tool",
+      "Automation or API integration",
+      "Backend / Spring Boot",
+      "Professional opportunity"
+    ],
     "messageLabel": "Message",
-    "messagePlaceholder": "Tell me what you’re building, what you need, or where I can help.",
+    "messagePlaceholder": "Tell me what you have now, what problem you want to solve and what result you need.",
     "attachmentLabel": "Attachment",
     "attachmentHint": "Optional. PDF only.",
     "submit": "Send message"
@@ -578,21 +588,66 @@
   "services": {
     "hub": {
       "meta": {
-        "title": "Freelance Full-Stack Services - José Miguel Fernández",
-        "description": "Freelance full-stack web development services for business websites, redesigns, custom applications, internal tools, automation workflows and API integrations."
+        "title": "Freelance Full-Stack Development Services - José Miguel Fernández",
+        "description": "Freelance full-stack development services for business websites, web applications, internal tools, automation workflows, API integrations and Spring Boot backend systems."
       },
       "eyebrow": "Freelance services",
-      "title": "Useful software",
-      "titleAccent": "for real workflows.",
-      "intro": "I help turn a concrete need into a maintainable website, tool or integration. No agency layer: direct communication, technical clarity and practical delivery.",
+      "title": "Full-stack development",
+      "titleAccent": "for concrete problems.",
+      "intro": "I build websites, internal tools, automation workflows, API integrations and maintainable backend systems for people who need to solve a real workflow without building an unnecessary platform.",
       "bestForLead": "Best for:",
-      "bestForText": "founders, small businesses and teams that need to improve a website, validate an idea or remove manual work without building an unnecessary platform.",
+      "bestForText": "founders, solo professionals, small businesses and teams that need technical judgment, direct execution and software that stays maintainable.",
       "included": "Where I can help",
       "bestFor": "Best for",
       "viewService": "View service",
-      "ctaTitle": "Need to improve a site or build a tool?",
+      "processEyebrow": "How I work",
+      "processTitle": "Clarity first, then code.",
+      "process": [
+        {
+          "title": "Diagnosis",
+          "body": "We clarify the problem, users, current workflow and the outcome that should change."
+        },
+        {
+          "title": "Useful scope",
+          "body": "I define a small first version that can be built, validated and kept easy to extend."
+        },
+        {
+          "title": "Build",
+          "body": "I develop the frontend, backend, automation or integration with clear deliverables and maintainable code."
+        },
+        {
+          "title": "Close",
+          "body": "I validate critical paths, metadata and deployment, then leave notes for operating or extending the work."
+        }
+      ],
+      "useCasesEyebrow": "Use cases",
+      "useCasesTitle": "Problems that fit well.",
+      "useCases": [
+        "A website that does not explain your offer clearly or turn visits into conversations.",
+        "A team running operations through spreadsheets, emails and copy-paste.",
+        "A product idea that needs a focused first web application.",
+        "Tools that do not talk to each other and force manual data movement.",
+        "A legacy backend that is starting to block changes, reliability or maintenance."
+      ],
+      "contentEyebrow": "Supporting content",
+      "contentTitle": "Articles that show how I think when building.",
+      "contentLinks": [
+        {
+          "label": "When to build an internal tool instead of using Excel",
+          "href": "/blog/when-to-build-an-internal-tool-instead-of-using-excel"
+        },
+        {
+          "label": "Migrating a legacy backend to Spring Boot",
+          "href": "/blog/when-should-a-company-migrate-a-legacy-backend-to-java-spring-boot"
+        },
+        {
+          "label": "Idempotent APIs that survive retries",
+          "href": "/blog/idempotent-apis-that-survive-retries"
+        }
+      ],
+      "ctaTitle": "Need to improve a website, automate a workflow or build a tool?",
       "ctaText": "Send the context, the problem and what you want to achieve. I’ll reply with the most reasonable next step.",
-      "ctaButton": "Start a Project"
+      "ctaButton": "Share my case"
     },
     "detail": {
       "eyebrow": "Freelance service",
@@ -820,6 +875,41 @@
           {
             "question": "Do you only build backend integrations?",
             "answer": "No. I can build the backend integration and the frontend screens needed to use or monitor it."
+          }
+        ]
+      },
+      "backend-spring-boot": {
+        "title": "Spring Boot Backend",
+        "shortTitle": "Spring backend",
+        "description": "Development and evolution of APIs, backend services and integrations with Java and Spring Boot, prioritizing maintainability, testability and reliability.",
+        "metaTitle": "Spring Boot Backend Development - José Miguel Fernández",
+        "metaDescription": "Freelance backend development with Java and Spring Boot for APIs, services, integrations, legacy migrations and maintainable systems.",
+        "problem": "The backend supports the business, but each change costs too much, integrations are fragile or the architecture no longer fits the product.",
+        "whoFor": [
+          "Teams that need to strengthen or evolve an existing Java/Spring Boot backend.",
+          "Businesses with a legacy application that is starting to block changes or maintenance.",
+          "Founders who need a reliable API for a web application or internal tool."
+        ],
+        "builds": [
+          "REST APIs with clear contracts, validation, security and error handling.",
+          "Spring Boot services with maintainable structure, tests and separated responsibilities.",
+          "Integrations with databases, queues, third-party services and internal processes.",
+          "Observability improvements, health checks, Liquibase migrations and operational notes."
+        ],
+        "process": [
+          "Understand the domain, data, existing contracts and points where the system hurts.",
+          "Define a focused intervention: new API, targeted refactor, integration or phased migration.",
+          "Implement with tests, useful logs and explicit decisions around errors and retries.",
+          "Validate critical behavior and leave clear notes for operating or evolving the system."
+        ],
+        "faq": [
+          {
+            "question": "Do you only work with Spring Boot?",
+            "answer": "Spring Boot is my main backend base, but I can connect it with frontend work, databases, queues, external APIs and deployment workflows when the project needs it."
+          },
+          {
+            "question": "Can you help with a legacy migration?",
+            "answer": "Yes. I prefer phased migrations: identify boundaries, extract valuable flows and reduce risk before rewriting more than needed."
           }
         ]
       }

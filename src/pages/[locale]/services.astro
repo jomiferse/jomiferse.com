@@ -100,6 +100,78 @@ const structuredData = [
 		</div>
 	</section>
 
+	<section class="section-band section-reveal py-20 md:py-28">
+		<div class="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+			<div>
+				<p class="eyebrow">{page.processEyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.processTitle}
+				</h2>
+			</div>
+			<div class="stagger-children grid gap-4 sm:grid-cols-2">
+				{
+					page.process.map((step, index) => (
+						<article class="dark-card p-5">
+							<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
+								{String(index + 1).padStart(2, "0")}
+							</p>
+							<h3 class="mt-5 text-xl font-black text-[var(--text)]">
+								{step.title}
+							</h3>
+							<p class="muted-copy mt-3 leading-7">{step.body}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal py-20 md:py-28">
+		<div class="grid gap-10 lg:grid-cols-[1fr_1fr]">
+			<div>
+				<p class="eyebrow">{page.useCasesEyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.useCasesTitle}
+				</h2>
+				<ul class="mt-8 space-y-4">
+					{
+						page.useCases.map((item) => (
+							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+									✓
+								</span>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<article class="dark-card p-6 md:p-8">
+				<p class="eyebrow">{page.contentEyebrow}</p>
+				<h2 class="mt-4 text-2xl font-black text-[var(--text)] md:text-3xl">
+					{page.contentTitle}
+				</h2>
+				<div class="mt-7 grid gap-3">
+					{
+						page.contentLinks.map((link) => (
+							<a
+								href={`/${locale}${link.href}`}
+								class="rounded-2xl border border-[var(--surface-border)] bg-[var(--surface)] p-4 font-bold text-[var(--text)] transition hover:border-[var(--accent-strong)]"
+							>
+								{link.label}
+							</a>
+						))
+					}
+				</div>
+			</article>
+		</div>
+	</section>
+
 	<section class="section-band section-reveal py-20 text-center md:py-28">
 		<h2 class="text-4xl font-black text-[var(--text)] md:text-6xl">
 			{page.ctaTitle}

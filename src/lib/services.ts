@@ -6,7 +6,8 @@ export type ServiceSlug =
 	| "custom-web-application"
 	| "internal-tools"
 	| "automation-workflows"
-	| "api-integrations";
+	| "api-integrations"
+	| "backend-spring-boot";
 
 export interface ServiceItem {
 	slug: ServiceSlug;
@@ -33,6 +34,7 @@ const serviceSlugs = [
 	"internal-tools",
 	"automation-workflows",
 	"api-integrations",
+	"backend-spring-boot",
 ] as const satisfies readonly ServiceSlug[];
 
 export const getServices = (locale: Locale): ServiceItem[] => {

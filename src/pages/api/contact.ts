@@ -19,9 +19,10 @@ export const POST: APIRoute = async ({ request }) => {
 
 	const name = String(form.get("name") ?? "").trim();
 	const email = String(form.get("email") ?? "").trim();
+	const projectType = String(form.get("projectType") ?? "").trim();
 	const message = String(form.get("message") ?? "").trim();
 
-	if (!name || !email || !message) {
+	if (!name || !email || !projectType || !message) {
 		return new Response("Missing fields", { status: 400 });
 	}
 
@@ -64,7 +65,7 @@ export const POST: APIRoute = async ({ request }) => {
 		to: cv.email,
 		replyTo: email,
 		subject,
-		text: `Name: ${name}\nEmail: ${email}\nLocale: ${locale}\n\n${message}`,
+		text: `Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\nLocale: ${locale}\n\n${message}`,
 		attachments,
 	});
 
