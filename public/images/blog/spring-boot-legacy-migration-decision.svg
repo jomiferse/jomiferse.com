@@ -1,0 +1,56 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Legacy backend migration decision map</title>
+  <desc id="desc">A simple decision flow showing when a legacy backend should stay as it is, be refactored, or migrate to Spring Boot.</desc>
+  <rect width="1200" height="630" rx="32" fill="#0F172A"/>
+  <circle cx="120" cy="118" r="86" fill="#1E293B"/>
+  <circle cx="1046" cy="110" r="132" fill="#111827"/>
+  <circle cx="1030" cy="504" r="120" fill="#1E293B"/>
+  <rect x="90" y="88" width="280" height="120" rx="20" fill="#334155" stroke="#64748B"/>
+  <text x="230" y="136" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Legacy backend</text>
+  <text x="230" y="168" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">works, but is slowing down</text>
+
+  <rect x="460" y="74" width="280" height="148" rx="20" fill="#1E293B" stroke="#38BDF8" stroke-width="2"/>
+  <text x="600" y="124" text-anchor="middle" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700">Decision point</text>
+  <text x="600" y="156" text-anchor="middle" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="16">Is the current stack costing</text>
+  <text x="600" y="180" text-anchor="middle" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="16">more than the migration?</text>
+
+  <rect x="770" y="78" width="340" height="120" rx="20" fill="#0B1220" stroke="#22C55E" stroke-width="2"/>
+  <text x="940" y="126" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700">Move to Spring Boot</text>
+  <text x="940" y="158" text-anchor="middle" fill="#BBF7D0" font-family="Inter, Arial, sans-serif" font-size="16">when delivery, risk, or hiring</text>
+  <text x="940" y="180" text-anchor="middle" fill="#BBF7D0" font-family="Inter, Arial, sans-serif" font-size="16">are already hurting the business</text>
+
+  <rect x="770" y="248" width="340" height="120" rx="20" fill="#172554" stroke="#60A5FA" stroke-width="2"/>
+  <text x="940" y="296" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700">Refactor first</text>
+  <text x="940" y="328" text-anchor="middle" fill="#BFDBFE" font-family="Inter, Arial, sans-serif" font-size="16">if the pain is isolated</text>
+  <text x="940" y="350" text-anchor="middle" fill="#BFDBFE" font-family="Inter, Arial, sans-serif" font-size="16">and a smaller fix will do</text>
+
+  <rect x="770" y="418" width="340" height="120" rx="20" fill="#111827" stroke="#94A3B8" stroke-width="2"/>
+  <text x="940" y="466" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700">Leave it alone</text>
+  <text x="940" y="498" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">if it is stable, profitable,</text>
+  <text x="940" y="520" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">and easy enough to change</text>
+
+  <path d="M370 148H460" stroke="#94A3B8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M740 148H770" stroke="#22C55E" stroke-width="4" stroke-linecap="round"/>
+  <path d="M760 148C800 148 796 208 770 308" stroke="#60A5FA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M760 148C800 148 796 318 770 478" stroke="#94A3B8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M748 144L770 148L748 152" fill="#22C55E"/>
+  <path d="M760 304L770 308L760 312" fill="#60A5FA"/>
+  <path d="M760 474L770 478L760 482" fill="#94A3B8"/>
+
+  <rect x="90" y="270" width="290" height="220" rx="24" fill="#0B1220" stroke="#475569"/>
+  <text x="235" y="318" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Migration signals</text>
+  <text x="115" y="356" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">• slow releases</text>
+  <text x="115" y="386" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">• brittle tests</text>
+  <text x="115" y="416" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">• hard hiring</text>
+  <text x="115" y="446" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">• security pain</text>
+  <text x="115" y="476" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">• roadmap blocked</text>
+
+  <rect x="430" y="300" width="240" height="170" rx="22" fill="#111827" stroke="#38BDF8" stroke-width="2"/>
+  <text x="550" y="348" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700">Best path</text>
+  <text x="550" y="382" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">migrate in slices</text>
+  <text x="550" y="410" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">keep rollback simple</text>
+  <text x="550" y="438" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">measure each step</text>
+
+  <path d="M380 380H430" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M620 380H770" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+</svg>
