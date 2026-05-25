@@ -29,6 +29,39 @@
     "en": "Switch to English",
     "es": "Cambiar a Español"
   },
+  "notFound": {
+    "page": {
+      "meta": {
+        "title": "Page not found - José Miguel Fernández",
+        "description": "The page you are looking for does not exist. Return to the portfolio home, read the blog or get in touch."
+      },
+      "eyebrow": "404",
+      "title": "This page is not here anymore.",
+      "intro": "The link may be outdated, moved or mistyped. You can go back to the main portfolio, read recent writing or send me a message.",
+      "actions": {
+        "home": "Go home",
+        "blog": "Read blog",
+        "contact": "Contact"
+      },
+      "cards": [
+        {
+          "label": "Start",
+          "title": "Portfolio",
+          "body": "Go back to the main view of projects, experience and services."
+        },
+        {
+          "label": "Writing",
+          "title": "Blog",
+          "body": "Recent notes about backend systems, product work and practical software."
+        },
+        {
+          "label": "Contact",
+          "title": "Project fit",
+          "body": "If you expected something specific, send me the context and I will check it."
+        }
+      ]
+    }
+  },
   "home": {
     "page": {
       "meta": {

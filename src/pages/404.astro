@@ -1,0 +1,142 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import { getTranslations } from "@/i18n";
+
+const notFoundCopy = {
+	en: getTranslations("en").notFound.page,
+	es: getTranslations("es").notFound.page,
+};
+const page = notFoundCopy.en;
+---
+
+<BaseLayout title={page.meta.title} description={page.meta.description} noindex>
+	<section class="section-reveal py-10 md:py-20" data-not-found-page>
+		<div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+			<div>
+				<p class="eyebrow" data-i18n="eyebrow">{page.eyebrow}</p>
+				<h1
+					class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+					data-i18n="title"
+				>
+					{page.title}
+				</h1>
+			</div>
+
+			<div class="dark-card p-5 md:p-7">
+				<p
+					class="muted-copy max-w-xl text-base leading-8 md:text-lg"
+					data-i18n="intro"
+				>
+					{page.intro}
+				</p>
+
+				<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+					<a
+						href="/en"
+						class="button-primary w-full sm:w-auto"
+						data-locale-href=""
+						data-i18n="actions.home"
+					>
+						{page.actions.home}
+						<Icon name="arrow-right" class="h-4 w-4" />
+					</a>
+					<a
+						href="/en/blog"
+						class="button-secondary w-full sm:w-auto"
+						data-locale-href="/blog"
+						data-i18n="actions.blog"
+					>
+						{page.actions.blog}
+					</a>
+					<a
+						href="/en/contact"
+						class="button-secondary w-full sm:w-auto"
+						data-locale-href="/contact"
+						data-i18n="actions.contact"
+					>
+						{page.actions.contact}
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16 md:py-24">
+		<div class="grid gap-5 md:grid-cols-3">
+			<article class="dark-card p-5 md:p-6">
+				<p class="eyebrow" data-i18n="cards.0.label">
+					{page.cards[0].label}
+				</p>
+				<h2
+					class="mt-4 text-xl font-black text-[var(--text)]"
+					data-i18n="cards.0.title"
+				>
+					{page.cards[0].title}
+				</h2>
+				<p class="muted-copy mt-3 text-sm leading-7" data-i18n="cards.0.body">
+					{page.cards[0].body}
+				</p>
+			</article>
+			<article class="dark-card p-5 md:p-6">
+				<p class="eyebrow" data-i18n="cards.1.label">
+					{page.cards[1].label}
+				</p>
+				<h2
+					class="mt-4 text-xl font-black text-[var(--text)]"
+					data-i18n="cards.1.title"
+				>
+					{page.cards[1].title}
+				</h2>
+				<p class="muted-copy mt-3 text-sm leading-7" data-i18n="cards.1.body">
+					{page.cards[1].body}
+				</p>
+			</article>
+			<article class="dark-card p-5 md:p-6">
+				<p class="eyebrow" data-i18n="cards.2.label">
+					{page.cards[2].label}
+				</p>
+				<h2
+					class="mt-4 text-xl font-black text-[var(--text)]"
+					data-i18n="cards.2.title"
+				>
+					{page.cards[2].title}
+				</h2>
+				<p class="muted-copy mt-3 text-sm leading-7" data-i18n="cards.2.body">
+					{page.cards[2].body}
+				</p>
+			</article>
+		</div>
+	</section>
+</BaseLayout>
+
+<script is:inline define:vars={{ notFoundCopy }}>
+	(() => {
+		const readPath = (source, path) => {
+			return path.split(".").reduce((value, segment) => {
+				if (value == null) return undefined;
+				return value[segment];
+			}, source);
+		};
+
+		const locale = window.location.pathname.startsWith("/es") ? "es" : "en";
+		const strings = notFoundCopy[locale];
+
+		document.documentElement.lang = locale;
+
+		document.querySelectorAll("[data-i18n]").forEach((element) => {
+			const key = element.getAttribute("data-i18n");
+			const value = key ? readPath(strings, key) : "";
+			if (!value) return;
+
+			const icon = element.querySelector("svg");
+			element.textContent = value;
+			if (icon) element.append(" ", icon);
+		});
+
+		document.querySelectorAll("[data-locale-href]").forEach((element) => {
+			const suffix = element.getAttribute("data-locale-href") ?? "";
+			element.setAttribute("href", `/${locale}${suffix}`);
+		});
+	})();
+</script>

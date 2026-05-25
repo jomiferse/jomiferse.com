@@ -29,6 +29,39 @@
     "en": "Switch to English",
     "es": "Cambiar a Español"
   },
+  "notFound": {
+    "page": {
+      "meta": {
+        "title": "Página no encontrada - José Miguel Fernández",
+        "description": "La página que buscas no existe. Vuelve al inicio del portfolio, lee el blog o ponte en contacto."
+      },
+      "eyebrow": "404",
+      "title": "Esta página ya no está aquí.",
+      "intro": "El enlace puede estar desactualizado, movido o mal escrito. Puedes volver al portfolio, leer el blog o enviarme un mensaje.",
+      "actions": {
+        "home": "Ir al inicio",
+        "blog": "Leer blog",
+        "contact": "Contactar"
+      },
+      "cards": [
+        {
+          "label": "Inicio",
+          "title": "Portfolio",
+          "body": "Vuelve a la vista principal de proyectos, experiencia y servicios."
+        },
+        {
+          "label": "Escritura",
+          "title": "Blog",
+          "body": "Notas recientes sobre backend, producto y software práctico."
+        },
+        {
+          "label": "Contacto",
+          "title": "Encaje de proyecto",
+          "body": "Si esperabas algo concreto, envíame el contexto y lo reviso."
+        }
+      ]
+    }
+  },
   "home": {
     "page": {
       "meta": {
