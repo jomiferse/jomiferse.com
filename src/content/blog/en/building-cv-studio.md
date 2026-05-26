@@ -18,7 +18,9 @@ Most CV builders give you rigid templates, too much visual noise or PDFs that lo
 
 That gap is what led me to create **CV Studio**.
 
-👉 **Project repository:**  
+The same idea applies to a professional website: the goal is not more sections, but clearer positioning and an easier next step. I cover that in [what a professional website needs to get clients](/en/blog/what-a-professional-website-needs-to-get-clients/).
+
+**Project repository:**  
 [https://github.com/jomiferse/cv-studio](https://github.com/jomiferse/cv-studio)
 
 ---
@@ -93,3 +95,14 @@ You can explore the project here:
 **[CV Studio on GitHub](https://github.com/jomiferse/cv-studio)**
 
 More notes will follow as the project evolves.
+
+## FAQ
+
+**Does CV Studio replace a portfolio?**  
+No. A CV and a portfolio solve different moments. The CV summarizes experience; the portfolio gives context, judgment and depth.
+
+**Why use structured data for a CV?**  
+Because it separates content from presentation. You can change design, export or language without rewriting everything.
+
+**What should a developer CV prioritize?**  
+Clarity, real impact, relevant technologies and projects explained with context. Not just a long list of tools.

@@ -37,6 +37,8 @@ Una herramienta más compleja puede superar los **15.000 euros** si necesita int
 
 La diferencia no está solo en las pantallas. Está en las reglas del negocio, los datos, las excepciones y el coste de equivocarse.
 
+Si todavía estás en la fase de decidir si el problema merece software, empieza por [cuándo construir una herramienta interna en vez de seguir usando Excel](/es/blog/cuando-construir-herramienta-interna-en-vez-de-usar-excel/). Si ya sabes que el problema es repetitivo, mira también [cuándo automatizar procesos de empresa](/es/blog/automatizar-procesos-empresa-cuando-merece-la-pena/).
+
 ## Qué encarece una herramienta interna
 
 Lo que más encarece un proyecto no suele ser "hacer una tabla" o "poner un botón". Suele ser todo lo que rodea al flujo real.
@@ -112,6 +114,8 @@ Antes de hablar de pantallas, miraría el proceso actual:
 
 Con eso definiría un alcance pequeño y medible. Si el proyecto necesita backend, base de datos, autenticación, integraciones API o automatizaciones, se añaden porque el flujo lo exige, no porque suenen bien en una propuesta.
 
+Ese tipo de alcance suele encajar con [herramientas internas](/es/services/internal-tools/), [aplicaciones web a medida](/es/services/custom-web-application/) o [integraciones API](/es/services/api-integrations/), según dónde esté el dolor real.
+
 También separaría claramente tres cosas: construcción inicial, despliegue y mantenimiento. Una herramienta interna no termina el día que se publica. Necesita pequeños ajustes, corrección de errores, cambios cuando el negocio cambia y alguien que entienda cómo está montada.
 
 ## La decisión importante
@@ -123,3 +127,14 @@ Si el proceso actual funciona, es barato y no genera errores importantes, quizá
 Yo empezaría por ahí: no por una gran plataforma, sino por una primera versión que resuelva un problema concreto y permita medir si merece la pena seguir.
 
 Si tienes un flujo interno que ya se está volviendo lento, manual o difícil de controlar, probablemente merece la pena bajarlo a tierra antes de pedir un desarrollo grande.
+
+## FAQ
+
+**¿Se puede estimar una herramienta interna sin diseño cerrado?**  
+Sí, pero la estimación será por rangos. Para afinar hace falta entender usuarios, permisos, datos, integraciones y mantenimiento.
+
+**¿Qué encarece más una herramienta interna?**  
+Normalmente permisos, integraciones, datos históricos, reglas de negocio y errores que no pueden fallar en silencio.
+
+**¿Conviene empezar con una versión pequeña?**  
+Sí. Una primera versión reduce riesgo y permite medir uso real antes de invertir en paneles, automatizaciones o reglas avanzadas.

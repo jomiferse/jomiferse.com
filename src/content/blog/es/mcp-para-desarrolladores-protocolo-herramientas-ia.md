@@ -86,6 +86,8 @@ Tú sigues revisando la salida. Tú sigues tomando la decisión. Pero el context
 
 MCP ayuda cuando hay tareas repetidas, varias herramientas y una buena razón para reutilizar integraciones. Es útil para herramientas internas, soporte, búsqueda en documentación, inspección de código y automatización controlada.
 
+Si el caso real es conectar sistemas de negocio, el problema se parece mucho a una [integración API](/es/services/api-integrations/) o a una [automatización de procesos](/es/blog/automatizar-procesos-empresa-cuando-merece-la-pena/): hay que diseñar límites, permisos y errores visibles antes de hablar de asistentes.
+
 Sirve bastante menos si esperas que arregle una arquitectura mala, permisos poco claros o procesos confusos.
 
 ## Ejemplo pequeño de código: un límite más seguro
@@ -102,7 +104,7 @@ No hace falta complicarlo más.
 
 El asistente puede inspeccionar contexto con libertad, pero necesita una aprobación explícita antes de tocar algo importante.
 
-## My practical take
+## Mi lectura práctica
 
 No creo que MCP sea la historia principal.
 
@@ -125,3 +127,14 @@ MCP para desarrolladores es infraestructura aburrida, y por eso me interesa.
 Está pensado para hacer que las herramientas de IA sean más útiles dentro de flujos reales. Si funciona, pesarán más las herramientas que se conectan bien con el resto del stack que las que hacen más ruido.
 
 Si quieres ver más sobre cómo enfoco software práctico, automatización y desarrollo orientado a producto, échale un vistazo al portfolio o escríbeme desde la web.
+
+## FAQ
+
+**¿MCP sustituye a una API?**  
+No. MCP puede exponer capacidades a herramientas de IA, pero las APIs y los contratos del sistema siguen importando.
+
+**¿Dónde empezaría con MCP?**  
+Con herramientas de solo lectura: documentación, logs, búsqueda o inspección. Es la forma más segura de aportar valor sin dar permisos de escritura demasiado pronto.
+
+**¿Tiene sentido para freelancers?**  
+Sí, si construyen herramientas internas, dashboards o automatizaciones que pueden conectarse después a varios asistentes.

@@ -214,7 +214,7 @@ You expose metrics so the next change is easier.
 
 That is the real skill: not making the app look tuned, but making it behave better under load.
 
-If you also care about how this fits into the rest of a practical backend stack, I think this pairs well with my post on [right-sizing Kubernetes pods](/en/blog/right-sizing-kubernetes-pods-requests-limits/) and the one on MCP for developers.
+If you also care about how this fits into the rest of a practical backend stack, this pairs well with [Spring Boot in production](/en/blog/spring-boot-production-devops-checklist/), [right-sizing Kubernetes pods](/en/blog/right-sizing-kubernetes-pods-requests-limits/) and the [Spring Boot backend](/en/services/backend-spring-boot/) service.
 
 ## Bottom line
 

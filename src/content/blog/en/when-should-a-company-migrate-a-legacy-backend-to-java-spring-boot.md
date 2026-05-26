@@ -159,13 +159,15 @@ That does not mean you should panic and rewrite everything. It means you should 
 
 And if you do migrate, do it in slices. The last thing you want is a heroic rewrite that turns into a year-long detour.
 
-If you want the next step after the migration decision, the performance side matters too. I wrote about that in [Spring Boot performance tuning](/en/blog/spring-boot-performance-tuning/).
+If you want the next step after the migration decision, the operational side matters too. I would continue with [Spring Boot in production: a DevOps checklist](/en/blog/spring-boot-production-devops-checklist/) and [Spring Boot performance tuning](/en/blog/spring-boot-performance-tuning/).
 
 ## Bottom line
 
 A company should migrate a legacy backend to Java Spring Boot when the current system is slowing delivery, increasing risk, or making the team harder to scale, and when Spring Boot offers a clearer and cheaper long-term path.
 
 It is not a fashion move. It is a trade-off.
+
+If you need to ground a migration or incremental backend evolution, a focused [Spring Boot backend](/en/services/backend-spring-boot/) intervention can fit.
 
 If the backend is still healthy enough to support the business, do not touch it just because it looks old. If it is getting in the way, migration starts making sense.
 

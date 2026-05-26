@@ -161,13 +161,15 @@ Eso no significa entrar en pánico y reescribir todo. Significa ser honesto con 
 
 Y si migras, hazlo por trozos. Lo último que quieres es una reescritura heroica convertida en un desvío de un año.
 
-Si ya has tomado la decisión de migrar, la parte de rendimiento también importa. Lo conté en [Rendimiento en Spring Boot: los cambios que de verdad se notan](/es/blog/rendimiento-spring-boot-cambios-que-de-verdad-se-notan/).
+Si ya has tomado la decisión de migrar, la parte operativa también importa. Después de este artículo seguiría con [Spring Boot en producción: checklist DevOps](/es/blog/spring-boot-produccion-checklist-devops/) y [Rendimiento en Spring Boot: los cambios que de verdad se notan](/es/blog/rendimiento-spring-boot-cambios-que-de-verdad-se-notan/).
 
 ## Conclusión
 
 Una empresa debería migrar un backend heredado a Java Spring Boot cuando el sistema actual está frenando la entrega, aumentando el riesgo o haciendo más difícil escalar el equipo, y cuando Spring Boot ofrece una ruta más clara y más barata a largo plazo.
 
 No es una decisión de postureo. Es una decisión de coste, riesgo y velocidad.
+
+Si necesitas aterrizar una migración o una evolución incremental, puede encajar una intervención acotada de [backend con Spring Boot](/es/services/backend-spring-boot/).
 
 Si el backend sigue sano para sostener el negocio, no lo toques solo porque parece viejo. Si ya se está metiendo en medio, la migración empieza a tener sentido.
 

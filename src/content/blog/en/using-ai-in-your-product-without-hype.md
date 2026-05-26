@@ -17,6 +17,8 @@ That is how teams end up with a flashy demo, a confusing roadmap, and a feature 
 
 If you want AI to be useful in a real product, it needs to do one of three things: save time, reduce friction, or improve a decision that humans already make too slowly.
 
+If the problem is mostly repeated work across systems, you may not need AI yet. [Business process automation](/en/blog/when-business-process-automation-is-worth-it/) or a simpler integration may be enough.
+
 That sounds obvious. In practice, it is where most teams go wrong.
 
 ## Where AI usually makes sense
@@ -65,6 +67,8 @@ Examples:
 - sorting feedback into buckets
 
 The key word is _first draft_. AI is usually better as a starting point than as the final answer.
+
+When the workflow needs to move data between tools, send notifications or coordinate states, I would connect it with [automation workflows](/en/services/automation-workflows/) before designing a more complex AI feature.
 
 ### Decision support
 
@@ -196,3 +200,17 @@ It usually does _not_ mean:
 - hiding a weak product idea behind a shiny model
 
 My rule is simple: start with the problem, then use AI only if it makes the product better in a way you can prove.
+
+## FAQ
+
+**When does AI make sense in a product?**  
+When it saves time, reduces friction or improves a concrete decision with an observable metric.
+
+**When would you avoid AI?**  
+When the problem is better solved with simple rules, an API integration, normal search or deterministic automation.
+
+**Should AI make final decisions?**  
+Not in risky processes. It can prepare context or a first draft, but I would keep human review.
+
+**What would you build first?**  
+A small test in one workflow step, with cost, quality and time saved measured before expanding it.

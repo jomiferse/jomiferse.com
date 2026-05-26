@@ -172,6 +172,8 @@ Idempotency is one of those backend topics that looks small until it saves you f
 
 If your API accepts retries, design for them on purpose. Do not pretend they will not happen. They will. And when they do, your system should either return the same result or fail in a way that is safe to retry.
 
+If you are designing a backend that will run in production, this connects with [Spring Boot in production](/en/blog/spring-boot-production-devops-checklist/) and the [API integrations](/en/services/api-integrations/) service, where retries and visible errors are part of the contract.
+
 That is a much better place to be than discovering double charges at 2 a.m.
 
 ## Sources and references

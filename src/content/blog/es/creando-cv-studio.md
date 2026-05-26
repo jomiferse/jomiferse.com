@@ -18,7 +18,9 @@ La mayoría de generadores te dan plantillas rígidas, demasiado ruido visual o 
 
 Ese hueco fue lo que me llevó a crear **CV Studio**.
 
-👉 **Repositorio del proyecto:**  
+Esa misma idea aplica a una web profesional: no se trata de poner más secciones, sino de explicar mejor qué haces y facilitar el siguiente paso. Lo desarrollo en [qué debe tener una web profesional para captar clientes](/es/blog/que-debe-tener-web-profesional-para-captar-clientes/).
+
+**Repositorio del proyecto:**  
 [https://github.com/jomiferse/cv-studio](https://github.com/jomiferse/cv-studio)
 
 ---
@@ -93,3 +95,14 @@ Puedes explorar el proyecto aquí:
 **[CV Studio en GitHub](https://github.com/jomiferse/cv-studio)**
 
 Publicaré más notas conforme el proyecto evolucione.
+
+## FAQ
+
+**¿CV Studio sustituye a un portfolio?**  
+No. Un CV y un portfolio resuelven momentos distintos. El CV resume trayectoria; el portfolio da contexto, criterio y profundidad.
+
+**¿Por qué usar datos estructurados para un CV?**  
+Porque separa contenido de presentación. Puedes cambiar diseño, exportación o idioma sin reescribir todo desde cero.
+
+**¿Qué debería priorizar un CV developer?**  
+Claridad, impacto real, tecnologías relevantes y proyectos explicados con contexto. No solo una lista larga de herramientas.

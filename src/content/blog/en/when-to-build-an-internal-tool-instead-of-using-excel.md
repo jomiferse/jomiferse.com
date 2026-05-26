@@ -15,6 +15,8 @@ That is where hidden errors show up: duplicated data, unclear columns, parallel 
 
 An internal tool does not need to be a huge platform. Often, a small application that handles one workflow well is enough.
 
+If you also need to put numbers around the decision, this pairs well with the guide on [how much a custom internal tool costs](/en/blog/how-much-does-a-custom-internal-tool-cost/).
+
 ## Signs the spreadsheet has outgrown its role
 
 The first sign is repetition. If someone copies data between systems every day, checks the same statuses or prepares reports manually, part of the work can probably be automated.
@@ -35,6 +37,8 @@ A good internal tool does not try to replace the whole business. It solves a spe
 - notify the team when something needs attention
 
 The value is not a nice interface by itself. The value is reducing manual work, avoiding mistakes and making the real state of the process visible.
+
+When that workflow needs a private interface, permissions or data from several systems, it fits better as an [internal tool](/en/services/internal-tools/) than as another shared spreadsheet. If the main pain is moving data between tools, the first step may be [business process automation](/en/blog/when-business-process-automation-is-worth-it/) or a small integration.
 
 ## When not to build it
 
@@ -72,3 +76,14 @@ Then I would define the smallest useful tool with clear inputs, outputs and boun
 That is the point: simple, reliable, useful software. Not another platform to maintain without a reason.
 
 If a workflow already lives across spreadsheets, emails and copy-paste, it is probably worth reviewing before adding more tabs.
+
+## FAQ
+
+**Does Excel stop working when the team grows?**  
+Not always. It stops working when the process needs permissions, validation, traceability or a clearer source of truth.
+
+**Does an internal tool have to be expensive?**  
+Not necessarily. A first version can be small if it focuses on one workflow. The cost depends on permissions, integrations, data and maintenance.
+
+**What comes first: automation or an internal tool?**  
+It depends on the main pain. If there is only one repeated step, automation may be enough. If the team needs to view, edit and review states, a tool is usually better.

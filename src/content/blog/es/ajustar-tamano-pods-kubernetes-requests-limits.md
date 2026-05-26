@@ -183,6 +183,8 @@ Mide las señales correctas.
 Cambia una cosa cada vez.
 Y vuelve a revisar cuando cambien el tráfico, el código o las dependencias.
 
+Este tema encaja especialmente con aplicaciones backend en producción. Si tu servicio es Spring Boot, también revisaría el [checklist DevOps para Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/) antes de tocar valores de CPU y memoria sin datos.
+
 Así mantienes el cluster eficiente sin convertir cada despliegue en una apuesta.
 
 ## FAQ

@@ -1,0 +1,42 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Business process automation map</title>
+  <desc id="desc">A workflow map showing how a manual business process becomes an automated flow with trigger, data, action, checks and monitoring.</desc>
+  <rect width="1200" height="630" rx="32" fill="#0F172A"/>
+  <circle cx="104" cy="98" r="92" fill="#172554"/>
+  <circle cx="1076" cy="512" r="138" fill="#064E3B"/>
+  <path d="M142 358H1058" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+  <path d="M142 358C278 210 418 210 560 358C702 506 842 506 1058 358" stroke="#38BDF8" stroke-width="7" stroke-linecap="round"/>
+
+  <text x="82" y="102" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="0.2em">AUTOMATION</text>
+  <text x="82" y="150" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800">From manual work</text>
+  <text x="82" y="204" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800">to a reliable flow</text>
+  <text x="84" y="242" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="20">Automate the repeated step, not the whole company.</text>
+
+  <rect x="92" y="308" width="170" height="150" rx="22" fill="#111827" stroke="#64748B" stroke-width="2"/>
+  <text x="177" y="354" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Manual</text>
+  <text x="177" y="386" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">copy-paste</text>
+  <text x="177" y="412" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">checks</text>
+
+  <rect x="306" y="250" width="170" height="150" rx="22" fill="#172554" stroke="#60A5FA" stroke-width="2"/>
+  <text x="391" y="296" text-anchor="middle" fill="#DBEAFE" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Trigger</text>
+  <text x="391" y="328" text-anchor="middle" fill="#BFDBFE" font-family="Inter, Arial, sans-serif" font-size="16">form</text>
+  <text x="391" y="354" text-anchor="middle" fill="#BFDBFE" font-family="Inter, Arial, sans-serif" font-size="16">webhook</text>
+
+  <rect x="520" y="308" width="170" height="150" rx="22" fill="#0B1220" stroke="#38BDF8" stroke-width="2"/>
+  <text x="605" y="354" text-anchor="middle" fill="#E0F2FE" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Data</text>
+  <text x="605" y="386" text-anchor="middle" fill="#BAE6FD" font-family="Inter, Arial, sans-serif" font-size="16">validate</text>
+  <text x="605" y="412" text-anchor="middle" fill="#BAE6FD" font-family="Inter, Arial, sans-serif" font-size="16">transform</text>
+
+  <rect x="734" y="250" width="170" height="150" rx="22" fill="#064E3B" stroke="#22C55E" stroke-width="2"/>
+  <text x="819" y="296" text-anchor="middle" fill="#DCFCE7" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Action</text>
+  <text x="819" y="328" text-anchor="middle" fill="#BBF7D0" font-family="Inter, Arial, sans-serif" font-size="16">notify</text>
+  <text x="819" y="354" text-anchor="middle" fill="#BBF7D0" font-family="Inter, Arial, sans-serif" font-size="16">sync</text>
+
+  <rect x="948" y="308" width="170" height="150" rx="22" fill="#111827" stroke="#94A3B8" stroke-width="2"/>
+  <text x="1033" y="354" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Monitor</text>
+  <text x="1033" y="386" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">logs</text>
+  <text x="1033" y="412" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="16">alerts</text>
+
+  <rect x="82" y="520" width="1036" height="48" rx="24" fill="#020617" stroke="#334155"/>
+  <text x="600" y="551" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="18">A good automation has visible errors, clear ownership and one workflow it improves.</text>
+</svg>

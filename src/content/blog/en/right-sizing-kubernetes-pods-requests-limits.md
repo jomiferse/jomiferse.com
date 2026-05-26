@@ -183,6 +183,8 @@ Measure the right signals.
 Change one thing at a time.
 Then keep adjusting as traffic, code, and dependencies change.
 
+This is especially relevant for backend applications in production. If your service is Spring Boot, I would also review the [Spring Boot production checklist](/en/blog/spring-boot-production-devops-checklist/) before changing CPU and memory values without data.
+
 That is how you keep your cluster efficient without turning every deploy into a guess.
 
 ## FAQ

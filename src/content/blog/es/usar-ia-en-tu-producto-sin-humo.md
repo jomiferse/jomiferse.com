@@ -17,6 +17,8 @@ Ahí es donde muchos equipos acaban con una demo vistosa, una hoja de ruta rara 
 
 Si quieres que la IA sea realmente útil en un producto, tiene que hacer una de estas tres cosas: ahorrar tiempo, reducir fricción o mejorar una decisión que ya tomaban personas pero demasiado despacio.
 
+Si lo que quieres resolver es principalmente trabajo repetitivo entre sistemas, quizá no necesitas IA todavía. Puede bastar con [automatizar un proceso de empresa](/es/blog/automatizar-procesos-empresa-cuando-merece-la-pena/) o construir una integración más simple.
+
 Suena obvio. En la práctica, ahí es donde se equivocan la mayoría de equipos.
 
 ## Dónde suele tener sentido
@@ -65,6 +67,8 @@ Ejemplos:
 - ordenar feedback por grupos
 
 La palabra clave aquí es _primer borrador_. La IA suele funcionar mejor como punto de partida que como respuesta final.
+
+Cuando el flujo necesita mover datos entre herramientas, enviar avisos o coordinar estados, lo conectaría con [automatización de flujos](/es/services/automation-workflows/) antes de diseñar una función de IA más compleja.
 
 ### Apoyo a decisiones
 
@@ -196,3 +200,17 @@ Normalmente _no_ significa:
 - esconder una idea floja detrás de un modelo brillante
 
 Mi regla es simple: empieza por el problema y usa IA solo si mejora el producto de una forma que puedas demostrar.
+
+## FAQ
+
+**¿Cuándo tiene sentido usar IA en un producto?**  
+Cuando ayuda a ahorrar tiempo, reducir fricción o mejorar una decisión concreta con una métrica observable.
+
+**¿Cuándo no usaría IA?**  
+Cuando el problema se resuelve mejor con reglas simples, una integración API, una búsqueda normal o una automatización determinista.
+
+**¿La IA debería tomar decisiones finales?**  
+En procesos de riesgo, no. Puede preparar contexto o un primer borrador, pero mantendría revisión humana.
+
+**¿Qué construiría primero?**  
+Una prueba pequeña en un paso del flujo, con coste, calidad y ahorro medidos antes de ampliarla.

@@ -214,7 +214,7 @@ Sacas métricas para que el siguiente cambio sea más fácil.
 
 Ese es el trabajo de verdad: no hacer que la app parezca optimizada, sino que se comporte mejor bajo carga.
 
-Si además te interesa cómo encaja esto con una stack backend práctica, este artículo combina muy bien con el de [ajustar el tamaño de los pods en Kubernetes](/es/blog/ajustar-tamano-pods-kubernetes-requests-limits/) y el de MCP para desarrolladores.
+Si además te interesa cómo encaja esto con una stack backend práctica, este artículo combina muy bien con [Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/), [ajustar el tamaño de los pods en Kubernetes](/es/blog/ajustar-tamano-pods-kubernetes-requests-limits/) y el servicio de [backend con Spring Boot](/es/services/backend-spring-boot/).
 
 ## Conclusión
 

@@ -22,6 +22,8 @@ Ahí empiezan los errores difíciles de ver: datos duplicados, columnas que nadi
 
 Una herramienta interna no tiene que ser una plataforma enorme. Muchas veces basta con una aplicación pequeña que haga bien un flujo concreto.
 
+Si además necesitas poner números encima de la mesa, este artículo combina bien con la guía sobre [cuánto cuesta crear una herramienta interna a medida](/es/blog/cuanto-cuesta-crear-herramienta-interna-a-medida/).
+
 ## Señales de que la hoja se ha quedado corta
 
 La primera señal es la repetición. Si alguien copia datos entre sistemas todos los días, revisa los mismos estados o prepara informes manualmente, hay una parte del trabajo que probablemente se puede automatizar.
@@ -42,6 +44,8 @@ Una buena herramienta interna no intenta sustituir todo el negocio. Resuelve un 
 - avisar cuando algo requiere atención
 
 El valor no está en tener una interfaz bonita por sí sola. El valor está en reducir trabajo manual, evitar errores y hacer visible el estado real del proceso.
+
+Cuando ese flujo necesita una interfaz privada, permisos o datos de varios sistemas, encaja mejor con una [herramienta interna](/es/services/internal-tools/) que con otra hoja compartida. Si el dolor principal es mover datos entre herramientas, quizá el primer paso sea una [automatización de procesos](/es/blog/automatizar-procesos-empresa-cuando-merece-la-pena/) o una integración pequeña.
 
 ## Cuándo no construirla
 
@@ -79,3 +83,14 @@ Después definiría una herramienta mínima que tenga entrada, salida y límites
 Ese es el punto: software simple, fiable y útil. No una plataforma más que mantener sin motivo.
 
 Si tienes un flujo que ya vive entre hojas, emails y copy-paste, probablemente merece la pena revisarlo antes de seguir añadiendo pestañas.
+
+## FAQ
+
+**¿Excel deja de servir cuando el equipo crece?**  
+No siempre. Deja de servir cuando el proceso necesita permisos, validación, trazabilidad o una fuente de verdad más clara.
+
+**¿Una herramienta interna tiene que ser cara?**  
+No necesariamente. Una primera versión puede ser pequeña si se limita a un flujo concreto. El coste depende de permisos, integraciones, datos y mantenimiento.
+
+**¿Qué va antes: automatizar o construir una herramienta?**  
+Depende del dolor principal. Si solo hay un paso repetitivo, automatizar puede bastar. Si el equipo necesita consultar, editar y revisar estados, conviene una herramienta.

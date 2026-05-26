@@ -86,6 +86,8 @@ You still review the output. You still make the call. But the context is not sca
 
 MCP helps when you have repeated tasks, multiple tools, and a reason to reuse integrations. It is useful for internal tools, support workflows, documentation lookup, codebase inspection, and controlled automation.
 
+If the real case is connecting business systems, the problem looks a lot like an [API integration](/en/services/api-integrations/) or [business process automation](/en/blog/when-business-process-automation-is-worth-it/): you need boundaries, permissions and visible errors before talking about assistants.
+
 It is less useful if you expect it to fix bad architecture, poor permissions, or vague processes.
 
 ## Small code example: a safer tool boundary
@@ -125,3 +127,14 @@ MCP for developers is boring infrastructure, and that is why it is interesting.
 It is meant to make AI tools easier to use inside real workflows. If it works, the tools that connect cleanly to the rest of the stack will matter more than the loudest ones.
 
 If you want more practical software, automation, and product-focused development from me, check the portfolio or reach out through the site.
+
+## FAQ
+
+**Does MCP replace an API?**  
+No. MCP can expose capabilities to AI tools, but APIs and system contracts still matter.
+
+**Where would you start with MCP?**  
+With read-only tools: documentation, logs, search or inspection. It is the safest way to create value without giving write permissions too early.
+
+**Does MCP make sense for freelancers?**  
+Yes, when they build internal tools, dashboards or automations that can later connect to several assistants.
