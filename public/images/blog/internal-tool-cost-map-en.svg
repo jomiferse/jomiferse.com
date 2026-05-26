@@ -1,0 +1,47 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Custom internal tool cost map</title>
+  <desc id="desc">A diagram with four scope levels for estimating an internal tool: simple, intermediate, complex, and maintenance.</desc>
+  <rect width="1200" height="630" rx="32" fill="#0F172A"/>
+  <circle cx="124" cy="112" r="94" fill="#172554"/>
+  <circle cx="1058" cy="104" r="126" fill="#0B1220"/>
+  <circle cx="1050" cy="512" r="118" fill="#1E293B"/>
+  <path d="M115 430C255 255 397 190 552 235C720 284 772 130 1068 160" stroke="#38BDF8" stroke-width="6" stroke-linecap="round" opacity="0.38"/>
+  <path d="M132 480C310 334 476 322 628 372C780 422 890 344 1070 290" stroke="#22C55E" stroke-width="5" stroke-linecap="round" opacity="0.28"/>
+
+  <text x="86" y="96" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="0.2em">PRACTICAL GUIDE</text>
+  <text x="86" y="143" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800">Custom internal</text>
+  <text x="86" y="195" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800">tool cost</text>
+  <text x="88" y="232" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="20">The budget depends less on screens</text>
+  <text x="88" y="260" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="20">and more on workflow, data and integrations.</text>
+
+  <rect x="86" y="330" width="235" height="170" rx="22" fill="#111827" stroke="#38BDF8" stroke-width="2"/>
+  <text x="116" y="374" fill="#E0F2FE" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Simple</text>
+  <text x="116" y="414" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="800">EUR 2k-6k</text>
+  <text x="116" y="452" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="17">Form, list, statuses,</text>
+  <text x="116" y="478" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="17">validation and export.</text>
+
+  <rect x="348" y="286" width="235" height="214" rx="22" fill="#172554" stroke="#60A5FA" stroke-width="2"/>
+  <text x="378" y="330" fill="#DBEAFE" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Intermediate</text>
+  <text x="378" y="370" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="800">EUR 6k-15k</text>
+  <text x="378" y="408" fill="#BFDBFE" font-family="Inter, Arial, sans-serif" font-size="17">Permissions, filters,</text>
+  <text x="378" y="434" fill="#BFDBFE" font-family="Inter, Arial, sans-serif" font-size="17">emails, imports</text>
+  <text x="378" y="460" fill="#BFDBFE" font-family="Inter, Arial, sans-serif" font-size="17">and one key API.</text>
+
+  <rect x="610" y="230" width="235" height="270" rx="22" fill="#0B1220" stroke="#22C55E" stroke-width="2"/>
+  <text x="640" y="274" fill="#BBF7D0" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Complex</text>
+  <text x="640" y="314" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="800">EUR 15k+</text>
+  <text x="640" y="352" fill="#DCFCE7" font-family="Inter, Arial, sans-serif" font-size="17">Several integrations,</text>
+  <text x="640" y="378" fill="#DCFCE7" font-family="Inter, Arial, sans-serif" font-size="17">critical data, audit,</text>
+  <text x="640" y="404" fill="#DCFCE7" font-family="Inter, Arial, sans-serif" font-size="17">dashboards and</text>
+  <text x="640" y="430" fill="#DCFCE7" font-family="Inter, Arial, sans-serif" font-size="17">automations.</text>
+
+  <rect x="872" y="286" width="242" height="214" rx="22" fill="#111827" stroke="#94A3B8" stroke-width="2"/>
+  <text x="902" y="330" fill="#E2E8F0" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Maintenance</text>
+  <text x="902" y="370" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">After the</text>
+  <text x="902" y="404" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">launch</text>
+  <text x="902" y="442" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="17">Adjustments, bugs,</text>
+  <text x="902" y="468" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="17">security and changes.</text>
+
+  <rect x="86" y="544" width="1028" height="44" rx="22" fill="#020617" stroke="#334155"/>
+  <text x="600" y="573" text-anchor="middle" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="18">The key question: what it costs to build it versus what it costs to keep working without it.</text>
+</svg>
