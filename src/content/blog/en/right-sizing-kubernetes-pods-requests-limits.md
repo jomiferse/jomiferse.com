@@ -12,7 +12,7 @@ If you have ever copied a `resources:` block from another service and hoped for 
 
 Right-sizing Kubernetes pods is one of those boring topics that quietly decides whether your platform feels stable or expensive. Set the numbers too high and you waste money. Set them too low and you get throttling, OOMKills, noisy alerts, and surprise latency spikes.
 
-The good news: you do not need perfect math to get this right. You need a repeatable way to read your workload and a clear mental model of what Kubernetes does with those numbers.
+You do not need perfect math to get this right. You need a repeatable way to read your workload and a clear mental model of what Kubernetes does with those numbers.
 
 ## The short version
 
@@ -82,7 +82,7 @@ Here is a sane way to think about it:
 - **Memory request:** use the observed working set with headroom.
 - **Memory limit:** give yourself a hard ceiling, but not one so tight that GC or short-lived spikes turn into restarts.
 
-That is not a magic formula. It is a way to stop lying to yourself.
+This will not fit every service. It is a way to stop lying to yourself.
 
 ```yaml
 resources:
@@ -100,7 +100,7 @@ This is not a universal answer. It is only a starting point. A batch job, an API
 
 ### 1. Setting requests and limits equal by default
 
-This looks tidy. It is usually too rigid.
+This looks tidy. In operation, it is often too rigid.
 
 If CPU request and CPU limit are identical, the container has very little room to breathe during short spikes. That is how you get throttling that looks like random slowness.
 
@@ -185,7 +185,7 @@ Then keep adjusting as traffic, code, and dependencies change.
 
 This is especially relevant for backend applications in production. If your service is Spring Boot, I would also review the [Spring Boot production checklist](/en/blog/spring-boot-production-devops-checklist/) before changing CPU and memory values without data.
 
-That is how you keep your cluster efficient without turning every deploy into a guess.
+That keeps the cluster efficient without turning every deploy into a guess.
 
 ## FAQ
 

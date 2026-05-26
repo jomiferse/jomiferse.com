@@ -8,7 +8,7 @@ readingTime: "8 min"
 tags: [spring-boot, java, backend, legacy, migracion, arquitectura]
 ---
 
-Migrar un backend heredado a Spring Boot suena muy limpio hasta que miras el sistema de verdad. Ahí suele haber historia: atajos que nadie documentó, decisiones que viven escondidas en producción y flujos críticos que nadie quiere tocar porque "sigue funcionando". Esa es la parte que se olvida. Una migración nunca va solo de código. Va de riesgo, de tiempo y de cuánto dolor está cargando ya la empresa.
+Migrar un backend heredado a Spring Boot suena muy limpio hasta que miras el sistema de verdad. Ahí suele haber historia: atajos que nadie documentó, decisiones escondidas en producción y flujos críticos que nadie quiere tocar porque "sigue funcionando". Conviene recordarlo antes de vender una migración como si fuera solo código. También va de riesgo, de tiempo y de cuánto dolor está cargando ya la empresa.
 
 ![Mapa de decisión para migrar un backend heredado](/images/blog/spring-boot-legacy-migration-decision.svg)
 
@@ -18,9 +18,9 @@ Una empresa debería migrar un backend heredado a Spring Boot cuando el stack ac
 
 > **Regla práctica:** migra cuando el backend actual te está costando más en velocidad perdida, riesgo y fricción para contratar que lo que te va a costar la migración en tiempo.
 
-## Las señales suelen verse antes en el día a día que en la arquitectura
+## Las señales aparecen antes en el día a día que en la arquitectura
 
-No hace falta un diagrama perfecto para notar la presión. Las señales suelen salir en el trabajo cotidiano:
+No hace falta un diagrama perfecto para notar la presión. Las señales salen en el trabajo cotidiano:
 
 - los despliegues son lentos o frágiles
 - a la gente nueva le cuesta demasiado entender la base del sistema
@@ -57,7 +57,7 @@ Si contratar backend se está volviendo lento porque el stack es raro, viejo o e
 
 Los frameworks viejos acaban convirtiéndose en un impuesto de mantenimiento. Parches que no llegan, librerías sin soporte y dependencias antiguas pueden convertir cada release en una revisión de riesgo muy poco visible.
 
-Si el backend heredado dificulta actualizar seguridad, la migración suele estar bastante justificada. No es una decisión glamurosa. Es una decisión sensata.
+Si el backend heredado dificulta actualizar seguridad, la migración suele estar bastante justificada. No es una decisión glamurosa, pero sí práctica.
 
 ### 5. Necesitas una base más sólida para crecer
 
@@ -115,7 +115,7 @@ Eso suele parecerse a esto:
 - mantener intactos los caminos críticos hasta que la nueva base demuestre que aguanta
 - medir cada paso para que la migración no se convierta en adivinanza
 
-Es más lento que una propuesta heroica de reescritura, pero normalmente es la diferencia entre un proyecto controlado y un reinicio carísimo.
+Es más lento que una propuesta heroica de reescritura, pero a menudo marca la diferencia entre un proyecto controlado y un reinicio carísimo.
 
 ## Lo que Spring Boot resuelve, y lo que no
 
@@ -142,7 +142,7 @@ Si la empresa está desordenada, Spring Boot no la arregla por sí solo. Solo ha
 
 Migra cuando el backend actual está frenando a la empresa más de lo que la propia migración la frenaría.
 
-Normalmente eso significa que una o varias de estas cosas son verdad:
+En la práctica, suele significar que una o varias de estas cosas son verdad:
 
 - baja la velocidad de entrega
 - sube el coste de ingeniería
@@ -167,7 +167,7 @@ Si ya has tomado la decisión de migrar, la parte operativa también importa. De
 
 Una empresa debería migrar un backend heredado a Java Spring Boot cuando el sistema actual está frenando la entrega, aumentando el riesgo o haciendo más difícil escalar el equipo, y cuando Spring Boot ofrece una ruta más clara y más barata a largo plazo.
 
-No es una decisión de postureo. Es una decisión de coste, riesgo y velocidad.
+No es una decisión de postureo. Es una decisión de coste, riesgo y velocidad de entrega.
 
 Si necesitas aterrizar una migración o una evolución incremental, puede encajar una intervención acotada de [backend con Spring Boot](/es/services/backend-spring-boot/).
 

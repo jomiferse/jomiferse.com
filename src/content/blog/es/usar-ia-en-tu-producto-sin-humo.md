@@ -23,13 +23,13 @@ Suena obvio. En la práctica, ahí es donde se equivocan la mayoría de equipos.
 
 ## Dónde suele tener sentido
 
-Las mejores funciones con IA no suelen ser espectaculares. Son aburridas en el buen sentido: eliminan repetición y ayudan a llegar antes al siguiente paso.
+Las funciones con IA que mejor aguantan el uso diario rara vez son espectaculares. Suelen eliminar repetición y ayudar a llegar antes al siguiente paso.
 
 ### Soporte y operaciones de cliente
 
 Si tu equipo responde las mismas preguntas todo el día, la IA puede ayudar con el filtrado, los borradores, los resúmenes y las respuestas básicas.
 
-La idea no es sustituir personas. La idea es dejar de gastar tiempo humano en tareas que ya son bastante predecibles.
+La idea no es sustituir personas. Es dejar de gastar tiempo humano en tareas que ya son bastante predecibles.
 
 Una configuración útil podría:
 
@@ -66,13 +66,13 @@ Ejemplos:
 - generar primeros borradores
 - ordenar feedback por grupos
 
-La palabra clave aquí es _primer borrador_. La IA suele funcionar mejor como punto de partida que como respuesta final.
+Aquí conviene hablar de _primer borrador_. La IA funciona mejor como punto de partida que como respuesta final.
 
 Cuando el flujo necesita mover datos entre herramientas, enviar avisos o coordinar estados, lo conectaría con [automatización de flujos](/es/services/automation-workflows/) antes de diseñar una función de IA más compleja.
 
 ### Apoyo a decisiones
 
-Aquí es donde la cosa se pone interesante.
+Aquí empieza la parte útil.
 
 La IA puede ayudar a decidir más rápido cuando la entrada es ruidosa y la salida final sigue revisándose por una persona.
 
@@ -91,7 +91,7 @@ También hay casos en los que la IA suena genial en una slide y carísima en pro
 
 ### Cuando el problema no está claro
 
-“Vamos a meter IA” no es una estrategia de producto. Normalmente es una señal de que el equipo no ha definido bien el problema.
+“Vamos a meter IA” no es una estrategia de producto. Muchas veces significa que el equipo todavía no ha definido bien el problema.
 
 Antes de construir nada, pregunta:
 
@@ -174,7 +174,7 @@ Si la funcionalidad no mueve alguno de esos números, probablemente sea decoraci
 
 ## La trampa de la demo
 
-Este es el error que veo más a menudo.
+Este error aparece mucho.
 
 Una demo no es un producto.
 
@@ -186,14 +186,14 @@ Si la funcionalidad solo funciona cuando todo está ordenado y evidente, todaví
 
 La IA es útil cuando resuelve un problema real con valor medible.
 
-Normalmente eso significa:
+En la práctica, suele encajar con:
 
 - trabajo repetitivo
 - mucho contexto
 - riesgo moderado
 - supervisión humana cuando haga falta
 
-Normalmente _no_ significa:
+Y no suele encajar con:
 
 - añadir un chatbot porque parece moderno
 - automatizar un flujo delicado sin controles

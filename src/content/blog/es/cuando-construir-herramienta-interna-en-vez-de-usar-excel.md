@@ -34,7 +34,7 @@ La tercera señal es la falta de visibilidad. Si para saber qué está pasando h
 
 ## Qué debería resolver una herramienta interna
 
-Una buena herramienta interna no intenta sustituir todo el negocio. Resuelve un flujo concreto:
+Una herramienta interna útil no sustituye todo el negocio. Resuelve un flujo concreto:
 
 - registrar entradas con validación
 - mostrar estados importantes
@@ -72,7 +72,7 @@ La primera versión debería ser pequeña. Por ejemplo:
 - exportación CSV si el equipo la necesita
 - logs o avisos mínimos para detectar fallos
 
-Eso suele aportar más que intentar construir un CRM completo, un ERP interno o una plataforma de operaciones desde el primer día.
+Eso aporta más que intentar construir un CRM completo, un ERP interno o una plataforma de operaciones desde el primer día.
 
 ## Cómo lo enfocaría
 
@@ -80,7 +80,7 @@ Yo empezaría mapeando el proceso actual, no diseñando pantallas. La pregunta i
 
 Después definiría una herramienta mínima que tenga entrada, salida y límites claros. Si hace falta backend, base de datos, autenticación o integraciones API, se añaden porque el flujo lo necesita, no por costumbre.
 
-Ese es el punto: software simple, fiable y útil. No una plataforma más que mantener sin motivo.
+La versión útil es esa: software simple, fiable y útil. No una plataforma más que mantener sin motivo.
 
 Si tienes un flujo que ya vive entre hojas, emails y copy-paste, probablemente merece la pena revisarlo antes de seguir añadiendo pestañas.
 

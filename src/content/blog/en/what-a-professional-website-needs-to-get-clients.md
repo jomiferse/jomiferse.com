@@ -8,13 +8,13 @@ readingTime: "7 min"
 tags: [professional-website, seo, conversion, business, portfolio, freelance]
 ---
 
-A professional website does not get clients because it has many animations. It gets clients when it reduces doubt.
+A professional website starts getting better leads when visitors no longer have to guess.
 
 The person landing on it needs to understand what you do, who it is for, which problem you solve, why they can trust you and what the next step is.
 
 [![Professional website map for client acquisition: offer, trust, services, content and call to action](/images/blog/professional-website-client-map.svg)](/images/blog/professional-website-client-map.svg)
 
-If the website does not answer those questions, the design can look good and still fail the business.
+If the website does not answer those questions, it can look good and still fail the business.
 
 ## A clear offer
 
@@ -29,7 +29,7 @@ A visitor should be able to answer these questions quickly:
 
 This is especially important for freelance portfolios. If the site only says "full-stack developer", the interested person still has to guess whether you build websites, internal tools, APIs, automations or advisory work.
 
-That is why a [business website](/en/services/business-website/) works better when it separates services, context and contact.
+A [business website](/en/services/business-website/) works better when it separates services, context and contact. That sounds basic, but many sites mix everything into one page and leave the visitor doing extra work.
 
 ## Trust signals
 
@@ -48,7 +48,7 @@ A focused blog helps here. Not because every post sells, but because it shows ho
 
 ## Specific service pages
 
-A generic "services" page is usually not enough. The searches and questions are different depending on the problem.
+A generic "services" page gets thin quickly. Searches and questions change depending on the problem.
 
 Someone looking for a website redesign does not need the same page as someone looking for an API integration or an internal tool.
 
@@ -65,7 +65,7 @@ This also helps Google and AI assistants understand when to recommend you. A sit
 
 ## Content that answers real questions
 
-The blog should not be only a technical diary. It can answer questions your clients already have.
+The blog does not have to be a technical diary. It can answer questions your clients already have before they contact you.
 
 Good topics:
 
@@ -108,7 +108,7 @@ That can be:
 - send an email
 - review a project
 
-The key is that every page has an intent. If an article talks about automation, it makes sense to link to [automation workflows](/en/services/automation-workflows/). If it talks about APIs, to [API integrations](/en/services/api-integrations/). If it talks about professional websites, to business websites or redesign.
+Every page needs an intent. If an article talks about automation, it makes sense to link to [automation workflows](/en/services/automation-workflows/). If it talks about APIs, to [API integrations](/en/services/api-integrations/). If it talks about professional websites, to business websites or redesign.
 
 ## FAQ
 
@@ -119,13 +119,13 @@ Not always, but it helps a lot when you sell complex services. A blog answers qu
 Copy. Design helps organize and build trust, but if the offer is unclear, the website will not convert.
 
 **How many service pages should I have?**  
-Enough to separate different problems. Someone searching for "API integration" should not land on a generic page that talks about everything.
+Enough to separate different problems. Someone searching for "API integration" should not land on a page that also talks about design, CVs and backend as if they were the same thing.
 
 **When is a website redesign worth it?**  
 When the site no longer explains the offer, loads slowly, breaks on mobile or fails to guide people toward contact. In that case, a [website redesign](/en/services/website-redesign/) may fit.
 
 ## Bottom line
 
-A good professional website does not try to impress everyone. It helps the right client make a decision.
+A good professional website does not need to impress everyone. It needs the right person to understand quickly whether talking to you makes sense.
 
-Clear offer, trust, specific service pages, useful content and a simple contact path. That combination usually gets better leads than a more decorative but less concrete website.
+Clear offer, trust, specific service pages and a simple contact path. That usually brings better leads than a prettier but vaguer site.

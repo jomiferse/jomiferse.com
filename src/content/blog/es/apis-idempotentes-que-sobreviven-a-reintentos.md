@@ -10,9 +10,9 @@ tags: [api-design, backend, reintentos, idempotencia, rest, webhooks, pagos]
 
 Si tu API recibe reintentos, tus decisiones de diseño importan bastante más que en un demo feliz donde todo sale a la primera.
 
-Una petición que llega una vez es fácil. Una petición que llega dos veces porque el cliente ha hecho timeout, la red ha parpadeado o un worker ha petado es donde empieza lo interesante. Ahí es cuando un endpoint aparentemente inocente puede crear pagos duplicados, pedidos duplicados, emails duplicados o jobs duplicados.
+Una petición que llega una vez es fácil. Una petición que llega dos veces porque el cliente ha hecho timeout, la red ha parpadeado o un worker ha petado ya es otra cosa. Ahí un endpoint aparentemente inocente puede crear pagos duplicados, pedidos duplicados, emails duplicados o jobs duplicados.
 
-Por eso la idempotencia importa.
+La idempotencia existe para ese hueco.
 
 La versión corta: una API idempotente le da al cliente una forma segura de repetir una petición sin cambiar el resultado más de una vez.
 
@@ -71,7 +71,7 @@ El patrón más limpio es este:
 3. el servidor guarda la clave junto al resultado de la operación
 4. si vuelve a llegar la misma clave, el servidor devuelve el resultado original
 
-La clave no es un header random más. Forma parte del contrato.
+La clave no es un header random más. Forma parte del contrato entre cliente y servidor.
 
 Un flujo mínimo sería algo así:
 
@@ -152,7 +152,7 @@ Si hoy tuviera que diseñar un endpoint backend, seguiría este checklist:
 
 ## La idempotencia no sustituye un buen diseño HTTP
 
-Aquí es donde la gente suele liarla.
+Esta parte se rompe a menudo.
 
 La idempotencia ayuda con los reintentos. No arregla:
 
@@ -174,7 +174,7 @@ Si tu API acepta reintentos, diseña pensando en ellos desde el principio. No ha
 
 Si estás diseñando un backend que va a producción, este tema conecta con [Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/) y con el servicio de [integraciones API](/es/services/api-integrations/), donde los reintentos y errores visibles son parte del contrato.
 
-Es bastante mejor que descubrir cobros duplicados a las 2 de la mañana.
+Mejor eso que descubrir cobros duplicados a las 2 de la mañana.
 
 ## Fuentes y referencias
 

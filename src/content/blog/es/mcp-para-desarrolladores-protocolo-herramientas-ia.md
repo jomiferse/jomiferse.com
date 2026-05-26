@@ -39,7 +39,7 @@ Hay tres señales claras:
 
 En Hacker News, Reddit y X la conversación también ha madurado. Ya no interesa solo si una IA autocompleta código. Ahora interesa si puede leer una base de código, inspeccionar logs, ejecutar comandos y seguir siendo útil dentro de un flujo real.
 
-Esa es la versión útil de la historia. La versión hype dice que los agentes lo escribirán todo. La versión práctica dice que los desarrolladores quieren menos pegamento y mejor gestión del contexto.
+La parte útil va por ahí. Menos promesa de agentes que lo escribirán todo y más herramientas que reducen pegamento y manejan mejor el contexto.
 
 ## Por qué debería importarte como full-stack developer
 
@@ -100,7 +100,7 @@ const tools = {
 };
 ```
 
-No hace falta complicarlo más.
+No hace falta complicarlo mucho más al principio.
 
 El asistente puede inspeccionar contexto con libertad, pero necesita una aprobación explícita antes de tocar algo importante.
 
@@ -108,7 +108,7 @@ El asistente puede inspeccionar contexto con libertad, pero necesita una aprobac
 
 No creo que MCP sea la historia principal.
 
-La historia de fondo es que las herramientas de IA están pasando de apps aisladas a una capa compartida de capacidades. Claude Code, Codex, Cursor y otras herramientas empiezan a parecer menos islas separadas y más clientes que se enchufan al mismo ecosistema.
+La historia de fondo es que las herramientas de IA están pasando de apps aisladas a una capa compartida de capacidades. Claude Code, Codex, Cursor y otras herramientas empiezan a parecer menos islas separadas y más clientes conectados al mismo ecosistema.
 
 Como full-stack developer, eso importa más que el titular. El valor no está en que el agente escriba código perfecto. El valor está en que llegue antes al contexto correcto, use mejor tus herramientas y encaje en los sistemas que ya tienes.
 
@@ -122,7 +122,7 @@ Lo que más me gusta es que esto sigue siendo un problema de desarrollo, no solo
 
 ## Cierre
 
-MCP para desarrolladores es infraestructura aburrida, y por eso me interesa.
+MCP para desarrolladores es infraestructura bastante aburrida. Precisamente por eso me interesa.
 
 Está pensado para hacer que las herramientas de IA sean más útiles dentro de flujos reales. Si funciona, pesarán más las herramientas que se conectan bien con el resto del stack que las que hacen más ruido.
 

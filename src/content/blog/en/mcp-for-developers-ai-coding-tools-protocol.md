@@ -39,7 +39,7 @@ Three things pushed MCP into the conversation:
 
 On Hacker News, Reddit, and X, the discussion has also matured. People are less excited about autocomplete and more interested in whether an AI tool can read a codebase, inspect logs, run commands, and stay useful in a real workflow.
 
-That is the useful version of the story. The hype version says agents will write everything. The practical version says developers want less glue code and better context handling.
+That is the useful part of the story. Less "agents will write everything", more tools that reduce glue code and handle context better.
 
 ## Why full-stack developers should care
 
@@ -100,7 +100,7 @@ const tools = {
 };
 ```
 
-That is the shape I like.
+That boundary is the useful part.
 
 The assistant can inspect context freely, but it needs an explicit approval path before it touches anything important.
 
@@ -108,7 +108,7 @@ The assistant can inspect context freely, but it needs an explicit approval path
 
 I do not think MCP is the main story.
 
-The main story is that AI tooling is moving from isolated apps to a shared layer of capabilities. Claude Code, Codex, Cursor, and similar tools are starting to feel less like separate islands and more like clients that plug into the same ecosystem.
+The main story is that AI tooling is moving from isolated apps to a shared layer of capabilities. Claude Code, Codex, Cursor, and similar tools are starting to feel less like separate islands and more like clients connected to the same ecosystem.
 
 For a full-stack developer, that matters more than the headline. The value is not that the agent writes perfect code. The value is that it reaches the right context faster, uses your tools more cleanly, and fits into the systems you already run.
 
@@ -122,7 +122,7 @@ The part I like most is that this is still a developer problem, not just an AI p
 
 ## Final takeaway
 
-MCP for developers is boring infrastructure, and that is why it is interesting.
+MCP for developers is fairly boring infrastructure. That is exactly why it is interesting.
 
 It is meant to make AI tools easier to use inside real workflows. If it works, the tools that connect cleanly to the rest of the stack will matter more than the loudest ones.
 

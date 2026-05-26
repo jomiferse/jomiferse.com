@@ -17,11 +17,11 @@ tags:
   ]
 ---
 
-Asking how much a custom internal tool costs is reasonable. It is also a hard question, because an "internal tool" can mean anything from a simple dashboard for reviewing orders to an application with permissions, integrations, automations and sensitive data.
+The question comes up early in almost every conversation: how much does a custom internal tool cost? There is no single answer, because an "internal tool" can mean anything from a simple dashboard for reviewing orders to an application with permissions, integrations, automations and sensitive data.
 
 The useful answer is not a magic number. It is understanding which problem you want to solve, how much manual work it removes and how reliable the process needs to be.
 
-For a small or mid-sized company, a well-scoped first version is usually much more useful than trying to build a complete internal platform from day one.
+For a small or mid-sized company, a well-scoped first version is often more useful than trying to build a complete internal platform from day one.
 
 [![Custom internal tool cost map, from a simple first version to a complex tool with maintenance](/images/blog/internal-tool-cost-map-en.svg)](/images/blog/internal-tool-cost-map-en.svg)
 
@@ -41,7 +41,7 @@ If you are still deciding whether the problem deserves software, start with [whe
 
 ## What makes an internal tool more expensive
 
-The expensive part is usually not "adding a table" or "putting a button on a page". It is everything around the real workflow.
+The budget rarely grows because of "adding a table" or "putting a button on a page". It grows because of everything around the real workflow.
 
 Permissions add complexity when not everyone can see or change the same things. One thing is a tool used by three people with the same access. Another is a tool with users, managers, administrators, clients, departments and restricted actions.
 
@@ -84,7 +84,7 @@ If there is no clear answer, it is probably too early.
 
 ## How to scope a first version
 
-The best first version does not cover every possible case. It covers the workflow that hurts the most.
+A good first version does not cover every possible case. It covers the workflow that hurts the most.
 
 For example:
 
@@ -120,9 +120,9 @@ I would also separate three things clearly: initial build, deployment and mainte
 
 ## The important decision
 
-The question is not only how much an internal tool costs. The question is how much not having one is already costing you.
+The price matters, but the useful comparison is different: what it costs to build the tool versus what not having it is already costing you.
 
-If the current process works, is cheap and does not create important mistakes, you may not need to build anything. If the process already depends on impossible spreadsheets, copy-paste, scattered messages and human memory, a small internal tool can be a very sensible investment.
+If the current process works, is cheap and does not create important mistakes, you may not need to build anything. If the process already depends on impossible spreadsheets, copy-paste, scattered messages and human memory, a small internal tool can make a lot of sense.
 
 I would start there: not with a big platform, but with a first version that solves one concrete problem and lets you measure whether it is worth continuing.
 

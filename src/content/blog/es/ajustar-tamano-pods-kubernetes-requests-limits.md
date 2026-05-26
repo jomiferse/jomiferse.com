@@ -12,7 +12,7 @@ Si alguna vez has copiado el bloque `resources:` de otro servicio y has cruzado 
 
 Ajustar el tamaño de los pods en Kubernetes parece un detalle menor, pero en la práctica decide si tu plataforma va fina o si acabas pagando de más, viendo _throttling_ en CPU, `OOMKilled` y latencias raras que nadie entiende del todo.
 
-La buena noticia: no necesitas una fórmula mágica. Necesitas un método razonable para leer tu carga real y entender qué hacen de verdad los `requests` y los `limits`.
+No necesitas una fórmula mágica. Necesitas un método razonable para leer tu carga real y entender qué hacen de verdad los `requests` y los `limits`.
 
 ## La idea corta
 
@@ -82,7 +82,7 @@ Una forma razonable de pensar en esto es:
 - **Memory request**: usa el _working set_ observado con algo de margen.
 - **Memory limit**: pon un techo realista, pero no tan apretado que un pico corto o un GC te manden el contenedor a reiniciarse.
 
-No es una fórmula mágica. Es una forma de dejar de inventarte los números.
+No pretende ser exacto para todos los casos. Sirve para dejar de inventarte los números.
 
 ```yaml
 resources:
@@ -100,7 +100,7 @@ Esto no es una respuesta universal. Es solo un arranque razonable. No merece los
 
 ### 1. Dejar requests y limits iguales “porque queda limpio”
 
-Visualmente queda bonito. Operativamente, muchas veces es demasiado rígido.
+Visualmente queda bonito. En operación, muchas veces es demasiado rígido.
 
 Si el `request` y el `limit` de CPU son iguales, el contenedor tiene muy poco margen para picos cortos. Y eso acaba pareciendo lentitud aleatoria.
 
@@ -193,7 +193,7 @@ Así mantienes el cluster eficiente sin convertir cada despliegue en una apuesta
 No necesariamente. Los `requests` son importantes para el scheduling. Los `limits` dependen de la carga y de la política de tu plataforma. En CPU, un límite duro a veces ayuda y a veces solo introduce _throttling_.
 
 **¿Qué optimizo primero: CPU o memoria?**  
-Normalmente, memoria primero si tienes `OOMKilled` o presión de memoria. La CPU suele ser más fácil de observar, pero los fallos de memoria suelen ser más molestos.
+Memoria primero si tienes `OOMKilled` o presión de memoria. La CPU suele ser más fácil de observar, pero los fallos de memoria suelen ser más molestos.
 
 **¿Puede VPA sustituir el ajuste manual?**  
 Reduce trabajo manual, sí, pero sigues necesitando entender qué recomienda y por qué. La automatización solo ayuda si validas contra comportamiento real.

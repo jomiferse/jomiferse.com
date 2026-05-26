@@ -17,11 +17,11 @@ tags:
   ]
 ---
 
-Preguntar cuánto cuesta crear una herramienta interna a medida es razonable. También es una pregunta difícil, porque una "herramienta interna" puede ser desde un panel sencillo para revisar pedidos hasta una aplicación con permisos, integraciones, automatizaciones y datos sensibles.
+La pregunta aparece pronto en casi cualquier conversación: cuánto cuesta crear una herramienta interna a medida. Y no tiene una respuesta única, porque una "herramienta interna" puede ser desde un panel sencillo para revisar pedidos hasta una aplicación con permisos, integraciones, automatizaciones y datos sensibles.
 
 La respuesta útil no es una cifra mágica. Es entender qué problema quieres resolver, cuánto trabajo manual elimina y qué nivel de fiabilidad necesita el proceso.
 
-Para una empresa pequeña o mediana, una primera versión bien acotada suele ser mucho más interesante que intentar construir una plataforma interna completa desde el primer día.
+En una empresa pequeña o mediana, casi siempre compensa más una primera versión bien acotada que intentar construir una plataforma interna completa desde el primer día.
 
 [![Mapa de coste de una herramienta interna a medida, desde una versión simple hasta una solución compleja con mantenimiento](/images/blog/internal-tool-cost-map-es.svg)](/images/blog/internal-tool-cost-map-es.svg)
 
@@ -41,7 +41,7 @@ Si todavía estás en la fase de decidir si el problema merece software, empieza
 
 ## Qué encarece una herramienta interna
 
-Lo que más encarece un proyecto no suele ser "hacer una tabla" o "poner un botón". Suele ser todo lo que rodea al flujo real.
+El presupuesto no se dispara por "hacer una tabla" o "poner un botón". Se dispara por todo lo que rodea al flujo real.
 
 Los permisos añaden complejidad cuando no todo el mundo puede ver o modificar lo mismo. Una cosa es que tres personas usen una herramienta con el mismo acceso. Otra distinta es tener usuarios, responsables, administradores, clientes, departamentos y acciones restringidas.
 
@@ -84,7 +84,7 @@ Si no hay una respuesta clara, probablemente es pronto.
 
 ## Cómo plantear una primera versión
 
-La mejor primera versión no intenta cubrir todos los casos. Cubre el flujo que más duele.
+Una buena primera versión no cubre todos los casos. Cubre el flujo que más duele.
 
 Por ejemplo:
 
@@ -120,9 +120,9 @@ También separaría claramente tres cosas: construcción inicial, despliegue y m
 
 ## La decisión importante
 
-La pregunta no es solo cuánto cuesta una herramienta interna. La pregunta es cuánto te está costando no tenerla.
+La cifra importa, pero la comparación útil es otra: cuánto cuesta construirla frente a cuánto te está costando no tenerla.
 
-Si el proceso actual funciona, es barato y no genera errores importantes, quizá no hace falta construir nada. Si el proceso ya depende de hojas imposibles, copy-paste, mensajes sueltos y memoria humana, una herramienta pequeña puede ser una inversión muy sensata.
+Si el proceso actual funciona, es barato y no genera errores importantes, quizá no hace falta construir nada. Si el proceso ya depende de hojas imposibles, copy-paste, mensajes sueltos y memoria humana, una herramienta pequeña puede tener mucho sentido.
 
 Yo empezaría por ahí: no por una gran plataforma, sino por una primera versión que resuelva un problema concreto y permita medir si merece la pena seguir.
 

@@ -8,13 +8,13 @@ readingTime: "8 min"
 tags: [spring-boot, java, devops, production, backend, observability]
 ---
 
-Running a Spring Boot application in production should not depend on blind trust. It should depend on a short list of explicit things: configuration, database, observability, security, deployment and rollback.
+Running a Spring Boot application in production cannot rely on "it seems to start". It needs a short list of explicit things: configuration, database, observability, security, deployment and rollback.
 
 Spring Boot helps a lot, but it does not replace operational judgment. An app can compile, start and still be poorly prepared for production.
 
 ![DevOps checklist for Spring Boot in production: configuration, database, observability, security, deployment and rollback](/images/blog/spring-boot-production-checklist.svg)
 
-This checklist does not try to cover every case. It is meant to catch common risks before the first incident finds them for you.
+This checklist does not cover every case. It is meant to catch common risks before the first incident finds them for you.
 
 ## Explicit configuration
 
@@ -97,7 +97,7 @@ If you use Kubernetes, requests, limits and scaling strategy also matter. I wrot
 
 ## When to ask for help
 
-Asking for help does not only make sense when everything is broken. It also makes sense when the backend starts supporting important processes and every change creates doubt.
+Asking for help is not only for the moment when everything is broken. It also makes sense when the backend starts supporting important processes and every change creates doubt.
 
 Signals:
 
@@ -134,6 +134,6 @@ When the current system slows delivery, increases risk or makes maintenance hard
 
 ## Bottom line
 
-Production does not require making everything complex. It requires making failure points explicit.
+Production does not require making everything complex. It requires knowing where things can fail.
 
-Clear configuration, migrations, observability, security, deployment and rollback. If those pieces are cared for, a Spring Boot application stops depending on luck and starts becoming operable.
+Clear configuration, migrations, observability, security, deployment and rollback. With those pieces cared for, a Spring Boot application stops depending on luck and starts becoming operable.

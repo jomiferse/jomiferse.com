@@ -27,7 +27,7 @@ The third sign is poor visibility. If understanding what is happening requires a
 
 ## What an internal tool should solve
 
-A good internal tool does not try to replace the whole business. It solves a specific workflow:
+A useful internal tool does not replace the whole business. It solves a specific workflow:
 
 - capture input with validation
 - show important statuses
@@ -54,7 +54,7 @@ First, clarify the workflow:
 
 If those answers are unclear, software will only hide confusion behind new screens.
 
-## A reasonable first version
+## A practical first version
 
 The first version should be small. For example:
 
@@ -65,7 +65,7 @@ The first version should be small. For example:
 - CSV export if the team needs it
 - minimal logs or alerts to detect failures
 
-That usually creates more value than trying to build a full CRM, internal ERP or operations platform from day one.
+That creates more value than trying to build a full CRM, internal ERP or operations platform from day one.
 
 ## How I would approach it
 
@@ -73,7 +73,7 @@ I would start by mapping the current process, not by designing screens. The impo
 
 Then I would define the smallest useful tool with clear inputs, outputs and boundaries. If the workflow needs a backend, database, authentication or API integrations, those pieces are added because the workflow requires them, not by habit.
 
-That is the point: simple, reliable, useful software. Not another platform to maintain without a reason.
+That is the useful version: simple, reliable software. Not another platform to maintain without a reason.
 
 If a workflow already lives across spreadsheets, emails and copy-paste, it is probably worth reviewing before adding more tabs.
 

@@ -9,17 +9,17 @@ tags:
   [automation, business-processes, internal-tools, api-integrations, operations]
 ---
 
-Business process automation is not about replacing people with scripts. It is about removing repeated work, reducing errors and making an important workflow easier to see.
+Business process automation starts with a plain question: which part of the work repeats so often that it should no longer depend on someone copying, checking or notifying by hand?
 
 Automation is worth it when the process is already fairly clear, happens often and the cost of doing it manually starts becoming higher than the cost of designing a reliable solution.
 
 [![Business process automation map: manual work, trigger, data, action and monitoring](/images/blog/business-process-automation-map.svg)](/images/blog/business-process-automation-map.svg)
 
-If the problem is still unclear, clarify the workflow first. If you already know what comes in, what needs to happen and what output the team needs, automation can be a sensible investment.
+If the problem is still unclear, clarify the workflow first. Once you know what comes in, what needs to happen and what output the team needs, automation starts to make sense.
 
 ## Signs a process can be automated
 
-The first signal is repetition. If someone copies data from a form to a spreadsheet, from the spreadsheet to a CRM and from the CRM into an email, part of that work should not depend on human memory.
+Repetition is usually the easiest signal to spot. If someone copies data from a form to a spreadsheet, from the spreadsheet to a CRM and from the CRM into an email, some of that work can probably leave the manual flow.
 
 The second signal is repeated error. When the same mistake appears every week, the problem is usually not effort. It is missing validation, a missing rule or a missing integration.
 
@@ -49,7 +49,7 @@ I would not automate a process that still changes every few days. If nobody can 
 
 I also would not automate a decision that needs a lot of human judgment. In those cases, software can prepare data, summarize information or create a first draft, but the review should stay human.
 
-And I would not automate something an existing product already solves well. If a SaaS product covers 80% of the case for a reasonable cost, configuring it properly can be smarter than building custom software.
+I would also avoid automating something an existing product already handles well. If a SaaS product covers most of the case for a reasonable cost, configuring it properly can beat building a custom piece.
 
 This is close to the decision behind [when to build an internal tool instead of using Excel](/en/blog/when-to-build-an-internal-tool-instead-of-using-excel/): software makes sense when the process hurts in a concrete way.
 
@@ -63,13 +63,13 @@ A useful automation needs five pieces:
 4. **Output**: what should happen at the end.
 5. **Observability**: how you know whether it worked or failed.
 
-The last part is often skipped. Automation that fails silently becomes worse than manual work, because it creates a false sense of control.
+The last part is often skipped. Automation that fails silently becomes worse than manual work: everything looks under control until someone finds the gap.
 
-That is why logs, error alerts and a simple way to retry or inspect state matter.
+Logs, error alerts and a simple way to retry or inspect state matter for that reason.
 
-## A reasonable first version
+## A practical first version
 
-A first version can be small:
+A first version can be modest:
 
 - a webhook that receives data
 - basic validation
@@ -84,11 +84,11 @@ If the workflow grows, it can later become a [custom web application](/en/servic
 
 ## Where AI fits
 
-AI can help with automation, but it should not be the first hammer.
+AI can help with automation, but I would not reach for it by default.
 
 It makes sense when the process includes text, classification, summarization, information extraction or a first draft. I covered that in more detail in [how to use AI in your product without turning it into hype](/en/blog/using-ai-in-your-product-without-hype/).
 
-For moving data between systems, validating formats or triggering tasks, a normal integration is usually cheaper, more predictable and easier to maintain.
+For moving data between systems, validating formats or triggering tasks, a normal integration is usually cheaper and easier to understand six months later.
 
 ## FAQ
 
@@ -110,4 +110,4 @@ Good automation starts by understanding the manual work, not by choosing a tool.
 
 If the workflow is clear and repeated enough, a small automation can save time, reduce errors and prepare the ground for a more complete internal tool.
 
-If a process already lives across spreadsheets, emails and copy-paste, reviewing it before automating is usually the sensible first step.
+If a process already lives across spreadsheets, emails and copy-paste, I would start by drawing it. Automation comes later, once the workflow has a clear shape.

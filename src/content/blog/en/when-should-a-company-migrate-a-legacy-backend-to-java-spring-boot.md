@@ -8,7 +8,7 @@ readingTime: "8 min"
 tags: [spring-boot, java, backend, legacy, migration, architecture]
 ---
 
-Migrating a legacy backend to Spring Boot sounds neat until you look at the real system. There is usually history in there: shortcuts nobody documented, assumptions buried in production behavior, and a few critical flows that nobody wants to touch because "it still works". That is the part people forget. A migration is never just about code. It is about risk, time, and how much pain the company is already carrying.
+Migrating a legacy backend to Spring Boot sounds neat until you look at the real system. There is usually history in there: shortcuts nobody documented, assumptions buried in production behavior, and a few critical flows that nobody wants to touch because "it still works". That is worth remembering before selling the migration as a code-only job. It is also about risk, time, and how much pain the company is already carrying.
 
 ![A legacy backend migration decision map](/images/blog/spring-boot-legacy-migration-decision.svg)
 
@@ -18,9 +18,9 @@ A company should migrate a legacy backend to Spring Boot when the current stack 
 
 > **Practical rule:** migrate when the current backend is costing you more in lost speed, risk, and hiring friction than the migration will cost you in time.
 
-## The signals are usually obvious before the architecture is
+## The signals show up before the architecture does
 
-You do not need a perfect diagram to notice the pressure. The signs usually show up in day-to-day work:
+You do not need a perfect diagram to notice the pressure. The signs show up in day-to-day work:
 
 - releases are slow or fragile
 - new engineers need too long just to understand the baseline
@@ -65,7 +65,7 @@ It is not magic, but it does make it easier to build a serious backend without i
 
 ## Good reasons not to migrate yet
 
-A lot of teams migrate too early. That is usually the expensive mistake.
+A lot of teams migrate too early. That mistake gets expensive quickly.
 
 Do not migrate just because:
 
@@ -113,7 +113,7 @@ That often looks like this:
 - keep business-critical paths unchanged until the new stack proves itself
 - measure every step so the migration does not become a guessing game
 
-This is slower than a dramatic rewrite pitch, but it is usually the difference between a controlled project and an expensive restart.
+This is slower than a dramatic rewrite pitch, but it is often the difference between a controlled project and an expensive restart.
 
 ## What Spring Boot solves, and what it does not
 
@@ -140,7 +140,7 @@ If the company is messy, Spring Boot will not clean it up for you. It will just 
 
 Migrate when the current backend is blocking the company more than the migration itself would.
 
-That usually means one or more of these is true:
+In practice, it tends to mean one or more of these is true:
 
 - release velocity is falling
 - engineering cost is rising
@@ -165,7 +165,7 @@ If you want the next step after the migration decision, the operational side mat
 
 A company should migrate a legacy backend to Java Spring Boot when the current system is slowing delivery, increasing risk, or making the team harder to scale, and when Spring Boot offers a clearer and cheaper long-term path.
 
-It is not a fashion move. It is a trade-off.
+It is not a fashion move. It is a cost, risk, and delivery trade-off.
 
 If you need to ground a migration or incremental backend evolution, a focused [Spring Boot backend](/en/services/backend-spring-boot/) intervention can fit.
 

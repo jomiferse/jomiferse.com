@@ -8,13 +8,13 @@ readingTime: "8 min"
 tags: [spring-boot, java, devops, produccion, backend, observabilidad]
 ---
 
-Llevar una aplicación Spring Boot a producción no debería depender de confianza ciega. Debería depender de una lista corta de cosas explícitas: configuración, base de datos, observabilidad, seguridad, despliegue y rollback.
+Llevar una aplicación Spring Boot a producción no puede vivir de "parece que arranca". Necesita una lista corta de cosas explícitas: configuración, base de datos, observabilidad, seguridad, despliegue y rollback.
 
 Spring Boot ayuda mucho, pero no sustituye criterio operativo. Una app puede compilar, arrancar y aun así estar mal preparada para producción.
 
 ![Checklist DevOps para Spring Boot en producción: configuración, base de datos, observabilidad, seguridad, despliegue y rollback](/images/blog/spring-boot-production-checklist.svg)
 
-Este checklist no intenta cubrir todos los casos. Sirve para detectar riesgos comunes antes de que el primer incidente los descubra por ti.
+Este checklist no cubre todos los casos. Sirve para detectar riesgos comunes antes de que el primer incidente los descubra por ti.
 
 ## Configuración explícita
 
@@ -48,7 +48,7 @@ Si ya estás revisando rendimiento, este punto conecta con [rendimiento en Sprin
 
 ## Observabilidad desde el primer día
 
-No esperaría al primer problema para añadir visibilidad.
+Yo no esperaría al primer problema para añadir visibilidad.
 
 Como mínimo querría:
 
@@ -97,7 +97,7 @@ Si usas Kubernetes, también entran requests, limits y estrategia de escalado. L
 
 ## Cuándo pedir ayuda
 
-Pedir ayuda no tiene sentido solo cuando todo está roto. También tiene sentido cuando el backend empieza a sostener procesos importantes y cada cambio genera dudas.
+Pedir ayuda no empieza cuando todo está roto. También tiene sentido cuando el backend empieza a sostener procesos importantes y cada cambio genera dudas.
 
 Señales:
 
@@ -134,6 +134,6 @@ Cuando el sistema actual frena cambios, aumenta riesgo o complica el mantenimien
 
 ## Conclusión
 
-Producción no exige hacerlo todo complejo. Exige hacer explícito lo que puede fallar.
+Producción no exige hacerlo todo complejo. Exige tener claro qué puede fallar.
 
-Configuración clara, migraciones, observabilidad, seguridad, despliegue y rollback. Si esas piezas están cuidadas, una aplicación Spring Boot deja de depender de suerte y empieza a ser operable.
+Configuración clara, migraciones, observabilidad, seguridad, despliegue y rollback. Con esas piezas cuidadas, una aplicación Spring Boot deja de depender de suerte y empieza a ser operable.

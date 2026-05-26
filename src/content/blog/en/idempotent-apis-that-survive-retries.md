@@ -10,9 +10,9 @@ tags: [api-design, backend, retries, idempotency, rest, webhooks, payments]
 
 If your API gets retried, your design choices matter a lot more than they do in a happy-path demo.
 
-A request that is sent once is easy. A request that is sent twice because the client timed out, the network blinked, or a worker crashed is where things get interesting. That is the point where a harmless-looking endpoint can create duplicate payments, duplicate orders, duplicate emails, or duplicate background jobs.
+A request that is sent once is easy. A request that is sent twice because the client timed out, the network blinked, or a worker crashed is a different problem. That is where a harmless-looking endpoint can create duplicate payments, duplicate orders, duplicate emails, or duplicate background jobs.
 
-That is why idempotency matters.
+Idempotency exists for that gap.
 
 The short version: an idempotent API gives the client a safe way to repeat a request without changing the outcome more than once.
 
@@ -28,7 +28,7 @@ That does **not** mean every response is identical, and it does **not** mean eve
 
 The problem shows up most often with `POST`, because `POST` usually creates something or triggers work. If the client retries that request after a timeout, the server may not know whether the first attempt succeeded.
 
-This is where an idempotency key helps.
+An idempotency key helps with that.
 
 [![A flowchart showing how an idempotent retry returns the same result instead of creating a duplicate](/images/blog/idempotency-flow.svg)](/images/blog/idempotency-flow.svg)
 
@@ -71,7 +71,7 @@ The cleanest pattern is:
 3. the server stores the key with the result of the operation
 4. if the same key comes back, the server returns the original outcome
 
-That means the key is not just a random header. It is part of the contract.
+The idempotency key is not just a random header. It is part of the contract between client and server.
 
 A minimal flow looks like this:
 
@@ -152,7 +152,7 @@ If I were designing a backend endpoint today, I would follow this checklist:
 
 ## Idempotency is not a substitute for good HTTP design
 
-This is the part people mess up.
+This part breaks often.
 
 Idempotency helps with retries. It does not fix:
 
@@ -174,7 +174,7 @@ If your API accepts retries, design for them on purpose. Do not pretend they wil
 
 If you are designing a backend that will run in production, this connects with [Spring Boot in production](/en/blog/spring-boot-production-devops-checklist/) and the [API integrations](/en/services/api-integrations/) service, where retries and visible errors are part of the contract.
 
-That is a much better place to be than discovering double charges at 2 a.m.
+Better that than discovering double charges at 2 a.m.
 
 ## Sources and references
 

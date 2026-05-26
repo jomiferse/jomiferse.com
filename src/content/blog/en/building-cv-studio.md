@@ -16,7 +16,7 @@ I started CV Studio because writing a developer CV still feels harder than it sh
 
 Most CV builders give you rigid templates, too much visual noise or PDFs that look different once you download them. I wanted something cleaner: structured data, a live preview and an output I could trust.
 
-That gap is what led me to create **CV Studio**.
+That gap became **CV Studio**.
 
 The same idea applies to a professional website: the goal is not more sections, but clearer positioning and an easier next step. I cover that in [what a professional website needs to get clients](/en/blog/what-a-professional-website-needs-to-get-clients/).
 
@@ -32,7 +32,7 @@ CV Studio is a personal project with a simple goal:
 
 I wanted the editing experience to feel straightforward, but still be built on a solid data model. The CV should be easy to change, easy to validate and reliable when exported.
 
-That is why CV Studio treats the CV as **structured data first**, and a polished document second.
+CV Studio treats the CV first as **structured data**, and then as a polished document.
 
 ![CV Studio – Live CV editor with real-time preview](/images/blog/cv-studio-editor.avif)
 

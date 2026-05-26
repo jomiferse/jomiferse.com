@@ -16,7 +16,7 @@ Este artículo es la versión que me gustaría haber leído antes de empezar a t
 
 ## La idea corta
 
-Mejorar el rendimiento en Spring Boot no va de exprimir cada milisegundo del JVM. Va de quitar trabajo innecesario y hacer más visible lo caro de la aplicación.
+Mejorar el rendimiento en Spring Boot tiene menos que ver con exprimir cada milisegundo del JVM y más con quitar trabajo innecesario y hacer visible lo caro de la aplicación.
 
 Normalmente, las palancas que más impacto tienen son:
 
@@ -25,7 +25,7 @@ Normalmente, las palancas que más impacto tienen son:
 - ajustar bien el pool de conexiones de la base de datos en vez de adivinar
 - sacar métricas útiles para ver qué cambió de verdad
 
-Si haces bien esas cuatro cosas, suele salir mucho mejor que intentando trucos raros.
+Si haces bien esas cuatro cosas, normalmente avanzas más que intentando trucos raros.
 
 > **Regla práctica:** optimiza el camino que está caliente en producción, no el que queda bonito en una revisión de código.
 
@@ -120,7 +120,7 @@ class NotificationService {
 }
 ```
 
-La pregunta de verdad no es “¿puedo hacerlo async?”. La pregunta buena es: “¿debe salir este trabajo del hilo de la request?”
+La pregunta útil no es “¿puedo hacerlo async?”. Es “¿debe salir este trabajo del hilo de la request?”
 
 Si la respuesta es sí, async puede ayudar bastante.
 
@@ -188,7 +188,7 @@ Un ajuste razonable podría ser:
 3. revisar el pool de base de datos para ver si hay espera de conexiones
 4. exponer tiempos con Actuator y mirar cómo cambian los percentiles
 
-No es mucho trabajo. Y justo por eso suele dar mejoras reales.
+No es mucho trabajo. Precisamente por eso puede dar mejoras reales.
 
 ## Lo que yo no haría primero
 
@@ -204,7 +204,7 @@ Muchos regresos de rendimiento vienen de resolver muy bien el problema equivocad
 
 ## Mi lectura práctica
 
-El buen tuning en Spring Boot suele ser aburrido en el buen sentido.
+El tuning que funciona en Spring Boot suele parecer bastante aburrido.
 
 Primero mides.
 Quitas trabajo repetido.
@@ -212,7 +212,7 @@ Sacas del hilo principal lo que bloquea y no hace falta.
 Mantienes la base de datos bajo control.
 Sacas métricas para que el siguiente cambio sea más fácil.
 
-Ese es el trabajo de verdad: no hacer que la app parezca optimizada, sino que se comporte mejor bajo carga.
+Ese es el trabajo importante: no hacer que la app parezca optimizada, sino que se comporte mejor bajo carga.
 
 Si además te interesa cómo encaja esto con una stack backend práctica, este artículo combina muy bien con [Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/), [ajustar el tamaño de los pods en Kubernetes](/es/blog/ajustar-tamano-pods-kubernetes-requests-limits/) y el servicio de [backend con Spring Boot](/es/services/backend-spring-boot/).
 

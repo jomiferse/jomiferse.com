@@ -16,7 +16,7 @@ This article is the version I wish more teams read before they start tuning blin
 
 ## The short version
 
-Spring Boot performance tuning is not about squeezing every last millisecond out of the JVM. It is about removing avoidable work and making the expensive parts of your app easier to measure.
+Spring Boot performance tuning has less to do with squeezing every last millisecond out of the JVM and more to do with removing avoidable work and making the expensive parts of your app easier to measure.
 
 The levers that usually matter most are:
 
@@ -25,7 +25,7 @@ The levers that usually matter most are:
 - right-sizing database connections instead of guessing
 - exposing the right metrics so you can see what changed
 
-If you fix those four areas well, you usually get more gain than from any fancy trick.
+If you fix those four areas well, you normally get more gain than from any fancy trick.
 
 > **Practical rule:** optimize the path that is hot in production, not the path that looks clever in code review.
 
@@ -120,7 +120,7 @@ class NotificationService {
 }
 ```
 
-The real tuning question is not “can I make this async?” It is “should this work leave the request thread at all?”
+The useful tuning question is not “can I make this async?” It is “should this work leave the request thread at all?”
 
 If the answer is yes, async can help a lot.
 
@@ -188,7 +188,7 @@ A reasonable performance pass might look like this:
 3. inspect the database pool for connection wait time
 4. expose timings through Actuator and track the percentile shift
 
-That is a small amount of work. It is also the kind of work that usually produces real improvement.
+That is a small amount of work. It is also the kind of work that can produce real improvement.
 
 ## What I would not do first
 
@@ -204,7 +204,7 @@ A lot of performance regressions come from solving the wrong problem very effici
 
 ## My practical take
 
-The best Spring Boot tuning work is usually boring in the right way.
+The Spring Boot tuning work that pays off often looks fairly boring.
 
 You measure first.
 You remove repeated work.
@@ -212,7 +212,7 @@ You isolate blocking tasks.
 You keep the database honest.
 You expose metrics so the next change is easier.
 
-That is the real skill: not making the app look tuned, but making it behave better under load.
+That is the important part: not making the app look tuned, but making it behave better under load.
 
 If you also care about how this fits into the rest of a practical backend stack, this pairs well with [Spring Boot in production](/en/blog/spring-boot-production-devops-checklist/), [right-sizing Kubernetes pods](/en/blog/right-sizing-kubernetes-pods-requests-limits/) and the [Spring Boot backend](/en/services/backend-spring-boot/) service.
 
@@ -225,7 +225,7 @@ Fix the expensive repeated work.
 Use async where it actually helps.
 Keep the database pool aligned with reality.
 
-If you do those things well, the app gets faster without turning the codebase into a science project.
+If you do those things well, the app gets faster without turning the codebase into an experiment.
 
 ## FAQ
 

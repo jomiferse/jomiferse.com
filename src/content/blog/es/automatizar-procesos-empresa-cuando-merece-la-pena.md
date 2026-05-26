@@ -15,17 +15,17 @@ tags:
   ]
 ---
 
-Automatizar procesos de empresa no va de sustituir a personas por scripts. Va de quitar trabajo repetitivo, reducir errores y hacer que un flujo importante sea más visible.
+Automatizar procesos de empresa empieza por una pregunta bastante simple: qué parte del trabajo se repite tanto que ya no debería depender de una persona copiando, revisando o avisando a mano.
 
 La automatización merece la pena cuando el proceso ya está bastante claro, se repite con frecuencia y el coste de hacerlo a mano empieza a ser mayor que el coste de diseñar una solución fiable.
 
 [![Mapa de automatización de procesos: trabajo manual, disparador, datos, acción y monitorización](/images/blog/business-process-automation-map.svg)](/images/blog/business-process-automation-map.svg)
 
-Si el problema todavía es confuso, primero conviene ordenar el flujo. Si ya sabes qué entra, qué debe pasar y qué salida necesita el equipo, entonces automatizar puede ser una inversión muy sensata.
+Si el problema todavía es confuso, primero conviene ordenar el flujo. Cuando ya sabes qué entra, qué debe pasar y qué salida necesita el equipo, automatizar empieza a tener sentido.
 
 ## Señales de que un proceso se puede automatizar
 
-La primera señal es la repetición. Si una persona copia datos de un formulario a una hoja, de una hoja a un CRM y del CRM a un email, hay una parte clara que no debería depender de memoria humana.
+La repetición suele ser la señal más fácil de ver. Si una persona copia datos de un formulario a una hoja, de una hoja a un CRM y del CRM a un email, ahí hay trabajo que probablemente puede salir del flujo manual.
 
 La segunda señal es el error recurrente. Cuando el mismo fallo aparece cada semana, normalmente no falta esfuerzo. Falta una validación, una regla o una integración.
 
@@ -55,7 +55,7 @@ No automatizaría un proceso que todavía cambia cada pocos días. Si nadie pued
 
 Tampoco automatizaría una decisión que necesita mucho criterio humano. En esos casos puede tener sentido preparar datos, resumir información o proponer un primer borrador, pero no eliminar la revisión.
 
-Y no automatizaría algo que ya resuelve bien una herramienta existente. Si un producto SaaS cubre el 80% del caso y el coste es razonable, lo más inteligente puede ser configurarlo bien antes de construir nada a medida.
+Tampoco automatizaría algo que ya resuelve bien una herramienta existente. Si un producto SaaS cubre casi todo el caso con un coste razonable, configurarlo bien puede ser mejor que construir una pieza propia.
 
 Esta lógica es parecida a la de decidir [cuándo construir una herramienta interna en vez de seguir usando Excel](/es/blog/cuando-construir-herramienta-interna-en-vez-de-usar-excel/): el software tiene sentido cuando el proceso ya duele de una forma concreta.
 
@@ -69,13 +69,13 @@ Una automatización útil necesita cinco piezas:
 4. **Salida**: qué debe ocurrir al final.
 5. **Observabilidad**: cómo sabes si ha funcionado o fallado.
 
-La última parte suele olvidarse. Una automatización que falla en silencio acaba siendo peor que hacer el trabajo a mano, porque genera una falsa sensación de control.
+La última parte se olvida a menudo. Una automatización que falla en silencio acaba siendo peor que hacer el trabajo a mano: parece que el proceso está controlado hasta que alguien descubre el agujero.
 
 Por eso conviene añadir logs, avisos de error y una forma sencilla de reintentar o revisar el estado.
 
 ## Una primera versión razonable
 
-Una primera versión puede ser pequeña:
+Una primera versión puede ser bastante discreta:
 
 - un webhook que recibe datos
 - una validación básica
@@ -90,11 +90,11 @@ Si el flujo crece, puede convertirse después en una [aplicación web a medida](
 
 ## Dónde encaja la IA
 
-La IA puede ayudar en automatización, pero no debería ser el primer martillo.
+La IA puede ayudar en automatización, pero no la pondría por defecto.
 
 Tiene sentido cuando el proceso incluye texto, clasificación, resumen, extracción de información o preparación de un primer borrador. Lo conté con más detalle en [cómo usar la IA en tu producto sin convertirla en humo](/es/blog/usar-ia-en-tu-producto-sin-humo/).
 
-Para mover datos entre sistemas, validar formatos o disparar tareas, una integración normal suele ser más barata, predecible y fácil de mantener.
+Para mover datos entre sistemas, validar formatos o disparar tareas, una integración normal suele salir más barata y se entiende mejor dentro de seis meses.
 
 ## FAQ
 
@@ -116,4 +116,4 @@ Automatizar bien empieza por entender el trabajo manual, no por elegir una herra
 
 Si el flujo ya está claro y se repite lo suficiente, una automatización pequeña puede ahorrar tiempo, reducir errores y preparar el terreno para una herramienta interna más completa.
 
-Si tienes un proceso que vive entre hojas, emails y copy-paste, revisarlo antes de automatizarlo suele ser el primer paso sensato.
+Si tienes un proceso que vive entre hojas, emails y copy-paste, yo empezaría por dibujarlo. La automatización viene después, cuando el flujo ya tiene una forma clara.
