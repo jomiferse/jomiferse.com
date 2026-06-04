@@ -365,6 +365,32 @@
     ],
     "personal": [
       {
+        "title": "Betx",
+        "role": "Backend Developer",
+        "companyRelated": "Proyecto personal",
+        "status": "En desarrollo",
+        "link": "https://github.com/jomiferse/betx",
+        "context": "CLI técnica para registrar apuestas, cuotas, estados y resultados en local, con configuración declarativa y persistencia ligera.",
+        "timeframe": "2026 – Presente",
+        "summary": "Proyecto backend construido como herramienta de terminal para llevar un registro local de apuestas de forma estructurada. El foco está en modelar bien el flujo, separar integraciones HTTP, leer configuración desde betx.yml y mantener una base SQLite sencilla de operar.",
+        "technologies": [
+          "Java 21",
+          "Spring Boot 4.0.6",
+          "Maven",
+          "Picocli",
+          "Spring Web / RestClient",
+          "Jackson YAML",
+          "SQLite",
+          "JUnit 5",
+          "AssertJ"
+        ],
+        "highlights": [
+          "Diseñé una interfaz CLI con Picocli para operar el flujo principal desde terminal sin depender de una interfaz web.",
+          "Usé betx.yml como punto de configuración local para mantener credenciales, endpoints y ajustes fuera del código.",
+          "Separé persistencia SQLite, comandos CLI e integraciones HTTP para que el backend sea más fácil de probar y evolucionar."
+        ]
+      },
+      {
         "title": "CV Studio",
         "role": "Full-Stack Developer",
         "companyRelated": "Proyecto personal",
