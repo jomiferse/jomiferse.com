@@ -273,8 +273,8 @@
       {
         "title": "Modernización de Plataforma de Microservicios",
         "role": "Backend Software Engineer",
-        "companyRelated": "CGI for The Workshop",
-        "status": "Producto enterprise",
+        "companyRelated": "CGI (for The Workshop)",
+        "status": "Proyecto cliente",
         "link": "",
         "context": "Equipo backend internacional modernizando una plataforma cloud para una organización de producto a escala enterprise.",
         "timeframe": "12/2024 – Presente",
@@ -299,6 +299,35 @@
           "Contribuí a una migración a largo plazo desde un monolito en Scala hacia una arquitectura de servicios más limpia y mantenible.",
           "Mejoré la confianza en releases mediante trabajo en servicios seguros, delivery automatizado de base de datos y contract testing.",
           "Di soporte a una plataforma de producto donde la claridad técnica importaba tanto como el avance funcional."
+        ]
+      },
+      {
+        "title": "Real-Time WebSocket Gateway Service",
+        "role": "Backend Software Engineer",
+        "companyRelated": "CGI (for The Workshop)",
+        "status": "PoC cliente",
+        "link": "",
+        "context": "Prueba de concepto backend para comunicación en tiempo real entre clientes digitales y servicios internos dentro de una plataforma enterprise.",
+        "timeframe": "02/2026 – 05/2026",
+        "summary": "Contribución a una PoC de gateway WebSocket construida con Java y Spring Boot para gestionar conexiones de usuarios, salas, difusión de eventos y comunicación con servicios internos mediante Redis pub/sub y gRPC.",
+        "technologies": [
+          "Java 21",
+          "Spring Boot 4",
+          "WebSocket",
+          "Atmosphere",
+          "Redis",
+          "gRPC",
+          "Spring Cloud",
+          "Maven",
+          "Docker",
+          "Helm",
+          "Kubernetes",
+          "Micrometer"
+        ],
+        "highlights": [
+          "Trabajé en infraestructura WebSocket para conectar usuarios a salas y mantener el estado de conexión de forma controlada.",
+          "Contribuí a la integración con Redis pub/sub para difusión entre instancias y gRPC para comunicación con otros servicios backend.",
+          "Ayudé a documentar y validar flujos locales de prueba para que el servicio fuera más fácil de ejecutar, revisar y evolucionar."
         ]
       },
       {
@@ -338,7 +367,7 @@
       },
       {
         "title": "EduCash · Plataforma de Afiliación",
-        "role": "Software Engineer",
+        "role": "Full-Stack Software Engineer",
         "companyRelated": "EDUCA EDTECH Group",
         "status": "Herramienta de negocio",
         "link": "",
@@ -366,7 +395,7 @@
     "personal": [
       {
         "title": "Betx",
-        "role": "Backend Developer",
+        "role": "Software Engineer",
         "companyRelated": "Proyecto personal",
         "status": "En desarrollo",
         "link": "https://github.com/jomiferse/betx",
@@ -392,7 +421,7 @@
       },
       {
         "title": "CV Studio",
-        "role": "Full-Stack Developer",
+        "role": "Software Engineer",
         "companyRelated": "Proyecto personal",
         "status": "En desarrollo",
         "link": "https://github.com/jomiferse/cv-studio",

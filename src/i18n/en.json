@@ -215,6 +215,10 @@
       "title": "Selected work, built for",
       "titleAccent": "real use.",
       "intro": "A mix of personal projects and professional work I contributed to. Clear problems, practical decisions and maintainable software.",
+      "personalTitle": "Personal projects",
+      "personalIntro": "Own products and tools where I can show product decisions, architecture and execution without client confidentiality constraints.",
+      "clientTitle": "Client work",
+      "clientIntro": "Professional projects and contributions in client environments, described with the right level of detail to respect confidentiality.",
       "result": "What changed",
       "fallback": "Practical software with a clear workflow and maintainable structure.",
       "view": "View project"

@@ -215,6 +215,10 @@
       "title": "Trabajo seleccionado, construido para",
       "titleAccent": "uso real.",
       "intro": "Una mezcla de proyectos personales y trabajo profesional en el que he contribuido. Problemas claros, decisiones prácticas y software mantenible.",
+      "personalTitle": "Proyectos personales",
+      "personalIntro": "Productos y herramientas propias donde puedo enseñar decisiones de producto, arquitectura y ejecución sin restricciones de cliente.",
+      "clientTitle": "Trabajo de cliente",
+      "clientIntro": "Proyectos profesionales y contribuciones en entornos de cliente, descritos con el nivel de detalle adecuado para respetar confidencialidad.",
       "result": "Qué cambió",
       "fallback": "Software práctico con un flujo claro y una estructura mantenible.",
       "view": "Ver proyecto"
