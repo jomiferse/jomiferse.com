@@ -5,6 +5,7 @@ date: 2026-05-26
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "6 min"
+translationSlug: "how-much-does-a-custom-internal-tool-cost"
 featured: true
 tags:
   [

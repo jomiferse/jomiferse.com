@@ -5,6 +5,7 @@ date: 2026-05-26
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+translationSlug: "what-a-professional-website-needs-to-get-clients"
 tags: [web-profesional, seo, conversion, negocio, portfolio, freelance]
 ---
 

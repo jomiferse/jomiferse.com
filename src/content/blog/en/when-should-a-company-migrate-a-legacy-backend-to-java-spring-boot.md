@@ -5,6 +5,7 @@ date: "2026-05-25"
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "8 min"
+translationSlug: "cuando-deberia-una-empresa-migrar-un-backend-legacy-a-java-spring-boot"
 tags: [spring-boot, java, backend, legacy, migration, architecture]
 ---
 

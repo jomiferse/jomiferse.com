@@ -5,6 +5,7 @@ date: 2026-05-25
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "5 min"
+translationSlug: "when-to-build-an-internal-tool-instead-of-using-excel"
 featured: true
 tags:
   [

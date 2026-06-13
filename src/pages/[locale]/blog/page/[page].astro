@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
+import { getTranslations, locales, t, type Locale } from "@/i18n";
 import BlogPostCard from "@/components/cards/BlogPostCard.astro";
 import BlogPagination from "@/components/common/BlogPagination.astro";
 import {
@@ -8,35 +8,63 @@ import {
 	getLocalBlogSlug,
 	getPublishedBlogPosts,
 } from "@/lib/blog";
-import { getPageItems, getTotalPages } from "@/lib/blog-pagination";
+import {
+	getBlogPagePath,
+	getPageItems,
+	getTotalPages,
+} from "@/lib/blog-pagination";
 import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
-export function getStaticPaths() {
-	return getLocaleStaticPaths();
+export async function getStaticPaths() {
+	const paths = [];
+
+	for (const locale of locales) {
+		const posts = await getPublishedBlogPosts(locale);
+		const { latestPosts } = getBlogPostGroups(posts);
+		const totalPages = getTotalPages(latestPosts.length);
+
+		for (let page = 2; page <= totalPages; page += 1) {
+			paths.push({
+				params: {
+					locale,
+					page: String(page),
+				},
+				props: {
+					pageNumber: page,
+				},
+			});
+		}
+	}
+
+	return paths;
 }
 
-const { locale } = Astro.params;
+const locale = Astro.params.locale as Locale;
+const { pageNumber } = Astro.props as { pageNumber: number };
 const posts = await getPublishedBlogPosts(locale);
-const { featuredPosts, latestPosts: allLatestPosts } = getBlogPostGroups(posts);
-const currentPage = 1;
+const { latestPosts: allLatestPosts } = getBlogPostGroups(posts);
 const totalPages = getTotalPages(allLatestPosts.length);
-const latestPosts = getPageItems(allLatestPosts, currentPage);
+const latestPosts = getPageItems(allLatestPosts, pageNumber);
 
 const blogBasePath = `/${locale}/blog`;
+const pagePath = getBlogPagePath(locale, pageNumber);
 const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 const page = getTranslations(locale).blog.page;
 const sections = getTranslations(locale).blog.sections;
 const empty = getTranslations(locale).blog.empty;
 const pagination = getTranslations(locale).blog.pagination;
-const featuredLabel = locale === "es" ? "Destacado" : "Featured";
-const pageTitle = page.meta.title;
-const pageDescription = page.meta.description;
+const pageTitle = pagination.metaTitle.replace("{page}", String(pageNumber));
+const pageDescription = pagination.metaDescription.replace(
+	"{page}",
+	String(pageNumber),
+);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
-	buildCollectionPage(site, blogBasePath, pageTitle, pageDescription),
+	buildCollectionPage(site, pagePath, pageTitle, pageDescription),
 	buildBreadcrumbList(site, [
 		{ name: t(locale, "nav.home"), path: `/${locale}` },
 		{ name: t(locale, "nav.blog"), path: blogBasePath },
+		{ name: `${pagination.page} ${pageNumber}`, path: pagePath },
 	]),
 ];
 ---
@@ -58,41 +86,6 @@ const structuredData = [
 		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
 			{page.intro}
 		</p>
-	</section>
-
-	<section class="section-reveal pb-10 md:pb-14">
-		<div class="mb-7 flex flex-col gap-2">
-			<h2 class="text-3xl font-black text-[var(--text)] md:text-4xl">
-				{sections.featured.title}
-			</h2>
-			<p class="muted-copy">{sections.featured.subtitle}</p>
-		</div>
-		{
-			featuredPosts.length > 0 ? (
-				<div class="stagger-children grid gap-5 lg:grid-cols-2">
-					{featuredPosts.map((post) => (
-						<BlogPostCard
-							href={`${blogBasePath}/${getLocalBlogSlug(post.id, locale)}`}
-							title={post.data.title}
-							description={post.data.description}
-							dateLabel={post.data.date.toLocaleDateString(dateLocale, {
-								year: "numeric",
-								month: "short",
-								day: "numeric",
-							})}
-							tags={post.data.tags ?? []}
-							readingTime={post.data.readingTime}
-							featured={post.data.featured}
-							featuredLabel={featuredLabel}
-						/>
-					))}
-				</div>
-			) : (
-				<div class="dark-card p-6 text-[var(--text-muted)]">
-					{empty.featured}
-				</div>
-			)
-		}
 	</section>
 
 	<section class="section-reveal pb-20 md:pb-28">
@@ -121,14 +114,12 @@ const structuredData = [
 					))}
 				</div>
 			) : (
-				<div class="dark-card p-6 text-[var(--text-muted)]">
-					{posts.length > 0 ? empty.latest : page.empty}
-				</div>
+				<div class="dark-card p-6 text-[var(--text-muted)]">{empty.latest}</div>
 			)
 		}
 		<BlogPagination
 			locale={locale}
-			currentPage={currentPage}
+			currentPage={pageNumber}
 			totalPages={totalPages}
 			labels={pagination}
 		/>

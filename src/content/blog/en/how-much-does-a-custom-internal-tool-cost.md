@@ -5,6 +5,7 @@ date: 2026-05-26
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "6 min"
+translationSlug: "cuanto-cuesta-crear-herramienta-interna-a-medida"
 featured: true
 tags:
   [

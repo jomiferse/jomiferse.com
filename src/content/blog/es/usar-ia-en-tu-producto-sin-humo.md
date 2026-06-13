@@ -5,6 +5,7 @@ date: "2026-05-24"
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+translationSlug: "using-ai-in-your-product-without-hype"
 featured: true
 tags: [ia, producto, automatizacion, productividad-desarrollador, producto]
 ---

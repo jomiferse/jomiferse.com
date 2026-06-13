@@ -5,6 +5,7 @@ date: 2026-05-23
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "6 min"
+translationSlug: "idempotent-apis-that-survive-retries"
 tags: [api-design, backend, reintentos, idempotencia, rest, webhooks, pagos]
 ---
 

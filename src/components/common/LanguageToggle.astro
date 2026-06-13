@@ -4,9 +4,10 @@ import { t, type Locale } from "@/i18n";
 
 interface Props {
 	locale?: Locale;
+	href?: string;
 }
 
-const { locale = "en" } = Astro.props as Props;
+const { locale = "en", href } = Astro.props as Props;
 
 const path = Astro.url.pathname;
 const suffix = path.replace(/^\/(en|es)(?=\/|$)/, "") || "";
@@ -14,7 +15,8 @@ const otherLocale: Locale = locale === "en" ? "es" : "en";
 const otherPath = `/${otherLocale}${suffix}`;
 const qs = Astro.url.searchParams.toString();
 const hash = Astro.url.hash ?? "";
-const otherHref = `${otherPath}${qs ? `?${qs}` : ""}${hash}`;
+const fallbackHref = `${otherPath}${qs ? `?${qs}` : ""}${hash}`;
+const otherHref = href ?? fallbackHref;
 ---
 
 <a

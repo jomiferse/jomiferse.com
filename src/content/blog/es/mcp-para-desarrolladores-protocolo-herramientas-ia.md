@@ -5,6 +5,7 @@ date: "2026-05-21"
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "6 min"
+translationSlug: "mcp-for-developers-ai-coding-tools-protocol"
 featured: true
 tags: [mcp, ia-coding, claude-code, codex, cursor, productividad-desarrollador]
 ---

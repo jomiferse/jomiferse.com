@@ -14,6 +14,7 @@ interface LayoutProps {
 	structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 	ogType?: "website" | "article";
 	keywords?: string[];
+	alternatePaths?: Partial<Record<Locale, string>>;
 }
 
 const {
@@ -25,6 +26,7 @@ const {
 	structuredData,
 	ogType = "website",
 	keywords = [],
+	alternatePaths,
 } = Astro.props as LayoutProps;
 
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
@@ -34,14 +36,22 @@ const canonicalUrl = Astro.site
 	? new URL(Astro.url.pathname, Astro.site).toString()
 	: Astro.url.pathname;
 
-const buildAlternate = (loc: Locale) => {
+const buildFallbackAlternatePath = (loc: Locale) => {
 	const pathname = Astro.url.pathname.replace(/^\/(en|es)/, "");
-	const path = `/${loc}${pathname || ""}`;
+	return `/${loc}${pathname || ""}`;
+};
+
+const buildAlternatePath = (loc: Locale) =>
+	alternatePaths?.[loc] ?? buildFallbackAlternatePath(loc);
+const buildAlternateUrl = (loc: Locale) => {
+	const path = buildAlternatePath(loc);
 	return Astro.site ? new URL(path, Astro.site).toString() : path;
 };
 
-const alternateEn = buildAlternate("en");
-const alternateEs = buildAlternate("es");
+const alternateEn = buildAlternateUrl("en");
+const alternateEs = buildAlternateUrl("es");
+const otherLocale: Locale = locale === "en" ? "es" : "en";
+const languageHref = alternatePaths?.[otherLocale];
 const ogImage = Astro.site ? new URL(image, Astro.site).toString() : image;
 const robots = noindex ? "noindex,nofollow" : "index,follow";
 
@@ -186,7 +196,7 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		<a href="#main-content" class="skip-link"
 			>{t(locale, "a11y.skipToContent")}</a
 		>
-		<Header locale={locale} />
+		<Header locale={locale} languageHref={languageHref} />
 		<main
 			id="main-content"
 			class="site-shell w-full flex-1 px-4 py-14 md:px-6 md:py-20"

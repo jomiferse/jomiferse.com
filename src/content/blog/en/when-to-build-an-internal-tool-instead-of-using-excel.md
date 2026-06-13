@@ -5,6 +5,7 @@ date: 2026-05-25
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "5 min"
+translationSlug: "cuando-construir-herramienta-interna-en-vez-de-usar-excel"
 featured: true
 tags: [internal-tools, automation, full-stack, operations, custom-software]
 ---

@@ -5,6 +5,7 @@ date: 2026-05-26
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+translationSlug: "que-debe-tener-web-profesional-para-captar-clientes"
 tags: [professional-website, seo, conversion, business, portfolio, freelance]
 ---
 

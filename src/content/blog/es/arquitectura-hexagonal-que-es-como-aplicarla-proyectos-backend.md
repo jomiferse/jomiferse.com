@@ -5,6 +5,7 @@ date: "2026-06-01"
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "11 min"
+translationSlug: "hexagonal-architecture-what-it-is-how-to-apply-backend-projects"
 tags: [arquitectura-hexagonal, backend, java, spring-boot, clean-architecture]
 ---
 

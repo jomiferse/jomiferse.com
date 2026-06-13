@@ -525,6 +525,15 @@
         "subtitle": "Most recent writing."
       }
     },
+    "pagination": {
+      "ariaLabel": "Blog pagination",
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page",
+      "pageLabel": "Page {current} of {total}",
+      "metaTitle": "Blog - Page {page} - José Miguel Fernández",
+      "metaDescription": "Page {page} of short notes about software engineering, systems, tools and practical product building."
+    },
     "empty": {
       "featured": "No featured posts yet.",
       "latest": "No posts published yet."

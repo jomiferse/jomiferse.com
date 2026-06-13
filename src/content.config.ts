@@ -13,6 +13,7 @@ const blog = defineCollection({
 		readingTime: z.string().optional(),
 		featured: z.boolean().optional(),
 		draft: z.boolean().optional(),
+		translationSlug: z.string().optional(),
 	}),
 });
 

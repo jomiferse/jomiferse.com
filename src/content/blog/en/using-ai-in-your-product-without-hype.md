@@ -5,6 +5,7 @@ date: "2026-05-24"
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+translationSlug: "usar-ia-en-tu-producto-sin-humo"
 featured: true
 tags: [ai, product, automation, developer-productivity, product-thinking]
 ---

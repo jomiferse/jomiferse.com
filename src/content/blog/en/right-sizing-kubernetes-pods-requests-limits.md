@@ -5,6 +5,7 @@ date: "2026-05-21"
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+translationSlug: "ajustar-tamano-pods-kubernetes-requests-limits"
 tags: [kubernetes, devops, cloud-native, performance, platform-engineering]
 ---
 

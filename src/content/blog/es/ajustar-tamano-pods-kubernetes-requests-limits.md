@@ -5,6 +5,7 @@ date: "2026-05-21"
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+translationSlug: "right-sizing-kubernetes-pods-requests-limits"
 tags: [kubernetes, devops, cloud-native, rendimiento, platform-engineering]
 ---
 

@@ -20,9 +20,10 @@ const links: NavLink[] = [
 
 interface Props {
 	locale?: Locale;
+	languageHref?: string;
 }
 
-const { locale = "en" } = Astro.props as Props;
+const { locale = "en", languageHref } = Astro.props as Props;
 
 const normalizePath = (path: string) =>
 	path === "/" ? "/" : path.replace(/\/$/, "");
@@ -80,7 +81,7 @@ const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 			</nav>
 
 			<div class="hidden items-center gap-1 md:flex">
-				<LanguageToggle locale={locale} />
+				<LanguageToggle locale={locale} href={languageHref} />
 				<ThemeToggle locale={locale} />
 				<a
 					href={withLocale("/contact", locale)}
@@ -91,7 +92,7 @@ const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 			</div>
 
 			<div class="flex shrink-0 items-center gap-1 md:hidden">
-				<LanguageToggle locale={locale} />
+				<LanguageToggle locale={locale} href={languageHref} />
 				<ThemeToggle locale={locale} />
 				<button
 					id="menu-open"

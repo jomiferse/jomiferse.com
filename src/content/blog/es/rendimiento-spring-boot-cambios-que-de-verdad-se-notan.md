@@ -5,6 +5,7 @@ date: "2026-05-22"
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "8 min"
+translationSlug: "spring-boot-performance-tuning"
 tags: [spring-boot, java, rendimiento, backend, observabilidad]
 ---
 

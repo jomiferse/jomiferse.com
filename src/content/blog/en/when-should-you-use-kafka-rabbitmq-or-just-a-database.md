@@ -5,6 +5,7 @@ date: 2026-06-13
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "9 min"
+translationSlug: "cuando-deberias-usar-kafka-rabbitmq-o-simplemente-una-base-de-datos"
 tags:
   [backend, kafka, rabbitmq, messaging, spring-boot, postgresql, architecture]
 ---

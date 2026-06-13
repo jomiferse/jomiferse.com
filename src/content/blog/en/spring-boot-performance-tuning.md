@@ -5,6 +5,7 @@ date: "2026-05-22"
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+translationSlug: "rendimiento-spring-boot-cambios-que-de-verdad-se-notan"
 tags: [spring-boot, java, performance, backend, observability]
 ---
 

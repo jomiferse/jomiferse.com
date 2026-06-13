@@ -5,6 +5,7 @@ date: 2026-05-26
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+translationSlug: "when-business-process-automation-is-worth-it"
 tags:
   [
     automatizacion,

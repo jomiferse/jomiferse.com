@@ -525,6 +525,15 @@
         "subtitle": "Publicaciones más recientes."
       }
     },
+    "pagination": {
+      "ariaLabel": "Paginación del blog",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "page": "Página",
+      "pageLabel": "Página {current} de {total}",
+      "metaTitle": "Blog - Página {page} - José Miguel Fernández",
+      "metaDescription": "Página {page} de notas breves sobre software engineering, sistemas, herramientas y construcción práctica de producto."
+    },
     "empty": {
       "featured": "Todavía no hay artículos destacados.",
       "latest": "Todavía no hay artículos publicados."

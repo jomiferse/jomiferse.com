@@ -5,6 +5,7 @@ date: 2026-05-26
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+translationSlug: "automatizar-procesos-empresa-cuando-merece-la-pena"
 tags:
   [automation, business-processes, internal-tools, api-integrations, operations]
 ---

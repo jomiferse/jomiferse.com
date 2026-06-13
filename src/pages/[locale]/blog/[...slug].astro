@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import BlogPostLayout from "@/layouts/BlogPostLayout.astro";
 import { getCollection, getEntry, render } from "astro:content";
+import { getTranslatedBlogPath } from "@/lib/blog-translation";
 import { buildBlogPosting, buildBreadcrumbList } from "@/lib/seo";
 import { t, type Locale } from "@/i18n";
 
@@ -34,6 +35,15 @@ if (!post) throw new Error(`Post not found: ${fullSlug}`);
 const { Content } = await render(post);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const postPath = `/${locale}/blog/${Astro.params.slug}`;
+const translatedPostPath = getTranslatedBlogPath(
+	locale,
+	Astro.params.slug ?? "",
+	post.data.translationSlug,
+);
+const alternatePaths =
+	locale === "en"
+		? { en: postPath, es: translatedPostPath }
+		: { en: translatedPostPath, es: postPath };
 const structuredData = [
 	buildBlogPosting({
 		site,
@@ -60,6 +70,7 @@ const structuredData = [
 	ogType="article"
 	structuredData={structuredData}
 	keywords={post.data.tags ?? []}
+	alternatePaths={alternatePaths}
 >
 	<BlogPostLayout frontmatter={post.data} locale={locale}>
 		<Content />

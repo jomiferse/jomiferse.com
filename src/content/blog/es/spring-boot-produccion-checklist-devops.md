@@ -5,6 +5,7 @@ date: 2026-05-26
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "8 min"
+translationSlug: "spring-boot-production-devops-checklist"
 tags: [spring-boot, java, devops, produccion, backend, observabilidad]
 ---
 
