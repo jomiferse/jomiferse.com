@@ -14,8 +14,7 @@
     "lint": "eslint . --cache --cache-location .eslintcache --max-warnings 0",
     "lint:fix": "eslint . --cache --cache-location .eslintcache --fix",
     "format": "prettier . --write",
-    "format:check": "prettier . --check",
-    "verify:ai-seo": "node scripts/verify-ai-seo.mjs"
+    "format:check": "prettier . --check"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
