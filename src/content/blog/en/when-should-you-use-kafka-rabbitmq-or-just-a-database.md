@@ -126,15 +126,6 @@ If a database table solves the workflow clearly, use it. If you need reliable wo
 
 For related trade-offs, see [idempotent APIs that survive retries](/en/blog/idempotent-apis-that-survive-retries/), [Spring Boot in production](/en/blog/spring-boot-production-devops-checklist/), and [API integrations](/en/services/api-integrations/).
 
-## SEO metadata
-
-- SEO title: Kafka vs RabbitMQ vs Database: When to Use Each
-- Meta description: Practical guide for backend developers choosing between Kafka, RabbitMQ and database-backed workflows for async processing, retries and event streams.
-- Slug: when-should-you-use-kafka-rabbitmq-or-just-a-database
-- Keywords: Kafka vs RabbitMQ, database queue, transactional outbox, Spring Boot messaging, backend architecture, event streaming
-- Open Graph title: When Should You Use Kafka, RabbitMQ or Just a Database?
-- Open Graph description: A pragmatic backend guide to choosing the simplest reliable option for queues, workflows and event streams.
-
 ## FAQ
 
 **Should I use Kafka for background jobs?**  

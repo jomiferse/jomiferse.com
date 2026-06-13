@@ -126,15 +126,6 @@ Si una tabla resuelve el flujo, úsala. Si necesitas workers fiables, RabbitMQ s
 
 Para decisiones parecidas, lee [APIs idempotentes que sobreviven a reintentos](/es/blog/apis-idempotentes-que-sobreviven-a-reintentos/), [Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/) e [integraciones API](/es/services/api-integrations/).
 
-## Metadatos SEO
-
-- SEO title: Kafka vs RabbitMQ vs base de datos: cuándo usar cada opción
-- Meta description: Guía práctica para elegir entre Kafka, RabbitMQ y workflows con base de datos para procesos asíncronos, reintentos y event streaming.
-- Slug: cuando-deberias-usar-kafka-rabbitmq-o-simplemente-una-base-de-datos
-- Keywords: Kafka vs RabbitMQ, cola en base de datos, transactional outbox, Spring Boot messaging, arquitectura backend, event streaming
-- Open Graph title: ¿Cuándo deberías usar Kafka, RabbitMQ o simplemente una base de datos?
-- Open Graph description: Guía pragmática para elegir entre colas, workflows y event streaming.
-
 ## FAQ
 
 **¿Debería usar Kafka para jobs en background?**  
