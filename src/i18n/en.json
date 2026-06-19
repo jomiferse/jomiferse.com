@@ -617,7 +617,46 @@
       "bestForText": "founders, solo professionals, small businesses and teams that need technical judgment, direct execution and software that stays maintainable.",
       "included": "Where I can help",
       "bestFor": "Best for",
+      "serviceLinks": "Services in this group",
       "viewService": "View service",
+      "groups": {
+        "websites": {
+          "title": "Websites & redesigns",
+          "description": "Clear, fast websites for businesses and professionals that need their offer, proof and contact paths to make sense.",
+          "bullets": [
+            "New service sites with focused structure and calls to action.",
+            "Redesigns that improve clarity, performance and mobile layout.",
+            "SEO metadata, internal links and deployment notes."
+          ]
+        },
+        "web-apps": {
+          "title": "Custom web apps",
+          "description": "Focused web applications built around real workflows, with the right amount of frontend, backend and data modeling.",
+          "bullets": [
+            "Dashboards, forms and operational workflows.",
+            "Backend APIs, databases and integrations when the product needs them.",
+            "Small first versions that can be validated and extended."
+          ]
+        },
+        "internal-operations": {
+          "title": "Internal tools & automation",
+          "description": "Private tools and practical automations for teams that need less spreadsheet work, fewer manual checks and clearer operations.",
+          "bullets": [
+            "Admin panels, dashboards, review queues and simple CRMs.",
+            "Automations for moving data, sending notifications and generating outputs.",
+            "Visible errors, logging and safer fallback behavior."
+          ]
+        },
+        "backend-integrations": {
+          "title": "APIs & Spring Boot backends",
+          "description": "Reliable integrations, APIs and backend services for products and teams that need maintainable systems behind the interface.",
+          "bullets": [
+            "REST APIs, webhooks and data mapping between systems.",
+            "Spring Boot services with clear structure, tests and operational notes.",
+            "Retry, validation and error handling for important flows."
+          ]
+        }
+      },
       "processEyebrow": "How I work",
       "processTitle": "Clarity first, then code.",
       "process": [

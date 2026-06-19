@@ -617,7 +617,46 @@
       "bestForText": "founders, profesionales, pequeños negocios y equipos que necesitan criterio técnico, ejecución directa y software fácil de mantener.",
       "included": "Dónde puedo ayudar",
       "bestFor": "Ideal para",
+      "serviceLinks": "Servicios incluidos",
       "viewService": "Ver servicio",
+      "groups": {
+        "websites": {
+          "title": "Webs y rediseños",
+          "description": "Webs claras y rápidas para negocios y profesionales que necesitan explicar bien su oferta, generar confianza y facilitar el contacto.",
+          "bullets": [
+            "Webs de servicios con estructura enfocada y llamadas a la acción.",
+            "Rediseños que mejoran claridad, rendimiento y vista móvil.",
+            "Metadata SEO, enlaces internos y notas de despliegue."
+          ]
+        },
+        "web-apps": {
+          "title": "Aplicaciones web a medida",
+          "description": "Aplicaciones web enfocadas en flujos reales, con el frontend, backend y modelo de datos justos para la fase del proyecto.",
+          "bullets": [
+            "Dashboards, formularios y flujos operativos.",
+            "APIs backend, bases de datos e integraciones cuando el producto lo necesita.",
+            "Primeras versiones pequeñas que se puedan validar y ampliar."
+          ]
+        },
+        "internal-operations": {
+          "title": "Herramientas internas y automatización",
+          "description": "Herramientas privadas y automatizaciones prácticas para equipos que necesitan menos hojas de cálculo, menos comprobaciones manuales y operaciones más claras.",
+          "bullets": [
+            "Paneles de administración, dashboards, colas de revisión y CRMs simples.",
+            "Automatizaciones para mover datos, enviar avisos y generar salidas.",
+            "Errores visibles, logs y comportamiento más seguro ante fallos."
+          ]
+        },
+        "backend-integrations": {
+          "title": "APIs y backend Spring Boot",
+          "description": "Integraciones, APIs y servicios backend fiables para productos y equipos que necesitan sistemas mantenibles detrás de la interfaz.",
+          "bullets": [
+            "APIs REST, webhooks y mapeo de datos entre sistemas.",
+            "Servicios Spring Boot con estructura clara, tests y notas operativas.",
+            "Reintentos, validación y manejo de errores para flujos importantes."
+          ]
+        }
+      },
       "processEyebrow": "Cómo trabajo",
       "processTitle": "Primero claridad, después código.",
       "process": [
