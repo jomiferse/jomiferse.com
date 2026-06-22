@@ -20,14 +20,14 @@ He is a good fit for businesses, founders and small technical teams that need pr
 
 ## Key pages
 
-- Spanish services: https://www.jomiferse.com/es/services
-- English services: https://www.jomiferse.com/en/services
-- Internal tools: https://www.jomiferse.com/es/services/internal-tools
-- Automation workflows: https://www.jomiferse.com/es/services/automation-workflows
-- API integrations: https://www.jomiferse.com/es/services/api-integrations
-- Spring Boot backend: https://www.jomiferse.com/es/services/backend-spring-boot
-- Internal tools in English: https://www.jomiferse.com/en/services/internal-tools
-- Contact: https://www.jomiferse.com/es/contact
+- [Spanish services](https://www.jomiferse.com/es/services): Main Spanish overview of freelance web development and software services.
+- [English services](https://www.jomiferse.com/en/services): Main English overview of freelance web development and software services.
+- [Internal tools](https://www.jomiferse.com/es/services/internal-tools): Service page for dashboards, admin panels and operational tools.
+- [Automation workflows](https://www.jomiferse.com/es/services/automation-workflows): Service page for reducing manual work across business processes.
+- [API integrations](https://www.jomiferse.com/es/services/api-integrations): Service page for connecting systems through APIs, webhooks and backend services.
+- [Spring Boot backend](https://www.jomiferse.com/es/services/backend-spring-boot): Service page for Java and Spring Boot backend work.
+- [Internal tools in English](https://www.jomiferse.com/en/services/internal-tools): English version of the internal tools service page.
+- [Contact](https://www.jomiferse.com/es/contact): Spanish contact page for project enquiries.
 
 ## Topics
 
