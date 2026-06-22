@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
+import { unified } from "@astrojs/markdown-remark";
 
 const siteUrl = new URL("https://www.jomiferse.com");
 const internalHosts = new Set([siteUrl.hostname, "jomiferse.com"]);
@@ -53,8 +54,11 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	site: "https://www.jomiferse.com",
+	compressHTML: true,
 	markdown: {
-		rehypePlugins: [rehypeExternalLinksNofollow],
+		processor: unified({
+			rehypePlugins: [rehypeExternalLinksNofollow],
+		}),
 	},
 	integrations: [
 		icon(),

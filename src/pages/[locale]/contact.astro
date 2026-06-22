@@ -2,18 +2,19 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
 import { Icon } from "astro-icon/components";
-import { getLocaleFromPath, getTranslations, t } from "@/i18n";
+import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
 import { buildBreadcrumbList } from "@/lib/seo";
 
-export const prerender = false;
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
 
-const locale = getLocaleFromPath(Astro.url.pathname);
+const { locale } = Astro.params;
 const cv = getCv(locale);
 const page = getTranslations(locale).contact.page;
 const pageTitle = page.meta.title;
 const pageDescription = page.meta.description;
-const isSent = Astro.url.searchParams.get("sent") === "1";
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	{
@@ -95,16 +96,26 @@ const structuredData = [
 			</aside>
 
 			<div>
-				{
-					isSent && (
-						<p class="mb-6 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 px-5 py-4 text-sm font-semibold text-emerald-200">
-							{t(locale, "contact.success")}
-						</p>
-					)
-				}
+				<p
+					id="contact-success"
+					hidden
+					class="mb-6 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 px-5 py-4 text-sm font-semibold text-emerald-200"
+				>
+					{t(locale, "contact.success")}
+				</p>
 
 				<ContactForm locale={locale} />
 			</div>
 		</div>
 	</section>
+
+	<script>
+		const successMessage = document.getElementById("contact-success");
+		if (
+			successMessage &&
+			new URLSearchParams(window.location.search).get("sent") === "1"
+		) {
+			successMessage.hidden = false;
+		}
+	</script>
 </BaseLayout>
