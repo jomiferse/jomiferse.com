@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="title desc">
+	<title id="title">Conceptual Astro Islands architecture diagram</title>
+	<desc id="desc">A page shell sends mostly HTML while individual islands hydrate only the interactive components that need JavaScript.</desc>
+	<defs>
+		<filter id="shadow" x="-15%" y="-15%" width="130%" height="130%">
+			<feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#020617" flood-opacity="0.28" />
+		</filter>
+	</defs>
+	<rect width="1120" height="720" rx="0" fill="#f8fafc" />
+	<rect x="76" y="74" width="968" height="572" rx="28" fill="#ffffff" stroke="#d7dee8" filter="url(#shadow)" />
+	<rect x="118" y="118" width="884" height="72" rx="18" fill="#0f172a" />
+	<text x="150" y="163" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">Server-rendered HTML shell</text>
+	<rect x="118" y="226" width="260" height="320" rx="22" fill="#eef2ff" stroke="#c7d2fe" />
+	<text x="148" y="276" fill="#1e1b4b" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Static content</text>
+	<text x="148" y="314" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">Headings</text>
+	<text x="148" y="348" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">Markdown</text>
+	<text x="148" y="382" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">Images</text>
+	<text x="148" y="416" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">Links</text>
+	<rect x="430" y="226" width="250" height="146" rx="22" fill="#ecfeff" stroke="#67e8f9" />
+	<text x="462" y="278" fill="#164e63" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Island A</text>
+	<text x="462" y="316" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">Search box</text>
+	<text x="462" y="346" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">client:load</text>
+	<rect x="430" y="400" width="250" height="146" rx="22" fill="#fff7ed" stroke="#fdba74" />
+	<text x="462" y="452" fill="#7c2d12" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Island B</text>
+	<text x="462" y="490" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">Chart or widget</text>
+	<text x="462" y="520" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">client:visible</text>
+	<rect x="732" y="226" width="270" height="320" rx="22" fill="#f0fdf4" stroke="#86efac" />
+	<text x="764" y="276" fill="#14532d" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800">Browser</text>
+	<text x="764" y="314" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">HTML arrives first</text>
+	<text x="764" y="348" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">Only islands ship JS</text>
+	<text x="764" y="382" fill="#475569" font-family="Inter, Arial, sans-serif" font-size="18">Static parts stay static</text>
+	<path d="M378 386 H430" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)" />
+	<path d="M680 299 H732" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)" />
+	<path d="M680 473 H732" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)" />
+	<defs>
+		<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+			<path d="M0 0 L10 5 L0 10 Z" fill="#64748b" />
+		</marker>
+	</defs>
+	<rect x="118" y="578" width="884" height="32" rx="16" fill="#e2e8f0" />
+	<rect x="118" y="578" width="560" height="32" rx="16" fill="#94a3b8" />
+	<text x="150" y="601" fill="#0f172a" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">Default payload: HTML and CSS first; JavaScript is scoped to the interactive islands.</text>
+</svg>

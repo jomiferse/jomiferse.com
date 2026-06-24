@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+	<title id="title">Astro 7 technical hero image</title>
+	<desc id="desc">A refined dark technical poster for Astro 7 showing the Astro mark, a content-first pipeline, islands, routing, Markdown, Vite 8, and Rust compiler signals.</desc>
+	<defs>
+		<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#0b1020" />
+			<stop offset="0.48" stop-color="#111827" />
+			<stop offset="1" stop-color="#07111f" />
+		</linearGradient>
+		<linearGradient id="astroFlame" x1="0" y1="0" x2="0.92" y2="1">
+			<stop offset="0" stop-color="#ffb86c" />
+			<stop offset="0.46" stop-color="#ff5d2e" />
+			<stop offset="1" stop-color="#7c3aed" />
+		</linearGradient>
+		<linearGradient id="cyanLine" x1="0" y1="0" x2="1" y2="0">
+			<stop offset="0" stop-color="#22d3ee" stop-opacity="0.1" />
+			<stop offset="0.52" stop-color="#22d3ee" />
+			<stop offset="1" stop-color="#a3e635" />
+		</linearGradient>
+		<linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#111a2d" />
+			<stop offset="1" stop-color="#0b1222" />
+		</linearGradient>
+		<pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+			<path d="M48 0 H0 V48" fill="none" stroke="#263247" stroke-width="1" opacity="0.45" />
+		</pattern>
+		<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+			<feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#020617" flood-opacity="0.42" />
+		</filter>
+		<filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+			<feGaussianBlur stdDeviation="6" result="blur" />
+			<feMerge>
+				<feMergeNode in="blur" />
+				<feMergeNode in="SourceGraphic" />
+			</feMerge>
+		</filter>
+	</defs>
+
+	<rect width="1280" height="720" fill="url(#bg)" />
+	<rect width="1280" height="720" fill="url(#grid)" opacity="0.44" />
+	<path d="M74 562 C222 512 352 618 504 572 C690 516 786 474 972 542 C1084 583 1176 554 1254 512" fill="none" stroke="#1f8ea3" stroke-width="2" opacity="0.24" />
+	<path d="M66 608 C240 540 378 654 548 604 C736 548 870 556 1038 620 C1134 656 1212 630 1280 592" fill="none" stroke="#f97316" stroke-width="2" opacity="0.18" />
+
+	<g transform="translate(112 96)" filter="url(#shadow)">
+		<rect width="1056" height="528" rx="22" fill="#080d18" stroke="#273449" />
+		<path d="M0 94 H1056" stroke="#273449" />
+		<text x="42" y="56" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">content-driven build / astro@7</text>
+		<g transform="translate(890 34)">
+			<circle cx="0" cy="0" r="7" fill="#ff5d2e" />
+			<circle cx="26" cy="0" r="7" fill="#22d3ee" />
+			<circle cx="52" cy="0" r="7" fill="#a3e635" />
+		</g>
+
+		<g transform="translate(64 134)">
+			<text x="0" y="42" fill="#f8fafc" font-family="Avenir Next, Segoe UI, sans-serif" font-size="84" font-weight="900" letter-spacing="0">Astro 7</text>
+			<text x="4" y="84" fill="#cbd5e1" font-family="Avenir Next, Segoe UI, sans-serif" font-size="24" font-weight="600">less client JavaScript, faster content builds</text>
+			<path d="M6 122 H378" stroke="url(#cyanLine)" stroke-width="4" stroke-linecap="round" />
+		</g>
+
+		<g transform="translate(76 338)">
+			<rect x="0" y="0" width="132" height="48" rx="10" fill="#121d31" stroke="#334155" />
+			<text x="24" y="31" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700">Vite 8</text>
+			<rect x="156" y="0" width="156" height="48" rx="10" fill="#121d31" stroke="#334155" />
+			<text x="180" y="31" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700">Rust compiler</text>
+			<rect x="336" y="0" width="136" height="48" rx="10" fill="#121d31" stroke="#334155" />
+			<text x="360" y="31" fill="#e2e8f0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="17" font-weight="700">Markdown</text>
+		</g>
+
+		<g transform="translate(526 128)">
+			<circle cx="210" cy="202" r="180" fill="none" stroke="#263247" stroke-width="2" />
+			<circle cx="210" cy="202" r="124" fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="7 10" />
+			<circle cx="210" cy="202" r="72" fill="#101827" stroke="#475569" stroke-width="2" />
+			<path d="M210 112 L284 250 H136 Z" fill="url(#astroFlame)" filter="url(#glow)" />
+			<path d="M210 112 L236 250 H136 Z" fill="#ffffff" opacity="0.16" />
+			<path d="M176 266 C190 244 232 244 246 266 C228 254 194 254 176 266 Z" fill="#ffb86c" />
+
+			<g transform="translate(20 44)">
+				<rect width="152" height="54" rx="12" fill="url(#panel)" stroke="#334155" />
+				<text x="24" y="34" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="800">HTML first</text>
+			</g>
+			<g transform="translate(298 38)">
+				<rect width="160" height="54" rx="12" fill="url(#panel)" stroke="#334155" />
+				<text x="24" y="34" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="800">Islands</text>
+			</g>
+			<g transform="translate(0 306)">
+				<rect width="182" height="54" rx="12" fill="url(#panel)" stroke="#334155" />
+				<text x="24" y="34" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="800">Advanced routing</text>
+			</g>
+			<g transform="translate(284 310)">
+				<rect width="176" height="54" rx="12" fill="url(#panel)" stroke="#334155" />
+				<text x="24" y="34" fill="#f8fafc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="800">Structured logs</text>
+			</g>
+
+			<path d="M172 90 C202 112 214 126 220 150" fill="none" stroke="#22d3ee" stroke-width="3" stroke-linecap="round" />
+			<path d="M298 92 C270 116 250 132 238 154" fill="none" stroke="#a3e635" stroke-width="3" stroke-linecap="round" />
+			<path d="M182 306 C204 282 212 266 216 252" fill="none" stroke="#ff8a3d" stroke-width="3" stroke-linecap="round" />
+			<path d="M304 312 C270 286 246 268 232 252" fill="none" stroke="#8b5cf6" stroke-width="3" stroke-linecap="round" />
+		</g>
+
+		<g transform="translate(72 446)">
+			<text x="0" y="0" fill="#94a3b8" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15">build output</text>
+			<rect x="0" y="18" width="440" height="12" rx="6" fill="#1f2937" />
+			<rect x="0" y="18" width="278" height="12" rx="6" fill="#22d3ee" />
+			<rect x="0" y="44" width="440" height="12" rx="6" fill="#1f2937" />
+			<rect x="0" y="44" width="348" height="12" rx="6" fill="#ff8a3d" />
+			<rect x="0" y="70" width="440" height="12" rx="6" fill="#1f2937" />
+			<rect x="0" y="70" width="212" height="12" rx="6" fill="#a3e635" />
+		</g>
+	</g>
+</svg>

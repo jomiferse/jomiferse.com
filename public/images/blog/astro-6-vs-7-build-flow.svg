@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="title desc">
+	<title id="title">Astro 6 versus Astro 7 build flow comparison</title>
+	<desc id="desc">A simplified comparison showing Astro 7 moving more build work into Rust-backed tooling and keeping generated output size effectively unchanged in a local benchmark.</desc>
+	<rect width="1120" height="720" fill="#0b1020" />
+	<text x="80" y="90" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="900">Astro 6 vs Astro 7: local benchmark flow</text>
+	<text x="80" y="126" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="18">80 Markdown pages, Node 24.15.0, three runs per version</text>
+	<g transform="translate(80 176)">
+		<rect width="430" height="410" rx="26" fill="#111827" stroke="#334155" />
+		<text x="36" y="58" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900">Astro 6.4.8</text>
+		<text x="36" y="100" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="18">Baseline pipeline</text>
+		<rect x="36" y="142" width="310" height="34" rx="17" fill="#64748b" />
+		<rect x="36" y="202" width="350" height="34" rx="17" fill="#64748b" />
+		<rect x="36" y="262" width="280" height="34" rx="17" fill="#64748b" />
+		<text x="36" y="134" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Build average: 2875 ms</text>
+		<text x="36" y="194" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Dev ready average: 1198 ms</text>
+		<text x="36" y="254" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Dist size: 1,722,736 bytes</text>
+		<text x="36" y="348" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Good baseline, slower build phase</text>
+	</g>
+	<g transform="translate(610 176)">
+		<rect width="430" height="410" rx="26" fill="#111827" stroke="#334155" />
+		<text x="36" y="58" fill="#f8fafc" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900">Astro 7.0.0</text>
+		<text x="36" y="100" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="18">Rust compiler + Vite 8 + Satteri</text>
+		<rect x="36" y="142" width="152" height="34" rx="17" fill="#22d3ee" />
+		<rect x="36" y="202" width="336" height="34" rx="17" fill="#8b5cf6" />
+		<rect x="36" y="262" width="280" height="34" rx="17" fill="#f97316" />
+		<text x="36" y="134" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Build average: 1404 ms</text>
+		<text x="36" y="194" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Dev ready average: 1148 ms</text>
+		<text x="36" y="254" fill="#cbd5e1" font-family="Inter, Arial, sans-serif" font-size="16">Dist size: 1,722,811 bytes</text>
+		<text x="36" y="348" fill="#e2e8f0" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Faster build, similar output size</text>
+	</g>
+	<path d="M520 370 H600" stroke="#64748b" stroke-width="4" marker-end="url(#arrow)" />
+	<defs>
+		<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+			<path d="M0 0 L10 5 L0 10 Z" fill="#64748b" />
+		</marker>
+	</defs>
+	<text x="80" y="650" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="16">Local benchmark, not a universal claim. Real gains depend on content volume, Markdown plugins, integrations, and deployment target.</text>
+</svg>
