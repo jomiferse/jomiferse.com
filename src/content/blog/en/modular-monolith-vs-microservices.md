@@ -1,5 +1,5 @@
 ---
-title: "Modular Monolith vs Microservices: What I'd Choose in 2026"
+title: "Modular Monolith vs Microservices: What I'd Choose"
 description: "Microservices are powerful, but they are not always the right starting point. Learn when to choose a modular monolith, when microservices make sense, and how to make the transition safely."
 date: 2026-07-02
 language: "en"
@@ -19,7 +19,7 @@ tags:
 
 Microservices are not a badge of seniority. They are a trade-off.
 
-That still matters in 2026 because many teams keep reaching for microservices before they have the product, team structure, deployment process, and observability needed to run them well. The word sounds modern. It suggests scale, independence, cloud maturity, and serious engineering.
+That still matters because many teams keep reaching for microservices before they have the product, team structure, deployment process, and observability needed to run them well. The word sounds modern. It suggests scale, independence, cloud maturity, and serious engineering.
 
 Sometimes that is true. Often it is not.
 
@@ -265,7 +265,7 @@ Choose microservices when:
 - service ownership is clear
 - data ownership can be enforced
 
-This is the shortest version of my software architecture 2026 recommendation: start simple, but not messy.
+This is the shortest version of my backend architecture recommendation: start simple, but not messy.
 
 ## Migration path: from modular monolith to microservices
 
@@ -381,7 +381,7 @@ Choosing microservices because they sound senior is one of the fastest ways to m
 
 ## Final recommendation
 
-In 2026, I would usually start with a modular monolith for new products, startups, internal tools, SaaS MVPs, and projects where the domain is still evolving.
+Today, I would usually start with a modular monolith for new products, startups, internal tools, SaaS MVPs, and projects where the domain is still evolving.
 
 I would move to microservices only when the team and product have earned that complexity.
 

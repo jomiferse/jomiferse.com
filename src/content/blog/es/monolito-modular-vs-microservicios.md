@@ -1,5 +1,5 @@
 ---
-title: "Monolito modular vs microservicios: qué elegiría en 2026"
+title: "Monolito modular vs microservicios: qué elegiría"
 description: "Los microservicios son potentes, pero no siempre son el mejor punto de partida. Aprende cuándo elegir un monolito modular, cuándo tienen sentido los microservicios y cómo hacer la transición de forma segura."
 date: 2026-07-02
 language: "es"
@@ -19,7 +19,7 @@ tags:
 
 Los microservicios no son una medalla de seniority. Son una decisión con coste.
 
-La discusión sigue siendo relevante en 2026 porque muchos equipos quieren microservicios antes de tener el producto, el equipo, el proceso de despliegue y la observabilidad necesarios para operarlos bien. La palabra suena moderna. Sugiere escala, autonomía, cloud, enterprise y madurez técnica.
+La discusión sigue siendo relevante porque muchos equipos quieren microservicios antes de tener el producto, el equipo, el proceso de despliegue y la observabilidad necesarios para operarlos bien. La palabra suena moderna. Sugiere escala, autonomía, cloud, enterprise y madurez técnica.
 
 A veces todo eso es cierto. Muchas otras veces no.
 
@@ -265,7 +265,7 @@ Elige microservicios cuando:
 - el ownership de servicios está claro
 - la propiedad de datos se puede hacer cumplir
 
-Mi resumen de arquitectura de software 2026 sería este: empieza simple, pero no desordenado.
+Mi resumen de arquitectura backend sería este: empieza simple, pero no desordenado.
 
 ## Ruta de migración: de monolito a microservicios
 
@@ -381,7 +381,7 @@ Elegir microservicios porque suenan senior es una de las formas más rápidas de
 
 ## Recomendación final
 
-En 2026, normalmente empezaría con un monolito modular para productos nuevos, startups, herramientas internas, MVPs SaaS y proyectos donde el dominio todavía está evolucionando.
+Hoy, normalmente empezaría con un monolito modular para productos nuevos, startups, herramientas internas, MVPs SaaS y proyectos donde el dominio todavía está evolucionando.
 
 Pasaría a microservicios solo cuando el equipo y el producto se hayan ganado esa complejidad.
 
