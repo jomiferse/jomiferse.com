@@ -2,7 +2,11 @@
 import { Icon } from "astro-icon/components";
 import { getTranslations, t, type Locale } from "@/i18n";
 
-const { locale } = Astro.props as { locale: Locale };
+const {
+	locale,
+	source,
+	idPrefix = "contact",
+} = Astro.props as { locale: Locale; source?: string; idPrefix?: string };
 const projectTypes = getTranslations(locale).contactForm.projectTypes;
 ---
 
@@ -13,16 +17,17 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 	class="dark-card p-5 md:p-6"
 >
 	<input type="hidden" name="locale" value={locale} />
+	{source ? <input type="hidden" name="source" value={source} /> : null}
 
 	<div class="grid gap-5 md:grid-cols-2">
 		<div>
-			<label for="contact-name" class="eyebrow mb-2 block">
+			<label for={`${idPrefix}-name`} class="eyebrow mb-2 block">
 				{t(locale, "contactForm.nameLabel")}
 			</label>
 			<div class="form-shell">
 				<Icon name="user" class="form-icon h-5 w-5" />
 				<input
-					id="contact-name"
+					id={`${idPrefix}-name`}
 					name="name"
 					autocomplete="name"
 					required
@@ -33,13 +38,13 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 		</div>
 
 		<div>
-			<label for="contact-email" class="eyebrow mb-2 block">
+			<label for={`${idPrefix}-email`} class="eyebrow mb-2 block">
 				{t(locale, "contactForm.emailLabel")}
 			</label>
 			<div class="form-shell">
 				<Icon name="mail" class="form-icon h-5 w-5" />
 				<input
-					id="contact-email"
+					id={`${idPrefix}-email`}
 					type="email"
 					name="email"
 					autocomplete="email"
@@ -51,13 +56,13 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 		</div>
 
 		<div class="md:col-span-2">
-			<label for="contact-project-type" class="eyebrow mb-2 block">
+			<label for={`${idPrefix}-project-type`} class="eyebrow mb-2 block">
 				{t(locale, "contactForm.projectTypeLabel")}
 			</label>
 			<div class="form-shell">
 				<Icon name="briefcase" class="form-icon h-5 w-5" />
 				<select
-					id="contact-project-type"
+					id={`${idPrefix}-project-type`}
 					name="projectType"
 					class="form-input"
 					required
@@ -71,13 +76,13 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 		</div>
 
 		<div class="md:col-span-2">
-			<label for="contact-message" class="eyebrow mb-2 block">
+			<label for={`${idPrefix}-message`} class="eyebrow mb-2 block">
 				{t(locale, "contactForm.messageLabel")}
 			</label>
 			<div class="form-shell form-shell-textarea">
 				<Icon name="pencil" class="form-icon form-textarea-icon h-5 w-5" />
 				<textarea
-					id="contact-message"
+					id={`${idPrefix}-message`}
 					name="message"
 					required
 					rows="6"
@@ -87,13 +92,13 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 		</div>
 
 		<div class="md:col-span-2">
-			<label for="contact-attachment" class="eyebrow mb-2 block">
+			<label for={`${idPrefix}-attachment`} class="eyebrow mb-2 block">
 				{t(locale, "contactForm.attachmentLabel")}
 			</label>
 			<div class="form-shell">
 				<Icon name="paperclip" class="form-icon h-5 w-5" />
 				<input
-					id="contact-attachment"
+					id={`${idPrefix}-attachment`}
 					type="file"
 					name="attachment"
 					accept="application/pdf,.pdf"

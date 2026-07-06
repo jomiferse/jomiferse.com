@@ -92,10 +92,13 @@
         "viewAll": "Ver todo"
       },
       "build": {
-        "eyebrow": "Qué puedo construir",
-        "title": "Servicios concretos para mejorar una web, automatizar trabajo o construir una herramienta.",
+        "eyebrow": "Servicios",
+        "title": "Servicios para mejorar tu web, automatizar trabajo y construir herramientas útiles.",
+        "text": "Desde WordPress y WooCommerce hasta integraciones, automatizaciones e IA aplicada. Elijo la solución según el problema, no según una tecnología de moda.",
         "servicesLink": "Ver servicios",
-        "blogLink": "Leer blog"
+        "blogLink": "Leer blog",
+        "contactLink": "Cuéntame tu caso",
+        "viewCategory": "Ver servicio relacionado"
       },
       "skills": {
         "eyebrow": "Stack",
@@ -652,18 +655,18 @@
   "services": {
     "hub": {
       "meta": {
-        "title": "Servicios de desarrollo full-stack freelance - José Miguel Fernández",
-        "description": "Servicios de desarrollo full-stack freelance para webs de negocio, aplicaciones web, herramientas internas, automatizaciones, integraciones API y backend Spring Boot."
+        "title": "Consultoría informática, diseño web e IA aplicada - José Miguel Fernández",
+        "description": "Servicios freelance de consultoría informática, diseño web, WordPress, automatización, IA aplicada, integraciones API y software a medida."
       },
       "schema": {
-        "name": "Servicios de desarrollo full-stack freelance de José Miguel Fernández",
-        "description": "Servicios freelance de desarrollo full-stack para webs de negocio, aplicaciones web, herramientas internas, automatización de flujos, integraciones API y backend Spring Boot.",
+        "name": "Consultoría informática, diseño web e IA aplicada de José Miguel Fernández",
+        "description": "Servicios freelance de consultoría informática, diseño web, WordPress, automatización, IA aplicada, integraciones API y software a medida.",
         "areaServed": "España y remoto"
       },
       "eyebrow": "Servicios freelance",
-      "title": "Desarrollo full-stack",
-      "titleAccent": "para problemas concretos.",
-      "intro": "Construyo webs, herramientas internas, automatizaciones, integraciones API y backend mantenible para personas que necesitan resolver un flujo real sin montar una plataforma innecesaria.",
+      "title": "Consultoría, web e IA",
+      "titleAccent": "con criterio técnico.",
+      "intro": "Servicios para mejorar tu web, automatizar trabajo y construir herramientas útiles. Desde WordPress y WooCommerce hasta integraciones, automatizaciones e IA aplicada: elijo la solución según el problema, no según una tecnología de moda.",
       "bestForLead": "Ideal para:",
       "bestForText": "founders, profesionales, pequeños negocios y equipos que necesitan criterio técnico, ejecución directa y software fácil de mantener.",
       "included": "Dónde puedo ayudar",
@@ -671,40 +674,127 @@
       "serviceLinks": "Servicios incluidos",
       "viewService": "Ver servicio",
       "groups": {
-        "websites": {
-          "title": "Webs y rediseños",
-          "description": "Webs claras y rápidas para negocios y profesionales que necesitan explicar bien su oferta, generar confianza y facilitar el contacto.",
+        "it-consulting": {
+          "title": "Consultoría Informática",
+          "description": "Ayuda técnica directa para ordenar proyectos, revisar decisiones y construir software útil sin inflar el alcance.",
           "bullets": [
-            "Webs de servicios con estructura enfocada y llamadas a la acción.",
-            "Rediseños que mejoran claridad, rendimiento y vista móvil.",
-            "Metadata SEO, enlaces internos y notas de despliegue."
+            "Diagnóstico antes de construir: qué duele, qué existe y qué merece inversión.",
+            "Arquitectura pragmática para webs, aplicaciones, APIs e integraciones.",
+            "Ejecución freelance: hablas con quien piensa y construye la solución."
+          ],
+          "offerings": [
+            {
+              "title": "Gestión de proyectos IT",
+              "description": "Planificación, ejecución y orden técnico para proyectos web o software.",
+              "service": "custom-web-application"
+            },
+            {
+              "title": "Asesoría informática",
+              "description": "Ayuda para decidir qué construir, con qué tecnología y por dónde empezar.",
+              "service": "custom-web-application"
+            },
+            {
+              "title": "Segunda opinión tecnológica",
+              "description": "Revisión de una web, presupuesto, arquitectura o proveedor antes de tomar una decisión.",
+              "service": "website-redesign"
+            },
+            {
+              "title": "Software a medida",
+              "description": "Herramientas internas, APIs, paneles y soluciones adaptadas al negocio.",
+              "service": "custom-web-application"
+            },
+            {
+              "title": "Integraciones API",
+              "description": "Conexión de webs, CRMs, pagos, formularios, ERPs y herramientas externas.",
+              "service": "api-integrations"
+            },
+            {
+              "title": "Automatización de procesos",
+              "description": "Reducción de tareas manuales con flujos automáticos entre herramientas.",
+              "service": "automation-workflows"
+            },
+            {
+              "title": "Optimización y mantenimiento",
+              "description": "Mejoras de rendimiento, seguridad, errores, despliegues y estabilidad.",
+              "service": "backend-spring-boot"
+            }
           ]
         },
-        "web-apps": {
-          "title": "Aplicaciones web a medida",
-          "description": "Aplicaciones web enfocadas en flujos reales, con el frontend, backend y modelo de datos justos para la fase del proyecto.",
+        "web-wordpress": {
+          "title": "Diseño Web & WordPress",
+          "description": "Webs profesionales, editables y orientadas a captar clientes, con una base técnica limpia y mantenible.",
           "bullets": [
-            "Dashboards, formularios y flujos operativos.",
-            "APIs backend, bases de datos e integraciones cuando el producto lo necesita.",
-            "Primeras versiones pequeñas que se puedan validar y ampliar."
+            "Estructura clara, mensajes específicos y llamadas a la acción visibles.",
+            "Rendimiento, SEO técnico básico y mantenimiento pensados desde el inicio.",
+            "WordPress cuando necesitas edición cómoda; código a medida cuando conviene más."
+          ],
+          "offerings": [
+            {
+              "title": "Diseño web WordPress",
+              "description": "Webs profesionales, editables y pensadas para captar clientes.",
+              "service": "business-website"
+            },
+            {
+              "title": "Mantenimiento WordPress",
+              "description": "Actualizaciones, backups, seguridad, errores y soporte continuo.",
+              "service": "website-redesign"
+            },
+            {
+              "title": "Optimización WordPress",
+              "description": "Mejora de velocidad, plugins, Core Web Vitals y estructura técnica.",
+              "service": "website-redesign"
+            },
+            {
+              "title": "WooCommerce",
+              "description": "Tiendas online con pagos, envíos, catálogo y automatizaciones.",
+              "service": "business-website"
+            },
+            {
+              "title": "Migración a WordPress",
+              "description": "Migración de webs antiguas o mal montadas a una base limpia y gestionable.",
+              "service": "website-redesign"
+            },
+            {
+              "title": "Landing pages",
+              "description": "Páginas enfocadas a campañas, servicios concretos y conversión.",
+              "service": "business-website"
+            }
           ]
         },
-        "internal-operations": {
-          "title": "Herramientas internas y automatización",
-          "description": "Herramientas privadas y automatizaciones prácticas para equipos que necesitan menos hojas de cálculo, menos comprobaciones manuales y operaciones más claras.",
+        "ai-automation": {
+          "title": "Inteligencia Artificial & Automatización",
+          "description": "IA aplicada a tareas reales del negocio: menos trabajo manual, más claridad y mejores flujos entre herramientas.",
           "bullets": [
-            "Paneles de administración, dashboards, colas de revisión y CRMs simples.",
-            "Automatizaciones para mover datos, enviar avisos y generar salidas.",
-            "Errores visibles, logs y comportamiento más seguro ante fallos."
-          ]
-        },
-        "backend-integrations": {
-          "title": "APIs y backend Spring Boot",
-          "description": "Integraciones, APIs y servicios backend fiables para productos y equipos que necesitan sistemas mantenibles detrás de la interfaz.",
-          "bullets": [
-            "APIs REST, webhooks y mapeo de datos entre sistemas.",
-            "Servicios Spring Boot con estructura clara, tests y notas operativas.",
-            "Reintentos, validación y manejo de errores para flujos importantes."
+            "Casos prácticos antes que demos vistosas sin uso diario.",
+            "Automatizaciones con APIs, formularios, emails, documentos y datos internos.",
+            "Control humano donde hace falta criterio, trazabilidad donde hace falta confianza."
+          ],
+          "offerings": [
+            {
+              "title": "IA para empresas",
+              "description": "Casos prácticos de IA aplicados a tareas reales del negocio.",
+              "service": "automation-workflows"
+            },
+            {
+              "title": "Chatbots y asistentes",
+              "description": "Asistentes para responder dudas, filtrar leads o consultar documentación.",
+              "service": "internal-tools"
+            },
+            {
+              "title": "Automatizaciones con IA",
+              "description": "Emails, formularios, clasificación de mensajes, extracción de datos y reporting.",
+              "service": "automation-workflows"
+            },
+            {
+              "title": "Agentes de IA",
+              "description": "Flujos avanzados que combinan herramientas, datos y acciones.",
+              "service": "api-integrations"
+            },
+            {
+              "title": "Formación en IA",
+              "description": "Sesiones prácticas para usar IA en el día a día del negocio.",
+              "service": "automation-workflows"
+            }
           ]
         }
       },
@@ -768,12 +858,16 @@
           "href": "/blog/apis-idempotentes-que-sobreviven-a-reintentos"
         }
       ],
-      "ctaTitle": "¿Quieres mejorar una web, automatizar un flujo o construir una herramienta?",
-      "ctaText": "Envíame el contexto, el problema y lo que quieres conseguir. Te responderé con el siguiente paso más razonable.",
-      "ctaButton": "Contar mi caso"
+      "ctaTitle": "Cuéntame tu caso y vemos si tiene sentido.",
+      "ctaText": "Envíame qué tienes ahora, qué te gustaría mejorar y dónde se pierde más tiempo o dinero. Te responderé con el siguiente paso más razonable.",
+      "ctaButton": "Cuéntame tu caso"
     },
     "detail": {
       "eyebrow": "Servicio freelance",
+      "pricingEyebrow": "Precio orientativo",
+      "pricingTitle": "Alcance y precio",
+      "pricingScope": "Qué suele incluir",
+      "pricingNote": "El precio final depende del alcance, integraciones y estado del proyecto. Si no encaja, te lo diré claro antes de presupuestar.",
       "problem": "Problema",
       "whoFor": "Para quién es",
       "builds": "Qué puedo construir",
@@ -783,6 +877,11 @@
       "contactTitle": "¿Tiene sentido para tu proyecto?",
       "contactText": "Cuéntame qué quieres construir, qué tienes ahora y qué resultado buscas. Si encaja, te propondré un siguiente paso claro.",
       "contactButton": "Contactar",
+      "contactModalTitle": "Cuéntame tu caso",
+      "contactModalText": "Déjame el contexto del proyecto y te responderé con el siguiente paso más razonable.",
+      "closeContactModal": "Cerrar formulario de contacto",
+      "whatsappButton": "WhatsApp",
+      "whatsappMessage": "Hola José Miguel, estoy viendo el servicio de {service} y me gustaría comentarte mi caso.",
       "servicesButton": "Ver todos los servicios",
       "relatedTitle": "También puede encajar",
       "blogTitle": "Leer notas técnicas",
@@ -797,6 +896,16 @@
         "description": "Una web clara y rápida que explica qué haces, genera confianza y facilita que el cliente adecuado contacte contigo.",
         "metaTitle": "Desarrollo de web de negocio - José Miguel Fernández",
         "metaDescription": "Desarrollo freelance de webs de negocio para profesionales y equipos pequeños que necesitan una web clara, rápida y mantenible.",
+        "pricing": {
+          "label": "Web profesional",
+          "price": "Desde 490 €",
+          "note": "Para webs de servicios, landings o presencia profesional con estructura clara.",
+          "scope": [
+            "Hasta 5 secciones o una landing completa.",
+            "Diseño responsive, copy base y formulario de contacto.",
+            "SEO técnico básico, rendimiento y despliegue incluidos."
+          ]
+        },
         "problem": "Tu presencia online no explica bien tu oferta, o dependes de perfiles sueltos en vez de tener una web enfocada.",
         "whoFor": [
           "Freelancers y consultores que necesitan una base creíble para su trabajo.",
@@ -832,6 +941,16 @@
         "description": "Un rediseño enfocado para una web que se siente antigua, confusa, lenta o difícil de actualizar.",
         "metaTitle": "Rediseño web para mejorar claridad - José Miguel Fernández",
         "metaDescription": "Rediseño web freelance para sitios existentes que necesitan mejor estructura, rendimiento, mensaje y caminos de conversión.",
+        "pricing": {
+          "label": "Rediseño enfocado",
+          "price": "Desde 390 €",
+          "note": "Para mejorar una web existente sin rehacer todo desde cero.",
+          "scope": [
+            "Revisión de estructura, mensajes, móvil y conversión.",
+            "Mejoras de UI, rendimiento y llamadas a la acción.",
+            "Informe breve con oportunidades que no entren en el alcance."
+          ]
+        },
         "problem": "Tu web existe, pero ya no refleja la calidad de tu trabajo o no deja claro cuál es el siguiente paso.",
         "whoFor": [
           "Profesionales con una web personal o de servicios antigua.",
@@ -867,6 +986,16 @@
         "description": "Una aplicación web enfocada en un flujo real, con el frontend, backend y modelo de datos que hagan falta.",
         "metaTitle": "Desarrollo de aplicación web a medida - José Miguel Fernández",
         "metaDescription": "Desarrollo freelance de aplicaciones web a medida con TypeScript, backend, bases de datos y delivery práctico.",
+        "pricing": {
+          "label": "Primera versión útil",
+          "price": "Desde 1.200 €",
+          "note": "Para construir una app pequeña pero real, con flujo, datos y despliegue.",
+          "scope": [
+            "Definición de alcance y pantallas principales.",
+            "Frontend, backend o integración según necesidad.",
+            "Base mantenible para validar y ampliar por fases."
+          ]
+        },
         "problem": "Las herramientas estándar no encajan con el flujo, pero construir un producto grande sería demasiado para la fase actual.",
         "whoFor": [
           "Founders validando un flujo de producto concreto.",
@@ -902,6 +1031,16 @@
         "description": "Herramientas pequeñas y prácticas para equipos que necesitan gestionar operaciones sin depender de hojas de cálculo.",
         "metaTitle": "Desarrollo de herramientas internas - José Miguel Fernández",
         "metaDescription": "Desarrollo freelance de herramientas internas para dashboards, paneles de administración y flujos operativos.",
+        "pricing": {
+          "label": "Herramienta interna",
+          "price": "Desde 900 €",
+          "note": "Para paneles, dashboards o flujos internos con usuarios y datos reales.",
+          "scope": [
+            "Mapeo del proceso manual y versión mínima útil.",
+            "Interfaz privada, modelo de datos y operaciones principales.",
+            "Despliegue, validación del flujo y notas de mantenimiento."
+          ]
+        },
         "problem": "Trabajo importante se gestiona manualmente entre hojas, mensajes y comprobaciones repetidas, lo que facilita errores y oculta el progreso.",
         "whoFor": [
           "Equipos de operaciones, soporte o administración con trabajo manual recurrente.",
@@ -937,6 +1076,16 @@
         "description": "Automatización práctica para trabajo repetitivo: mover datos, enviar avisos, generar salidas y sincronizar sistemas.",
         "metaTitle": "Desarrollo de automatizaciones - José Miguel Fernández",
         "metaDescription": "Desarrollo freelance de automatizaciones para tareas repetitivas, integraciones, notificaciones y tooling operativo.",
+        "pricing": {
+          "label": "Automatización acotada",
+          "price": "Desde 250 €",
+          "note": "Para automatizar una tarea repetitiva con entrada, salida y errores visibles.",
+          "scope": [
+            "Análisis rápido del flujo manual actual.",
+            "Automatización con API, webhook, job o script mantenible.",
+            "Pruebas con casos reales y explicación de funcionamiento."
+          ]
+        },
         "problem": "El equipo dedica tiempo a tareas repetibles que el software puede hacer de forma más fiable, pero el flujo es demasiado específico para una herramienta genérica.",
         "whoFor": [
           "Equipos copiando datos entre sistemas a mano.",
@@ -972,6 +1121,16 @@
         "description": "Conexiones fiables entre herramientas, plataformas y sistemas internos para que los datos se muevan sin copia manual.",
         "metaTitle": "Desarrollo de integraciones API - José Miguel Fernández",
         "metaDescription": "Desarrollo freelance de integraciones API para conectar productos, herramientas internas, flujos de datos y servicios externos.",
+        "pricing": {
+          "label": "Integración API",
+          "price": "Desde 450 €",
+          "note": "Para conectar dos sistemas o exponer un flujo de datos de forma fiable.",
+          "scope": [
+            "Revisión de documentación, autenticación y límites.",
+            "Cliente, endpoint o webhook con validación y errores visibles.",
+            "Variables de entorno y notas para operar la integración."
+          ]
+        },
         "problem": "Tus herramientas tienen datos útiles, pero no se comunican de la forma que necesita tu flujo de trabajo.",
         "whoFor": [
           "Equipos conectando CRMs, formularios, pagos, dashboards o sistemas internos.",
@@ -1007,6 +1166,16 @@
         "description": "Desarrollo y evolución de APIs, servicios backend e integraciones con Java y Spring Boot, priorizando mantenibilidad, testabilidad y fiabilidad.",
         "metaTitle": "Desarrollo backend con Spring Boot - José Miguel Fernández",
         "metaDescription": "Desarrollo freelance de backend con Java y Spring Boot para APIs, servicios, integraciones, migraciones legacy y sistemas mantenibles.",
+        "pricing": {
+          "label": "Intervención backend",
+          "price": "Desde 700 €",
+          "note": "Para una API, integración o mejora backend con alcance técnico definido.",
+          "scope": [
+            "Diagnóstico de dominio, contratos y puntos de dolor.",
+            "Implementación con estructura, tests o validación crítica.",
+            "Notas operativas sobre errores, despliegue y evolución."
+          ]
+        },
         "problem": "El backend sostiene el negocio, pero cada cambio cuesta demasiado, las integraciones son frágiles o la arquitectura ya no acompaña al producto.",
         "whoFor": [
           "Equipos que necesitan reforzar o evolucionar un backend Java/Spring Boot existente.",

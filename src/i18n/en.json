@@ -92,10 +92,13 @@
         "viewAll": "View all"
       },
       "build": {
-        "eyebrow": "What I can build",
-        "title": "Concrete services for improving a website, automating work or building a tool.",
+        "eyebrow": "Services",
+        "title": "Services to improve your website, automate work and build useful tools.",
+        "text": "From WordPress and WooCommerce to integrations, automation and applied AI. I choose the solution around the problem, not around a fashionable technology.",
         "servicesLink": "View services",
-        "blogLink": "Read blog"
+        "blogLink": "Read blog",
+        "contactLink": "Share your case",
+        "viewCategory": "View related service"
       },
       "skills": {
         "eyebrow": "Stack",
@@ -652,18 +655,18 @@
   "services": {
     "hub": {
       "meta": {
-        "title": "Freelance Full-Stack Development Services - José Miguel Fernández",
-        "description": "Freelance full-stack development services for business websites, web applications, internal tools, automation workflows, API integrations and Spring Boot backend systems."
+        "title": "IT Consulting, Web Design and Applied AI - José Miguel Fernández",
+        "description": "Freelance services for IT consulting, web design, WordPress, automation, applied AI, API integrations and custom software."
       },
       "schema": {
-        "name": "Freelance full-stack development services by José Miguel Fernández",
-        "description": "Freelance full-stack development services for business websites, web applications, internal tools, workflow automation, API integrations and Spring Boot backend systems.",
+        "name": "IT consulting, web design and applied AI by José Miguel Fernández",
+        "description": "Freelance services for IT consulting, web design, WordPress, automation, applied AI, API integrations and custom software.",
         "areaServed": "Spain and remote"
       },
       "eyebrow": "Freelance services",
-      "title": "Full-stack development",
-      "titleAccent": "for concrete problems.",
-      "intro": "I build websites, internal tools, automation workflows, API integrations and maintainable backend systems for people who need to solve a real workflow without building an unnecessary platform.",
+      "title": "Consulting, web and AI",
+      "titleAccent": "with technical judgment.",
+      "intro": "Services to improve your website, automate work and build useful tools. From WordPress and WooCommerce to integrations, automation and applied AI: I choose the solution around the problem, not around a fashionable technology.",
       "bestForLead": "Best for:",
       "bestForText": "founders, solo professionals, small businesses and teams that need technical judgment, direct execution and software that stays maintainable.",
       "included": "Where I can help",
@@ -671,40 +674,127 @@
       "serviceLinks": "Services in this group",
       "viewService": "View service",
       "groups": {
-        "websites": {
-          "title": "Websites & redesigns",
-          "description": "Clear, fast websites for businesses and professionals that need their offer, proof and contact paths to make sense.",
+        "it-consulting": {
+          "title": "IT Consulting",
+          "description": "Direct technical help to organize projects, review decisions and build useful software without inflating the scope.",
           "bullets": [
-            "New service sites with focused structure and calls to action.",
-            "Redesigns that improve clarity, performance and mobile layout.",
-            "SEO metadata, internal links and deployment notes."
+            "Diagnosis before building: what hurts, what already exists and what deserves investment.",
+            "Pragmatic architecture for websites, applications, APIs and integrations.",
+            "Freelance execution: you talk to the person thinking through and building the solution."
+          ],
+          "offerings": [
+            {
+              "title": "IT project management",
+              "description": "Planning, execution and technical order for web or software projects.",
+              "service": "custom-web-application"
+            },
+            {
+              "title": "IT advisory",
+              "description": "Help deciding what to build, which technology to use and where to start.",
+              "service": "custom-web-application"
+            },
+            {
+              "title": "Technology second opinion",
+              "description": "Review of a website, estimate, architecture or provider before making a decision.",
+              "service": "website-redesign"
+            },
+            {
+              "title": "Custom software",
+              "description": "Internal tools, APIs, panels and business-specific solutions.",
+              "service": "custom-web-application"
+            },
+            {
+              "title": "API integrations",
+              "description": "Connecting websites, CRMs, payments, forms, ERPs and external tools.",
+              "service": "api-integrations"
+            },
+            {
+              "title": "Process automation",
+              "description": "Reducing manual tasks with automated workflows between tools.",
+              "service": "automation-workflows"
+            },
+            {
+              "title": "Optimization and maintenance",
+              "description": "Performance, security, bug fixing, deployment and stability improvements.",
+              "service": "backend-spring-boot"
+            }
           ]
         },
-        "web-apps": {
-          "title": "Custom web apps",
-          "description": "Focused web applications built around real workflows, with the right amount of frontend, backend and data modeling.",
+        "web-wordpress": {
+          "title": "Web Design & WordPress",
+          "description": "Professional, editable websites designed to win clients, with a clean and maintainable technical base.",
           "bullets": [
-            "Dashboards, forms and operational workflows.",
-            "Backend APIs, databases and integrations when the product needs them.",
-            "Small first versions that can be validated and extended."
+            "Clear structure, specific messaging and visible calls to action.",
+            "Performance, basic technical SEO and maintainability considered from the start.",
+            "WordPress when easy editing matters; custom code when that is the better fit."
+          ],
+          "offerings": [
+            {
+              "title": "WordPress web design",
+              "description": "Professional, editable websites built to help clients contact you.",
+              "service": "business-website"
+            },
+            {
+              "title": "WordPress maintenance",
+              "description": "Updates, backups, security, bug fixing and ongoing support.",
+              "service": "website-redesign"
+            },
+            {
+              "title": "WordPress optimization",
+              "description": "Speed, plugins, Core Web Vitals and technical structure improvements.",
+              "service": "website-redesign"
+            },
+            {
+              "title": "WooCommerce",
+              "description": "Online stores with payments, shipping, catalog structure and automation.",
+              "service": "business-website"
+            },
+            {
+              "title": "WordPress migration",
+              "description": "Moving old or messy websites to a cleaner, manageable base.",
+              "service": "website-redesign"
+            },
+            {
+              "title": "Landing pages",
+              "description": "Pages focused on campaigns, specific services and conversion.",
+              "service": "business-website"
+            }
           ]
         },
-        "internal-operations": {
-          "title": "Internal tools & automation",
-          "description": "Private tools and practical automations for teams that need less spreadsheet work, fewer manual checks and clearer operations.",
+        "ai-automation": {
+          "title": "Artificial Intelligence & Automation",
+          "description": "AI applied to real business tasks: less manual work, clearer operations and better flows between tools.",
           "bullets": [
-            "Admin panels, dashboards, review queues and simple CRMs.",
-            "Automations for moving data, sending notifications and generating outputs.",
-            "Visible errors, logging and safer fallback behavior."
-          ]
-        },
-        "backend-integrations": {
-          "title": "APIs & Spring Boot backends",
-          "description": "Reliable integrations, APIs and backend services for products and teams that need maintainable systems behind the interface.",
-          "bullets": [
-            "REST APIs, webhooks and data mapping between systems.",
-            "Spring Boot services with clear structure, tests and operational notes.",
-            "Retry, validation and error handling for important flows."
+            "Practical use cases before shiny demos without daily value.",
+            "Automation across APIs, forms, email, documents and internal data.",
+            "Human control where judgment matters, traceability where trust matters."
+          ],
+          "offerings": [
+            {
+              "title": "AI for companies",
+              "description": "Practical AI use cases applied to real business tasks.",
+              "service": "automation-workflows"
+            },
+            {
+              "title": "Chatbots and assistants",
+              "description": "Assistants for answering questions, filtering leads or searching documentation.",
+              "service": "internal-tools"
+            },
+            {
+              "title": "AI automations",
+              "description": "Email, forms, message classification, data extraction and reporting.",
+              "service": "automation-workflows"
+            },
+            {
+              "title": "AI agents",
+              "description": "Advanced workflows combining tools, data and actions.",
+              "service": "api-integrations"
+            },
+            {
+              "title": "AI training",
+              "description": "Practical sessions for using AI in daily business work.",
+              "service": "automation-workflows"
+            }
           ]
         }
       },
@@ -768,12 +858,16 @@
           "href": "/blog/idempotent-apis-that-survive-retries"
         }
       ],
-      "ctaTitle": "Need to improve a website, automate a workflow or build a tool?",
-      "ctaText": "Send the context, the problem and what you want to achieve. I’ll reply with the most reasonable next step.",
-      "ctaButton": "Share my case"
+      "ctaTitle": "Share your case and we can see if it makes sense.",
+      "ctaText": "Send what you have now, what you want to improve and where time or money is being lost. I’ll reply with the most reasonable next step.",
+      "ctaButton": "Share your case"
     },
     "detail": {
       "eyebrow": "Freelance service",
+      "pricingEyebrow": "Guide price",
+      "pricingTitle": "Scope and pricing",
+      "pricingScope": "What it usually includes",
+      "pricingNote": "Final pricing depends on scope, integrations and project state. If it does not fit, I will say so before estimating.",
       "problem": "Problem",
       "whoFor": "Who it is for",
       "builds": "What I can build",
@@ -783,6 +877,11 @@
       "contactTitle": "Does this fit your project?",
       "contactText": "Tell me what you want to build, what you have now and what outcome you need. If it fits, I’ll suggest a clear next step.",
       "contactButton": "Contact me",
+      "contactModalTitle": "Share your case",
+      "contactModalText": "Send the project context and I’ll reply with the most reasonable next step.",
+      "closeContactModal": "Close contact form",
+      "whatsappButton": "WhatsApp",
+      "whatsappMessage": "Hi José Miguel, I am looking at the {service} service and would like to tell you about my case.",
       "servicesButton": "View all services",
       "relatedTitle": "This may also fit",
       "blogTitle": "Read technical notes",
@@ -797,6 +896,16 @@
         "description": "A clean, fast website that explains what you do, builds trust and makes it easy for the right client to contact you.",
         "metaTitle": "Business Website Development - José Miguel Fernández",
         "metaDescription": "Freelance business website development for small teams and solo professionals who need a clear, fast and maintainable website.",
+        "pricing": {
+          "label": "Professional website",
+          "price": "From €490",
+          "note": "For service websites, landing pages or a professional online presence with clear structure.",
+          "scope": [
+            "Up to 5 sections or one complete landing page.",
+            "Responsive design, base copy and contact form.",
+            "Basic technical SEO, performance and deployment included."
+          ]
+        },
         "problem": "Your current online presence does not explain the offer clearly, or you are relying on scattered profiles instead of a focused website.",
         "whoFor": [
           "Freelancers and consultants who need a credible home for their work.",
@@ -832,6 +941,16 @@
         "description": "A focused redesign for an existing website that feels dated, unclear, slow or difficult to update.",
         "metaTitle": "Website Redesign for Clearer Conversion - José Miguel Fernández",
         "metaDescription": "Freelance website redesign for existing sites that need better structure, performance, messaging and conversion paths.",
+        "pricing": {
+          "label": "Focused redesign",
+          "price": "From €390",
+          "note": "For improving an existing website without rebuilding everything from scratch.",
+          "scope": [
+            "Review of structure, messaging, mobile layout and conversion paths.",
+            "UI, performance and call-to-action improvements.",
+            "Short notes on opportunities outside the agreed scope."
+          ]
+        },
         "problem": "Your website exists, but it no longer reflects the quality of your work or makes the next step obvious for visitors.",
         "whoFor": [
           "Professionals with an old personal or service website.",
@@ -867,6 +986,16 @@
         "description": "A focused web application built around a real workflow, with the right amount of frontend, backend and data modeling.",
         "metaTitle": "Custom Web Application Development - José Miguel Fernández",
         "metaDescription": "Freelance custom web application development with TypeScript, backend systems, databases and practical product delivery.",
+        "pricing": {
+          "label": "Useful first version",
+          "price": "From €1,200",
+          "note": "For building a small but real app with workflow, data and deployment.",
+          "scope": [
+            "Scope definition and main screens.",
+            "Frontend, backend or integration work depending on the need.",
+            "Maintainable base for validating and extending in phases."
+          ]
+        },
         "problem": "Off-the-shelf tools do not fit the workflow, but a large product build would be too much for the current stage.",
         "whoFor": [
           "Founders testing a focused product workflow.",
@@ -902,6 +1031,16 @@
         "description": "Small, practical tools for teams that need to manage operations without forcing everything through spreadsheets.",
         "metaTitle": "Internal Tool Development - José Miguel Fernández",
         "metaDescription": "Freelance internal tool development for teams that need dashboards, admin panels and operational workflows.",
+        "pricing": {
+          "label": "Internal tool",
+          "price": "From €900",
+          "note": "For panels, dashboards or internal workflows with real users and data.",
+          "scope": [
+            "Mapping the manual process and smallest useful version.",
+            "Private interface, data model and main operations.",
+            "Deployment, workflow validation and maintenance notes."
+          ]
+        },
         "problem": "Important work is handled manually across spreadsheets, messages and repeated checks, which makes errors easier and progress harder to see.",
         "whoFor": [
           "Operations, support or admin teams with repeated manual work.",
@@ -937,6 +1076,16 @@
         "description": "Practical automation for repeated work: moving data, sending notifications, generating outputs and keeping systems in sync.",
         "metaTitle": "Automation Workflow Development - José Miguel Fernández",
         "metaDescription": "Freelance automation workflow development for repeated business tasks, integrations, notifications and operational tooling.",
+        "pricing": {
+          "label": "Focused automation",
+          "price": "From €250",
+          "note": "For automating one repeated task with clear input, output and visible errors.",
+          "scope": [
+            "Quick analysis of the current manual workflow.",
+            "Automation through API, webhook, job or maintainable script.",
+            "Testing with real cases and explanation of how it works."
+          ]
+        },
         "problem": "People are spending time on repeatable tasks that software can handle more reliably, but the workflow is too specific for a generic tool.",
         "whoFor": [
           "Teams copying data between systems by hand.",
@@ -972,6 +1121,16 @@
         "description": "Reliable connections between tools, platforms and internal systems so data can move without manual copying.",
         "metaTitle": "API Integration Development - José Miguel Fernández",
         "metaDescription": "Freelance API integration development for connecting products, internal tools, data flows and third-party services.",
+        "pricing": {
+          "label": "API integration",
+          "price": "From €450",
+          "note": "For connecting two systems or exposing a data flow reliably.",
+          "scope": [
+            "Review of documentation, authentication and limits.",
+            "Client, endpoint or webhook with validation and visible errors.",
+            "Environment variables and notes for operating the integration."
+          ]
+        },
         "problem": "Your tools hold useful data, but they do not talk to each other in the way your workflow needs.",
         "whoFor": [
           "Teams connecting CRMs, forms, payments, dashboards or internal systems.",
@@ -1007,6 +1166,16 @@
         "description": "Development and evolution of APIs, backend services and integrations with Java and Spring Boot, prioritizing maintainability, testability and reliability.",
         "metaTitle": "Spring Boot Backend Development - José Miguel Fernández",
         "metaDescription": "Freelance backend development with Java and Spring Boot for APIs, services, integrations, legacy migrations and maintainable systems.",
+        "pricing": {
+          "label": "Backend intervention",
+          "price": "From €700",
+          "note": "For an API, integration or backend improvement with a defined technical scope.",
+          "scope": [
+            "Diagnosis of domain, contracts and pain points.",
+            "Implementation with structure, tests or critical validation.",
+            "Operational notes about errors, deployment and evolution."
+          ]
+        },
         "problem": "The backend supports the business, but each change costs too much, integrations are fragile or the architecture no longer fits the product.",
         "whoFor": [
           "Teams that need to strengthen or evolve an existing Java/Spring Boot backend.",

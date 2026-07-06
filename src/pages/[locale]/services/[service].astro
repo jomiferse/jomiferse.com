@@ -1,13 +1,15 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getService, getServices } from "@/lib/services";
+import ContactForm from "@/components/forms/ContactForm.astro";
+import { Icon } from "astro-icon/components";
+import { getService, getServicePages, getServices } from "@/lib/services";
 import { getTranslations, locales, t, type Locale } from "@/i18n";
 import { getCv } from "@cv";
 import { buildBreadcrumbList, buildFaqPage, buildServicePage } from "@/lib/seo";
 
 export function getStaticPaths() {
 	return locales.flatMap((locale) =>
-		getServices(locale).map((service) => ({
+		getServicePages(locale).map((service) => ({
 			params: { locale, service: service.slug },
 		})),
 	);
@@ -25,6 +27,14 @@ const relatedServices = getServices(locale).filter(
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const servicePath = `/${locale}/services/${service.slug}`;
 const serviceCopy = getTranslations(locale).services.detail;
+const contactHref = `/${locale}/contact`;
+const whatsappMessage = serviceCopy.whatsappMessage.replace(
+	"{service}",
+	service.title,
+);
+const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
+	whatsappMessage,
+)}`;
 const structuredData = [
 	buildServicePage({
 		site,
@@ -70,8 +80,21 @@ const structuredData = [
 			{service.description}
 		</p>
 		<div class="mt-9 flex flex-col gap-3 sm:flex-row">
-			<a href={`/${locale}/contact`} class="button-primary w-full sm:w-auto">
+			<a
+				href={contactHref}
+				class="button-primary w-full sm:w-auto"
+				data-contact-modal-open
+			>
 				{serviceCopy.contactButton}
+			</a>
+			<a
+				href={whatsappHref}
+				target="_blank"
+				rel="noopener noreferrer nofollow"
+				class="button-secondary w-full sm:w-auto"
+			>
+				{serviceCopy.whatsappButton}
+				<Icon name="move-up-right" class="h-4 w-4" />
 			</a>
 			<a href={`/${locale}/services`} class="button-secondary w-full sm:w-auto">
 				{serviceCopy.servicesButton}
@@ -79,7 +102,81 @@ const structuredData = [
 		</div>
 	</section>
 
-	<section class="section-band section-reveal py-16">
+	<section class="section-band section-reveal py-14 md:py-20">
+		<div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+			<div>
+				<p class="eyebrow">{serviceCopy.pricingEyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{serviceCopy.pricingTitle}
+				</h2>
+				<p class="muted-copy mt-5 max-w-xl text-base leading-8">
+					{service.pricing.note}
+				</p>
+				<p class="muted-copy mt-5 max-w-xl text-sm leading-7">
+					{serviceCopy.pricingNote}
+				</p>
+			</div>
+
+			<article class="dark-card overflow-hidden">
+				<div
+					class="border-b border-[var(--surface-border)] bg-[var(--surface-strong)] p-6 md:p-7 dark:bg-white/[0.03]"
+				>
+					<p
+						class="text-sm font-black text-[var(--accent-strong)] dark:text-[var(--accent)]"
+					>
+						{service.pricing.label}
+					</p>
+					<p class="mt-4 text-4xl font-black text-[var(--text)] md:text-5xl">
+						{service.pricing.price}
+					</p>
+				</div>
+
+				<div class="p-6 md:p-7">
+					<p class="eyebrow">{serviceCopy.pricingScope}</p>
+					<ul class="mt-5 space-y-4">
+						{
+							service.pricing.scope.map((item) => (
+								<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+									<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+										✓
+									</span>
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+					<div class="mt-7 flex flex-col gap-3 sm:flex-row">
+						<a
+							href={contactHref}
+							class="button-primary w-full sm:w-auto"
+							data-contact-modal-open
+						>
+							{serviceCopy.contactButton}
+						</a>
+						<a
+							href={whatsappHref}
+							target="_blank"
+							rel="noopener noreferrer nofollow"
+							class="button-secondary w-full sm:w-auto"
+						>
+							{serviceCopy.whatsappButton}
+							<Icon name="move-up-right" class="h-4 w-4" />
+						</a>
+						<a
+							href={`/${locale}/services`}
+							class="button-secondary w-full sm:w-auto"
+						>
+							{serviceCopy.servicesButton}
+						</a>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16">
 		<p class="eyebrow">{serviceCopy.problem}</p>
 		<p class="mt-5 max-w-3xl text-lg leading-8 text-[var(--text)]">
 			{service.problem}
@@ -200,8 +297,93 @@ const structuredData = [
 		<p class="muted-copy mx-auto mt-5 max-w-xl text-lg leading-8">
 			{serviceCopy.contactText}
 		</p>
-		<a href={`/${locale}/contact`} class="button-primary mt-9">
-			{serviceCopy.contactButton}
-		</a>
+		<div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+			<a
+				href={contactHref}
+				class="button-primary w-full sm:w-auto"
+				data-contact-modal-open
+			>
+				{serviceCopy.contactButton}
+			</a>
+			<a
+				href={whatsappHref}
+				target="_blank"
+				rel="noopener noreferrer nofollow"
+				class="button-secondary w-full sm:w-auto"
+			>
+				{serviceCopy.whatsappButton}
+				<Icon name="move-up-right" class="h-4 w-4" />
+			</a>
+		</div>
 	</section>
+
+	<dialog
+		id="service-contact-dialog"
+		class="m-auto w-[min(760px,92vw)] rounded-[var(--radius-card)] border border-[var(--surface-border)] bg-[var(--surface)] p-0 text-[var(--text)] shadow-[var(--shadow-card)] backdrop:bg-slate-950/55 dark:backdrop:bg-black/70"
+	>
+		<div class="max-h-[min(86vh,920px)] overflow-y-auto">
+			<header
+				class="flex items-start justify-between gap-4 border-b border-[var(--surface-border)] p-5 md:p-6"
+			>
+				<div>
+					<p class="eyebrow">{service.title}</p>
+					<h2 class="mt-3 text-2xl font-black text-[var(--text)] md:text-3xl">
+						{serviceCopy.contactModalTitle}
+					</h2>
+					<p class="muted-copy mt-3 max-w-xl leading-7">
+						{serviceCopy.contactModalText}
+					</p>
+				</div>
+				<form method="dialog">
+					<button
+						class="header-utility inline-flex min-h-11 min-w-11 items-center justify-center rounded-full"
+						aria-label={serviceCopy.closeContactModal}
+					>
+						<Icon name="x" class="h-5 w-5" />
+					</button>
+				</form>
+			</header>
+
+			<div class="p-5 md:p-6">
+				<ContactForm
+					locale={locale}
+					source={`${service.title} (${servicePath})`}
+					idPrefix={`service-${service.slug}`}
+				/>
+				<a
+					href={whatsappHref}
+					target="_blank"
+					rel="noopener noreferrer nofollow"
+					class="button-secondary mt-4 w-full"
+				>
+					{serviceCopy.whatsappButton}
+					<Icon name="move-up-right" class="h-4 w-4" />
+				</a>
+			</div>
+		</div>
+	</dialog>
+
+	<script>
+		const contactDialog = document.getElementById("service-contact-dialog");
+		const contactButtons = document.querySelectorAll(
+			"[data-contact-modal-open]",
+		);
+
+		contactButtons.forEach((button) => {
+			button.addEventListener("click", (event) => {
+				if (!(contactDialog instanceof HTMLDialogElement)) return;
+				event.preventDefault();
+				contactDialog.showModal();
+			});
+		});
+
+		contactDialog?.addEventListener("click", (event) => {
+			if (
+				event.target === contactDialog &&
+				contactDialog instanceof HTMLDialogElement
+			) {
+				contactDialog.close();
+			}
+		});
+	</script>
 </BaseLayout>

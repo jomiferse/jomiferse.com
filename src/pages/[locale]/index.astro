@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
+import { getServiceGroups } from "@/lib/services";
 import { buildBreadcrumbList, buildProfilePage } from "@/lib/seo";
 
 export function getStaticPaths() {
@@ -16,7 +17,7 @@ const projects = [
 	...(cv.projects?.company ?? []),
 ];
 const featuredProjects = projects.slice(0, 3);
-const focusAreas = cv.focusAreas.slice(0, 4);
+const serviceGroups = getServiceGroups(locale);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const page = getTranslations(locale).home.page;
 const skillGroups = page.skills.groups;
@@ -164,19 +165,38 @@ const structuredData = [
 		>
 			{page.build.title}
 		</h2>
+		<p class="muted-copy mt-5 max-w-2xl text-base leading-8 md:text-lg">
+			{page.build.text}
+		</p>
 		<div
-			class="stagger-children mt-8 grid gap-4 sm:mt-10 md:grid-cols-2 md:gap-5"
+			class="stagger-children mt-8 grid gap-4 sm:mt-10 lg:grid-cols-3 lg:gap-5"
 		>
 			{
-				focusAreas.map((area) => (
-					<article class="dark-card hover-card p-5 md:p-6">
-						<h3 class="text-xl font-black text-[var(--text)]">{area.title}</h3>
-						<p class="muted-copy mt-3 leading-7">{area.description}</p>
-						<div class="mt-5 flex flex-wrap gap-2">
-							{area.items.map((item) => (
-								<span class="tag-pill">{item}</span>
+				serviceGroups.map((group) => (
+					<article class="dark-card hover-card flex h-full flex-col p-5 md:p-6">
+						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
+							{group.number}
+						</p>
+						<h3 class="mt-5 text-2xl font-black text-[var(--text)]">
+							{group.title}
+						</h3>
+						<p class="muted-copy mt-3 leading-7">{group.description}</p>
+						<div class="mt-6 grid gap-2">
+							{group.offerings.slice(0, 4).map((offering) => (
+								<a
+									href={`/${locale}/services/${offering.slug}`}
+									class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-strong)] px-3 py-2 text-sm font-bold text-[var(--text-muted)] hover:border-[var(--accent-line)] hover:text-[var(--text)] dark:bg-white/[0.03]"
+								>
+									{offering.title}
+								</a>
 							))}
 						</div>
+						<a
+							href={`/${locale}/services/${group.primaryService.slug}`}
+							class="mt-auto pt-6 text-sm font-black text-[var(--accent-strong)] dark:text-[var(--accent)]"
+						>
+							{page.build.viewCategory}
+						</a>
 					</article>
 				))
 			}
@@ -187,6 +207,9 @@ const structuredData = [
 			</a>
 			<a href={`/${locale}/blog`} class="button-secondary w-full sm:w-auto">
 				{page.build.blogLink}
+			</a>
+			<a href={`/${locale}/contact`} class="button-secondary w-full sm:w-auto">
+				{page.build.contactLink}
 			</a>
 		</div>
 	</section>

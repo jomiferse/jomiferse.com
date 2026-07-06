@@ -79,51 +79,69 @@ const structuredData = [
 		</p>
 	</section>
 
-	<section class="section-reveal py-20 md:py-28">
-		<div class="stagger-children grid gap-5 md:grid-cols-2">
+	<section class="section-reveal py-16 md:py-24">
+		<div class="stagger-children space-y-6">
 			{
 				serviceGroups.map((group) => (
-					<article class="dark-card hover-card flex h-full flex-col p-6">
-						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
-							{group.number}
-						</p>
-						<h2 class="mt-6 text-3xl font-black text-[var(--text)]">
-							{group.title}
-						</h2>
-						<p class="muted-copy mt-4 leading-7">{group.description}</p>
-						<div class="hairline mt-7 border-t pt-5">
-							<p class="eyebrow">{page.included}</p>
-							<ul class="mt-4 space-y-3">
-								{group.bullets.map((item) => (
-									<li class="flex gap-3 text-sm text-[var(--text-muted)]">
-										<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-											✓
-										</span>
-										<span>{item}</span>
-									</li>
-								))}
-							</ul>
-						</div>
-						<div class="hairline mt-7 border-t pt-5">
-							<p class="eyebrow">{page.serviceLinks}</p>
-							<div class="mt-4 flex flex-wrap gap-3">
-								{group.services.map((service) => (
-									<a
-										href={`/${locale}/services/${service.slug}`}
-										class="tag-pill hover:border-[var(--accent-strong)]"
-									>
-										{service.shortTitle}
-									</a>
-								))}
+					<article class="hairline border-t pt-8 first:border-t-0 first:pt-0">
+						<div class="grid gap-7 lg:grid-cols-[0.38fr_0.62fr]">
+							<div>
+								<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
+									{group.number}
+								</p>
+								<h2 class="mt-5 text-3xl font-black text-[var(--text)] md:text-4xl">
+									{group.title}
+								</h2>
+								<p class="muted-copy mt-4 leading-7">{group.description}</p>
+								<ul class="mt-6 space-y-3">
+									{group.bullets.map((item) => (
+										<li class="flex gap-3 text-sm leading-6 text-[var(--text-muted)]">
+											<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+												✓
+											</span>
+											<span>{item}</span>
+										</li>
+									))}
+								</ul>
+								<a
+									href={`/${locale}/services/${group.primaryService.slug}`}
+									class="button-secondary mt-7 w-full justify-center sm:w-fit"
+								>
+									{page.viewService}
+								</a>
 							</div>
-						</div>
-						<div class="mt-auto pt-7">
-							<a
-								href={`/${locale}/services/${group.primaryService.slug}`}
-								class="button-secondary w-full justify-center sm:w-fit"
-							>
-								{page.viewService}
-							</a>
+
+							<div>
+								<p class="eyebrow">{page.included}</p>
+								<div class="mt-4 grid gap-3 sm:grid-cols-2">
+									{group.offerings.map((offering) => (
+										<a
+											href={`/${locale}/services/${offering.slug}`}
+											class="group rounded-lg border border-[var(--surface-border)] bg-[var(--surface-strong)] p-4 transition hover:-translate-y-0.5 hover:border-[var(--accent-line)] dark:bg-white/[0.03]"
+										>
+											<h3 class="text-base font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] dark:group-hover:text-[var(--accent)]">
+												{offering.title}
+											</h3>
+											<p class="muted-copy mt-2 text-sm leading-6">
+												{offering.description}
+											</p>
+										</a>
+									))}
+								</div>
+								<div class="hairline mt-6 border-t pt-5">
+									<p class="eyebrow">{page.serviceLinks}</p>
+									<div class="mt-4 flex flex-wrap gap-3">
+										{group.services.map((service) => (
+											<a
+												href={`/${locale}/services/${service.slug}`}
+												class="tag-pill hover:border-[var(--accent-strong)]"
+											>
+												{service.shortTitle}
+											</a>
+										))}
+									</div>
+								</div>
+							</div>
 						</div>
 					</article>
 				))
