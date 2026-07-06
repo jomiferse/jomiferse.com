@@ -1,0 +1,83 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
+import { buildBreadcrumbList } from "@/lib/seo";
+
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
+
+const { locale } = Astro.params;
+const page = getTranslations(locale).privacy;
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const structuredData = [
+	{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		name: page.meta.title,
+		description: page.meta.description,
+		url: new URL(`/${locale}/privacy`, site).toString(),
+	},
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}` },
+		{ name: page.meta.title, path: `/${locale}/privacy` },
+	]),
+];
+---
+
+<BaseLayout
+	title={page.meta.title}
+	description={page.meta.description}
+	structuredData={structuredData}
+	keywords={["privacy policy", "cookies", "Google Tag Manager consent"]}
+>
+	<section class="section-reveal py-10 md:py-16">
+		<p class="eyebrow">{page.eyebrow}</p>
+		<h1
+			class="mt-5 max-w-3xl text-5xl font-black text-[var(--text)] md:text-7xl"
+		>
+			{page.title}
+		</h1>
+		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
+			{page.intro}
+		</p>
+	</section>
+
+	<section class="section-reveal pb-20 md:pb-28">
+		<div class="max-w-3xl">
+			<ol class="space-y-10">
+				{
+					page.sections.map((section, index) => (
+						<li class="grid gap-4 border-b border-[var(--surface-border)] pb-10 sm:grid-cols-[3.5rem_1fr]">
+							<p
+								aria-hidden="true"
+								class="text-sm font-black text-[var(--accent-strong)] dark:text-[var(--accent)]"
+							>
+								{String(index + 1).padStart(2, "0")}
+							</p>
+							<div>
+								<h2 class="text-2xl font-black text-[var(--text)]">
+									{section.title}
+								</h2>
+								<p class="muted-copy mt-4 leading-8">{section.body}</p>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+
+			<div class="mt-10 flex flex-wrap gap-3">
+				<button
+					type="button"
+					data-cookie-settings-trigger
+					class="button-primary"
+				>
+					{page.manageCookies}
+				</button>
+				<a href={`/${locale}/contact`} class="button-secondary">
+					{page.contactLink}
+				</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

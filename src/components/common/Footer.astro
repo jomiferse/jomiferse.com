@@ -14,6 +14,7 @@ const links = [
 	{ href: `/${locale}`, label: t(locale, "nav.home") },
 	{ href: `/${locale}/services`, label: t(locale, "nav.services") },
 	{ href: `/${locale}/blog`, label: t(locale, "nav.blog") },
+	{ href: `/${locale}/privacy`, label: t(locale, "footer.privacy") },
 	{ href: `/${locale}/contact`, label: t(locale, "nav.contact") },
 ];
 ---
@@ -25,7 +26,7 @@ const links = [
 		>
 			<p class="text-sm text-[var(--text-muted)]">
 				© {year}
-				{cv.name}. {t(locale, "footer.tagline")}
+				{cv.name}
 			</p>
 
 			<nav

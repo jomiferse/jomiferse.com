@@ -26,7 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
 		return new Response("Missing fields", { status: 400 });
 	}
 
-	const subject = `Portfolio contact from ${email}`;
+	const subject = `Website contact from ${email}`;
 
 	let attachments: { filename: string; content: Buffer }[] = [];
 	const file = form.get("attachment");
@@ -61,7 +61,7 @@ export const POST: APIRoute = async ({ request }) => {
 	}
 
 	await resend.emails.send({
-		from: "Portfolio <onboarding@resend.dev>",
+		from: "Website <onboarding@resend.dev>",
 		to: cv.email,
 		replyTo: email,
 		subject,

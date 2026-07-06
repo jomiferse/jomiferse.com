@@ -33,11 +33,11 @@
     "page": {
       "meta": {
         "title": "Página no encontrada - José Miguel Fernández",
-        "description": "La página que buscas no existe. Vuelve al inicio del portfolio, lee el blog o ponte en contacto."
+        "description": "La página que buscas no existe. Vuelve al inicio de la web, lee el blog o ponte en contacto."
       },
       "eyebrow": "404",
       "title": "Esta página ya no está aquí.",
-      "intro": "El enlace puede estar desactualizado, movido o mal escrito. Puedes volver al portfolio, leer el blog o enviarme un mensaje.",
+      "intro": "El enlace puede estar desactualizado, movido o mal escrito. Puedes volver a la web, leer el blog o enviarme un mensaje.",
       "actions": {
         "home": "Ir al inicio",
         "blog": "Leer blog",
@@ -46,7 +46,7 @@
       "cards": [
         {
           "label": "Inicio",
-          "title": "Portfolio",
+          "title": "Web",
           "body": "Vuelve a la vista principal de proyectos, experiencia y servicios."
         },
         {
@@ -142,7 +142,7 @@
       }
     },
     "meta": {
-      "title": "Portfolio Full-Stack Developer",
+      "title": "Web Full-Stack Developer",
       "description": "Full-stack developer con base sólida en backend, construyendo software práctico para productos y flujos reales."
     },
     "hero": {
@@ -431,7 +431,58 @@
     "location": "Ubicado en",
     "contact": "Contacto",
     "tagline": "Software simple y fiable para productos reales.",
-    "backToTop": "Volver arriba ↑"
+    "backToTop": "Volver arriba ↑",
+    "privacy": "Privacidad",
+    "cookieSettings": "Cookies"
+  },
+  "cookies": {
+    "bannerLabel": "Aviso de cookies",
+    "bannerText": "Utilizo cookies para ofrecerte la mejor experiencia en esta web. Puedes aprender más sobre qué cookies utilizo o desactivarlas en la ",
+    "bannerPolicyLink": "política de cookies",
+    "bannerTextAfterLink": ".",
+    "accept": "Aceptar",
+    "reject": "Rechazar",
+    "configure": "Configurar",
+    "settingsEyebrow": "Privacidad",
+    "settingsTitle": "Preferencias de cookies",
+    "settingsDescription": "Puedes aceptar o rechazar la analítica. Las cookies necesarias están siempre activas para recordar tus preferencias y mantener la web funcionando.",
+    "necessaryTitle": "Cookies necesarias",
+    "necessaryDescription": "Permiten guardar esta decisión en tu navegador y mantener funciones básicas de la web.",
+    "alwaysActive": "Siempre activas",
+    "analyticsTitle": "Analítica",
+    "analyticsDescription": "Me ayudan a saber qué páginas se visitan y mejorar el contenido.",
+    "privacyLink": "Ver política de privacidad y cookies",
+    "close": "Cerrar",
+    "save": "Guardar preferencias"
+  },
+  "privacy": {
+    "meta": {
+      "title": "Privacidad y cookies",
+      "description": "Información sobre las cookies necesarias, Google Tag Manager con consentimiento y cómo cambiar tus preferencias en jomiferse.com."
+    },
+    "eyebrow": "Privacidad",
+    "title": "Privacidad y cookies",
+    "intro": "Esta web usa una configuración sencilla: lo necesario para que funcione y analítica solo si la aceptas.",
+    "manageCookies": "Cambiar preferencias",
+    "contactLink": "Contactar",
+    "sections": [
+      {
+        "title": "Cookies necesarias",
+        "body": "Las cookies o almacenamiento necesario se usan para recordar preferencias locales, como el tema visual y tu decisión sobre cookies. No se utilizan para publicidad ni para crear perfiles."
+      },
+      {
+        "title": "Google Tag Manager",
+        "body": "Google Tag Manager solo se carga si aceptas la opción de analítica. Antes de tu decisión, y si rechazas, el consentimiento de analítica permanece denegado."
+      },
+      {
+        "title": "Cambiar preferencias",
+        "body": "Puedes reabrir el panel de preferencias desde el enlace de cookies del footer y cambiar tu decisión cuando quieras."
+      },
+      {
+        "title": "Dónde se guarda la decisión",
+        "body": "La preferencia se guarda en localStorage dentro de tu navegador. Si borras los datos del sitio, el banner volverá a aparecer."
+      }
+    ]
   },
   "certificationCard": {
     "idLabel": "ID:",
@@ -783,7 +834,7 @@
         "metaDescription": "Rediseño web freelance para sitios existentes que necesitan mejor estructura, rendimiento, mensaje y caminos de conversión.",
         "problem": "Tu web existe, pero ya no refleja la calidad de tu trabajo o no deja claro cuál es el siguiente paso.",
         "whoFor": [
-          "Profesionales con un portfolio o web de servicios antigua.",
+          "Profesionales con una web personal o de servicios antigua.",
           "Equipos pequeños con páginas que crecieron sin una estructura clara.",
           "Negocios que quieren mejorar rendimiento y caminos de conversión."
         ],

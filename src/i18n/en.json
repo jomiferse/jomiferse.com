@@ -33,11 +33,11 @@
     "page": {
       "meta": {
         "title": "Page not found - José Miguel Fernández",
-        "description": "The page you are looking for does not exist. Return to the portfolio home, read the blog or get in touch."
+        "description": "The page you are looking for does not exist. Return to the website home, read the blog or get in touch."
       },
       "eyebrow": "404",
       "title": "This page is not here anymore.",
-      "intro": "The link may be outdated, moved or mistyped. You can go back to the main portfolio, read recent writing or send me a message.",
+      "intro": "The link may be outdated, moved or mistyped. You can go back to the main website, read recent writing or send me a message.",
       "actions": {
         "home": "Go home",
         "blog": "Read blog",
@@ -46,7 +46,7 @@
       "cards": [
         {
           "label": "Start",
-          "title": "Portfolio",
+          "title": "Website",
           "body": "Go back to the main view of projects, experience and services."
         },
         {
@@ -142,7 +142,7 @@
       }
     },
     "meta": {
-      "title": "Full-Stack Developer Portfolio",
+      "title": "Full-Stack Developer Website",
       "description": "Full-stack developer with strong backend foundations, building practical software for real products and workflows."
     },
     "hero": {
@@ -431,7 +431,58 @@
     "location": "Based in",
     "contact": "Contact",
     "tagline": "Simple, reliable software for real products.",
-    "backToTop": "Back to top ↑"
+    "backToTop": "Back to top ↑",
+    "privacy": "Privacy",
+    "cookieSettings": "Cookies"
+  },
+  "cookies": {
+    "bannerLabel": "Cookie notice",
+    "bannerText": "I use cookies to offer you the best experience on this website. You can learn more about which cookies I use or disable them in the ",
+    "bannerPolicyLink": "cookie policy",
+    "bannerTextAfterLink": ".",
+    "accept": "Accept",
+    "reject": "Reject",
+    "configure": "Configure",
+    "settingsEyebrow": "Privacy",
+    "settingsTitle": "Cookie preferences",
+    "settingsDescription": "You can accept or reject analytics. Necessary cookies are always active so the site can remember your preferences and keep working.",
+    "necessaryTitle": "Necessary cookies",
+    "necessaryDescription": "They save this decision in your browser and keep basic website features working.",
+    "alwaysActive": "Always active",
+    "analyticsTitle": "Analytics",
+    "analyticsDescription": "They help me understand which pages are visited and improve the content.",
+    "privacyLink": "View privacy and cookie policy",
+    "close": "Close",
+    "save": "Save preferences"
+  },
+  "privacy": {
+    "meta": {
+      "title": "Privacy and cookies",
+      "description": "Information about necessary cookies, Google Tag Manager with consent, and how to change your preferences on jomiferse.com."
+    },
+    "eyebrow": "Privacy",
+    "title": "Privacy and cookies",
+    "intro": "This website uses a simple setup: what is needed for it to work, and analytics only if you accept it.",
+    "manageCookies": "Change preferences",
+    "contactLink": "Contact",
+    "sections": [
+      {
+        "title": "Necessary cookies",
+        "body": "Necessary cookies or storage are used to remember local preferences, such as the visual theme and your cookie decision. They are not used for advertising or profiling."
+      },
+      {
+        "title": "Google Tag Manager",
+        "body": "Google Tag Manager loads only if you accept analytics. Before your decision, and if you reject it, analytics consent stays denied."
+      },
+      {
+        "title": "Changing preferences",
+        "body": "You can reopen the preferences panel from the cookies link in the footer and change your decision whenever you want."
+      },
+      {
+        "title": "Where the decision is stored",
+        "body": "The preference is stored in localStorage in your browser. If you clear site data, the banner will appear again."
+      }
+    ]
   },
   "certificationCard": {
     "idLabel": "ID:",
@@ -783,7 +834,7 @@
         "metaDescription": "Freelance website redesign for existing sites that need better structure, performance, messaging and conversion paths.",
         "problem": "Your website exists, but it no longer reflects the quality of your work or makes the next step obvious for visitors.",
         "whoFor": [
-          "Professionals with an old portfolio or service site.",
+          "Professionals with an old personal or service website.",
           "Small teams with pages that grew without a clear structure.",
           "Businesses that want better performance and clearer conversion paths."
         ],
