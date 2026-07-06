@@ -130,16 +130,6 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 
 <html lang={locale} class="min-h-screen scroll-smooth antialiased">
 	<head>
-		<!-- Google Tag Manager -->
-		<script is:inline>
-		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-5FT27C7Z');
-		</script>
-		<!-- End Google Tag Manager -->
-
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -201,6 +191,16 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		</script>
 
 		<script is:inline type="application/ld+json" set:html={jsonLd} />
+
+		<!-- Google tag (gtag.js) -->
+		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-V82TF8DLCR"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-V82TF8DLCR');
+		</script>
 	</head>
 
 	<body class="relative flex min-h-screen flex-col">
