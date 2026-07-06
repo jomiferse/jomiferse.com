@@ -27,7 +27,7 @@ La diferencia frente a una SPA tradicional no es solo "Astro es rápido". La dif
 
 [![Diagrama conceptual de Astro Islands: una página envía HTML y solo hidrata los componentes interactivos que necesitan JavaScript](/images/blog/astro-islands-architecture.svg)](/images/blog/astro-islands-architecture.svg)
 
-Para un portfolio como este, esa decisión encaja bien: las páginas de servicio, los artículos y los proyectos deben ser indexables, rápidos y fáciles de leer. Para un cliente que necesita una [web de negocio](/es/services/business-website/) o un [rediseño web](/es/services/website-redesign/), el valor está en que el usuario entienda la oferta sin esperar a que una app completa se hidrate.
+Para un portfolio como este, esa decisión encaja bien: las páginas de servicio, los artículos y los proyectos deben ser indexables, rápidos y fáciles de leer. Para un cliente que necesita una [web de negocio](/es/services/diseno-web-wordpress/) o un [rediseño web](/es/services/website-redesign/), el valor está en que el usuario entienda la oferta sin esperar a que una app completa se hidrate.
 
 Astro 7 no cambia ese modelo. Lo que hace es mejorar varias piezas internas que se notan cuando el proyecto crece: más Markdown, más páginas, más integraciones, más lógica de servidor y builds más frecuentes.
 
@@ -155,7 +155,7 @@ export default {
 };
 ```
 
-No metería esto en un blog simple solo porque existe. Pero sí lo miraría en una [aplicación web a medida](/es/services/custom-web-application/), una [herramienta interna](/es/services/internal-tools/) o una integración donde Astro convive con APIs y middleware.
+No metería esto en un blog simple solo porque existe. Pero sí lo miraría en una [aplicación web a medida](/es/services/software-a-medida/), una [herramienta interna](/es/services/internal-tools/) o una integración donde Astro convive con APIs y middleware.
 
 El logging estructurado también es buena noticia para SSR:
 

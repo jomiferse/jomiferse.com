@@ -7,6 +7,15 @@ import { unified } from "@astrojs/markdown-remark";
 
 const siteUrl = new URL("https://www.jomiferse.com");
 const internalHosts = new Set([siteUrl.hostname, "jomiferse.com"]);
+const nonCanonicalServicePaths = new Set([
+	"/en/services/automation-workflows/",
+	"/en/services/business-website/",
+	"/en/services/custom-web-application/",
+	"/es/services/api-integrations/",
+	"/es/services/automation-workflows/",
+	"/es/services/business-website/",
+	"/es/services/custom-web-application/",
+]);
 
 function isExternalHref(href) {
 	try {
@@ -64,10 +73,13 @@ export default defineConfig({
 		icon(),
 		sitemap({
 			filter: (page) => {
+				const pathname = new URL(page, siteUrl).pathname;
+
 				return (
-					!page.startsWith("/api/") &&
-					!page.startsWith("/_astro/") &&
-					!page.startsWith("/drafts/")
+					!pathname.startsWith("/api/") &&
+					!pathname.startsWith("/_astro/") &&
+					!pathname.startsWith("/drafts/") &&
+					!nonCanonicalServicePaths.has(pathname)
 				);
 			},
 		}),

@@ -17,6 +17,7 @@ interface LayoutProps {
 	ogType?: "website" | "article";
 	keywords?: string[];
 	alternatePaths?: Partial<Record<Locale, string>>;
+	canonicalPath?: string;
 }
 
 const {
@@ -29,14 +30,15 @@ const {
 	ogType = "website",
 	keywords = [],
 	alternatePaths,
+	canonicalPath,
 } = Astro.props as LayoutProps;
 
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
 
 const canonicalUrl = Astro.site
-	? new URL(Astro.url.pathname, Astro.site).toString()
-	: Astro.url.pathname;
+	? new URL(canonicalPath ?? Astro.url.pathname, Astro.site).toString()
+	: (canonicalPath ?? Astro.url.pathname);
 
 const buildFallbackAlternatePath = (loc: Locale) => {
 	const pathname = Astro.url.pathname.replace(/^\/(en|es)/, "");

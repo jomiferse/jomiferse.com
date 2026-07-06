@@ -115,7 +115,7 @@ Antes de hablar de pantallas, miraría el proceso actual:
 
 Con eso definiría un alcance pequeño y medible. Si el proyecto necesita backend, base de datos, autenticación, integraciones API o automatizaciones, se añaden porque el flujo lo exige, no porque suenen bien en una propuesta.
 
-Ese tipo de alcance suele encajar con [herramientas internas](/es/services/internal-tools/), [aplicaciones web a medida](/es/services/custom-web-application/) o [integraciones API](/es/services/api-integrations/), según dónde esté el dolor real.
+Ese tipo de alcance suele encajar con [herramientas internas](/es/services/internal-tools/), [aplicaciones web a medida](/es/services/software-a-medida/) o [integraciones API](/es/services/integraciones-api/), según dónde esté el dolor real.
 
 También separaría claramente tres cosas: construcción inicial, despliegue y mantenimiento. Una herramienta interna no termina el día que se publica. Necesita pequeños ajustes, corrección de errores, cambios cuando el negocio cambia y alguien que entienda cómo está montada.
 

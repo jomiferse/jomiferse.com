@@ -125,7 +125,7 @@ La mejor arquitectura no es la más avanzada. Es la que tiene menos piezas sin d
 
 Si una tabla resuelve el flujo, úsala. Si necesitas workers fiables, RabbitMQ sigue siendo sólida. Si necesitas un log duradero y consumidores independientes, Kafka se gana su sitio.
 
-Para decisiones parecidas, lee [APIs idempotentes que sobreviven a reintentos](/es/blog/apis-idempotentes-que-sobreviven-a-reintentos/), [Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/) e [integraciones API](/es/services/api-integrations/).
+Para decisiones parecidas, lee [APIs idempotentes que sobreviven a reintentos](/es/blog/apis-idempotentes-que-sobreviven-a-reintentos/), [Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/) e [integraciones API](/es/services/integraciones-api/).
 
 ## FAQ
 

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getServiceGroups, getServices } from "@/lib/services";
+import { getServiceGroups, getServicePages } from "@/lib/services";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import {
 	buildBreadcrumbList,
@@ -15,10 +15,13 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const cv = getCv(locale);
-const services = getServices(locale);
+const services = getServicePages(locale);
 const serviceGroups = getServiceGroups(locale);
 const page = getTranslations(locale).services.hub;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const getServiceHref = (service: (typeof services)[number]) =>
+	service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
+const schemaServices = services.filter((service) => !service.canonicalPath);
 const structuredData = [
 	buildProfessionalService({
 		site,
@@ -29,10 +32,10 @@ const structuredData = [
 		providerUrl: new URL(`/${locale}`, site).toString(),
 		areaServed: page.schema.areaServed,
 		sameAs: [cv.links.linkedin, cv.links.github],
-		services: services.map((service) => ({
+		services: schemaServices.map((service) => ({
 			name: service.title,
 			description: service.description,
-			path: `/${locale}/services/${service.slug}`,
+			path: getServiceHref(service),
 		})),
 	}),
 	buildCollectionPage(
@@ -104,7 +107,7 @@ const structuredData = [
 									))}
 								</ul>
 								<a
-									href={`/${locale}/services/${group.primaryService.slug}`}
+									href={getServiceHref(group.primaryService)}
 									class="button-secondary mt-7 w-full justify-center sm:w-fit"
 								>
 									{page.viewService}
@@ -116,7 +119,7 @@ const structuredData = [
 								<div class="mt-4 grid gap-3 sm:grid-cols-2">
 									{group.offerings.map((offering) => (
 										<a
-											href={`/${locale}/services/${offering.slug}`}
+											href={`/${locale}/services/${offering.slug}/`}
 											class="group rounded-lg border border-[var(--surface-border)] bg-[var(--surface-strong)] p-4 transition hover:-translate-y-0.5 hover:border-[var(--accent-line)] dark:bg-white/[0.03]"
 										>
 											<h3 class="text-base font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] dark:group-hover:text-[var(--accent)]">
@@ -133,7 +136,7 @@ const structuredData = [
 									<div class="mt-4 flex flex-wrap gap-3">
 										{group.services.map((service) => (
 											<a
-												href={`/${locale}/services/${service.slug}`}
+												href={getServiceHref(service)}
 												class="tag-pill hover:border-[var(--accent-strong)]"
 											>
 												{service.shortTitle}

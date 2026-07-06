@@ -2,7 +2,11 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
 import { Icon } from "astro-icon/components";
-import { getService, getServicePages, getServices } from "@/lib/services";
+import {
+	getService,
+	getServiceAlternatePaths,
+	getServicePages,
+} from "@/lib/services";
 import { getTranslations, locales, t, type Locale } from "@/i18n";
 import { getCv } from "@cv";
 import { buildBreadcrumbList, buildFaqPage, buildServicePage } from "@/lib/seo";
@@ -21,11 +25,66 @@ const service = getService(locale, slug);
 if (!service) throw new Error(`Service not found: ${locale}/${slug}`);
 
 const cv = getCv(locale);
-const relatedServices = getServices(locale).filter(
-	(item) => item.slug !== service.slug,
-);
+const servicePages = getServicePages(locale);
+const getServiceHref = (item: (typeof servicePages)[number]) =>
+	item.canonicalPath ?? `/${locale}/services/${item.slug}/`;
+const getRelatedKeys = () => {
+	if (service.translationKey.startsWith("web-wordpress:")) {
+		return [
+			"web-wordpress:0",
+			"web-wordpress:1",
+			"web-wordpress:2",
+			"web-wordpress:3",
+			"web-wordpress:4",
+			"it-consulting:4",
+		];
+	}
+
+	if (service.translationKey.startsWith("ai-automation:")) {
+		return [
+			"ai-automation:0",
+			"ai-automation:1",
+			"ai-automation:2",
+			"it-consulting:5",
+			"base:internal-tools",
+			"it-consulting:4",
+		];
+	}
+
+	if (
+		service.translationKey.startsWith("it-consulting:") ||
+		service.translationKey === "base:custom-web-application" ||
+		service.translationKey === "base:api-integrations" ||
+		service.translationKey === "base:automation-workflows"
+	) {
+		return [
+			"it-consulting:3",
+			"it-consulting:4",
+			"it-consulting:5",
+			"base:internal-tools",
+			"base:backend-spring-boot",
+		];
+	}
+
+	return [
+		"it-consulting:4",
+		"it-consulting:5",
+		"base:internal-tools",
+		"base:backend-spring-boot",
+	];
+};
+const relatedServices =
+	getRelatedKeys()
+		.map((key) => servicePages.find((item) => item.translationKey === key))
+		.filter(
+			(item): item is (typeof servicePages)[number] =>
+				item !== undefined && item.slug !== service.slug,
+		)
+		.slice(0, 3) ?? [];
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
-const servicePath = `/${locale}/services/${service.slug}`;
+const servicePath = `/${locale}/services/${service.slug}/`;
+const canonicalPath = service.canonicalPath ?? servicePath;
+const alternatePaths = getServiceAlternatePaths(locale, service);
 const serviceCopy = getTranslations(locale).services.detail;
 const contactHref = `/${locale}/contact`;
 const whatsappMessage = serviceCopy.whatsappMessage.replace(
@@ -60,6 +119,8 @@ const structuredData = [
 <BaseLayout
 	title={service.metaTitle}
 	description={service.metaDescription}
+	canonicalPath={canonicalPath}
+	alternatePaths={alternatePaths}
 	structuredData={structuredData}
 	keywords={[
 		service.title,
@@ -265,7 +326,7 @@ const structuredData = [
 					{
 						relatedServices.slice(0, 3).map((item) => (
 							<a
-								href={`/${locale}/services/${item.slug}`}
+								href={getServiceHref(item)}
 								class="tag-pill hover:border-[var(--accent-strong)]"
 							>
 								{item.shortTitle}

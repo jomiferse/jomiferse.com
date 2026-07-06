@@ -87,7 +87,7 @@ Tú sigues revisando la salida. Tú sigues tomando la decisión. Pero el context
 
 MCP ayuda cuando hay tareas repetidas, varias herramientas y una buena razón para reutilizar integraciones. Es útil para herramientas internas, soporte, búsqueda en documentación, inspección de código y automatización controlada.
 
-Si el caso real es conectar sistemas de negocio, el problema se parece mucho a una [integración API](/es/services/api-integrations/) o a una [automatización de procesos](/es/blog/automatizar-procesos-empresa-cuando-merece-la-pena/): hay que diseñar límites, permisos y errores visibles antes de hablar de asistentes.
+Si el caso real es conectar sistemas de negocio, el problema se parece mucho a una [integración API](/es/services/integraciones-api/) o a una [automatización de procesos](/es/blog/automatizar-procesos-empresa-cuando-merece-la-pena/): hay que diseñar límites, permisos y errores visibles antes de hablar de asistentes.
 
 Sirve bastante menos si esperas que arregle una arquitectura mala, permisos poco claros o procesos confusos.
 

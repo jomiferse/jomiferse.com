@@ -48,7 +48,7 @@ Buenos candidatos:
 - mover archivos o exportaciones de forma controlada
 - avisar cuando una integración falla
 
-Esto conecta directamente con una [herramienta interna](/es/services/internal-tools/) o una [integración API](/es/services/api-integrations/) cuando el flujo necesita una interfaz o datos de varios sistemas.
+Esto conecta directamente con una [herramienta interna](/es/services/internal-tools/) o una [integración API](/es/services/integraciones-api/) cuando el flujo necesita una interfaz o datos de varios sistemas.
 
 ## Cuándo no automatizar
 
@@ -87,7 +87,7 @@ Una primera versión puede ser bastante discreta:
 
 No hace falta construir una plataforma. A veces basta con una automatización bien acotada que elimine 30 minutos diarios de trabajo manual.
 
-Si el flujo crece, puede convertirse después en una [aplicación web a medida](/es/services/custom-web-application/) o en una herramienta interna con panel, permisos y reporting.
+Si el flujo crece, puede convertirse después en una [aplicación web a medida](/es/services/software-a-medida/) o en una herramienta interna con panel, permisos y reporting.
 
 ## Dónde encaja la IA
 

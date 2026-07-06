@@ -69,7 +69,7 @@ Ejemplos:
 
 Aquí conviene hablar de _primer borrador_. La IA funciona mejor como punto de partida que como respuesta final.
 
-Cuando el flujo necesita mover datos entre herramientas, enviar avisos o coordinar estados, lo conectaría con [automatización de flujos](/es/services/automation-workflows/) antes de diseñar una función de IA más compleja.
+Cuando el flujo necesita mover datos entre herramientas, enviar avisos o coordinar estados, lo conectaría con [automatización de flujos](/es/services/automatizacion-de-procesos/) antes de diseñar una función de IA más compleja.
 
 ### Apoyo a decisiones
 

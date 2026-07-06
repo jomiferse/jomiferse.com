@@ -1,13 +1,64 @@
 ---
-
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 ---
 
-<script>
-	const storedLang = localStorage.getItem("lang");
-	const lang = storedLang === "es" ? "es" : "en";
-	window.location.replace(`/${lang}`);
-</script>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>
+			Jose Miguel Fernandez | Freelance web, automation and backend services
+		</title>
+		<meta
+			name="description"
+			content="Choose English or Spanish to view freelance services for web design, WordPress, automation, API integrations and backend development."
+		/>
+		<meta name="robots" content="index,follow" />
+		<link rel="canonical" href={new URL("/", site).toString()} />
+		<link
+			rel="alternate"
+			hreflang="en"
+			href={new URL("/en/", site).toString()}
+		/>
+		<link
+			rel="alternate"
+			hreflang="es"
+			href={new URL("/es/", site).toString()}
+		/>
+		<link
+			rel="alternate"
+			hreflang="x-default"
+			href={new URL("/", site).toString()}
+		/>
+	</head>
+	<body>
+		<main>
+			<h1>Jose Miguel Fernandez</h1>
+			<p>
+				Freelance full-stack developer for web design, WordPress, automation,
+				API integrations and backend development.
+			</p>
+			<nav aria-label="Language selection">
+				<ul>
+					<li><a href="/en/">English</a></li>
+					<li><a href="/es/">Espanol</a></li>
+					<li><a href="/en/services/">Services in English</a></li>
+					<li><a href="/es/services/">Servicios en espanol</a></li>
+				</ul>
+			</nav>
+		</main>
 
-<noscript>
-	<meta http-equiv="refresh" content="0;url=/en" />
-</noscript>
+		<script>
+			const storedLang = localStorage.getItem("lang");
+			const lang = storedLang === "es" ? "es" : "en";
+			window.location.replace(`/${lang}`);
+		</script>
+
+		<noscript>
+			<p>
+				<a href="/en/">Continue in English</a> or
+				<a href="/es/">ver en espanol</a>.
+			</p>
+		</noscript>
+	</body>
+</html>

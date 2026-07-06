@@ -173,7 +173,7 @@ La idempotencia es uno de esos temas backend que parecen pequeños hasta que te 
 
 Si tu API acepta reintentos, diseña pensando en ellos desde el principio. No hagas como si no fueran a pasar. Van a pasar. Y cuando pasen, tu sistema debería devolver el mismo resultado o fallar de una forma que sea segura de reintentar.
 
-Si estás diseñando un backend que va a producción, este tema conecta con [Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/) y con el servicio de [integraciones API](/es/services/api-integrations/), donde los reintentos y errores visibles son parte del contrato.
+Si estás diseñando un backend que va a producción, este tema conecta con [Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/) y con el servicio de [integraciones API](/es/services/integraciones-api/), donde los reintentos y errores visibles son parte del contrato.
 
 Mejor eso que descubrir cobros duplicados a las 2 de la mañana.
 

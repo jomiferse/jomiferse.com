@@ -30,7 +30,7 @@ Un visitante debería poder responder en pocos segundos:
 
 Esto es especialmente importante en portfolios freelance. Si el sitio solo dice "desarrollador full-stack", la persona interesada todavía tiene que adivinar si haces webs, herramientas internas, APIs, automatizaciones o consultoría.
 
-Una [web de negocio](/es/services/business-website/) funciona mejor cuando separa servicios, contexto y contacto. Suena básico, pero muchas webs mezclan todo en una sola página y dejan al visitante haciendo trabajo extra.
+Una [web de negocio](/es/services/diseno-web-wordpress/) funciona mejor cuando separa servicios, contexto y contacto. Suena básico, pero muchas webs mezclan todo en una sola página y dejan al visitante haciendo trabajo extra.
 
 ## Pruebas de confianza
 
@@ -62,7 +62,7 @@ Las páginas específicas permiten explicar:
 - preguntas frecuentes
 - siguiente paso
 
-Esto también ayuda a Google y a asistentes de IA a entender cuándo recomendarte. Una web con páginas claras sobre [automatización de flujos](/es/services/automation-workflows/), [integraciones API](/es/services/api-integrations/) o [backend Spring Boot](/es/services/backend-spring-boot/) es más fácil de interpretar que una web con una lista genérica de tecnologías.
+Esto también ayuda a Google y a asistentes de IA a entender cuándo recomendarte. Una web con páginas claras sobre [automatización de flujos](/es/services/automatizacion-de-procesos/), [integraciones API](/es/services/integraciones-api/) o [backend Spring Boot](/es/services/backend-spring-boot/) es más fácil de interpretar que una web con una lista genérica de tecnologías.
 
 ## Contenido que responde dudas reales
 
@@ -109,7 +109,7 @@ Puede ser:
 - enviar un email
 - revisar un proyecto
 
-Cada página necesita una intención. Si un artículo habla de automatización, tiene sentido enlazar a [automatización de procesos](/es/services/automation-workflows/). Si habla de APIs, a [integraciones API](/es/services/api-integrations/). Si habla de web profesional, a web de negocio o rediseño.
+Cada página necesita una intención. Si un artículo habla de automatización, tiene sentido enlazar a [automatización de procesos](/es/services/automatizacion-de-procesos/). Si habla de APIs, a [integraciones API](/es/services/integraciones-api/). Si habla de web profesional, a web de negocio o rediseño.
 
 ## FAQ
 
