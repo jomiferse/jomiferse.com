@@ -43,11 +43,11 @@ export function buildConsentModeState(analytics: boolean): ConsentModeState {
 	};
 }
 
-export function getShouldLoadTagManager(
+export function getShouldLoadAnalytics(
 	preferences: CookieConsentPreferences | null,
-	containerId: string,
+	measurementId: string,
 ): boolean {
-	return Boolean(preferences?.analytics && containerId.trim());
+	return Boolean(preferences?.analytics && measurementId.trim());
 }
 
 export function getInitialAnalyticsPreference(

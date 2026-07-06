@@ -458,7 +458,7 @@
   "privacy": {
     "meta": {
       "title": "Privacy and cookies",
-      "description": "Information about necessary cookies, Google Tag Manager with consent, and how to change your preferences on jomiferse.com."
+      "description": "Information about necessary cookies, Google Analytics with consent, and how to change your preferences on jomiferse.com."
     },
     "eyebrow": "Privacy",
     "title": "Privacy and cookies",
@@ -471,8 +471,8 @@
         "body": "Necessary cookies or storage are used to remember local preferences, such as the visual theme and your cookie decision. They are not used for advertising or profiling."
       },
       {
-        "title": "Google Tag Manager",
-        "body": "Google Tag Manager loads only if you accept analytics. Before your decision, and if you reject it, analytics consent stays denied."
+        "title": "Google Analytics",
+        "body": "Google Analytics loads only if you accept analytics. Before your decision, and if you reject it, analytics consent stays denied."
       },
       {
         "title": "Changing preferences",

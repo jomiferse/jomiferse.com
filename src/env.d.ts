@@ -3,5 +3,5 @@
 interface Window {
 	dataLayer: unknown[];
 	gtag?: (...args: unknown[]) => void;
-	GTM_CONTAINER_ID?: string;
+	GA_MEASUREMENT_ID?: string;
 }

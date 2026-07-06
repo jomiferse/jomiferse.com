@@ -5,7 +5,7 @@ import {
 	CONSENT_STORAGE_KEY,
 	buildConsentModeState,
 	getInitialAnalyticsPreference,
-	getShouldLoadTagManager,
+	getShouldLoadAnalytics,
 	parseStoredCookieConsent,
 	serializeCookieConsent,
 } from "../src/lib/cookie-consent.ts";
@@ -56,17 +56,11 @@ test("keeps advertising consent denied in every consent mode state", () => {
 	});
 });
 
-test("loads Tag Manager only when both consent and a container id exist", () => {
-	assert.equal(
-		getShouldLoadTagManager({ analytics: true }, "GTM-ABC123"),
-		true,
-	);
-	assert.equal(getShouldLoadTagManager({ analytics: true }, ""), false);
-	assert.equal(
-		getShouldLoadTagManager({ analytics: false }, "GTM-ABC123"),
-		false,
-	);
-	assert.equal(getShouldLoadTagManager(null, "GTM-ABC123"), false);
+test("loads analytics only when both consent and a measurement id exist", () => {
+	assert.equal(getShouldLoadAnalytics({ analytics: true }, "G-ABC123"), true);
+	assert.equal(getShouldLoadAnalytics({ analytics: true }, ""), false);
+	assert.equal(getShouldLoadAnalytics({ analytics: false }, "G-ABC123"), false);
+	assert.equal(getShouldLoadAnalytics(null, "G-ABC123"), false);
 });
 
 test("shows analytics enabled by default before the user saves preferences", () => {

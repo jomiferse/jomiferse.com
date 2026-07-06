@@ -99,7 +99,7 @@ const privacyHref = `/${locale}/privacy`;
 		CONSENT_STORAGE_KEY,
 		buildConsentModeState,
 		getInitialAnalyticsPreference,
-		getShouldLoadTagManager,
+		getShouldLoadAnalytics,
 		parseStoredCookieConsent,
 		serializeCookieConsent,
 		type CookieConsentPreferences,
@@ -113,7 +113,7 @@ const privacyHref = `/${locale}/privacy`;
 	const analyticsInput = root?.querySelector<HTMLInputElement>(
 		"[data-cookie-analytics]",
 	);
-	const containerId = window.GTM_CONTAINER_ID ?? "";
+	const measurementId = window.GA_MEASUREMENT_ID ?? "";
 	let lastFocusedElement: HTMLElement | null = null;
 
 	const getStoredPreferences = () =>
@@ -127,26 +127,25 @@ const privacyHref = `/${locale}/privacy`;
 		);
 	};
 
-	const loadGoogleTagManager = (
+	const loadGoogleAnalytics = (
 		preferences: CookieConsentPreferences | null,
 	) => {
 		if (
-			!getShouldLoadTagManager(preferences, containerId) ||
-			document.querySelector(`script[src*="googletagmanager.com/gtm.js"]`)
+			!getShouldLoadAnalytics(preferences, measurementId) ||
+			document.querySelector(`script[src*="googletagmanager.com/gtag/js"]`)
 		) {
 			return;
 		}
 
 		const script = document.createElement("script");
 		script.async = true;
-		script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(
-			containerId,
+		script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(
+			measurementId,
 		)}`;
-		window.dataLayer.push({
-			event: "gtm.js",
-			"gtm.start": new Date().getTime(),
-		});
 		document.head.append(script);
+
+		window.gtag?.("js", new Date());
+		window.gtag?.("config", measurementId, { anonymize_ip: true });
 	};
 
 	const hideBanner = () => {
@@ -195,7 +194,7 @@ const privacyHref = `/${locale}/privacy`;
 			serializeCookieConsent(preferences),
 		);
 		updateConsentMode(preferences);
-		loadGoogleTagManager(preferences);
+		loadGoogleAnalytics(preferences);
 		hideBanner();
 		closeSettings();
 	};
@@ -235,7 +234,7 @@ const privacyHref = `/${locale}/privacy`;
 	const storedPreferences = getStoredPreferences();
 	if (storedPreferences) {
 		updateConsentMode(storedPreferences);
-		loadGoogleTagManager(storedPreferences);
+		loadGoogleAnalytics(storedPreferences);
 		hideBanner();
 	} else {
 		showBanner();
