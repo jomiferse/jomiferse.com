@@ -4,6 +4,7 @@ import Header from "@/components/common/Header.astro";
 import "@/styles/global.css";
 import { getLocaleFromPath, t, type Locale } from "@/i18n";
 import { getCv } from "@cv";
+import  Analytics from "@vercel/analytics/astro";
 
 interface LayoutProps {
 	title: string;
@@ -202,6 +203,7 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 			class="site-shell w-full flex-1 px-4 py-14 md:px-6 md:py-20"
 		>
 			<slot />
+			<Analytics />
 		</main>
 		<Footer locale={locale} />
 

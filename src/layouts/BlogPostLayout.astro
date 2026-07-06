@@ -1,5 +1,6 @@
 ---
 import { getLocaleFromPath, getTranslations, type Locale, t } from "@/i18n";
+import Analytics from "@vercel/analytics/astro";
 
 interface Frontmatter {
 	title: string;
@@ -70,6 +71,7 @@ const postCta = getTranslations(locale).blog.post.cta;
 	<div class="mx-auto mt-16 max-w-3xl md:mt-20">
 		<div class="prose-wrapper">
 			<slot />
+			<Analytics />
 		</div>
 	</div>
 
