@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
+import ServicesExitIntent from "@/components/common/ServicesExitIntent.astro";
 import { Icon } from "astro-icon/components";
 import {
 	getService,
@@ -94,6 +95,26 @@ const whatsappMessage = serviceCopy.whatsappMessage.replace(
 const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
 	whatsappMessage,
 )}`;
+const overviewTitle = serviceCopy.overviewTitle.replace(
+	"{service}",
+	service.title,
+);
+const keywords =
+	locale === "es"
+		? [
+				service.title,
+				service.shortTitle,
+				"servicio freelance",
+				"consultoría informática",
+				"desarrollador full-stack freelance",
+			]
+		: [
+				service.title,
+				service.shortTitle,
+				"freelance service",
+				"IT consulting",
+				"freelance full-stack developer",
+			];
 const structuredData = [
 	buildServicePage({
 		site,
@@ -122,13 +143,7 @@ const structuredData = [
 	canonicalPath={canonicalPath}
 	alternatePaths={alternatePaths}
 	structuredData={structuredData}
-	keywords={[
-		service.title,
-		"Freelance Full-Stack Developer",
-		"Astro",
-		"TypeScript",
-		"Backend Development",
-	]}
+	keywords={keywords}
 >
 	<section class="section-reveal py-10 md:py-20">
 		<p class="eyebrow">{serviceCopy.eyebrow}</p>
@@ -160,6 +175,45 @@ const structuredData = [
 			<a href={`/${locale}/services`} class="button-secondary w-full sm:w-auto">
 				{serviceCopy.servicesButton}
 			</a>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 md:py-24">
+		<div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+			<div>
+				<p class="eyebrow">{serviceCopy.overviewEyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{overviewTitle}
+				</h2>
+				<div class="mt-6 space-y-4">
+					{
+						service.overview.map((paragraph) => (
+							<p class="muted-copy text-lg leading-8">{paragraph}</p>
+						))
+					}
+				</div>
+			</div>
+
+			<div>
+				<p class="eyebrow">{serviceCopy.benefitsEyebrow}</p>
+				<h2 class="mt-4 text-2xl font-black text-[var(--text)] md:text-3xl">
+					{serviceCopy.benefitsTitle}
+				</h2>
+				<div class="mt-7 grid gap-4">
+					{
+						service.benefits.map((benefit) => (
+							<article class="dark-card p-5">
+								<h3 class="text-lg font-black text-[var(--text)]">
+									{benefit.title}
+								</h3>
+								<p class="muted-copy mt-3 leading-7">{benefit.body}</p>
+							</article>
+						))
+					}
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -237,11 +291,33 @@ const structuredData = [
 		</div>
 	</section>
 
-	<section class="section-reveal py-16">
-		<p class="eyebrow">{serviceCopy.problem}</p>
-		<p class="mt-5 max-w-3xl text-lg leading-8 text-[var(--text)]">
-			{service.problem}
-		</p>
+	<section class="section-reveal py-16 md:py-24">
+		<div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+			<div>
+				<p class="eyebrow">{serviceCopy.problem}</p>
+				<p class="mt-5 max-w-3xl text-lg leading-8 text-[var(--text)]">
+					{service.problem}
+				</p>
+			</div>
+
+			<article class="dark-card p-6">
+				<h2 class="text-3xl font-black text-[var(--text)]">
+					{serviceCopy.whenNeeded}
+				</h2>
+				<ul class="mt-6 space-y-4">
+					{
+						service.whenNeeded.map((item) => (
+							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+									✓
+								</span>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</article>
+		</div>
 	</section>
 
 	<section class="section-reveal py-16 md:py-24">
@@ -281,6 +357,28 @@ const structuredData = [
 					}
 				</ul>
 			</article>
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16 md:py-24">
+		<div class="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+			<div>
+				<p class="eyebrow">{serviceCopy.whyMe}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{serviceCopy.whyMeTitle}
+				</h2>
+			</div>
+			<div class="grid gap-4 sm:grid-cols-3">
+				{
+					service.whyMe.map((item) => (
+						<article class="dark-card p-5">
+							<p class="muted-copy leading-7">{item}</p>
+						</article>
+					))
+				}
+			</div>
 		</div>
 	</section>
 
@@ -447,4 +545,12 @@ const structuredData = [
 			}
 		});
 	</script>
+
+	<ServicesExitIntent
+		locale={locale}
+		serviceTitle={service.title}
+		contactHref={contactHref}
+		whatsappHref={whatsappHref}
+		openContactModal
+	/>
 </BaseLayout>

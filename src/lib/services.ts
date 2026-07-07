@@ -24,10 +24,17 @@ export interface ServiceItem {
 		note: string;
 		scope: string[];
 	};
+	overview: string[];
 	problem: string;
+	benefits: Array<{
+		title: string;
+		body: string;
+	}>;
+	whenNeeded: string[];
 	whoFor: string[];
 	builds: string[];
 	process: string[];
+	whyMe: string[];
 	faq: Array<{
 		question: string;
 		answer: string;

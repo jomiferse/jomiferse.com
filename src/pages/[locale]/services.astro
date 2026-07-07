@@ -1,10 +1,12 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ServicesExitIntent from "@/components/common/ServicesExitIntent.astro";
 import { getServiceGroups, getServicePages } from "@/lib/services";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import {
 	buildBreadcrumbList,
 	buildCollectionPage,
+	buildFaqPage,
 	buildProfessionalService,
 } from "@/lib/seo";
 import { getCv } from "@cv";
@@ -19,9 +21,35 @@ const services = getServicePages(locale);
 const serviceGroups = getServiceGroups(locale);
 const page = getTranslations(locale).services.hub;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const contactHref = `/${locale}/contact`;
+const exitIntentWhatsappMessage =
+	locale === "es"
+		? "Hola José Miguel, estaba revisando tus servicios y me gustaría contarte mi caso."
+		: "Hi José Miguel, I was reviewing your services and would like to tell you about my case.";
+const exitIntentWhatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
+	exitIntentWhatsappMessage,
+)}`;
 const getServiceHref = (service: (typeof services)[number]) =>
 	service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
 const schemaServices = services.filter((service) => !service.canonicalPath);
+const keywords =
+	locale === "es"
+		? [
+				"Consultoría informática freelance",
+				"Diseño web WordPress",
+				"Software a medida",
+				"Automatización de procesos",
+				"Integraciones API",
+				"Desarrollador full-stack freelance",
+			]
+		: [
+				"Freelance IT Consulting",
+				"WordPress Web Design",
+				"Custom Software",
+				"Process Automation",
+				"API Integrations",
+				"Freelance Full-Stack Developer",
+			];
 const structuredData = [
 	buildProfessionalService({
 		site,
@@ -44,6 +72,7 @@ const structuredData = [
 		page.meta.title,
 		page.meta.description,
 	),
+	buildFaqPage(page.faq),
 	buildBreadcrumbList(site, [
 		{ name: t(locale, "nav.home"), path: `/${locale}` },
 		{ name: t(locale, "nav.services"), path: `/${locale}/services` },
@@ -55,13 +84,7 @@ const structuredData = [
 	title={page.meta.title}
 	description={page.meta.description}
 	structuredData={structuredData}
-	keywords={[
-		"Freelance Web Development",
-		"Full-Stack Development",
-		"Business Website",
-		"Internal Tools",
-		"API Integrations",
-	]}
+	keywords={keywords}
 >
 	<section class="section-reveal py-10 md:py-20">
 		<p class="eyebrow">{page.eyebrow}</p>
@@ -72,6 +95,14 @@ const structuredData = [
 			<span class="accent-text">{page.titleAccent}</span>
 		</h1>
 		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">{page.intro}</p>
+		<div class="mt-9 flex flex-col gap-3 sm:flex-row">
+			<a href={`/${locale}/contact`} class="button-primary w-full sm:w-auto">
+				{page.heroPrimaryCta}
+			</a>
+			<a href={`/${locale}/projects`} class="button-secondary w-full sm:w-auto">
+				{page.heroSecondaryCta}
+			</a>
+		</div>
 	</section>
 
 	<section class="section-band section-reveal py-16">
@@ -83,6 +114,55 @@ const structuredData = [
 	</section>
 
 	<section class="section-reveal py-16 md:py-24">
+		<div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+			<div>
+				<p class="eyebrow">{page.definitionEyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.definitionTitle}
+				</h2>
+				<div class="mt-6 space-y-4">
+					{
+						page.definitionBody.map((paragraph) => (
+							<p class="muted-copy text-lg leading-8">{paragraph}</p>
+						))
+					}
+				</div>
+			</div>
+
+			<div>
+				<p class="eyebrow">{page.advantagesEyebrow}</p>
+				<h2 class="mt-4 text-2xl font-black text-[var(--text)] md:text-3xl">
+					{page.advantagesTitle}
+				</h2>
+				<div class="mt-7 grid gap-4 sm:grid-cols-2">
+					{
+						page.advantages.map((advantage) => (
+							<article class="dark-card p-5">
+								<h3 class="text-lg font-black text-[var(--text)]">
+									{advantage.title}
+								</h3>
+								<p class="muted-copy mt-3 leading-7">{advantage.body}</p>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 md:py-24">
+		<div class="mb-12 max-w-3xl">
+			<p class="eyebrow">{page.servicesEyebrow}</p>
+			<h2
+				class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+			>
+				{page.servicesTitle}
+			</h2>
+			<p class="muted-copy mt-5 text-lg leading-8">{page.servicesIntro}</p>
+		</div>
+
 		<div class="stagger-children space-y-6">
 			{
 				serviceGroups.map((group) => (
@@ -92,9 +172,9 @@ const structuredData = [
 								<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
 									{group.number}
 								</p>
-								<h2 class="mt-5 text-3xl font-black text-[var(--text)] md:text-4xl">
+								<h3 class="mt-5 text-3xl font-black text-[var(--text)] md:text-4xl">
 									{group.title}
-								</h2>
+								</h3>
 								<p class="muted-copy mt-4 leading-7">{group.description}</p>
 								<ul class="mt-6 space-y-3">
 									{group.bullets.map((item) => (
@@ -149,6 +229,58 @@ const structuredData = [
 					</article>
 				))
 			}
+		</div>
+	</section>
+
+	<section class="section-reveal py-20 md:py-28">
+		<div class="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
+			<div>
+				<p class="eyebrow">{page.recommendationEyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.recommendationTitle}
+				</h2>
+				<p class="muted-copy mt-5 text-lg leading-8">
+					{page.recommendationIntro}
+				</p>
+			</div>
+			<div class="grid gap-5">
+				<article class="dark-card p-6">
+					<h3 class="text-2xl font-black text-[var(--text)]">
+						{page.recommendedForTitle}
+					</h3>
+					<ul class="mt-6 space-y-4">
+						{
+							page.recommendedFor.map((item) => (
+								<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+									<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+										✓
+									</span>
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</article>
+				<article class="dark-card p-6">
+					<h3 class="text-2xl font-black text-[var(--text)]">
+						{page.notRecommendedForTitle}
+					</h3>
+					<ul class="mt-6 space-y-4">
+						{
+							page.notRecommendedFor.map((item) => (
+								<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+									<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+										-
+									</span>
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</article>
+			</div>
 		</div>
 	</section>
 
@@ -225,50 +357,60 @@ const structuredData = [
 	</section>
 
 	<section class="section-band section-reveal py-20 md:py-28">
-		<p class="eyebrow">{page.recommendationEyebrow}</p>
-		<h2
-			class="mt-4 max-w-4xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-		>
-			{page.recommendationTitle}
-		</h2>
-		<p class="muted-copy mt-5 max-w-2xl text-lg leading-8">
-			{page.recommendationIntro}
-		</p>
-		<div class="mt-10 grid gap-5 lg:grid-cols-2">
-			<article class="dark-card p-6">
-				<h3 class="text-2xl font-black text-[var(--text)]">
-					{page.recommendedForTitle}
-				</h3>
-				<ul class="mt-6 space-y-4">
+		<div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+			<div>
+				<p class="eyebrow">{page.proofEyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.proofTitle}
+				</h2>
+				<p class="muted-copy mt-5 text-lg leading-8">{page.proofText}</p>
+				<div class="mt-8 flex flex-wrap gap-3">
 					{
-						page.recommendedFor.map((item) => (
-							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-									✓
-								</span>
-								<span>{item}</span>
-							</li>
+						page.proofLinks.map((link) => (
+							<a
+								href={`/${locale}${link.href}`}
+								class="tag-pill hover:border-[var(--accent-strong)]"
+							>
+								{link.label}
+							</a>
 						))
 					}
-				</ul>
-			</article>
-			<article class="dark-card p-6">
-				<h3 class="text-2xl font-black text-[var(--text)]">
-					{page.notRecommendedForTitle}
-				</h3>
-				<ul class="mt-6 space-y-4">
-					{
-						page.notRecommendedFor.map((item) => (
-							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-									-
-								</span>
-								<span>{item}</span>
-							</li>
-						))
-					}
-				</ul>
-			</article>
+				</div>
+			</div>
+			<div class="grid gap-4 sm:grid-cols-2">
+				{
+					page.proofPoints.map((item) => (
+						<article class="dark-card p-5">
+							<p class="muted-copy leading-7">{item}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal py-20 md:py-28">
+		<div class="mb-10 max-w-3xl">
+			<p class="eyebrow">{page.faqEyebrow}</p>
+			<h2
+				class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+			>
+				{page.faqTitle}
+			</h2>
+		</div>
+		<div class="grid gap-4 lg:grid-cols-2">
+			{
+				page.faq.map((item) => (
+					<article class="hairline border-t pt-6">
+						<h3 class="text-xl font-black text-[var(--text)]">
+							{item.question}
+						</h3>
+						<p class="muted-copy mt-3 leading-7">{item.answer}</p>
+					</article>
+				))
+			}
 		</div>
 	</section>
 
@@ -279,8 +421,14 @@ const structuredData = [
 		<p class="muted-copy mx-auto mt-5 max-w-xl text-lg leading-8">
 			{page.ctaText}
 		</p>
-		<a href={`/${locale}/contact`} class="button-primary mt-9">
+		<a href={contactHref} class="button-primary mt-9">
 			{page.ctaButton}
 		</a>
 	</section>
+
+	<ServicesExitIntent
+		locale={locale}
+		contactHref={contactHref}
+		whatsappHref={exitIntentWhatsappHref}
+	/>
 </BaseLayout>

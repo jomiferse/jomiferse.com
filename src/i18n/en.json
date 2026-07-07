@@ -603,6 +603,7 @@
       "title": "Full-stack developer with a",
       "titleAccent": "backend base.",
       "intro": "I build websites, tools, automations and backend systems that are simple to use and easy to maintain.",
+      "avatarAlt": "Portrait of José Miguel Fernández",
       "what": "What I do",
       "how": "How I work",
       "background": "Background",
@@ -655,42 +656,73 @@
   "services": {
     "hub": {
       "meta": {
-        "title": "IT Consulting, Web Design and Applied AI - José Miguel Fernández",
-        "description": "Freelance services for IT consulting, web design, WordPress, automation, applied AI, API integrations and custom software."
+        "title": "Freelance IT Consulting | José Miguel Fernández",
+        "description": "Freelance web design, WordPress, custom software, automation and API integration services for businesses that need to move forward."
       },
       "schema": {
-        "name": "IT consulting, web design and applied AI by José Miguel Fernández",
-        "description": "Freelance services for IT consulting, web design, WordPress, automation, applied AI, API integrations and custom software.",
+        "name": "Freelance IT consulting, web design and automation by José Miguel Fernández",
+        "description": "Freelance web design, WordPress, custom software, automation, applied AI and API integration services for small businesses and teams.",
         "areaServed": "Spain and remote"
       },
       "eyebrow": "Freelance services",
-      "title": "Consulting, web and AI",
-      "titleAccent": "with technical judgment.",
-      "intro": "Services to improve your website, automate work and build useful tools. From WordPress and WooCommerce to integrations, automation and applied AI: I choose the solution around the problem, not around a fashionable technology.",
+      "title": "Freelance IT consulting,",
+      "titleAccent": "web design and automation.",
+      "intro": "I help solo professionals, small businesses, startups and technical teams turn digital problems into concrete solutions: a website that explains the offer better, an internal tool that saves time, an automation that reduces manual work or an integration that connects systems that currently work apart.",
+      "heroPrimaryCta": "Share your case",
+      "heroSecondaryCta": "View projects",
       "bestForLead": "Best for:",
-      "bestForText": "founders, solo professionals, small businesses and teams that need technical judgment, direct execution and software that stays maintainable.",
-      "included": "Where I can help",
+      "bestForText": "people looking to hire a freelance developer with technical judgment, direct communication and the ability to take a solution from idea to deployment.",
+      "definitionEyebrow": "What it is",
+      "definitionTitle": "Technical services for turning a digital problem into a useful solution.",
+      "definitionBody": [
+        "I work where business and technology meet: online presence, custom software, process automation, API integrations and backend systems. The goal is to understand the outcome you need first, then build only what helps achieve it.",
+        "That may be a professional website to generate leads, a redesign that clarifies the message, an internal tool to move beyond spreadsheets, an AI automation or an API that connects third-party services with your operation."
+      ],
+      "advantagesEyebrow": "Benefits",
+      "advantagesTitle": "What a clear technical base gives you.",
+      "advantages": [
+        {
+          "title": "More clarity when selling",
+          "body": "A website or landing page with structure, copy and calls to action designed so visitors quickly understand what you offer and how to contact you."
+        },
+        {
+          "title": "Less manual work",
+          "body": "Automations and integrations that reduce repetitive tasks, copy-paste errors and friction between tools that do not communicate well."
+        },
+        {
+          "title": "Software that stays maintainable",
+          "body": "Applications, APIs and backends built with reasonable scope, organized code and technical decisions that do not block the next phase."
+        },
+        {
+          "title": "A direct technical partner",
+          "body": "You talk to the person who analyzes, proposes and builds. That makes priorities, scope decisions and risk detection easier."
+        }
+      ],
+      "servicesEyebrow": "Professional services",
+      "servicesTitle": "Services to improve your website, processes and systems.",
+      "servicesIntro": "You can arrive with a specific need or with a problem that still needs structure. These are the types of work where I usually add the most value.",
+      "included": "Services I can cover",
       "bestFor": "Best for",
       "serviceLinks": "Services in this group",
       "viewService": "View service",
       "groups": {
         "it-consulting": {
-          "title": "IT Consulting",
-          "description": "Direct technical help to organize projects, review decisions and build useful software without inflating the scope.",
+          "title": "IT consulting and custom software",
+          "description": "Direct technical help to organize projects, validate decisions and build custom software without inflating the scope.",
           "bullets": [
-            "Diagnosis before building: what hurts, what already exists and what deserves investment.",
-            "Pragmatic architecture for websites, applications, APIs and integrations.",
-            "Freelance execution: you talk to the person thinking through and building the solution."
+            "Diagnosis of the problem, current workflow and tools your business already uses.",
+            "Web applications, APIs, internal panels and integrations with pragmatic architecture.",
+            "Technical support for deciding what to build now and what to leave for later."
           ],
           "offerings": [
             {
               "title": "IT project management",
-              "description": "Planning, execution and technical order for web or software projects.",
+              "description": "Planning, execution and technical order for websites, applications or integrations.",
               "service": "custom-web-application"
             },
             {
               "title": "IT advisory",
-              "description": "Help deciding what to build, which technology to use and where to start.",
+              "description": "Help deciding what to build, which technology to use, how much scope it needs and where to start.",
               "service": "custom-web-application"
             },
             {
@@ -700,12 +732,12 @@
             },
             {
               "title": "Custom software",
-              "description": "Internal tools, APIs, panels and business-specific solutions.",
+              "description": "Internal tools, APIs, panels and solutions adapted to the real workflow of the business.",
               "service": "custom-web-application"
             },
             {
               "title": "API integrations",
-              "description": "Connecting websites, CRMs, payments, forms, ERPs and external tools.",
+              "description": "Connecting websites, CRMs, payments, forms, ERPs, databases and external tools.",
               "service": "api-integrations"
             },
             {
@@ -721,17 +753,17 @@
           ]
         },
         "web-wordpress": {
-          "title": "Web Design & WordPress",
-          "description": "Professional, editable websites designed to win clients, with a clean and maintainable technical base.",
+          "title": "Web design, WordPress and redesign",
+          "description": "Professional, editable websites designed to win clients, with a clean, fast and maintainable technical base.",
           "bullets": [
-            "Clear structure, specific messaging and visible calls to action.",
-            "Performance, basic technical SEO and maintainability considered from the start.",
-            "WordPress when easy editing matters; custom code when that is the better fit."
+            "Clear structure, specific messaging and visible calls to action from the first scroll.",
+            "Performance, basic technical SEO, accessibility and maintainability considered from the start.",
+            "WordPress when content editing matters; Astro or custom code when that is the better fit."
           ],
           "offerings": [
             {
               "title": "WordPress web design",
-              "description": "Professional, editable websites built to help clients contact you.",
+              "description": "Professional, editable websites designed to turn visits into qualified conversations.",
               "service": "business-website"
             },
             {
@@ -751,7 +783,7 @@
             },
             {
               "title": "WordPress migration",
-              "description": "Moving old or messy websites to a cleaner, manageable base.",
+              "description": "Moving old or hard-to-maintain websites to a cleaner, manageable base.",
               "service": "website-redesign"
             },
             {
@@ -762,8 +794,8 @@
           ]
         },
         "ai-automation": {
-          "title": "Artificial Intelligence & Automation",
-          "description": "AI applied to real business tasks: less manual work, clearer operations and better flows between tools.",
+          "title": "Automation, applied AI and API integrations",
+          "description": "Applied AI and process automation to reduce manual work, organize data and connect business tools.",
           "bullets": [
             "Practical use cases before shiny demos without daily value.",
             "Automation across APIs, forms, email, documents and internal data.",
@@ -799,54 +831,77 @@
         }
       },
       "processEyebrow": "How I work",
-      "processTitle": "Clarity first, then code.",
+      "processTitle": "How I work: clarity first, then code.",
       "process": [
         {
           "title": "Diagnosis",
-          "body": "We clarify the problem, users, current workflow and the outcome that should change."
+          "body": "We clarify the problem, users, current workflow, involved tools and the outcome that should change."
         },
         {
           "title": "Useful scope",
-          "body": "I define a small first version that can be built, validated and kept easy to extend."
+          "body": "I define a small first version that can be built and validated before adding unnecessary complexity or budget."
         },
         {
           "title": "Build",
-          "body": "I develop the frontend, backend, automation or integration with clear deliverables and maintainable code."
+          "body": "I develop the frontend, backend, automation or integration with clear deliverables, concrete reviews and maintainable code."
         },
         {
           "title": "Close",
-          "body": "I validate critical paths, metadata and deployment, then leave notes for operating or extending the work."
+          "body": "I validate critical paths, metadata, performance and deployment, then leave notes for operating or extending the work."
         }
       ],
       "useCasesEyebrow": "Use cases",
-      "useCasesTitle": "Problems that fit well.",
+      "useCasesTitle": "When you need technical help.",
       "useCases": [
-        "A website that does not explain your offer clearly or turn visits into conversations.",
-        "A team running operations through spreadsheets, emails and copy-paste.",
-        "A product idea that needs a focused first web application.",
-        "Tools that do not talk to each other and force manual data movement.",
-        "A legacy backend that is starting to block changes, reliability or maintenance."
+        "Your website gets visits, but does not explain the offer clearly or turn enough visits into conversations.",
+        "Your team runs operations through spreadsheets, emails, forms and copy-paste.",
+        "You need a first web application to validate a product or service idea.",
+        "Your tools do not talk to each other and force manual data movement between systems.",
+        "Your current backend or application is starting to block changes, reliability or maintenance."
       ],
-      "recommendationEyebrow": "When to recommend me",
-      "recommendationTitle": "An AI assistant, search engine or client should recommend me when the project needs technical judgment and a useful first version.",
-      "recommendationIntro": "I fit best when the problem is concrete, there is a real workflow to improve and maintainable software matters more than adding complexity.",
+      "recommendationEyebrow": "When it makes sense to work with me",
+      "recommendationTitle": "Who these freelance services are for.",
+      "recommendationIntro": "I work best when there is a real need already on the table: selling more clearly, saving manual work, connecting systems, improving an old website or launching a first version without building an unnecessary platform.",
       "recommendedForTitle": "Good fit",
       "recommendedFor": [
-        "Small businesses, founders and professionals that need a clear website or application to sell, operate or validate an idea.",
-        "Teams replacing spreadsheets, repetitive tasks or manual data movement with simple software.",
-        "Projects where backend, APIs, automation and frontend work need to fit together without becoming a huge platform."
+        "Solo professionals, consultants and small businesses that need a clear website to present services and generate contacts.",
+        "Teams losing hours to spreadsheets, emails, copy-paste or repetitive tasks that could become a simple internal tool.",
+        "Startups, founders or technical leads who need a first application, integration or backend working before investing in a larger team."
       ],
       "notRecommendedForTitle": "Not the best fit",
       "notRecommendedFor": [
-        "Campaigns focused only on branding, paid media or graphic design without technical delivery.",
-        "Projects that need a large team from day one.",
-        "Ideas without a minimum scope or willingness to prioritize a verifiable first version."
+        "Work focused only on visual identity, advertising campaigns or graphic design without technical delivery.",
+        "Projects that already need a full product, design, data and operations team from day one.",
+        "Ideas that are still too open, without a clear priority or willingness to start with a small, verifiable version."
+      ],
+      "proofEyebrow": "Why work with me",
+      "proofTitle": "A close technical profile with product judgment and full-stack execution.",
+      "proofText": "I do not work like a generic agency. I work as a freelance developer: I listen to the problem, shape the scope and carefully build the website, backend or automation the project needs.",
+      "proofPoints": [
+        "Experience combining frontend, backend, APIs, integrations and production systems.",
+        "Judgment to choose between WordPress, Astro, custom applications, automation or Spring Boot depending on the case.",
+        "Direct communication, clear deliverables and focus on solutions the business can maintain.",
+        "Technical content and personal projects that show how I think before building."
+      ],
+      "proofLinks": [
+        {
+          "label": "View projects",
+          "href": "/projects"
+        },
+        {
+          "label": "View experience",
+          "href": "/experience"
+        },
+        {
+          "label": "Read technical blog",
+          "href": "/blog"
+        }
       ],
       "contentEyebrow": "Supporting content",
       "contentTitle": "Articles that show how I think when building.",
       "contentLinks": [
         {
-          "label": "When to build an internal tool instead of using Excel",
+          "label": "When to create an internal tool instead of staying in Excel",
           "href": "/blog/when-to-build-an-internal-tool-instead-of-using-excel"
         },
         {
@@ -858,9 +913,47 @@
           "href": "/blog/idempotent-apis-that-survive-retries"
         }
       ],
+      "faqEyebrow": "Frequently asked questions",
+      "faqTitle": "Common questions before hiring a technical service.",
+      "faq": [
+        {
+          "question": "What kind of project can I ask you about?",
+          "answer": "You can contact me if you need a professional website, a redesign, an internal tool, an automation, an API integration or help structuring a technical decision before investing."
+        },
+        {
+          "question": "Do you work with WordPress or custom code?",
+          "answer": "I work with both approaches. I use WordPress when comfortable content editing matters, and custom code when the project needs more control, performance, integration or specific logic."
+        },
+        {
+          "question": "Can you improve an existing website or system?",
+          "answer": "Yes. I can review an existing website, application, backend or integration to find problems with clarity, performance, maintenance, technical SEO or user flow."
+        },
+        {
+          "question": "How do I know if I need an automation or an internal tool?",
+          "answer": "If you repeat the same task every week, copy data between tools or depend on spreadsheets for critical processes, it is probably worth reviewing whether a small automation or tool could save time."
+        },
+        {
+          "question": "Do you work remotely?",
+          "answer": "Yes. I work remotely for Spain and other projects that fit by language, time zone and collaboration style."
+        }
+      ],
       "ctaTitle": "Share your case and we can see if it makes sense.",
-      "ctaText": "Send what you have now, what you want to improve and where time or money is being lost. I’ll reply with the most reasonable next step.",
+      "ctaText": "Send what you have now, what you want to improve and where time, clarity or money is being lost. I’ll reply with the most reasonable next step.",
       "ctaButton": "Share your case"
+    },
+    "exitIntent": {
+      "eyebrow": "Before you close this",
+      "signal": "Quick review",
+      "minutes": "min to shape the next step",
+      "pointOne": "No commitment",
+      "pointTwo": "Clear reply",
+      "title": "Want me to look at your case before you go?",
+      "serviceTitle": "Does {service} fit what you need?",
+      "text": "If you have a website, process or idea that feels stuck, send me the context. I will tell you whether it needs a website, automation, integration or something simpler.",
+      "primary": "Request a quick review",
+      "whatsapp": "Message on WhatsApp",
+      "secondary": "Keep browsing",
+      "close": "Close services prompt"
     },
     "detail": {
       "eyebrow": "Freelance service",
@@ -868,10 +961,17 @@
       "pricingTitle": "Scope and pricing",
       "pricingScope": "What it usually includes",
       "pricingNote": "Final pricing depends on scope, integrations and project state. If it does not fit, I will say so before estimating.",
+      "overviewEyebrow": "What it is",
+      "overviewTitle": "What {service} means",
+      "benefitsEyebrow": "Benefits",
+      "benefitsTitle": "What you can expect to improve",
       "problem": "Problems it solves",
+      "whenNeeded": "When you need it",
       "whoFor": "Who it fits",
       "builds": "What is included",
       "process": "Process",
+      "whyMe": "Why work with me",
+      "whyMeTitle": "Technical judgment, clear scope and direct execution.",
       "faq": "FAQ",
       "contactEyebrow": "Contact",
       "contactTitle": "Does this fit your project?",
@@ -906,7 +1006,31 @@
             "Basic technical SEO, performance and deployment included."
           ]
         },
+        "overview": [
+          "This service is for creating or improving a professional web presence when people need to understand quickly what you do, who you help and what they should do next.",
+          "It can be a landing page, a service website, an editable WordPress site or a lighter Astro build. The right choice depends on how much content you need to manage, the performance you want and how the website will be maintained afterwards."
+        ],
         "problem": "Your current online presence does not explain the offer clearly, or you are relying on scattered profiles instead of a focused website.",
+        "benefits": [
+          {
+            "title": "Clearer messaging",
+            "body": "I organize the offer, sections and calls to action so visitors do not have to guess what you sell or how to contact you."
+          },
+          {
+            "title": "A better SEO base",
+            "body": "The page starts with heading hierarchy, metadata, performance and internal links designed so search engines and AI assistants can understand the service."
+          },
+          {
+            "title": "More trust before contact",
+            "body": "The website presents services, context, proof of work and contact paths in a sober, professional way that works well on mobile."
+          }
+        ],
+        "whenNeeded": [
+          "You get visits or referrals, but people still ask basic questions about your service.",
+          "Your current website no longer represents your professional level or relies too much on social profiles.",
+          "You want to validate an offer, service or campaign with a clear page before investing in something larger.",
+          "You need a fast, maintainable website ready for future service pages or articles."
+        ],
         "whoFor": [
           "Freelancers and consultants who need a credible home for their work.",
           "Small businesses that want a simple site clients can understand quickly.",
@@ -923,6 +1047,11 @@
           "Shape the page structure and copy before writing code.",
           "Build the responsive site using the current stack and keep it simple.",
           "Validate build, links, metadata and mobile layout before handoff."
+        ],
+        "whyMe": [
+          "I combine copy, technical structure and development so the site is not only visually clean, but useful for selling and maintaining.",
+          "I can work with WordPress when easy editing matters or Astro when performance, control and simplicity matter more.",
+          "I keep the scope focused: first a website that explains and converts, then extra complexity if the evidence justifies it."
         ],
         "faq": [
           {
@@ -951,7 +1080,31 @@
             "Short notes on opportunities outside the agreed scope."
           ]
         },
+        "overview": [
+          "A website redesign is not about changing colors for the sake of it. It is about recovering clarity, performance and trust when an existing website no longer supports the business.",
+          "I review structure, messaging, navigation, mobile layout, calls to action and technical issues to decide what deserves attention now and what can wait for a later phase."
+        ],
         "problem": "Your website exists, but it no longer reflects the quality of your work or makes the next step obvious for visitors.",
+        "benefits": [
+          {
+            "title": "Less friction for visitors",
+            "body": "Navigation, visual hierarchy and CTAs are reorganized so the path to contact, services or useful content becomes clearer."
+          },
+          {
+            "title": "Better performance and maintenance",
+            "body": "I look for unnecessary weight, responsive issues, fragile dependencies and technical details that affect speed, stability or updates."
+          },
+          {
+            "title": "More value without a full rebuild",
+            "body": "I keep what works and focus effort on the parts that block clarity, trust or conversion."
+          }
+        ],
+        "whenNeeded": [
+          "Your website feels dated, slow or less professional than the quality of your work.",
+          "You have added sections over time and the navigation or message has become confusing.",
+          "The mobile version is weak or the calls to action are hidden.",
+          "You want better SEO, performance and conversion without starting from a blank page."
+        ],
         "whoFor": [
           "Professionals with an old personal or service website.",
           "Small teams with pages that grew without a clear structure.",
@@ -968,6 +1121,11 @@
           "Decide what to keep, remove, rewrite or reorganize.",
           "Implement the redesign without changing the identity from scratch.",
           "Run validation and document any remaining improvement opportunities."
+        ],
+        "whyMe": [
+          "I approach redesign through product and technology: messaging, structure, performance and maintenance belong together.",
+          "I do not force a full rebrand when it is not needed; I prefer concrete changes that improve experience and contact.",
+          "I can work inside an existing Astro, React or WordPress base and keep the work focused."
         ],
         "faq": [
           {
@@ -996,7 +1154,31 @@
             "Maintainable base for validating and extending in phases."
           ]
         },
+        "overview": [
+          "A custom web application makes sense when your workflow, product or internal process does not fit well inside an off-the-shelf tool.",
+          "The goal is not to build a huge platform from day one. It is to create a useful first version with the screens, data, permissions, backend and integrations needed to validate the real workflow."
+        ],
         "problem": "Off-the-shelf tools do not fit the workflow, but a large product build would be too much for the current stage.",
+        "benefits": [
+          {
+            "title": "A workflow adapted to the business",
+            "body": "The application is designed around your users, data and real decisions, not around how a generic tool expects you to work."
+          },
+          {
+            "title": "A base ready to grow",
+            "body": "I define boundaries, models and contracts carefully so the first version can evolve without becoming debt from the start."
+          },
+          {
+            "title": "Lower product risk",
+            "body": "We start with a small, verifiable version so you can learn before investing in extra modules, roles or automation."
+          }
+        ],
+        "whenNeeded": [
+          "A spreadsheet, form or SaaS tool no longer fits the real workflow.",
+          "You need to validate a product idea with users, data and a working experience.",
+          "Your team repeats operations that should live in a dedicated panel or workflow.",
+          "You want frontend, backend, database and integrations connected without hiring a large team yet."
+        ],
         "whoFor": [
           "Founders testing a focused product workflow.",
           "Teams replacing spreadsheets or manual coordination with a web app.",
@@ -1013,6 +1195,11 @@
           "Define a small first version that can be built and validated.",
           "Build iteratively with clear interfaces between frontend and backend.",
           "Validate the critical paths and leave the codebase ready to evolve."
+        ],
+        "whyMe": [
+          "I have full-stack and backend depth, so I can connect interface, data, APIs and deployment without splitting the problem into silos.",
+          "I work with small scope and explicit decisions, especially when the product is still validating its shape.",
+          "Prioritizing maintainability, permissions, errors and operation helps a useful first version avoid becoming a blocker."
         ],
         "faq": [
           {
@@ -1041,7 +1228,31 @@
             "Deployment, workflow validation and maintenance notes."
           ]
         },
+        "overview": [
+          "An internal tool is private software that helps a team work better: reviewing requests, managing data, checking statuses, importing files, generating reports or controlling an operational process.",
+          "It usually has the most value when it replaces scattered work across spreadsheets, emails and messages with a clear interface, visible rules and data in a more reliable place."
+        ],
         "problem": "Important work is handled manually across spreadsheets, messages and repeated checks, which makes errors easier and progress harder to see.",
+        "benefits": [
+          {
+            "title": "More visible operations",
+            "body": "The team can see statuses, owners, pending inputs and errors without reconstructing reality across multiple tools."
+          },
+          {
+            "title": "Fewer repeated mistakes",
+            "body": "Important rules become part of the workflow, reducing forgotten steps, duplicates and manual changes that cost time."
+          },
+          {
+            "title": "A tool shaped around the team",
+            "body": "You do not need to buy a large platform if what you need is a concrete, understandable panel connected to your data."
+          }
+        ],
+        "whenNeeded": [
+          "The team needs to know the status of each case, order, request or review.",
+          "Critical operations live in spreadsheets that are no longer easy to audit.",
+          "Several people update the same information and errors or duplicates appear.",
+          "You need a private panel before investing in a larger internal system."
+        ],
         "whoFor": [
           "Operations, support or admin teams with repeated manual work.",
           "Small companies that need a private dashboard or admin panel.",
@@ -1058,6 +1269,11 @@
           "Define the smallest useful tool with clear input and output.",
           "Build the interface, data model and backend behavior.",
           "Test the real workflow with the people who will use it."
+        ],
+        "whyMe": [
+          "I focus on internal tools that reduce real friction, not panels full of features nobody maintains.",
+          "I can model data, permissions, interface and backend in a small first version that can actually be operated.",
+          "I work with the people who will use the tool to validate the flow before calling it finished."
         ],
         "faq": [
           {
@@ -1086,7 +1302,31 @@
             "Testing with real cases and explanation of how it works."
           ]
         },
+        "overview": [
+          "Workflow automation is for making a repeatable task happen consistently: reading data, classifying it, moving it between systems, sending alerts, generating documents or triggering an action.",
+          "It can be built with APIs, webhooks, scheduled jobs, maintainable scripts or applied AI when it adds real value. The priority is for the flow to be clear, traceable and easy to correct when something fails."
+        ],
         "problem": "People are spending time on repeatable tasks that software can handle more reliably, but the workflow is too specific for a generic tool.",
+        "benefits": [
+          {
+            "title": "Measurable time savings",
+            "body": "I automate tasks with clear input and output to reduce manual hours, especially when they repeat every week."
+          },
+          {
+            "title": "More visible errors",
+            "body": "A good automation does not fail silently: it leaves logs, statuses or alerts so you know what happened and what needs review."
+          },
+          {
+            "title": "AI where it makes sense",
+            "body": "AI can classify, summarize or extract information, while human review stays in place when decisions require judgment."
+          }
+        ],
+        "whenNeeded": [
+          "You copy the same information between tools manually.",
+          "You generate reports, emails, documents or alerts with a repeated structure.",
+          "A process gets stuck because nobody sees errors until too late.",
+          "You want to test applied AI on a concrete task before redesigning the whole operation."
+        ],
         "whoFor": [
           "Teams copying data between systems by hand.",
           "Businesses that need reliable notifications, reports or generated files.",
@@ -1103,6 +1343,11 @@
           "Identify the trigger, data source, output and failure cases.",
           "Build the automation with logging and safe fallback behavior.",
           "Test it with real examples before relying on it."
+        ],
+        "whyMe": [
+          "I do not automate for the sake of it: first I identify what is repeatable and where human control should remain.",
+          "I work with APIs, webhooks, scripts, jobs and applied AI, choosing the most maintainable path for the case.",
+          "I care about visible errors, tests with real examples and explaining how the automation works so you are not depending on a black box."
         ],
         "faq": [
           {
@@ -1131,7 +1376,31 @@
             "Environment variables and notes for operating the integration."
           ]
         },
+        "overview": [
+          "An API integration connects tools so data can move between systems without manual copying, exporting or reconciliation.",
+          "It may involve consuming a third-party API, creating your own endpoints, receiving webhooks, transforming data, syncing states or exposing a small interface to supervise the flow."
+        ],
         "problem": "Your tools hold useful data, but they do not talk to each other in the way your workflow needs.",
+        "benefits": [
+          {
+            "title": "More consistent data",
+            "body": "The integration reduces duplicates, mismatches and errors when moving information across CRMs, forms, payments, internal tools or products."
+          },
+          {
+            "title": "Less manual dependency",
+            "body": "Important changes can travel through an API or webhook instead of waiting for an export or manual review."
+          },
+          {
+            "title": "Failure behavior included",
+            "body": "I define validation, retries, visible errors and limits so the integration remains operable when something external changes."
+          }
+        ],
+        "whenNeeded": [
+          "You have two or more tools with related data that do not sync well.",
+          "You need to receive webhooks, consume a third-party API or expose data to another system.",
+          "The team loses time exporting, pasting or correcting information across platforms.",
+          "A commercial or operational flow depends on payments, forms, CRM or panels being connected."
+        ],
         "whoFor": [
           "Teams connecting CRMs, forms, payments, dashboards or internal systems.",
           "Products that need to consume or expose an API.",
@@ -1148,6 +1417,11 @@
           "Define the data contract and failure behavior.",
           "Build the integration in a way that is testable and observable.",
           "Validate real requests and document how to maintain it."
+        ],
+        "whyMe": [
+          "I work on integrations from the data contract and failure cases, not only from the happy-path API call.",
+          "I can build both the backend work and the screens needed to review status, errors or synchronized data.",
+          "I document variables, limits and operational behavior so the integration stays maintainable."
         ],
         "faq": [
           {
@@ -1176,7 +1450,31 @@
             "Operational notes about errors, deployment and evolution."
           ]
         },
+        "overview": [
+          "Spring Boot backend development fits when you need reliable APIs, services or integrations on top of a maintainable Java base.",
+          "It can be a new API, an architecture improvement, an integration with external systems, a gradual migration from legacy or a focused intervention so the backend stops slowing changes down."
+        ],
         "problem": "The backend supports the business, but each change costs too much, integrations are fragile or the architecture no longer fits the product.",
+        "benefits": [
+          {
+            "title": "More reliable APIs",
+            "body": "Clear contracts, validation, controlled errors and tests reduce surprises when frontend work, integrations or clients depend on the backend."
+          },
+          {
+            "title": "Better maintainability",
+            "body": "A structure with separated responsibilities, useful tests and explicit decisions makes change easier without touching half the system."
+          },
+          {
+            "title": "Evolution in phases",
+            "body": "For legacy or live systems, I prefer focused interventions that reduce risk before large rewrites become hard to justify."
+          }
+        ],
+        "whenNeeded": [
+          "Every backend change feels risky because it can break integrations or critical flows.",
+          "You need a new API, targeted refactor or Java/Spring Boot integration with external systems.",
+          "The legacy system is starting to block product work, reliability or maintenance.",
+          "You want to improve tests, observability, contracts or deployment without stopping the business."
+        ],
         "whoFor": [
           "Teams that need to strengthen or evolve an existing Java/Spring Boot backend.",
           "Businesses with a legacy application that is starting to block changes or maintenance.",
@@ -1193,6 +1491,11 @@
           "Define a focused intervention: new API, targeted refactor, integration or phased migration.",
           "Implement with tests, useful logs and explicit decisions around errors and retries.",
           "Validate critical behavior and leave clear notes for operating or evolving the system."
+        ],
+        "whyMe": [
+          "My strongest technical base is backend work, APIs, Java, Spring Boot and systems that need to keep running in production.",
+          "I think about contracts, data, errors, deployment and maintainability, not only about closing a coding task.",
+          "I can connect the backend with frontend work, automations and integrations when the problem needs a full-stack view."
         ],
         "faq": [
           {
