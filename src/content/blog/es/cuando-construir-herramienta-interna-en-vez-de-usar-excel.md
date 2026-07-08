@@ -77,7 +77,7 @@ Eso aporta más que intentar construir un CRM completo, un ERP interno o una pla
 
 ## Cómo lo enfocaría
 
-Yo empezaría mapeando el proceso actual, no diseñando pantallas. La pregunta importante no es “qué app quieres”, sino “qué parte del trabajo se está haciendo a mano y por qué duele”.
+Yo empezaría mapeando el proceso actual, no diseñando pantallas. La pregunta importante no es "qué app quieres", sino "qué parte del trabajo se está haciendo a mano y por qué duele".
 
 Después definiría una herramienta mínima que tenga entrada, salida y límites claros. Si hace falta backend, base de datos, autenticación o integraciones API, se añaden porque el flujo lo necesita, no por costumbre.
 

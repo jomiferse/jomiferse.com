@@ -231,6 +231,7 @@ select:focus {
 
 .accent-text {
 	color: var(--accent-strong);
+	overflow-wrap: anywhere;
 }
 
 .dark .accent-text {

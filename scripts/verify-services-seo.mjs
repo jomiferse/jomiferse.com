@@ -61,6 +61,20 @@ const servicePageFiles = walkHtml(join(distPath, "es", "services"))
 	.filter((filePath) => !filePath.endsWith(join("services", "index.html")));
 const serviceRoutes = servicePageFiles.map(htmlToRoute).sort();
 const serviceRouteSet = new Set(serviceRoutes);
+const commercialLandingPairs = [
+	["/es/software-a-medida-pymes/", "/en/custom-software-small-businesses/"],
+	[
+		"/es/automatizacion-tareas-administrativas/",
+		"/en/administrative-task-automation/",
+	],
+	[
+		"/es/consultor-tecnologico-pequenas-empresas/",
+		"/en/technology-consultant-small-businesses/",
+	],
+	["/es/integracion-herramientas-negocio/", "/en/business-tools-integration/"],
+	["/es/desarrollador-freelance-espana/", "/en/freelance-developer-spain/"],
+];
+const commercialLandingRoutes = commercialLandingPairs.flat();
 const sitemap = readDist("sitemap-0.xml");
 
 if (serviceRoutes.length < 40) {
@@ -113,6 +127,9 @@ for (const route of serviceRoutes) {
 		if (!alternates[hreflang].endsWith("/")) {
 			fail(`${label}: ${hreflang} alternate lacks trailing slash`);
 		}
+	}
+	if (alternates["x-default"] !== alternates.es) {
+		fail(`${label}: x-default should point to the Spanish alternate`);
 	}
 	if (!html.includes('"@type":"Service"'))
 		fail(`${label}: missing Service schema`);
@@ -172,6 +189,106 @@ for (const route of serviceRoutes) {
 	}
 }
 
+for (const route of commercialLandingRoutes) {
+	if (!existsSync(routeToFilePath(route))) {
+		fail(`commercial landing missing: ${route}`);
+	}
+
+	const html = page(route);
+	const label = route;
+	const title = extract(html, /<title>([^<]+)<\/title>/, `${label} title`);
+	const description = extract(
+		html,
+		/<meta name="description" content="([^"]+)"/,
+		`${label} description`,
+	);
+	const canonical = extract(
+		html,
+		/<link rel="canonical" href="([^"]+)"/,
+		`${label} canonical`,
+	);
+	const h1s = extractAll(html, /<h1\b[^>]*>/g);
+	const h2s = extractAll(html, /<h2\b[^>]*>/g);
+	const alternates = Object.fromEntries(
+		extractAll(
+			html,
+			/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g,
+		).map((match) => [match[1], match[2]]),
+	);
+	const canonicalRoute = new URL(canonical).pathname;
+
+	if (title.length < 35 || title.length > 80) {
+		fail(`${label}: weak title length (${title.length})`);
+	}
+	if (description.length < 90 || description.length > 180) {
+		fail(`${label}: weak meta description length (${description.length})`);
+	}
+	if (h1s.length !== 1)
+		fail(`${label}: expected exactly one h1, found ${h1s.length}`);
+	if (h2s.length < 5) fail(`${label}: expected useful h2 structure`);
+	if (canonicalRoute !== route) {
+		fail(`${label}: canonical should be self-referencing`);
+	}
+	if (!canonical.endsWith("/")) {
+		fail(`${label}: canonical lacks trailing slash`);
+	}
+	for (const hreflang of ["en", "es", "x-default"]) {
+		if (!alternates[hreflang]) fail(`${label}: missing ${hreflang} alternate`);
+		if (!alternates[hreflang].endsWith("/")) {
+			fail(`${label}: ${hreflang} alternate lacks trailing slash`);
+		}
+	}
+	if (alternates["x-default"] !== alternates.es) {
+		fail(`${label}: x-default should point to the Spanish alternate`);
+	}
+	if (!html.includes('"@type":"Service"')) {
+		fail(`${label}: missing Service schema`);
+	}
+	if (!html.includes('"@type":"FAQPage"')) {
+		fail(`${label}: missing FAQPage schema`);
+	}
+	if (!html.includes('"@type":"BreadcrumbList"')) {
+		fail(`${label}: missing BreadcrumbList schema`);
+	}
+	for (const requiredText of [
+		route.startsWith("/es/") ? "Problema que resuelve" : "Problem it solves",
+		route.startsWith("/es/") ? "Cuándo merece la pena" : "When it is worth it",
+		route.startsWith("/es/") ? "Servicios relacionados" : "Related services",
+	]) {
+		assertIncludes(html, requiredText, label);
+	}
+	for (const [, rawHref] of extractAll(html, /<a\b[^>]*href="([^"]+)"/g)) {
+		const linkedRoute = toRoute(rawHref);
+		if (!linkedRoute) continue;
+		if (!existsSync(routeToFilePath(linkedRoute))) {
+			fail(`${label}: broken internal link ${rawHref}`);
+		}
+	}
+	assertIncludes(sitemap, `<loc>${site}${route}</loc>`, "sitemap");
+}
+
+for (const [esRoute, enRoute] of commercialLandingPairs) {
+	const esAlternates = Object.fromEntries(
+		extractAll(
+			page(esRoute),
+			/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g,
+		).map((match) => [match[1], match[2]]),
+	);
+	const enAlternates = Object.fromEntries(
+		extractAll(
+			page(enRoute),
+			/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g,
+		).map((match) => [match[1], match[2]]),
+	);
+
+	if (new URL(esAlternates.en).pathname !== enRoute) {
+		fail(`${esRoute}: English alternate should be ${enRoute}`);
+	}
+	if (new URL(enAlternates.es).pathname !== esRoute) {
+		fail(`${enRoute}: Spanish alternate should be ${esRoute}`);
+	}
+}
+
 const serviceHub = page("/es/services/");
 for (const serviceName of [
 	"Diseño web WordPress",
@@ -191,10 +308,26 @@ for (const serviceName of [
 	);
 }
 
+for (const route of commercialLandingRoutes) {
+	const hubRoute = route.startsWith("/es/") ? "/es/services/" : "/en/services/";
+	assertIncludes(page(hubRoute), `href="${route}"`, `${hubRoute} landing link`);
+}
+
 const root = page("/");
 assertIncludes(root, 'href="https://www.jomiferse.com/es/"', "root hreflang");
+assertIncludes(
+	root,
+	'<link rel="canonical" href="https://www.jomiferse.com/es/"',
+	"root canonical",
+);
+assertIncludes(
+	root,
+	'<link rel="alternate" hreflang="x-default" href="https://www.jomiferse.com/es/"',
+	"root x-default",
+);
 assertIncludes(root, 'href="/es/services/"', "root service link");
 assertIncludes(root, 'href="/en/services/"', "root service link");
+assertExcludes(sitemap, `<loc>${site}/</loc>`, "sitemap");
 
 for (const canonicalService of [
 	"https://www.jomiferse.com/es/services/diseno-web-wordpress/",
@@ -220,5 +353,5 @@ for (const duplicateService of [
 }
 
 console.warn(
-	`Service SEO output checks passed for ${serviceRoutes.length} pages.`,
+	`Service SEO output checks passed for ${serviceRoutes.length} service pages and ${commercialLandingRoutes.length} commercial landings.`,
 );

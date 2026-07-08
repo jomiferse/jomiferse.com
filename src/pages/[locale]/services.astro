@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ServicesExitIntent from "@/components/common/ServicesExitIntent.astro";
+import { getCommercialLandingPages } from "@/lib/commercial-landings";
 import { getServiceGroups, getServicePages } from "@/lib/services";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import {
@@ -19,13 +20,14 @@ const { locale } = Astro.params;
 const cv = getCv(locale);
 const services = getServicePages(locale);
 const serviceGroups = getServiceGroups(locale);
+const commercialLandings = getCommercialLandingPages(locale);
 const page = getTranslations(locale).services.hub;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const contactHref = `/${locale}/contact`;
 const exitIntentWhatsappMessage =
 	locale === "es"
-		? "Hola José Miguel, estaba revisando tus servicios y me gustaría contarte mi caso."
-		: "Hi José Miguel, I was reviewing your services and would like to tell you about my case.";
+		? "Hola José Miguel, estoy revisando tus servicios y me gustaría comentarte mi caso."
+		: "Hi José Miguel, I am reviewing your services and would like to tell you about my case.";
 const exitIntentWhatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
 	exitIntentWhatsappMessage,
 )}`;
@@ -50,6 +52,20 @@ const keywords =
 				"API Integrations",
 				"Freelance Full-Stack Developer",
 			];
+const commercialLandingCopy =
+	locale === "es"
+		? {
+				eyebrow: "Búsquedas concretas",
+				title: "Páginas para problemas concretos",
+				intro:
+					"Algunas necesidades no empiezan con el nombre técnico del servicio, sino con un problema claro: ordenar un proceso, automatizar tareas o decidir mejor antes de invertir.",
+			}
+		: {
+				eyebrow: "Specific searches",
+				title: "Pages for concrete problems",
+				intro:
+					"Some needs do not start with the technical name of the service. They start with a clear problem: organizing a workflow, automating tasks or making a better decision before investing.",
+			};
 const structuredData = [
 	buildProfessionalService({
 		site,
@@ -227,6 +243,40 @@ const structuredData = [
 							</div>
 						</div>
 					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16 md:py-24">
+		<div class="mb-10 max-w-3xl">
+			<p class="eyebrow">{commercialLandingCopy.eyebrow}</p>
+			<h2
+				class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+			>
+				{commercialLandingCopy.title}
+			</h2>
+			<p class="muted-copy mt-5 text-lg leading-8">
+				{commercialLandingCopy.intro}
+			</p>
+		</div>
+		<div class="stagger-children grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+			{
+				commercialLandings.map((landing) => (
+					<a
+						href={`/${locale}/${landing.slug}/`}
+						class="group rounded-lg border border-[var(--surface-border)] bg-[var(--surface)] p-5 transition hover:-translate-y-0.5 hover:border-[var(--accent-line)] md:p-6"
+					>
+						<p class="text-sm font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
+							{landing.eyebrow}
+						</p>
+						<h3 class="mt-4 text-xl font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] dark:group-hover:text-[var(--accent)]">
+							{landing.title}
+						</h3>
+						<p class="muted-copy mt-3 text-sm leading-6">
+							{landing.metaDescription}
+						</p>
+					</a>
 				))
 			}
 		</div>

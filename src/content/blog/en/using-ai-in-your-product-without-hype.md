@@ -53,7 +53,7 @@ That is a good place for AI if your product has:
 - user-generated content
 - lots of support history
 
-A decent search layer that understands intent is often more valuable than a “smart assistant” that talks a lot and finds little.
+A decent search layer that understands intent is often more valuable than a "smart assistant" that talks a lot and finds little.
 
 ### Repetitive workflows
 
@@ -92,7 +92,7 @@ There are also situations where AI sounds clever on paper and expensive in real 
 
 ### When the problem is not clear
 
-“Let’s add AI” is not a product strategy. Quite often, it means the team has not defined the problem well enough.
+"Add AI" is not a product strategy. Quite often, it means the team has not defined the problem well enough.
 
 Before building anything, ask:
 
@@ -144,7 +144,7 @@ If the answer to most of these is no, I would not ship AI just to say the produc
 
 The best way to test AI in a product is to keep the first version tiny.
 
-Do not build the “ultimate assistant”. Build the smallest useful thing.
+Do not build the "ultimate assistant". Build the smallest useful thing.
 
 A practical rollout looks more like this:
 
@@ -160,7 +160,7 @@ That approach is less exciting than a giant launch, but it gives you a cleaner s
 
 A lot of AI features get judged by the wrong metric.
 
-“People tried it” is not enough.
+"People tried it" is not enough.
 
 Better metrics are:
 

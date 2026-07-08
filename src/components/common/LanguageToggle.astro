@@ -7,7 +7,7 @@ interface Props {
 	href?: string;
 }
 
-const { locale = "en", href } = Astro.props as Props;
+const { locale = "es", href } = Astro.props as Props;
 
 const path = Astro.url.pathname;
 const suffix = path.replace(/^\/(en|es)(?=\/|$)/, "") || "";

@@ -2,19 +2,19 @@
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 ---
 
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>
-			Jose Miguel Fernandez | Freelance web, automation and backend services
+			José Miguel Fernández | Desarrollo web freelance, automatización y backend
 		</title>
 		<meta
 			name="description"
-			content="Choose English or Spanish to view freelance services for web design, WordPress, automation, API integrations and backend development."
+			content="Desarrollador full-stack freelance en España para desarrollo web, WordPress, automatización, integraciones API y backend Spring Boot."
 		/>
 		<meta name="robots" content="index,follow" />
-		<link rel="canonical" href={new URL("/", site).toString()} />
+		<link rel="canonical" href={new URL("/es/", site).toString()} />
 		<link
 			rel="alternate"
 			hreflang="en"
@@ -28,36 +28,34 @@ const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 		<link
 			rel="alternate"
 			hreflang="x-default"
-			href={new URL("/", site).toString()}
+			href={new URL("/es/", site).toString()}
 		/>
 	</head>
 	<body>
 		<main>
-			<h1>Jose Miguel Fernandez</h1>
+			<h1>José Miguel Fernández</h1>
 			<p>
-				Freelance full-stack developer for web design, WordPress, automation,
-				API integrations and backend development.
+				Desarrollador full-stack freelance para desarrollo web, WordPress,
+				automatización, integraciones API y backend Spring Boot.
 			</p>
-			<nav aria-label="Language selection">
+			<nav aria-label="Seleccion de idioma">
 				<ul>
+					<li><a href="/es/">Español</a></li>
+					<li><a href="/es/services/">Servicios en español</a></li>
 					<li><a href="/en/">English</a></li>
-					<li><a href="/es/">Espanol</a></li>
 					<li><a href="/en/services/">Services in English</a></li>
-					<li><a href="/es/services/">Servicios en espanol</a></li>
 				</ul>
 			</nav>
 		</main>
 
 		<script>
-			const storedLang = localStorage.getItem("lang");
-			const lang = storedLang === "es" ? "es" : "en";
-			window.location.replace(`/${lang}`);
+			window.location.replace("/es/");
 		</script>
 
 		<noscript>
 			<p>
-				<a href="/en/">Continue in English</a> or
-				<a href="/es/">ver en espanol</a>.
+				<a href="/es/">Continuar en español</a> or
+				<a href="/en/">continue in English</a>.
 			</p>
 		</noscript>
 	</body>

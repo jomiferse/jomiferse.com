@@ -53,7 +53,7 @@ Ahí la IA sí puede encajar si tu producto tiene:
 - contenido generado por usuarios
 - mucho histórico de soporte
 
-Una capa de búsqueda decente que entienda intención suele ser más valiosa que un “asistente inteligente” que habla mucho y encuentra poco.
+Una capa de búsqueda decente que entienda intención suele ser más valiosa que un "asistente inteligente" que habla mucho y encuentra poco.
 
 ### Flujos repetitivos
 
@@ -92,7 +92,7 @@ También hay casos en los que la IA suena genial en una slide y carísima en pro
 
 ### Cuando el problema no está claro
 
-“Vamos a meter IA” no es una estrategia de producto. Muchas veces significa que el equipo todavía no ha definido bien el problema.
+"Vamos a meter IA" no es una estrategia de producto. Muchas veces significa que el equipo todavía no ha definido bien el problema.
 
 Antes de construir nada, pregunta:
 
@@ -138,13 +138,13 @@ A mí me sirve este filtro básico:
 4. ¿Podemos medir tiempo ahorrado o reducción de errores?
 5. ¿Hay una solución más simple que ya funcione?
 
-Si la respuesta a la mayoría es no, no metería IA solo para poder decir que el producto “tiene IA”.
+Si la respuesta a la mayoría es no, no metería IA solo para poder decir que el producto "tiene IA".
 
 ## Empieza pequeño
 
 La mejor forma de probar IA en un producto es mantener la primera versión pequeña.
 
-No construyas el “asistente definitivo”. Construye la versión mínima útil.
+No construyas el "asistente definitivo". Construye la versión mínima útil.
 
 Un lanzamiento sensato se parece más a esto:
 
@@ -160,7 +160,7 @@ Es menos espectacular que un gran lanzamiento, sí, pero también mucho más hon
 
 Muchas funciones de IA se juzgan con la métrica equivocada.
 
-“Lo probó gente” no basta.
+"Lo probó gente" no basta.
 
 Métricas mejores son:
 

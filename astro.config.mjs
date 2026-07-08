@@ -76,6 +76,7 @@ export default defineConfig({
 				const pathname = new URL(page, siteUrl).pathname;
 
 				return (
+					pathname !== "/" &&
 					!pathname.startsWith("/api/") &&
 					!pathname.startsWith("/_astro/") &&
 					!pathname.startsWith("/drafts/") &&
@@ -91,7 +92,7 @@ export default defineConfig({
 	adapter: vercel(),
 	i18n: {
 		locales: ["es", "en"],
-		defaultLocale: "en",
+		defaultLocale: "es",
 	},
 	darkMode: "class",
 });

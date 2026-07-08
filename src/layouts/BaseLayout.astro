@@ -54,6 +54,7 @@ const buildAlternateUrl = (loc: Locale) => {
 
 const alternateEn = buildAlternateUrl("en");
 const alternateEs = buildAlternateUrl("es");
+const defaultAlternate = alternateEs;
 const otherLocale: Locale = locale === "en" ? "es" : "en";
 const languageHref = alternatePaths?.[otherLocale];
 const ogImage = Astro.site ? new URL(image, Astro.site).toString() : image;
@@ -150,7 +151,7 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		<link rel="canonical" href={canonicalUrl} />
 		<link rel="alternate" hreflang="en" href={alternateEn} />
 		<link rel="alternate" hreflang="es" href={alternateEs} />
-		<link rel="alternate" hreflang="x-default" href={alternateEn} />
+		<link rel="alternate" hreflang="x-default" href={defaultAlternate} />
 
 		<meta property="og:type" content={ogType} />
 		<meta property="og:title" content={title} />

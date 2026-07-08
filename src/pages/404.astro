@@ -119,7 +119,7 @@ const page = notFoundCopy.en;
 			}, source);
 		};
 
-		const locale = window.location.pathname.startsWith("/es") ? "es" : "en";
+		const locale = window.location.pathname.startsWith("/en") ? "en" : "es";
 		const strings = notFoundCopy[locale];
 
 		document.documentElement.lang = locale;

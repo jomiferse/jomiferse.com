@@ -13,8 +13,8 @@ const isLocale = (v: string): v is Locale => v === "en" || v === "es";
 export const POST: APIRoute = async ({ request }) => {
 	const form = await request.formData();
 
-	const localeRaw = String(form.get("locale") ?? "en");
-	const locale: Locale = isLocale(localeRaw) ? localeRaw : "en";
+	const localeRaw = String(form.get("locale") ?? "es");
+	const locale: Locale = isLocale(localeRaw) ? localeRaw : "es";
 	const cv = getCv(locale);
 
 	const name = String(form.get("name") ?? "").trim();

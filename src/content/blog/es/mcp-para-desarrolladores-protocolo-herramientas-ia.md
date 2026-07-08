@@ -12,7 +12,7 @@ tags: [mcp, ia-coding, claude-code, codex, cursor, productividad-desarrollador]
 
 Lo interesante de MCP no es el acrónimo. Es el cambio que sugiere.
 
-La conversación ya no va tanto de “qué editor con IA uso” como de “cómo conecto estas herramientas con el resto de mi stack sin montar pegamento frágil cada vez”. Esa es una pregunta mucho más útil, sobre todo si trabajas como full-stack developer.
+La conversación ya no va tanto de "qué editor con IA uso" como de "cómo conecto estas herramientas con el resto de mi stack sin montar pegamento frágil cada vez". Esa es una pregunta mucho más útil, sobre todo si trabajas como full-stack developer.
 
 Para mí, MCP para desarrolladores importa porque casi todo el trabajo real vive entre sistemas. Construimos la API, luego el panel, luego la automatización, luego las herramientas internas que mantienen el negocio en marcha. Un protocolo compartido puede hacer menos dolorosa esa capa intermedia.
 

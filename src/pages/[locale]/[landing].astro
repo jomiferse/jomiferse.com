@@ -1,0 +1,331 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import {
+	getCommercialLanding,
+	getCommercialLandingAlternatePaths,
+	getCommercialLandingPages,
+} from "@/lib/commercial-landings";
+import { getServicePages } from "@/lib/services";
+import { locales, t, type Locale } from "@/i18n";
+import { getCv } from "@cv";
+import { buildBreadcrumbList, buildFaqPage, buildServicePage } from "@/lib/seo";
+
+export function getStaticPaths() {
+	return locales.flatMap((locale) =>
+		getCommercialLandingPages(locale).map((page) => ({
+			params: { locale, landing: page.slug },
+		})),
+	);
+}
+
+const locale = Astro.params.locale as Locale;
+const slug = Astro.params.landing ?? "";
+const page = getCommercialLanding(locale, slug);
+if (!page) throw new Error(`Commercial landing not found: ${locale}/${slug}`);
+
+const cv = getCv(locale);
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const landingPath = `/${locale}/${page.slug}/`;
+const alternatePaths = getCommercialLandingAlternatePaths(locale, page);
+const servicePages = getServicePages(locale);
+const contactHref = `/${locale}/contact/`;
+const servicesHref = `/${locale}/services/`;
+const relatedServices = page.relatedServiceKeys
+	.map((key) => servicePages.find((service) => service.translationKey === key))
+	.filter((service): service is (typeof servicePages)[number] =>
+		Boolean(service),
+	);
+const getServiceHref = (service: (typeof servicePages)[number]) =>
+	service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
+const structuredData = [
+	buildServicePage({
+		site,
+		path: landingPath,
+		name: page.title,
+		description: page.metaDescription,
+		providerName: cv.name,
+		providerUrl: new URL(`/${locale}/`, site).toString(),
+		areaServed: page.schema.areaServed,
+		audience: page.schema.audience,
+		serviceType: page.schema.serviceType,
+		sameAs: [cv.links.linkedin, cv.links.github],
+	}),
+	buildFaqPage(page.faq),
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}/` },
+		{ name: page.title, path: landingPath },
+	]),
+];
+---
+
+<BaseLayout
+	title={page.metaTitle}
+	description={page.metaDescription}
+	canonicalPath={landingPath}
+	alternatePaths={alternatePaths}
+	structuredData={structuredData}
+	keywords={page.keywords}
+>
+	<section class="section-reveal py-10 md:py-20">
+		<p class="eyebrow">{page.eyebrow}</p>
+		<h1
+			class="mt-5 max-w-5xl text-4xl leading-[1.04] font-black text-[var(--text)] sm:text-5xl md:text-7xl"
+		>
+			{page.title}
+		</h1>
+		<p class="muted-copy mt-6 max-w-3xl text-lg leading-8">
+			{page.intro}
+		</p>
+		<div class="mt-9 flex flex-col gap-3 sm:flex-row">
+			<a href={contactHref} class="button-primary w-full sm:w-auto">
+				{page.primaryCta}
+				<Icon name="arrow-right" class="h-4 w-4" />
+			</a>
+			<a href="#related-services" class="button-secondary w-full sm:w-auto">
+				{page.secondaryCta}
+			</a>
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16 md:py-24">
+		<div class="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+			<div>
+				<p class="eyebrow">{page.problem.eyebrow}</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.problem.title}
+				</h2>
+			</div>
+			<div class="space-y-5 text-lg leading-8 text-[var(--text-muted)]">
+				{page.problem.body.map((paragraph) => <p>{paragraph}</p>)}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 md:py-24">
+		<div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+			<div>
+				<p class="eyebrow">
+					{locale === "es" ? "Decisión de inversión" : "Investment decision"}
+				</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.whenWorthIt.title}
+				</h2>
+			</div>
+			<div class="grid gap-3">
+				{
+					page.whenWorthIt.items.map((item) => (
+						<div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-strong)] p-4 text-[var(--text-muted)] dark:bg-white/[0.03]">
+							<span class="mr-3 text-[var(--accent-strong)] dark:text-[var(--accent)]">
+								✓
+							</span>
+							{item}
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 md:py-24">
+		<div class="mb-10 max-w-3xl">
+			<p class="eyebrow">
+				{locale === "es" ? "Trabajo frecuente" : "Frequent work"}
+			</p>
+			<h2
+				class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+			>
+				{page.cases.title}
+			</h2>
+			<p class="muted-copy mt-5 text-lg leading-8">{page.cases.intro}</p>
+		</div>
+		<div class="stagger-children grid gap-4 md:grid-cols-2">
+			{
+				page.cases.items.map((item) => (
+					<article class="dark-card p-5 md:p-6">
+						<h3 class="text-xl font-black text-[var(--text)]">{item.title}</h3>
+						<p class="muted-copy mt-4 leading-7">{item.body}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16 md:py-24">
+		<div class="grid gap-10 lg:grid-cols-2">
+			<article>
+				<p class="eyebrow">
+					{locale === "es" ? "Alcance posible" : "Possible scope"}
+				</p>
+				<h2 class="mt-4 text-3xl font-black text-[var(--text)] md:text-4xl">
+					{page.builds.title}
+				</h2>
+				<ul class="mt-7 space-y-4">
+					{
+						page.builds.items.map((item) => (
+							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+									✓
+								</span>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</article>
+
+			<article>
+				<p class="eyebrow">
+					{locale === "es" ? "Criterio de trabajo" : "Working criteria"}
+				</p>
+				<h2 class="mt-4 text-3xl font-black text-[var(--text)] md:text-4xl">
+					{page.avoid.title}
+				</h2>
+				<ul class="mt-7 space-y-4">
+					{
+						page.avoid.items.map((item) => (
+							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
+								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
+									•
+								</span>
+								<span>{item}</span>
+							</li>
+						))
+					}
+				</ul>
+			</article>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 md:py-24">
+		<p class="eyebrow">
+			{locale === "es" ? "Ejecución" : "Execution"}
+		</p>
+		<h2
+			class="mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+		>
+			{page.process.title}
+		</h2>
+		<div class="stagger-children mt-8 grid gap-4 md:grid-cols-4">
+			{
+				page.process.steps.map((step, index) => (
+					<article class="dark-card p-5">
+						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
+							{String(index + 1).padStart(2, "0")}
+						</p>
+						<p class="mt-5 leading-7 text-[var(--text-muted)]">{step}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section
+		id="related-services"
+		class="section-band section-reveal py-16 md:py-24"
+	>
+		<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+			<div>
+				<p class="eyebrow">
+					{locale === "es" ? "Siguiente paso" : "Next step"}
+				</p>
+				<h2
+					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				>
+					{page.relatedServicesTitle}
+				</h2>
+			</div>
+			<div class="grid gap-3 sm:grid-cols-2">
+				{
+					relatedServices.map((service) => (
+						<a
+							href={getServiceHref(service)}
+							class="group rounded-lg border border-[var(--surface-border)] bg-[var(--surface-strong)] p-4 transition hover:-translate-y-0.5 hover:border-[var(--accent-line)] dark:bg-white/[0.03]"
+						>
+							<h3 class="text-lg font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] dark:group-hover:text-[var(--accent)]">
+								{service.shortTitle}
+							</h3>
+							<p class="muted-copy mt-2 text-sm leading-6">
+								{service.description}
+							</p>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 md:py-24">
+		<div
+			class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
+		>
+			<div>
+				<p class="eyebrow">
+					{locale === "es" ? "Contexto útil" : "Useful context"}
+				</p>
+				<h2 class="mt-4 text-3xl font-black text-[var(--text)] md:text-5xl">
+					{page.relatedPostsTitle}
+				</h2>
+			</div>
+			<a href={`/${locale}/blog/`} class="button-secondary w-fit">
+				{locale === "es" ? "Ver blog" : "View blog"}
+			</a>
+		</div>
+		<div class="stagger-children grid gap-4 md:grid-cols-3">
+			{
+				page.relatedPosts.map((post) => (
+					<a href={post.href} class="dark-card hover-card p-5 md:p-6">
+						<h3 class="text-xl font-black text-[var(--text)]">{post.title}</h3>
+						<p class="muted-copy mt-4 text-sm leading-6">{post.description}</p>
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-band section-reveal py-16 md:py-24">
+		<h2 class="text-3xl font-black text-[var(--text)] md:text-5xl">
+			{locale === "es" ? "Preguntas frecuentes" : "Frequently asked questions"}
+		</h2>
+		<div class="mt-8 grid gap-4 md:grid-cols-2">
+			{
+				page.faq.map((item) => (
+					<article class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface)] p-6">
+						<h3 class="text-xl font-black text-[var(--text)]">
+							{item.question}
+						</h3>
+						<p class="muted-copy mt-4 leading-7">{item.answer}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="section-reveal py-16 text-center md:py-28">
+		<div class="dark-card px-5 py-12 sm:px-8 md:py-16">
+			<p class="eyebrow">{page.cta.eyebrow}</p>
+			<h2
+				class="mx-auto mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-6xl"
+			>
+				{page.cta.title}
+			</h2>
+			<p
+				class="muted-copy mx-auto mt-5 max-w-xl text-base leading-8 md:text-lg"
+			>
+				{page.cta.text}
+			</p>
+			<div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+				<a href={contactHref} class="button-primary w-full sm:w-auto">
+					{page.cta.button}
+				</a>
+				<a href={servicesHref} class="button-secondary w-full sm:w-auto">
+					{locale === "es" ? "Ver todos los servicios" : "View all services"}
+				</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

@@ -9,7 +9,7 @@ translationSlug: "rendimiento-spring-boot-cambios-que-de-verdad-se-notan"
 tags: [spring-boot, java, performance, backend, observability]
 ---
 
-If a Spring Boot app feels slow, the answer is usually not “add more framework stuff”. It is almost always “find the real bottleneck first, then change the smallest thing that actually matters”.
+If a Spring Boot app feels slow, the answer is usually not "add more framework stuff". It is almost always "find the real bottleneck first, then change the smallest thing that actually matters".
 
 That sounds obvious, but a lot of performance work still starts with vibes: someone spots slow requests, someone else raises a pool size, and suddenly the system is more complicated without being faster.
 
@@ -103,7 +103,7 @@ Bad candidates:
 - code that depends on shared mutable state without a plan
 - anything where you are using async just to feel modern
 
-Spring Framework’s `@Async` support is straightforward, but it should be backed by a real executor strategy, not wishful thinking.
+Spring Framework's `@Async` support is straightforward, but it should be backed by a real executor strategy, not wishful thinking.
 
 ```java
 @Configuration
@@ -121,7 +121,7 @@ class NotificationService {
 }
 ```
 
-The useful tuning question is not “can I make this async?” It is “should this work leave the request thread at all?”
+The useful tuning question is not "can I make this async?" It is "should this work leave the request thread at all?"
 
 If the answer is yes, async can help a lot.
 
@@ -131,7 +131,7 @@ If the answer is no, async can make the system harder to reason about and slower
 
 A surprising amount of Spring Boot performance work is really database work.
 
-If your app spends time waiting for database connections, the fix is not always “increase the pool”. Sometimes the real issue is:
+If your app spends time waiting for database connections, the fix is not always "increase the pool". Sometimes the real issue is:
 
 - slow queries
 - too many concurrent requests
@@ -244,8 +244,8 @@ If you care about diagnosing performance with less guesswork, yes. You do not ne
 
 ## Sources and verification notes
 
-- Spring Boot caching docs — https://docs.spring.io/spring-boot/reference/io/caching.html
-- Spring Boot production-ready features / Actuator — https://docs.spring.io/spring-boot/reference/actuator/index.html
-- Spring Boot SQL / datasource pool selection — https://docs.spring.io/spring-boot/reference/data/sql.html
-- Spring Framework `@Async` — https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/annotation/Async.html
-- Spring MVC async programming model — https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-ann-async.html
+- Spring Boot caching docs - https://docs.spring.io/spring-boot/reference/io/caching.html
+- Spring Boot production-ready features / Actuator - https://docs.spring.io/spring-boot/reference/actuator/index.html
+- Spring Boot SQL / datasource pool selection - https://docs.spring.io/spring-boot/reference/data/sql.html
+- Spring Framework `@Async` - https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/annotation/Async.html
+- Spring MVC async programming model - https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-ann-async.html

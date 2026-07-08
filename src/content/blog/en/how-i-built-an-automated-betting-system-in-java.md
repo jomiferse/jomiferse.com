@@ -1,6 +1,6 @@
 ---
-title: "How I Built an Automated Betting System in Java"
-description: "How I built BetX, an automated betting system in Java and Spring Boot, using Hexagonal Architecture, backtesting, paper trading, and clear risk controls."
+title: "How I built an automated betting system in Java"
+description: "Notes on building BetX, an automated betting system in Java and Spring Boot with Hexagonal Architecture, backtesting, paper trading and risk controls."
 date: 2026-06-22
 translationSlug: "como-construi-un-sistema-automatizado-de-apuestas-en-java"
 tags:
@@ -13,15 +13,15 @@ author: "José Miguel Fernández"
 readingTime: "8 min"
 ---
 
-## Introduction
+## Why I built BetX
 
-Building an automated betting system is an interesting **Software Engineering** challenge because it looks simple from the outside and becomes complex as soon as you treat it seriously. Collecting odds and applying a rule is easy. Building a system that can explain a recommendation, simulate it, reject it for risk reasons, and later reproduce the decision is a different problem.
+Building an automated betting system is a good software engineering challenge because it looks simple from the outside and gets complex as soon as you treat it seriously. Collecting odds and applying a rule is easy. Building a system that can explain a recommendation, simulate it, reject it for risk reasons and later reproduce the decision is a different problem.
 
-That is why I built **BetX**, a personal project focused on the engineering side of betting automation. It is not a gambling promotion project and it does not promise profitability. The goal was to build an **Automated Betting System** in **Java** that could scan markets, detect possible value, generate recommendations, run **Backtesting**, simulate decisions with paper trading, track CLV, and stay maintainable as the platform grows.
+That is why I built BetX, a personal project focused on the engineering side of betting automation. It is not a gambling promotion project and it does not promise profitability. The goal was to build an automated betting system in Java that could scan markets, detect possible value, generate recommendations, run backtesting, simulate decisions with paper trading, track CLV and stay maintainable as the project grows.
 
 [![BetX hexagonal architecture diagram showing domain, application layer, adapters, persistence, Telegram, testing, Docker, and future exchange integrations](/images/blog/betx-hexagonal-architecture.svg)](/images/blog/betx-hexagonal-architecture.svg)
 
-## The Problem
+## The hard part
 
 The hard part is not writing a strategy. The hard part is making that strategy operate in a changing environment without losing context.
 
@@ -68,7 +68,7 @@ I chose **Java 21** and **Spring Boot** because BetX behaves like a backend serv
 
 Python would have been faster for a prototype, but speed was not the only goal. I wanted a maintainable backend that could grow from local persistence to future exchange adapters, queue-based processing, and stronger analytics.
 
-## System Architecture
+## System architecture
 
 BetX follows **Hexagonal Architecture**, also known as ports and adapters. The domain and application logic live in the center. Databases, APIs, Telegram, schedulers, and future exchanges stay outside.
 

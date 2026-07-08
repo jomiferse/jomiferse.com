@@ -7,7 +7,7 @@ export type Locale = (typeof locales)[number];
 const dict = { en, es } as const;
 
 export function getLocaleFromPath(pathname: string): Locale {
-	return pathname.startsWith("/es") ? "es" : "en";
+	return pathname.startsWith("/en") ? "en" : "es";
 }
 
 export const getLocaleStaticPaths = () =>

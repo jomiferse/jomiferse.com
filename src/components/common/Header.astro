@@ -23,7 +23,7 @@ interface Props {
 	languageHref?: string;
 }
 
-const { locale = "en", languageHref } = Astro.props as Props;
+const { locale = "es", languageHref } = Astro.props as Props;
 
 const normalizePath = (path: string) =>
 	path === "/" ? "/" : path.replace(/\/$/, "");

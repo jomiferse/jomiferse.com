@@ -70,7 +70,7 @@ That creates more value than trying to build a full CRM, internal ERP or operati
 
 ## How I would approach it
 
-I would start by mapping the current process, not by designing screens. The important question is not “what app do you want?”, but “which part of the work is manual and why does it hurt?”
+I would start by mapping the current process, not by designing screens. The important question is not "what app do you want?", but "which part of the work is manual and why does it hurt?"
 
 Then I would define the smallest useful tool with clear inputs, outputs and boundaries. If the workflow needs a backend, database, authentication or API integrations, those pieces are added because the workflow requires them, not by habit.
 

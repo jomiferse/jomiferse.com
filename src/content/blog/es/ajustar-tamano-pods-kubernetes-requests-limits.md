@@ -99,7 +99,7 @@ Esto no es una respuesta universal. Es solo un arranque razonable. No merece los
 
 ## Errores que veo todo el rato
 
-### 1. Dejar requests y limits iguales “porque queda limpio”
+### 1. Dejar requests y limits iguales "porque queda limpio"
 
 Visualmente queda bonito. En operación, muchas veces es demasiado rígido.
 
@@ -115,7 +115,7 @@ Un servicio puede tener una CPU media muy tranquila y aun así sufrir picos p95 
 
 La memoria no es un recurso elástico y bonito.
 
-Si la dimensionas demasiado corta, no solo “usas menos”. Puedes provocar presión de GC, churn de caché o un `OOMKilled`.
+Si la dimensionas demasiado corta, no solo "usas menos". Puedes provocar presión de GC, churn de caché o un `OOMKilled`.
 
 ### 4. Poner los mismos valores a todo
 
@@ -145,7 +145,7 @@ Además, en versiones recientes Kubernetes ya soporta **recursos a nivel de Pod*
 
 Si tuviera que ajustar un servicio esta semana, haría esto:
 
-1. Sacar los últimos 7–14 días de CPU y memoria.
+1. Sacar los últimos 7-14 días de CPU y memoria.
 2. Mirar p95 y p99, no solo promedios.
 3. Comparar uso real con `request`, `limit` y `throttling`.
 4. Revisar reinicios, `OOMKilled` y saltos de latencia.
@@ -153,7 +153,7 @@ Si tuviera que ajustar un servicio esta semana, haría esto:
 6. Probarlo con tráfico realista.
 7. Dejar escrito por qué existen esos números.
 
-Ese último punto importa más de lo que parece. Si nadie sabe por qué se eligieron los valores, volverás al modo “a ojo” dentro de dos meses.
+Ese último punto importa más de lo que parece. Si nadie sabe por qué se eligieron los valores, volverás al modo "a ojo" dentro de dos meses.
 
 ## Checklist rápido
 
@@ -173,7 +173,7 @@ Si quieres una regla sencilla, piensa así:
 - **Request** = lo que el servicio necesita
 - **Limit** = el borde que protege al resto del sistema
 
-El error es usar ambos solo para “dejar contento a Kubernetes”. Kubernetes ya está contento. Los que importan son tus usuarios: quieren que el servicio vaya rápido, estable y sin sorpresas en la factura.
+El error es usar ambos solo para "dejar contento a Kubernetes". Kubernetes ya está contento. Los que importan son tus usuarios: quieren que el servicio vaya rápido, estable y sin sorpresas en la factura.
 
 ## Conclusión
 
@@ -204,8 +204,8 @@ No. HPA escala réplicas. No arregla malos `requests` ni malos límites de memor
 
 ## Fuentes y verificación
 
-- Kubernetes: Resource Management for Pods and Containers — https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-- Kubernetes: Assign CPU Resources to Containers and Pods — https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
-- Kubernetes: Vertical Pod Autoscaling — https://kubernetes.io/docs/concepts/workloads/autoscaling/vertical-pod-autoscale/
-- Kubernetes: Assign Pod-level CPU and memory resources — https://kubernetes.io/docs/tasks/configure-pod-container/assign-pod-level-resources/
-- Kubernetes blog: v1.36 in-place vertical scaling for pod-level resources — https://kubernetes.io/blog/2026/04/30/kubernetes-v1-36-inplace-pod-level-resources-beta/
+- Kubernetes: Resource Management for Pods and Containers - https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+- Kubernetes: Assign CPU Resources to Containers and Pods - https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
+- Kubernetes: Vertical Pod Autoscaling - https://kubernetes.io/docs/concepts/workloads/autoscaling/vertical-pod-autoscale/
+- Kubernetes: Assign Pod-level CPU and memory resources - https://kubernetes.io/docs/tasks/configure-pod-container/assign-pod-level-resources/
+- Kubernetes blog: v1.36 in-place vertical scaling for pod-level resources - https://kubernetes.io/blog/2026/04/30/kubernetes-v1-36-inplace-pod-level-resources-beta/
