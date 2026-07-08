@@ -24,23 +24,21 @@ const title = serviceTitle
 
 <dialog
 	id="services-exit-intent"
-	class="services-exit-dialog m-auto w-[min(640px,92vw)] rounded-[1.1rem] border border-[var(--accent-line)] bg-[var(--surface)] p-0 text-[var(--text)] shadow-[0_28px_90px_rgba(0,0,0,0.26)] backdrop:bg-slate-950/62 dark:backdrop:bg-black/76"
+	class="services-exit-dialog m-auto w-[min(520px,92vw)] rounded-[1rem] border border-[var(--surface-border)] bg-[var(--surface)] p-0 text-[var(--text)] shadow-[0_24px_72px_rgba(0,0,0,0.24)] backdrop:bg-slate-950/62 dark:backdrop:bg-black/76"
 	aria-labelledby="services-exit-title"
 	aria-describedby="services-exit-description"
 	data-exit-intent-dialog
 >
 	<div class="relative overflow-hidden">
 		<div class="services-exit-glow" aria-hidden="true"></div>
-		<div class="services-exit-ruler" aria-hidden="true"></div>
 
-		<section class="relative p-5 sm:p-7">
+		<section class="relative p-5 sm:p-6">
 			<div class="flex items-start justify-between gap-4">
 				<div>
 					<div class="services-exit-badge">
 						<span class="services-exit-pulse"></span>
 						<span>{copy.signal}</span>
 					</div>
-					<p class="eyebrow mt-5">{copy.eyebrow}</p>
 				</div>
 				<form method="dialog">
 					<button
@@ -52,42 +50,36 @@ const title = serviceTitle
 				</form>
 			</div>
 
-			<div class="mt-6 grid gap-6 lg:grid-cols-[1fr_0.74fr] lg:items-end">
-				<div>
-					<h2
-						id="services-exit-title"
-						class="max-w-lg text-4xl leading-tight font-black text-[var(--text)] sm:text-5xl"
-					>
-						{title}
-					</h2>
-					<p
-						id="services-exit-description"
-						class="muted-copy mt-5 max-w-xl text-base leading-7"
-					>
-						{copy.text}
-					</p>
-				</div>
+			<p class="eyebrow mt-5">{copy.eyebrow}</p>
+			<h2
+				id="services-exit-title"
+				class="mt-3 max-w-md text-3xl leading-tight font-black text-[var(--text)] sm:text-4xl"
+			>
+				{title}
+			</h2>
+			<p
+				id="services-exit-description"
+				class="muted-copy mt-4 max-w-md text-sm leading-7 sm:text-base"
+			>
+				{copy.text}
+			</p>
 
-				<div class="services-exit-note">
-					<p class="text-5xl leading-none font-black text-[var(--text)]">15</p>
-					<p class="mt-2 text-sm leading-6 font-bold text-[var(--text-muted)]">
-						{copy.minutes}
-					</p>
-				</div>
-			</div>
-
-			<div class="mt-7 grid gap-3 sm:grid-cols-2">
-				<div class="services-exit-chip">
+			<div class="services-exit-proof mt-5">
+				<span class="services-exit-proof-item">
 					<Icon name="check" class="h-4 w-4" />
 					<span>{copy.pointOne}</span>
-				</div>
-				<div class="services-exit-chip">
+				</span>
+				<span class="services-exit-proof-item">
 					<Icon name="check" class="h-4 w-4" />
 					<span>{copy.pointTwo}</span>
-				</div>
+				</span>
+				<span class="services-exit-proof-item services-exit-proof-item-strong">
+					<Icon name="clock" class="h-4 w-4" />
+					<span>15 {copy.minutes}</span>
+				</span>
 			</div>
 
-			<div class="services-exit-actions mt-7 grid gap-3">
+			<div class="services-exit-actions mt-6 grid gap-3">
 				<a
 					href={contactHref}
 					class="button-primary w-full justify-center"
@@ -97,19 +89,19 @@ const title = serviceTitle
 					<Icon name="arrow-right" class="h-4 w-4" />
 					{copy.primary}
 				</a>
-				<div class="grid gap-3 sm:grid-cols-2">
+				<div class="grid gap-2 sm:grid-cols-[1fr_auto]">
 					<a
 						href={whatsappHref}
 						target="_blank"
 						rel="noopener noreferrer nofollow"
-						class="button-secondary w-full justify-center"
+						class="button-secondary min-h-11 w-full justify-center px-4 py-2 text-sm"
 					>
 						<Icon name="message-square" class="h-4 w-4" />
 						{copy.whatsapp}
 					</a>
 					<form method="dialog">
 						<button
-							class="services-exit-dismiss button-secondary w-full justify-center"
+							class="services-exit-dismiss button-secondary min-h-11 w-full justify-center px-4 py-2 text-sm"
 						>
 							{copy.secondary}
 						</button>
@@ -131,31 +123,19 @@ const title = serviceTitle
 
 	.services-exit-glow {
 		position: absolute;
-		inset: -28% -12% auto auto;
-		width: 21rem;
-		height: 21rem;
+		inset: -42% -24% auto auto;
+		width: 18rem;
+		height: 18rem;
 		border-radius: 999px;
 		background: radial-gradient(
 			circle,
-			color-mix(in srgb, var(--accent) 22%, transparent),
+			color-mix(in srgb, var(--accent) 16%, transparent),
 			transparent 68%
 		);
 		pointer-events: none;
 	}
 
-	.services-exit-ruler {
-		position: absolute;
-		inset: 0 auto 0 0;
-		width: 0.42rem;
-		background: linear-gradient(
-			180deg,
-			var(--accent),
-			color-mix(in srgb, var(--accent-strong) 64%, transparent)
-		);
-	}
-
-	.services-exit-badge,
-	.services-exit-chip {
+	.services-exit-badge {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.55rem;
@@ -167,40 +147,50 @@ const title = serviceTitle
 		font-weight: 900;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
-	}
-
-	.services-exit-badge {
 		padding: 0.45rem 0.72rem;
 	}
 
-	.services-exit-chip {
-		justify-content: center;
-		padding: 0.78rem 1rem;
-		letter-spacing: 0;
-		text-transform: none;
-	}
-
-	.dark .services-exit-badge,
-	.dark .services-exit-chip {
+	.dark .services-exit-badge {
 		color: var(--accent);
 	}
 
-	.services-exit-note {
+	.services-exit-proof {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--text-muted);
+		font-size: 0.78rem;
+		font-weight: 800;
+	}
+
+	.services-exit-proof-item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.38rem;
 		border: 1px solid var(--surface-border);
-		border-radius: 1rem;
-		background:
-			linear-gradient(
-				135deg,
-				color-mix(in srgb, var(--accent-soft) 76%, transparent),
-				transparent 72%
-			),
-			color-mix(in srgb, var(--surface-strong) 82%, transparent);
-		padding: 1.1rem;
+		border-radius: var(--radius-pill);
+		background: color-mix(in srgb, var(--surface-strong) 76%, transparent);
+		padding: 0.42rem 0.62rem;
+	}
+
+	.services-exit-proof-item svg {
+		color: var(--accent-strong);
+	}
+
+	.services-exit-proof-item-strong {
+		border-color: var(--accent-line);
+		background: var(--accent-soft);
+		color: var(--text);
+	}
+
+	.dark .services-exit-proof-item svg {
+		color: var(--accent);
 	}
 
 	.services-exit-actions {
 		border-top: 1px solid var(--surface-border);
-		padding-top: 1.4rem;
+		padding-top: 1rem;
 	}
 
 	.services-exit-pulse {
