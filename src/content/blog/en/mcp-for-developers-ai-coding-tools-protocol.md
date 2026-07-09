@@ -12,7 +12,7 @@ tags: [mcp, ai-coding, claude-code, codex, cursor, developer-productivity]
 
 The interesting thing about MCP is not the acronym. It is the shift it points to.
 
-People are moving from "which AI editor should I use?" to "how do I connect these tools to the rest of my stack without building fragile glue every time?" That is a much better question, and it is the one full-stack developers actually need to answer.
+People are moving from “which AI editor should I use?” to “how do I connect these tools to the rest of my stack without building fragile glue every time?” That is a much better question, and it is the one full-stack developers actually need to answer.
 
 For me, MCP for developers matters because most real work sits between systems. We build the API, then the dashboard, then the automation, then the little internal tools that keep the business moving. A shared protocol can make that middle layer less painful.
 
@@ -35,7 +35,7 @@ That sounds small, but it matters. Without a shared protocol, every connection b
 Three things pushed MCP into the conversation:
 
 - Claude Code now fits naturally into terminal-first and IDE-first workflows.
-- OpenAI's Codex has become a broader product line, not just a demo.
+- OpenAI’s Codex has become a broader product line, not just a demo.
 - The MCP ecosystem is large enough that discovery now matters, not just the spec.
 
 On Hacker News, Reddit, and X, the discussion has also matured. People are less excited about autocomplete and more interested in whether an AI tool can read a codebase, inspect logs, run commands, and stay useful in a real workflow.

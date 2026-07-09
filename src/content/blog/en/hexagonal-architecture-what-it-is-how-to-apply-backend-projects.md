@@ -208,7 +208,7 @@ If `domain` imports `org.springframework`, something has drifted.
 
 ## Practical example: creating an order
 
-Use a small case: an API creates an order with several lines and stores it.
+Let’s use a small case: an API creates an order with several lines and stores it.
 
 This is not the full code for a production app. The point is to make the boundaries visible.
 
@@ -595,6 +595,6 @@ Sometimes no. In small projects with little logic, a layered structure may be en
 
 ## Sources and verification notes
 
-- Alistair Cockburn: Hexagonal Architecture - https://alistair.cockburn.us/hexagonal-architecture
-- Spring Framework: Dependency Injection - https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html
-- Spring Data JPA reference - https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+- Alistair Cockburn: Hexagonal Architecture — https://alistair.cockburn.us/hexagonal-architecture
+- Spring Framework: Dependency Injection — https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html
+- Spring Data JPA reference — https://docs.spring.io/spring-data/jpa/docs/current/reference/html/

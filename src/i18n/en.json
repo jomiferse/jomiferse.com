@@ -16,9 +16,9 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "mobileNav": "Mobile navigation",
-    "availability": "Full-stack developer",
-    "contactCta": "Talk about a project",
-    "contactCtaShort": "Talk"
+    "availability": "Full-Stack Developer",
+    "contactCta": "Start a project",
+    "contactCtaShort": "Let's talk"
   },
   "theme": {
     "toggle": "Toggle theme",
@@ -65,15 +65,15 @@
   "home": {
     "page": {
       "meta": {
-        "title": "Freelance full-stack developer in Spain - José Miguel Fernández",
-        "description": "Freelance developer in Spain for web development, internal tools, automation, API integrations and Spring Boot backend work."
+        "title": "Freelance Full-Stack Developer - José Miguel Fernández",
+        "description": "Freelance full-stack developer in Spain. I build business websites, internal tools, automation workflows, API integrations and maintainable backend systems."
       },
-      "eyebrow": "Freelance developer in Spain · Backend · Automation",
+      "eyebrow": "Freelance full-stack development · Backend · Automation",
       "title": "Simple, reliable software",
-      "titleAccent": "for real business work.",
-      "intro": "I help founders, solo professionals and small teams turn specific problems into websites, internal tools, automation workflows, API integrations or maintainable backend systems.",
-      "primaryCta": "View services",
-      "secondaryCta": "Send a message",
+      "titleAccent": "for real business workflows.",
+      "intro": "I help founders, solo professionals and small teams turn a concrete need into a website, internal tool, automation workflow, API integration or maintainable backend system.",
+      "primaryCta": "View Services",
+      "secondaryCta": "Contact Me",
       "stats": {
         "years": "Years building software",
         "projects": "Selected projects",
@@ -82,19 +82,19 @@
       },
       "about": {
         "eyebrow": "About me",
-        "title": "A freelance developer for practical problems.",
-        "p1": "I'm José Miguel Fernández, a freelance full-stack developer based in Granada, Spain. I build professional websites, internal tools, automation workflows, API integrations and web applications for real business workflows.",
-        "p2": "My way of working is simple: understand the workflow, the user and the result first. Then build the smallest solid piece that moves the project forward without adding complexity too early."
+        "title": "Direct collaboration, technical judgment and backend depth.",
+        "p1": "I’m a full-stack developer based in Granada, Spain. My strongest foundation is backend development with Java, Spring Boot and production systems.",
+        "p2": "I also work across frontend, automation, CI/CD, Docker and Kubernetes when that helps ship something useful. I do not sell fixed packages: first I understand the workflow, then I build the piece that actually needs to exist."
       },
       "work": {
         "eyebrow": "Selected work",
-        "title": "Selected things I've built or contributed to",
+        "title": "A few things I’ve worked on",
         "viewAll": "View all"
       },
       "build": {
         "eyebrow": "Services",
-        "title": "Services for clearer websites, less manual work and useful internal tools.",
-        "text": "WordPress, WooCommerce, API integrations, automation and applied AI when it helps. I choose the stack around the problem, not around whatever happens to be fashionable.",
+        "title": "Services to improve your website, automate work and build useful tools.",
+        "text": "From WordPress and WooCommerce to integrations, automation and applied AI. I choose the solution around the problem, not around a fashionable technology.",
         "servicesLink": "View services",
         "blogLink": "Read blog",
         "contactLink": "Share your case",
@@ -139,21 +139,21 @@
       },
       "cta": {
         "eyebrow": "Contact",
-        "title": "Not sure if it is worth building?",
-        "text": "Tell me what you have now, what is slowing you down and what result would make the work worthwhile. I'll reply with a practical next step.",
-        "button": "Share the context"
+        "title": "Want to know if it is worth building?",
+        "text": "Tell me what you have now, what problem you want to solve and what result you need. I’ll reply with the most reasonable next step.",
+        "button": "Share my case"
       }
     },
     "meta": {
-      "title": "Full-stack developer portfolio",
-      "description": "Portfolio of a full-stack developer with a strong backend base, focused on practical software for real products and workflows."
+      "title": "Full-Stack Developer Website",
+      "description": "Full-stack developer with strong backend foundations, building practical software for real products and workflows."
     },
     "hero": {
       "eyebrow": "Full-Stack Developer · Software Engineer · Web Products",
       "titleLead": "Simple software,",
       "titleHighlight": "built for real use.",
       "titleTail": "",
-      "description": "Full-stack developer with a strong backend base. I build websites, tools, automations and backend systems that are easy to use, operate and maintain.",
+      "description": "Full-stack developer with strong backend foundations. I build websites, tools, automations and backend systems that are easy to use and maintain.",
       "primaryCta": "View projects",
       "secondaryCta": "Contact me",
       "availability": "Currently building at CGI for The Workshop"
@@ -169,32 +169,32 @@
       "experience": "Experience",
       "projects": "Selected projects",
       "skills": "Collaboration",
-      "contact": "Work worth discussing"
+      "contact": "Let's build something solid"
     },
     "about": {
       "eyebrow": "Positioning",
-      "title": "Backend depth, full-stack range.",
-      "intro": "I work across backend systems, web products, internal tools and automation. The point is to build useful software that stays understandable as it grows."
+      "title": "Backend depth with full-stack range.",
+      "intro": "I work across backend systems, web products, internal tools and automation. The goal is always the same: useful software that stays clear as it grows."
     },
     "experience": {
       "eyebrow": "Experience",
-      "title": "Work in product and platform teams.",
-      "summary": "My experience comes from production systems, platform evolution and delivery work where reliability and clarity matter more than extra complexity."
+      "title": "Built inside product and platform environments.",
+      "summary": "My path has been shaped by production systems, platform evolution and delivery work where reliability and clarity matter more than extra complexity."
     },
     "projects": {
       "eyebrow": "Selected work",
-      "title": "Projects tied to real workflows.",
-      "summary": "A selection of personal products and professional projects I contributed to, focused on useful outcomes and maintainable systems."
+      "title": "Projects that solve real workflows.",
+      "summary": "Selected work across personal products and professional projects I contributed to, with a focus on useful outcomes and maintainable systems."
     },
     "skills": {
       "eyebrow": "Collaboration",
       "title": "Where I can help.",
-      "summary": "Useful when a team or client needs someone who can understand the workflow, build the right thing and keep the code easy to maintain."
+      "summary": "Best fit when a team or client needs someone who can understand the workflow, build the right thing and keep the code easy to maintain."
     },
     "contact": {
       "eyebrow": "Contact",
-      "title": "Open to practical projects and good teams.",
-      "summary": "Freelance projects, internal tools, web development, backend work and software engineering opportunities all fit here.",
+      "title": "Open to useful projects and good teams.",
+      "summary": "Freelance work, internal tools, web products, backend systems and professional opportunities all fit here.",
       "primaryCta": "Send a message",
       "secondaryCta": "View LinkedIn"
     },
@@ -246,7 +246,7 @@
       }
     },
     "empty": {
-      "personal": "Coming soon: personal projects in progress.",
+      "personal": "Coming soon — personal projects in progress.",
       "company": "No company projects available yet."
     }
   },
@@ -257,9 +257,9 @@
         "description": "Professional experience of José Miguel Fernández across backend engineering, full-stack delivery, microservices, web platforms and production systems."
       },
       "eyebrow": "Experience",
-      "title": "Production systems, real teams and",
+      "title": "Real systems, real teams and",
       "titleAccent": "practical software.",
-      "intro": "I work on products and platforms where clarity, reliability and maintainability matter. Backend is my base, with enough full-stack range to help where the product needs it.",
+      "intro": "I work on products and platforms where clarity, reliability and maintainability matter. Backend is my base, with enough full-stack range to move where the product needs me.",
       "currentLabel": "Now",
       "timelineLabel": "Timeline",
       "yearsSuffix": "years building software",
@@ -268,19 +268,19 @@
       "impactLabel": "Selected work",
       "cta": {
         "eyebrow": "Contact",
-        "title": "Have a project or role where this fits?",
-        "text": "I'm open to freelance projects, collaborations and software engineering opportunities where clear, reliable software matters.",
-        "primary": "Talk to me",
+        "title": "Want to work together?",
+        "text": "I’m open to freelance projects, collaborations and opportunities where clear, reliable software matters.",
+        "primary": "Let’s talk",
         "secondary": "View projects"
       },
       "signals": [
         {
           "title": "Production backend",
-          "body": "APIs, services, integrations and distributed systems built with production in mind."
+          "body": "APIs, services, integrations and distributed systems designed to keep running."
         },
         {
           "title": "Full-stack delivery",
-          "body": "Frontend, backend and infrastructure when the product needs one person to connect the pieces."
+          "body": "Frontend, backend and infrastructure when the product needs a complete solution."
         },
         {
           "title": "Team context",
@@ -339,12 +339,12 @@
         {
           "label": "Current focus",
           "title": "Backend systems",
-          "body": "Recent learning is focused on Spring Boot, microservices, cloud-native delivery and operating software reliably."
+          "body": "Recent learning is focused on Spring Boot, microservices, cloud-native delivery and reliable operations."
         },
         {
           "label": "Working style",
-          "title": "Useful, maintainable work",
-          "body": "I choose what to study around the kind of systems I want to build: clear, resilient and easy to evolve."
+          "title": "Useful, maintainable output",
+          "body": "Learning choices are tied to the kind of systems I want to build: clear, resilient and easy to evolve."
         }
       ],
       "certifications": {
@@ -360,7 +360,7 @@
       "cta": {
         "eyebrow": "Next",
         "title": "See how this translates into real work.",
-        "text": "Training matters when it leads to better decisions in production systems and product delivery.",
+        "text": "The education path matters most when it supports practical decisions in production systems and product delivery.",
         "primary": "View experience",
         "secondary": "Contact me"
       }
@@ -396,7 +396,7 @@
     "soft": "Working style",
     "languages": "Languages",
     "communication": "Languages",
-    "curatedNote": "Short version: broader stack available on CV and LinkedIn."
+    "curatedNote": "Curated view — broader stack available on CV and LinkedIn."
   },
   "contact": {
     "page": {
@@ -405,9 +405,9 @@
         "description": "Contact José Miguel Fernández for freelance full-stack development, internal tools, automation workflows, API integrations and backend systems."
       },
       "eyebrow": "Contact",
-      "title": "Tell me what you want to",
+      "title": "Let’s talk about what you want to",
       "titleAccent": "build.",
-      "intro": "Tell me what exists now, what is not working and what result you need. If it fits, I'll suggest a clear next step.",
+      "intro": "Tell me what you have now, what problem you want to solve and what result you need. If it fits, I’ll suggest a clear next step.",
       "linkedin": "Connect on LinkedIn",
       "github": "View my code"
     },
@@ -422,7 +422,7 @@
     },
     "emailLabel": "EMAIL",
     "divider": "WRITE A MESSAGE",
-    "success": "Message sent. I'll reply soon.",
+    "success": "Message sent. I’ll get back to you soon.",
     "social": {
       "github": "GitHub",
       "linkedin": "LinkedIn"
@@ -430,7 +430,7 @@
   },
   "footer": {
     "title": "Simple, reliable software.",
-    "description": "Full-stack development with a strong backend base for real products and workflows.",
+    "description": "Full-stack development with strong backend foundations for real products and workflows.",
     "location": "Based in",
     "contact": "Contact",
     "tagline": "Simple, reliable software for real products.",
@@ -440,7 +440,7 @@
   },
   "cookies": {
     "bannerLabel": "Cookie notice",
-    "bannerText": "I use necessary cookies for preferences and optional analytics if you accept them. You can read the details or disable analytics in the ",
+    "bannerText": "I use cookies to offer you the best experience on this website. You can learn more about which cookies I use or disable them in the ",
     "bannerPolicyLink": "cookie policy",
     "bannerTextAfterLink": ".",
     "accept": "Accept",
@@ -453,7 +453,7 @@
     "necessaryDescription": "They save this decision in your browser and keep basic website features working.",
     "alwaysActive": "Always active",
     "analyticsTitle": "Analytics",
-    "analyticsDescription": "They help me understand which pages people visit so I can improve the content.",
+    "analyticsDescription": "They help me understand which pages are visited and improve the content.",
     "privacyLink": "View privacy and cookie policy",
     "close": "Close",
     "save": "Save preferences"
@@ -541,7 +541,7 @@
       "intro": "Short notes about projects, tools, backend work and things I learn while building.",
       "empty": "No articles published yet.",
       "cta": {
-        "title": "Need help with a website, tool or backend?",
+        "title": "Need help with a website or tool?",
         "text": "These notes show how I think while building. If you have a concrete problem, you can view services or contact me directly.",
         "services": "View services",
         "contact": "Contact me"
@@ -564,7 +564,7 @@
       "cta": {
         "eyebrow": "Have a similar project?",
         "title": "I can help turn a technical idea into something useful.",
-        "text": "I work on websites, internal tools, automation workflows, API integrations and focused web applications. If you have a concrete problem, send me the context.",
+        "text": "I work on websites, internal tools, automation workflows, API integrations and focused web applications. If you have a concrete problem, send it over.",
         "services": "View services",
         "contact": "Contact me"
       }
@@ -572,11 +572,11 @@
     "sections": {
       "featured": {
         "title": "Selected notes",
-        "subtitle": "Posts worth starting with."
+        "subtitle": "Hand-picked posts."
       },
       "latest": {
         "title": "Recent writing",
-        "subtitle": "Latest notes and articles."
+        "subtitle": "Most recent writing."
       }
     },
     "pagination": {
@@ -596,64 +596,64 @@
   "about": {
     "page": {
       "meta": {
-        "title": "José Miguel Fernández | Freelance full-stack developer",
-        "description": "Freelance full-stack developer specialized in professional websites, internal tools, automation, API integrations and Java/Spring Boot backend systems."
+        "title": "About - José Miguel Fernández",
+        "description": "About José Miguel Fernández, a full-stack developer with strong backend foundations, focused on practical software, automation and web products."
       },
       "eyebrow": "About",
-      "title": "Freelance full-stack developer with a",
+      "title": "Full-stack developer with a",
       "titleAccent": "backend base.",
-      "intro": "I help solo professionals, small businesses and technical teams turn digital problems into useful software: websites that explain an offer clearly, internal tools that save manual work, automation workflows, API integrations and maintainable backend systems.",
+      "intro": "I build websites, tools, automations and backend systems that are simple to use and easy to maintain.",
       "avatarAlt": "Portrait of José Miguel Fernández",
       "primaryCta": "View services",
       "secondaryCta": "Share your case",
-      "what": "Where I can help",
+      "what": "What I do",
       "how": "How I work",
-      "background": "Why trust me",
-      "backgroundTitle": "Technical judgment, direct communication and experience with real software.",
-      "backgroundP1": "My strongest base is backend: Java, Spring Boot, APIs, integrations, production systems, CI/CD and observability. I also work with Astro, React, TypeScript, automation and web product delivery when a project needs full-stack range.",
-      "backgroundP2": "I do not work like a generic agency or a supplier that only executes tickets. I get involved in understanding what is happening, what is worth investing in and which version makes sense to build first.",
+      "background": "Background",
+      "backgroundTitle": "Backend depth, product sense and a practical way of building.",
+      "backgroundP1": "I currently work on production backend systems with Java, Spring Boot, distributed architecture, CI/CD and observability.",
+      "backgroundP2": "Before that, I worked across full-stack delivery in edtech. That mix shaped how I build: understand the need, choose the right level of system and keep it easy to evolve.",
       "educationLink": "View education and technical courses",
       "servicesLink": "View freelance services",
       "projectsLink": "View projects",
       "contactLink": "Contact me",
       "blocks": [
         {
-          "title": "Professional websites",
-          "body": "Service websites, redesigns and landing pages with clear structure, useful copy, performance and calls to action that help visitors trust the offer."
+          "title": "Backend Development",
+          "body": "APIs, services, data models and integrations with Java, Spring Boot and production reliability in mind."
         },
         {
-          "title": "Internal tools",
-          "body": "Panels, dashboards and web applications that organize operations, replace fragile spreadsheets and make team work easier to see."
+          "title": "Frontend Development",
+          "body": "Clean interfaces with Astro, React and TypeScript when the product needs a useful front end."
         },
         {
-          "title": "Automation and integrations",
-          "body": "Workflows that connect forms, CRMs, payments, email, APIs and external tools to reduce repetitive work and manual errors."
+          "title": "Automation & Internal Tools",
+          "body": "Small tools that reduce manual work, connect workflows and help teams move faster."
         },
         {
-          "title": "Maintainable backend",
-          "body": "APIs, services and integrations with Java, Spring Boot and careful attention to contracts, errors, deployment and evolution."
+          "title": "Freelance Projects",
+          "body": "Websites, redesigns and custom web apps for people who need practical software, not extra complexity."
         }
       ],
       "steps": [
         {
           "number": "01",
           "title": "Understand the problem",
-          "body": "I start with the real workflow, the people using it, the business constraints and the outcome that should change."
+          "body": "Start with the workflow, the people using it and the constraints around it."
         },
         {
           "number": "02",
-          "title": "Shape the scope",
-          "body": "I propose a clear, buildable first version before adding modules, automation or integrations that are not needed yet."
+          "title": "Keep it simple",
+          "body": "Build the smallest useful version before adding more moving parts."
         },
         {
           "number": "03",
-          "title": "Build with judgment",
-          "body": "I choose technology and architecture around the problem: WordPress, Astro, custom application, automation, API integration or Spring Boot backend."
+          "title": "Make it reliable",
+          "body": "Write clear code, keep the system observable and avoid surprises in production."
         },
         {
           "number": "04",
-          "title": "Validate and leave a base",
-          "body": "I check critical paths, performance, metadata, errors and deployment so the work is useful now and easier to extend later."
+          "title": "Improve what matters",
+          "body": "Ship, learn from real use and refine the parts that create value."
         }
       ]
     }
@@ -661,8 +661,8 @@
   "services": {
     "hub": {
       "meta": {
-        "title": "Freelance IT consulting and web development | José Miguel Fernández",
-        "description": "Freelance web development, WordPress, custom software, automation and API integration services for businesses that need practical technical help."
+        "title": "Freelance IT Consulting | José Miguel Fernández",
+        "description": "Freelance web design, WordPress, custom software, automation and API integration services for businesses that need to move forward."
       },
       "schema": {
         "name": "Freelance IT consulting, web design and automation by José Miguel Fernández",
@@ -670,25 +670,25 @@
         "areaServed": "Spain and remote"
       },
       "eyebrow": "Freelance services",
-      "title": "Freelance development,",
+      "title": "Freelance IT consulting,",
       "titleAccent": "web design and automation.",
-      "intro": "I help solo professionals, small businesses, startups and technical teams turn digital problems into practical software: a website that explains the offer better, an internal tool that saves time, an automation that reduces manual work or an integration that connects systems that now work apart.",
+      "intro": "I help solo professionals, small businesses, startups and technical teams turn digital problems into concrete solutions: a website that explains the offer better, an internal tool that saves time, an automation that reduces manual work or an integration that connects systems that currently work apart.",
       "heroPrimaryCta": "Share your case",
       "heroSecondaryCta": "View projects",
       "bestForLead": "Best for:",
-      "bestForText": "people looking to hire a freelance developer with technical judgment, direct communication and enough range to move from scope to deployment.",
+      "bestForText": "people looking to hire a freelance developer with technical judgment, direct communication and the ability to take a solution from idea to deployment.",
       "definitionEyebrow": "What it is",
-      "definitionTitle": "Technical services for turning a digital problem into useful software.",
+      "definitionTitle": "Technical services for turning a digital problem into a useful solution.",
       "definitionBody": [
-        "I work where business and technology meet: online presence, custom software, process automation, API integrations and backend systems. The goal is to understand the result you need first, then build only what helps reach it.",
+        "I work where business and technology meet: online presence, custom software, process automation, API integrations and backend systems. The goal is to understand the outcome you need first, then build only what helps achieve it.",
         "That may be a professional website to generate leads, a redesign that clarifies the message, an internal tool to move beyond spreadsheets, an AI automation or an API that connects third-party services with your operation."
       ],
       "advantagesEyebrow": "Benefits",
-      "advantagesTitle": "What a clear technical base changes.",
+      "advantagesTitle": "What a clear technical base gives you.",
       "advantages": [
         {
           "title": "More clarity when selling",
-          "body": "A website or landing page with structure, copy and calls to action so visitors quickly understand what you offer and how to contact you."
+          "body": "A website or landing page with structure, copy and calls to action designed so visitors quickly understand what you offer and how to contact you."
         },
         {
           "title": "Less manual work",
@@ -696,7 +696,7 @@
         },
         {
           "title": "Software that stays maintainable",
-          "body": "Applications, APIs and backends built with reasonable scope, organized code and technical decisions that leave room for the next phase."
+          "body": "Applications, APIs and backends built with reasonable scope, organized code and technical decisions that do not block the next phase."
         },
         {
           "title": "A direct technical partner",
@@ -705,7 +705,7 @@
       ],
       "servicesEyebrow": "Professional services",
       "servicesTitle": "Services to improve your website, processes and systems.",
-      "servicesIntro": "You can come with a specific need or with a problem that still needs structure. These are the types of work where I can usually help most.",
+      "servicesIntro": "You can arrive with a specific need or with a problem that still needs structure. These are the types of work where I usually add the most value.",
       "included": "Services I can cover",
       "bestFor": "Best for",
       "serviceLinks": "Services in this group",
@@ -759,7 +759,7 @@
         },
         "web-wordpress": {
           "title": "Web design, WordPress and redesign",
-          "description": "Professional, editable websites built to explain the offer clearly, with a clean, fast and maintainable technical base.",
+          "description": "Professional, editable websites designed to win clients, with a clean, fast and maintainable technical base.",
           "bullets": [
             "Clear structure, specific messaging and visible calls to action from the first scroll.",
             "Performance, basic technical SEO, accessibility and maintainability considered from the start.",
@@ -802,7 +802,7 @@
           "title": "Automation, applied AI and API integrations",
           "description": "Applied AI and process automation to reduce manual work, organize data and connect business tools.",
           "bullets": [
-            "Practical use cases before shiny demos with no daily value.",
+            "Practical use cases before shiny demos without daily value.",
             "Automation across APIs, forms, email, documents and internal data.",
             "Human control where judgment matters, traceability where trust matters."
           ],
@@ -844,7 +844,7 @@
         },
         {
           "title": "Useful scope",
-          "body": "I define a small first version that can be built and validated before adding unnecessary complexity or cost."
+          "body": "I define a small first version that can be built and validated before adding unnecessary complexity or budget."
         },
         {
           "title": "Build",
@@ -856,7 +856,7 @@
         }
       ],
       "useCasesEyebrow": "Use cases",
-      "useCasesTitle": "When technical help makes sense.",
+      "useCasesTitle": "When you need technical help.",
       "useCases": [
         "Your website gets visits, but does not explain the offer clearly or turn enough visits into conversations.",
         "Your team runs operations through spreadsheets, emails, forms and copy-paste.",
@@ -865,8 +865,8 @@
         "Your current backend or application is starting to block changes, reliability or maintenance."
       ],
       "recommendationEyebrow": "When it makes sense to work with me",
-      "recommendationTitle": "Who these freelance services fit.",
-      "recommendationIntro": "I work best when there is a real need on the table: selling more clearly, saving manual work, connecting systems, improving an old website or launching a first version without building an unnecessary platform.",
+      "recommendationTitle": "Who these freelance services are for.",
+      "recommendationIntro": "I work best when there is a real need already on the table: selling more clearly, saving manual work, connecting systems, improving an old website or launching a first version without building an unnecessary platform.",
       "recommendedForTitle": "Good fit",
       "recommendedFor": [
         "Solo professionals, consultants and small businesses that need a clear website to present services and generate contacts.",
@@ -880,8 +880,8 @@
         "Ideas that are still too open, without a clear priority or willingness to start with a small, verifiable version."
       ],
       "proofEyebrow": "Why work with me",
-      "proofTitle": "A direct technical profile with product judgment and full-stack execution.",
-      "proofText": "I do not work like a generic agency. I work as a freelance developer: I listen to the problem, shape the scope and build the website, backend or automation the project needs.",
+      "proofTitle": "A close technical profile with product judgment and full-stack execution.",
+      "proofText": "I do not work like a generic agency. I work as a freelance developer: I listen to the problem, shape the scope and carefully build the website, backend or automation the project needs.",
       "proofPoints": [
         "Experience combining frontend, backend, APIs, integrations and production systems.",
         "Judgment to choose between WordPress, Astro, custom applications, automation or Spring Boot depending on the case.",
@@ -903,7 +903,7 @@
         }
       ],
       "contentEyebrow": "Supporting content",
-      "contentTitle": "Articles that show how I think through technical decisions.",
+      "contentTitle": "Articles that show how I think when building.",
       "contentLinks": [
         {
           "label": "When to create an internal tool instead of staying in Excel",
@@ -919,7 +919,7 @@
         }
       ],
       "faqEyebrow": "Frequently asked questions",
-      "faqTitle": "Common questions before hiring technical help.",
+      "faqTitle": "Common questions before hiring a technical service.",
       "faq": [
         {
           "question": "What kind of project can I ask you about?",
@@ -942,20 +942,20 @@
           "answer": "Yes. I work remotely for Spain and other projects that fit by language, time zone and collaboration style."
         }
       ],
-      "ctaTitle": "Share the context and we can see if it makes sense.",
-      "ctaText": "Send what you have now, what you want to improve and where time, clarity or money is being lost. I'll reply with a practical next step.",
-      "ctaButton": "Share the context"
+      "ctaTitle": "Share your case and we can see if it makes sense.",
+      "ctaText": "Send what you have now, what you want to improve and where time, clarity or money is being lost. I’ll reply with the most reasonable next step.",
+      "ctaButton": "Share your case"
     },
     "exitIntent": {
       "eyebrow": "Before you close this",
       "signal": "Quick review",
       "minutes": "min to shape the next step",
       "pointOne": "No commitment",
-      "pointTwo": "Straight answer",
+      "pointTwo": "Clear reply",
       "title": "Want me to look at your case before you go?",
       "serviceTitle": "Does {service} fit what you need?",
       "text": "If you have a website, process or idea that feels stuck, send me the context. I will tell you whether it needs a website, automation, integration or something simpler.",
-      "primary": "Ask for a quick review",
+      "primary": "Request a quick review",
       "whatsapp": "Message on WhatsApp",
       "secondary": "Keep browsing",
       "close": "Close services prompt"
@@ -976,14 +976,14 @@
       "builds": "What is included",
       "process": "Process",
       "whyMe": "Why work with me",
-      "whyMeTitle": "Technical judgment, clear scope and direct work.",
+      "whyMeTitle": "Technical judgment, clear scope and direct execution.",
       "faq": "FAQ",
       "contactEyebrow": "Contact",
       "contactTitle": "Does this fit your project?",
-      "contactText": "Tell me what you want to build, what exists now and what outcome you need. If it fits, I'll suggest a clear next step.",
+      "contactText": "Tell me what you want to build, what you have now and what outcome you need. If it fits, I’ll suggest a clear next step.",
       "contactButton": "Contact me",
       "contactModalTitle": "Share your case",
-      "contactModalText": "Send the project context and I'll reply with a practical next step.",
+      "contactModalText": "Send the project context and I’ll reply with the most reasonable next step.",
       "closeContactModal": "Close contact form",
       "whatsappButton": "WhatsApp",
       "whatsappMessage": "Hi José Miguel, I am looking at the {service} service and would like to tell you about my case.",
@@ -1023,7 +1023,7 @@
           },
           {
             "title": "A better SEO base",
-            "body": "The page starts with heading hierarchy, metadata, performance and internal links so search engines and AI assistants can understand the service."
+            "body": "The page starts with heading hierarchy, metadata, performance and internal links designed so search engines and AI assistants can understand the service."
           },
           {
             "title": "More trust before contact",
@@ -1054,7 +1054,7 @@
           "Validate build, links, metadata and mobile layout before handoff."
         ],
         "whyMe": [
-          "I combine copy, technical structure and development so the site is clean, useful for selling and easier to maintain.",
+          "I combine copy, technical structure and development so the site is not only visually clean, but useful for selling and maintaining.",
           "I can work with WordPress when easy editing matters or Astro when performance, control and simplicity matter more.",
           "I keep the scope focused: first a website that explains and converts, then extra complexity if the evidence justifies it."
         ],
@@ -1093,7 +1093,7 @@
         "benefits": [
           {
             "title": "Less friction for visitors",
-            "body": "I reorganize navigation, visual hierarchy and CTAs so the path to contact, services or useful content becomes clearer."
+            "body": "Navigation, visual hierarchy and CTAs are reorganized so the path to contact, services or useful content becomes clearer."
           },
           {
             "title": "Better performance and maintenance",
@@ -1146,7 +1146,7 @@
       "custom-web-application": {
         "title": "Custom Web Application",
         "shortTitle": "Web app",
-        "description": "A focused web application built around a real workflow, with the frontend, backend and data model the project actually needs.",
+        "description": "A focused web application built around a real workflow, with the right amount of frontend, backend and data modeling.",
         "metaTitle": "Custom Web Application Development - José Miguel Fernández",
         "metaDescription": "Freelance custom web application development with TypeScript, backend systems, databases and practical product delivery.",
         "pricing": {
@@ -1167,7 +1167,7 @@
         "benefits": [
           {
             "title": "A workflow adapted to the business",
-            "body": "The application follows your users, data and real decisions, not the workflow a generic tool expects."
+            "body": "The application is designed around your users, data and real decisions, not around how a generic tool expects you to work."
           },
           {
             "title": "A base ready to grow",
@@ -1319,7 +1319,7 @@
           },
           {
             "title": "More visible errors",
-            "body": "A good automation does not fail silently. It leaves logs, statuses or alerts so you know what happened and what needs review."
+            "body": "A good automation does not fail silently: it leaves logs, statuses or alerts so you know what happened and what needs review."
           },
           {
             "title": "AI where it makes sense",
@@ -1350,7 +1350,7 @@
           "Test it with real examples before relying on it."
         ],
         "whyMe": [
-          "I do not automate for the sake of it. First I identify what is repeatable and where human control should remain.",
+          "I do not automate for the sake of it: first I identify what is repeatable and where human control should remain.",
           "I work with APIs, webhooks, scripts, jobs and applied AI, choosing the most maintainable path for the case.",
           "I care about visible errors, tests with real examples and explaining how the automation works so you are not depending on a black box."
         ],
@@ -1397,7 +1397,7 @@
           },
           {
             "title": "Failure behavior included",
-            "body": "I define validation, retries, visible errors and limits so the integration stays operable when something external changes."
+            "body": "I define validation, retries, visible errors and limits so the integration remains operable when something external changes."
           }
         ],
         "whenNeeded": [
@@ -1424,7 +1424,7 @@
           "Validate real requests and document how to maintain it."
         ],
         "whyMe": [
-          "I start from the data contract, failure cases and the real workflow behind the API call.",
+          "I work on integrations from the data contract and failure cases, not only from the happy-path API call.",
           "I can build both the backend work and the screens needed to review status, errors or synchronized data.",
           "I document variables, limits and operational behavior so the integration stays maintainable."
         ],
@@ -1442,7 +1442,7 @@
       "backend-spring-boot": {
         "title": "Spring Boot Backend",
         "shortTitle": "Spring backend",
-        "description": "Development and evolution of APIs, backend services and integrations with Java and Spring Boot, with attention to maintainability, testability and reliability.",
+        "description": "Development and evolution of APIs, backend services and integrations with Java and Spring Boot, prioritizing maintainability, testability and reliability.",
         "metaTitle": "Spring Boot Backend Development - José Miguel Fernández",
         "metaDescription": "Freelance backend development with Java and Spring Boot for APIs, services, integrations, legacy migrations and maintainable systems.",
         "pricing": {
@@ -1499,7 +1499,7 @@
         ],
         "whyMe": [
           "My strongest technical base is backend work, APIs, Java, Spring Boot and systems that need to keep running in production.",
-          "I think about contracts, data, errors, deployment and maintainability alongside the code change itself.",
+          "I think about contracts, data, errors, deployment and maintainability, not only about closing a coding task.",
           "I can connect the backend with frontend work, automations and integrations when the problem needs a full-stack view."
         ],
         "faq": [

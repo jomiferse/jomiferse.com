@@ -9,7 +9,7 @@ translationSlug: "spring-boot-performance-tuning"
 tags: [spring-boot, java, rendimiento, backend, observabilidad]
 ---
 
-Cuando una app Spring Boot va lenta, casi nunca se arregla "echándole más framework". Normalmente se arregla encontrando el cuello de botella real y tocando solo lo que de verdad mueve la aguja.
+Cuando una app Spring Boot va lenta, casi nunca se arregla “echándole más framework”. Normalmente se arregla encontrando el cuello de botella real y tocando solo lo que de verdad mueve la aguja.
 
 Y eso, aunque suene básico, se hace mal muchísimo. Se detectan peticiones lentas, alguien sube el tamaño del pool, otro cambia una anotación, y al final el sistema acaba más complejo sin ir realmente mejor.
 
@@ -101,7 +101,7 @@ Malos candidatos:
 
 - lógica que debe quedar consistente antes de devolver respuesta
 - código que depende de estado mutable compartido sin estrategia
-- usar async solo porque "queda moderno"
+- usar async solo porque “queda moderno”
 
 El soporte de `@Async` en Spring Framework es bastante directo, pero necesita una estrategia real de executor, no fe.
 
@@ -121,7 +121,7 @@ class NotificationService {
 }
 ```
 
-La pregunta útil no es "¿puedo hacerlo async?". Es "¿debe salir este trabajo del hilo de la request?"
+La pregunta útil no es “¿puedo hacerlo async?”. Es “¿debe salir este trabajo del hilo de la request?”
 
 Si la respuesta es sí, async puede ayudar bastante.
 
@@ -196,7 +196,7 @@ No es mucho trabajo. Precisamente por eso puede dar mejoras reales.
 No empezaría por:
 
 - meter más hilos
-- reescribir todo con reactive porque "parece más rápido"
+- reescribir todo con reactive porque “parece más rápido”
 - subir el pool de base de datos a ciegas
 - meter caché distribuida antes de entender el cuello local
 - micro-optimizar controladores que ni siquiera están calientes
@@ -244,8 +244,8 @@ Si quieres diagnosticar rendimiento con menos adivinanzas, sí. No hace falta ex
 
 ## Fuentes y verificación
 
-- Spring Boot caching docs - https://docs.spring.io/spring-boot/reference/io/caching.html
-- Spring Boot production-ready features / Actuator - https://docs.spring.io/spring-boot/reference/actuator/index.html
-- Spring Boot SQL / selección de pool de datasource - https://docs.spring.io/spring-boot/reference/data/sql.html
-- `@Async` en Spring Framework - https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/annotation/Async.html
-- Modelo de programación asíncrona en Spring MVC - https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-ann-async.html
+- Spring Boot caching docs — https://docs.spring.io/spring-boot/reference/io/caching.html
+- Spring Boot production-ready features / Actuator — https://docs.spring.io/spring-boot/reference/actuator/index.html
+- Spring Boot SQL / selección de pool de datasource — https://docs.spring.io/spring-boot/reference/data/sql.html
+- `@Async` en Spring Framework — https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/annotation/Async.html
+- Modelo de programación asíncrona en Spring MVC — https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-ann-async.html

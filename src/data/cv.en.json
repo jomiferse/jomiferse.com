@@ -2,8 +2,8 @@
   "name": "José Miguel Fernández",
   "shortName": "José Miguel",
   "email": "jomiferse@gmail.com",
-  "headline": "Full-stack developer | Backend, web products, automation",
-  "tagline": "Full-stack developer with a strong backend base, building simple, reliable and useful software.",
+  "headline": "Full-Stack Developer | Backend Foundations, Web Products, Automation",
+  "tagline": "Full-stack developer with strong backend foundations, building simple, reliable and useful software.",
   "location": "Granada, Spain",
   "currentRole": "Software Engineer",
   "focus": "Backend systems, full-stack delivery, automation and practical web products",
@@ -26,22 +26,22 @@
   ],
   "focusAreas": [
     {
-      "title": "Backend systems",
-      "description": "APIs, services, integrations and data workflows built for reliability and maintainability.",
+      "title": "Backend Systems",
+      "description": "APIs, services, integrations and data workflows built with reliability and maintainability in mind.",
       "items": ["Java", "Spring Boot", "REST APIs", "Spring Security"]
     },
     {
-      "title": "Delivery and infrastructure",
-      "description": "Release workflows, containers, CI/CD and deployment practices that help software move from code to production with fewer surprises.",
+      "title": "Delivery and Infrastructure",
+      "description": "Release workflows, containers, CI/CD and deployment practices that help software move safely from code to production.",
       "items": ["Liquibase", "CI/CD", "Docker", "Kubernetes"]
     },
     {
-      "title": "Web products and tools",
+      "title": "Web Products and Tools",
       "description": "Useful interfaces, internal tools and automations that reduce manual work and make workflows easier to run.",
       "items": ["TypeScript", "React", "Astro", "Automation"]
     },
     {
-      "title": "Distributed systems",
+      "title": "Distributed Systems",
       "description": "Services, queues and event-driven flows that communicate clearly and remain observable in production.",
       "items": ["Kafka", "RabbitMQ", "Redis", "PostgreSQL"]
     }
@@ -59,13 +59,13 @@
       "location": "Spain",
       "startDate": "12/2024",
       "endDate": "Present",
-      "description": "Contributing to cloud-native backend systems for The Workshop, working with product, platform and SRE teams in a security-conscious production environment.",
+      "description": "Contributing to large-scale cloud-native backend systems for The Workshop, working with cross-functional teams in a security-conscious production environment.",
       "highlights": [
-        "Develop and maintain backend services in Java and Spring Boot, with attention to clear architecture, DDD and maintainable code.",
-        "Design and implement REST APIs and internal integrations with attention to reliability, testability and production visibility.",
+        "Develop and maintain backend services in Java and Spring Boot, with a focus on clear architecture, DDD and maintainable code.",
+        "Design and implement REST APIs and internal integrations with an emphasis on reliability, testability and production visibility.",
         "Work with RabbitMQ and asynchronous communication patterns to support reliable integrations in distributed systems.",
         "Collaborate with SRE and Platform on Kubernetes-based deployments, Grafana and Kibana observability, automated health checks and operational consistency.",
-        "Contribute to CI/CD improvements through automated testing, security checks, artifact versioning and more reliable deployment workflows.",
+        "Contribute to CI/CD improvements through automated testing, security checks, artifact versioning and more robust deployment workflows.",
         "Diagnose and resolve incidents in distributed systems with a focus on performance, resilience and maintainability."
       ]
     },
@@ -75,13 +75,13 @@
       "location": "Granada, Spain",
       "startDate": "08/2020",
       "endDate": "12/2024",
-      "description": "Worked across backend, frontend and infrastructure for education platforms used in multiple international markets.",
+      "description": "Worked across backend, frontend and infrastructure for education platforms serving multiple international markets.",
       "highlights": [
-        "Designed and implemented Docker-based infrastructure to improve environment consistency, scalability and team productivity.",
+        "Designed and implemented Docker-based infrastructure that improved environment consistency, scalability and team productivity.",
         "Contributed to deployment and delivery improvements, supporting more efficient and reliable release flows.",
         "Helped move the platform toward a multi-language, multi-portal structure for international growth.",
-        "Integrated payment systems and built advanced search with Elasticsearch to improve result quality and user experience.",
-        "Worked on platform performance, scalability and Core Web Vitals, with positive impact on SEO and engagement.",
+        "Integrated payment systems and built advanced search with Elasticsearch, improving result quality and user experience.",
+        "Improved platform performance, scalability and Core Web Vitals, with positive impact on SEO and engagement.",
         "Developed and maintained backend and frontend features with PHP, Phalcon, JavaScript, HTML and CSS, while also reinforcing code review and development standards."
       ]
     }
@@ -277,8 +277,8 @@
         "status": "Client project",
         "link": "",
         "context": "International backend team modernizing a cloud platform for a product organization operating at enterprise scale.",
-        "timeframe": "12/2024 - Present",
-        "summary": "Worked on platform modernization around service boundaries, secure APIs, database delivery workflows and release confidence during the move away from a legacy monolith.",
+        "timeframe": "12/2024 – Present",
+        "summary": "Contributed to platform modernization work around service boundaries, secure APIs, database delivery workflows and release confidence during the move away from a legacy monolith.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/microservices-modernization-platform.avif",
@@ -296,8 +296,8 @@
           "Kubernetes"
         ],
         "highlights": [
-          "Contributed to a long-term migration from a Scala monolith toward a cleaner and more maintainable service architecture.",
-          "Helped improve release confidence through secure service work, automated database delivery and contract testing.",
+          "Contributed to a long-term migration from a Scala monolith to a cleaner and more maintainable service architecture.",
+          "Improved release confidence through secure service work, automated database delivery and contract testing.",
           "Supported a product platform where technical clarity mattered as much as feature progress."
         ]
       },
@@ -308,8 +308,8 @@
         "status": "Client PoC",
         "link": "",
         "context": "Backend proof of concept for real-time communication between digital clients and internal services inside an enterprise platform.",
-        "timeframe": "02/2026 - 05/2026",
-        "summary": "Worked on a WebSocket gateway PoC built with Java and Spring Boot to manage user connections, rooms, event broadcasting and communication with internal services through Redis pub/sub and gRPC.",
+        "timeframe": "02/2026 – 05/2026",
+        "summary": "Contributed to a WebSocket gateway PoC built with Java and Spring Boot to manage user connections, rooms, event broadcasting and communication with internal services through Redis pub/sub and gRPC.",
         "technologies": [
           "Java 21",
           "Spring Boot 4",
@@ -326,7 +326,7 @@
         ],
         "highlights": [
           "Worked on WebSocket infrastructure for connecting users to rooms and keeping connection state controlled.",
-          "Worked on Redis pub/sub integration for cross-instance broadcasting and gRPC communication with other backend services.",
+          "Contributed to Redis pub/sub integration for cross-instance broadcasting and gRPC communication with other backend services.",
           "Helped document and validate local test flows so the service was easier to run, review and evolve."
         ]
       },
@@ -337,8 +337,8 @@
         "status": "Production platform",
         "link": "",
         "context": "Core digital product used to capture, convert and serve educational demand across multiple markets.",
-        "timeframe": "02/2021 - 12/2024",
-        "summary": "Worked across backend, frontend and infrastructure on a large education platform, with focus on performance, business delivery and maintainable evolution.",
+        "timeframe": "02/2021 – 12/2024",
+        "summary": "Contributed across backend, frontend and infrastructure on a large-scale education platform, with focus on performance, business delivery and maintainable evolution.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/euroinnova.avif",
@@ -372,8 +372,8 @@
         "status": "Business tool",
         "link": "",
         "context": "Affiliate management product supporting operational reporting, partner workflows and payment-related processes.",
-        "timeframe": "08/2020 - 12/2024",
-        "summary": "Worked on the delivery and evolution of an internal digital product used to manage affiliate relationships, reporting flows and operational processes tied to growth channels.",
+        "timeframe": "08/2020 – 12/2024",
+        "summary": "Contributed to the delivery and evolution of an internal digital product used to manage affiliate relationships, reporting flows and operational processes tied to growth channels.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/educash.avif",
@@ -400,7 +400,7 @@
         "status": "Active build",
         "link": "https://github.com/jomiferse/betx",
         "context": "Technical CLI for recording bets, odds, states and results locally, with declarative configuration and lightweight persistence.",
-        "timeframe": "2026 - Present",
+        "timeframe": "2026 – Present",
         "summary": "Backend project built as a terminal tool for keeping a structured local betting record. The focus is on modeling the flow clearly, separating HTTP integrations, reading configuration from betx.yml and keeping a SQLite database simple to operate.",
         "technologies": [
           "Java 21",
@@ -426,12 +426,12 @@
         "status": "Active build",
         "link": "https://github.com/jomiferse/cv-studio",
         "context": "A professional CV builder designed for technical profiles with live editing, strong data modeling and polished PDF output.",
-        "timeframe": "12/2025 - Present",
-        "summary": "A personal product built around structured CV data, live editing and document generation. The main work was the data model, validation, interface and a clear user workflow.",
+        "timeframe": "12/2025 – Present",
+        "summary": "A personal product built around structured CV data, live editing and document generation. The focus was not just the interface, but the data model, validation and a clear user workflow.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/cv-studio.avif",
-            "alt": "CV Studio - professional CV builder"
+            "alt": "CV Studio – professional CV builder"
           },
           "imgHover": {
             "src": "/images/projects/cv-studio-preview.avif",
@@ -450,7 +450,7 @@
         ],
         "highlights": [
           "Built a real-time editor with synchronized preview over structured JSON data and reusable templates.",
-          "Implemented ATS-friendly PDF export with focus on layout consistency and document quality.",
+          "Implemented ATS-friendly PDF export with a strong focus on layout consistency and document quality.",
           "Combined product polish with typed validation and document-generation architecture."
         ]
       }

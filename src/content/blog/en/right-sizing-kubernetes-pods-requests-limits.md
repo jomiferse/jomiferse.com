@@ -78,7 +78,7 @@ If your observability stack gives you only averages, it is not giving you enough
 
 Here is a sane way to think about it:
 
-- **CPU request:** start near the service's steady-state p95 under real load.
+- **CPU request:** start near the service’s steady-state p95 under real load.
 - **CPU limit:** keep it above normal bursts, or leave it unset if your platform policy allows that and the workload is latency sensitive.
 - **Memory request:** use the observed working set with headroom.
 - **Memory limit:** give yourself a hard ceiling, but not one so tight that GC or short-lived spikes turn into restarts.
@@ -173,7 +173,7 @@ If you want a practical default, think like this:
 - Request = what the service really needs
 - Limit = the boundary that protects the rest of the system
 
-The mistake is to treat both as a way to "make Kubernetes happy." Kubernetes is already happy. Your users care whether the service is fast, stable, and cheap.
+The mistake is to treat both as a way to “make Kubernetes happy.” Kubernetes is already happy. Your users care whether the service is fast, stable, and cheap.
 
 ## Bottom line
 
@@ -191,7 +191,7 @@ That keeps the cluster efficient without turning every deploy into a guess.
 ## FAQ
 
 **Should I always set both requests and limits?**  
-Not always. Requests are important for scheduling. Limits depend on the workload and your team's platform policy. For CPU, a hard limit is sometimes helpful and sometimes a source of throttling.
+Not always. Requests are important for scheduling. Limits depend on the workload and your team’s platform policy. For CPU, a hard limit is sometimes helpful and sometimes a source of throttling.
 
 **What should I optimize first: CPU or memory?**  
 Usually memory first if you are seeing OOMKills or high memory pressure. CPU is easier to observe, but memory mistakes tend to be more disruptive.
@@ -204,8 +204,8 @@ No. HPA scales replicas. It does not fix bad requests or memory limits.
 
 ## Sources and verification notes
 
-- Kubernetes: Resource Management for Pods and Containers - https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
-- Kubernetes: Assign CPU Resources to Containers and Pods - https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
-- Kubernetes: Vertical Pod Autoscaling - https://kubernetes.io/docs/concepts/workloads/autoscaling/vertical-pod-autoscale/
-- Kubernetes: Assign Pod-level CPU and memory resources - https://kubernetes.io/docs/tasks/configure-pod-container/assign-pod-level-resources/
-- Kubernetes blog: v1.36 in-place vertical scaling for pod-level resources - https://kubernetes.io/blog/2026/04/30/kubernetes-v1-36-inplace-pod-level-resources-beta/
+- Kubernetes: Resource Management for Pods and Containers — https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
+- Kubernetes: Assign CPU Resources to Containers and Pods — https://kubernetes.io/docs/tasks/configure-pod-container/assign-cpu-resource/
+- Kubernetes: Vertical Pod Autoscaling — https://kubernetes.io/docs/concepts/workloads/autoscaling/vertical-pod-autoscale/
+- Kubernetes: Assign Pod-level CPU and memory resources — https://kubernetes.io/docs/tasks/configure-pod-container/assign-pod-level-resources/
+- Kubernetes blog: v1.36 in-place vertical scaling for pod-level resources — https://kubernetes.io/blog/2026/04/30/kubernetes-v1-36-inplace-pod-level-resources-beta/

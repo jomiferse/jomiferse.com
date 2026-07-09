@@ -1,6 +1,6 @@
 ---
 title: "Cómo construí un sistema automatizado de apuestas en Java"
-description: "Notas sobre BetX, un sistema automatizado de apuestas en Java y Spring Boot con arquitectura hexagonal, backtesting, paper trading y control de riesgo."
+description: "Cómo construí BetX, un sistema automatizado de apuestas en Java y Spring Boot con arquitectura hexagonal, backtesting, paper trading y control de riesgo."
 date: 2026-06-22
 translationSlug: "how-i-built-an-automated-betting-system-in-java"
 tags:
@@ -13,11 +13,11 @@ author: "José Miguel Fernández"
 readingTime: "8 min"
 ---
 
-## Por qué construí BetX
+## Introducción
 
-Construir un sistema automatizado de apuestas es un buen reto de software engineering porque desde fuera parece sencillo y, en cuanto lo tratas con seriedad, se vuelve bastante complejo. Recoger cuotas y aplicar una regla es fácil. Construir un sistema que pueda explicar una recomendación, simularla, rechazarla por riesgo y reproducir la decisión más tarde es otro problema.
+Construir un sistema automatizado de apuestas es un reto interesante de **Software Engineering** porque desde fuera parece sencillo y, en cuanto lo tratas con seriedad, se vuelve bastante complejo. Recoger cuotas y aplicar una regla es fácil. Construir un sistema que pueda explicar una recomendación, simularla, rechazarla por riesgo y reproducir la decisión más tarde es otro problema.
 
-Por eso construí BetX, un proyecto personal centrado en la ingeniería detrás de la automatización de apuestas. No es un proyecto para promocionar el juego ni promete rentabilidad. El objetivo era construir un sistema automatizado de apuestas en Java capaz de escanear mercados, detectar posible valor, generar recomendaciones, ejecutar backtesting, simular decisiones con paper trading, seguir CLV y mantenerse claro al crecer.
+Por eso construí **BetX**, un proyecto personal centrado en la ingeniería detrás de la automatización de apuestas. No es un proyecto para promocionar el juego ni promete rentabilidad. El objetivo era construir un **sistema automatizado de apuestas** en **Java** capaz de escanear mercados, detectar posible valor, generar recomendaciones, ejecutar **Backtesting**, simular decisiones con paper trading, seguir CLV y mantenerse mantenible al crecer.
 
 [![Diagrama de arquitectura hexagonal de BetX con dominio, capa de aplicación, adaptadores, persistencia, Telegram, testing, Docker e integraciones futuras con exchanges](/images/blog/betx-hexagonal-architecture.svg)](/images/blog/betx-hexagonal-architecture.svg)
 

@@ -84,7 +84,7 @@ const commercialLandingPages = {
 			title: "Software a medida para pymes",
 			intro:
 				"Cuando una hoja de cálculo, un correo o una herramienta genérica empieza a sostener demasiada operación, conviene parar y diseñar una base más clara. Construyo aplicaciones web y herramientas internas pequeñas, mantenibles y ajustadas al flujo real de la empresa.",
-			primaryCta: "Contar el proceso",
+			primaryCta: "Contarme el proceso",
 			secondaryCta: "Ver servicios relacionados",
 			problem: {
 				eyebrow: "Problema que resuelve",
@@ -107,7 +107,7 @@ const commercialLandingPages = {
 			cases: {
 				title: "Casos habituales",
 				intro:
-					"El punto de partida suele ser una tarea conocida que ya se lleva tiempo cada semana.",
+					"El punto de partida suele ser una tarea conocida que ya consume tiempo cada semana.",
 				items: [
 					{
 						title: "Paneles internos",
@@ -141,7 +141,7 @@ const commercialLandingPages = {
 				title: "Cómo trabajo",
 				steps: [
 					"Mapeo el flujo actual con sus pasos, datos, excepciones y puntos de fricción.",
-					"Propongo una primera versión pequeña, con entregables claros y sin funciones de adorno.",
+					"Propongo una primera versión pequeña, con entregables claros y sin funcionalidades de adorno.",
 					"Construyo la herramienta con una base mantenible, validaciones y comportamiento razonable ante errores.",
 					"Dejo documentado cómo usarla, qué queda fuera y qué tendría sentido mejorar después.",
 				],
@@ -204,8 +204,8 @@ const commercialLandingPages = {
 			cta: {
 				eyebrow: "Primer paso",
 				title: "Cuéntame qué proceso quieres ordenar",
-				text: "Con una explicación breve del flujo actual suele verse rápido si conviene una herramienta a medida, una automatización o algo más simple.",
-				button: "Hablar del flujo",
+				text: "Con una explicación breve del flujo actual suele bastar para detectar si conviene una herramienta a medida, una automatización o una solución más simple.",
+				button: "Hablar del proyecto",
 			},
 			schema: {
 				serviceType: "Software a medida para pymes",
@@ -242,8 +242,8 @@ const commercialLandingPages = {
 				eyebrow: "Problema que resuelve",
 				title: "Reducir tareas manuales que ya tienen reglas claras",
 				body: [
-					"Una automatización útil no empieza por elegir una herramienta. Empieza por entender qué dato entra, qué decisión se toma, qué salida hace falta y dónde pueden aparecer errores.",
-					"El objetivo es reservar el criterio del equipo para los casos que realmente lo necesitan.",
+					"Una automatización útil no empieza por elegir una herramienta. Empieza por entender qué dato entra, qué decisión se toma, qué salida se necesita y dónde pueden aparecer errores.",
+					"El objetivo no es quitar criterio al equipo, sino reservarlo para los casos que realmente lo necesitan.",
 				],
 			},
 			whenWorthIt: {
@@ -295,7 +295,7 @@ const commercialLandingPages = {
 					"Identifico el punto exacto donde se pierde tiempo o se repite el error.",
 					"Defino entradas, salidas, reglas, excepciones y nivel de supervisión necesario.",
 					"Construyo el flujo con logs, avisos y una forma clara de detectar fallos.",
-					"Lo dejo documentado para que el equipo sepa cuándo confiar en la automatización y cuándo revisar a mano.",
+					"Lo dejo documentado para que el equipo sepa cuándo confiar en la automatización y cuándo revisar.",
 				],
 			},
 			avoid: {
@@ -544,7 +544,7 @@ const commercialLandingPages = {
 				eyebrow: "Problema que resuelve",
 				title: "Conectar sistemas sin perder datos por el camino",
 				body: [
-					"Una integración tiene que hacer más que enviar datos de A a B: duplicados, reintentos, validaciones, cambios de API y avisos cuando algo falla también importan.",
+					"Una integración no es solo enviar datos de A a B. También hay que pensar en duplicados, reintentos, validaciones, cambios de API y avisos cuando algo falla.",
 					"El objetivo es que la operación dependa menos de memoria, capturas, exportaciones y comprobaciones manuales.",
 				],
 			},
@@ -657,7 +657,7 @@ const commercialLandingPages = {
 			cta: {
 				eyebrow: "Mapa de herramientas",
 				title: "Cuéntame qué sistemas necesitas conectar",
-				text: "Con una lista de herramientas y el flujo de datos actual suele verse rápido qué integración merece la pena abordar primero.",
+				text: "Con una lista de herramientas y el flujo de datos actual se puede detectar rápido qué integración merece la pena abordar primero.",
 				button: "Consultar integración",
 			},
 			schema: {
@@ -695,7 +695,7 @@ const commercialLandingPages = {
 				title: "Un perfil técnico directo para avanzar sin estructura grande",
 				body: [
 					"Hay proyectos que no necesitan una agencia completa ni un equipo permanente. Necesitan una persona técnica que entienda el problema, acote el alcance y construya una solución mantenible.",
-					"Mi enfoque combina criterio de producto, base backend y capacidad full-stack para trabajar en interfaz, datos, APIs e integraciones.",
+					"Mi enfoque combina criterio de producto, base backend y capacidad full-stack para trabajar tanto en la interfaz como en los datos, APIs e integraciones.",
 				],
 			},
 			whenWorthIt: {
@@ -839,7 +839,7 @@ const commercialLandingPages = {
 			eyebrow: "Practical software for small teams",
 			title: "Custom software for small businesses",
 			intro:
-				"When a spreadsheet, email thread or generic tool starts carrying too much operational work, it is worth designing a clearer base. I build small, maintainable web applications and internal tools shaped around the real workflow.",
+				"When a spreadsheet, email thread or generic tool starts carrying too much operational weight, it is worth designing a clearer base. I build small, maintainable web applications and internal tools shaped around the real workflow.",
 			primaryCta: "Tell me about the workflow",
 			secondaryCta: "View related services",
 			problem: {
@@ -959,8 +959,8 @@ const commercialLandingPages = {
 			cta: {
 				eyebrow: "First step",
 				title: "Tell me which workflow you want to organize",
-				text: "A short explanation of the current process is usually enough to see whether custom software, automation or something simpler makes sense.",
-				button: "Talk about the workflow",
+				text: "A short explanation of the current process is usually enough to see whether custom software, automation or a simpler solution makes sense.",
+				button: "Discuss the project",
 			},
 			schema: {
 				serviceType: "Custom software for small businesses",
@@ -1049,7 +1049,7 @@ const commercialLandingPages = {
 					"I identify the exact point where time is lost or the error repeats.",
 					"I define inputs, outputs, rules, exceptions and the right level of supervision.",
 					"I build the workflow with logs, alerts and a clear way to detect failures.",
-					"I document when the team can trust the automation and when someone should review by hand.",
+					"I document when the team can trust the automation and when it should review.",
 				],
 			},
 			avoid: {
@@ -1297,7 +1297,7 @@ const commercialLandingPages = {
 				eyebrow: "Problem it solves",
 				title: "Connecting systems without losing data on the way",
 				body: [
-					"An integration has to do more than send data from A to B. Duplicates, retries, validation, API changes and failure alerts matter too.",
+					"An integration is not just sending data from A to B. Duplicates, retries, validation, API changes and failure alerts matter too.",
 					"The goal is for operations to depend less on memory, screenshots, exports and manual checks.",
 				],
 			},
@@ -1410,7 +1410,7 @@ const commercialLandingPages = {
 			cta: {
 				eyebrow: "Tool map",
 				title: "Tell me which systems need to connect",
-				text: "With a list of tools and the current data flow, it is usually easy to see which integration should come first.",
+				text: "With a list of tools and the current data flow, it is usually quick to see which integration should come first.",
 				button: "Ask about integration",
 			},
 			schema: {
@@ -1560,7 +1560,7 @@ const commercialLandingPages = {
 			],
 			cta: {
 				eyebrow: "Contact",
-				title: "Tell me about the problem you want to solve",
+				title: "Let's talk if you have a concrete problem",
 				text: "You do not need everything defined. It is enough to explain what you want to improve, what exists now and what outcome would be useful.",
 				button: "Contact me",
 			},

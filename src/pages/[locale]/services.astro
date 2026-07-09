@@ -26,8 +26,8 @@ const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const contactHref = `/${locale}/contact`;
 const exitIntentWhatsappMessage =
 	locale === "es"
-		? "Hola José Miguel, estoy revisando tus servicios y me gustaría comentarte mi caso."
-		: "Hi José Miguel, I am reviewing your services and would like to tell you about my case.";
+		? "Hola José Miguel, estaba revisando tus servicios y me gustaría contarte mi caso."
+		: "Hi José Miguel, I was reviewing your services and would like to tell you about my case.";
 const exitIntentWhatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
 	exitIntentWhatsappMessage,
 )}`;
@@ -58,13 +58,13 @@ const commercialLandingCopy =
 				eyebrow: "Búsquedas concretas",
 				title: "Páginas para problemas concretos",
 				intro:
-					"Algunas necesidades no empiezan con el nombre técnico del servicio, sino con un problema claro: ordenar un proceso, automatizar tareas o decidir mejor antes de invertir.",
+					"Algunas necesidades no empiezan con el nombre técnico del servicio, sino con un problema claro: ordenar un proceso, automatizar tareas o elegir bien antes de invertir.",
 			}
 		: {
 				eyebrow: "Specific searches",
 				title: "Pages for concrete problems",
 				intro:
-					"Some needs do not start with the technical name of the service. They start with a clear problem: organizing a workflow, automating tasks or making a better decision before investing.",
+					"Some needs do not start with the technical name of the service, but with a clear problem: organizing a workflow, automating tasks or making a better decision before investing.",
 			};
 const structuredData = [
 	buildProfessionalService({

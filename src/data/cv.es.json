@@ -2,8 +2,8 @@
   "name": "José Miguel Fernández",
   "shortName": "José Miguel",
   "email": "jomiferse@gmail.com",
-  "headline": "Full-stack developer | Backend, productos web, automatización",
-  "tagline": "Full-stack developer con base fuerte en backend, construyendo software simple, fiable y útil.",
+  "headline": "Full-Stack Developer | Backend, Productos Web, Automatización",
+  "tagline": "Full-stack developer con base sólida en backend, construyendo software simple, fiable y útil.",
   "location": "Granada, España",
   "currentRole": "Software Engineer",
   "focus": "Sistemas backend, delivery full-stack, automatización y productos web prácticos",
@@ -26,22 +26,22 @@
   ],
   "focusAreas": [
     {
-      "title": "Sistemas backend",
-      "description": "APIs, servicios, integraciones y flujos de datos construidos para ser fiables y mantenibles.",
+      "title": "Sistemas Backend",
+      "description": "APIs, servicios, integraciones y flujos de datos construidos con fiabilidad y mantenibilidad en mente.",
       "items": ["Java", "Spring Boot", "REST APIs", "Spring Security"]
     },
     {
-      "title": "Delivery e infraestructura",
-      "description": "Flujos de release, contenedores, CI/CD y prácticas de despliegue para mover software de código a producción con menos sorpresas.",
+      "title": "Delivery e Infraestructura",
+      "description": "Flujos de release, contenedores, CI/CD y prácticas de despliegue para mover software de código a producción con confianza.",
       "items": ["Liquibase", "CI/CD", "Docker", "Kubernetes"]
     },
     {
-      "title": "Productos web y herramientas",
+      "title": "Productos Web y Herramientas",
       "description": "Interfaces útiles, herramientas internas y automatizaciones que reducen trabajo manual y hacen los flujos más fáciles de ejecutar.",
       "items": ["TypeScript", "React", "Astro", "Automatización"]
     },
     {
-      "title": "Sistemas distribuidos",
+      "title": "Sistemas Distribuidos",
       "description": "Servicios, colas y flujos event-driven que se comunican con claridad y siguen siendo observables en producción.",
       "items": ["Kafka", "RabbitMQ", "Redis", "PostgreSQL"]
     }
@@ -59,13 +59,13 @@
       "location": "España",
       "startDate": "12/2024",
       "endDate": "Presente",
-      "description": "Contribuyo a sistemas backend cloud-native para The Workshop, trabajando con equipos de producto, plataforma y SRE en un entorno de producción sensible a seguridad.",
+      "description": "Contribuyo a sistemas backend cloud-native de gran escala para The Workshop, trabajando con equipos cross-functional en un entorno de producción sensible a seguridad.",
       "highlights": [
-        "Desarrollo y mantengo servicios backend en Java y Spring Boot, cuidando arquitectura clara, DDD y código mantenible.",
-        "Diseño e implemento APIs REST e integraciones internas cuidando fiabilidad, testabilidad y visibilidad en producción.",
+        "Desarrollo y mantengo servicios backend en Java y Spring Boot, con foco en arquitectura clara, DDD y código mantenible.",
+        "Diseño e implemento APIs REST e integraciones internas priorizando fiabilidad, testabilidad y visibilidad en producción.",
         "Trabajo con RabbitMQ y patrones de comunicación asíncrona para dar soporte a integraciones fiables en sistemas distribuidos.",
         "Colaboro con SRE y Platform en despliegues sobre Kubernetes, observabilidad con Grafana y Kibana, health checks automatizados y consistencia operativa.",
-        "Contribuyo a mejoras de CI/CD mediante testing automatizado, controles de seguridad, versionado de artefactos y flujos de despliegue más fiables.",
+        "Contribuyo a mejoras de CI/CD mediante testing automatizado, controles de seguridad, versionado de artefactos y flujos de despliegue más robustos.",
         "Diagnostico y resuelvo incidencias en sistemas distribuidos con foco en rendimiento, resiliencia y mantenibilidad."
       ]
     },
@@ -75,13 +75,13 @@
       "location": "Granada, España",
       "startDate": "08/2020",
       "endDate": "12/2024",
-      "description": "Trabajé en backend, frontend e infraestructura para plataformas educativas usadas en varios mercados internacionales.",
+      "description": "Trabajé en backend, frontend e infraestructura para plataformas educativas utilizadas en varios mercados internacionales.",
       "highlights": [
-        "Diseñé e implementé infraestructura basada en Docker para mejorar la consistencia entre entornos, la escalabilidad y la productividad del equipo.",
+        "Diseñé e implementé infraestructura basada en Docker que mejoró la consistencia entre entornos, la escalabilidad y la productividad del equipo.",
         "Contribuí a mejoras de despliegue y delivery, dando soporte a flujos de release más eficientes y fiables.",
         "Ayudé a mover la plataforma hacia una estructura multiidioma y multiportal para crecimiento internacional.",
-        "Integré sistemas de pago y construí búsqueda avanzada con Elasticsearch para mejorar calidad de resultados y experiencia de usuario.",
-        "Trabajé en rendimiento, escalabilidad y Core Web Vitals, con impacto positivo en SEO y engagement.",
+        "Integré sistemas de pago y construí búsqueda avanzada con Elasticsearch, mejorando la calidad de resultados y la experiencia de usuario.",
+        "Mejoré rendimiento, escalabilidad y Core Web Vitals, con impacto positivo en SEO y engagement.",
         "Desarrollé y mantuve funcionalidades backend y frontend con PHP, Phalcon, JavaScript, HTML y CSS, reforzando también code review y estándares de desarrollo."
       ]
     }
@@ -277,8 +277,8 @@
         "status": "Proyecto cliente",
         "link": "",
         "context": "Equipo backend internacional modernizando una plataforma cloud para una organización de producto a escala enterprise.",
-        "timeframe": "12/2024 - Presente",
-        "summary": "Trabajo en modernización de plataforma alrededor de límites de servicio, APIs seguras, flujos de delivery de base de datos y confianza en releases durante la salida de un monolito legacy.",
+        "timeframe": "12/2024 – Presente",
+        "summary": "Contribución a trabajo de modernización de plataforma alrededor de límites de servicio, APIs seguras, flujos de delivery de base de datos y confianza en releases durante la salida de un monolito legacy.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/microservices-modernization-platform.avif",
@@ -297,7 +297,7 @@
         ],
         "highlights": [
           "Contribuí a una migración a largo plazo desde un monolito en Scala hacia una arquitectura de servicios más limpia y mantenible.",
-          "Ayudé a mejorar la confianza en releases mediante trabajo en servicios seguros, delivery automatizado de base de datos y contract testing.",
+          "Mejoré la confianza en releases mediante trabajo en servicios seguros, delivery automatizado de base de datos y contract testing.",
           "Di soporte a una plataforma de producto donde la claridad técnica importaba tanto como el avance funcional."
         ]
       },
@@ -308,8 +308,8 @@
         "status": "PoC cliente",
         "link": "",
         "context": "Prueba de concepto backend para comunicación en tiempo real entre clientes digitales y servicios internos dentro de una plataforma enterprise.",
-        "timeframe": "02/2026 - 05/2026",
-        "summary": "Trabajo en una PoC de gateway WebSocket construida con Java y Spring Boot para gestionar conexiones de usuarios, salas, difusión de eventos y comunicación con servicios internos mediante Redis pub/sub y gRPC.",
+        "timeframe": "02/2026 – 05/2026",
+        "summary": "Contribución a una PoC de gateway WebSocket construida con Java y Spring Boot para gestionar conexiones de usuarios, salas, difusión de eventos y comunicación con servicios internos mediante Redis pub/sub y gRPC.",
         "technologies": [
           "Java 21",
           "Spring Boot 4",
@@ -326,7 +326,7 @@
         ],
         "highlights": [
           "Trabajé en infraestructura WebSocket para conectar usuarios a salas y mantener el estado de conexión de forma controlada.",
-          "Trabajé en la integración con Redis pub/sub para difusión entre instancias y gRPC para comunicación con otros servicios backend.",
+          "Contribuí a la integración con Redis pub/sub para difusión entre instancias y gRPC para comunicación con otros servicios backend.",
           "Ayudé a documentar y validar flujos locales de prueba para que el servicio fuera más fácil de ejecutar, revisar y evolucionar."
         ]
       },
@@ -337,8 +337,8 @@
         "status": "Plataforma en producción",
         "link": "",
         "context": "Producto digital principal utilizado para captar, convertir y atender demanda educativa en varios mercados.",
-        "timeframe": "02/2021 - 12/2024",
-        "summary": "Trabajo en backend, frontend e infraestructura sobre una plataforma educativa grande, con foco en rendimiento, delivery de negocio y evolución mantenible.",
+        "timeframe": "02/2021 – 12/2024",
+        "summary": "Contribución en backend, frontend e infraestructura sobre una plataforma educativa a gran escala, con foco en rendimiento, delivery de negocio y evolución mantenible.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/euroinnova.avif",
@@ -372,8 +372,8 @@
         "status": "Herramienta de negocio",
         "link": "",
         "context": "Producto de gestión de afiliación para reporting operativo, workflows de partners y procesos relacionados con pagos.",
-        "timeframe": "08/2020 - 12/2024",
-        "summary": "Trabajo en la entrega y evolución de un producto digital interno usado para gestionar relaciones de afiliación, reporting y procesos operativos conectados a canales de crecimiento.",
+        "timeframe": "08/2020 – 12/2024",
+        "summary": "Contribución a la entrega y evolución de un producto digital interno usado para gestionar relaciones de afiliación, reporting y procesos operativos conectados a canales de crecimiento.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/educash.avif",
@@ -400,7 +400,7 @@
         "status": "En desarrollo",
         "link": "https://github.com/jomiferse/betx",
         "context": "CLI técnica para registrar apuestas, cuotas, estados y resultados en local, con configuración declarativa y persistencia ligera.",
-        "timeframe": "2026 - Presente",
+        "timeframe": "2026 – Presente",
         "summary": "Proyecto backend construido como herramienta de terminal para llevar un registro local de apuestas de forma estructurada. El foco está en modelar bien el flujo, separar integraciones HTTP, leer configuración desde betx.yml y mantener una base SQLite sencilla de operar.",
         "technologies": [
           "Java 21",
@@ -426,8 +426,8 @@
         "status": "En desarrollo",
         "link": "https://github.com/jomiferse/cv-studio",
         "context": "Generador profesional de CV para perfiles técnicos con edición en vivo, modelado sólido de datos y salida PDF cuidada.",
-        "timeframe": "12/2025 - Presente",
-        "summary": "Producto personal construido alrededor de datos estructurados de CV, edición en vivo y generación documental. El trabajo principal estuvo en el modelo de datos, la validación, la interfaz y un flujo claro para el usuario.",
+        "timeframe": "12/2025 – Presente",
+        "summary": "Producto personal construido alrededor de datos estructurados de CV, edición en vivo y generación documental. El foco no era solo la interfaz, sino el modelo de datos, la validación y un flujo claro para el usuario.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/cv-studio.avif",

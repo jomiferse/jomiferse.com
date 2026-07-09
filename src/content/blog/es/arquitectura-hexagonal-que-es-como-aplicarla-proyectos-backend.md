@@ -595,6 +595,6 @@ A veces no. En proyectos pequeños con poca lógica, una estructura por capas pu
 
 ## Fuentes y verificación
 
-- Alistair Cockburn: Hexagonal Architecture - https://alistair.cockburn.us/hexagonal-architecture
-- Spring Framework: Dependency Injection - https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html
-- Spring Data JPA reference - https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+- Alistair Cockburn: Hexagonal Architecture — https://alistair.cockburn.us/hexagonal-architecture
+- Spring Framework: Dependency Injection — https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html
+- Spring Data JPA reference — https://docs.spring.io/spring-data/jpa/docs/current/reference/html/

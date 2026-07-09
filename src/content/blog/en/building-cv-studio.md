@@ -1,6 +1,6 @@
 ---
-title: "CV Studio: building a clearer developer CV"
-description: "Notes from building CV Studio, a CV builder for developers with live preview, structured data and PDF export."
+title: "CV Studio: Building a Cleaner Way to Write a Developer CV"
+description: "Notes from building CV Studio, a developer-focused CV builder with live preview, structured data and PDF export."
 date: 2025-12-25
 translationSlug: "creando-cv-studio"
 tags:
@@ -26,19 +26,20 @@ The same idea applies to a professional website: the goal is not more sections, 
 
 ---
 
-## Why I built it
+## Why I Built It
 
-CV Studio is a personal project with a simple goal: help developers write a clear CV without losing control over the structure or the final PDF.
+CV Studio is a personal project with a simple goal:
+**help developers write a clear CV without losing control over the structure or the final PDF.**
 
 I wanted the editing experience to feel straightforward, but still be built on a solid data model. The CV should be easy to change, easy to validate and reliable when exported.
 
 CV Studio treats the CV first as **structured data**, and then as a polished document.
 
-![CV Studio - live CV editor with real-time preview](/images/blog/cv-studio-editor.avif)
+![CV Studio – Live CV editor with real-time preview](/images/blog/cv-studio-editor.avif)
 
 ---
 
-## Principles I kept
+## Core Principles
 
 From the beginning, I kept a few principles in mind:
 
@@ -47,38 +48,38 @@ From the beginning, I kept a few principles in mind:
 - **Reliable output**. PDFs are optimized for A4, printing and ATS parsing.
 - **Maintainable architecture**. Strong typing, validation and reusable templates matter.
 
-## Main features
+## Key Features
 
-### Live CV editor with real-time preview
+### Live CV Editor with Real-Time Preview
 
 CV Studio lets users edit their CV while seeing the final result instantly. The preview is not a mockup. It represents what will be exported to PDF.
 
 That removes guesswork and makes each edit easier to trust.
 
-### Reliable PDF export
+### High-Quality PDF Export
 
 The generated PDFs are designed to stay consistent across platforms, printers and devices. The layout follows common expectations for technical hiring processes.
 
-The point is boring in the best way: no broken margins, no unexpected font shifts and no surprises after export.
+No broken margins. No unexpected font shifts. Just clean, reliable output.
 
-![CV Studio - professional PDF export](/images/blog/cv-studio-pdf.avif)
+![CV Studio – Professional PDF export](/images/blog/cv-studio-pdf.avif)
 
-### Clean, minimal UI
+### Clean and Minimal UI
 
 The interface is intentionally minimal. The focus is on writing, editing and checking the final result without distractions.
 
-### Strong validation
+### Strong Validation and Scalability
 
 Schema validation and strong typing keep the CV data consistent. That makes it easier to add sections, templates or export formats later without making the app fragile.
 
-## Who CV Studio is for
+## Who Is CV Studio For?
 
 - Software engineers and technical professionals
 - Developers who value control over their data
 - People looking for ATS-friendly, print-ready CVs
 - Anyone who prefers clean structure over flashy templates
 
-## What comes next
+## What’s Next?
 
 CV Studio is still evolving. Planned improvements include:
 
@@ -87,9 +88,9 @@ CV Studio is still evolving. Planned improvements include:
 - Improved export capabilities
 - Internationalization and multi-language support
 
-## Closing note
+## Final Thoughts
 
-CV Studio is a small product, but it reflects how I like to build: a simple interface, clear data, reliable output and room to improve.
+CV Studio is a small product, but it reflects how I like to build: simple interface, clear data, reliable output and room to improve.
 
 You can explore the project here:  
 **[CV Studio on GitHub](https://github.com/jomiferse/cv-studio)**
