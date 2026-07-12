@@ -39,6 +39,11 @@ export interface ServiceItem {
 		question: string;
 		answer: string;
 	}>;
+	relatedPosts?: Array<{
+		title: string;
+		description: string;
+		href: string;
+	}>;
 	canonicalSlug?: ServiceSlug;
 	canonicalPath?: string;
 	isOffering?: boolean;
@@ -213,6 +218,158 @@ const canonicalOfferingByLocale: Partial<
 	},
 };
 
+const relatedPostsByLocale: Record<
+	Locale,
+	Record<string, NonNullable<ServiceItem["relatedPosts"]>>
+> = {
+	es: {
+		"base:backend-spring-boot": [
+			{
+				title: "Spring Boot en producción",
+				description:
+					"Configuración, observabilidad, despliegue y rollback para operar con más contexto.",
+				href: "/es/blog/spring-boot-produccion-checklist-devops/",
+			},
+			{
+				title: "Rendimiento en Spring Boot",
+				description:
+					"Qué medir y qué cambios suelen tener un impacto real en producción.",
+				href: "/es/blog/rendimiento-spring-boot-cambios-que-de-verdad-se-notan/",
+			},
+			{
+				title: "Migrar un backend legacy a Spring Boot",
+				description:
+					"Señales, riesgos y una estrategia incremental antes de reescribir.",
+				href: "/es/blog/cuando-deberia-una-empresa-migrar-un-backend-legacy-a-java-spring-boot/",
+			},
+		],
+		"it-consulting:3": [
+			{
+				title: "Cuándo construir una herramienta interna",
+				description:
+					"Señales de que una hoja o herramienta genérica ya no sostiene bien el proceso.",
+				href: "/es/blog/cuando-construir-herramienta-interna-en-vez-de-usar-excel/",
+			},
+			{
+				title: "Cuánto cuesta una herramienta interna",
+				description:
+					"Qué cambia el alcance y cómo plantear una primera versión útil.",
+				href: "/es/blog/cuanto-cuesta-crear-herramienta-interna-a-medida/",
+			},
+		],
+		"it-consulting:5": [
+			{
+				title: "Cuándo automatizar procesos de empresa",
+				description:
+					"Cómo encontrar tareas repetidas con reglas y resultado medible.",
+				href: "/es/blog/automatizar-procesos-empresa-cuando-merece-la-pena/",
+			},
+			{
+				title: "Usar IA en un producto sin humo",
+				description:
+					"Casos donde ayuda y límites que conviene mantener visibles.",
+				href: "/es/blog/usar-ia-en-tu-producto-sin-humo/",
+			},
+		],
+		"it-consulting:4": [
+			{
+				title: "APIs idempotentes que sobreviven a reintentos",
+				description:
+					"Patrones para evitar pagos, pedidos o trabajos duplicados.",
+				href: "/es/blog/apis-idempotentes-que-sobreviven-a-reintentos/",
+			},
+			{
+				title: "Kafka, RabbitMQ o una base de datos",
+				description:
+					"Cómo coordinar trabajo asíncrono sin sobredimensionar la integración.",
+				href: "/es/blog/cuando-deberias-usar-kafka-rabbitmq-o-simplemente-una-base-de-datos/",
+			},
+		],
+		"web-wordpress:1": [
+			{
+				title: "Qué necesita una web profesional para captar clientes",
+				description:
+					"Una revisión práctica de oferta, confianza, rendimiento y contacto.",
+				href: "/es/blog/que-debe-tener-web-profesional-para-captar-clientes/",
+			},
+		],
+	},
+	en: {
+		"base:backend-spring-boot": [
+			{
+				title: "Spring Boot in production",
+				description:
+					"Configuration, observability, delivery and rollback checks for operating with context.",
+				href: "/en/blog/spring-boot-production-devops-checklist/",
+			},
+			{
+				title: "Spring Boot performance tuning",
+				description:
+					"What to measure and which changes tend to matter in production.",
+				href: "/en/blog/spring-boot-performance-tuning/",
+			},
+			{
+				title: "Migrating a legacy backend to Spring Boot",
+				description:
+					"Signals, risks and an incremental strategy before rewriting.",
+				href: "/en/blog/when-should-a-company-migrate-a-legacy-backend-to-java-spring-boot/",
+			},
+		],
+		"it-consulting:3": [
+			{
+				title: "When to build an internal tool",
+				description:
+					"Signals that a spreadsheet or generic tool no longer supports the workflow.",
+				href: "/en/blog/when-to-build-an-internal-tool-instead-of-using-excel/",
+			},
+			{
+				title: "How much does an internal tool cost?",
+				description:
+					"What changes scope and how to frame a useful first version.",
+				href: "/en/blog/how-much-does-a-custom-internal-tool-cost/",
+			},
+		],
+		"it-consulting:5": [
+			{
+				title: "When business process automation is worth it",
+				description:
+					"Find repeated tasks with stable rules and a measurable result.",
+				href: "/en/blog/when-business-process-automation-is-worth-it/",
+			},
+			{
+				title: "Using AI in a product without hype",
+				description: "Where it helps and which limits should remain visible.",
+				href: "/en/blog/using-ai-in-your-product-without-hype/",
+			},
+		],
+		"it-consulting:4": [
+			{
+				title: "Idempotent APIs that survive retries",
+				description:
+					"Patterns that prevent duplicate payments, orders and jobs.",
+				href: "/en/blog/idempotent-apis-that-survive-retries/",
+			},
+			{
+				title: "Kafka, RabbitMQ or a database",
+				description:
+					"Coordinate asynchronous work without oversizing the integration.",
+				href: "/en/blog/when-should-you-use-kafka-rabbitmq-or-just-a-database/",
+			},
+		],
+		"web-wordpress:1": [
+			{
+				title: "What a professional website needs to get clients",
+				description:
+					"A practical review of offer, trust, performance and contact paths.",
+				href: "/en/blog/what-a-professional-website-needs-to-get-clients/",
+			},
+		],
+	},
+};
+
+const getRelatedPosts = (locale: Locale, translationKey: string) =>
+	relatedPostsByLocale[locale][translationKey];
+
 const serviceGroups = [
 	{
 		slug: "it-consulting",
@@ -250,6 +407,7 @@ export const getServices = (locale: Locale): ServiceItem[] => {
 		canonicalSlug: slug,
 		number: String(index + 1).padStart(2, "0"),
 		...serviceItems[slug],
+		relatedPosts: getRelatedPosts(locale, `base:${slug}`),
 		canonicalPath: canonicalOfferingByLocale[locale]?.[slug]
 			? `/${locale}/services/${canonicalOfferingByLocale[locale][slug]}/`
 			: undefined,
@@ -334,6 +492,7 @@ export const getServicePages = (locale: Locale): ServiceItem[] => {
 				canonicalSlug: offering.service.canonicalSlug,
 				canonicalPath: undefined,
 				isOffering: true,
+				relatedPosts: getRelatedPosts(locale, offering.translationKey),
 			});
 		}
 	}

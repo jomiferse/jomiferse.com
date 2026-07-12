@@ -35,6 +35,11 @@ const stripLocalePrefix = (pathname: string) =>
 	pathname.replace(/^\/(en|es)(?=\/|$)/, "") || "/";
 
 const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
+const isHome = normalizedCurrent === "/";
+const contactHref = isHome ? "/contact?service=assessment" : "/contact";
+const contactLabel = isHome
+	? t(locale, "header.assessmentCtaShort")
+	: t(locale, "header.contactCtaShort");
 ---
 
 <header class="header-bar sticky top-0 z-50">
@@ -84,10 +89,10 @@ const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 				<LanguageToggle locale={locale} href={languageHref} />
 				<ThemeToggle locale={locale} />
 				<a
-					href={withLocale("/contact", locale)}
+					href={withLocale(contactHref, locale)}
 					class="button-primary ml-2 min-h-10 px-4 py-2 text-sm"
 				>
-					{t(locale, "header.contactCtaShort")}
+					{contactLabel}
 				</a>
 			</div>
 
@@ -170,11 +175,11 @@ const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
 		</nav>
 
 		<a
-			href={withLocale("/contact", locale)}
+			href={withLocale(contactHref, locale)}
 			class="button-primary mt-6 w-full"
 			data-close-menu
 		>
-			{t(locale, "header.contactCtaShort")}
+			{contactLabel}
 			<Icon name="arrow-right" class="h-4 w-4" />
 		</a>
 	</aside>

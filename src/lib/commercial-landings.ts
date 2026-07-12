@@ -65,6 +65,1586 @@ export interface CommercialLandingPage {
 	};
 }
 
+interface FocusedLandingSeed {
+	slug: string;
+	translationKey: string;
+	metaTitle: string;
+	metaDescription: string;
+	keywords: string[];
+	eyebrow: string;
+	title: string;
+	intro: string;
+	problemTitle: string;
+	problemBody: string[];
+	when: string[];
+	cases: Array<[title: string, body: string]>;
+	builds: string[];
+	process: string[];
+	avoid: string[];
+	relatedServiceKeys: string[];
+	relatedPosts: CommercialLandingPage["relatedPosts"];
+	faq: CommercialLandingPage["faq"];
+	ctaTitle: string;
+	ctaText: string;
+	ctaButton: string;
+	serviceType: string;
+	audience: string[];
+}
+
+const createFocusedLanding = (
+	locale: Locale,
+	seed: FocusedLandingSeed,
+): CommercialLandingPage => {
+	const es = locale === "es";
+
+	return {
+		...seed,
+		primaryCta: es ? "Revisar mi caso" : "Review my case",
+		secondaryCta: es ? "Ver servicios relacionados" : "View related services",
+		problem: {
+			eyebrow: es ? "Problema que resuelve" : "Problem it solves",
+			title: seed.problemTitle,
+			body: seed.problemBody,
+		},
+		whenWorthIt: {
+			title: es ? "Cuándo merece la pena" : "When it is worth it",
+			items: seed.when,
+		},
+		cases: {
+			title: es ? "Casos habituales" : "Common use cases",
+			intro: es
+				? "El alcance debe partir de un problema observable y una forma clara de comprobar la mejora."
+				: "Scope should start with an observable problem and a clear way to verify the improvement.",
+			items: seed.cases.map(([title, body]) => ({ title, body })),
+		},
+		builds: {
+			title: es ? "Qué puede incluir" : "What it can include",
+			items: seed.builds,
+		},
+		process: {
+			title: es ? "Cómo trabajo" : "How I work",
+			steps: seed.process,
+		},
+		avoid: {
+			title: es ? "Qué conviene evitar" : "What to avoid",
+			items: seed.avoid,
+		},
+		relatedServicesTitle: es ? "Servicios relacionados" : "Related services",
+		relatedPostsTitle: es ? "Lecturas relacionadas" : "Related reading",
+		cta: {
+			eyebrow: es ? "Siguiente paso" : "Next step",
+			title: seed.ctaTitle,
+			text: seed.ctaText,
+			button: seed.ctaButton,
+		},
+		schema: {
+			serviceType: seed.serviceType,
+			areaServed: es ? "España y remoto" : "Spain and remote",
+			audience: seed.audience,
+		},
+	};
+};
+
+const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
+	es: [
+		createFocusedLanding("es", {
+			slug: "mantenimiento-spring-boot",
+			translationKey: "spring-boot-maintenance",
+			metaTitle:
+				"Mantenimiento Spring Boot para empresas | José Miguel Fernández",
+			metaDescription:
+				"Mantenimiento y evolución de aplicaciones Java Spring Boot: incidencias, APIs, rendimiento, seguridad, deuda técnica y entregas controladas.",
+			keywords: [
+				"mantenimiento Spring Boot",
+				"soporte Java Spring Boot",
+				"evolución backend Java",
+			],
+			eyebrow: "Continuidad técnica para backend Java",
+			title: "Mantenimiento y evolución de aplicaciones Spring Boot",
+			intro:
+				"Ayudo a mantener y evolucionar backends Java/Spring Boot que ya sostienen producto u operaciones, con cambios acotados, diagnóstico antes de tocar código y una forma visible de gestionar el riesgo.",
+			problemTitle:
+				"Evitar que cada cambio en el backend se convierta en una apuesta",
+			problemBody: [
+				"Una aplicación en producción acumula incidencias, dependencias, decisiones antiguas y tareas que no caben en un proyecto nuevo.",
+				"El mantenimiento útil combina correcciones, observabilidad, pruebas y mejoras pequeñas que reducen el coste del siguiente cambio.",
+			],
+			when: [
+				"Hay incidencias repetidas o cambios que dan miedo desplegar.",
+				"El equipo necesita apoyo puntual para APIs, base de datos o integraciones.",
+				"Las dependencias o la versión de Spring Boot se han quedado atrás.",
+				"Faltan logs, métricas o pruebas en recorridos críticos.",
+			],
+			cases: [
+				[
+					"Incidencias y estabilidad",
+					"Diagnóstico de errores, timeouts, consumo de recursos y fallos de integración.",
+				],
+				[
+					"Evolución de APIs",
+					"Nuevos endpoints, validaciones y cambios de contrato con compatibilidad controlada.",
+				],
+				[
+					"Actualizaciones",
+					"Plan de dependencias, Spring Boot, Java y librerías con validación por fases.",
+				],
+				[
+					"Deuda técnica",
+					"Mejoras concretas donde el código frena cambios o aumenta riesgo operativo.",
+				],
+			],
+			builds: [
+				"Diagnóstico y priorización de incidencias.",
+				"Correcciones, pruebas y mejoras de observabilidad.",
+				"Evolución de APIs e integraciones existentes.",
+				"Actualizaciones técnicas con rollback y alcance claro.",
+			],
+			process: [
+				"Reviso contexto, repositorio, despliegue y problemas observados.",
+				"Separo urgencias, riesgo y mejoras que pueden esperar.",
+				"Trabajo en cambios pequeños con una verificación explícita.",
+				"Documento decisiones, límites y siguientes pasos.",
+			],
+			avoid: [
+				"Mezclar una incidencia urgente con una reescritura completa.",
+				"Actualizar dependencias sin entender compatibilidad y despliegue.",
+				"Corregir síntomas sin mejorar logs o pruebas cuando hacen falta.",
+			],
+			relatedServiceKeys: [
+				"base:backend-spring-boot",
+				"it-consulting:2",
+				"it-consulting:1",
+			],
+			relatedPosts: [
+				{
+					title: "Spring Boot en producción",
+					description:
+						"Configuración, observabilidad y despliegue para operar con más contexto.",
+					href: "/es/blog/spring-boot-produccion-checklist-devops/",
+				},
+				{
+					title: "Rendimiento en Spring Boot",
+					description: "Cambios que conviene medir antes de optimizar.",
+					href: "/es/blog/rendimiento-spring-boot-cambios-que-de-verdad-se-notan/",
+				},
+			],
+			faq: [
+				{
+					question: "¿Puede ser un apoyo puntual?",
+					answer:
+						"Sí. Puede empezar con una incidencia, una revisión o un bloque de evolución bien delimitado.",
+				},
+				{
+					question: "¿Trabajas sobre código existente?",
+					answer:
+						"Sí, siempre que pueda revisar el estado del repositorio, el entorno y el alcance antes de comprometer cambios.",
+				},
+				{
+					question: "¿Cómo se entrega el trabajo?",
+					answer:
+						"Con cambios revisables, pruebas proporcionadas al riesgo y documentación de decisiones y despliegue.",
+				},
+			],
+			ctaTitle: "Cuéntame qué está frenando el backend",
+			ctaText:
+				"Con el síntoma, la versión de Java/Spring Boot y el contexto de despliegue puedo proponer un primer diagnóstico razonable.",
+			ctaButton: "Consultar mantenimiento",
+			serviceType: "Mantenimiento de aplicaciones Java Spring Boot",
+			audience: [
+				"Empresas",
+				"Equipos de producto",
+				"Equipos técnicos",
+				"Startups",
+			],
+		}),
+		createFocusedLanding("es", {
+			slug: "modernizacion-backend-legacy",
+			translationKey: "legacy-backend-modernization",
+			metaTitle:
+				"Modernización de backend legacy por fases | José Miguel Fernández",
+			metaDescription:
+				"Modernización de backends legacy sin reescrituras a ciegas: diagnóstico, límites, migración incremental, pruebas y convivencia por fases.",
+			keywords: [
+				"modernización backend legacy",
+				"migración backend",
+				"migrar a Spring Boot",
+			],
+			eyebrow: "Cambiar sin detener el negocio",
+			title: "Modernización de backend legacy por fases",
+			intro:
+				"Ayudo a decidir qué mantener, qué aislar y qué migrar cuando un backend antiguo frena cambios, complica despliegues o concentra demasiado riesgo.",
+			problemTitle: "Reducir riesgo antes de decidir una reescritura",
+			problemBody: [
+				"Un sistema antiguo puede contener deuda, pero también años de reglas reales que no están documentadas.",
+				"La modernización empieza por entender dependencias, recorridos críticos y una frontera pequeña que pueda evolucionar sin romper la operación.",
+			],
+			when: [
+				"Los cambios pequeños tardan demasiado o rompen zonas inesperadas.",
+				"La tecnología limita contratación, seguridad o despliegue.",
+				"No hay pruebas suficientes para una migración segura.",
+				"Se plantea reescribir, pero faltan datos sobre coste y riesgo.",
+			],
+			cases: [
+				[
+					"Mapa de riesgos",
+					"Dependencias, módulos críticos, integraciones y puntos sin observabilidad.",
+				],
+				[
+					"Extracción por fronteras",
+					"Separar una capacidad concreta antes de mover el resto.",
+				],
+				[
+					"Compatibilidad",
+					"Contratos, datos y despliegues que permiten convivencia temporal.",
+				],
+				[
+					"Plan de migración",
+					"Fases, criterios de salida, rollback y trabajo que no conviene hacer.",
+				],
+			],
+			builds: [
+				"Diagnóstico técnico y mapa de dependencias.",
+				"Pruebas de caracterización para recorridos críticos.",
+				"Plan incremental con hitos y criterios de parada.",
+				"Primer corte de modernización o migración a Spring Boot.",
+			],
+			process: [
+				"Recojo objetivos, fallos y límites operativos.",
+				"Identifico reglas críticas y dependencias reales.",
+				"Comparo mantener, encapsular, migrar o sustituir.",
+				"Propongo una primera fase verificable y reversible.",
+			],
+			avoid: [
+				"Reescribir sin capturar comportamiento actual.",
+				"Mover todo a microservicios por defecto.",
+				"Cambiar tecnología y modelo de datos a la vez sin necesidad.",
+				"Ocultar incertidumbre detrás de una estimación cerrada.",
+			],
+			relatedServiceKeys: [
+				"base:backend-spring-boot",
+				"it-consulting:2",
+				"it-consulting:1",
+			],
+			relatedPosts: [
+				{
+					title: "Cuándo migrar un backend legacy a Spring Boot",
+					description: "Señales, riesgos y estrategia incremental.",
+					href: "/es/blog/cuando-deberia-una-empresa-migrar-un-backend-legacy-a-java-spring-boot/",
+				},
+				{
+					title: "Monolito modular vs microservicios",
+					description:
+						"Cómo elegir una frontera razonable sin añadir distribución antes de tiempo.",
+					href: "/es/blog/monolito-modular-vs-microservicios/",
+				},
+			],
+			faq: [
+				{
+					question: "¿Hay que reescribir todo?",
+					answer:
+						"Normalmente no. Conviene localizar el mayor coste o riesgo y empezar por una frontera que pueda validarse.",
+				},
+				{
+					question: "¿Se puede migrar mientras el sistema sigue funcionando?",
+					answer:
+						"Sí, si se diseñan contratos, datos, despliegue y rollback para una convivencia temporal.",
+				},
+				{
+					question: "¿El destino tiene que ser Spring Boot?",
+					answer:
+						"No. Spring Boot encaja en muchos equipos Java, pero la decisión depende del sistema, capacidades y mantenimiento esperado.",
+				},
+			],
+			ctaTitle: "Revisemos el backend antes de elegir una reescritura",
+			ctaText:
+				"Una revisión acotada puede convertir una decisión abierta en un primer paso con riesgo y salida conocidos.",
+			ctaButton: "Consultar modernización",
+			serviceType: "Modernización de backend legacy",
+			audience: [
+				"Empresas",
+				"Equipos técnicos",
+				"Responsables de producto",
+				"CTOs",
+			],
+		}),
+		createFocusedLanding("es", {
+			slug: "auditoria-backend-api-arquitectura",
+			translationKey: "backend-api-architecture-audit",
+			metaTitle:
+				"Auditoría de backend, API y arquitectura | José Miguel Fernández",
+			metaDescription:
+				"Auditoría técnica de backend, APIs y arquitectura para priorizar riesgos, rendimiento, seguridad, mantenibilidad y próximos pasos.",
+			keywords: [
+				"auditoría backend",
+				"auditoría API",
+				"revisión arquitectura software",
+			],
+			eyebrow: "Una revisión antes de invertir más",
+			title: "Auditoría técnica de backend, API y arquitectura",
+			intro:
+				"Reviso un sistema existente para separar problemas demostrables de preferencias técnicas y convertirlos en un orden de trabajo útil.",
+			problemTitle: "Saber qué corregir, qué medir y qué dejar quieto",
+			problemBody: [
+				"Una auditoría útil no es una lista automática de reglas ni una excusa para reescribir.",
+				"Debe conectar evidencia técnica con impacto operativo, coste del cambio y una prioridad defendible.",
+			],
+			when: [
+				"El sistema falla o rinde peor, pero no está clara la causa.",
+				"Hay una propuesta de reescritura o migración que necesita contraste.",
+				"Las APIs son difíciles de cambiar o integrar.",
+				"Se necesita un plan técnico antes de presupuesto o contratación.",
+			],
+			cases: [
+				[
+					"Backend",
+					"Errores, límites, persistencia, concurrencia, observabilidad y pruebas.",
+				],
+				["APIs", "Contratos, validación, idempotencia, seguridad y evolución."],
+				[
+					"Arquitectura",
+					"Acoplamiento, fronteras, dependencias y complejidad operativa.",
+				],
+				[
+					"Entrega",
+					"Build, despliegue, configuración, rollback y diagnóstico en producción.",
+				],
+			],
+			builds: [
+				"Mapa de hallazgos con evidencia.",
+				"Prioridad por impacto, esfuerzo y riesgo.",
+				"Acciones inmediatas y decisiones que requieren más datos.",
+				"Plan por fases listo para presupuestar o ejecutar.",
+			],
+			process: [
+				"Acordamos preguntas y alcance de la revisión.",
+				"Leo código, configuración y documentación relevante.",
+				"Verifico los hallazgos y descarto preferencias sin impacto.",
+				"Entrego conclusiones priorizadas y las explico con contexto.",
+			],
+			avoid: [
+				"Auditar sin una pregunta de negocio o técnica.",
+				"Confundir estilo con riesgo real.",
+				"Proponer una tecnología nueva sin medir el coste de transición.",
+				"Entregar una lista larga sin orden de ejecución.",
+			],
+			relatedServiceKeys: [
+				"it-consulting:2",
+				"it-consulting:1",
+				"base:backend-spring-boot",
+			],
+			relatedPosts: [
+				{
+					title: "Arquitectura hexagonal en backend",
+					description: "Qué aporta y cuándo introduce complejidad innecesaria.",
+					href: "/es/blog/arquitectura-hexagonal-que-es-como-aplicarla-proyectos-backend/",
+				},
+				{
+					title: "APIs idempotentes",
+					description:
+						"Un ejemplo de riesgo técnico que conviene revisar en flujos críticos.",
+					href: "/es/blog/apis-idempotentes-que-sobreviven-a-reintentos/",
+				},
+			],
+			faq: [
+				{
+					question: "¿La auditoría incluye cambios de código?",
+					answer:
+						"No por defecto. Primero separo diagnóstico y prioridades; la ejecución puede plantearse después con alcance propio.",
+				},
+				{
+					question: "¿Qué acceso necesitas?",
+					answer:
+						"Depende del alcance: repositorio, documentación, configuración no secreta, diagramas, métricas o ejemplos de incidencias.",
+				},
+				{
+					question: "¿Puedo usar el informe con otro proveedor?",
+					answer:
+						"Sí. Las conclusiones deben ser comprensibles y útiles aunque la ejecución la haga otro equipo.",
+				},
+			],
+			ctaTitle: "Cuéntame qué decisión necesita evidencia",
+			ctaText:
+				"Podemos acotar la revisión alrededor de una API, un problema de rendimiento, una migración o el sistema completo.",
+			ctaButton: "Solicitar auditoría",
+			serviceType: "Auditoría técnica de backend y APIs",
+			audience: [
+				"Equipos técnicos",
+				"Startups",
+				"Empresas",
+				"Responsables de producto",
+			],
+		}),
+		createFocusedLanding("es", {
+			slug: "integracion-crm-formularios-pagos-erp",
+			translationKey: "crm-forms-payments-erp-integration",
+			metaTitle:
+				"Integración de CRM, formularios, pagos y ERP | José Miguel Fernández",
+			metaDescription:
+				"Integración de CRM, formularios web, pagos, ERP y hojas de cálculo con validación, reintentos, alertas y trazabilidad.",
+			keywords: [
+				"integrar CRM formulario web",
+				"integración pagos ERP",
+				"integración herramientas negocio",
+			],
+			eyebrow: "Datos conectados sin copiar y pegar",
+			title: "Integración de CRM, formularios, pagos y ERP",
+			intro:
+				"Conecto las herramientas que participan en captación, venta y operación para que los datos lleguen completos, una sola vez y con errores visibles.",
+			problemTitle: "Quitar al equipo del papel de puente entre sistemas",
+			problemBody: [
+				"Copiar datos entre formularios, CRM, pagos y ERP consume tiempo y crea diferencias difíciles de rastrear.",
+				"Una integración fiable define qué sistema manda, cómo se validan los datos y qué ocurre cuando algo falla.",
+			],
+			when: [
+				"Los leads se copian manualmente al CRM.",
+				"Un pago debe crear pedidos, tareas o avisos.",
+				"CRM y ERP contienen información distinta del mismo cliente.",
+				"Los errores de sincronización se descubren tarde.",
+			],
+			cases: [
+				[
+					"Formulario y CRM",
+					"Contactos limpios con fuente, consentimiento y estado inicial.",
+				],
+				[
+					"Pagos y operación",
+					"Pedidos, tareas y avisos a partir de eventos confirmados.",
+				],
+				[
+					"CRM y ERP",
+					"Sincronización con reglas claras de propiedad y conflicto.",
+				],
+				[
+					"Revisión de errores",
+					"Cola o panel para reintentar y resolver casos pendientes.",
+				],
+			],
+			builds: [
+				"Mapeo de campos y reglas de validación.",
+				"APIs, webhooks o jobs de sincronización.",
+				"Idempotencia, reintentos y alertas.",
+				"Logs y revisión de operaciones fallidas.",
+			],
+			process: [
+				"Dibujo el flujo y el sistema responsable de cada dato.",
+				"Defino formatos, permisos, duplicados y fallos.",
+				"Construyo y pruebo casos normales y repetidos.",
+				"Documento operación y cambios de API que conviene vigilar.",
+			],
+			avoid: [
+				"Sincronizar todo sin necesidad.",
+				"Guardar datos sensibles en más sistemas de los necesarios.",
+				"Reintentar sin controlar duplicados.",
+				"Depender de un flujo que falla sin avisar.",
+			],
+			relatedServiceKeys: [
+				"it-consulting:4",
+				"it-consulting:5",
+				"base:internal-tools",
+			],
+			relatedPosts: [
+				{
+					title: "APIs idempotentes",
+					description:
+						"Cómo evitar operaciones duplicadas cuando hay reintentos.",
+					href: "/es/blog/apis-idempotentes-que-sobreviven-a-reintentos/",
+				},
+				{
+					title: "Kafka, RabbitMQ o base de datos",
+					description:
+						"Opciones para coordinar trabajo asíncrono sin sobredimensionar.",
+					href: "/es/blog/cuando-deberias-usar-kafka-rabbitmq-o-simplemente-una-base-de-datos/",
+				},
+			],
+			faq: [
+				{
+					question: "¿Necesitan API todas las herramientas?",
+					answer:
+						"Es lo más fiable, pero también pueden existir webhooks, conectores o exportaciones. Conviene evaluar sus límites antes de depender de ellos.",
+				},
+				{
+					question: "¿Cómo se evitan duplicados?",
+					answer:
+						"Con identificadores, reglas de idempotencia y una política explícita para reintentos y conflictos.",
+				},
+				{
+					question: "¿Qué pasa si un sistema deja de responder?",
+					answer:
+						"El flujo debe registrar el fallo, avisar y permitir reintento o revisión sin perder el evento.",
+				},
+			],
+			ctaTitle: "Dime qué herramientas tienen que hablar entre sí",
+			ctaText:
+				"Con el origen, destino y dato que hoy se copia a mano podemos acotar la primera integración.",
+			ctaButton: "Consultar integración",
+			serviceType: "Integración de CRM, formularios, pagos y ERP",
+			audience: [
+				"Pymes",
+				"Equipos de operaciones",
+				"Negocios digitales",
+				"Equipos comerciales",
+			],
+		}),
+		createFocusedLanding("es", {
+			slug: "automatizacion-ia-operaciones-documentos",
+			translationKey: "ai-automation-operations-documents",
+			metaTitle:
+				"Automatización con IA para operaciones y documentos | José Miguel Fernández",
+			metaDescription:
+				"Automatización con IA para clasificar mensajes, extraer datos, revisar documentos y preparar borradores con control humano.",
+			keywords: [
+				"automatización de procesos con IA",
+				"IA documentos empresa",
+				"automatización IA operaciones",
+			],
+			eyebrow: "IA aplicada con control",
+			title: "Automatización con IA para operaciones y documentos",
+			intro:
+				"Diseño flujos que usan IA para interpretar texto o documentos cuando una regla no basta, con validación, trazabilidad y revisión humana donde el error importa.",
+			problemTitle: "Reducir trabajo repetitivo sin ocultar incertidumbre",
+			problemBody: [
+				"La IA puede ayudar a clasificar, extraer o preparar, pero no convierte una respuesta probable en un dato fiable por sí sola.",
+				"El flujo debe decidir qué puede automatizarse, qué se valida y qué llega a una persona.",
+			],
+			when: [
+				"Se revisan muchos emails o documentos parecidos.",
+				"Hay que extraer campos de texto no totalmente estructurado.",
+				"El equipo clasifica solicitudes antes de trabajar en ellas.",
+				"Un borrador ahorra tiempo, pero la decisión final sigue siendo humana.",
+			],
+			cases: [
+				[
+					"Clasificación",
+					"Etiquetar mensajes y dirigirlos a la cola adecuada.",
+				],
+				[
+					"Extracción",
+					"Preparar campos estructurados desde documentos con validaciones.",
+				],
+				[
+					"Borradores",
+					"Respuestas, resúmenes o informes para revisión humana.",
+				],
+				[
+					"Búsqueda interna",
+					"Consultar documentación con fuentes y límites visibles.",
+				],
+			],
+			builds: [
+				"Flujo de entrada, preparación y validación.",
+				"Integración con modelos y herramientas existentes.",
+				"Umbrales, revisión humana y tratamiento de excepciones.",
+				"Logs, costes y evaluación de calidad.",
+			],
+			process: [
+				"Defino el error aceptable y quién toma la decisión final.",
+				"Preparo ejemplos reales y una evaluación pequeña.",
+				"Construyo el flujo con controles y salida estructurada.",
+				"Mido calidad, coste y casos que deben escalarse.",
+			],
+			avoid: [
+				"Usar IA para reglas deterministas sencillas.",
+				"Automatizar decisiones sensibles sin revisión.",
+				"Enviar datos sin revisar permisos y retención.",
+				"Medir solo si la respuesta suena bien.",
+			],
+			relatedServiceKeys: [
+				"ai-automation:2",
+				"it-consulting:5",
+				"base:internal-tools",
+			],
+			relatedPosts: [
+				{
+					title: "Usar IA en un producto sin humo",
+					description: "Dónde aporta valor y qué límites conviene diseñar.",
+					href: "/es/blog/usar-ia-en-tu-producto-sin-humo/",
+				},
+				{
+					title: "Cuándo automatizar procesos",
+					description: "Cómo elegir primero un flujo útil y medible.",
+					href: "/es/blog/automatizar-procesos-empresa-cuando-merece-la-pena/",
+				},
+			],
+			faq: [
+				{
+					question: "¿Hace falta eliminar la revisión humana?",
+					answer:
+						"No. En muchos casos el mayor valor está en preparar y priorizar, manteniendo la decisión sensible en una persona.",
+				},
+				{
+					question: "¿Cómo se mide si funciona?",
+					answer:
+						"Con un conjunto de ejemplos, criterios de calidad, coste por ejecución y seguimiento de los casos corregidos o rechazados.",
+				},
+				{
+					question: "¿Se pueden proteger datos sensibles?",
+					answer:
+						"El diseño debe revisar qué datos se envían, a qué proveedor, durante cuánto tiempo y si pueden minimizarse o anonimizarse.",
+				},
+			],
+			ctaTitle: "Revisemos un flujo antes de añadir IA",
+			ctaText:
+				"Unos ejemplos reales suelen bastar para decidir si conviene IA, reglas, una integración o una combinación.",
+			ctaButton: "Consultar automatización con IA",
+			serviceType: "Automatización de operaciones y documentos con IA",
+			audience: [
+				"Pymes",
+				"Equipos de operaciones",
+				"Equipos de soporte",
+				"Negocios digitales",
+			],
+		}),
+		createFocusedLanding("es", {
+			slug: "dashboards-paneles-internos",
+			translationKey: "dashboards-internal-admin-panels",
+			metaTitle:
+				"Dashboards y paneles internos a medida | José Miguel Fernández",
+			metaDescription:
+				"Dashboards y paneles internos para consultar datos, revisar trabajo, gestionar estados y operar sin depender de hojas dispersas.",
+			keywords: [
+				"dashboard a medida",
+				"panel de administración",
+				"panel interno empresa",
+			],
+			eyebrow: "Una vista clara para operar",
+			title: "Dashboards y paneles internos a medida",
+			intro:
+				"Construyo interfaces privadas para consultar datos, gestionar estados, revisar excepciones y dar al equipo una visión compartida del trabajo.",
+			problemTitle: "Convertir datos dispersos en decisiones y tareas visibles",
+			problemBody: [
+				"Un dashboard no ayuda por tener más gráficas. Ayuda cuando responde una pregunta o permite completar una tarea.",
+				"El diseño debe partir de usuarios, permisos, decisiones y fuentes de datos reales.",
+			],
+			when: [
+				"El equipo consulta varias herramientas para conocer un estado.",
+				"Las revisiones y aprobaciones se coordinan por mensajes.",
+				"Faltan filtros, historial o responsables claros.",
+				"Una hoja compartida contiene operación crítica.",
+			],
+			cases: [
+				[
+					"Panel operativo",
+					"Estados, responsables, fechas y excepciones en una vista de trabajo.",
+				],
+				[
+					"Administración",
+					"Altas, cambios, validaciones y acciones con permisos.",
+				],
+				["Revisión", "Colas, comentarios, aprobación y trazabilidad."],
+				[
+					"Indicadores",
+					"Métricas conectadas con decisiones, no gráficas decorativas.",
+				],
+			],
+			builds: [
+				"Autenticación y roles proporcionados al riesgo.",
+				"Tablas, filtros, búsqueda y formularios.",
+				"Historial de cambios y estados.",
+				"Integraciones con API, CRM o base de datos.",
+			],
+			process: [
+				"Identifico usuarios, preguntas y tareas frecuentes.",
+				"Defino una primera vista y el dato que la sostiene.",
+				"Construyo el recorrido principal antes de añadir excepciones.",
+				"Valido uso y priorizo la siguiente mejora.",
+			],
+			avoid: [
+				"Crear métricas sin una decisión asociada.",
+				"Copiar un ERP completo para resolver una sola cola.",
+				"Añadir permisos complejos antes de entender roles reales.",
+				"Construir sobre datos cuya fuente no está clara.",
+			],
+			relatedServiceKeys: [
+				"base:internal-tools",
+				"it-consulting:3",
+				"it-consulting:4",
+			],
+			relatedPosts: [
+				{
+					title: "Cuándo construir una herramienta interna",
+					description:
+						"Señales de que una hoja ya no sostiene bien el proceso.",
+					href: "/es/blog/cuando-construir-herramienta-interna-en-vez-de-usar-excel/",
+				},
+				{
+					title: "Cuánto cuesta una herramienta interna",
+					description:
+						"Qué cambia el alcance y cómo empezar por una versión útil.",
+					href: "/es/blog/cuanto-cuesta-crear-herramienta-interna-a-medida/",
+				},
+			],
+			faq: [
+				{
+					question: "¿Un dashboard necesita una aplicación completa?",
+					answer:
+						"No siempre. Puede empezar con una vista y un flujo concreto sobre datos que ya existen.",
+				},
+				{
+					question: "¿Puede conectarse a nuestras herramientas?",
+					answer:
+						"Sí, si ofrecen API, acceso a datos o un mecanismo fiable de intercambio.",
+				},
+				{
+					question: "¿Cómo se gestionan permisos?",
+					answer:
+						"Se definen según acciones y datos reales. Conviene evitar roles complejos que nadie pueda explicar.",
+				},
+			],
+			ctaTitle: "Cuéntame qué necesita ver o gestionar el equipo",
+			ctaText:
+				"Con la tarea, los usuarios y las fuentes de datos podemos definir una primera pantalla útil.",
+			ctaButton: "Consultar panel interno",
+			serviceType: "Desarrollo de dashboards y paneles internos",
+			audience: [
+				"Pymes",
+				"Equipos de operaciones",
+				"Startups",
+				"Equipos internos",
+			],
+		}),
+		createFocusedLanding("es", {
+			slug: "sustituir-excel-software",
+			translationKey: "replace-excel-with-software",
+			metaTitle:
+				"Sustituir Excel por software a medida | José Miguel Fernández",
+			metaDescription:
+				"Software para sustituir hojas Excel críticas con datos centralizados, validación, permisos, historial e integraciones por fases.",
+			keywords: [
+				"sustituir Excel por software",
+				"alternativa Excel empresa",
+				"aplicación para procesos Excel",
+			],
+			eyebrow: "Cuando la hoja ya sostiene demasiado",
+			title: "Sustituir un proceso crítico de Excel por software",
+			intro:
+				"Ayudo a convertir hojas compartidas, fórmulas frágiles y pasos manuales en una herramienta pequeña que conserve el flujo útil y reduzca errores.",
+			problemTitle: "Salir de Excel sin intentar construir un ERP",
+			problemBody: [
+				"Excel funciona muy bien hasta que varias personas, estados, permisos e integraciones convierten la hoja en una aplicación accidental.",
+				"La transición debe identificar qué parte necesita software y qué parte puede seguir siendo una exportación o análisis puntual.",
+			],
+			when: [
+				"Hay varias versiones y no se sabe cuál es correcta.",
+				"Las fórmulas o macros dependen de una sola persona.",
+				"Se copian datos desde formularios, email, CRM o ERP.",
+				"Hace falta historial, permisos o validación consistente.",
+			],
+			cases: [
+				[
+					"Registro central",
+					"Una fuente clara para entidades, estados y responsables.",
+				],
+				[
+					"Flujo de trabajo",
+					"Tareas, revisiones y cambios de estado con historial.",
+				],
+				[
+					"Validación",
+					"Reglas en la entrada en lugar de corregir datos al final.",
+				],
+				[
+					"Importación y exportación",
+					"Conservar Excel donde sigue siendo útil sin usarlo como base operativa.",
+				],
+			],
+			builds: [
+				"Mapa de hojas, usuarios, reglas y excepciones.",
+				"Aplicación web para el flujo principal.",
+				"Importación inicial y exportaciones necesarias.",
+				"Integraciones y retirada gradual de hojas duplicadas.",
+			],
+			process: [
+				"Reviso la hoja y cómo se usa de verdad.",
+				"Separo datos, reglas, informes y tareas.",
+				"Construyo una primera versión para el recorrido frecuente.",
+				"Migro por fases y mantengo una salida segura mientras se valida.",
+			],
+			avoid: [
+				"Copiar cada columna y macro sin cuestionar su uso.",
+				"Intentar sustituir todas las hojas a la vez.",
+				"Migrar datos sin limpiar duplicados y reglas contradictorias.",
+				"Eliminar exportaciones que el equipo todavía necesita.",
+			],
+			relatedServiceKeys: [
+				"base:internal-tools",
+				"it-consulting:3",
+				"it-consulting:5",
+			],
+			relatedPosts: [
+				{
+					title: "Cuándo dejar de usar Excel",
+					description: "Señales prácticas de que la hoja se ha quedado corta.",
+					href: "/es/blog/cuando-construir-herramienta-interna-en-vez-de-usar-excel/",
+				},
+				{
+					title: "Cuánto cuesta una herramienta interna",
+					description:
+						"Cómo estimar una primera versión y qué encarece el proyecto.",
+					href: "/es/blog/cuanto-cuesta-crear-herramienta-interna-a-medida/",
+				},
+			],
+			faq: [
+				{
+					question: "¿Hay que dejar Excel desde el primer día?",
+					answer:
+						"No. Una transición gradual permite validar el flujo y conservar exportaciones mientras la herramienta gana confianza.",
+				},
+				{
+					question: "¿Se pueden importar los datos actuales?",
+					answer:
+						"Sí, después de revisar formato, duplicados, valores incompletos y reglas que hoy viven en fórmulas o macros.",
+				},
+				{
+					question: "¿Cómo se calcula el alcance?",
+					answer:
+						"Por usuarios, recorridos, datos, permisos, integraciones y excepciones; no por el número de hojas o columnas.",
+				},
+			],
+			ctaTitle: "Enséñame la hoja y el proceso que hay alrededor",
+			ctaText:
+				"No hace falta preparar una especificación. Ver quién la usa, qué copia y dónde falla suele revelar una primera versión sensata.",
+			ctaButton: "Revisar proceso en Excel",
+			serviceType: "Software a medida para sustituir Excel",
+			audience: [
+				"Pymes",
+				"Equipos de operaciones",
+				"Administración",
+				"Profesionales",
+			],
+		}),
+	],
+	en: [
+		createFocusedLanding("en", {
+			slug: "spring-boot-maintenance",
+			translationKey: "spring-boot-maintenance",
+			metaTitle:
+				"Spring Boot Maintenance for Companies | José Miguel Fernández",
+			metaDescription:
+				"Java Spring Boot maintenance and application evolution covering incidents, APIs, performance, security, technical debt and controlled delivery.",
+			keywords: [
+				"Spring Boot maintenance",
+				"Java Spring Boot support",
+				"backend application evolution",
+			],
+			eyebrow: "Technical continuity for Java backends",
+			title: "Spring Boot application maintenance and evolution",
+			intro:
+				"I help maintain and evolve Java/Spring Boot backends that already support products or operations, using focused changes, diagnosis before coding and visible risk management.",
+			problemTitle: "Stop every backend change from becoming a gamble",
+			problemBody: [
+				"A production application accumulates incidents, dependencies, old decisions and work that does not fit a greenfield project.",
+				"Useful maintenance combines fixes, observability, tests and small improvements that make the next change safer.",
+			],
+			when: [
+				"Incidents repeat or releases feel unsafe.",
+				"The team needs focused API, database or integration support.",
+				"Spring Boot, Java or dependencies have fallen behind.",
+				"Critical paths lack logs, metrics or tests.",
+			],
+			cases: [
+				[
+					"Incidents and stability",
+					"Diagnose errors, timeouts, resource use and integration failures.",
+				],
+				[
+					"API evolution",
+					"Add endpoints, validation and contract changes with controlled compatibility.",
+				],
+				[
+					"Updates",
+					"Plan Java, Spring Boot and dependency upgrades with staged validation.",
+				],
+				[
+					"Technical debt",
+					"Improve the areas where code measurably slows change or raises operational risk.",
+				],
+			],
+			builds: [
+				"Incident diagnosis and prioritization.",
+				"Fixes, tests and observability improvements.",
+				"Evolution of existing APIs and integrations.",
+				"Technical upgrades with clear scope and rollback.",
+			],
+			process: [
+				"I review context, repository, delivery and observed problems.",
+				"I separate urgent work, risk and improvements that can wait.",
+				"I deliver small changes with explicit verification.",
+				"I document decisions, limits and sensible next steps.",
+			],
+			avoid: [
+				"Mixing an urgent incident with a full rewrite.",
+				"Upgrading dependencies without understanding compatibility and delivery.",
+				"Fixing symptoms without improving the evidence needed for the next incident.",
+			],
+			relatedServiceKeys: [
+				"base:backend-spring-boot",
+				"it-consulting:2",
+				"it-consulting:1",
+			],
+			relatedPosts: [
+				{
+					title: "Spring Boot in production",
+					description:
+						"Configuration, observability and delivery checks for operating with context.",
+					href: "/en/blog/spring-boot-production-devops-checklist/",
+				},
+				{
+					title: "Spring Boot performance tuning",
+					description: "Changes worth measuring before optimizing.",
+					href: "/en/blog/spring-boot-performance-tuning/",
+				},
+			],
+			faq: [
+				{
+					question: "Can this be focused support?",
+					answer:
+						"Yes. It can start with one incident, a review or a clearly bounded block of evolution work.",
+				},
+				{
+					question: "Do you work on existing codebases?",
+					answer:
+						"Yes, provided I can review the repository, environment and scope before committing to changes.",
+				},
+				{
+					question: "How is the work handed over?",
+					answer:
+						"Through reviewable changes, risk-proportionate tests and documentation for decisions and delivery.",
+				},
+			],
+			ctaTitle: "Tell me what is slowing the backend down",
+			ctaText:
+				"The symptom, Java/Spring Boot version and delivery context are enough to frame a sensible first diagnosis.",
+			ctaButton: "Ask about maintenance",
+			serviceType: "Java Spring Boot application maintenance",
+			audience: ["Companies", "Product teams", "Technical teams", "Startups"],
+		}),
+		createFocusedLanding("en", {
+			slug: "legacy-backend-modernization",
+			translationKey: "legacy-backend-modernization",
+			metaTitle: "Phased Legacy Backend Modernization | José Miguel Fernández",
+			metaDescription:
+				"Legacy backend modernization without blind rewrites: diagnosis, boundaries, incremental migration, characterization tests and phased coexistence.",
+			keywords: [
+				"legacy backend modernization",
+				"backend migration",
+				"migrate to Spring Boot",
+			],
+			eyebrow: "Change without stopping the business",
+			title: "Phased legacy backend modernization",
+			intro:
+				"I help decide what to retain, isolate and migrate when an older backend slows delivery, complicates operations or concentrates too much risk.",
+			problemTitle: "Reduce risk before choosing a rewrite",
+			problemBody: [
+				"An old system may contain debt, but it also contains years of real rules that are not documented elsewhere.",
+				"Modernization starts by understanding dependencies, critical paths and a small boundary that can evolve without breaking operations.",
+			],
+			when: [
+				"Small changes take too long or break unexpected areas.",
+				"Technology limits hiring, security or delivery.",
+				"There are not enough tests for a safe migration.",
+				"A rewrite is being discussed without reliable cost or risk data.",
+			],
+			cases: [
+				[
+					"Risk map",
+					"Dependencies, critical modules, integrations and blind spots.",
+				],
+				[
+					"Boundary extraction",
+					"Separate one capability before moving the rest.",
+				],
+				[
+					"Compatibility",
+					"Contracts, data and releases that allow temporary coexistence.",
+				],
+				[
+					"Migration plan",
+					"Phases, exit criteria, rollback and work that should be avoided.",
+				],
+			],
+			builds: [
+				"Technical diagnosis and dependency map.",
+				"Characterization tests for critical behavior.",
+				"Incremental plan with milestones and stop criteria.",
+				"A first modernization slice or Spring Boot migration.",
+			],
+			process: [
+				"I gather goals, failures and operational constraints.",
+				"I identify critical rules and real dependencies.",
+				"I compare keeping, encapsulating, migrating and replacing.",
+				"I propose one verifiable and reversible first phase.",
+			],
+			avoid: [
+				"Rewriting without capturing current behavior.",
+				"Moving to microservices by default.",
+				"Changing technology and data model together without a reason.",
+				"Hiding uncertainty behind a fixed estimate.",
+			],
+			relatedServiceKeys: [
+				"base:backend-spring-boot",
+				"it-consulting:2",
+				"it-consulting:1",
+			],
+			relatedPosts: [
+				{
+					title: "When to migrate a legacy backend to Spring Boot",
+					description: "Signals, risks and an incremental strategy.",
+					href: "/en/blog/when-should-a-company-migrate-a-legacy-backend-to-java-spring-boot/",
+				},
+				{
+					title: "Modular monolith vs microservices",
+					description:
+						"Choose a useful boundary without adding distribution too early.",
+					href: "/en/blog/modular-monolith-vs-microservices/",
+				},
+			],
+			faq: [
+				{
+					question: "Does everything need to be rewritten?",
+					answer:
+						"Usually not. Start with the largest measurable cost or risk and one boundary that can be validated.",
+				},
+				{
+					question: "Can migration happen while the system remains live?",
+					answer:
+						"Yes, if contracts, data, delivery and rollback are designed for temporary coexistence.",
+				},
+				{
+					question: "Does the target have to be Spring Boot?",
+					answer:
+						"No. Spring Boot fits many Java teams, but the decision depends on the system and expected maintenance.",
+				},
+			],
+			ctaTitle: "Review the backend before choosing a rewrite",
+			ctaText:
+				"A focused review can turn an open-ended decision into a first step with known risk and a way out.",
+			ctaButton: "Discuss modernization",
+			serviceType: "Legacy backend modernization",
+			audience: ["Companies", "Technical teams", "Product leaders", "CTOs"],
+		}),
+		createFocusedLanding("en", {
+			slug: "backend-api-architecture-audit",
+			translationKey: "backend-api-architecture-audit",
+			metaTitle: "Backend, API and Architecture Audit | José Miguel Fernández",
+			metaDescription:
+				"Technical backend, API and architecture audit to prioritize risks, performance, security, maintainability and practical next steps.",
+			keywords: ["backend audit", "API audit", "software architecture review"],
+			eyebrow: "Review before investing further",
+			title: "Technical backend, API and architecture audit",
+			intro:
+				"I review an existing system to separate demonstrable problems from technical preference and turn the evidence into a useful order of work.",
+			problemTitle: "Know what to fix, measure and leave alone",
+			problemBody: [
+				"A useful audit is not an automated checklist or an excuse to rewrite.",
+				"It connects technical evidence with operational impact, change cost and defensible priority.",
+			],
+			when: [
+				"The system fails or slows down without a clear cause.",
+				"A rewrite or migration proposal needs an independent view.",
+				"APIs are difficult to change or integrate.",
+				"A technical plan is needed before budgeting or hiring.",
+			],
+			cases: [
+				[
+					"Backend",
+					"Errors, boundaries, persistence, concurrency, observability and tests.",
+				],
+				["APIs", "Contracts, validation, idempotency, security and evolution."],
+				[
+					"Architecture",
+					"Coupling, boundaries, dependencies and operational complexity.",
+				],
+				[
+					"Delivery",
+					"Build, configuration, release, rollback and production diagnosis.",
+				],
+			],
+			builds: [
+				"Evidence-backed findings map.",
+				"Priority by impact, effort and risk.",
+				"Immediate actions and decisions that require more data.",
+				"Phased plan ready for estimation or execution.",
+			],
+			process: [
+				"We agree the questions and review scope.",
+				"I read the relevant code, configuration and documentation.",
+				"I verify findings and discard preferences without impact.",
+				"I deliver prioritized conclusions and explain their context.",
+			],
+			avoid: [
+				"Auditing without a business or technical question.",
+				"Confusing style with material risk.",
+				"Proposing new technology without transition cost.",
+				"Delivering a long list without execution order.",
+			],
+			relatedServiceKeys: [
+				"it-consulting:2",
+				"it-consulting:1",
+				"base:backend-spring-boot",
+			],
+			relatedPosts: [
+				{
+					title: "Hexagonal architecture in backend projects",
+					description:
+						"What it helps with and when it adds unnecessary complexity.",
+					href: "/en/blog/hexagonal-architecture-what-it-is-how-to-apply-backend-projects/",
+				},
+				{
+					title: "Idempotent APIs",
+					description:
+						"A concrete technical risk worth reviewing in critical workflows.",
+					href: "/en/blog/idempotent-apis-that-survive-retries/",
+				},
+			],
+			faq: [
+				{
+					question: "Does the audit include code changes?",
+					answer:
+						"Not by default. Diagnosis and priorities come first; execution can be scoped separately.",
+				},
+				{
+					question: "What access do you need?",
+					answer:
+						"It depends on scope: repository, documentation, non-secret configuration, diagrams, metrics or incident examples.",
+				},
+				{
+					question: "Can I use the report with another supplier?",
+					answer:
+						"Yes. The conclusions should remain understandable and useful regardless of who implements them.",
+				},
+			],
+			ctaTitle: "Tell me which decision needs evidence",
+			ctaText:
+				"The review can focus on one API, a performance issue, a migration or the wider system.",
+			ctaButton: "Request an audit",
+			serviceType: "Backend and API technical audit",
+			audience: ["Technical teams", "Startups", "Companies", "Product leaders"],
+		}),
+		createFocusedLanding("en", {
+			slug: "crm-forms-payments-erp-integration",
+			translationKey: "crm-forms-payments-erp-integration",
+			metaTitle:
+				"CRM, Forms, Payments and ERP Integration | José Miguel Fernández",
+			metaDescription:
+				"Integrate CRM, website forms, payments, ERP and spreadsheets with validation, retries, alerts and traceable data movement.",
+			keywords: [
+				"CRM website form integration",
+				"payments ERP integration",
+				"business system integration",
+			],
+			eyebrow: "Connected data without copy-paste",
+			title: "CRM, forms, payments and ERP integration",
+			intro:
+				"I connect the tools involved in lead generation, sales and operations so data arrives complete, once and with visible failures.",
+			problemTitle: "Remove the team from the role of system bridge",
+			problemBody: [
+				"Copying data between forms, CRM, payments and ERP consumes time and creates hard-to-trace differences.",
+				"A reliable integration defines the source of truth, validation and what happens when a system fails.",
+			],
+			when: [
+				"Leads are copied into the CRM manually.",
+				"A payment should create orders, tasks or alerts.",
+				"CRM and ERP disagree about the same customer.",
+				"Synchronization failures are discovered too late.",
+			],
+			cases: [
+				[
+					"Forms and CRM",
+					"Clean contacts with source, consent and initial status.",
+				],
+				[
+					"Payments and operations",
+					"Orders, tasks and alerts from confirmed events.",
+				],
+				[
+					"CRM and ERP",
+					"Synchronization with explicit ownership and conflict rules.",
+				],
+				[
+					"Error review",
+					"A queue or panel for retrying and resolving pending cases.",
+				],
+			],
+			builds: [
+				"Field mapping and validation rules.",
+				"APIs, webhooks or synchronization jobs.",
+				"Idempotency, retries and alerts.",
+				"Logs and review for failed operations.",
+			],
+			process: [
+				"I map the flow and owner for each data item.",
+				"I define formats, permissions, duplicates and failures.",
+				"I build and test normal and repeated cases.",
+				"I document operation and API changes worth monitoring.",
+			],
+			avoid: [
+				"Synchronizing everything without a need.",
+				"Storing sensitive data in more systems than necessary.",
+				"Retrying without duplicate protection.",
+				"Depending on a flow that fails silently.",
+			],
+			relatedServiceKeys: [
+				"it-consulting:4",
+				"it-consulting:5",
+				"base:internal-tools",
+			],
+			relatedPosts: [
+				{
+					title: "Idempotent APIs",
+					description: "Avoid duplicate operations when retries happen.",
+					href: "/en/blog/idempotent-apis-that-survive-retries/",
+				},
+				{
+					title: "Kafka, RabbitMQ or a database",
+					description:
+						"Coordinate asynchronous work without oversizing the system.",
+					href: "/en/blog/when-should-you-use-kafka-rabbitmq-or-just-a-database/",
+				},
+			],
+			faq: [
+				{
+					question: "Does every tool need an API?",
+					answer:
+						"An API is usually most reliable, but webhooks, connectors and exports may work. Their limits should be assessed first.",
+				},
+				{
+					question: "How are duplicates prevented?",
+					answer:
+						"With identifiers, idempotency rules and an explicit retry and conflict policy.",
+				},
+				{
+					question: "What if one system stops responding?",
+					answer:
+						"The flow should record the failure, alert someone and support retry or review without losing the event.",
+				},
+			],
+			ctaTitle: "Tell me which tools need to communicate",
+			ctaText:
+				"The source, destination and data currently copied by hand are enough to scope a first integration.",
+			ctaButton: "Discuss an integration",
+			serviceType: "CRM, forms, payments and ERP integration",
+			audience: [
+				"Small businesses",
+				"Operations teams",
+				"Digital businesses",
+				"Sales teams",
+			],
+		}),
+		createFocusedLanding("en", {
+			slug: "ai-automation-operations-documents",
+			translationKey: "ai-automation-operations-documents",
+			metaTitle:
+				"AI Automation for Operations and Documents | José Miguel Fernández",
+			metaDescription:
+				"AI automation for classifying messages, extracting data, reviewing documents and preparing drafts with human control.",
+			keywords: [
+				"AI process automation",
+				"AI document automation",
+				"AI operations automation",
+			],
+			eyebrow: "Applied AI with control",
+			title: "AI automation for operations and documents",
+			intro:
+				"I design workflows that use AI to interpret text or documents when a rule is not enough, with validation, traceability and human review where errors matter.",
+			problemTitle: "Reduce repetitive work without hiding uncertainty",
+			problemBody: [
+				"AI can classify, extract and prepare, but it does not turn a probable answer into reliable data by itself.",
+				"The workflow must decide what can be automated, what is validated and what reaches a person.",
+			],
+			when: [
+				"Many similar emails or documents are reviewed.",
+				"Fields must be extracted from partly unstructured text.",
+				"The team classifies requests before working on them.",
+				"A draft saves time while a person retains the decision.",
+			],
+			cases: [
+				["Classification", "Label messages and route them to the right queue."],
+				[
+					"Extraction",
+					"Prepare structured fields from documents with validation.",
+				],
+				["Drafts", "Responses, summaries or reports for human review."],
+				[
+					"Internal search",
+					"Query documentation with sources and visible limits.",
+				],
+			],
+			builds: [
+				"Input, preparation and validation flow.",
+				"Integration with models and current tools.",
+				"Thresholds, human review and exception handling.",
+				"Quality, cost and operational logging.",
+			],
+			process: [
+				"I define acceptable error and who makes the final decision.",
+				"I prepare real examples and a small evaluation.",
+				"I build the workflow with controls and structured output.",
+				"I measure quality, cost and escalation cases.",
+			],
+			avoid: [
+				"Using AI for simple deterministic rules.",
+				"Automating sensitive decisions without review.",
+				"Sending data without reviewing permission and retention.",
+				"Measuring only whether an answer sounds convincing.",
+			],
+			relatedServiceKeys: [
+				"ai-automation:2",
+				"it-consulting:5",
+				"base:internal-tools",
+			],
+			relatedPosts: [
+				{
+					title: "Using AI in a product without hype",
+					description: "Where it adds value and which limits need designing.",
+					href: "/en/blog/using-ai-in-your-product-without-hype/",
+				},
+				{
+					title: "When business process automation is worth it",
+					description: "Choose a useful and measurable workflow first.",
+					href: "/en/blog/when-business-process-automation-is-worth-it/",
+				},
+			],
+			faq: [
+				{
+					question: "Does human review need to disappear?",
+					answer:
+						"No. Often the value is in preparing and prioritizing while a person retains sensitive decisions.",
+				},
+				{
+					question: "How is quality measured?",
+					answer:
+						"With representative examples, quality criteria, execution cost and tracking of corrected or rejected cases.",
+				},
+				{
+					question: "Can sensitive data be protected?",
+					answer:
+						"The design should review what is sent, to which provider, for how long, and whether it can be minimized or anonymized.",
+				},
+			],
+			ctaTitle: "Review a workflow before adding AI",
+			ctaText:
+				"A few real examples are usually enough to decide between AI, rules, an integration or a combination.",
+			ctaButton: "Discuss AI automation",
+			serviceType: "AI automation for operations and documents",
+			audience: [
+				"Small businesses",
+				"Operations teams",
+				"Support teams",
+				"Digital businesses",
+			],
+		}),
+		createFocusedLanding("en", {
+			slug: "dashboards-internal-admin-panels",
+			translationKey: "dashboards-internal-admin-panels",
+			metaTitle:
+				"Custom Dashboards and Internal Admin Panels | José Miguel Fernández",
+			metaDescription:
+				"Custom dashboards and internal panels for reviewing data, managing work, tracking states and operating without scattered spreadsheets.",
+			keywords: [
+				"custom dashboard",
+				"internal admin panel",
+				"business operations dashboard",
+			],
+			eyebrow: "A clear operational view",
+			title: "Custom dashboards and internal admin panels",
+			intro:
+				"I build private interfaces for reviewing data, managing states, handling exceptions and giving a team a shared view of its work.",
+			problemTitle: "Turn scattered data into visible decisions and tasks",
+			problemBody: [
+				"A dashboard does not help by containing more charts. It helps when it answers a question or supports a task.",
+				"Design must start with real users, permissions, decisions and data sources.",
+			],
+			when: [
+				"The team checks several tools to understand one status.",
+				"Reviews and approvals happen in chat messages.",
+				"Filters, history or ownership are missing.",
+				"A shared spreadsheet contains critical operations.",
+			],
+			cases: [
+				[
+					"Operations panel",
+					"States, owners, dates and exceptions in one work view.",
+				],
+				[
+					"Administration",
+					"Create, update and validate data with suitable permissions.",
+				],
+				["Review workflow", "Queues, comments, approval and traceability."],
+				[
+					"Indicators",
+					"Metrics connected to decisions rather than decorative charts.",
+				],
+			],
+			builds: [
+				"Authentication and risk-proportionate roles.",
+				"Tables, filters, search and forms.",
+				"Change history and workflow states.",
+				"API, CRM or database integrations.",
+			],
+			process: [
+				"I identify users, questions and frequent tasks.",
+				"I define one useful view and its underlying data.",
+				"I build the primary workflow before rare exceptions.",
+				"I validate use and prioritize the next improvement.",
+			],
+			avoid: [
+				"Creating metrics with no decision attached.",
+				"Copying an ERP to solve one queue.",
+				"Adding complex permissions before roles are understood.",
+				"Building on data with no clear source of truth.",
+			],
+			relatedServiceKeys: [
+				"base:internal-tools",
+				"it-consulting:3",
+				"it-consulting:4",
+			],
+			relatedPosts: [
+				{
+					title: "When to build an internal tool",
+					description:
+						"Signals that a spreadsheet no longer supports the workflow well.",
+					href: "/en/blog/when-to-build-an-internal-tool-instead-of-using-excel/",
+				},
+				{
+					title: "How much does an internal tool cost?",
+					description:
+						"What changes scope and how to start with a useful version.",
+					href: "/en/blog/how-much-does-a-custom-internal-tool-cost/",
+				},
+			],
+			faq: [
+				{
+					question: "Does a dashboard require a full application?",
+					answer:
+						"Not always. It can begin with one view and workflow over data that already exists.",
+				},
+				{
+					question: "Can it connect to our current tools?",
+					answer:
+						"Yes, when they provide an API, data access or another reliable exchange mechanism.",
+				},
+				{
+					question: "How are permissions handled?",
+					answer:
+						"They are defined around real actions and data. Roles that nobody can explain should be avoided.",
+				},
+			],
+			ctaTitle: "Tell me what the team needs to see or manage",
+			ctaText:
+				"The task, users and data sources are enough to define a useful first screen.",
+			ctaButton: "Discuss an internal panel",
+			serviceType: "Custom dashboard and internal admin panel development",
+			audience: [
+				"Small businesses",
+				"Operations teams",
+				"Startups",
+				"Internal teams",
+			],
+		}),
+		createFocusedLanding("en", {
+			slug: "replace-excel-with-software",
+			translationKey: "replace-excel-with-software",
+			metaTitle: "Replace Excel with Custom Software | José Miguel Fernández",
+			metaDescription:
+				"Software for replacing critical Excel workflows with centralized data, validation, permissions, history and phased integrations.",
+			keywords: [
+				"replace Excel with software",
+				"business spreadsheet alternative",
+				"custom application for Excel process",
+			],
+			eyebrow: "When the spreadsheet carries too much",
+			title: "Replace a critical Excel workflow with software",
+			intro:
+				"I help turn shared spreadsheets, fragile formulas and manual steps into a small tool that keeps the useful workflow and reduces avoidable errors.",
+			problemTitle: "Move beyond Excel without trying to build an ERP",
+			problemBody: [
+				"Excel works well until multiple users, states, permissions and integrations turn the sheet into an accidental application.",
+				"The transition should identify which part needs software and which part can remain an export or one-off analysis.",
+			],
+			when: [
+				"Several versions exist and nobody knows which is current.",
+				"Formulas or macros depend on one person.",
+				"Data is copied from forms, email, CRM or ERP.",
+				"History, permissions or consistent validation are needed.",
+			],
+			cases: [
+				["Central record", "One clear source for entities, states and owners."],
+				["Workflow", "Tasks, reviews and state changes with history."],
+				["Validation", "Rules at entry instead of corrections at the end."],
+				[
+					"Import and export",
+					"Keep Excel where it remains useful without using it as the operational database.",
+				],
+			],
+			builds: [
+				"Map of sheets, users, rules and exceptions.",
+				"Web application for the primary workflow.",
+				"Initial import and necessary exports.",
+				"Integrations and gradual retirement of duplicate sheets.",
+			],
+			process: [
+				"I review the spreadsheet and how it is actually used.",
+				"I separate data, rules, reports and tasks.",
+				"I build a first version for the frequent path.",
+				"I migrate in phases and retain a safe exit while validating.",
+			],
+			avoid: [
+				"Copying every column and macro without questioning its use.",
+				"Replacing every spreadsheet at once.",
+				"Migrating without cleaning duplicates and conflicting rules.",
+				"Removing exports the team still needs.",
+			],
+			relatedServiceKeys: [
+				"base:internal-tools",
+				"it-consulting:3",
+				"it-consulting:5",
+			],
+			relatedPosts: [
+				{
+					title: "When to move beyond Excel",
+					description:
+						"Practical signals that a spreadsheet has reached its limit.",
+					href: "/en/blog/when-to-build-an-internal-tool-instead-of-using-excel/",
+				},
+				{
+					title: "How much does an internal tool cost?",
+					description:
+						"Estimate a first version and understand what drives cost.",
+					href: "/en/blog/how-much-does-a-custom-internal-tool-cost/",
+				},
+			],
+			faq: [
+				{
+					question: "Must Excel disappear on day one?",
+					answer:
+						"No. A gradual transition validates the workflow and keeps exports while the tool earns trust.",
+				},
+				{
+					question: "Can current data be imported?",
+					answer:
+						"Yes, after reviewing format, duplicates, missing values and rules hidden in formulas or macros.",
+				},
+				{
+					question: "How is scope estimated?",
+					answer:
+						"By users, workflows, data, permissions, integrations and exceptions rather than the number of sheets or columns.",
+				},
+			],
+			ctaTitle: "Show me the spreadsheet and the process around it",
+			ctaText:
+				"You do not need a formal specification. Who uses it, what they copy and where it fails usually reveals a sensible first version.",
+			ctaButton: "Review an Excel workflow",
+			serviceType: "Custom software to replace Excel workflows",
+			audience: [
+				"Small businesses",
+				"Operations teams",
+				"Administration",
+				"Independent professionals",
+			],
+		}),
+	],
+};
+
 const commercialLandingPages = {
 	es: [
 		{
@@ -821,6 +2401,7 @@ const commercialLandingPages = {
 				],
 			},
 		},
+		...focusedCommercialLandingPages.es,
 	],
 	en: [
 		{
@@ -1575,6 +3156,7 @@ const commercialLandingPages = {
 				],
 			},
 		},
+		...focusedCommercialLandingPages.en,
 	],
 } satisfies Record<Locale, CommercialLandingPage[]>;
 

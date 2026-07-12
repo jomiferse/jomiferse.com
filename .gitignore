@@ -39,6 +39,7 @@ pnpm-store/
 
 # agent files
 .agents/
+.superpowers/
 .hermes/
 skills-lock.json
 AGENTS.md

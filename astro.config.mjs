@@ -80,6 +80,8 @@ export default defineConfig({
 					!pathname.startsWith("/api/") &&
 					!pathname.startsWith("/_astro/") &&
 					!pathname.startsWith("/drafts/") &&
+					!pathname.endsWith("/privacy/") &&
+					!pathname.includes("/blog/page/") &&
 					!nonCanonicalServicePaths.has(pathname)
 				);
 			},

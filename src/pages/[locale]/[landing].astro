@@ -29,7 +29,7 @@ const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const landingPath = `/${locale}/${page.slug}/`;
 const alternatePaths = getCommercialLandingAlternatePaths(locale, page);
 const servicePages = getServicePages(locale);
-const contactHref = `/${locale}/contact/`;
+const contactHref = `/${locale}/contact/?sourceCategory=landing&sourcePath=${encodeURIComponent(landingPath)}`;
 const servicesHref = `/${locale}/services/`;
 const relatedServices = page.relatedServiceKeys
 	.map((key) => servicePages.find((service) => service.translationKey === key))

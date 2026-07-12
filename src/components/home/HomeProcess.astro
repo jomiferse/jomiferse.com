@@ -1,0 +1,122 @@
+---
+import { getTranslations } from "@/i18n";
+
+type HomePage = ReturnType<typeof getTranslations>["home"]["page"];
+
+interface Props {
+	content: HomePage["process"];
+}
+
+const { content } = Astro.props as Props;
+---
+
+<section class="home-process section-reveal" aria-labelledby="process-title">
+	<header>
+		<p class="eyebrow">{content.eyebrow}</p>
+		<h2 id="process-title">{content.title}</h2>
+		<p>{content.intro}</p>
+	</header>
+
+	<ol>
+		{
+			content.steps.map((step) => (
+				<li>
+					<span>{step.number}</span>
+					<h3>{step.title}</h3>
+					<p>{step.text}</p>
+				</li>
+			))
+		}
+	</ol>
+</section>
+
+<style>
+	.home-process {
+		padding-block: clamp(5rem, 10vw, 8rem);
+	}
+
+	.home-process > header {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+		gap: 1.5rem 3rem;
+		align-items: end;
+	}
+
+	.home-process .eyebrow {
+		grid-column: 1 / -1;
+	}
+
+	.home-process h2 {
+		max-width: 48rem;
+		color: var(--home-navy);
+		font-size: clamp(2.2rem, 4.8vw, 4rem);
+		font-weight: 900;
+		letter-spacing: -0.055em;
+		line-height: 1;
+		text-wrap: balance;
+	}
+
+	.home-process header > p:last-child {
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	.home-process ol {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		margin-top: 3.5rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.home-process li {
+		position: relative;
+		padding: 2rem 2rem 0 0;
+	}
+
+	.home-process li + li {
+		padding-left: 2rem;
+		border-left: 1px solid var(--surface-border);
+	}
+
+	.home-process li > span {
+		display: inline-grid;
+		width: 2.3rem;
+		height: 2.3rem;
+		place-items: center;
+		border-radius: 50%;
+		background: color-mix(in srgb, var(--action) 13%, transparent);
+		color: var(--action);
+		font-size: 0.7rem;
+		font-weight: 900;
+	}
+
+	.home-process h3 {
+		margin-top: 1.7rem;
+		color: var(--text);
+		font-size: 1.4rem;
+		font-weight: 900;
+	}
+
+	.home-process li p {
+		margin-top: 0.75rem;
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	@media (max-width: 760px) {
+		.home-process > header,
+		.home-process ol {
+			grid-template-columns: 1fr;
+		}
+
+		.home-process li,
+		.home-process li + li {
+			padding: 1.6rem 0;
+			border-left: 0;
+		}
+
+		.home-process li + li {
+			border-top: 1px solid var(--surface-border);
+		}
+	}
+</style>

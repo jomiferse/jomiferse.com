@@ -18,7 +18,8 @@
     "mobileNav": "Navegación móvil",
     "availability": "Full-Stack Developer",
     "contactCta": "Empezar un proyecto",
-    "contactCtaShort": "Hablemos"
+    "contactCtaShort": "Hablemos",
+    "assessmentCtaShort": "Valoración gratis"
   },
   "theme": {
     "toggle": "Cambiar tema",
@@ -67,6 +68,223 @@
       "meta": {
         "title": "Desarrollador full-stack freelance - José Miguel Fernández",
         "description": "Desarrollador full-stack freelance en España. Construyo webs, herramientas internas, automatizaciones, integraciones API y backend mantenible."
+      },
+      "consultancyHero": {
+        "eyebrow": "Consultor informático independiente",
+        "title": "Consultoría informática para mejorar cómo funciona tu negocio.",
+        "intro": "Combino desarrollo y criterio técnico para resolver necesidades reales: captar clientes con una mejor web, automatizar trabajo, conectar herramientas o construir software a medida.",
+        "experience": "Más de cinco años construyendo y mejorando software en producción.",
+        "challenge": "¿Tienes un reto? Revisemos si la tecnología puede resolverlo de forma razonable.",
+        "primaryCta": "Solicitar valoración gratuita",
+        "caseCta": "Ver casos reales",
+        "assessmentNote": "Primera valoración sin compromiso"
+      },
+      "serviceSelector": {
+        "title": "Selecciona el área que quieres mejorar",
+        "intro": "Te mostraré qué solución puede encajar mejor con tu situación y tu negocio.",
+        "items": [
+          {
+            "icon": "globe",
+            "title": "Web profesional",
+            "text": "Una web que explique tu valor, genere confianza y facilite el contacto.",
+            "slug": "business-website"
+          },
+          {
+            "icon": "sparkles",
+            "title": "Automatización",
+            "text": "Menos tareas repetitivas, errores y tiempo perdido en procesos manuales.",
+            "slug": "automation-workflows"
+          },
+          {
+            "icon": "layers",
+            "title": "Herramientas internas",
+            "text": "Paneles y flujos adaptados a cómo trabaja realmente tu equipo.",
+            "slug": "internal-tools"
+          },
+          {
+            "icon": "code",
+            "title": "Integraciones API",
+            "text": "Conecta CRM, formularios, pagos y otras herramientas de negocio.",
+            "slug": "api-integrations"
+          },
+          {
+            "icon": "laptop",
+            "title": "Software a medida",
+            "text": "Aplicaciones web para necesidades que una herramienta estándar no cubre.",
+            "slug": "custom-web-application"
+          },
+          {
+            "icon": "springboot",
+            "title": "Backend Spring Boot",
+            "text": "Desarrollo, mantenimiento y mejora de backend y APIs existentes.",
+            "slug": "backend-spring-boot"
+          }
+        ]
+      },
+      "assessment": {
+        "eyebrow": "Valoración inicial gratuita",
+        "title": "Cuéntame el contexto. Te diré si puedo ayudarte.",
+        "intro": "No necesitas preparar un documento técnico. Basta con explicar qué ocurre ahora y qué te gustaría mejorar.",
+        "items": [
+          {
+            "number": "01",
+            "title": "Reviso tu situación",
+            "text": "Leo el contexto, el problema actual y el resultado que buscas."
+          },
+          {
+            "number": "02",
+            "title": "Valoro el encaje",
+            "text": "Te digo con claridad si puedo ayudarte y qué enfoque tendría sentido."
+          },
+          {
+            "number": "03",
+            "title": "Propongo el siguiente paso",
+            "text": "Recibes una recomendación práctica para avanzar, sin compromiso."
+          }
+        ],
+        "boundary": "La valoración inicial no incluye una auditoría completa, un informe técnico detallado ni un plan de implementación gratuito.",
+        "button": "Pedir valoración gratuita"
+      },
+      "specializedServices": {
+        "eyebrow": "Especialidades",
+        "title": "Nuestros servicios especializados en consultoría informática, diseño web e inteligencia artificial",
+        "intro": "Tres áreas complementarias para mejorar tu presencia digital, ordenar la tecnología del negocio y aprovechar la automatización con criterio.",
+        "items": [
+          {
+            "number": "01",
+            "icon": "briefcase-business",
+            "title": "Consultoría informática",
+            "text": "Reviso tu situación tecnológica y te ayudo a decidir qué mejorar, integrar, mantener o construir.",
+            "points": [
+              "Asesoramiento tecnológico",
+              "Software e integraciones",
+              "Backend y mantenimiento"
+            ],
+            "link": "Ver consultoría informática",
+            "slug": "asesoria-informatica"
+          },
+          {
+            "number": "02",
+            "icon": "pen-tool",
+            "title": "Diseño web",
+            "text": "Creo y rediseño webs profesionales que explican bien tu oferta, cargan rápido y facilitan el contacto.",
+            "points": [
+              "Webs para negocios",
+              "Rediseño y optimización",
+              "WordPress y landing pages"
+            ],
+            "link": "Ver servicios de diseño web",
+            "slug": "diseno-web-wordpress"
+          },
+          {
+            "number": "03",
+            "icon": "sparkles",
+            "title": "Inteligencia artificial",
+            "text": "Aplico IA y automatización a procesos concretos donde pueda ahorrar tiempo o mejorar la operación.",
+            "points": [
+              "Automatizaciones con IA",
+              "Asistentes y chatbots",
+              "Agentes y formación"
+            ],
+            "link": "Ver servicios de inteligencia artificial",
+            "slug": "ia-para-empresas"
+          }
+        ]
+      },
+      "hero": {
+        "eyebrow": "Desarrollo web · Automatización · Software a medida",
+        "title": "Tecnología que hace avanzar tu negocio.",
+        "intro": "Diseño webs profesionales, automatizo procesos y construyo herramientas a medida para pequeños negocios, profesionales y founders.",
+        "primaryCta": "Cuéntame qué necesitas",
+        "secondaryCta": "Ver cómo puedo ayudarte",
+        "directTitle": "Trato directo, de principio a fin",
+        "directText": "Hablas con la persona que entiende el problema, diseña la solución y desarrolla el proyecto."
+      },
+      "trust": {
+        "intro": "Experiencia técnica aplicada a necesidades de negocio reales.",
+        "items": [
+          {
+            "value": "Años",
+            "label": "construyendo software"
+          },
+          {
+            "value": "Full-stack",
+            "label": "una visión completa del proyecto"
+          },
+          {
+            "value": "En remoto",
+            "label": "desde Granada para toda España"
+          }
+        ]
+      },
+      "servicePaths": {
+        "eyebrow": "Cómo puedo ayudarte",
+        "title": "Soluciones concretas para mejorar cómo funciona tu negocio.",
+        "intro": "No necesitas elegir una tecnología. Empieza por el problema que quieres resolver.",
+        "items": [
+          {
+            "number": "01",
+            "title": "Una web que genere confianza",
+            "text": "Webs profesionales y rediseños que explican bien tu valor, funcionan rápido y facilitan el contacto.",
+            "link": "Web y rediseño",
+            "slug": "business-website"
+          },
+          {
+            "number": "02",
+            "title": "Menos tareas manuales",
+            "text": "Automatizaciones, integraciones y herramientas internas que reducen trabajo repetitivo y errores.",
+            "link": "Automatización e integraciones",
+            "slug": "automation-workflows"
+          },
+          {
+            "number": "03",
+            "title": "Software para una necesidad propia",
+            "text": "Aplicaciones web y backend mantenibles cuando las herramientas estándar ya no encajan.",
+            "link": "Software a medida",
+            "slug": "custom-web-application"
+          }
+        ]
+      },
+      "featuredWork": {
+        "eyebrow": "Trabajo seleccionado",
+        "title": "Experiencia sobre productos que ya operan en el mundo real.",
+        "intro": "Un proyecto no se entiende por su lista de tecnologías, sino por el problema que resuelve y la fiabilidad con la que sigue funcionando.",
+        "problemLabel": "El contexto",
+        "solutionLabel": "El trabajo realizado",
+        "link": "Ver proyecto completo"
+      },
+      "process": {
+        "eyebrow": "Cómo trabajo",
+        "title": "De una necesidad poco clara a un siguiente paso concreto.",
+        "intro": "Sin procesos comerciales largos ni una solución sobredimensionada desde el primer día.",
+        "steps": [
+          {
+            "number": "01",
+            "title": "Entender",
+            "text": "Revisamos qué ocurre ahora, qué está bloqueando el negocio y qué resultado necesitas."
+          },
+          {
+            "number": "02",
+            "title": "Proponer",
+            "text": "Te planteo el alcance más pequeño que resuelva bien el problema, con prioridades y límites claros."
+          },
+          {
+            "number": "03",
+            "title": "Construir y entregar",
+            "text": "Desarrollo la solución, comunico el progreso y dejo una base mantenible que puedas seguir usando."
+          }
+        ]
+      },
+      "proof": {
+        "eyebrow": "Por qué trabajar conmigo",
+        "title": "Criterio técnico sin perder de vista el negocio.",
+        "intro": "Combino experiencia en sistemas de producción con la flexibilidad necesaria para construir una web, automatizar un flujo o entregar un producto completo.",
+        "points": [
+          "Hablas directamente conmigo durante todo el proyecto.",
+          "Elijo la solución según la necesidad, no según una tecnología de moda.",
+          "Pienso en rendimiento, mantenimiento y evolución desde el principio.",
+          "Puedo moverme de la interfaz al backend y la infraestructura."
+        ]
       },
       "eyebrow": "Desarrollo full-stack freelance · Backend · Automatización",
       "title": "Software simple, fiable y",
@@ -138,10 +356,10 @@
         ]
       },
       "cta": {
-        "eyebrow": "Contacto",
-        "title": "¿Quieres saber si tiene sentido construirlo?",
-        "text": "Cuéntame qué tienes ahora, qué problema quieres resolver y qué resultado buscas. Te responderé con el siguiente paso más razonable.",
-        "button": "Contar mi caso"
+        "eyebrow": "Hablemos",
+        "title": "¿Tienes algo que mejorar o construir?",
+        "text": "Cuéntame el contexto. Lo revisaré y te diré con claridad si puedo ayudarte y cuál sería el siguiente paso razonable.",
+        "button": "Hablar de mi proyecto"
       }
     },
     "meta": {
@@ -211,20 +429,25 @@
   "projects": {
     "page": {
       "meta": {
-        "title": "Proyectos - José Miguel Fernández",
-        "description": "Proyectos seleccionados de software sobre backend, productos web, herramientas internas y delivery full-stack práctico."
+        "title": "Proyectos de software y trabajos realizados | José Miguel Fernández",
+        "description": "Trabajos realizados en sistemas backend, productos web, herramientas internas y delivery full-stack práctico."
       },
-      "eyebrow": "Proyectos",
-      "title": "Trabajo seleccionado, construido para",
-      "titleAccent": "uso real.",
-      "intro": "Una mezcla de proyectos personales y trabajo profesional en el que he contribuido. Problemas claros, decisiones prácticas y software mantenible.",
-      "personalTitle": "Proyectos personales",
-      "personalIntro": "Productos y herramientas propias donde puedo enseñar decisiones de producto, arquitectura y ejecución sin restricciones de cliente.",
-      "clientTitle": "Trabajo de cliente",
-      "clientIntro": "Proyectos profesionales y contribuciones en entornos de cliente, descritos con el nivel de detalle adecuado para respetar confidencialidad.",
-      "result": "Qué cambió",
-      "fallback": "Software práctico con un flujo claro y una estructura mantenible.",
-      "view": "Ver proyecto"
+      "eyebrow": "Trabajos realizados",
+      "title": "Proyectos de software y trabajos realizados",
+      "titleAccent": ".",
+      "intro": "Una selección de productos, plataformas y sistemas en los que he colaborado. Cada trabajo explica el contexto y la contribución con el detalle adecuado.",
+      "fallbackImage": "Vista técnica no disponible",
+      "viewWork": "Ver trabajo"
+    },
+    "detail": {
+      "back": "Volver a trabajos realizados",
+      "context": "Contexto",
+      "contribution": "Contribución",
+      "decisions": "Decisiones técnicas",
+      "delivered": "Trabajo realizado",
+      "technologies": "Tecnologías",
+      "relatedService": "Servicio relacionado",
+      "externalLink": "Ver proyecto externo"
     },
     "meta": {
       "title": "Proyectos",
@@ -940,6 +1163,18 @@
         {
           "question": "¿Trabajas en remoto?",
           "answer": "Sí. Trabajo en remoto para España y otros proyectos que encajen por idioma, zona horaria y forma de colaboración."
+        },
+        {
+          "question": "¿Cómo calculas el precio de un proyecto?",
+          "answer": "Lo calculo según recorridos, datos, integraciones, riesgos y entregables. Antes de dar una cifra prefiero acotar una primera versión y dejar claros los supuestos y lo que queda fuera."
+        },
+        {
+          "question": "¿Quién conserva el código, las cuentas y la documentación?",
+          "answer": "El proyecto debe terminar con propiedad y accesos claros. Acordamos desde el inicio repositorio, dominio, infraestructura, servicios externos y documentación necesaria para que no dependas de una cuenta personal mía."
+        },
+        {
+          "question": "¿Qué ocurre después de publicar?",
+          "answer": "Podemos cerrar con documentación y traspaso o acordar un bloque de soporte y evolución. La modalidad depende del riesgo operativo y de la frecuencia esperada de cambios."
         }
       ],
       "ctaTitle": "Cuéntame tu caso y vemos si tiene sentido.",

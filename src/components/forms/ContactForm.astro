@@ -1,12 +1,19 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getTranslations, t, type Locale } from "@/i18n";
+import type { ContactSourceCategory } from "@/lib/contact-source";
 
 const {
 	locale,
-	source,
+	sourceCategory = "direct",
+	sourcePath,
 	idPrefix = "contact",
-} = Astro.props as { locale: Locale; source?: string; idPrefix?: string };
+} = Astro.props as {
+	locale: Locale;
+	sourceCategory?: ContactSourceCategory;
+	sourcePath?: string;
+	idPrefix?: string;
+};
 const projectTypes = getTranslations(locale).contactForm.projectTypes;
 ---
 
@@ -17,7 +24,18 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 	class="dark-card p-5 md:p-6"
 >
 	<input type="hidden" name="locale" value={locale} />
-	{source ? <input type="hidden" name="source" value={source} /> : null}
+	<input
+		type="hidden"
+		name="sourceCategory"
+		value={sourceCategory}
+		data-source-category
+	/>
+	<input
+		type="hidden"
+		name="sourcePath"
+		value={sourcePath ?? ""}
+		data-source-path
+	/>
 
 	<div class="grid gap-5 md:grid-cols-2">
 		<div>
@@ -116,3 +134,23 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 		<Icon name="arrow-right" class="h-4 w-4" />
 	</button>
 </form>
+
+<script>
+	const allowedCategories = new Set([
+		"service",
+		"landing",
+		"article",
+		"project",
+	]);
+	const params = new URLSearchParams(window.location.search);
+	const category = params.get("sourceCategory");
+	const path = params.get("sourcePath");
+	if (category && path && allowedCategories.has(category)) {
+		document
+			.querySelectorAll<HTMLInputElement>("[data-source-category]")
+			.forEach((input) => (input.value = category));
+		document
+			.querySelectorAll<HTMLInputElement>("[data-source-path]")
+			.forEach((input) => (input.value = path));
+	}
+</script>

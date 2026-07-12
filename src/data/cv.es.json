@@ -272,6 +272,8 @@
     "company": [
       {
         "title": "Modernización de Plataforma de Microservicios",
+        "id": "microservices-modernization",
+        "slug": "modernizacion-plataforma-microservicios",
         "role": "Backend Software Engineer",
         "companyRelated": "CGI (for The Workshop)",
         "status": "Proyecto cliente",
@@ -299,10 +301,20 @@
           "Contribuí a una migración a largo plazo desde un monolito en Scala hacia una arquitectura de servicios más limpia y mantenible.",
           "Mejoré la confianza en releases mediante trabajo en servicios seguros, delivery automatizado de base de datos y contract testing.",
           "Di soporte a una plataforma de producto donde la claridad técnica importaba tanto como el avance funcional."
-        ]
+        ],
+        "caseStudy": {
+          "problem": "Modernizar una plataforma enterprise mientras el producto seguía evolucionando y el monolito legacy continuaba sosteniendo comportamiento crítico.",
+          "constraints": "Convivencia entre sistemas, contratos entre servicios, cambios de base de datos y necesidad de mantener confianza en cada release.",
+          "decisions": "Trabajar por límites de servicio, reforzar APIs seguras, automatizar delivery de base de datos y usar contract testing para hacer visibles incompatibilidades.",
+          "delivered": "Contribuciones backend a servicios Spring Boot, seguridad, PostgreSQL/Liquibase, pruebas de contrato y flujos de entrega sobre Kubernetes.",
+          "serviceHref": "/es/services/backend-spring-boot/",
+          "serviceLabel": "Ver servicio de backend Spring Boot"
+        }
       },
       {
         "title": "Real-Time WebSocket Gateway Service",
+        "id": "realtime-websocket-gateway",
+        "slug": "gateway-websocket-tiempo-real",
         "role": "Backend Software Engineer",
         "companyRelated": "CGI (for The Workshop)",
         "status": "PoC cliente",
@@ -328,10 +340,20 @@
           "Trabajé en infraestructura WebSocket para conectar usuarios a salas y mantener el estado de conexión de forma controlada.",
           "Contribuí a la integración con Redis pub/sub para difusión entre instancias y gRPC para comunicación con otros servicios backend.",
           "Ayudé a documentar y validar flujos locales de prueba para que el servicio fuera más fácil de ejecutar, revisar y evolucionar."
-        ]
+        ],
+        "caseStudy": {
+          "problem": "Validar una puerta de entrada en tiempo real capaz de mantener conexiones WebSocket, organizar usuarios por salas y distribuir eventos hacia clientes conectados.",
+          "constraints": "La PoC debía coordinar estado de conexión, difusión entre varias instancias y comunicación con servicios internos, además de poder ejecutarse y probarse localmente de forma reproducible.",
+          "decisions": "Separar la gestión de conexiones del intercambio de eventos, usar Redis pub/sub para propagar mensajes entre instancias y gRPC para contratos internos, incorporando observabilidad con Micrometer y despliegue preparado para Kubernetes.",
+          "delivered": "Contribuciones a la infraestructura WebSocket con Atmosphere, gestión de salas y sesiones, integración Redis/gRPC, configuración Spring Cloud y documentación de escenarios de prueba y ejecución local.",
+          "serviceHref": "/es/services/backend-spring-boot/",
+          "serviceLabel": "Ver servicio de backend Spring Boot"
+        }
       },
       {
         "title": "Plataforma Internacional de Educación Euroinnova",
+        "id": "euroinnova-education-platform",
+        "slug": "plataforma-educativa-euroinnova",
         "role": "Full-Stack Software Engineer",
         "companyRelated": "EDUCA EDTECH Group",
         "status": "Plataforma en producción",
@@ -363,10 +385,20 @@
           "Trabajé en flujos críticos de captación, búsqueda, pago y experiencia de usuario con impacto directo en producto.",
           "Ayudé a evolucionar la plataforma hacia una estructura multiidioma y multiportal para crecimiento internacional.",
           "Equilibré rendimiento, mantenibilidad y delivery de negocio en un producto digital de alto tráfico."
-        ]
+        ],
+        "caseStudy": {
+          "problem": "Evolucionar una plataforma educativa que concentraba captación, catálogo, búsqueda, conversión y pago para distintos mercados y portales.",
+          "constraints": "El producto estaba en producción y debía seguir entregando cambios de negocio mientras ampliaba idiomas, portales y volumen, sin deteriorar rendimiento ni estabilidad.",
+          "decisions": "Trabajar de forma incremental sobre backend y frontend, reforzar búsquedas con Elasticsearch, mantener una base de datos MySQL operable y usar contenedores para reducir diferencias entre entornos.",
+          "delivered": "Funcionalidad full-stack en recorridos de captación, catálogo, búsqueda y pago; evolución multiidioma y multiportal; y mejoras continuas de rendimiento, experiencia de usuario y mantenibilidad.",
+          "serviceHref": "/es/services/custom-web-application/",
+          "serviceLabel": "Ver servicio de aplicaciones web a medida"
+        }
       },
       {
         "title": "EduCash · Plataforma de Afiliación",
+        "id": "educash-affiliate-platform",
+        "slug": "plataforma-afiliacion-educash",
         "role": "Full-Stack Software Engineer",
         "companyRelated": "EDUCA EDTECH Group",
         "status": "Herramienta de negocio",
@@ -389,12 +421,22 @@
           "Contribuí desde la implementación inicial hasta la iteración continua y adopción operativa.",
           "Trabajé en reporting, workflows de partners y tooling interno conectado a procesos de negocio.",
           "Equilibré usabilidad práctica con las realidades de producto, operaciones y crecimiento."
-        ]
+        ],
+        "caseStudy": {
+          "problem": "Convertir la gestión de afiliados, el seguimiento operativo y los procesos vinculados a pagos en un producto interno coherente para los equipos de negocio.",
+          "constraints": "La herramienta debía adaptarse a procesos reales que evolucionaban con la operación, conservar datos fiables para reporting y resultar práctica para usuarios no técnicos.",
+          "decisions": "Modelar los workflows alrededor de partners y estados operativos, centralizar reporting y tareas frecuentes, e iterar la interfaz junto al uso diario en lugar de sobrediseñar una primera versión cerrada.",
+          "delivered": "Contribución desde la implementación inicial hasta la evolución del producto, incluyendo flujos de afiliados, reporting, soporte a procesos de pago y herramientas internas para operación y crecimiento.",
+          "serviceHref": "/es/services/internal-tools/",
+          "serviceLabel": "Ver servicio de herramientas internas"
+        }
       }
     ],
     "personal": [
       {
         "title": "Betx",
+        "id": "betx",
+        "slug": "betx",
         "role": "Software Engineer",
         "companyRelated": "Proyecto personal",
         "status": "En desarrollo",
@@ -417,10 +459,20 @@
           "Diseñé una interfaz CLI con Picocli para operar el flujo principal desde terminal sin depender de una interfaz web.",
           "Usé betx.yml como punto de configuración local para mantener credenciales, endpoints y ajustes fuera del código.",
           "Separé persistencia SQLite, comandos CLI e integraciones HTTP para que el backend sea más fácil de probar y evolucionar."
-        ]
+        ],
+        "caseStudy": {
+          "problem": "Registrar apuestas, cuotas, estados y resultados de forma estructurada sin depender de una interfaz web ni de almacenamiento complejo.",
+          "constraints": "Uso local, configuración fuera del código, persistencia ligera y separación clara entre terminal, datos e integraciones HTTP.",
+          "decisions": "Usar Picocli para el flujo, YAML para configuración y SQLite para mantener la operación sencilla, con límites explícitos entre adaptadores.",
+          "delivered": "CLI funcional, configuración declarativa, persistencia local, clientes HTTP y pruebas sobre el flujo principal.",
+          "serviceHref": "/es/services/backend-spring-boot/",
+          "serviceLabel": "Ver desarrollo backend con Spring Boot"
+        }
       },
       {
         "title": "CV Studio",
+        "id": "cv-studio",
+        "slug": "cv-studio",
         "role": "Software Engineer",
         "companyRelated": "Proyecto personal",
         "status": "En desarrollo",
@@ -452,7 +504,15 @@
           "Construí un editor en tiempo real con preview sincronizada sobre datos JSON estructurados y plantillas reutilizables.",
           "Implementé exportación PDF ATS-friendly con foco en consistencia de layout y calidad documental.",
           "Combiné acabado de producto con validación tipada y arquitectura de generación documental."
-        ]
+        ],
+        "caseStudy": {
+          "problem": "Permitir que un perfil técnico edite información estructurada y vea un documento final consistente sin trabajar directamente sobre una plantilla rígida.",
+          "constraints": "Sincronización entre formulario y vista previa, validación tipada y generación PDF con layout estable.",
+          "decisions": "Separar el modelo de CV, la edición, las plantillas y la exportación para que cada parte pueda evolucionar sin mezclar responsabilidades.",
+          "delivered": "Editor en vivo, preview sincronizada, datos validados, plantillas reutilizables y exportación PDF orientada a ATS.",
+          "serviceHref": "/es/services/software-a-medida/",
+          "serviceLabel": "Ver servicio de software a medida"
+        }
       }
     ]
   }

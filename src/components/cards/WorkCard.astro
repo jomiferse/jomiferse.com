@@ -1,0 +1,103 @@
+---
+import { Icon } from "astro-icon/components";
+import { t, type Locale } from "@/i18n";
+import type { ProjectEntry } from "@/lib/projects";
+
+interface Props {
+	project: ProjectEntry;
+	locale: Locale;
+}
+
+const { project, locale } = Astro.props as Props;
+const href = `/${locale}/projects/${project.slug}/`;
+const staticImage = project.img?.imgStatic;
+const hoverImage = project.img?.imgHover;
+---
+
+<article class="group h-full">
+	<a
+		href={href}
+		class="dark-card hover-card flex h-full flex-col overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
+	>
+		<div
+			class="relative aspect-[16/10] overflow-hidden bg-[radial-gradient(circle_at_20%_10%,var(--accent-soft),transparent_46%),var(--bg-band)]"
+		>
+			{
+				staticImage ? (
+					<>
+						<img
+							src={staticImage.src}
+							alt={staticImage.alt ?? project.title}
+							width="960"
+							height="600"
+							loading="lazy"
+							class="h-full w-full object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]"
+						/>
+						{hoverImage ? (
+							<img
+								src={hoverImage.src}
+								alt=""
+								width="960"
+								height="600"
+								loading="lazy"
+								class="project-preview-hover absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 motion-safe:group-hover:opacity-100"
+							/>
+						) : null}
+					</>
+				) : (
+					<div class="flex h-full items-end bg-[linear-gradient(135deg,rgba(56,215,255,0.14),transparent_58%)] p-5">
+						<span class="eyebrow text-[var(--text-muted)]">
+							{t(locale, "projects.page.fallbackImage")}
+						</span>
+					</div>
+				)
+			}
+
+			{
+				project.status ? (
+					<span class="tag-pill absolute top-4 left-4 bg-slate-950/75 text-white dark:bg-slate-950/75">
+						{project.status}
+					</span>
+				) : null
+			}
+		</div>
+
+		<div class="flex flex-1 flex-col p-5 md:p-6">
+			<p class="muted-copy text-sm font-semibold">
+				{project.role}{
+					project.companyRelated ? ` · ${project.companyRelated}` : ""
+				}
+			</p>
+			<h2 class="mt-3 text-xl font-black text-[var(--text)] md:text-2xl">
+				{project.title}
+			</h2>
+			<p class="muted-copy mt-3 leading-7">{project.summary}</p>
+
+			<div
+				class="hairline mt-6 flex flex-wrap items-center justify-between gap-3 border-t pt-4"
+			>
+				<div class="flex flex-wrap gap-2">
+					{
+						project.technologies
+							.slice(0, 3)
+							.map((technology) => <span class="tag-pill">{technology}</span>)
+					}
+				</div>
+				<span
+					class="inline-flex items-center gap-2 text-sm font-bold text-[var(--text)] group-hover:text-[var(--accent-strong)] dark:group-hover:text-[var(--accent)]"
+				>
+					{t(locale, "projects.page.viewWork")}
+					<Icon name="move-up-right" class="h-4 w-4" />
+				</span>
+			</div>
+		</div>
+	</a>
+</article>
+
+<style>
+	@media (hover: none) {
+		.project-preview-hover {
+			display: none;
+		}
+	}
+</style>

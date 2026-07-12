@@ -1,0 +1,310 @@
+---
+import { Icon } from "astro-icon/components";
+import { getTranslations, type Locale } from "@/i18n";
+import type { ProjectEntry } from "@/lib/projects";
+
+type HomePage = ReturnType<typeof getTranslations>["home"]["page"];
+
+interface Props {
+	locale: Locale;
+	content: HomePage["consultancyHero"];
+	selector: HomePage["serviceSelector"];
+	yearsWorking: string;
+	project?: ProjectEntry;
+}
+
+const { locale, content, selector, yearsWorking, project } =
+	Astro.props as Props;
+const projectImage = project?.img?.imgStatic;
+---
+
+<section class="consultancy-hero section-reveal" aria-labelledby="home-title">
+	<p class="eyebrow consultancy-hero__eyebrow">{content.eyebrow}</p>
+	<h1 id="home-title">{content.title}</h1>
+
+	<div class="consultancy-hero__columns">
+		<div class="consultancy-pitch">
+			<p class="consultancy-pitch__intro">{content.intro}</p>
+			<p class="consultancy-pitch__evidence">
+				<strong>{yearsWorking}+ años</strong>
+				<span>{content.experience}</span>
+			</p>
+			<p class="consultancy-pitch__challenge">{content.challenge}</p>
+
+			<div class="consultancy-pitch__actions">
+				<a href={`/${locale}/contact?service=assessment`} class="button-action">
+					{content.primaryCta}
+					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+				<a href={`/${locale}/projects`} class="consultancy-pitch__case-link">
+					{content.caseCta}
+					<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+			</div>
+			<p class="consultancy-pitch__note">
+				<Icon name="circle-check-big" class="h-4 w-4" aria-hidden="true" />
+				{content.assessmentNote}
+			</p>
+
+			{
+				project && (
+					<a
+						href={`/${locale}/projects/${project.slug}/`}
+						class="consultancy-case-preview"
+					>
+						{projectImage ? (
+							<img
+								src={projectImage.src}
+								alt={projectImage.alt ?? project.title}
+								width="640"
+								height="400"
+								loading="eager"
+							/>
+						) : (
+							<span
+								class="consultancy-case-preview__fallback"
+								aria-hidden="true"
+							/>
+						)}
+						<span>
+							<strong>{project.title}</strong>
+							<small>{project.status}</small>
+						</span>
+					</a>
+				)
+			}
+		</div>
+
+		<div class="consultancy-selector">
+			<header>
+				<h2>{selector.title}</h2>
+				<p>{selector.intro}</p>
+			</header>
+			<div class="consultancy-selector__grid">
+				{
+					selector.items.map((item) => (
+						<a
+							href={`/${locale}/services/${item.slug}`}
+							class="consultancy-option"
+						>
+							<Icon name={item.icon} class="h-7 w-7" aria-hidden="true" />
+							<span>
+								<strong>{item.title}</strong>
+								<small>{item.text}</small>
+							</span>
+							<Icon
+								name="arrow-right"
+								class="consultancy-option__arrow h-4 w-4"
+								aria-hidden="true"
+							/>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.consultancy-hero {
+		padding-block: 2rem 5.5rem;
+	}
+	.consultancy-hero__eyebrow {
+		text-align: center;
+		color: var(--action);
+	}
+	.consultancy-hero > h1 {
+		max-width: 68rem;
+		margin: 1rem auto 0;
+		color: var(--home-navy);
+		font-size: clamp(2.7rem, 5.8vw, 5.5rem);
+		font-weight: 900;
+		letter-spacing: -0.06em;
+		line-height: 0.96;
+		text-align: center;
+		text-wrap: balance;
+	}
+	.consultancy-hero__columns {
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+		gap: clamp(2.5rem, 6vw, 6rem);
+		margin-top: clamp(3rem, 6vw, 5rem);
+		align-items: start;
+	}
+	.consultancy-pitch__intro {
+		color: var(--text);
+		font-size: 1.15rem;
+		font-weight: 700;
+		line-height: 1.7;
+	}
+	.consultancy-pitch__evidence {
+		display: grid;
+		gap: 0.2rem;
+		margin-top: 2rem;
+		padding-top: 1.4rem;
+		border-top: 1px solid var(--surface-border);
+	}
+	.consultancy-pitch__evidence strong {
+		color: var(--action);
+		font-size: 1.1rem;
+	}
+	.consultancy-pitch__evidence span,
+	.consultancy-pitch__challenge {
+		color: var(--text-muted);
+		line-height: 1.65;
+	}
+	.consultancy-pitch__challenge {
+		margin-top: 1.2rem;
+		font-weight: 700;
+	}
+	.consultancy-pitch__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		align-items: center;
+		margin-top: 2rem;
+	}
+	.consultancy-pitch__case-link {
+		display: inline-flex;
+		min-height: 3rem;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--text);
+		font-weight: 900;
+		border-bottom: 1px solid var(--surface-border);
+	}
+	.consultancy-pitch__case-link:hover {
+		color: var(--action);
+		border-color: var(--action);
+	}
+	.consultancy-pitch__note {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		margin-top: 0.8rem;
+		color: var(--text-muted);
+		font-size: 0.75rem;
+	}
+	.consultancy-pitch__note :global(svg) {
+		color: var(--action);
+	}
+	.consultancy-case-preview {
+		display: grid;
+		grid-template-columns: 8.5rem 1fr;
+		gap: 1rem;
+		align-items: center;
+		margin-top: 2.5rem;
+		padding: 0.75rem;
+		border: 1px solid var(--surface-border);
+		background: var(--surface);
+	}
+	.consultancy-case-preview img,
+	.consultancy-case-preview__fallback {
+		width: 100%;
+		aspect-ratio: 16/10;
+		object-fit: cover;
+		background: var(--bg-band);
+	}
+	.consultancy-case-preview span {
+		display: grid;
+		gap: 0.3rem;
+	}
+	.consultancy-case-preview strong {
+		color: var(--text);
+		line-height: 1.25;
+	}
+	.consultancy-case-preview small {
+		color: var(--text-muted);
+	}
+	.consultancy-selector header h2 {
+		color: var(--text);
+		font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+		font-weight: 900;
+		letter-spacing: -0.035em;
+	}
+	.consultancy-selector header p {
+		margin-top: 0.75rem;
+		color: var(--text-muted);
+		line-height: 1.6;
+	}
+	.consultancy-selector__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.8rem;
+		margin-top: 1.6rem;
+	}
+	.consultancy-option {
+		position: relative;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.85rem;
+		min-height: 9.5rem;
+		padding: 1.25rem;
+		border: 1px solid var(--surface-border);
+		border-radius: 0.9rem;
+		background: var(--surface-strong);
+		box-shadow: 0 10px 32px rgba(20, 35, 52, 0.06);
+	}
+	.consultancy-option > :global(svg:first-child) {
+		color: var(--action);
+	}
+	.consultancy-option span {
+		display: grid;
+		align-content: start;
+		gap: 0.45rem;
+	}
+	.consultancy-option strong {
+		color: var(--text);
+		font-size: 1.05rem;
+		line-height: 1.25;
+	}
+	.consultancy-option small {
+		color: var(--text-muted);
+		line-height: 1.5;
+	}
+	.consultancy-option__arrow {
+		position: absolute;
+		right: 1rem;
+		bottom: 1rem;
+		color: var(--text-muted);
+	}
+	.consultancy-option:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--action) 45%, var(--surface-border));
+	}
+	.consultancy-option:hover .consultancy-option__arrow {
+		color: var(--action);
+	}
+	@media (max-width: 850px) {
+		.consultancy-hero__columns {
+			grid-template-columns: 1fr;
+		}
+		.consultancy-selector__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	@media (max-width: 560px) {
+		.consultancy-hero {
+			padding-top: 1rem;
+		}
+		.consultancy-hero > h1 {
+			text-align: left;
+		}
+		.consultancy-hero__eyebrow {
+			text-align: left;
+		}
+		.consultancy-selector__grid {
+			grid-template-columns: 1fr;
+		}
+		.consultancy-option {
+			min-height: auto;
+		}
+		.consultancy-pitch__actions {
+			align-items: stretch;
+			flex-direction: column;
+		}
+		.consultancy-pitch__case-link {
+			justify-content: center;
+		}
+	}
+</style>

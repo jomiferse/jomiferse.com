@@ -1,0 +1,221 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getTranslations, locales, t, type Locale } from "@/i18n";
+import {
+	getProject,
+	getProjectAlternatePaths,
+	getProjectPages,
+} from "@/lib/projects";
+import {
+	buildBreadcrumbList,
+	buildCreativeWork,
+	buildSoftwareApplication,
+} from "@/lib/seo";
+
+export function getStaticPaths() {
+	return locales.flatMap((locale) =>
+		getProjectPages(locale).map((project) => ({
+			params: { locale, project: project.slug },
+		})),
+	);
+}
+
+const locale = Astro.params.locale as Locale;
+const slug = Astro.params.project ?? "";
+const project = getProject(locale, slug);
+
+if (!project) throw new Error(`Project not found: ${locale}/${slug}`);
+
+const copy = getTranslations(locale).projects.detail;
+const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const detailPath = `/${locale}/projects/${project.slug}/`;
+const archivePath = `/${locale}/projects/`;
+const alternatePaths = getProjectAlternatePaths(project);
+const image = project.img?.imgStatic;
+const caseStudy = project.caseStudy;
+const structuredData = [
+	project.kind === "personal"
+		? buildSoftwareApplication({
+				name: project.title,
+				description: project.summary,
+				url: new URL(detailPath, site).toString(),
+				technologies: project.technologies,
+			})
+		: buildCreativeWork(site, {
+				name: project.title,
+				description: project.summary,
+				technologies: project.technologies,
+				path: detailPath,
+			}),
+	buildBreadcrumbList(site, [
+		{ name: t(locale, "nav.home"), path: `/${locale}/` },
+		{ name: t(locale, "nav.projects"), path: archivePath },
+		{ name: project.title, path: detailPath },
+	]),
+];
+---
+
+<BaseLayout
+	title={`${project.title} | ${t(locale, "nav.projects")}`}
+	description={project.summary}
+	image={image?.src}
+	imageAlt={image?.alt ?? project.title}
+	canonicalPath={detailPath}
+	alternatePaths={alternatePaths}
+	structuredData={structuredData}
+	keywords={project.technologies}
+>
+	<a
+		href={archivePath}
+		class="inline-flex items-center gap-2 text-sm font-bold text-[var(--text)] hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
+	>
+		<Icon name="arrow-left" class="h-4 w-4" />
+		{copy.back}
+	</a>
+
+	<section
+		class="grid gap-10 py-10 md:grid-cols-[1.2fr_0.8fr] md:items-end md:py-16"
+	>
+		<div
+			class="overflow-hidden rounded-[1.75rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,var(--accent-soft),transparent_46%),var(--bg-band)]"
+		>
+			{
+				image ? (
+					<img
+						src={image.src}
+						alt={image.alt ?? project.title}
+						width="1200"
+						height="750"
+						class="aspect-[16/10] h-full w-full object-cover"
+					/>
+				) : (
+					<div class="flex aspect-[16/10] items-end bg-[linear-gradient(135deg,rgba(56,215,255,0.14),transparent_58%)] p-6">
+						<span class="eyebrow text-[var(--text-muted)]">
+							{t(locale, "projects.page.fallbackImage")}
+						</span>
+					</div>
+				)
+			}
+		</div>
+
+		<div>
+			{project.status ? <p class="eyebrow">{project.status}</p> : null}
+			<h1 class="mt-4 text-4xl font-black text-[var(--text)] md:text-6xl">
+				{project.title}
+			</h1>
+			<p class="muted-copy mt-5 text-base leading-7 font-semibold">
+				{project.role}{
+					project.companyRelated ? ` · ${project.companyRelated}` : ""
+				}
+				{project.timeframe ? ` · ${project.timeframe}` : ""}
+			</p>
+			<p class="muted-copy mt-6 text-lg leading-8">{project.summary}</p>
+		</div>
+	</section>
+
+	<div class="grid gap-8 pb-20 md:grid-cols-[minmax(0,1fr)_18rem] md:pb-28">
+		<div class="space-y-10">
+			{
+				project.context ? (
+					<section>
+						<h2 class="text-2xl font-black text-[var(--text)]">
+							{copy.context}
+						</h2>
+						<p class="muted-copy mt-4 leading-8">{project.context}</p>
+					</section>
+				) : null
+			}
+
+			{
+				caseStudy?.problem ? (
+					<section>
+						<h2 class="text-2xl font-black text-[var(--text)]">
+							{copy.contribution}
+						</h2>
+						<p class="muted-copy mt-4 leading-8">
+							{caseStudy.problem}
+							{caseStudy.constraints ? ` ${caseStudy.constraints}` : ""}
+						</p>
+					</section>
+				) : null
+			}
+
+			{
+				caseStudy?.decisions ? (
+					<section>
+						<h2 class="text-2xl font-black text-[var(--text)]">
+							{copy.decisions}
+						</h2>
+						<p class="muted-copy mt-4 leading-8">{caseStudy.decisions}</p>
+					</section>
+				) : null
+			}
+
+			{
+				caseStudy?.delivered ? (
+					<section>
+						<h2 class="text-2xl font-black text-[var(--text)]">
+							{copy.delivered}
+						</h2>
+						<p class="muted-copy mt-4 leading-8">{caseStudy.delivered}</p>
+					</section>
+				) : null
+			}
+
+			{
+				project.highlights?.length ? (
+					<section>
+						<h2 class="text-2xl font-black text-[var(--text)]">
+							{copy.contribution}
+						</h2>
+						<ul class="mt-5 grid gap-3">
+							{project.highlights.map((highlight) => (
+								<li class="dark-card flex gap-3 p-4 leading-7">
+									<span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--accent)]" />
+									<span>{highlight}</span>
+								</li>
+							))}
+						</ul>
+					</section>
+				) : null
+			}
+		</div>
+
+		<aside class="dark-card h-fit p-5 md:sticky md:top-8">
+			<h2 class="text-lg font-black text-[var(--text)]">{copy.technologies}</h2>
+			<div class="mt-4 flex flex-wrap gap-2">
+				{
+					project.technologies.map((technology) => (
+						<span class="tag-pill">{technology}</span>
+					))
+				}
+			</div>
+
+			{
+				caseStudy?.serviceHref ? (
+					<a
+						href={caseStudy.serviceHref}
+						class="button-secondary mt-7 w-full justify-center"
+					>
+						{caseStudy.serviceLabel || copy.relatedService}
+					</a>
+				) : null
+			}
+
+			{
+				project.link ? (
+					<a
+						href={project.link}
+						target="_blank"
+						rel="noopener noreferrer nofollow"
+						class="mt-3 inline-flex w-full items-center justify-center gap-2 text-sm font-bold text-[var(--text)] hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
+					>
+						{copy.externalLink}
+						<Icon name="move-up-right" class="h-4 w-4" />
+					</a>
+				) : null
+			}
+		</aside>
+	</div>
+</BaseLayout>

@@ -1,9 +1,14 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
+import HomeHero from "@/components/home/HomeHero.astro";
+import HomeProcess from "@/components/home/HomeProcess.astro";
+import HomeServicePaths from "@/components/home/HomeServicePaths.astro";
+import HomeSpecializedServices from "@/components/home/HomeSpecializedServices.astro";
+import HomeTrust from "@/components/home/HomeTrust.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
-import { getServiceGroups } from "@/lib/services";
+import { getProjectPages } from "@/lib/projects";
 import { buildBreadcrumbList, buildProfilePage } from "@/lib/seo";
 
 export function getStaticPaths() {
@@ -12,15 +17,12 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const cv = getCv(locale);
-const projects = [
-	...(cv.projects?.personal ?? []),
-	...(cv.projects?.company ?? []),
-];
-const featuredProjects = projects.slice(0, 3);
-const serviceGroups = getServiceGroups(locale);
+const projects = getProjectPages(locale);
+const featuredProject =
+	projects.find((project) => project.id === "euroinnova-education-platform") ??
+	projects[0];
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const page = getTranslations(locale).home.page;
-const skillGroups = page.skills.groups;
 const pageTitle = page.meta.title;
 const pageDescription = page.meta.description;
 const structuredData = [
@@ -42,229 +44,102 @@ const structuredData = [
 	description={pageDescription}
 	structuredData={structuredData}
 	keywords={[
-		"Software Engineer",
-		"Backend Development",
-		"Spring Boot",
-		"Microservices",
-		"Freelance Web Development",
+		"Freelance Full-Stack Developer",
+		"Business Website Development",
+		"Workflow Automation",
+		"Custom Web Applications",
+		"Spring Boot Backend",
 	]}
 >
-	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{page.eyebrow}</p>
-		<h1
-			class="mt-6 max-w-5xl text-4xl leading-[1.04] font-black text-[var(--text)] sm:text-5xl md:text-7xl"
-		>
-			{page.title}
-			<span class="accent-text">{page.titleAccent}</span>
-		</h1>
-		<p class="muted-copy mt-7 max-w-2xl text-base leading-8 md:text-xl">
-			{page.intro}
-		</p>
-		<div class="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row">
-			<a href={`/${locale}/services`} class="button-primary w-full sm:w-auto">
-				{page.primaryCta}
-				<Icon name="arrow-right" class="h-4 w-4" />
-			</a>
-			<a href={`/${locale}/contact`} class="button-secondary w-full sm:w-auto"
-				>{page.secondaryCta}</a
-			>
-		</div>
-	</section>
+	<HomeHero
+		locale={locale}
+		content={page.consultancyHero}
+		selector={page.serviceSelector}
+		yearsWorking={cv.yearsWorking}
+		project={featuredProject}
+	/>
 
-	<section class="section-reveal full-bleed-divider py-8 sm:py-10">
-		<div class="grid gap-6 sm:grid-cols-3 sm:gap-7">
-			<div class="text-center">
-				<p class="text-3xl font-black text-[var(--text)] md:text-4xl">
-					{cv.yearsWorking}+
-				</p>
-				<p class="muted-copy mt-1 text-sm">{page.stats.years}</p>
-			</div>
-			<div class="text-center">
-				<p class="text-3xl font-black text-[var(--text)] md:text-4xl">
-					{projects.length}+
-				</p>
-				<p class="muted-copy mt-1 text-sm">{page.stats.projects}</p>
-			</div>
-			<div class="text-center">
-				<p class="text-3xl font-black text-[var(--text)] md:text-4xl">
-					{page.stats.full}
-				</p>
-				<p class="muted-copy mt-1 text-sm">{page.stats.scope}</p>
-			</div>
-		</div>
-	</section>
+	<HomeServicePaths locale={locale} content={page.assessment} />
 
-	<section class="section-reveal py-16 md:py-28">
-		<div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-			<div>
-				<p class="eyebrow">{page.about.eyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.about.title}
-				</h2>
-			</div>
-			<div
-				class="space-y-5 text-base leading-8 text-[var(--text-muted)] md:text-lg"
-			>
-				<p>
-					{page.about.p1}
-				</p>
-				<p>
-					{page.about.p2}
-				</p>
-			</div>
-		</div>
-	</section>
+	<HomeSpecializedServices locale={locale} content={page.specializedServices} />
 
-	<section class="section-band section-reveal py-16 md:py-28">
-		<div
-			class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
-		>
-			<div>
-				<p class="eyebrow">{page.work.eyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.work.title}
-				</h2>
-			</div>
-			<a href={`/${locale}/projects`} class="button-secondary w-fit"
-				>{page.work.viewAll}</a
-			>
-		</div>
+	<HomeProcess content={page.process} />
+	<HomeTrust content={page.proof} />
 
-		<div
-			class="stagger-children mt-8 grid gap-4 sm:mt-10 md:grid-cols-3 md:gap-5"
-		>
-			{
-				featuredProjects.map((project) => (
-					<article class="dark-card hover-card p-5 md:p-6">
-						<div class="mb-6 flex flex-wrap gap-2">
-							{project.technologies.slice(0, 3).map((tech) => (
-								<span class="tag-pill">{tech}</span>
-							))}
-						</div>
-						<h3 class="text-xl font-black text-[var(--text)] md:text-2xl">
-							{project.title}
-						</h3>
-						<p class="muted-copy mt-4 text-sm leading-6">{project.summary}</p>
-						<p class="mt-5 text-sm font-bold text-[var(--accent-strong)] dark:text-[var(--accent)]">
-							{project.highlights?.[0] ?? project.status}
-						</p>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	<section class="section-reveal py-16 md:py-28">
-		<p class="eyebrow">{page.build.eyebrow}</p>
-		<h2
-			class="mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-		>
-			{page.build.title}
-		</h2>
-		<p class="muted-copy mt-5 max-w-2xl text-base leading-8 md:text-lg">
-			{page.build.text}
-		</p>
-		<div
-			class="stagger-children mt-8 grid gap-4 sm:mt-10 lg:grid-cols-3 lg:gap-5"
-		>
-			{
-				serviceGroups.map((group) => (
-					<article class="dark-card hover-card flex h-full flex-col p-5 md:p-6">
-						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
-							{group.number}
-						</p>
-						<h3 class="mt-5 text-2xl font-black text-[var(--text)]">
-							{group.title}
-						</h3>
-						<p class="muted-copy mt-3 leading-7">{group.description}</p>
-						<div class="mt-6 grid gap-2">
-							{group.offerings.slice(0, 4).map((offering) => (
-								<a
-									href={`/${locale}/services/${offering.slug}`}
-									class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-strong)] px-3 py-2 text-sm font-bold text-[var(--text-muted)] hover:border-[var(--accent-line)] hover:text-[var(--text)] dark:bg-white/[0.03]"
-								>
-									{offering.title}
-								</a>
-							))}
-						</div>
-						<a
-							href={`/${locale}/services/${group.primaryService.slug}`}
-							class="mt-auto pt-6 text-sm font-black text-[var(--accent-strong)] dark:text-[var(--accent)]"
-						>
-							{page.build.viewCategory}
-						</a>
-					</article>
-				))
-			}
-		</div>
-		<div class="mt-9 flex flex-col gap-3 sm:flex-row">
-			<a href={`/${locale}/services`} class="button-primary w-full sm:w-auto">
-				{page.build.servicesLink}
-			</a>
-			<a href={`/${locale}/blog`} class="button-secondary w-full sm:w-auto">
-				{page.build.blogLink}
-			</a>
-			<a href={`/${locale}/contact`} class="button-secondary w-full sm:w-auto">
-				{page.build.contactLink}
-			</a>
-		</div>
-	</section>
-
-	<section class="section-band section-reveal py-16 md:py-28">
-		<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-			<div>
-				<p class="eyebrow">{page.skills.eyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.skills.title}
-				</h2>
-				<p class="muted-copy mt-5 max-w-xl text-base leading-8">
-					{page.skills.text}
-				</p>
-			</div>
-
-			<div class="stagger-children grid gap-4 sm:grid-cols-2">
-				{
-					skillGroups.map((group) => (
-						<article class="dark-card p-5">
-							<h3 class="text-lg font-black text-[var(--text)]">
-								{group.title}
-							</h3>
-							<div class="mt-4 flex flex-wrap gap-2">
-								{group.items.map((item) => (
-									<span class="tag-pill">{item}</span>
-								))}
-							</div>
-						</article>
-					))
-				}
-			</div>
-		</div>
-	</section>
-
-	<section class="section-reveal py-16 text-center md:py-28">
-		<div class="dark-card px-5 py-12 sm:px-8 md:py-16">
+	<section
+		class="home-final-cta section-reveal"
+		aria-labelledby="home-cta-title"
+	>
+		<div>
 			<p class="eyebrow">{page.cta.eyebrow}</p>
-			<h2
-				class="mx-auto mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-6xl"
-			>
-				{page.cta.title}
-			</h2>
-			<p
-				class="muted-copy mx-auto mt-5 max-w-xl text-base leading-8 md:text-lg"
-			>
-				{page.cta.text}
-			</p>
-			<div class="mt-10 flex justify-center">
-				<a href={`/${locale}/contact`} class="button-primary w-full sm:w-auto"
-					>{page.cta.button}</a
-				>
-			</div>
+			<h2 id="home-cta-title">{page.cta.title}</h2>
+			<p>{page.cta.text}</p>
 		</div>
+		<a href={`/${locale}/contact?service=assessment`} class="button-action">
+			{page.assessment.button}
+			<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+		</a>
 	</section>
 </BaseLayout>
+
+<style>
+	.home-final-cta {
+		position: relative;
+		display: grid;
+		width: 100vw;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 3rem;
+		align-items: center;
+		margin: 0 calc(50% - 50vw) -5rem;
+		padding: clamp(4rem, 8vw, 6.5rem) max(1rem, calc((100vw - 69rem) / 2));
+		overflow: hidden;
+		background: var(--surface-strong);
+	}
+
+	.home-final-cta::before {
+		position: absolute;
+		top: -7rem;
+		right: max(1rem, calc((100vw - 69rem) / 2));
+		width: 18rem;
+		height: 18rem;
+		border: 3.5rem solid color-mix(in srgb, var(--action) 14%, transparent);
+		border-radius: 50%;
+		content: "";
+		pointer-events: none;
+	}
+
+	.home-final-cta > div,
+	.home-final-cta > a {
+		position: relative;
+		z-index: 1;
+	}
+
+	.home-final-cta h2 {
+		max-width: 47rem;
+		margin-top: 1rem;
+		color: var(--home-navy);
+		font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+		font-weight: 900;
+		letter-spacing: -0.06em;
+		line-height: 0.98;
+		text-wrap: balance;
+	}
+
+	.home-final-cta div > p:last-child {
+		max-width: 42rem;
+		margin-top: 1.25rem;
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	@media (max-width: 760px) {
+		.home-final-cta {
+			grid-template-columns: 1fr;
+			margin-bottom: -3.5rem;
+		}
+
+		.home-final-cta > a {
+			width: 100%;
+		}
+	}
+</style>

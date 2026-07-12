@@ -2,6 +2,7 @@
 title: "Spring Boot en producción: checklist DevOps para no ir a ciegas"
 description: "Checklist práctico para llevar una aplicación Spring Boot a producción con configuración clara, base de datos, observabilidad, seguridad, despliegue y rollback."
 date: 2026-05-26
+dateModified: 2026-07-11
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "8 min"

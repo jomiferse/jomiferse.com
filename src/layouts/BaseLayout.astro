@@ -58,7 +58,7 @@ const defaultAlternate = alternateEs;
 const otherLocale: Locale = locale === "en" ? "es" : "en";
 const languageHref = alternatePaths?.[otherLocale];
 const ogImage = Astro.site ? new URL(image, Astro.site).toString() : image;
-const robots = noindex ? "noindex,nofollow" : "index,follow";
+const robots = noindex ? "noindex,follow" : "index,follow";
 
 const baseStructuredData = [
 	{

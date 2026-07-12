@@ -1,0 +1,84 @@
+---
+import { Icon } from "astro-icon/components";
+import { getTranslations } from "@/i18n";
+
+type HomePage = ReturnType<typeof getTranslations>["home"]["page"];
+
+interface Props {
+	content: HomePage["proof"];
+}
+
+const { content } = Astro.props as Props;
+---
+
+<section class="home-proof section-reveal" aria-labelledby="proof-title">
+	<div class="home-proof__statement">
+		<p class="eyebrow">{content.eyebrow}</p>
+		<h2 id="proof-title">{content.title}</h2>
+		<p>{content.intro}</p>
+	</div>
+
+	<ul>
+		{
+			content.points.map((point) => (
+				<li>
+					<Icon name="circle-check-big" class="h-5 w-5" aria-hidden="true" />
+					<span>{point}</span>
+				</li>
+			))
+		}
+	</ul>
+</section>
+
+<style>
+	.home-proof {
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(20rem, 1.08fr);
+		gap: clamp(3rem, 8vw, 7rem);
+		align-items: center;
+		padding-block: clamp(5rem, 10vw, 8rem);
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.home-proof h2 {
+		margin-top: 1rem;
+		color: var(--home-navy);
+		font-size: clamp(2.2rem, 4.8vw, 4rem);
+		font-weight: 900;
+		letter-spacing: -0.055em;
+		line-height: 1;
+		text-wrap: balance;
+	}
+
+	.home-proof__statement > p:last-child {
+		margin-top: 1.5rem;
+		color: var(--text-muted);
+		line-height: 1.75;
+	}
+
+	.home-proof ul {
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.home-proof li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 1rem;
+		align-items: center;
+		padding-block: 1.25rem;
+		border-bottom: 1px solid var(--surface-border);
+		color: var(--text);
+		font-weight: 750;
+		line-height: 1.5;
+	}
+
+	.home-proof li :global(svg) {
+		color: var(--action);
+	}
+
+	@media (max-width: 760px) {
+		.home-proof {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

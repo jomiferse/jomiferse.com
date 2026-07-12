@@ -18,7 +18,8 @@
     "mobileNav": "Mobile navigation",
     "availability": "Full-Stack Developer",
     "contactCta": "Start a project",
-    "contactCtaShort": "Let's talk"
+    "contactCtaShort": "Let's talk",
+    "assessmentCtaShort": "Free assessment"
   },
   "theme": {
     "toggle": "Toggle theme",
@@ -67,6 +68,223 @@
       "meta": {
         "title": "Freelance Full-Stack Developer - José Miguel Fernández",
         "description": "Freelance full-stack developer in Spain. I build business websites, internal tools, automation workflows, API integrations and maintainable backend systems."
+      },
+      "consultancyHero": {
+        "eyebrow": "Independent IT consultant",
+        "title": "IT consulting to improve how your business works.",
+        "intro": "I combine development and technical judgment to solve real needs: attracting clients with a better website, automating work, connecting tools or building custom software.",
+        "experience": "More than five years building and improving production software.",
+        "challenge": "Have a challenge? Let us see whether technology can solve it in a practical way.",
+        "primaryCta": "Request a free assessment",
+        "caseCta": "View real case studies",
+        "assessmentNote": "Free initial assessment, with no commitment"
+      },
+      "serviceSelector": {
+        "title": "Select the area you want to improve",
+        "intro": "I will show you which solution may fit your situation and business best.",
+        "items": [
+          {
+            "icon": "globe",
+            "title": "Professional website",
+            "text": "A website that explains your value, builds trust and makes contact easy.",
+            "slug": "business-website"
+          },
+          {
+            "icon": "sparkles",
+            "title": "Automation",
+            "text": "Less repetitive work, fewer errors and less time lost to manual processes.",
+            "slug": "automation-workflows"
+          },
+          {
+            "icon": "layers",
+            "title": "Internal tools",
+            "text": "Dashboards and workflows adapted to how your team actually works.",
+            "slug": "internal-tools"
+          },
+          {
+            "icon": "code",
+            "title": "API integrations",
+            "text": "Connect your CRM, forms, payments and other business tools.",
+            "slug": "api-integrations"
+          },
+          {
+            "icon": "laptop",
+            "title": "Custom software",
+            "text": "Web applications for needs that off-the-shelf tools do not cover.",
+            "slug": "custom-web-application"
+          },
+          {
+            "icon": "springboot",
+            "title": "Spring Boot backend",
+            "text": "Development, maintenance and improvement of existing backends and APIs.",
+            "slug": "backend-spring-boot"
+          }
+        ]
+      },
+      "assessment": {
+        "eyebrow": "Free initial assessment",
+        "title": "Share the context. I will tell you whether I can help.",
+        "intro": "You do not need to prepare a technical document. Just explain what happens today and what you would like to improve.",
+        "items": [
+          {
+            "number": "01",
+            "title": "I review your situation",
+            "text": "I read the context, the current problem and the outcome you want."
+          },
+          {
+            "number": "02",
+            "title": "I assess the fit",
+            "text": "I tell you clearly whether I can help and which approach makes sense."
+          },
+          {
+            "number": "03",
+            "title": "I recommend the next step",
+            "text": "You receive a practical way forward, with no commitment."
+          }
+        ],
+        "boundary": "The initial assessment does not include a full audit, a detailed technical report or a free implementation plan.",
+        "button": "Request a free assessment"
+      },
+      "specializedServices": {
+        "eyebrow": "Specialisms",
+        "title": "Our specialized services in IT consulting, web design and artificial intelligence",
+        "intro": "Three complementary areas to improve your digital presence, bring order to business technology and use automation with sound judgment.",
+        "items": [
+          {
+            "number": "01",
+            "icon": "briefcase-business",
+            "title": "IT consulting",
+            "text": "I review your technology situation and help you decide what to improve, integrate, maintain or build.",
+            "points": [
+              "Technology advice",
+              "Software and integrations",
+              "Backend and maintenance"
+            ],
+            "link": "View IT consulting",
+            "slug": "it-advisory"
+          },
+          {
+            "number": "02",
+            "icon": "pen-tool",
+            "title": "Web design",
+            "text": "I build and redesign professional websites that explain your offer, load quickly and make contact easy.",
+            "points": [
+              "Business websites",
+              "Redesign and optimization",
+              "WordPress and landing pages"
+            ],
+            "link": "View web design services",
+            "slug": "wordpress-web-design"
+          },
+          {
+            "number": "03",
+            "icon": "sparkles",
+            "title": "Artificial intelligence",
+            "text": "I apply AI and automation to specific processes where they can save time or improve operations.",
+            "points": [
+              "AI automation",
+              "Assistants and chatbots",
+              "Agents and training"
+            ],
+            "link": "View artificial intelligence services",
+            "slug": "ai-for-companies"
+          }
+        ]
+      },
+      "hero": {
+        "eyebrow": "Web development · Automation · Custom software",
+        "title": "Technology that moves your business forward.",
+        "intro": "I build professional websites, automate workflows and create custom tools for small businesses, independent professionals and founders.",
+        "primaryCta": "Tell me what you need",
+        "secondaryCta": "See how I can help",
+        "directTitle": "Direct collaboration from start to finish",
+        "directText": "You speak with the person who understands the problem, designs the solution and builds the project."
+      },
+      "trust": {
+        "intro": "Technical experience applied to real business needs.",
+        "items": [
+          {
+            "value": "Years",
+            "label": "building production software"
+          },
+          {
+            "value": "Full-stack",
+            "label": "one complete view of the project"
+          },
+          {
+            "value": "Remote",
+            "label": "based in Granada, working across Spain"
+          }
+        ]
+      },
+      "servicePaths": {
+        "eyebrow": "How I can help",
+        "title": "Practical solutions that improve how your business works.",
+        "intro": "You do not need to choose a technology. Start with the problem you want to solve.",
+        "items": [
+          {
+            "number": "01",
+            "title": "A website that builds trust",
+            "text": "Professional websites and redesigns that explain your value, load quickly and make it easy to get in touch.",
+            "link": "Websites and redesigns",
+            "slug": "business-website"
+          },
+          {
+            "number": "02",
+            "title": "Less manual work",
+            "text": "Automation, integrations and internal tools that reduce repetitive work and avoidable mistakes.",
+            "link": "Automation and integrations",
+            "slug": "automation-workflows"
+          },
+          {
+            "number": "03",
+            "title": "Software for your own workflow",
+            "text": "Maintainable web applications and backend systems when off-the-shelf tools no longer fit.",
+            "link": "Custom software",
+            "slug": "custom-web-application"
+          }
+        ]
+      },
+      "featuredWork": {
+        "eyebrow": "Selected work",
+        "title": "Experience with products already operating in the real world.",
+        "intro": "A project is defined by the problem it solves and how reliably it keeps working, not by a list of technologies.",
+        "problemLabel": "The context",
+        "solutionLabel": "The work delivered",
+        "link": "View the full project"
+      },
+      "process": {
+        "eyebrow": "How I work",
+        "title": "From an unclear need to a practical next step.",
+        "intro": "Without a drawn-out sales process or an oversized solution from day one.",
+        "steps": [
+          {
+            "number": "01",
+            "title": "Understand",
+            "text": "We review what happens today, what is holding the business back and what outcome you need."
+          },
+          {
+            "number": "02",
+            "title": "Propose",
+            "text": "I outline the smallest scope that solves the problem properly, with clear priorities and boundaries."
+          },
+          {
+            "number": "03",
+            "title": "Build and deliver",
+            "text": "I build the solution, communicate progress and leave a maintainable foundation you can keep using."
+          }
+        ]
+      },
+      "proof": {
+        "eyebrow": "Why work with me",
+        "title": "Technical judgment without losing sight of the business.",
+        "intro": "I combine production-systems experience with the flexibility to build a website, automate a workflow or deliver a complete product.",
+        "points": [
+          "You work directly with me throughout the project.",
+          "I choose the solution around the need, not a fashionable technology.",
+          "Performance, maintenance and future changes are considered from the start.",
+          "I can work from the interface through to backend and infrastructure."
+        ]
       },
       "eyebrow": "Freelance full-stack development · Backend · Automation",
       "title": "Simple, reliable software",
@@ -138,10 +356,10 @@
         ]
       },
       "cta": {
-        "eyebrow": "Contact",
-        "title": "Want to know if it is worth building?",
-        "text": "Tell me what you have now, what problem you want to solve and what result you need. I’ll reply with the most reasonable next step.",
-        "button": "Share my case"
+        "eyebrow": "Let’s talk",
+        "title": "Do you have something to improve or build?",
+        "text": "Share the context. I will review it and tell you clearly whether I can help and what the most reasonable next step would be.",
+        "button": "Discuss my project"
       }
     },
     "meta": {
@@ -211,20 +429,25 @@
   "projects": {
     "page": {
       "meta": {
-        "title": "Projects - José Miguel Fernández",
-        "description": "Selected software projects covering backend systems, web products, internal tools and practical full-stack delivery."
+        "title": "Software projects and work delivered | José Miguel Fernández",
+        "description": "Work delivered across backend systems, web products, internal tools and practical full-stack delivery."
       },
-      "eyebrow": "Projects",
-      "title": "Selected work, built for",
-      "titleAccent": "real use.",
-      "intro": "A mix of personal projects and professional work I contributed to. Clear problems, practical decisions and maintainable software.",
-      "personalTitle": "Personal projects",
-      "personalIntro": "Own products and tools where I can show product decisions, architecture and execution without client confidentiality constraints.",
-      "clientTitle": "Client work",
-      "clientIntro": "Professional projects and contributions in client environments, described with the right level of detail to respect confidentiality.",
-      "result": "What changed",
-      "fallback": "Practical software with a clear workflow and maintainable structure.",
-      "view": "View project"
+      "eyebrow": "Work delivered",
+      "title": "Software projects and work delivered",
+      "titleAccent": ".",
+      "intro": "A selection of products, platforms and systems I have contributed to. Each entry explains the context and contribution at the appropriate level of detail.",
+      "fallbackImage": "Technical preview unavailable",
+      "viewWork": "View work"
+    },
+    "detail": {
+      "back": "Back to work delivered",
+      "context": "Context",
+      "contribution": "Contribution",
+      "decisions": "Technical decisions",
+      "delivered": "Work delivered",
+      "technologies": "Technologies",
+      "relatedService": "Related service",
+      "externalLink": "View external project"
     },
     "meta": {
       "title": "Projects",
@@ -940,6 +1163,18 @@
         {
           "question": "Do you work remotely?",
           "answer": "Yes. I work remotely for Spain and other projects that fit by language, time zone and collaboration style."
+        },
+        {
+          "question": "How do you estimate a project price?",
+          "answer": "I estimate around workflows, data, integrations, risk and deliverables. Before giving a figure, I prefer to scope a first version and make assumptions and exclusions explicit."
+        },
+        {
+          "question": "Who keeps the code, accounts and documentation?",
+          "answer": "The project should finish with clear ownership and access. We agree the repository, domain, infrastructure, external services and necessary documentation so you do not depend on one of my personal accounts."
+        },
+        {
+          "question": "What happens after launch?",
+          "answer": "We can close with documentation and handover or agree a support and evolution block. The right model depends on operational risk and the expected frequency of change."
         }
       ],
       "ctaTitle": "Share your case and we can see if it makes sense.",

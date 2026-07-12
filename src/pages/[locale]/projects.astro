@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { Icon } from "astro-icon/components";
-import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
-import { getCv } from "@cv";
+import WorkCard from "@/components/cards/WorkCard.astro";
+import { getLocaleStaticPaths, getTranslations, t, type Locale } from "@/i18n";
+import { getProjectPages } from "@/lib/projects";
 import {
 	buildBreadcrumbList,
 	buildCollectionPage,
@@ -14,53 +14,43 @@ export function getStaticPaths() {
 	return getLocaleStaticPaths();
 }
 
-const { locale } = Astro.params;
-const cv = getCv(locale);
-const personalProjects = cv.projects?.personal ?? [];
-const companyProjects = cv.projects?.company ?? [];
+const locale = Astro.params.locale as Locale;
+const projects = getProjectPages(locale);
 const page = getTranslations(locale).projects.page;
 const pageTitle = page.meta.title;
 const pageDescription = page.meta.description;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
-const projectGroups = [
-	{
-		title: page.personalTitle,
-		intro: page.personalIntro,
-		projects: personalProjects,
-	},
-	{
-		title: page.clientTitle,
-		intro: page.clientIntro,
-		projects: companyProjects,
-	},
-].filter((group) => group.projects.length > 0);
+const archivePath = `/${locale}/projects/`;
 const structuredData = [
-	buildCollectionPage(site, `/${locale}/projects`, pageTitle, pageDescription),
+	buildCollectionPage(site, archivePath, pageTitle, pageDescription),
 	buildBreadcrumbList(site, [
-		{ name: t(locale, "nav.home"), path: `/${locale}` },
-		{ name: t(locale, "nav.projects"), path: `/${locale}/projects` },
+		{ name: t(locale, "nav.home"), path: `/${locale}/` },
+		{ name: t(locale, "nav.projects"), path: archivePath },
 	]),
-	...personalProjects.map((project) =>
-		buildSoftwareApplication({
-			name: project.title,
-			description: project.summary,
-			url: project.link || undefined,
-			technologies: project.technologies,
-		}),
-	),
-	...companyProjects.map((project) =>
-		buildCreativeWork(site, {
-			name: project.title,
-			description: project.summary,
-			technologies: project.technologies,
-		}),
-	),
+	...projects.map((project) => {
+		const path = `/${locale}/projects/${project.slug}/`;
+
+		return project.kind === "personal"
+			? buildSoftwareApplication({
+					name: project.title,
+					description: project.summary,
+					url: new URL(path, site).toString(),
+					technologies: project.technologies,
+				})
+			: buildCreativeWork(site, {
+					name: project.title,
+					description: project.summary,
+					technologies: project.technologies,
+					path,
+				});
+	}),
 ];
 ---
 
 <BaseLayout
 	title={pageTitle}
 	description={pageDescription}
+	canonicalPath={archivePath}
 	structuredData={structuredData}
 	keywords={["Software Projects", "Backend Systems", "Web Applications"]}
 >
@@ -72,63 +62,16 @@ const structuredData = [
 			{page.title}
 			<span class="accent-text">{page.titleAccent}</span>
 		</h1>
-		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
-			{page.intro}
-		</p>
+		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">{page.intro}</p>
 	</section>
 
-	<div class="space-y-16 pb-20 md:space-y-24 md:pb-28">
-		{
-			projectGroups.map((group) => (
-				<section class="section-reveal">
-					<div class="mb-7 max-w-3xl md:mb-9">
-						<h2 class="text-3xl font-black text-[var(--text)] md:text-4xl">
-							{group.title}
-						</h2>
-						<p class="muted-copy mt-4 leading-7">{group.intro}</p>
-					</div>
-
-					<div class="stagger-children grid gap-5 md:grid-cols-2">
-						{group.projects.map((project) => (
-							<article class="dark-card hover-card flex flex-col p-5 md:min-h-[22rem] md:p-6">
-								<div class="mb-6 flex flex-wrap gap-2">
-									{project.status ? (
-										<span class="tag-pill">{project.status}</span>
-									) : null}
-									{project.technologies.slice(0, 4).map((tech) => (
-										<span class="tag-pill">{tech}</span>
-									))}
-								</div>
-								<h3 class="text-xl font-black text-[var(--text)] md:text-2xl">
-									{project.title}
-								</h3>
-								<p class="muted-copy mt-3 text-sm font-semibold">
-									{project.role}
-									{project.companyRelated ? ` · ${project.companyRelated}` : ""}
-								</p>
-								<p class="muted-copy mt-5 leading-7">{project.summary}</p>
-								<div class="hairline mt-6 border-t pt-5">
-									<p class="eyebrow">{page.result}</p>
-									<p class="mt-3 text-sm leading-6 font-bold text-[var(--accent-strong)] dark:text-[var(--accent)]">
-										{project.highlights?.[0] ?? page.fallback}
-									</p>
-								</div>
-								{project.link ? (
-									<a
-										href={project.link}
-										target="_blank"
-										rel="noopener noreferrer nofollow"
-										class="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-bold text-[var(--text)] hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
-									>
-										{page.view}
-										<Icon name="move-up-right" class="h-4 w-4" />
-									</a>
-								) : null}
-							</article>
-						))}
-					</div>
-				</section>
-			))
-		}
-	</div>
+	<section class="pb-20 md:pb-28" aria-label={t(locale, "nav.projects")}>
+		<div class="stagger-children grid gap-6 md:grid-cols-2">
+			{
+				projects.map((project) => (
+					<WorkCard project={project} locale={locale} />
+				))
+			}
+		</div>
+	</section>
 </BaseLayout>

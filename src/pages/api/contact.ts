@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import { getCv } from "@cv";
 import type { Locale } from "@/i18n";
+import { normalizeContactSource } from "@/lib/contact-source";
 
 export const prerender = false;
 
@@ -21,7 +22,10 @@ export const POST: APIRoute = async ({ request }) => {
 	const email = String(form.get("email") ?? "").trim();
 	const projectType = String(form.get("projectType") ?? "").trim();
 	const message = String(form.get("message") ?? "").trim();
-	const source = String(form.get("source") ?? "").trim();
+	const source = normalizeContactSource(
+		String(form.get("sourceCategory") ?? "direct").trim(),
+		String(form.get("sourcePath") ?? "").trim(),
+	);
 
 	if (!name || !email || !projectType || !message) {
 		return new Response("Missing fields", { status: 400 });
@@ -66,7 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
 		to: cv.email,
 		replyTo: email,
 		subject,
-		text: `Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\nLocale: ${locale}${source ? `\nSource: ${source}` : ""}\n\n${message}`,
+		text: `Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\nLocale: ${locale}\nSource: ${source.category}${source.path ? ` (${source.path})` : ""}\n\n${message}`,
 		attachments,
 	});
 

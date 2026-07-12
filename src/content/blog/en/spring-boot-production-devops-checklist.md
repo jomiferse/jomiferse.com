@@ -2,6 +2,7 @@
 title: "Spring Boot in production: a DevOps checklist for safer releases"
 description: "A practical checklist for running a Spring Boot application in production with clear configuration, database handling, observability, security, deployment and rollback."
 date: 2026-05-26
+dateModified: 2026-07-11
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "8 min"

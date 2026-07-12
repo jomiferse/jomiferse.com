@@ -118,7 +118,7 @@ const keywords =
 const structuredData = [
 	buildServicePage({
 		site,
-		path: servicePath,
+		path: canonicalPath,
 		name: service.title,
 		description: service.description,
 		providerName: cv.name,
@@ -132,7 +132,7 @@ const structuredData = [
 	buildBreadcrumbList(site, [
 		{ name: t(locale, "nav.home"), path: `/${locale}` },
 		{ name: t(locale, "nav.services"), path: `/${locale}/services` },
-		{ name: service.title, path: servicePath },
+		{ name: service.title, path: canonicalPath },
 	]),
 ];
 ---
@@ -439,9 +439,27 @@ const structuredData = [
 					{serviceCopy.blogTitle}
 				</h2>
 				<p class="muted-copy mt-4 leading-7">{serviceCopy.blogText}</p>
-				<a href={`/${locale}/blog`} class="button-secondary mt-6">
-					{serviceCopy.blogButton}
-				</a>
+				{
+					service.relatedPosts?.length ? (
+						<div class="mt-6 grid gap-3">
+							{service.relatedPosts.map((post) => (
+								<a
+									href={post.href}
+									class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface)] p-4 transition hover:border-[var(--accent-line)]"
+								>
+									<h3 class="font-black text-[var(--text)]">{post.title}</h3>
+									<p class="muted-copy mt-2 text-sm leading-6">
+										{post.description}
+									</p>
+								</a>
+							))}
+						</div>
+					) : (
+						<a href={`/${locale}/blog`} class="button-secondary mt-6">
+							{serviceCopy.blogButton}
+						</a>
+					)
+				}
 			</article>
 		</div>
 	</section>
@@ -506,7 +524,8 @@ const structuredData = [
 			<div class="p-5 md:p-6">
 				<ContactForm
 					locale={locale}
-					source={`${service.title} (${servicePath})`}
+					sourceCategory="service"
+					sourcePath={canonicalPath}
 					idPrefix={`service-${service.slug}`}
 				/>
 				<a

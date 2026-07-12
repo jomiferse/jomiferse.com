@@ -1,0 +1,190 @@
+---
+import { Icon } from "astro-icon/components";
+import { getTranslations, type Locale } from "@/i18n";
+
+type HomePage = ReturnType<typeof getTranslations>["home"]["page"];
+
+interface Props {
+	locale: Locale;
+	content: HomePage["specializedServices"];
+}
+
+const { locale, content } = Astro.props as Props;
+---
+
+<section
+	id="specialized-services"
+	class="specialized-services section-reveal"
+	aria-labelledby="specialized-services-title"
+>
+	<header class="specialized-services__heading">
+		<div>
+			<p class="eyebrow">{content.eyebrow}</p>
+			<h2 id="specialized-services-title">{content.title}</h2>
+		</div>
+		<p>{content.intro}</p>
+	</header>
+
+	<div class="specialized-services__grid">
+		{
+			content.items.map((item) => (
+				<article class="specialized-service">
+					<div class="specialized-service__topline">
+						<span>{item.number}</span>
+						<Icon name={item.icon} class="h-8 w-8" aria-hidden="true" />
+					</div>
+					<h3>{item.title}</h3>
+					<p>{item.text}</p>
+					<ul>
+						{item.points.map((point) => (
+							<li>
+								<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+								{point}
+							</li>
+						))}
+					</ul>
+					<a href={`/${locale}/services/${item.slug}/`}>
+						{item.link}
+						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+					</a>
+				</article>
+			))
+		}
+	</div>
+</section>
+
+<style>
+	.specialized-services {
+		padding-top: clamp(5rem, 9vw, 8rem);
+		padding-bottom: clamp(2.5rem, 4vw, 4rem);
+	}
+
+	:global(.specialized-services + .home-process) {
+		padding-top: clamp(2.5rem, 4vw, 4rem);
+	}
+
+	.specialized-services__heading {
+		display: block;
+	}
+
+	.specialized-services__heading .eyebrow {
+		color: var(--action);
+	}
+
+	.specialized-services h2 {
+		max-width: 72rem;
+		margin-top: 1rem;
+		color: var(--home-navy);
+		font-size: clamp(2.3rem, 4vw, 3.7rem);
+		font-weight: 900;
+		letter-spacing: -0.055em;
+		line-height: 1;
+		text-wrap: balance;
+	}
+
+	.specialized-services__heading > p {
+		max-width: 48rem;
+		margin-top: 1.25rem;
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	.specialized-services__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		margin-top: 3.5rem;
+		border-block: 1px solid var(--surface-border);
+	}
+
+	.specialized-service {
+		display: flex;
+		min-width: 0;
+		flex-direction: column;
+		padding: 2.2rem;
+	}
+
+	.specialized-service + .specialized-service {
+		border-left: 1px solid var(--surface-border);
+	}
+
+	.specialized-service__topline {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: var(--action);
+	}
+
+	.specialized-service__topline span {
+		font-size: 0.72rem;
+		font-weight: 900;
+		letter-spacing: 0.14em;
+	}
+
+	.specialized-service h3 {
+		margin-top: 2.2rem;
+		color: var(--text);
+		font-size: clamp(1.55rem, 2.4vw, 2.2rem);
+		font-weight: 900;
+		letter-spacing: -0.04em;
+	}
+
+	.specialized-service > p {
+		margin-top: 1rem;
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	.specialized-service ul {
+		display: grid;
+		gap: 0.7rem;
+		margin-top: 1.7rem;
+	}
+
+	.specialized-service li {
+		display: flex;
+		gap: 0.65rem;
+		align-items: center;
+		color: var(--text);
+		font-size: 0.85rem;
+		font-weight: 700;
+	}
+
+	.specialized-service li :global(svg) {
+		flex: none;
+		color: var(--action);
+	}
+
+	.specialized-service > a {
+		display: inline-flex;
+		width: fit-content;
+		min-height: 2.75rem;
+		align-items: center;
+		gap: 0.55rem;
+		margin-top: auto;
+		padding-top: 2rem;
+		border-bottom: 1px solid var(--surface-border);
+		color: var(--text);
+		font-size: 0.82rem;
+		font-weight: 900;
+	}
+
+	.specialized-service > a:hover {
+		border-color: var(--action);
+		color: var(--action);
+	}
+
+	@media (max-width: 860px) {
+		.specialized-services__grid {
+			grid-template-columns: 1fr;
+		}
+
+		.specialized-service {
+			padding-inline: 0;
+		}
+
+		.specialized-service + .specialized-service {
+			border-top: 1px solid var(--surface-border);
+			border-left: 0;
+		}
+	}
+</style>

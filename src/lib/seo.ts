@@ -27,6 +27,7 @@ export interface BlogPostingSeo {
 	title: string;
 	description: string;
 	datePublished: Date;
+	dateModified?: Date;
 	author: string;
 	tags?: string[];
 	readingTime?: string;
@@ -45,6 +46,7 @@ export interface CreativeWorkSeo {
 	name: string;
 	description: string;
 	technologies?: string[];
+	path: string;
 }
 
 export interface ServiceSeo {
@@ -149,6 +151,7 @@ export const buildBlogPosting = ({
 	title,
 	description,
 	datePublished,
+	dateModified,
 	author,
 	tags = [],
 	readingTime,
@@ -159,7 +162,7 @@ export const buildBlogPosting = ({
 	headline: title,
 	description,
 	datePublished: datePublished.toISOString(),
-	dateModified: datePublished.toISOString(),
+	dateModified: (dateModified ?? datePublished).toISOString(),
 	inLanguage: locale,
 	mainEntityOfPage: absoluteUrl(site, path),
 	author: {
@@ -205,7 +208,7 @@ export const buildCreativeWork = (
 		name: "José Miguel Fernández",
 	},
 	keywords: project.technologies?.join(", "),
-	url: absoluteUrl(site, "/projects"),
+	url: absoluteUrl(site, project.path),
 });
 
 export const buildServicePage = ({

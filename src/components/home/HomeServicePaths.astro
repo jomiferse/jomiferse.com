@@ -1,0 +1,143 @@
+---
+import { Icon } from "astro-icon/components";
+import { getTranslations, type Locale } from "@/i18n";
+
+type HomePage = ReturnType<typeof getTranslations>["home"]["page"];
+interface Props {
+	locale: Locale;
+	content: HomePage["assessment"];
+}
+const { locale, content } = Astro.props as Props;
+---
+
+<section
+	id="assessment"
+	class="assessment section-reveal"
+	aria-labelledby="assessment-title"
+>
+	<header>
+		<p class="eyebrow">{content.eyebrow}</p>
+		<h2 id="assessment-title">{content.title}</h2>
+		<p>{content.intro}</p>
+	</header>
+	<ol>
+		{
+			content.items.map((item) => (
+				<li>
+					<>
+						<span>{item.number}</span>
+						<h3>{item.title}</h3>
+						<p>{item.text}</p>
+					</>
+				</li>
+			))
+		}
+	</ol>
+	<div class="assessment__footer">
+		<p>
+			<Icon name="info" class="h-5 w-5" aria-hidden="true" />{content.boundary}
+		</p>
+		<a href={`/${locale}/contact?service=assessment`} class="button-action"
+			>{content.button}<Icon
+				name="arrow-right"
+				class="h-4 w-4"
+				aria-hidden="true"
+			/></a
+		>
+	</div>
+</section>
+
+<style>
+	.assessment {
+		width: 100vw;
+		margin-inline: calc(50% - 50vw);
+		padding: clamp(4.5rem, 8vw, 7rem) max(1rem, calc((100vw - 80rem) / 2));
+		background: var(--bg-band);
+	}
+	.assessment header {
+		display: grid;
+		grid-template-columns: 1.25fr 0.75fr;
+		gap: 1rem 4rem;
+		align-items: end;
+	}
+	.assessment .eyebrow {
+		grid-column: 1/-1;
+		color: var(--action);
+	}
+	.assessment h2 {
+		color: var(--home-navy);
+		font-size: clamp(2.2rem, 4.8vw, 4.2rem);
+		font-weight: 900;
+		letter-spacing: -0.055em;
+		line-height: 1;
+		text-wrap: balance;
+	}
+	.assessment header > p:last-child {
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+	.assessment ol {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		margin-top: 3rem;
+		border-block: 1px solid var(--surface-border);
+	}
+	.assessment li {
+		padding: 2rem;
+	}
+	.assessment li + li {
+		border-left: 1px solid var(--surface-border);
+	}
+	.assessment li > span {
+		color: var(--action);
+		font-size: 0.75rem;
+		font-weight: 900;
+	}
+	.assessment h3 {
+		margin-top: 1rem;
+		color: var(--text);
+		font-size: 1.25rem;
+		font-weight: 900;
+	}
+	.assessment li p {
+		margin-top: 0.6rem;
+		color: var(--text-muted);
+		line-height: 1.65;
+	}
+	.assessment__footer {
+		display: flex;
+		gap: 2rem;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 2rem;
+	}
+	.assessment__footer > p {
+		display: flex;
+		max-width: 45rem;
+		gap: 0.7rem;
+		color: var(--text-muted);
+		font-size: 0.8rem;
+		line-height: 1.55;
+	}
+	.assessment__footer > p :global(svg) {
+		flex: none;
+		color: var(--action);
+	}
+	@media (max-width: 760px) {
+		.assessment header,
+		.assessment ol {
+			grid-template-columns: 1fr;
+		}
+		.assessment li {
+			padding: 1.5rem 0;
+		}
+		.assessment li + li {
+			border-top: 1px solid var(--surface-border);
+			border-left: 0;
+		}
+		.assessment__footer {
+			align-items: stretch;
+			flex-direction: column;
+		}
+	}
+</style>
