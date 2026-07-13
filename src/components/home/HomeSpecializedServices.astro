@@ -173,6 +173,17 @@ const { locale, content } = Astro.props as Props;
 		color: var(--action);
 	}
 
+	@media (min-width: 861px) {
+		.specialized-services {
+			padding-top: clamp(4.5rem, 6vw, 6.5rem);
+			padding-bottom: clamp(2rem, 3vw, 3rem);
+		}
+
+		:global(.specialized-services + .home-process) {
+			padding-top: clamp(2rem, 3vw, 3rem);
+		}
+	}
+
 	@media (max-width: 860px) {
 		.specialized-services__grid {
 			grid-template-columns: 1fr;

@@ -1,7 +1,10 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
+import AboutExperience from "@/components/about/AboutExperience.astro";
+import AboutHelp from "@/components/about/AboutHelp.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
+import { getCv } from "@cv";
 import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
 export function getStaticPaths() {
@@ -10,23 +13,8 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const page = getTranslations(locale).about.page;
+const cv = getCv(locale);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
-const keywords =
-	locale === "es"
-		? [
-				"Desarrollador full-stack freelance",
-				"Desarrollo backend",
-				"Spring Boot",
-				"Herramientas internas",
-				"Integraciones API",
-			]
-		: [
-				"Freelance Full-Stack Developer",
-				"Backend Development",
-				"Spring Boot",
-				"Internal Tools",
-				"API Integrations",
-			];
 const structuredData = [
 	buildCollectionPage(
 		site,
@@ -45,120 +33,164 @@ const structuredData = [
 	title={page.meta.title}
 	description={page.meta.description}
 	structuredData={structuredData}
-	keywords={keywords}
+	keywords={[
+		"Consultor informático freelance",
+		"Full-stack developer",
+		"Automatización",
+		"Software a medida",
+		"Spring Boot",
+	]}
 >
-	<section
-		class="section-reveal grid gap-10 py-10 md:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] lg:items-center lg:gap-16"
-	>
-		<div>
-			<p class="eyebrow">{page.eyebrow}</p>
-			<h1
-				class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
-			>
-				{page.title}
-				<span class="accent-text">{page.titleAccent}</span>
-			</h1>
-			<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">{page.intro}</p>
-			<div class="mt-9 flex flex-col gap-3 sm:flex-row">
-				<a href={`/${locale}/services`} class="button-primary w-full sm:w-auto">
-					{page.primaryCta}
-					<Icon name="arrow-right" class="h-4 w-4" />
-				</a>
-				<a
-					href={`/${locale}/contact`}
-					class="button-secondary w-full sm:w-auto"
-				>
-					{page.secondaryCta}
-				</a>
-			</div>
-		</div>
-		<figure
-			class="relative mx-auto w-full max-w-[21rem] justify-self-center lg:mx-0 lg:justify-self-end"
+	<div class="about-page">
+		<section
+			class="about-hero section-reveal grid gap-12 pt-6 pb-16 md:pt-10 md:pb-18 lg:grid-cols-[minmax(0,1.08fr)_minmax(19rem,0.72fr)] lg:items-center lg:gap-18"
 		>
-			<div
-				class="absolute -inset-3 rounded-[1.4rem] border border-[var(--accent-line)] bg-[var(--accent-soft)]"
-				aria-hidden="true"
-			>
+			<div>
+				<p class="eyebrow">{page.eyebrow}</p>
+				<h1
+					class="mt-5 max-w-4xl text-5xl leading-[0.98] font-black sm:text-6xl md:text-7xl"
+				>
+					{page.title}
+					<span class="block">{page.titleAccent}</span>
+				</h1>
+				<p class="muted-copy mt-7 max-w-3xl text-lg leading-8 md:text-xl">
+					{page.intro}
+				</p>
+				<div class="mt-9 flex flex-col gap-3 sm:flex-row">
+					<a
+						href={`/${locale}/contact?service=assessment`}
+						class="button-action w-full sm:w-auto"
+					>
+						{page.primaryCta}
+						<Icon name="arrow-right" class="h-4 w-4" />
+					</a>
+					<a
+						href={`/${locale}/services`}
+						class="button-secondary w-full sm:w-auto"
+					>
+						{page.secondaryCta}
+					</a>
+				</div>
 			</div>
-			<div
-				class="relative overflow-hidden rounded-[1.1rem] border border-[var(--surface-border)] bg-[var(--surface)] shadow-[var(--shadow-card)]"
+
+			<figure
+				class="about-portrait relative mx-auto w-full max-w-[23rem] lg:mr-2"
 			>
+				<div class="about-portrait__frame" aria-hidden="true"></div>
 				<img
 					src="/images/avatar.avif"
 					alt={page.avatarAlt}
 					width="640"
 					height="760"
-					class="aspect-[4/5] w-full object-cover"
+					class="relative aspect-[4/5] w-full rounded-[1.15rem] border border-[var(--surface-border)] object-cover shadow-[var(--shadow-card)]"
 					decoding="async"
 					fetchpriority="high"
 				/>
-			</div>
-		</figure>
-	</section>
+				<figcaption class="about-portrait__note">
+					{page.portraitNote}
+				</figcaption>
+			</figure>
+		</section>
 
-	<section class="section-band section-reveal py-20 md:py-28">
-		<p class="eyebrow">{page.what}</p>
-		<div class="stagger-children mt-8 grid gap-5 md:grid-cols-2">
+		<section class="about-trust" aria-label={page.eyebrow}>
 			{
-				page.blocks.map((block) => (
-					<article class="dark-card hover-card p-6">
-						<h2 class="text-2xl font-black text-[var(--text)]">
-							{block.title}
-						</h2>
-						<p class="muted-copy mt-4 leading-7">{block.body}</p>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	<section class="section-reveal py-20 md:py-28">
-		<h2 class="text-4xl font-black text-[var(--text)] md:text-5xl">
-			{page.how}
-		</h2>
-		<div class="hairline mt-10 divide-y border-y">
-			{
-				page.steps.map((step) => (
-					<div class="grid gap-4 py-6 md:grid-cols-[6rem_0.55fr_1fr] md:items-center">
-						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
-							{step.number}
-						</p>
-						<h3 class="text-xl font-black text-[var(--text)]">{step.title}</h3>
-						<p class="muted-copy leading-7">{step.body}</p>
+				page.trustSignals.map((signal) => (
+					<div class="about-trust__item">
+						<p class="text-lg font-black text-[var(--text)]">{signal.value}</p>
+						<p class="muted-copy mt-1 text-sm">{signal.label}</p>
 					</div>
 				))
 			}
-		</div>
-	</section>
+		</section>
 
-	<section class="section-band section-reveal py-20 md:py-28">
-		<p class="eyebrow">{page.background}</p>
-		<h2
-			class="mt-4 max-w-3xl text-4xl font-black text-[var(--text)] md:text-5xl"
-		>
-			{page.backgroundTitle}
-		</h2>
-		<div class="muted-copy mt-8 max-w-3xl space-y-5 text-lg leading-8">
-			<p>{page.backgroundP1}</p>
-			<p>{page.backgroundP2}</p>
-		</div>
-		<a
-			href={`/${locale}/education`}
-			class="button-secondary mt-9 w-full sm:w-fit"
-		>
-			{page.educationLink}
-			<Icon name="arrow-right" class="h-4 w-4" />
-		</a>
-		<div class="mt-5 flex flex-col gap-3 sm:flex-row">
-			<a href={`/${locale}/services`} class="button-primary w-full sm:w-auto">
-				{page.servicesLink}
-			</a>
-			<a href={`/${locale}/projects`} class="button-secondary w-full sm:w-auto">
-				{page.projectsLink}
-			</a>
-			<a href={`/${locale}/contact`} class="button-secondary w-full sm:w-auto">
-				{page.contactLink}
-			</a>
-		</div>
-	</section>
+		<AboutHelp content={page.help} />
+
+		<AboutExperience
+			locale={locale}
+			content={page.experience}
+			experience={cv.experience}
+			yearsWorking={cv.yearsWorking}
+		/>
+
+		<section class="section-band section-reveal py-18 md:py-20">
+			<div class="grid gap-10 lg:grid-cols-[0.4fr_0.6fr] lg:gap-16">
+				<header>
+					<p class="eyebrow">{page.workingStyle.eyebrow}</p>
+					<h2 class="mt-4 text-4xl font-black md:text-5xl">
+						{page.workingStyle.title}
+					</h2>
+					<p class="muted-copy mt-5 max-w-xl leading-8">
+						{page.workingStyle.intro}
+					</p>
+				</header>
+				<div
+					class="divide-y divide-[var(--surface-border)] border-y border-[var(--surface-border)]"
+				>
+					{
+						page.workingStyle.items.map((item) => (
+							<article class="grid gap-3 py-6 sm:grid-cols-[3rem_1fr] md:py-7">
+								<p class="font-black text-[var(--action)]">{item.number}</p>
+								<div>
+									<h3 class="text-xl font-black text-[var(--text)]">
+										{item.title}
+									</h3>
+									<p class="muted-copy mt-2 leading-7">{item.body}</p>
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="section-reveal py-16 md:py-18">
+			<div
+				class="grid gap-7 border-y border-[var(--surface-border)] py-9 md:grid-cols-[0.34fr_1fr_auto] md:items-center md:py-11"
+			>
+				<p class="eyebrow">{page.educationSummary.eyebrow}</p>
+				<div>
+					<h2 class="text-2xl font-black md:text-3xl">
+						{page.educationSummary.title}
+					</h2>
+					<p class="muted-copy mt-3 max-w-2xl leading-7">
+						{page.educationSummary.body}
+					</p>
+				</div>
+				<a
+					href={`/${locale}/education`}
+					class="button-secondary w-full md:w-auto"
+				>
+					{page.educationSummary.link}
+					<Icon name="arrow-right" class="h-4 w-4" />
+				</a>
+			</div>
+		</section>
+
+		<section class="section-reveal pb-8 text-center md:pb-14">
+			<div class="about-cta px-5 py-12 sm:px-10 md:py-14">
+				<p class="eyebrow">{page.cta.eyebrow}</p>
+				<h2 class="mx-auto mt-4 max-w-4xl text-4xl font-black md:text-6xl">
+					{page.cta.title}
+				</h2>
+				<p class="muted-copy mx-auto mt-5 max-w-2xl text-lg leading-8">
+					{page.cta.text}
+				</p>
+				<div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+					<a
+						href={`/${locale}/contact?service=assessment`}
+						class="button-action w-full sm:w-auto"
+					>
+						{page.cta.primary}
+						<Icon name="arrow-right" class="h-4 w-4" />
+					</a>
+					<a
+						href={`/${locale}/projects`}
+						class="button-secondary w-full sm:w-auto"
+					>
+						{page.cta.secondary}
+					</a>
+				</div>
+			</div>
+		</section>
+	</div>
 </BaseLayout>

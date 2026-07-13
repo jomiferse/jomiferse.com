@@ -322,6 +322,12 @@
         "context": "Prueba de concepto backend para comunicación en tiempo real entre clientes digitales y servicios internos dentro de una plataforma enterprise.",
         "timeframe": "02/2026 – 05/2026",
         "summary": "Contribución a una PoC de gateway WebSocket construida con Java y Spring Boot para gestionar conexiones de usuarios, salas, difusión de eventos y comunicación con servicios internos mediante Redis pub/sub y gRPC.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/websocket.avif",
+            "alt": "Vista técnica de las arquitecturas de BetX y del gateway WebSocket en tiempo real"
+          }
+        },
         "technologies": [
           "Java 21",
           "Spring Boot 4",
@@ -444,6 +450,12 @@
         "context": "CLI técnica para registrar apuestas, cuotas, estados y resultados en local, con configuración declarativa y persistencia ligera.",
         "timeframe": "2026 – Presente",
         "summary": "Proyecto backend construido como herramienta de terminal para llevar un registro local de apuestas de forma estructurada. El foco está en modelar bien el flujo, separar integraciones HTTP, leer configuración desde betx.yml y mantener una base SQLite sencilla de operar.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/betx.avif",
+            "alt": "Vista técnica de las arquitecturas de BetX y del gateway WebSocket en tiempo real"
+          }
+        },
         "technologies": [
           "Java 21",
           "Spring Boot 4.0.6",

@@ -46,6 +46,54 @@ const requiredPaths = [
 const getPath = (value, path) =>
 	path.split(".").reduce((current, key) => current?.[key], value);
 
+const [
+	globalStyles,
+	homeHero,
+	assessment,
+	specializedServices,
+	homeProcess,
+	homePage,
+] = await Promise.all([
+	readFile(join(root, "src", "styles", "global.css"), "utf8"),
+	readFile(join(root, "src", "components", "home", "HomeHero.astro"), "utf8"),
+	readFile(
+		join(root, "src", "components", "home", "HomeServicePaths.astro"),
+		"utf8",
+	),
+	readFile(
+		join(root, "src", "components", "home", "HomeSpecializedServices.astro"),
+		"utf8",
+	),
+	readFile(
+		join(root, "src", "components", "home", "HomeProcess.astro"),
+		"utf8",
+	),
+	readFile(join(root, "src", "pages", "[locale]", "index.astro"), "utf8"),
+]);
+
+if (
+	!globalStyles.includes(
+		"body:has(.consultancy-hero) main.site-shell {\n\tmax-width: 88rem;",
+	)
+) {
+	failures.push("home density: desktop shell must use a max width of 88rem");
+}
+
+for (const [source, marker] of [
+	[homeHero, "padding-bottom: 4.5rem"],
+	[assessment, "calc((100vw - 88rem) / 2)"],
+	[specializedServices, "padding-top: clamp(4.5rem, 6vw, 6.5rem)"],
+	[homeProcess, "padding-block: clamp(4.5rem, 7vw, 6.5rem)"],
+	[
+		homePage,
+		"padding: clamp(3.5rem, 6vw, 5.25rem) max(1rem, calc((100vw - 88rem) / 2))",
+	],
+]) {
+	if (!source.includes(marker)) {
+		failures.push(`home density: missing compact desktop rule ${marker}`);
+	}
+}
+
 for (const locale of ["en", "es"]) {
 	const translations = JSON.parse(
 		await readFile(join(root, "src", "i18n", `${locale}.json`), "utf8"),

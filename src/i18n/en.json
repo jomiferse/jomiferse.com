@@ -436,18 +436,41 @@
       "title": "Software projects and work delivered",
       "titleAccent": ".",
       "intro": "A selection of products, platforms and systems I have contributed to. Each entry explains the context and contribution at the appropriate level of detail.",
+      "browseCases": "Explore case studies",
       "fallbackImage": "Technical preview unavailable",
-      "viewWork": "View work"
+      "viewWork": "View work",
+      "viewCase": "View case study",
+      "carouselPrevious": "View previous project",
+      "carouselNext": "View next project",
+      "carouselPosition": "Project {current} of {total}"
     },
     "detail": {
       "back": "Back to work delivered",
       "context": "Context",
+      "challenge": "Challenge",
       "contribution": "Contribution",
       "decisions": "Technical decisions",
       "delivered": "Work delivered",
+      "outcome": "Outcome and work delivered",
+      "highlights": "Selected contribution",
+      "facts": "Project facts",
+      "role": "Role",
+      "organization": "Organization",
+      "timeframe": "Timeframe",
       "technologies": "Technologies",
       "relatedService": "Related service",
-      "externalLink": "View external project"
+      "externalLink": "View external project",
+      "serviceCard": {
+        "eyebrow": "Related service",
+        "body": "The experience applied in this project is also available for similar needs."
+      },
+      "cta": {
+        "eyebrow": "Facing a similar challenge?",
+        "title": "Let’s turn your need into a clear technical plan.",
+        "text": "Tell me what you want to improve, build or automate. The first assessment is free and carries no obligation.",
+        "primary": "Request a free assessment",
+        "secondary": "View all projects"
+      }
     },
     "meta": {
       "title": "Projects",
@@ -819,66 +842,119 @@
   "about": {
     "page": {
       "meta": {
-        "title": "About - José Miguel Fernández",
-        "description": "About José Miguel Fernández, a full-stack developer with strong backend foundations, focused on practical software, automation and web products."
+        "title": "About and experience - José Miguel Fernández",
+        "description": "Meet José Miguel Fernández, a consultant and full-stack developer with over five years of experience in websites, automation, custom software and backend systems."
       },
       "eyebrow": "About",
-      "title": "Full-stack developer with a",
-      "titleAccent": "backend base.",
-      "intro": "I build websites, tools, automations and backend systems that are simple to use and easy to maintain.",
+      "title": "I turn business problems into",
+      "titleAccent": "useful digital solutions.",
+      "intro": "I’m José Miguel, a consultant and full-stack developer. I help small businesses, independent professionals and teams improve their websites, automate work and build software they can actually use and maintain.",
       "avatarAlt": "Portrait of José Miguel Fernández",
-      "primaryCta": "View services",
-      "secondaryCta": "Share your case",
-      "what": "What I do",
-      "how": "How I work",
-      "background": "Background",
-      "backgroundTitle": "Backend depth, product sense and a practical way of building.",
-      "backgroundP1": "I currently work on production backend systems with Java, Spring Boot, distributed architecture, CI/CD and observability.",
-      "backgroundP2": "Before that, I worked across full-stack delivery in edtech. That mix shaped how I build: understand the need, choose the right level of system and keep it easy to evolve.",
-      "educationLink": "View education and technical courses",
-      "servicesLink": "View freelance services",
-      "projectsLink": "View projects",
-      "contactLink": "Contact me",
-      "blocks": [
+      "primaryCta": "Request a free assessment",
+      "secondaryCta": "View services",
+      "portraitNote": "You work directly with me, from the first conversation through delivery.",
+      "trustSignals": [
         {
-          "title": "Backend Development",
-          "body": "APIs, services, data models and integrations with Java, Spring Boot and production reliability in mind."
+          "value": "5+ years",
+          "label": "building software"
         },
         {
-          "title": "Frontend Development",
-          "body": "Clean interfaces with Astro, React and TypeScript when the product needs a useful front end."
+          "value": "Backend",
+          "label": "in production systems"
         },
         {
-          "title": "Automation & Internal Tools",
-          "body": "Small tools that reduce manual work, connect workflows and help teams move faster."
+          "value": "Full-stack",
+          "label": "a complete product view"
         },
         {
-          "title": "Freelance Projects",
-          "body": "Websites, redesigns and custom web apps for people who need practical software, not extra complexity."
+          "value": "Direct contact",
+          "label": "with no middle layer"
         }
       ],
-      "steps": [
-        {
-          "number": "01",
-          "title": "Understand the problem",
-          "body": "Start with the workflow, the people using it and the constraints around it."
-        },
-        {
-          "number": "02",
-          "title": "Keep it simple",
-          "body": "Build the smallest useful version before adding more moving parts."
-        },
-        {
-          "number": "03",
-          "title": "Make it reliable",
-          "body": "Write clear code, keep the system observable and avoid surprises in production."
-        },
-        {
-          "number": "04",
-          "title": "Improve what matters",
-          "body": "Ship, learn from real use and refine the parts that create value."
-        }
-      ]
+      "help": {
+        "eyebrow": "How I can help",
+        "title": "Technology should solve something concrete.",
+        "intro": "I do not start with a fixed tool. I first look at where time, opportunities or clarity are being lost, then propose a solution that fits the problem.",
+        "items": [
+          {
+            "number": "01",
+            "title": "IT consulting",
+            "body": "Set priorities, review a technology decision or turn a loosely defined need into a viable plan.",
+            "href": "/en/services/it-advisory",
+            "linkLabel": "View IT consulting"
+          },
+          {
+            "number": "02",
+            "title": "Web design",
+            "body": "Create or rethink a website that explains your offer, earns trust and makes it easier for a client to contact you.",
+            "href": "/en/services/wordpress-web-design",
+            "linkLabel": "View web design"
+          },
+          {
+            "number": "03",
+            "title": "Automation",
+            "body": "Reduce repetitive work, connect tools and stop important processes from relying on manual data copying.",
+            "href": "/en/services/process-automation",
+            "linkLabel": "View process automation"
+          },
+          {
+            "number": "04",
+            "title": "Custom software",
+            "body": "Build internal tools, applications and integrations when off-the-shelf options no longer fit.",
+            "href": "/en/services/custom-software",
+            "linkLabel": "View custom software"
+          }
+        ]
+      },
+      "experience": {
+        "eyebrow": "Applied experience",
+        "title": "I have worked on software that needs to perform every day.",
+        "intro": "My background combines large-scale backend systems with full-stack product delivery. That lets me discuss the business need without losing technical judgement.",
+        "yearsSuffix": "years building software",
+        "timelineText": "Experience across product, platform and operations teams, taking changes from an idea through to production.",
+        "currentLabel": "Current",
+        "impactLabel": "Selected contributions",
+        "stackLabel": "Main technologies",
+        "roleStacks": [
+          ["Java", "Spring Boot", "RabbitMQ", "Kubernetes", "Observability"],
+          ["PHP", "JavaScript", "Docker", "Elasticsearch", "Web performance"]
+        ]
+      },
+      "workingStyle": {
+        "eyebrow": "What it is like to work with me",
+        "title": "Technical judgement, explained clearly.",
+        "intro": "You can rely on me to understand the problem, point out constraints and make decisions without adding complexity for its own sake.",
+        "items": [
+          {
+            "number": "01",
+            "title": "You speak with me",
+            "body": "There are no salespeople or hand-offs. The person who understands your case is also the person shaping and building the solution."
+          },
+          {
+            "number": "02",
+            "title": "You know what is happening",
+            "body": "I explain decisions in plain language, with scope, priorities and risks visible before work moves forward."
+          },
+          {
+            "number": "03",
+            "title": "The result remains maintainable",
+            "body": "I aim for proportionate, documented solutions that are straightforward to evolve as the business changes."
+          }
+        ]
+      },
+      "educationSummary": {
+        "eyebrow": "Technical foundation",
+        "title": "Continuous learning grounded in production work.",
+        "body": "My formal training started in application development and continues around backend engineering, testing, architecture and system operations. I choose what to learn based on the problems I need to solve.",
+        "link": "View education and technical courses"
+      },
+      "cta": {
+        "eyebrow": "Free initial assessment",
+        "title": "Tell me what you want to improve and we can see if I can help.",
+        "text": "We will have an initial conversation to understand the problem, review the context and decide on the next step. It is not a complete audit or a generic quote.",
+        "primary": "Request a free assessment",
+        "secondary": "View projects"
+      }
     }
   },
   "services": {

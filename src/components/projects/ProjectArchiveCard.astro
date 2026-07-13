@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+import { t, type Locale } from "@/i18n";
+import type { ProjectEntry } from "@/lib/projects";
+
+interface Props {
+	project: ProjectEntry;
+	locale: Locale;
+	viewLabel: string;
+}
+
+const { project, locale, viewLabel } = Astro.props as Props;
+const href = `/${locale}/projects/${project.slug}/`;
+const staticImage = project.img?.imgStatic;
+const hoverImage = project.img?.imgHover;
+---
+
+<article class="project-archive-card group h-full">
+	<a
+		href={href}
+		class="flex h-full flex-col overflow-hidden rounded-[1.15rem] border border-[var(--surface-border)] bg-[var(--surface)] shadow-[0_12px_35px_rgba(20,35,52,0.05)] transition duration-300 hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--action)_42%,var(--surface-border))] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
+	>
+		<div
+			class="relative aspect-[16/9] overflow-hidden bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_11%,transparent),transparent_46%),var(--bg-band)]"
+		>
+			{
+				staticImage ? (
+					<>
+						<img
+							src={staticImage.src}
+							alt={staticImage.alt ?? project.title}
+							width="640"
+							height="360"
+							loading="lazy"
+							class="h-full w-full object-cover transition duration-500 motion-safe:group-hover:scale-[1.025]"
+						/>
+						{hoverImage ? (
+							<img
+								src={hoverImage.src}
+								alt=""
+								width="640"
+								height="360"
+								loading="lazy"
+								class="project-archive-card__hover absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 motion-safe:group-hover:opacity-100"
+							/>
+						) : null}
+					</>
+				) : (
+					<div class="flex h-full items-end p-5">
+						<span class="eyebrow text-[var(--text-muted)]">
+							{t(locale, "projects.page.fallbackImage")}
+						</span>
+					</div>
+				)
+			}
+
+			{
+				project.status ? (
+					<span class="absolute top-3 left-3 rounded-full border border-white/20 bg-slate-950/75 px-3 py-1.5 text-[0.65rem] font-black tracking-[0.12em] text-white uppercase backdrop-blur">
+						{project.status}
+					</span>
+				) : null
+			}
+		</div>
+
+		<div class="flex flex-1 flex-col p-4 sm:p-5">
+			<h2 class="text-xl leading-tight font-black text-[var(--home-navy)]">
+				{project.title}
+			</h2>
+			<p class="muted-copy mt-3 line-clamp-3 text-sm leading-6">
+				{project.summary}
+			</p>
+
+			<span
+				class="mt-5 inline-flex items-center gap-2 border-t border-[var(--surface-border)] pt-4 text-sm font-black text-[var(--text)] group-hover:text-[var(--action)]"
+			>
+				{viewLabel}
+				<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+			</span>
+		</div>
+	</a>
+</article>
+
+<style>
+	@media (hover: none) {
+		.project-archive-card__hover {
+			display: none;
+		}
+	}
+</style>

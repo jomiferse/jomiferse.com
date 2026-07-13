@@ -436,18 +436,41 @@
       "title": "Proyectos de software y trabajos realizados",
       "titleAccent": ".",
       "intro": "Una selección de productos, plataformas y sistemas en los que he colaborado. Cada trabajo explica el contexto y la contribución con el detalle adecuado.",
+      "browseCases": "Explorar casos",
       "fallbackImage": "Vista técnica no disponible",
-      "viewWork": "Ver trabajo"
+      "viewWork": "Ver trabajo",
+      "viewCase": "Ver caso",
+      "carouselPrevious": "Ver proyecto anterior",
+      "carouselNext": "Ver proyecto siguiente",
+      "carouselPosition": "Proyecto {current} de {total}"
     },
     "detail": {
       "back": "Volver a trabajos realizados",
       "context": "Contexto",
+      "challenge": "Reto",
       "contribution": "Contribución",
       "decisions": "Decisiones técnicas",
       "delivered": "Trabajo realizado",
+      "outcome": "Resultado y trabajo entregado",
+      "highlights": "Contribución destacada",
+      "facts": "Datos del proyecto",
+      "role": "Rol",
+      "organization": "Organización",
+      "timeframe": "Periodo",
       "technologies": "Tecnologías",
       "relatedService": "Servicio relacionado",
-      "externalLink": "Ver proyecto externo"
+      "externalLink": "Ver proyecto externo",
+      "serviceCard": {
+        "eyebrow": "Servicio relacionado",
+        "body": "La experiencia aplicada en este proyecto también está disponible para necesidades similares."
+      },
+      "cta": {
+        "eyebrow": "¿Tienes un reto parecido?",
+        "title": "Convirtamos tu necesidad en un plan técnico claro.",
+        "text": "Cuéntame qué quieres mejorar, construir o automatizar. La primera valoración es gratuita y sin compromiso.",
+        "primary": "Solicitar valoración gratuita",
+        "secondary": "Ver todos los proyectos"
+      }
     },
     "meta": {
       "title": "Proyectos",
@@ -819,66 +842,119 @@
   "about": {
     "page": {
       "meta": {
-        "title": "Sobre mí - José Miguel Fernández",
-        "description": "Sobre José Miguel Fernández, full-stack developer con base sólida en backend, enfocado en software práctico, automatización y productos web."
+        "title": "Sobre mí y experiencia - José Miguel Fernández",
+        "description": "Conoce a José Miguel Fernández, consultor y desarrollador full-stack con más de cinco años de experiencia en webs, automatización, software a medida y backend."
       },
       "eyebrow": "Sobre mí",
-      "title": "Full-stack developer con base",
-      "titleAccent": "backend.",
-      "intro": "Construyo webs, herramientas, automatizaciones y sistemas backend simples de usar y fáciles de mantener.",
+      "title": "Convierto problemas de negocio en",
+      "titleAccent": "soluciones digitales útiles.",
+      "intro": "Soy José Miguel, consultor y desarrollador full-stack. Ayudo a pequeños negocios, profesionales y equipos a mejorar su web, automatizar trabajo y construir software que puedan usar y mantener de verdad.",
       "avatarAlt": "Retrato de José Miguel Fernández",
-      "primaryCta": "Ver servicios",
-      "secondaryCta": "Cuéntame tu caso",
-      "what": "Qué hago",
-      "how": "Cómo trabajo",
-      "background": "Trayectoria",
-      "backgroundTitle": "Profundidad backend, criterio de producto y una forma práctica de construir.",
-      "backgroundP1": "Actualmente trabajo en sistemas backend en producción con Java, Spring Boot, arquitectura distribuida, CI/CD y observabilidad.",
-      "backgroundP2": "Antes trabajé en delivery full-stack dentro del sector edtech. Esa mezcla define cómo construyo: entender la necesidad, elegir el nivel correcto de sistema y mantenerlo fácil de evolucionar.",
-      "educationLink": "Ver formación y cursos técnicos",
-      "servicesLink": "Ver servicios freelance",
-      "projectsLink": "Ver proyectos",
-      "contactLink": "Contactar",
-      "blocks": [
+      "primaryCta": "Solicitar valoración gratuita",
+      "secondaryCta": "Ver servicios",
+      "portraitNote": "Trabajo directamente contigo, desde la primera conversación hasta la entrega.",
+      "trustSignals": [
         {
-          "title": "Backend Development",
-          "body": "APIs, servicios, modelos de datos e integraciones con Java, Spring Boot y fiabilidad en producción."
+          "value": "+5 años",
+          "label": "construyendo software"
         },
         {
-          "title": "Frontend Development",
-          "body": "Interfaces limpias con Astro, React y TypeScript cuando el producto necesita un frontend útil."
+          "value": "Backend",
+          "label": "en sistemas de producción"
         },
         {
-          "title": "Automatización y herramientas internas",
-          "body": "Herramientas pequeñas que reducen trabajo manual, conectan flujos y ayudan a los equipos a avanzar mejor."
+          "value": "Full-stack",
+          "label": "visión completa del producto"
         },
         {
-          "title": "Proyectos freelance",
-          "body": "Webs, rediseños y aplicaciones a medida para personas que necesitan software práctico, sin complejidad extra."
+          "value": "Trato directo",
+          "label": "sin intermediarios"
         }
       ],
-      "steps": [
-        {
-          "number": "01",
-          "title": "Entender el problema",
-          "body": "Empezar por el flujo de trabajo, las personas que lo usan y las restricciones reales."
-        },
-        {
-          "number": "02",
-          "title": "Mantenerlo simple",
-          "body": "Construir la versión útil más pequeña antes de añadir más piezas."
-        },
-        {
-          "number": "03",
-          "title": "Hacerlo fiable",
-          "body": "Escribir código claro, mantener el sistema observable y evitar sorpresas en producción."
-        },
-        {
-          "number": "04",
-          "title": "Mejorar lo importante",
-          "body": "Enviar, aprender del uso real y refinar las partes que aportan valor."
-        }
-      ]
+      "help": {
+        "eyebrow": "En qué puedo ayudarte",
+        "title": "La tecnología tiene que resolver algo concreto.",
+        "intro": "No parto de una herramienta cerrada. Primero entiendo dónde estás perdiendo tiempo, oportunidades o claridad y después propongo una solución proporcionada.",
+        "items": [
+          {
+            "number": "01",
+            "title": "Consultoría informática",
+            "body": "Ordenar prioridades, revisar una decisión tecnológica o convertir una necesidad poco definida en un plan viable.",
+            "href": "/es/services/asesoria-informatica",
+            "linkLabel": "Ver consultoría informática"
+          },
+          {
+            "number": "02",
+            "title": "Diseño web",
+            "body": "Crear o replantear una web que explique bien tu oferta, genere confianza y facilite que un cliente contacte.",
+            "href": "/es/services/diseno-web-wordpress",
+            "linkLabel": "Ver diseño web"
+          },
+          {
+            "number": "03",
+            "title": "Automatización",
+            "body": "Reducir tareas repetitivas, conectar herramientas y evitar que procesos importantes dependan de copiar datos a mano.",
+            "href": "/es/services/automatizacion-de-procesos",
+            "linkLabel": "Ver automatización de procesos"
+          },
+          {
+            "number": "04",
+            "title": "Software a medida",
+            "body": "Construir herramientas internas, aplicaciones e integraciones cuando las soluciones genéricas ya se quedan cortas.",
+            "href": "/es/services/software-a-medida",
+            "linkLabel": "Ver software a medida"
+          }
+        ]
+      },
+      "experience": {
+        "eyebrow": "Experiencia aplicada",
+        "title": "He trabajado en software que tiene que funcionar cada día.",
+        "intro": "Mi experiencia combina sistemas backend de gran escala y desarrollo full-stack de producto. Esa mezcla me permite hablar de negocio sin perder el criterio técnico.",
+        "yearsSuffix": "años construyendo software",
+        "timelineText": "Experiencia en equipos de producto, plataforma y operaciones, llevando cambios desde la idea hasta producción.",
+        "currentLabel": "Actual",
+        "impactLabel": "Aportaciones seleccionadas",
+        "stackLabel": "Tecnologías principales",
+        "roleStacks": [
+          ["Java", "Spring Boot", "RabbitMQ", "Kubernetes", "Observabilidad"],
+          ["PHP", "JavaScript", "Docker", "Elasticsearch", "Web performance"]
+        ]
+      },
+      "workingStyle": {
+        "eyebrow": "Cómo es trabajar conmigo",
+        "title": "Criterio técnico, explicado con claridad.",
+        "intro": "Puedes contar conmigo para entender el problema, señalar límites y tomar decisiones sin añadir complejidad porque sí.",
+        "items": [
+          {
+            "number": "01",
+            "title": "Hablas conmigo",
+            "body": "No hay comerciales ni capas intermedias. La persona que entiende tu caso es la misma que plantea y construye la solución."
+          },
+          {
+            "number": "02",
+            "title": "Sabes qué se está haciendo",
+            "body": "Explico las decisiones en lenguaje claro, con alcance, prioridades y riesgos visibles antes de avanzar."
+          },
+          {
+            "number": "03",
+            "title": "El resultado se puede mantener",
+            "body": "Busco soluciones proporcionadas, documentadas y fáciles de evolucionar cuando cambie el negocio."
+          }
+        ]
+      },
+      "educationSummary": {
+        "eyebrow": "Base técnica",
+        "title": "Formación continua con los pies en producción.",
+        "body": "Mi formación empezó en desarrollo de aplicaciones y continúa alrededor de backend, testing, arquitectura y operación de sistemas. Elijo qué aprender según los problemas que necesito resolver.",
+        "link": "Ver formación y cursos técnicos"
+      },
+      "cta": {
+        "eyebrow": "Primera valoración gratuita",
+        "title": "Cuéntame qué quieres mejorar y vemos si puedo ayudarte.",
+        "text": "Tendremos una primera conversación para entender el problema, revisar el contexto y decidir el siguiente paso. No es una auditoría completa ni un presupuesto genérico.",
+        "primary": "Solicitar valoración gratuita",
+        "secondary": "Ver proyectos"
+      }
     }
   },
   "services": {

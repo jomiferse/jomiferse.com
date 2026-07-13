@@ -1,0 +1,179 @@
+---
+import { Icon } from "astro-icon/components";
+import ProjectArchiveCard from "@/components/projects/ProjectArchiveCard.astro";
+import type { Locale } from "@/i18n";
+import type { ProjectEntry } from "@/lib/projects";
+
+interface Props {
+	projects: ProjectEntry[];
+	locale: Locale;
+	copy: {
+		viewCase: string;
+		carouselPrevious: string;
+		carouselNext: string;
+		carouselPosition: string;
+	};
+}
+
+const { projects, locale, copy } = Astro.props as Props;
+const trackId = `project-carousel-${locale}`;
+const initialPosition = copy.carouselPosition
+	.replace("{current}", "1")
+	.replace("{total}", String(projects.length));
+---
+
+<section
+	id="project-cases"
+	class="projects-collection section-reveal pb-18 md:pb-24"
+	aria-label={copy.viewCase}
+	data-project-carousel
+	data-position-template={copy.carouselPosition}
+>
+	<div class="mb-5 flex items-center justify-between gap-4 sm:hidden">
+		<p
+			class="text-sm font-bold text-[var(--text-muted)]"
+			aria-live="polite"
+			data-carousel-position
+		>
+			{initialPosition}
+		</p>
+		<div class="flex gap-2">
+			<button
+				type="button"
+				class="project-carousel-button"
+				aria-label={copy.carouselPrevious}
+				aria-controls={trackId}
+				data-carousel-previous
+				disabled
+			>
+				<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
+			</button>
+			<button
+				type="button"
+				class="project-carousel-button"
+				aria-label={copy.carouselNext}
+				aria-controls={trackId}
+				data-carousel-next
+			>
+				<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+			</button>
+		</div>
+	</div>
+
+	<ol
+		id={trackId}
+		class="projects-carousel-track -mx-4 flex snap-x snap-mandatory [scrollbar-width:none] gap-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 lg:gap-6 [&::-webkit-scrollbar]:hidden"
+		data-carousel-track
+	>
+		{
+			projects.map((project) => (
+				<li
+					class="w-[86%] shrink-0 snap-start sm:w-auto sm:shrink"
+					data-project-slide
+				>
+					<ProjectArchiveCard
+						project={project}
+						locale={locale}
+						viewLabel={copy.viewCase}
+					/>
+				</li>
+			))
+		}
+	</ol>
+</section>
+
+<style>
+	.project-carousel-button {
+		display: inline-grid;
+		width: 2.75rem;
+		height: 2.75rem;
+		place-items: center;
+		border: 1px solid var(--surface-border);
+		border-radius: 999px;
+		background: var(--surface);
+		color: var(--text);
+		transition:
+			border-color 160ms ease,
+			color 160ms ease,
+			opacity 160ms ease;
+	}
+
+	.project-carousel-button:hover:not(:disabled) {
+		border-color: var(--action);
+		color: var(--action);
+	}
+
+	.project-carousel-button:focus-visible {
+		outline: 2px solid var(--action);
+		outline-offset: 3px;
+	}
+
+	.project-carousel-button:disabled {
+		cursor: not-allowed;
+		opacity: 0.38;
+	}
+</style>
+
+<script>
+	const initializeProjectCarousel = (carousel: HTMLElement) => {
+		const track = carousel.querySelector<HTMLElement>("[data-carousel-track]");
+		const slides = Array.from(
+			carousel.querySelectorAll<HTMLElement>("[data-project-slide]"),
+		);
+		const previous = carousel.querySelector<HTMLButtonElement>(
+			"[data-carousel-previous]",
+		);
+		const next = carousel.querySelector<HTMLButtonElement>(
+			"[data-carousel-next]",
+		);
+		const position = carousel.querySelector<HTMLElement>(
+			"[data-carousel-position]",
+		);
+		const positionTemplate =
+			carousel.dataset.positionTemplate ?? "{current}/{total}";
+
+		if (!track || !slides.length || !previous || !next || !position) return;
+
+		const prefersReducedMotion = window.matchMedia(
+			"(prefers-reduced-motion: reduce)",
+		).matches;
+		let activeIndex = 0;
+
+		const update = () => {
+			const trackLeft = track.getBoundingClientRect().left;
+			activeIndex = slides.reduce((closest, slide, index) => {
+				const currentDistance = Math.abs(
+					slides[closest].getBoundingClientRect().left - trackLeft,
+				);
+				const nextDistance = Math.abs(
+					slide.getBoundingClientRect().left - trackLeft,
+				);
+				return nextDistance < currentDistance ? index : closest;
+			}, 0);
+
+			previous.disabled = activeIndex === 0;
+			next.disabled = activeIndex === slides.length - 1;
+			position.textContent = positionTemplate
+				.replace("{current}", String(activeIndex + 1))
+				.replace("{total}", String(slides.length));
+		};
+
+		const moveTo = (index: number) => {
+			slides[index]?.scrollIntoView({
+				behavior: prefersReducedMotion ? "auto" : "smooth",
+				block: "nearest",
+				inline: "start",
+			});
+		};
+
+		previous.addEventListener("click", () => moveTo(activeIndex - 1));
+		next.addEventListener("click", () => moveTo(activeIndex + 1));
+		track.addEventListener("scrollend", update);
+		window.addEventListener("resize", update, { passive: true });
+		update();
+	};
+
+	document
+		.querySelectorAll<HTMLElement>("[data-project-carousel]")
+		.forEach(initializeProjectCarousel);
+</script>

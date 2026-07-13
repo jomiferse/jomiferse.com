@@ -76,6 +76,12 @@ const { content } = Astro.props as Props;
 		color: var(--action);
 	}
 
+	@media (min-width: 761px) {
+		.home-proof {
+			padding-block: clamp(4.5rem, 7vw, 6.5rem);
+		}
+	}
+
 	@media (max-width: 760px) {
 		.home-proof {
 			grid-template-columns: 1fr;

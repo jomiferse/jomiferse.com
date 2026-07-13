@@ -189,7 +189,7 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		<script is:inline>
 			(function () {
 				const stored = localStorage.getItem("theme");
-				const theme = stored ?? "dark";
+				const theme = stored ?? "light";
 				document.documentElement.classList.toggle("dark", theme === "dark");
 			})();
 		</script>

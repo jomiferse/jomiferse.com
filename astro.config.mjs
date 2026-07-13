@@ -59,6 +59,10 @@ function rehypeExternalLinksNofollow() {
 }
 
 export default defineConfig({
+	redirects: {
+		"/es/experience": "/es/about",
+		"/en/experience": "/en/about",
+	},
 	vite: {
 		plugins: [tailwindcss()],
 	},

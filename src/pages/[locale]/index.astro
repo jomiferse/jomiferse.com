@@ -91,7 +91,7 @@ const structuredData = [
 		gap: 3rem;
 		align-items: center;
 		margin: 0 calc(50% - 50vw) -5rem;
-		padding: clamp(4rem, 8vw, 6.5rem) max(1rem, calc((100vw - 69rem) / 2));
+		padding: clamp(4rem, 8vw, 6.5rem) max(1rem, calc((100vw - 88rem) / 2));
 		overflow: hidden;
 		background: var(--surface-strong);
 	}
@@ -99,7 +99,7 @@ const structuredData = [
 	.home-final-cta::before {
 		position: absolute;
 		top: -7rem;
-		right: max(1rem, calc((100vw - 69rem) / 2));
+		right: max(1rem, calc((100vw - 88rem) / 2));
 		width: 18rem;
 		height: 18rem;
 		border: 3.5rem solid color-mix(in srgb, var(--action) 14%, transparent);
@@ -130,6 +130,12 @@ const structuredData = [
 		margin-top: 1.25rem;
 		color: var(--text-muted);
 		line-height: 1.7;
+	}
+
+	@media (min-width: 761px) {
+		.home-final-cta {
+			padding: clamp(3.5rem, 6vw, 5.25rem) max(1rem, calc((100vw - 88rem) / 2));
+		}
 	}
 
 	@media (max-width: 760px) {

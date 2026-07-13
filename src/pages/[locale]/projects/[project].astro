@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import ProjectServiceCard from "@/components/projects/ProjectServiceCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getTranslations, locales, t, type Locale } from "@/i18n";
 import {
@@ -34,6 +35,15 @@ const archivePath = `/${locale}/projects/`;
 const alternatePaths = getProjectAlternatePaths(project);
 const image = project.img?.imgStatic;
 const caseStudy = project.caseStudy;
+const facts = [
+	project.role ? { label: copy.role, value: project.role } : null,
+	project.companyRelated
+		? { label: copy.organization, value: project.companyRelated }
+		: null,
+	project.timeframe
+		? { label: copy.timeframe, value: project.timeframe }
+		: null,
+].filter((fact): fact is { label: string; value: string } => Boolean(fact));
 const structuredData = [
 	project.kind === "personal"
 		? buildSoftwareApplication({
@@ -66,156 +76,197 @@ const structuredData = [
 	structuredData={structuredData}
 	keywords={project.technologies}
 >
-	<a
-		href={archivePath}
-		class="inline-flex items-center gap-2 text-sm font-bold text-[var(--text)] hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
-	>
-		<Icon name="arrow-left" class="h-4 w-4" />
-		{copy.back}
-	</a>
-
-	<section
-		class="grid gap-10 py-10 md:grid-cols-[1.2fr_0.8fr] md:items-end md:py-16"
-	>
-		<div
-			class="overflow-hidden rounded-[1.75rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,var(--accent-soft),transparent_46%),var(--bg-band)]"
+	<div class="projects-page project-detail-page">
+		<a
+			href={archivePath}
+			class="inline-flex items-center gap-2 text-sm font-black text-[var(--text)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
 		>
-			{
-				image ? (
-					<img
-						src={image.src}
-						alt={image.alt ?? project.title}
-						width="1200"
-						height="750"
-						class="aspect-[16/10] h-full w-full object-cover"
-					/>
-				) : (
-					<div class="flex aspect-[16/10] items-end bg-[linear-gradient(135deg,rgba(56,215,255,0.14),transparent_58%)] p-6">
-						<span class="eyebrow text-[var(--text-muted)]">
-							{t(locale, "projects.page.fallbackImage")}
-						</span>
-					</div>
-				)
-			}
-		</div>
+			<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
+			{copy.back}
+		</a>
 
-		<div>
-			{project.status ? <p class="eyebrow">{project.status}</p> : null}
-			<h1 class="mt-4 text-4xl font-black text-[var(--text)] md:text-6xl">
-				{project.title}
-			</h1>
-			<p class="muted-copy mt-5 text-base leading-7 font-semibold">
-				{project.role}{
-					project.companyRelated ? ` · ${project.companyRelated}` : ""
-				}
-				{project.timeframe ? ` · ${project.timeframe}` : ""}
-			</p>
-			<p class="muted-copy mt-6 text-lg leading-8">{project.summary}</p>
-		</div>
-	</section>
-
-	<div class="grid gap-8 pb-20 md:grid-cols-[minmax(0,1fr)_18rem] md:pb-28">
-		<div class="space-y-10">
-			{
-				project.context ? (
-					<section>
-						<h2 class="text-2xl font-black text-[var(--text)]">
-							{copy.context}
-						</h2>
-						<p class="muted-copy mt-4 leading-8">{project.context}</p>
-					</section>
-				) : null
-			}
-
-			{
-				caseStudy?.problem ? (
-					<section>
-						<h2 class="text-2xl font-black text-[var(--text)]">
-							{copy.contribution}
-						</h2>
-						<p class="muted-copy mt-4 leading-8">
-							{caseStudy.problem}
-							{caseStudy.constraints ? ` ${caseStudy.constraints}` : ""}
-						</p>
-					</section>
-				) : null
-			}
-
-			{
-				caseStudy?.decisions ? (
-					<section>
-						<h2 class="text-2xl font-black text-[var(--text)]">
-							{copy.decisions}
-						</h2>
-						<p class="muted-copy mt-4 leading-8">{caseStudy.decisions}</p>
-					</section>
-				) : null
-			}
-
-			{
-				caseStudy?.delivered ? (
-					<section>
-						<h2 class="text-2xl font-black text-[var(--text)]">
-							{copy.delivered}
-						</h2>
-						<p class="muted-copy mt-4 leading-8">{caseStudy.delivered}</p>
-					</section>
-				) : null
-			}
-
-			{
-				project.highlights?.length ? (
-					<section>
-						<h2 class="text-2xl font-black text-[var(--text)]">
-							{copy.contribution}
-						</h2>
-						<ul class="mt-5 grid gap-3">
-							{project.highlights.map((highlight) => (
-								<li class="dark-card flex gap-3 p-4 leading-7">
-									<span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--accent)]" />
-									<span>{highlight}</span>
-								</li>
-							))}
-						</ul>
-					</section>
-				) : null
-			}
-		</div>
-
-		<aside class="dark-card h-fit p-5 md:sticky md:top-8">
-			<h2 class="text-lg font-black text-[var(--text)]">{copy.technologies}</h2>
-			<div class="mt-4 flex flex-wrap gap-2">
+		<section
+			class="project-detail-hero section-reveal grid gap-9 py-10 md:py-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(24rem,1.08fr)] lg:items-center lg:gap-14"
+		>
+			<div>
 				{
-					project.technologies.map((technology) => (
-						<span class="tag-pill">{technology}</span>
-					))
+					project.status ? (
+						<p class="eyebrow text-[var(--action)]">{project.status}</p>
+					) : null
+				}
+				<h1
+					class="mt-4 max-w-4xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
+				>
+					{project.title}
+				</h1>
+				<p class="muted-copy mt-6 max-w-3xl text-lg leading-8">
+					{project.summary}
+				</p>
+
+				{
+					facts.length ? (
+						<dl
+							class="mt-8 grid gap-4 border-y border-[var(--surface-border)] py-5 sm:grid-cols-3"
+							aria-label={copy.facts}
+						>
+							{facts.map((fact) => (
+								<div>
+									<dt class="eyebrow text-[var(--action)]">{fact.label}</dt>
+									<dd class="mt-2 text-sm leading-6 font-bold text-[var(--text)]">
+										{fact.value}
+									</dd>
+								</div>
+							))}
+						</dl>
+					) : null
 				}
 			</div>
 
-			{
-				caseStudy?.serviceHref ? (
-					<a
-						href={caseStudy.serviceHref}
-						class="button-secondary mt-7 w-full justify-center"
-					>
-						{caseStudy.serviceLabel || copy.relatedService}
-					</a>
-				) : null
-			}
+			<div
+				class="overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_46%),var(--bg-band)] shadow-[var(--shadow-card)]"
+			>
+				{
+					image ? (
+						<img
+							src={image.src}
+							alt={image.alt ?? project.title}
+							width="1200"
+							height="675"
+							class="aspect-[16/9] h-full w-full object-cover"
+							fetchpriority="high"
+						/>
+					) : (
+						<div class="flex aspect-[16/9] items-end p-6">
+							<span class="eyebrow text-[var(--text-muted)]">
+								{t(locale, "projects.page.fallbackImage")}
+							</span>
+						</div>
+					)
+				}
+			</div>
+		</section>
 
-			{
-				project.link ? (
-					<a
-						href={project.link}
-						target="_blank"
-						rel="noopener noreferrer nofollow"
-						class="mt-3 inline-flex w-full items-center justify-center gap-2 text-sm font-bold text-[var(--text)] hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
-					>
-						{copy.externalLink}
-						<Icon name="move-up-right" class="h-4 w-4" />
-					</a>
-				) : null
-			}
-		</aside>
+		<div
+			class="grid gap-10 border-t border-[var(--surface-border)] py-14 md:py-18 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-16"
+		>
+			<div class="project-narrative grid gap-12">
+				{
+					project.context ? (
+						<section>
+							<p class="eyebrow text-[var(--action)]">01</p>
+							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
+								{copy.context}
+							</h2>
+							<p class="muted-copy mt-4 max-w-3xl leading-8">
+								{project.context}
+							</p>
+						</section>
+					) : null
+				}
+
+				{
+					caseStudy?.problem || caseStudy?.constraints ? (
+						<section>
+							<p class="eyebrow text-[var(--action)]">02</p>
+							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
+								{copy.challenge}
+							</h2>
+							<p class="muted-copy mt-4 max-w-3xl leading-8">
+								{caseStudy.problem}
+								{caseStudy.constraints ? ` ${caseStudy.constraints}` : ""}
+							</p>
+						</section>
+					) : null
+				}
+
+				{
+					caseStudy?.decisions ? (
+						<section>
+							<p class="eyebrow text-[var(--action)]">03</p>
+							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
+								{copy.decisions}
+							</h2>
+							<p class="muted-copy mt-4 max-w-3xl leading-8">
+								{caseStudy.decisions}
+							</p>
+						</section>
+					) : null
+				}
+
+				{
+					caseStudy?.delivered ? (
+						<section>
+							<p class="eyebrow text-[var(--action)]">04</p>
+							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
+								{copy.outcome}
+							</h2>
+							<p class="muted-copy mt-4 max-w-3xl leading-8">
+								{caseStudy.delivered}
+							</p>
+						</section>
+					) : null
+				}
+
+				{
+					project.highlights?.length ? (
+						<section>
+							<p class="eyebrow text-[var(--action)]">05</p>
+							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
+								{copy.highlights}
+							</h2>
+							<ul class="mt-6 grid gap-4 sm:grid-cols-2">
+								{project.highlights.map((highlight) => (
+									<li class="flex gap-3 border-t border-[var(--surface-border)] pt-4 text-sm leading-7 text-[var(--text-muted)]">
+										<span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action)]" />
+										<span>{highlight}</span>
+									</li>
+								))}
+							</ul>
+						</section>
+					) : null
+				}
+			</div>
+
+			<ProjectServiceCard
+				technologies={project.technologies}
+				serviceHref={caseStudy?.serviceHref}
+				serviceLabel={caseStudy?.serviceLabel || copy.relatedService}
+				externalHref={project.link}
+				copy={{
+					...copy.serviceCard,
+					technologies: copy.technologies,
+					externalLink: copy.externalLink,
+				}}
+			/>
+		</div>
+
+		<section
+			class="project-detail-cta section-reveal mb-4 grid gap-8 rounded-[1.35rem] px-5 py-12 text-center sm:px-10 md:mb-10 md:py-14"
+			data-project-detail-cta
+		>
+			<div>
+				<p class="eyebrow text-[var(--action)]">{copy.cta.eyebrow}</p>
+				<h2
+					class="mx-auto mt-4 max-w-4xl text-4xl leading-tight font-black text-[var(--home-navy)] md:text-6xl"
+				>
+					{copy.cta.title}
+				</h2>
+				<p class="muted-copy mx-auto mt-5 max-w-2xl text-lg leading-8">
+					{copy.cta.text}
+				</p>
+			</div>
+			<div class="flex flex-col justify-center gap-3 sm:flex-row">
+				<a
+					href={`/${locale}/contact?service=assessment`}
+					class="button-action w-full sm:w-auto"
+				>
+					{copy.cta.primary}
+					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+				<a href={archivePath} class="button-secondary w-full sm:w-auto">
+					{copy.cta.secondary}
+				</a>
+			</div>
+		</section>
 	</div>
 </BaseLayout>

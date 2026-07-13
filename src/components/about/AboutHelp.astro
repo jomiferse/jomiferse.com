@@ -1,0 +1,63 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface HelpItem {
+	number: string;
+	title: string;
+	body: string;
+	href: string;
+	linkLabel: string;
+}
+
+interface Props {
+	content: {
+		eyebrow: string;
+		title: string;
+		intro: string;
+		items: HelpItem[];
+	};
+}
+
+const { content } = Astro.props as Props;
+---
+
+<section class="section-band section-reveal py-18 md:py-20">
+	<div class="grid gap-10 lg:grid-cols-[0.38fr_0.62fr] lg:gap-16">
+		<header class="lg:sticky lg:top-28 lg:self-start">
+			<p class="eyebrow">{content.eyebrow}</p>
+			<h2 class="mt-4 text-4xl font-black md:text-5xl">
+				{content.title}
+			</h2>
+			<p class="muted-copy mt-5 max-w-xl text-base leading-8">
+				{content.intro}
+			</p>
+		</header>
+
+		<div
+			class="divide-y divide-[var(--surface-border)] border-y border-[var(--surface-border)]"
+		>
+			{
+				content.items.map((item) => (
+					<article class="group grid gap-3 py-7 sm:grid-cols-[3rem_1fr] md:py-8">
+						<p class="pt-1 text-sm font-black text-[var(--action)]">
+							{item.number}
+						</p>
+						<div>
+							<h3 class="text-2xl font-black text-[var(--text)]">
+								{item.title}
+							</h3>
+							<p class="muted-copy mt-3 max-w-2xl leading-7">{item.body}</p>
+							<a
+								href={item.href}
+								class="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[var(--text)] group-hover:text-[var(--action)]"
+							>
+								{item.linkLabel}
+								<Icon name="arrow-right" class="h-4 w-4" />
+							</a>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

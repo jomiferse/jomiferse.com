@@ -1,0 +1,108 @@
+---
+import { getCv } from "@cv";
+import { t, type Locale } from "@/i18n";
+
+type Experience = ReturnType<typeof getCv>["experience"];
+
+interface Props {
+	locale: Locale;
+	content: {
+		eyebrow: string;
+		title: string;
+		intro: string;
+		yearsSuffix: string;
+		timelineText: string;
+		currentLabel: string;
+		impactLabel: string;
+		stackLabel: string;
+		roleStacks: string[][];
+	};
+	experience: Experience;
+	yearsWorking: string;
+}
+
+const { locale, content, experience, yearsWorking } = Astro.props as Props;
+---
+
+<section class="about-experience section-reveal py-18 md:py-20">
+	<header class="max-w-4xl">
+		<p class="eyebrow">{content.eyebrow}</p>
+		<h2 class="mt-4 text-4xl font-black md:text-6xl">
+			{content.title}
+		</h2>
+		<p class="muted-copy mt-5 max-w-3xl text-lg leading-8">{content.intro}</p>
+	</header>
+
+	<div class="mt-12 grid gap-12 lg:grid-cols-[0.28fr_0.72fr] lg:gap-16">
+		<div class="lg:sticky lg:top-28 lg:self-start">
+			<p class="text-5xl font-black text-[var(--action)]">
+				{yearsWorking}+
+			</p>
+			<p class="mt-2 text-lg font-black text-[var(--text)]">
+				{content.yearsSuffix}
+			</p>
+			<p class="muted-copy mt-5 leading-7">{content.timelineText}</p>
+		</div>
+
+		<div class="about-timeline">
+			{
+				experience.map((role, index) => {
+					const endDate =
+						role.endDate?.toLowerCase() === "present" ||
+						role.endDate?.toLowerCase() === "presente"
+							? t(locale, "experienceCard.present")
+							: role.endDate;
+					const stack = content.roleStacks[index] ?? [];
+
+					return (
+						<article class="about-timeline__item">
+							<div class="about-timeline__marker" aria-hidden="true" />
+							<div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+								<div>
+									<p class="eyebrow">
+										{role.startDate} — {endDate}
+									</p>
+									<h3 class="mt-3 text-2xl font-black text-[var(--text)] md:text-3xl">
+										{role.role}
+									</h3>
+									<p class="muted-copy mt-2 text-sm font-bold">
+										{role.company} · {role.location}
+									</p>
+								</div>
+								{index === 0 ? (
+									<span class="tag-pill w-fit">{content.currentLabel}</span>
+								) : null}
+							</div>
+
+							<p class="muted-copy mt-5 max-w-3xl leading-7">
+								{role.description}
+							</p>
+
+							<div class="mt-7 grid gap-7 xl:grid-cols-[1fr_0.42fr]">
+								<div>
+									<p class="eyebrow">{content.impactLabel}</p>
+									<ul class="mt-4 grid gap-3">
+										{role.highlights?.slice(0, 3).map((highlight) => (
+											<li class="flex gap-3 text-sm leading-7 text-[var(--text-muted)]">
+												<span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action)]" />
+												<span>{highlight}</span>
+											</li>
+										))}
+									</ul>
+								</div>
+								<div>
+									<p class="eyebrow">{content.stackLabel}</p>
+									<div class="mt-4 flex flex-wrap gap-2">
+										{stack.map((technology) => (
+											<span class="tag-pill">{technology}</span>
+										))}
+									</div>
+								</div>
+							</div>
+						</article>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>

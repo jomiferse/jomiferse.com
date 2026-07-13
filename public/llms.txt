@@ -28,7 +28,7 @@ Tipo de entidad: persona, desarrollador full-stack freelance, consultor tecnoló
 - [About](https://www.jomiferse.com/en/about/): English professional profile.
 - [Proyectos](https://www.jomiferse.com/es/projects/): Trabajo seleccionado en desarrollo backend, full-stack, herramientas internas y productos web.
 - [Projects](https://www.jomiferse.com/en/projects/): English project portfolio.
-- [Experiencia](https://www.jomiferse.com/es/experience/): Experiencia profesional en ingeniería de software, backend, producto y plataformas.
+- [Sobre mí y experiencia](https://www.jomiferse.com/es/about/): Perfil profesional, forma de trabajar y experiencia en ingeniería de software, backend, producto y plataformas.
 - [Blog](https://www.jomiferse.com/es/blog/): Artículos sobre desarrollo web, automatización, backend, arquitectura, IA aplicada y herramientas digitales.
 - [Contacto](https://www.jomiferse.com/es/contact/): Formulario para consultas de proyectos freelance, colaboraciones y oportunidades profesionales.
 

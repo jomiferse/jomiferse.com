@@ -51,7 +51,7 @@ const { locale, content } = Astro.props as Props;
 	.assessment {
 		width: 100vw;
 		margin-inline: calc(50% - 50vw);
-		padding: clamp(4.5rem, 8vw, 7rem) max(1rem, calc((100vw - 80rem) / 2));
+		padding: clamp(4.5rem, 8vw, 7rem) max(1rem, calc((100vw - 88rem) / 2));
 		background: var(--bg-band);
 	}
 	.assessment header {
@@ -122,6 +122,11 @@ const { locale, content } = Astro.props as Props;
 	.assessment__footer > p :global(svg) {
 		flex: none;
 		color: var(--action);
+	}
+	@media (min-width: 761px) {
+		.assessment {
+			padding-block: clamp(4rem, 6vw, 5.75rem);
+		}
 	}
 	@media (max-width: 760px) {
 		.assessment header,

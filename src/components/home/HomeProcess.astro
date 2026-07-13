@@ -103,6 +103,12 @@ const { content } = Astro.props as Props;
 		line-height: 1.7;
 	}
 
+	@media (min-width: 761px) {
+		.home-process {
+			padding-block: clamp(4.5rem, 7vw, 6.5rem);
+		}
+	}
+
 	@media (max-width: 760px) {
 		.home-process > header,
 		.home-process ol {

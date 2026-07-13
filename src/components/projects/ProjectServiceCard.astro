@@ -1,0 +1,151 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	technologies: string[];
+	serviceHref?: string;
+	serviceLabel?: string;
+	externalHref?: string;
+	copy: {
+		eyebrow: string;
+		body: string;
+		technologies: string;
+		externalLink: string;
+	};
+}
+
+const { technologies, serviceHref, serviceLabel, externalHref, copy } =
+	Astro.props as Props;
+
+const brandIcons: Array<[RegExp, string]> = [
+	[/spring boot/i, "springboot"],
+	[/docker/i, "docker"],
+	[/kubernetes/i, "kubernetes"],
+	[/postgresql/i, "postgresql"],
+	[/rabbitmq/i, "rabbitmq"],
+	[/kafka/i, "apachekafka"],
+	[/liquibase/i, "liquibase"],
+];
+
+const getTechnologyIcon = (technology: string) => {
+	const brandIcon = brandIcons.find(([pattern]) => pattern.test(technology));
+	if (brandIcon) return brandIcon[1];
+
+	const normalizedTechnology = technology.toLowerCase();
+
+	if (
+		/(websocket|restclient|rest client|http|api)/.test(normalizedTechnology)
+	) {
+		return "globe";
+	}
+
+	if (
+		/(grpc|redis|pub\/sub|messaging|distributed)/.test(normalizedTechnology)
+	) {
+		return "git-branch";
+	}
+
+	if (
+		/(spring cloud|cloud|helm|ci\/cd|jenkins|devops)/.test(normalizedTechnology)
+	) {
+		return "cloud";
+	}
+
+	if (
+		/(sqlite|mysql|database|elasticsearch|mongodb|storage)/.test(
+			normalizedTechnology,
+		)
+	) {
+		return "layers";
+	}
+
+	return "code";
+};
+
+const hasService = Boolean(serviceHref && serviceLabel);
+---
+
+<aside
+	data-project-service-card
+	class="relative isolate h-fit overflow-hidden rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[radial-gradient(circle_at_100%_0%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_11rem),var(--surface)] p-5 shadow-[var(--shadow-card)] lg:sticky lg:top-24"
+>
+	<div
+		class="pointer-events-none absolute -top-10 -right-10 -z-10 h-28 w-28 rounded-full border border-[color-mix(in_srgb,var(--action)_18%,transparent)]"
+		aria-hidden="true"
+	>
+	</div>
+
+	{
+		hasService ? (
+			<section>
+				<div class="flex items-center gap-3">
+					<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,transparent)] bg-[color-mix(in_srgb,var(--action)_12%,var(--surface))] text-[var(--action)]">
+						<Icon
+							name="briefcase-business"
+							class="h-5 w-5"
+							aria-hidden="true"
+						/>
+					</span>
+					<p class="eyebrow text-[var(--action)]">{copy.eyebrow}</p>
+				</div>
+
+				<p class="muted-copy mt-4 text-sm leading-6">{copy.body}</p>
+
+				<a
+					data-project-service-action
+					href={serviceHref}
+					class="button-action mt-5 w-full px-5 text-center"
+				>
+					<span>{serviceLabel}</span>
+					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+			</section>
+		) : null
+	}
+
+	<section
+		class={hasService
+			? "mt-6 border-t border-[var(--surface-border)] pt-6"
+			: ""}
+	>
+		<div class="flex items-center justify-between gap-3">
+			<p class="eyebrow text-[var(--action)]">{copy.technologies}</p>
+			<span
+				class="text-xs font-black text-[var(--text-muted)]"
+				aria-hidden="true"
+			>
+				{String(technologies.length).padStart(2, "0")}
+			</span>
+		</div>
+
+		<div data-project-technology-list class="mt-4 grid grid-cols-2 gap-2">
+			{
+				technologies.map((technology) => (
+					<span class="flex min-w-0 items-center gap-2 rounded-xl border border-[var(--surface-border)] bg-[color-mix(in_srgb,var(--surface-strong)_72%,transparent)] px-2.5 py-2 text-[0.72rem] leading-tight font-bold text-[var(--text-muted)]">
+						<Icon
+							name={getTechnologyIcon(technology)}
+							class="h-3.5 w-3.5 shrink-0 text-[var(--action)]"
+							aria-hidden="true"
+						/>
+						<span class="min-w-0 break-words">{technology}</span>
+					</span>
+				))
+			}
+		</div>
+	</section>
+
+	{
+		externalHref ? (
+			<a
+				data-project-external-action
+				href={externalHref}
+				target="_blank"
+				rel="noopener noreferrer nofollow"
+				class="mt-5 inline-flex min-h-11 w-full items-center justify-center gap-2 border-t border-[var(--surface-border)] pt-5 text-sm font-black text-[var(--text)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
+			>
+				{copy.externalLink}
+				<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+			</a>
+		) : null
+	}
+</aside>
