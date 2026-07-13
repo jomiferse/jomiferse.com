@@ -308,19 +308,6 @@ body:has(.projects-page) main.site-shell {
 	box-shadow: 0 0 0 1px color-mix(in srgb, var(--action) 38%, transparent);
 }
 
-.about-cta {
-	border: 1px solid var(--surface-border);
-	border-radius: 1.25rem;
-	background:
-		radial-gradient(
-			circle at 90% 12%,
-			color-mix(in srgb, var(--action) 13%, transparent),
-			transparent 16rem
-		),
-		var(--surface);
-	box-shadow: var(--shadow-card);
-}
-
 @media (max-width: 767px) {
 	.about-trust {
 		grid-template-columns: repeat(2, minmax(0, 1fr));

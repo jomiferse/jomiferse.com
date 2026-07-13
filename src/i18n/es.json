@@ -787,6 +787,7 @@
       "intro": "Notas cortas sobre proyectos, herramientas, backend y cosas que aprendo mientras construyo.",
       "empty": "Todavía no hay artículos publicados.",
       "cta": {
+        "eyebrow": "¿Tienes un proyecto en mente?",
         "title": "¿Buscas ayuda con una web o herramienta?",
         "text": "Estos artículos muestran cómo pienso al construir. Si tienes un problema concreto, puedes ver servicios o escribirme directamente.",
         "services": "Ver servicios",
@@ -1253,6 +1254,7 @@
           "answer": "Podemos cerrar con documentación y traspaso o acordar un bloque de soporte y evolución. La modalidad depende del riesgo operativo y de la frecuencia esperada de cambios."
         }
       ],
+      "ctaEyebrow": "Primera valoración gratuita",
       "ctaTitle": "Cuéntame tu caso y vemos si tiene sentido.",
       "ctaText": "Envíame qué tienes ahora, qué te gustaría mejorar y dónde se pierde más tiempo, claridad o dinero. Te responderé con el siguiente paso más razonable.",
       "ctaButton": "Cuéntame tu caso"

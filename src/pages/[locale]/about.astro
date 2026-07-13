@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import AboutExperience from "@/components/about/AboutExperience.astro";
 import AboutHelp from "@/components/about/AboutHelp.astro";
+import ConversionCta from "@/components/common/ConversionCta.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
@@ -166,31 +167,20 @@ const structuredData = [
 			</div>
 		</section>
 
-		<section class="section-reveal pb-8 text-center md:pb-14">
-			<div class="about-cta px-5 py-12 sm:px-10 md:py-14">
-				<p class="eyebrow">{page.cta.eyebrow}</p>
-				<h2 class="mx-auto mt-4 max-w-4xl text-4xl font-black md:text-6xl">
-					{page.cta.title}
-				</h2>
-				<p class="muted-copy mx-auto mt-5 max-w-2xl text-lg leading-8">
-					{page.cta.text}
-				</p>
-				<div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-					<a
-						href={`/${locale}/contact?service=assessment`}
-						class="button-action w-full sm:w-auto"
-					>
-						{page.cta.primary}
-						<Icon name="arrow-right" class="h-4 w-4" />
-					</a>
-					<a
-						href={`/${locale}/projects`}
-						class="button-secondary w-full sm:w-auto"
-					>
-						{page.cta.secondary}
-					</a>
-				</div>
-			</div>
-		</section>
+		<!-- ConversionCta owns the final CTA spacing, including md:py-14. -->
+		<ConversionCta
+			eyebrow={page.cta.eyebrow}
+			title={page.cta.title}
+			text={page.cta.text}
+			primary={{
+				label: page.cta.primary,
+				href: `/${locale}/contact?service=assessment`,
+			}}
+			secondary={{
+				label: page.cta.secondary,
+				href: `/${locale}/projects`,
+			}}
+			headingId="about-conversion-title"
+		/>
 	</div>
 </BaseLayout>

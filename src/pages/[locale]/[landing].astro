@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
+import ConversionCta from "@/components/common/ConversionCta.astro";
 import {
 	getCommercialLanding,
 	getCommercialLandingAlternatePaths,
@@ -305,27 +306,15 @@ const structuredData = [
 		</div>
 	</section>
 
-	<section class="section-reveal py-16 text-center md:py-28">
-		<div class="dark-card px-5 py-12 sm:px-8 md:py-16">
-			<p class="eyebrow">{page.cta.eyebrow}</p>
-			<h2
-				class="mx-auto mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-6xl"
-			>
-				{page.cta.title}
-			</h2>
-			<p
-				class="muted-copy mx-auto mt-5 max-w-xl text-base leading-8 md:text-lg"
-			>
-				{page.cta.text}
-			</p>
-			<div class="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
-				<a href={contactHref} class="button-primary w-full sm:w-auto">
-					{page.cta.button}
-				</a>
-				<a href={servicesHref} class="button-secondary w-full sm:w-auto">
-					{locale === "es" ? "Ver todos los servicios" : "View all services"}
-				</a>
-			</div>
-		</div>
-	</section>
+	<ConversionCta
+		eyebrow={page.cta.eyebrow}
+		title={page.cta.title}
+		text={page.cta.text}
+		primary={{ label: page.cta.button, href: contactHref }}
+		secondary={{
+			label: locale === "es" ? "Ver todos los servicios" : "View all services",
+			href: servicesHref,
+		}}
+		headingId="landing-conversion-title"
+	/>
 </BaseLayout>

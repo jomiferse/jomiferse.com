@@ -787,6 +787,7 @@
       "intro": "Short notes about projects, tools, backend work and things I learn while building.",
       "empty": "No articles published yet.",
       "cta": {
+        "eyebrow": "Have a project in mind?",
         "title": "Need help with a website or tool?",
         "text": "These notes show how I think while building. If you have a concrete problem, you can view services or contact me directly.",
         "services": "View services",
@@ -1253,6 +1254,7 @@
           "answer": "We can close with documentation and handover or agree a support and evolution block. The right model depends on operational risk and the expected frequency of change."
         }
       ],
+      "ctaEyebrow": "Free initial assessment",
       "ctaTitle": "Share your case and we can see if it makes sense.",
       "ctaText": "Send what you have now, what you want to improve and where time, clarity or money is being lost. I’ll reply with the most reasonable next step.",
       "ctaButton": "Share your case"

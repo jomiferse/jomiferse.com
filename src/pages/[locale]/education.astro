@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { Icon } from "astro-icon/components";
 import CertificationCard from "@/components/cards/CertificationCard.astro";
 import EducationCard from "@/components/cards/EducationCard.astro";
+import ConversionCta from "@/components/common/ConversionCta.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
 import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
@@ -114,29 +114,12 @@ const structuredData = [
 		</div>
 	</section>
 
-	<section class="section-band section-reveal py-16 text-center md:py-24">
-		<div class="dark-card px-5 py-12 sm:px-8 md:py-14">
-			<p class="eyebrow">{page.cta.eyebrow}</p>
-			<h2
-				class="mx-auto mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-			>
-				{page.cta.title}
-			</h2>
-			<p class="muted-copy mx-auto mt-5 max-w-xl leading-8">
-				{page.cta.text}
-			</p>
-			<div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-				<a href={`/${locale}/about`} class="button-primary w-full sm:w-auto">
-					{page.cta.primary}
-					<Icon name="arrow-right" class="h-4 w-4" />
-				</a>
-				<a
-					href={`/${locale}/contact`}
-					class="button-secondary w-full sm:w-auto"
-				>
-					{page.cta.secondary}
-				</a>
-			</div>
-		</div>
-	</section>
+	<ConversionCta
+		eyebrow={page.cta.eyebrow}
+		title={page.cta.title}
+		text={page.cta.text}
+		primary={{ label: page.cta.primary, href: `/${locale}/about` }}
+		secondary={{ label: page.cta.secondary, href: `/${locale}/contact` }}
+		headingId="education-conversion-title"
+	/>
 </BaseLayout>

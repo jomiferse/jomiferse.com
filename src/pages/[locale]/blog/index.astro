@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import BlogPostCard from "@/components/cards/BlogPostCard.astro";
 import BlogPagination from "@/components/common/BlogPagination.astro";
+import ConversionCta from "@/components/common/ConversionCta.astro";
 import {
 	getBlogPostGroups,
 	getLocalBlogSlug,
@@ -134,20 +135,12 @@ const structuredData = [
 		/>
 	</section>
 
-	<section class="section-band section-reveal py-16 text-center md:py-20">
-		<h2 class="text-3xl font-black text-[var(--text)] md:text-5xl">
-			{page.cta.title}
-		</h2>
-		<p class="muted-copy mx-auto mt-5 max-w-2xl leading-7">
-			{page.cta.text}
-		</p>
-		<div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-			<a href={`/${locale}/services`} class="button-primary w-full sm:w-auto">
-				{page.cta.services}
-			</a>
-			<a href={`/${locale}/contact`} class="button-secondary w-full sm:w-auto">
-				{page.cta.contact}
-			</a>
-		</div>
-	</section>
+	<ConversionCta
+		eyebrow={page.cta.eyebrow}
+		title={page.cta.title}
+		text={page.cta.text}
+		primary={{ label: page.cta.services, href: `/${locale}/services` }}
+		secondary={{ label: page.cta.contact, href: `/${locale}/contact` }}
+		headingId="blog-conversion-title"
+	/>
 </BaseLayout>

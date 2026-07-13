@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ConversionCta from "@/components/common/ConversionCta.astro";
 import ServicesExitIntent from "@/components/common/ServicesExitIntent.astro";
 import { getCommercialLandingPages } from "@/lib/commercial-landings";
 import { getServiceGroups, getServicePages } from "@/lib/services";
@@ -464,17 +465,13 @@ const structuredData = [
 		</div>
 	</section>
 
-	<section class="section-band section-reveal py-20 text-center md:py-28">
-		<h2 class="text-4xl font-black text-[var(--text)] md:text-6xl">
-			{page.ctaTitle}
-		</h2>
-		<p class="muted-copy mx-auto mt-5 max-w-xl text-lg leading-8">
-			{page.ctaText}
-		</p>
-		<a href={contactHref} class="button-primary mt-9">
-			{page.ctaButton}
-		</a>
-	</section>
+	<ConversionCta
+		eyebrow={page.ctaEyebrow}
+		title={page.ctaTitle}
+		text={page.ctaText}
+		primary={{ label: page.ctaButton, href: contactHref }}
+		headingId="services-conversion-title"
+	/>
 
 	<ServicesExitIntent
 		locale={locale}

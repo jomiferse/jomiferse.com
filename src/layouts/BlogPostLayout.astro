@@ -1,4 +1,5 @@
 ---
+import ConversionCta from "@/components/common/ConversionCta.astro";
 import { getLocaleFromPath, getTranslations, type Locale, t } from "@/i18n";
 
 interface Frontmatter {
@@ -100,23 +101,14 @@ const postCta = getTranslations(locale).blog.post.cta;
 		</div>
 	</div>
 
-	<section class="section-band mt-20 rounded-3xl px-5 py-10 sm:px-8 md:px-10">
-		<p class="eyebrow">{postCta.eyebrow}</p>
-		<h2
-			class="mt-4 max-w-2xl text-3xl font-black text-[var(--text)] md:text-4xl"
-		>
-			{postCta.title}
-		</h2>
-		<p class="muted-copy mt-5 max-w-2xl leading-7">{postCta.text}</p>
-		<div class="mt-8 flex flex-col gap-3 sm:flex-row">
-			<a href={`/${locale}/services`} class="button-primary w-full sm:w-auto">
-				{postCta.services}
-			</a>
-			<a href={contactPath} class="button-secondary w-full sm:w-auto">
-				{postCta.contact}
-			</a>
-		</div>
-	</section>
+	<ConversionCta
+		eyebrow={postCta.eyebrow}
+		title={postCta.title}
+		text={postCta.text}
+		primary={{ label: postCta.services, href: `/${locale}/services` }}
+		secondary={{ label: postCta.contact, href: contactPath }}
+		headingId="article-conversion-title"
+	/>
 
 	<footer class="hairline mt-20 border-t pt-10">
 		<a
