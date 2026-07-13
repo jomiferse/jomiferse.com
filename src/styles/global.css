@@ -454,7 +454,7 @@ body:has(.projects-page) main.site-shell {
 		var(--surface);
 }
 
-.project-detail-cta {
+.conversion-cta {
 	border: 1px solid color-mix(in srgb, var(--action) 18%, var(--surface-border));
 	background:
 		radial-gradient(
@@ -472,7 +472,7 @@ body:has(.projects-page) main.site-shell {
 		inset 0 1px 0 color-mix(in srgb, var(--surface-strong) 82%, transparent);
 }
 
-.dark .project-detail-cta {
+.dark .conversion-cta {
 	border-color: color-mix(in srgb, var(--action) 20%, var(--surface-border));
 	background:
 		radial-gradient(

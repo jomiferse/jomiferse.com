@@ -100,17 +100,13 @@ if (!detail.includes("ProjectServiceCard")) {
 	failures.push("detail: missing ProjectServiceCard component");
 }
 
-if (!detail.includes("data-project-detail-cta")) {
-	failures.push("detail CTA: missing stable CTA marker");
+if (!detail.includes("ConversionCta")) {
+	failures.push("detail CTA: shared ConversionCta component is required");
 }
 
-for (const marker of [
-	".project-detail-cta {",
-	"background:",
-	".dark .project-detail-cta {",
-]) {
+for (const marker of [".conversion-cta {", ".dark .conversion-cta {"]) {
 	if (!globalStyles.includes(marker)) {
-		failures.push(`detail CTA: missing explicit background style ${marker}`);
+		failures.push(`detail CTA: missing shared background style ${marker}`);
 	}
 }
 
@@ -302,6 +298,11 @@ for (const locale of ["en", "es"]) {
 		try {
 			await access(output);
 			const html = await readFile(output, "utf8");
+			if (!html.includes("data-conversion-cta")) {
+				failures.push(
+					`${locale}/${project.slug}: project CTA marker is missing`,
+				);
+			}
 			if (!html.includes(`/${locale}/contact?service=assessment`)) {
 				failures.push(`${locale}/${project.slug}: project CTA is missing`);
 			}

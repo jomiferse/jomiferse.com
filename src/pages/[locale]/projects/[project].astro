@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import ConversionCta from "@/components/common/ConversionCta.astro";
 import ProjectServiceCard from "@/components/projects/ProjectServiceCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getTranslations, locales, t, type Locale } from "@/i18n";
@@ -240,33 +241,16 @@ const structuredData = [
 			/>
 		</div>
 
-		<section
-			class="project-detail-cta section-reveal mb-4 grid gap-8 rounded-[1.35rem] px-5 py-12 text-center sm:px-10 md:mb-10 md:py-14"
-			data-project-detail-cta
-		>
-			<div>
-				<p class="eyebrow text-[var(--action)]">{copy.cta.eyebrow}</p>
-				<h2
-					class="mx-auto mt-4 max-w-4xl text-4xl leading-tight font-black text-[var(--home-navy)] md:text-6xl"
-				>
-					{copy.cta.title}
-				</h2>
-				<p class="muted-copy mx-auto mt-5 max-w-2xl text-lg leading-8">
-					{copy.cta.text}
-				</p>
-			</div>
-			<div class="flex flex-col justify-center gap-3 sm:flex-row">
-				<a
-					href={`/${locale}/contact?service=assessment`}
-					class="button-action w-full sm:w-auto"
-				>
-					{copy.cta.primary}
-					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-				</a>
-				<a href={archivePath} class="button-secondary w-full sm:w-auto">
-					{copy.cta.secondary}
-				</a>
-			</div>
-		</section>
+		<ConversionCta
+			eyebrow={copy.cta.eyebrow}
+			title={copy.cta.title}
+			text={copy.cta.text}
+			primary={{
+				label: copy.cta.primary,
+				href: `/${locale}/contact?service=assessment`,
+			}}
+			secondary={{ label: copy.cta.secondary, href: archivePath }}
+			headingId="project-conversion-title"
+		/>
 	</div>
 </BaseLayout>

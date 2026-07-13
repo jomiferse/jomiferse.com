@@ -1,0 +1,79 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface PrimaryCtaAction {
+	label: string;
+	href: string;
+	opensContactModal?: boolean;
+}
+
+export interface SecondaryCtaAction {
+	label: string;
+	href: string;
+	external?: boolean;
+}
+
+interface Props {
+	eyebrow: string;
+	title: string;
+	text: string;
+	primary: PrimaryCtaAction;
+	secondary?: SecondaryCtaAction;
+	headingId?: string;
+}
+
+const {
+	eyebrow,
+	title,
+	text,
+	primary,
+	secondary,
+	headingId = "conversion-cta-title",
+} = Astro.props;
+---
+
+<section
+	class="conversion-cta section-reveal mb-4 grid gap-8 rounded-[1.35rem] px-5 py-12 text-center sm:px-10 md:mb-10 md:py-14"
+	aria-labelledby={headingId}
+	data-conversion-cta
+>
+	<div>
+		<p class="eyebrow text-[var(--action)]">{eyebrow}</p>
+		<h2
+			id={headingId}
+			class="mx-auto mt-4 max-w-4xl text-4xl leading-tight font-black text-[var(--home-navy)] md:text-6xl"
+		>
+			{title}
+		</h2>
+		<p class="muted-copy mx-auto mt-5 max-w-2xl text-lg leading-8">
+			{text}
+		</p>
+	</div>
+	<div class="flex flex-col justify-center gap-3 sm:flex-row">
+		<a
+			href={primary.href}
+			class="button-action w-full sm:w-auto"
+			data-contact-modal-open={primary.opensContactModal || undefined}
+			data-conversion-primary
+		>
+			{primary.label}
+			<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+		</a>
+		{
+			secondary ? (
+				<a
+					href={secondary.href}
+					target={secondary.external ? "_blank" : undefined}
+					rel={secondary.external ? "noopener noreferrer nofollow" : undefined}
+					class="button-secondary w-full sm:w-auto"
+					data-conversion-secondary
+				>
+					{secondary.label}
+					{secondary.external ? (
+						<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+					) : null}
+				</a>
+			) : null
+		}
+	</div>
+</section>
