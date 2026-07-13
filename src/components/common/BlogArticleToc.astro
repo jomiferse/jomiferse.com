@@ -26,16 +26,16 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 		>
 			<nav
 				aria-label={label}
-				class="relative isolate hidden h-fit overflow-hidden rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[radial-gradient(circle_at_100%_0%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_11rem),var(--surface)] p-5 shadow-[var(--shadow-card)] lg:block"
+				class="relative isolate hidden max-h-[calc(100svh-7.5rem)] min-h-0 flex-col overflow-hidden rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[radial-gradient(circle_at_100%_0%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_11rem),var(--surface)] p-5 shadow-[var(--shadow-card)] lg:flex"
 			>
-				<div class="flex items-center gap-3">
+				<div class="flex shrink-0 items-center gap-3">
 					<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,transparent)] bg-[color-mix(in_srgb,var(--action)_12%,var(--surface))] text-[var(--action)]">
 						<Icon name="book-open" class="h-5 w-5" aria-hidden="true" />
 					</span>
 					<p class="eyebrow text-[var(--action)]">{label}</p>
 				</div>
 				<div
-					class="mt-5 h-1 overflow-hidden rounded-full bg-[var(--surface-border)]"
+					class="mt-5 h-1 shrink-0 overflow-hidden rounded-full bg-[var(--surface-border)]"
 					aria-hidden="true"
 				>
 					<span
@@ -43,7 +43,10 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 						class="block h-full origin-left scale-x-0 rounded-full bg-[var(--action)] transition-transform"
 					/>
 				</div>
-				<ol class="mt-4 space-y-1.5">
+				<ol
+					class="toc-scroll mt-4 min-h-0 flex-1 [scrollbar-gutter:stable] space-y-1.5 overflow-y-auto overscroll-contain pr-2"
+					data-toc-scroll
+				>
 					{sectionHeadings.map((heading) => (
 						<li>
 							<a
@@ -121,11 +124,19 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 					.filter((heading): heading is HTMLElement => Boolean(heading));
 				const current = toc.querySelector<HTMLElement>("[data-toc-current]");
 				const progress = toc.querySelector<HTMLElement>("[data-toc-progress]");
+				const list = toc.querySelector<HTMLElement>("[data-toc-scroll]");
 				const disclosure = toc.querySelector<HTMLDetailsElement>("details");
+				const prefersReducedMotion = window.matchMedia(
+					"(prefers-reduced-motion: reduce)",
+				).matches;
+				let activeId = "";
 
 				if (!headings.length) return;
 
 				const setActive = (id: string) => {
+					if (id === activeId) return;
+					activeId = id;
+
 					links.forEach((link) => {
 						const isActive = decodeURIComponent(link.hash.slice(1)) === id;
 						link.toggleAttribute("data-active", isActive);
@@ -138,6 +149,28 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 					const ratio =
 						headings.length === 1 ? 1 : index / (headings.length - 1);
 					progress?.style.setProperty("transform", `scaleX(${ratio})`);
+
+					const activeLink = links.find(
+						(link) => decodeURIComponent(link.hash.slice(1)) === id,
+					);
+					if (activeLink && list && list.offsetParent !== null) {
+						const listRect = list.getBoundingClientRect();
+						const linkRect = activeLink.getBoundingClientRect();
+						const isOutsideView =
+							linkRect.top < listRect.top + 8 ||
+							linkRect.bottom > listRect.bottom - 8;
+
+						if (isOutsideView) {
+							const linkTop = linkRect.top - listRect.top + list.scrollTop;
+							list.scrollTo({
+								top: Math.max(
+									0,
+									linkTop - list.clientHeight / 2 + linkRect.height / 2,
+								),
+								behavior: prefersReducedMotion ? "auto" : "smooth",
+							});
+						}
+					}
 				};
 
 				const updateActive = () => {
@@ -185,6 +218,21 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 </script>
 
 <style>
+	.toc-scroll {
+		scrollbar-color: color-mix(in srgb, var(--action) 38%, transparent)
+			transparent;
+		scrollbar-width: thin;
+	}
+
+	.toc-scroll::-webkit-scrollbar {
+		width: 0.35rem;
+	}
+
+	.toc-scroll::-webkit-scrollbar-thumb {
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--action) 38%, transparent);
+	}
+
 	[data-toc-link][data-active] .toc-link-indicator {
 		display: block;
 	}

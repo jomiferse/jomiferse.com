@@ -267,12 +267,17 @@ for (const marker of [
 	'class="lg:sticky lg:top-24"',
 	"data-toc-link",
 	"data-toc-current",
+	"data-toc-scroll",
+	"max-h-[calc(100svh-7.5rem)]",
+	"overflow-y-auto",
 	'"aria-current", "location"',
 	"IntersectionObserver",
 	'rootMargin: "-112px 0px -65% 0px"',
 	'addEventListener("astro:page-load"',
 	'addEventListener("hashchange"',
 	"decodeURIComponent(link.hash.slice(1))",
+	"activeLink.getBoundingClientRect()",
+	"list.scrollTo",
 	'name="book-open"',
 ]) {
 	if (!toc.includes(marker)) failures.push(`article TOC: missing ${marker}`);
