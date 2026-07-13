@@ -29,6 +29,13 @@ const projectDetail = await readSource(
 	"projects",
 	"[project].astro",
 );
+const serviceDetail = await readSource(
+	"src",
+	"pages",
+	"[locale]",
+	"services",
+	"[service].astro",
+);
 const home = await readSource("src", "pages", "[locale]", "index.astro");
 const standardConsumers = [
 	["about", "src/pages/[locale]/about.astro"],
@@ -68,6 +75,25 @@ if (!projectDetail.includes("ConversionCta")) {
 }
 if (projectDetail.includes("project-detail-cta")) {
 	failures.push("project detail: obsolete CTA implementation remains");
+}
+
+for (const marker of [
+	"ConversionCta",
+	"opensContactModal: true",
+	"external: true",
+	"whatsappHref",
+]) {
+	if (!serviceDetail.includes(marker)) {
+		failures.push(`service detail: missing ${marker}`);
+	}
+}
+
+if (
+	serviceDetail.includes(
+		"section-band section-reveal py-20 text-center md:py-28",
+	)
+) {
+	failures.push("service detail: legacy CTA wrapper remains");
 }
 
 for (const [name, path] of standardConsumers) {
@@ -167,6 +193,33 @@ if (verifyGeneratedOutput) {
 		} catch {
 			failures.push(`dist ${name}: generated page is missing`);
 		}
+	}
+
+	const serviceOutput = join(
+		root,
+		"dist",
+		"client",
+		"es",
+		"services",
+		"backend-spring-boot",
+		"index.html",
+	);
+	try {
+		await access(serviceOutput);
+		const html = await readFile(serviceOutput, "utf8");
+		for (const marker of [
+			"data-conversion-cta",
+			"data-contact-modal-open",
+			"https://wa.me/34609221290?text=",
+			'target="_blank"',
+			'rel="noopener noreferrer nofollow"',
+		]) {
+			if (!html.includes(marker)) {
+				failures.push(`dist service detail: missing ${marker}`);
+			}
+		}
+	} catch {
+		failures.push("dist service detail: generated page is missing");
 	}
 }
 

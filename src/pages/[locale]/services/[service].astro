@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
+import ConversionCta from "@/components/common/ConversionCta.astro";
 import ServicesExitIntent from "@/components/common/ServicesExitIntent.astro";
 import { Icon } from "astro-icon/components";
 import {
@@ -464,35 +465,22 @@ const structuredData = [
 		</div>
 	</section>
 
-	<section class="section-band section-reveal py-20 text-center md:py-28">
-		<p class="eyebrow">{serviceCopy.contactEyebrow}</p>
-		<h2
-			class="mx-auto mt-4 max-w-3xl text-4xl font-black text-[var(--text)] md:text-6xl"
-		>
-			{serviceCopy.contactTitle}
-		</h2>
-		<p class="muted-copy mx-auto mt-5 max-w-xl text-lg leading-8">
-			{serviceCopy.contactText}
-		</p>
-		<div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-			<a
-				href={contactHref}
-				class="button-primary w-full sm:w-auto"
-				data-contact-modal-open
-			>
-				{serviceCopy.contactButton}
-			</a>
-			<a
-				href={whatsappHref}
-				target="_blank"
-				rel="noopener noreferrer nofollow"
-				class="button-secondary w-full sm:w-auto"
-			>
-				{serviceCopy.whatsappButton}
-				<Icon name="move-up-right" class="h-4 w-4" />
-			</a>
-		</div>
-	</section>
+	<ConversionCta
+		eyebrow={serviceCopy.contactEyebrow}
+		title={serviceCopy.contactTitle}
+		text={serviceCopy.contactText}
+		primary={{
+			label: serviceCopy.contactButton,
+			href: contactHref,
+			opensContactModal: true,
+		}}
+		secondary={{
+			label: serviceCopy.whatsappButton,
+			href: whatsappHref,
+			external: true,
+		}}
+		headingId="service-conversion-title"
+	/>
 
 	<dialog
 		id="service-contact-dialog"
