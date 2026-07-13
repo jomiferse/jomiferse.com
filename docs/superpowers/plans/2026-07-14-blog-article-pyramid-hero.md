@@ -240,3 +240,61 @@ Expected: all commands exit with code `0`; the production build completes and al
 git add scripts/verify-blog-redesign.mjs src/layouts/BlogPostLayout.astro
 git commit -m "refactor(blog): stack article hero content"
 ```
+
+### Task 2: Tighten the pyramid scale for long mobile titles
+
+**Files:**
+- Modify: `scripts/verify-blog-redesign.mjs`
+- Modify: `src/layouts/BlogPostLayout.astro`
+
+**Interfaces:**
+- Consumes: the existing `data-blog-article-title` and `data-blog-article-cover` markers.
+- Produces: a compact desktop cover frame and a fluid mobile title scale without changes to the semantic hero order.
+- Preserves: the 16:9 cover, desktop display typography, metadata, description, and all SEO data.
+
+- [ ] **Step 1: Write the failing structural regression check**
+
+Require the cover class to start with `mx-auto mt-8 max-w-4xl` and require the title class to contain the mobile-first fluid size `text-[clamp(2.5rem,11vw,3.5rem)]` plus the desktop `md:text-7xl` size.
+
+- [ ] **Step 2: Run the focused verifier and confirm the expected failure**
+
+Run:
+
+```bash
+PATH="$HOME/.nvm/versions/node/v24.15.0/bin:$PATH" node scripts/verify-blog-redesign.mjs
+```
+
+Expected: exit code `1` reporting the missing compact cover and mobile title scale.
+
+- [ ] **Step 3: Apply the minimal visual adjustment**
+
+In `src/layouts/BlogPostLayout.astro`, use these class prefixes:
+
+```astro
+class="mx-auto max-w-5xl text-center text-[clamp(2.5rem,11vw,3.5rem)] leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
+```
+
+```astro
+class="mx-auto mt-8 max-w-4xl overflow-hidden ... md:mt-10"
+```
+
+This caps long titles below the prior 3rem mobile baseline while retaining the established desktop hierarchy. It makes the cover 896px wide at large breakpoints while leaving the image ratio unchanged.
+
+- [ ] **Step 4: Verify behavior and format**
+
+Run:
+
+```bash
+PATH="$HOME/.nvm/versions/node/v24.15.0/bin:$PATH" pnpm exec prettier --write src/layouts/BlogPostLayout.astro scripts/verify-blog-redesign.mjs
+PATH="$HOME/.nvm/versions/node/v24.15.0/bin:$PATH" node scripts/verify-blog-redesign.mjs
+PATH="$HOME/.nvm/versions/node/v24.15.0/bin:$PATH" pnpm run check
+```
+
+Expected: the focused verifier passes and Astro reports `0 errors`, `0 warnings`, and `0 hints`.
+
+- [ ] **Step 5: Commit the adjustment**
+
+```bash
+git add scripts/verify-blog-redesign.mjs src/layouts/BlogPostLayout.astro
+git commit -m "style(blog): compact article hero scale"
+```
