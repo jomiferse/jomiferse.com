@@ -205,6 +205,7 @@ for (const marker of [
 	'aria-disabled="true"',
 	'name="arrow-left"',
 	'name="arrow-right"',
+	"button-action w-full sm:w-auto",
 	"var(--action)",
 ]) {
 	if (!blogPagination.includes(marker)) {
