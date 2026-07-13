@@ -1,4 +1,5 @@
 ---
+import BlogArticleToc from "@/components/common/BlogArticleToc.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
 import { getLocaleFromPath, getTranslations, type Locale, t } from "@/i18n";
 
@@ -10,10 +11,23 @@ interface Frontmatter {
 	tags?: string[];
 	author?: string;
 	readingTime?: string;
+	cover: {
+		src: string;
+		alt: string;
+	};
+}
+
+interface Heading {
+	depth: number;
+	slug: string;
+	text: string;
 }
 
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
-const { frontmatter } = Astro.props as { frontmatter: Frontmatter };
+const { frontmatter, headings } = Astro.props as {
+	frontmatter: Frontmatter;
+	headings: Heading[];
+};
 
 const blogPath = `/${locale}/blog`;
 const articlePath = Astro.url.pathname;
@@ -22,95 +36,130 @@ const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 const wasUpdated =
 	frontmatter.dateModified &&
 	frontmatter.dateModified.getTime() !== frontmatter.date.getTime();
-const postCta = getTranslations(locale).blog.post.cta;
+const postCopy = getTranslations(locale).blog.post;
+const postCta = postCopy.cta;
 ---
 
 <article>
-	<nav class="mb-10 md:mb-12">
+	<nav class="mb-8 md:mb-10">
 		<a href={blogPath} class="button-secondary min-h-0 px-4 py-2 text-sm">
 			{t(locale, "blog.post.back")}
 		</a>
 	</nav>
 
-	<header class="max-w-4xl">
-		<div
-			class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold text-[var(--text-muted)]"
-		>
-			<time datetime={frontmatter.date.toISOString()}>
-				{
-					frontmatter.date.toLocaleDateString(dateLocale, {
-						year: "numeric",
-						month: "long",
-						day: "numeric",
-					})
-				}
-			</time>
-			{
-				wasUpdated ? (
-					<time datetime={frontmatter.dateModified?.toISOString()}>
-						{locale === "es" ? "Actualizado" : "Updated"}{" "}
-						{frontmatter.dateModified?.toLocaleDateString(dateLocale, {
+	<header
+		class="grid items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)] lg:gap-12"
+	>
+		<div>
+			<div
+				class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-[var(--text-muted)]"
+			>
+				<time datetime={frontmatter.date.toISOString()}>
+					{
+						frontmatter.date.toLocaleDateString(dateLocale, {
 							year: "numeric",
 							month: "long",
 							day: "numeric",
-						})}
-					</time>
+						})
+					}
+				</time>
+				{
+					wasUpdated ? (
+						<>
+							<span aria-hidden="true">·</span>
+							<time datetime={frontmatter.dateModified?.toISOString()}>
+								{locale === "es" ? "Actualizado" : "Updated"}{" "}
+								{frontmatter.dateModified?.toLocaleDateString(dateLocale, {
+									year: "numeric",
+									month: "long",
+									day: "numeric",
+								})}
+							</time>
+						</>
+					) : null
+				}
+				{
+					frontmatter.readingTime ? (
+						<>
+							<span aria-hidden="true">·</span>
+							<span>{frontmatter.readingTime}</span>
+						</>
+					) : null
+				}
+				{
+					frontmatter.author ? (
+						<>
+							<span aria-hidden="true">·</span>
+							<a
+								href={`/${locale}/about`}
+								class="hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
+							>
+								{frontmatter.author}
+							</a>
+						</>
+					) : null
+				}
+			</div>
+
+			<h1
+				class="mt-5 text-4xl leading-[1.08] font-black text-[var(--text)] sm:text-5xl lg:text-6xl"
+			>
+				{frontmatter.title}
+			</h1>
+
+			{
+				frontmatter.description ? (
+					<p class="muted-copy mt-5 text-lg leading-8">
+						{frontmatter.description}
+					</p>
 				) : null
 			}
-			{frontmatter.readingTime ? <span>{frontmatter.readingTime}</span> : null}
+
 			{
-				frontmatter.author ? (
-					<a
-						href={`/${locale}/about/`}
-						class="hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
-					>
-						{frontmatter.author}
-					</a>
+				frontmatter.tags?.length ? (
+					<div class="mt-6 flex flex-wrap gap-2">
+						{frontmatter.tags.map((tag) => (
+							<span class="tag-pill">{tag}</span>
+						))}
+					</div>
 				) : null
 			}
 		</div>
 
-		<h1
-			class="mt-6 max-w-4xl text-4xl leading-tight font-black text-[var(--text)] md:text-6xl"
-		>
-			{frontmatter.title}
-		</h1>
-
-		{
-			frontmatter.description && (
-				<p class="muted-copy mt-6 max-w-3xl text-lg leading-8">
-					{frontmatter.description}
-				</p>
-			)
-		}
-
-		{
-			frontmatter.tags?.length ? (
-				<div class="mt-7 flex flex-wrap gap-2">
-					{frontmatter.tags.map((tag) => (
-						<span class="tag-pill">{tag}</span>
-					))}
-				</div>
-			) : null
-		}
+		<div class="dark-card overflow-hidden">
+			<img
+				src={frontmatter.cover.src}
+				alt={frontmatter.cover.alt}
+				width="1600"
+				height="900"
+				loading="eager"
+				fetchpriority="high"
+				class="aspect-[16/9] w-full object-cover"
+			/>
+		</div>
 	</header>
 
-	<div class="mx-auto mt-16 max-w-3xl md:mt-20">
-		<div class="prose-wrapper">
+	<div
+		class="mx-auto mt-12 grid max-w-6xl items-start gap-8 md:mt-16 lg:grid-cols-[minmax(12rem,16rem)_minmax(0,48rem)] lg:justify-center lg:gap-12 xl:gap-16"
+	>
+		<BlogArticleToc headings={headings} label={postCopy.toc} />
+		<div class="prose-wrapper max-w-3xl min-w-0">
 			<slot />
 		</div>
 	</div>
 
-	<ConversionCta
-		eyebrow={postCta.eyebrow}
-		title={postCta.title}
-		text={postCta.text}
-		primary={{ label: postCta.services, href: `/${locale}/services` }}
-		secondary={{ label: postCta.contact, href: contactPath }}
-		headingId="article-conversion-title"
-	/>
+	<div class="mt-16 md:mt-20">
+		<ConversionCta
+			eyebrow={postCta.eyebrow}
+			title={postCta.title}
+			text={postCta.text}
+			primary={{ label: postCta.services, href: `/${locale}/services` }}
+			secondary={{ label: postCta.contact, href: contactPath }}
+			headingId="article-conversion-title"
+		/>
+	</div>
 
-	<footer class="hairline mt-20 border-t pt-10">
+	<footer class="hairline mt-16 border-t pt-8 md:mt-20">
 		<a
 			href={blogPath}
 			class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)] hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"

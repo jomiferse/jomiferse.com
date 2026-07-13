@@ -143,6 +143,45 @@ for (const marker of ["data-blog-featured", "button-action", "cover.src"]) {
 	if (!featured.includes(marker)) failures.push(`featured: missing ${marker}`);
 }
 
+const articleRoute = await readFile(
+	join(root, "src/pages/[locale]/blog/[...slug].astro"),
+	"utf8",
+);
+const articleLayout = await readFile(
+	join(root, "src/layouts/BlogPostLayout.astro"),
+	"utf8",
+);
+const toc = await readFile(
+	join(root, "src/components/common/BlogArticleToc.astro"),
+	"utf8",
+).catch(() => "");
+
+for (const marker of [
+	"headings",
+	"image={post.data.cover.src}",
+	"imageAlt={post.data.cover.alt}",
+]) {
+	if (!articleRoute.includes(marker)) {
+		failures.push(`article route: missing ${marker}`);
+	}
+}
+
+for (const marker of [
+	"BlogArticleToc",
+	"frontmatter.cover.src",
+	"frontmatter.cover.alt",
+	"lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)]",
+	"ConversionCta",
+]) {
+	if (!articleLayout.includes(marker)) {
+		failures.push(`article layout: missing ${marker}`);
+	}
+}
+
+for (const marker of ["<nav", "<details", "<summary", "heading.slug"]) {
+	if (!toc.includes(marker)) failures.push(`article TOC: missing ${marker}`);
+}
+
 if (failures.length > 0) {
 	console.error("Blog editorial redesign verification failed:\n");
 	for (const failure of failures) console.error(`- ${failure}`);
