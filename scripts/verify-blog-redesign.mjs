@@ -205,12 +205,18 @@ for (const marker of [
 	'aria-disabled="true"',
 	'name="arrow-left"',
 	'name="arrow-right"',
-	"button-action w-full sm:w-auto",
+	"button-secondary w-full sm:w-auto",
 	"var(--action)",
 ]) {
 	if (!blogPagination.includes(marker)) {
 		failures.push(`pagination component: missing ${marker}`);
 	}
+}
+
+if (blogPagination.includes("button-action")) {
+	failures.push(
+		"pagination component: previous and next controls must be secondary",
+	);
 }
 
 const articleRoute = await readFile(

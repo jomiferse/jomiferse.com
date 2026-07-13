@@ -78,14 +78,14 @@ const pageLabel = labels.pageLabel
 			{currentPage < totalPages ? (
 				<a
 					href={getBlogPagePath(locale, nextPage)}
-					class="button-action w-full sm:w-auto"
+					class="button-secondary w-full sm:w-auto"
 				>
 					{labels.next}
 					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 				</a>
 			) : (
 				<span
-					class="button-action pointer-events-none w-full opacity-45 sm:w-auto"
+					class="button-secondary pointer-events-none w-full opacity-45 sm:w-auto"
 					aria-disabled="true"
 				>
 					{labels.next}
