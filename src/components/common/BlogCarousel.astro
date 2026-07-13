@@ -1,0 +1,205 @@
+---
+import { Icon } from "astro-icon/components";
+import BlogPostCard from "@/components/cards/BlogPostCard.astro";
+import type { Locale } from "@/i18n";
+import { getLocalBlogSlug, type BlogPost } from "@/lib/blog";
+
+interface Props {
+	posts: BlogPost[];
+	locale: Locale;
+	blogBasePath: string;
+	dateLocale: string;
+	label: string;
+	copy: {
+		readArticle: string;
+		carouselPrevious: string;
+		carouselNext: string;
+		carouselPosition: string;
+	};
+}
+
+const { posts, locale, blogBasePath, dateLocale, label, copy } =
+	Astro.props as Props;
+const trackId = `blog-carousel-${locale}`;
+const initialPosition = copy.carouselPosition
+	.replace("{current}", "1")
+	.replace("{total}", String(posts.length));
+---
+
+<div
+	aria-label={label}
+	aria-roledescription="carousel"
+	data-blog-carousel
+	data-position-template={copy.carouselPosition}
+>
+	<div class="mb-5 flex items-center justify-between gap-4 sm:hidden">
+		<p
+			class="text-sm font-bold text-[var(--text-muted)]"
+			aria-live="polite"
+			data-carousel-position
+		>
+			{initialPosition}
+		</p>
+		<div class="flex gap-2">
+			<button
+				type="button"
+				class="blog-carousel-button"
+				aria-label={copy.carouselPrevious}
+				aria-controls={trackId}
+				data-carousel-previous
+				disabled
+			>
+				<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
+			</button>
+			<button
+				type="button"
+				class="blog-carousel-button"
+				aria-label={copy.carouselNext}
+				aria-controls={trackId}
+				data-carousel-next
+			>
+				<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+			</button>
+		</div>
+	</div>
+
+	<ol
+		id={trackId}
+		class="stagger-children -mx-4 flex snap-x snap-mandatory [scrollbar-width:none] items-stretch gap-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden"
+		data-carousel-track
+	>
+		{
+			posts.map((post) => (
+				<li
+					class="flex w-[86%] shrink-0 snap-start sm:w-auto sm:shrink"
+					data-blog-slide
+				>
+					<BlogPostCard
+						href={`${blogBasePath}/${getLocalBlogSlug(post.id, locale)}`}
+						title={post.data.title}
+						description={post.data.description}
+						dateLabel={post.data.date.toLocaleDateString(dateLocale, {
+							year: "numeric",
+							month: "short",
+							day: "numeric",
+						})}
+						readLabel={copy.readArticle}
+						readingTime={post.data.readingTime}
+						cover={post.data.cover}
+					/>
+				</li>
+			))
+		}
+	</ol>
+</div>
+
+<style>
+	.blog-carousel-button {
+		display: inline-grid;
+		width: 2.75rem;
+		height: 2.75rem;
+		cursor: pointer;
+		place-items: center;
+		border: 1px solid var(--surface-border);
+		border-radius: 999px;
+		background: var(--surface);
+		color: var(--text);
+		transition:
+			border-color 160ms ease,
+			color 160ms ease,
+			opacity 160ms ease;
+	}
+
+	.blog-carousel-button:hover:not(:disabled) {
+		border-color: var(--action);
+		color: var(--action);
+	}
+
+	.blog-carousel-button:focus-visible {
+		outline: 2px solid var(--action);
+		outline-offset: 3px;
+	}
+
+	.blog-carousel-button:disabled {
+		cursor: not-allowed;
+		opacity: 0.38;
+	}
+</style>
+
+<script>
+	const initializeBlogCarousel = (carousel: HTMLElement) => {
+		if (carousel.dataset.enhanced === "true") return;
+		carousel.dataset.enhanced = "true";
+
+		const track = carousel.querySelector<HTMLElement>("[data-carousel-track]");
+		const slides = Array.from(
+			carousel.querySelectorAll<HTMLElement>("[data-blog-slide]"),
+		);
+		const previous = carousel.querySelector<HTMLButtonElement>(
+			"[data-carousel-previous]",
+		);
+		const next = carousel.querySelector<HTMLButtonElement>(
+			"[data-carousel-next]",
+		);
+		const position = carousel.querySelector<HTMLElement>(
+			"[data-carousel-position]",
+		);
+		const positionTemplate =
+			carousel.dataset.positionTemplate ?? "{current}/{total}";
+
+		if (!track || !slides.length || !previous || !next || !position) return;
+
+		const prefersReducedMotion = window.matchMedia(
+			"(prefers-reduced-motion: reduce)",
+		).matches;
+		let activeIndex = 0;
+		let animationFrame = 0;
+
+		const update = () => {
+			const trackLeft = track.getBoundingClientRect().left;
+			activeIndex = slides.reduce((closest, slide, index) => {
+				const currentDistance = Math.abs(
+					slides[closest].getBoundingClientRect().left - trackLeft,
+				);
+				const nextDistance = Math.abs(
+					slide.getBoundingClientRect().left - trackLeft,
+				);
+				return nextDistance < currentDistance ? index : closest;
+			}, 0);
+
+			previous.disabled = activeIndex === 0;
+			next.disabled = activeIndex === slides.length - 1;
+			position.textContent = positionTemplate
+				.replace("{current}", String(activeIndex + 1))
+				.replace("{total}", String(slides.length));
+		};
+
+		const scheduleUpdate = () => {
+			window.cancelAnimationFrame(animationFrame);
+			animationFrame = window.requestAnimationFrame(update);
+		};
+
+		const moveTo = (index: number) => {
+			slides[index]?.scrollIntoView({
+				behavior: prefersReducedMotion ? "auto" : "smooth",
+				block: "nearest",
+				inline: "start",
+			});
+		};
+
+		previous.addEventListener("click", () => moveTo(activeIndex - 1));
+		next.addEventListener("click", () => moveTo(activeIndex + 1));
+		track.addEventListener("scroll", scheduleUpdate, { passive: true });
+		window.addEventListener("resize", scheduleUpdate, { passive: true });
+		update();
+	};
+
+	const setupBlogCarousels = () => {
+		document
+			.querySelectorAll<HTMLElement>("[data-blog-carousel]")
+			.forEach(initializeBlogCarousel);
+	};
+
+	document.addEventListener("astro:page-load", setupBlogCarousels);
+	setupBlogCarousels();
+</script>

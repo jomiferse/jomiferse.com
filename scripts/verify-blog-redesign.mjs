@@ -124,6 +124,10 @@ const card = await readFile(
 	join(root, "src/components/cards/BlogPostCard.astro"),
 	"utf8",
 );
+const blogCarousel = await readFile(
+	join(root, "src/components/common/BlogCarousel.astro"),
+	"utf8",
+).catch(() => "");
 
 for (const marker of ["BlogFeaturedPost", "primaryFeatured", "archivePosts"]) {
 	if (!archive.includes(marker)) failures.push(`archive: missing ${marker}`);
@@ -149,6 +153,28 @@ for (const marker of ["cleanTags", "tag-pill"]) {
 	if (card.includes(marker)) failures.push(`card: must not render ${marker}`);
 }
 for (const marker of [
+	"data-blog-carousel",
+	"data-carousel-track",
+	"data-blog-slide",
+	"snap-mandatory",
+	"sm:grid",
+	"data-carousel-previous",
+	"data-carousel-next",
+	"prefers-reduced-motion",
+]) {
+	if (!blogCarousel.includes(marker)) {
+		failures.push(`blog carousel: missing ${marker}`);
+	}
+}
+for (const [name, source] of [
+	["archive", archive],
+	["pagination", paginated],
+]) {
+	if (!source.includes("BlogCarousel")) {
+		failures.push(`${name}: missing mobile BlogCarousel`);
+	}
+}
+for (const marker of [
 	"data-blog-featured",
 	"data-blog-featured-action",
 	'name="calendar"',
@@ -163,8 +189,8 @@ for (const [name, source] of [
 	["archive", archive],
 	["pagination", paginated],
 ]) {
-	if (!source.includes("readLabel={page.readArticle}")) {
-		failures.push(`${name}: cards are missing localized readLabel`);
+	if (!source.includes("copy={page}")) {
+		failures.push(`${name}: carousel is missing localized copy`);
 	}
 }
 
@@ -280,12 +306,24 @@ for (const [locale, source, expected] of [
 	[
 		"es",
 		spanishTranslations,
-		['"browseArticles": "Ver artículos"', '"tocCurrent": "Sección actual"'],
+		[
+			'"browseArticles": "Ver artículos"',
+			'"tocCurrent": "Sección actual"',
+			'"carouselPrevious": "Ver artículo anterior"',
+			'"carouselNext": "Ver artículo siguiente"',
+			'"carouselPosition": "Artículo {current} de {total}"',
+		],
 	],
 	[
 		"en",
 		englishTranslations,
-		['"browseArticles": "Browse articles"', '"tocCurrent": "Current section"'],
+		[
+			'"browseArticles": "Browse articles"',
+			'"tocCurrent": "Current section"',
+			'"carouselPrevious": "View previous article"',
+			'"carouselNext": "View next article"',
+			'"carouselPosition": "Article {current} of {total}"',
+		],
 	],
 ]) {
 	for (const marker of expected) {

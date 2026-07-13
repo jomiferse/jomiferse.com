@@ -788,6 +788,9 @@
       "featuredEyebrow": "Featured article",
       "readArticle": "Read article",
       "browseArticles": "Browse articles",
+      "carouselPrevious": "View previous article",
+      "carouselNext": "View next article",
+      "carouselPosition": "Article {current} of {total}",
       "empty": "No articles published yet.",
       "cta": {
         "eyebrow": "Have a project in mind?",

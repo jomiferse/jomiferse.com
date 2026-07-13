@@ -2,14 +2,10 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 import { getTranslations, locales, t, type Locale } from "@/i18n";
-import BlogPostCard from "@/components/cards/BlogPostCard.astro";
+import BlogCarousel from "@/components/common/BlogCarousel.astro";
 import BlogPagination from "@/components/common/BlogPagination.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
-import {
-	getBlogPostGroups,
-	getLocalBlogSlug,
-	getPublishedBlogPosts,
-} from "@/lib/blog";
+import { getBlogPostGroups, getPublishedBlogPosts } from "@/lib/blog";
 import {
 	getBlogPagePath,
 	getPageItems,
@@ -113,23 +109,14 @@ const structuredData = [
 			</div>
 			{
 				latestPosts.length > 0 ? (
-					<div class="stagger-children grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-						{latestPosts.map((post) => (
-							<BlogPostCard
-								href={`${blogBasePath}/${getLocalBlogSlug(post.id, locale)}`}
-								title={post.data.title}
-								description={post.data.description}
-								dateLabel={post.data.date.toLocaleDateString(dateLocale, {
-									year: "numeric",
-									month: "short",
-									day: "numeric",
-								})}
-								readLabel={page.readArticle}
-								readingTime={post.data.readingTime}
-								cover={post.data.cover}
-							/>
-						))}
-					</div>
+					<BlogCarousel
+						posts={latestPosts}
+						locale={locale}
+						blogBasePath={blogBasePath}
+						dateLocale={dateLocale}
+						label={sections.latest.title}
+						copy={page}
+					/>
 				) : (
 					<div class="dark-card p-6 text-[var(--text-muted)]">
 						{empty.latest}
