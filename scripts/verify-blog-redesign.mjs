@@ -273,6 +273,20 @@ if (articleHeroPositions.some((position) => position === -1)) {
 }
 
 if (
+	!articleLayout.includes(
+		'data-blog-article-cover\n\t\t\tclass="mx-auto mt-8 max-w-4xl',
+	)
+) {
+	failures.push("article layout: pyramid cover must use the compact width");
+}
+
+for (const marker of ["text-[clamp(2.5rem,11vw,3.5rem)]", "md:text-7xl"]) {
+	if (!articleLayout.includes(marker)) {
+		failures.push(`article layout: title is missing ${marker}`);
+	}
+}
+
+if (
 	articleLayout.includes("frontmatter.tags?.length") ||
 	articleLayout.includes('class="tag-pill"')
 ) {

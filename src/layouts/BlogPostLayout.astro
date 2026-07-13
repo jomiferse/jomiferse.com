@@ -55,14 +55,14 @@ const postCta = postCopy.cta;
 	<header data-blog-article-hero class="section-reveal py-10 md:py-14">
 		<h1
 			data-blog-article-title
-			class="mx-auto max-w-5xl text-center text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
+			class="mx-auto max-w-5xl text-center text-[clamp(2.5rem,11vw,3.5rem)] leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
 		>
 			{frontmatter.title}
 		</h1>
 
 		<div
 			data-blog-article-cover
-			class="mx-auto mt-8 max-w-6xl overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_46%),var(--bg-band)] shadow-[var(--shadow-card)] md:mt-10"
+			class="mx-auto mt-8 max-w-4xl overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_46%),var(--bg-band)] shadow-[var(--shadow-card)] md:mt-10"
 		>
 			<img
 				src={frontmatter.cover.src}
