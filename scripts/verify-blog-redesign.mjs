@@ -235,12 +235,15 @@ for (const marker of [
 	"<summary",
 	"heading.slug",
 	"data-article-toc",
+	'class="lg:sticky lg:top-24"',
 	"data-toc-link",
 	"data-toc-current",
 	'"aria-current", "location"',
 	"IntersectionObserver",
 	'rootMargin: "-112px 0px -65% 0px"',
 	'addEventListener("astro:page-load"',
+	'addEventListener("hashchange"',
+	"decodeURIComponent(link.hash.slice(1))",
 	'name="book-open"',
 ]) {
 	if (!toc.includes(marker)) failures.push(`article TOC: missing ${marker}`);

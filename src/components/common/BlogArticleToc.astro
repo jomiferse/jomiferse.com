@@ -19,10 +19,14 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 
 {
 	sectionHeadings.length > 0 ? (
-		<div data-article-toc data-current-label={currentLabel}>
+		<div
+			data-article-toc
+			data-current-label={currentLabel}
+			class="lg:sticky lg:top-24"
+		>
 			<nav
 				aria-label={label}
-				class="relative isolate hidden h-fit overflow-hidden rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[radial-gradient(circle_at_100%_0%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_11rem),var(--surface)] p-5 shadow-[var(--shadow-card)] lg:sticky lg:top-24 lg:block"
+				class="relative isolate hidden h-fit overflow-hidden rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[radial-gradient(circle_at_100%_0%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_11rem),var(--surface)] p-5 shadow-[var(--shadow-card)] lg:block"
 			>
 				<div class="flex items-center gap-3">
 					<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,transparent)] bg-[color-mix(in_srgb,var(--action)_12%,var(--surface))] text-[var(--action)]">
@@ -107,7 +111,11 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 				const links = Array.from(
 					toc.querySelectorAll<HTMLAnchorElement>("[data-toc-link]"),
 				);
-				const ids = [...new Set(links.map((link) => link.hash.slice(1)))];
+				const ids = [
+					...new Set(
+						links.map((link) => decodeURIComponent(link.hash.slice(1))),
+					),
+				];
 				const headings = ids
 					.map((id) => document.getElementById(id))
 					.filter((heading): heading is HTMLElement => Boolean(heading));
@@ -119,7 +127,7 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 
 				const setActive = (id: string) => {
 					links.forEach((link) => {
-						const isActive = link.hash === `#${id}`;
+						const isActive = decodeURIComponent(link.hash.slice(1)) === id;
 						link.toggleAttribute("data-active", isActive);
 						if (isActive) link.setAttribute("aria-current", "location");
 						else link.removeAttribute("aria-current");
@@ -146,18 +154,29 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 					if (active) setActive(active.id);
 				};
 
+				const updateFromHash = () => {
+					const id = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+					const matchingHeading = headings.find((heading) => heading.id === id);
+					if (matchingHeading) setActive(matchingHeading.id);
+					else updateActive();
+				};
+
 				const observer = new IntersectionObserver(updateActive, {
 					rootMargin: "-112px 0px -65% 0px",
 					threshold: [0, 1],
 				});
 				headings.forEach((heading) => observer.observe(heading));
 				window.addEventListener("scroll", updateActive, { passive: true });
+				document.addEventListener("scroll", updateActive, { passive: true });
+				window.addEventListener("hashchange", updateFromHash);
 				links.forEach((link) =>
-					link.addEventListener("click", () =>
-						disclosure?.removeAttribute("open"),
-					),
+					link.addEventListener("click", () => {
+						disclosure?.removeAttribute("open");
+						const id = decodeURIComponent(link.hash.replace(/^#/, ""));
+						if (headings.some((heading) => heading.id === id)) setActive(id);
+					}),
 				);
-				updateActive();
+				updateFromHash();
 			});
 	};
 
