@@ -12,7 +12,7 @@ Create `src/components/common/ConversionCta.astro` and use it for the final CTA 
 
 - About.
 - Education.
-- Blog index and paginated blog archives.
+- Blog index, paginated blog archives, and individual blog posts.
 - Services index.
 - Individual service pages.
 - Generic localized landing pages.
