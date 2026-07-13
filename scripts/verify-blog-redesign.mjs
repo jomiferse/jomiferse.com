@@ -286,6 +286,10 @@ for (const marker of ["text-[clamp(2.5rem,11vw,3.5rem)]", "md:text-7xl"]) {
 	}
 }
 
+if (!articleLayout.includes("data-blog-article-meta-separator")) {
+	failures.push("article layout: metadata separators are missing");
+}
+
 if (
 	articleLayout.includes("frontmatter.tags?.length") ||
 	articleLayout.includes('class="tag-pill"')
