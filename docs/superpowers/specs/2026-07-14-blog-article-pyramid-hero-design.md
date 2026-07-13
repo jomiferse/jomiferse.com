@@ -37,8 +37,9 @@ The current pills are plain text spans, not links to topic archives, so they pro
 ## Responsive behavior
 
 - Mobile keeps the same semantic order as desktop: title, cover, metadata, description.
-- The title scales through the existing responsive typography sizes.
+- Use a fluid mobile title scale capped below the previous `text-5xl` baseline so long article titles keep their editorial hierarchy without occupying most of the first viewport. Desktop may retain the display scale from the original composition.
 - The cover remains 16:9 and uses the available width without horizontal overflow.
+- Constrain the desktop cover to `max-w-4xl`. This deliberately makes the cover narrower than the title measure, strengthening the pyramid and avoiding a banner-like result.
 - Metadata wraps naturally into multiple centered rows on narrow screens.
 - The description remains left-readable within its centered block; it should not become a long centered paragraph on mobile.
 - The reading area, table of contents, conversion CTA, and article body remain unchanged.
@@ -52,7 +53,7 @@ The current pills are plain text spans, not links to topic archives, so they pro
 
 ## Component scope
 
-Only `src/layouts/BlogPostLayout.astro` needs visual markup changes. Extend `scripts/verify-blog-redesign.mjs` to assert the stacked hero marker/order and the absence of visible `tag-pill` rendering in the article layout.
+Only `src/layouts/BlogPostLayout.astro` needs visual markup changes. Extend `scripts/verify-blog-redesign.mjs` to assert the stacked hero marker/order, the compact cover width, and the absence of visible `tag-pill` rendering in the article layout.
 
 Do not change article content, cover assets, archive cards, pagination, navigation, structured-data builders, or localization.
 
@@ -64,6 +65,8 @@ Verify representative Spanish and English article routes at mobile and desktop w
 - The cover appears before metadata and description.
 - No tag pills are visible.
 - Long titles wrap cleanly.
+- On a 390px-wide viewport, a long title remains clearly subordinate to the cover instead of filling nearly the full first viewport.
+- On a 1440px-wide viewport, the cover is visibly narrower than in the initial stack while retaining its 16:9 ratio.
 - Metadata wraps without overflow.
 - The image preserves its aspect ratio.
 - The transition into the article navigation and body remains visually balanced.
