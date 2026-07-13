@@ -171,14 +171,14 @@ const postCta = postCopy.cta;
 	</header>
 
 	<div
-		class="grid items-start gap-8 border-t border-[var(--surface-border)] py-14 md:py-18 lg:grid-cols-[19rem_minmax(0,48rem)] lg:justify-center lg:gap-12 xl:gap-16"
+		class="grid items-start gap-6 border-t border-[var(--surface-border)] py-10 md:py-14 lg:grid-cols-[22rem_minmax(0,52rem)] lg:justify-center lg:gap-10 xl:gap-12"
 	>
 		<BlogArticleToc
 			headings={headings}
 			label={postCopy.toc}
 			currentLabel={postCopy.tocCurrent}
 		/>
-		<div class="prose-wrapper max-w-3xl min-w-0">
+		<div class="prose-wrapper max-w-[50rem] min-w-0">
 			<slot />
 		</div>
 	</div>

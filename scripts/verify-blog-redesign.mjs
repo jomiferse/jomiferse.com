@@ -242,7 +242,10 @@ for (const marker of [
 	"frontmatter.cover.src",
 	"frontmatter.cover.alt",
 	'name="arrow-left"',
-	"lg:grid-cols-[19rem_minmax(0,48rem)]",
+	"lg:grid-cols-[22rem_minmax(0,52rem)]",
+	"lg:gap-10",
+	"md:py-14",
+	"prose-wrapper max-w-[50rem]",
 	"currentLabel={postCopy.tocCurrent}",
 	"ConversionCta",
 ]) {
