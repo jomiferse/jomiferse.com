@@ -21,8 +21,8 @@ export async function getStaticPaths() {
 
 	for (const locale of locales) {
 		const posts = await getPublishedBlogPosts(locale);
-		const { latestPosts } = getBlogPostGroups(posts);
-		const totalPages = getTotalPages(latestPosts.length);
+		const { archivePosts } = getBlogPostGroups(posts);
+		const totalPages = getTotalPages(archivePosts.length);
 
 		for (let page = 2; page <= totalPages; page += 1) {
 			paths.push({
@@ -43,9 +43,9 @@ export async function getStaticPaths() {
 const locale = Astro.params.locale as Locale;
 const { pageNumber } = Astro.props as { pageNumber: number };
 const posts = await getPublishedBlogPosts(locale);
-const { latestPosts: allLatestPosts } = getBlogPostGroups(posts);
-const totalPages = getTotalPages(allLatestPosts.length);
-const latestPosts = getPageItems(allLatestPosts, pageNumber);
+const { archivePosts } = getBlogPostGroups(posts);
+const totalPages = getTotalPages(archivePosts.length);
+const latestPosts = getPageItems(archivePosts, pageNumber);
 
 const blogBasePath = `/${locale}/blog`;
 const pagePath = getBlogPagePath(locale, pageNumber);
@@ -77,20 +77,20 @@ const structuredData = [
 	structuredData={structuredData}
 	keywords={["Engineering Blog", "Software Engineering", "Automation"]}
 >
-	<section class="section-reveal py-10 md:py-20">
+	<section class="section-reveal py-8 md:py-14">
 		<p class="eyebrow">{page.eyebrow}</p>
 		<h1
-			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+			class="mt-5 max-w-4xl text-4xl font-black text-[var(--text)] sm:text-5xl md:text-6xl"
 		>
 			{page.title}
-			<span class="accent-text">{page.titleAccent}</span>
+			<span class="accent-text"> {page.titleAccent}</span>
 		</h1>
 		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
 			{page.intro}
 		</p>
 	</section>
 
-	<section class="section-reveal pb-20 md:pb-28">
+	<section class="section-reveal pb-16 md:pb-24">
 		<div class="mb-7 flex flex-col gap-2">
 			<h2 class="text-3xl font-black text-[var(--text)] md:text-4xl">
 				{sections.latest.title}
@@ -99,7 +99,7 @@ const structuredData = [
 		</div>
 		{
 			latestPosts.length > 0 ? (
-				<div class="stagger-children grid gap-5 md:grid-cols-2">
+				<div class="stagger-children grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 					{latestPosts.map((post) => (
 						<BlogPostCard
 							href={`${blogBasePath}/${getLocalBlogSlug(post.id, locale)}`}
@@ -112,6 +112,7 @@ const structuredData = [
 							})}
 							tags={post.data.tags ?? []}
 							readingTime={post.data.readingTime}
+							cover={post.data.cover}
 						/>
 					))}
 				</div>

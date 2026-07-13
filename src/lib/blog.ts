@@ -16,9 +16,11 @@ export async function getPublishedBlogPosts(locale: Locale) {
 }
 
 export function getBlogPostGroups(posts: BlogPost[]) {
+	const primaryFeatured = posts.find((post) => post.data.featured);
+
 	return {
-		featuredPosts: posts.filter((post) => post.data.featured),
-		latestPosts: posts.filter((post) => !post.data.featured),
+		primaryFeatured,
+		archivePosts: posts.filter((post) => post.id !== primaryFeatured?.id),
 	};
 }
 

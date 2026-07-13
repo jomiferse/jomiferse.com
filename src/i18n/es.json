@@ -785,6 +785,8 @@
       "title": "Notas de",
       "titleAccent": "construir software.",
       "intro": "Notas cortas sobre proyectos, herramientas, backend y cosas que aprendo mientras construyo.",
+      "featuredEyebrow": "Artículo destacado",
+      "readArticle": "Leer artículo",
       "empty": "Todavía no hay artículos publicados.",
       "cta": {
         "eyebrow": "¿Tienes un proyecto en mente?",

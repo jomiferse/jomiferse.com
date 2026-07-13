@@ -785,6 +785,8 @@
       "title": "Notes from",
       "titleAccent": "building software.",
       "intro": "Short notes about projects, tools, backend work and things I learn while building.",
+      "featuredEyebrow": "Featured article",
+      "readArticle": "Read article",
       "empty": "No articles published yet.",
       "cta": {
         "eyebrow": "Have a project in mind?",

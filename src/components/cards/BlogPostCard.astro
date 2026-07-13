@@ -5,9 +5,11 @@ interface Props {
 	description: string;
 	dateLabel: string;
 	tags?: string[];
-	featured?: boolean;
 	readingTime?: string;
-	featuredLabel?: string;
+	cover: {
+		src: string;
+		alt: string;
+	};
 }
 
 const {
@@ -16,42 +18,48 @@ const {
 	description,
 	dateLabel,
 	tags = [],
-	featured = false,
 	readingTime,
-	featuredLabel = "Selected",
+	cover,
 } = Astro.props as Props;
 
-const cleanTags = tags.filter((tag) => tag !== "featured").slice(0, 3);
-const articleClass = [
-	"dark-card hover-card relative flex min-h-[16rem] flex-col overflow-hidden p-6",
-	featured ? "blog-card-featured md:min-h-[20rem] md:p-8" : "",
-]
-	.filter(Boolean)
-	.join(" ");
+const cleanTags = tags.filter((tag) => tag !== "featured").slice(0, 2);
 ---
 
-<a href={href} class="group block">
-	<article class={articleClass}>
-		<div
-			class="relative z-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-bold text-[var(--text-muted)]"
-		>
-			<span>{dateLabel}</span>
-			{readingTime ? <span>{readingTime}</span> : null}
-			{featured ? <span class="featured-pill">{featuredLabel}</span> : null}
+<a href={href} class="group block h-full">
+	<article class="dark-card hover-card flex h-full flex-col overflow-hidden">
+		<div class="overflow-hidden border-b border-[var(--surface-border)]">
+			<img
+				src={cover.src}
+				alt={cover.alt}
+				width="1600"
+				height="900"
+				loading="lazy"
+				class="aspect-[16/9] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+			/>
 		</div>
 
-		<h2
-			class="relative z-10 mt-6 text-2xl font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] md:text-3xl dark:group-hover:text-[var(--accent)]"
-		>
-			{title}
-		</h2>
+		<div class="flex flex-1 flex-col p-5 md:p-6">
+			<div
+				class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-bold text-[var(--text-muted)]"
+			>
+				<time>{dateLabel}</time>
+				{readingTime ? <span aria-hidden="true">·</span> : null}
+				{readingTime ? <span>{readingTime}</span> : null}
+			</div>
 
-		<p class="muted-copy relative z-10 mt-4 leading-7">
-			{description}
-		</p>
+			<h2
+				class="mt-4 line-clamp-2 text-xl font-black text-[var(--text)] transition group-hover:text-[var(--accent-strong)] md:text-2xl dark:group-hover:text-[var(--accent)]"
+			>
+				{title}
+			</h2>
 
-		<div class="relative z-10 mt-auto flex flex-wrap gap-2 pt-6">
-			{cleanTags.map((tag) => <span class="tag-pill">{tag}</span>)}
+			<p class="muted-copy mt-3 line-clamp-2 text-sm leading-6">
+				{description}
+			</p>
+
+			<div class="mt-auto flex flex-wrap gap-2 pt-5">
+				{cleanTags.map((tag) => <span class="tag-pill">{tag}</span>)}
+			</div>
 		</div>
 	</article>
 </a>

@@ -9,7 +9,9 @@ const contentRoot = join(root, "src", "content", "blog");
 
 const readEntries = async (locale) => {
 	const directory = join(contentRoot, locale);
-	const files = (await readdir(directory)).filter((file) => file.endsWith(".md"));
+	const files = (await readdir(directory)).filter((file) =>
+		file.endsWith(".md"),
+	);
 
 	return Promise.all(
 		files.map(async (file) => ({
@@ -53,7 +55,9 @@ for (const spanishEntry of entries.filter(({ locale }) => locale === "es")) {
 	const englishEntry = englishEntries.get(translationSlug);
 
 	if (!translationSlug || !englishEntry) {
-		failures.push(`es/${spanishEntry.file}: missing matching English translation`);
+		failures.push(
+			`es/${spanishEntry.file}: missing matching English translation`,
+		);
 		continue;
 	}
 
@@ -79,7 +83,11 @@ for (const coverPath of coverPaths) {
 	try {
 		await access(assetPath);
 		const metadata = await sharp(assetPath).metadata();
-		if (metadata.format !== "heif" || metadata.width !== 1600 || metadata.height !== 900) {
+		if (
+			metadata.format !== "heif" ||
+			metadata.width !== 1600 ||
+			metadata.height !== 900
+		) {
 			failures.push(
 				`${coverPath}: expected 1600x900 AVIF, found ${metadata.width}x${metadata.height} ${metadata.format}`,
 			);
@@ -90,10 +98,49 @@ for (const coverPath of coverPaths) {
 }
 
 const schema = await readFile(join(root, "src", "content.config.ts"), "utf8");
-for (const marker of ["cover: z.object", "src: z.string()", "alt: z.string()"]) {
+for (const marker of [
+	"cover: z.object",
+	"src: z.string()",
+	"alt: z.string()",
+]) {
 	if (!schema.includes(marker)) {
 		failures.push(`content schema is missing ${marker}`);
 	}
+}
+
+const archive = await readFile(
+	join(root, "src/pages/[locale]/blog/index.astro"),
+	"utf8",
+);
+const paginated = await readFile(
+	join(root, "src/pages/[locale]/blog/page/[page].astro"),
+	"utf8",
+);
+const featured = await readFile(
+	join(root, "src/components/cards/BlogFeaturedPost.astro"),
+	"utf8",
+).catch(() => "");
+const card = await readFile(
+	join(root, "src/components/cards/BlogPostCard.astro"),
+	"utf8",
+);
+
+for (const marker of ["BlogFeaturedPost", "primaryFeatured", "archivePosts"]) {
+	if (!archive.includes(marker)) failures.push(`archive: missing ${marker}`);
+}
+if (paginated.includes("BlogFeaturedPost")) {
+	failures.push("pagination: featured story must not repeat");
+}
+for (const marker of [
+	"aspect-[16/9]",
+	"cover.src",
+	"cover.alt",
+	"line-clamp-2",
+]) {
+	if (!card.includes(marker)) failures.push(`card: missing ${marker}`);
+}
+for (const marker of ["data-blog-featured", "button-action", "cover.src"]) {
+	if (!featured.includes(marker)) failures.push(`featured: missing ${marker}`);
 }
 
 if (failures.length > 0) {
@@ -102,4 +149,4 @@ if (failures.length > 0) {
 	process.exit(1);
 }
 
-console.log("Blog editorial redesign verification passed.");
+console.warn("Blog editorial redesign verification passed.");
