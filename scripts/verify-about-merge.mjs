@@ -52,7 +52,18 @@ for (const [source, destination] of [
 }
 
 const aboutPage = await readSource("src", "pages", "[locale]", "about.astro");
-for (const marker of ["getCv(locale)", "AboutHelp", "AboutExperience"]) {
+const conversionCta = await readSource(
+	"src",
+	"components",
+	"common",
+	"ConversionCta.astro",
+);
+for (const marker of [
+	"getCv(locale)",
+	"AboutHelp",
+	"AboutExperience",
+	"ConversionCta",
+]) {
 	if (!aboutPage.includes(marker)) {
 		failures.push(`about source: missing ${marker}`);
 	}
@@ -107,7 +118,7 @@ for (const [source, utility] of [
 	[aboutComponents[1], "md:py-20"],
 	[aboutPage, "md:py-20"],
 	[aboutPage, "md:py-18"],
-	[aboutPage, "md:py-14"],
+	[conversionCta, "md:py-14"],
 ]) {
 	if (!source.includes(utility)) {
 		failures.push(`about density: missing desktop utility ${utility}`);
