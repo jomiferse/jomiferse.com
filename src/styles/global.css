@@ -222,7 +222,17 @@ body:has(.projects-page) main.site-shell {
 	max-width: 88rem;
 }
 
+body:has(.blog-page) main.site-shell,
+body:has(.blog-article-page) main.site-shell {
+	max-width: 88rem;
+}
+
 .projects-page .eyebrow {
+	color: var(--action);
+}
+
+.blog-page .eyebrow,
+.blog-article-page .eyebrow {
 	color: var(--action);
 }
 
@@ -232,6 +242,14 @@ body:has(.projects-page) main.site-shell {
 
 .about-page h1,
 .about-page h2 {
+	color: var(--home-navy);
+}
+
+.blog-page h1,
+.blog-page h2,
+.blog-article-page h1,
+.blog-article-page h2,
+.blog-article-page h3 {
 	color: var(--home-navy);
 }
 

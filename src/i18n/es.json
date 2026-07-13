@@ -787,6 +787,7 @@
       "intro": "Notas cortas sobre proyectos, herramientas, backend y cosas que aprendo mientras construyo.",
       "featuredEyebrow": "Artículo destacado",
       "readArticle": "Leer artículo",
+      "browseArticles": "Ver artículos",
       "empty": "Todavía no hay artículos publicados.",
       "cta": {
         "eyebrow": "¿Tienes un proyecto en mente?",
@@ -811,6 +812,7 @@
       "footer": "¿Te gustó este artículo?",
       "backToList": "Ver todos los posts",
       "toc": "En este artículo",
+      "tocCurrent": "Sección actual",
       "cta": {
         "eyebrow": "¿Tienes un proyecto parecido?",
         "title": "Puedo ayudarte a convertir una idea técnica en algo útil.",

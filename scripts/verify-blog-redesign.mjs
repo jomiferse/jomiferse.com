@@ -182,6 +182,52 @@ for (const marker of ["<nav", "<details", "<summary", "heading.slug"]) {
 	if (!toc.includes(marker)) failures.push(`article TOC: missing ${marker}`);
 }
 
+const globalStyles = await readFile(
+	join(root, "src", "styles", "global.css"),
+	"utf8",
+);
+const spanishTranslations = await readFile(
+	join(root, "src", "i18n", "es.json"),
+	"utf8",
+);
+const englishTranslations = await readFile(
+	join(root, "src", "i18n", "en.json"),
+	"utf8",
+);
+
+for (const marker of [
+	"body:has(.blog-page) main.site-shell",
+	"body:has(.blog-article-page) main.site-shell",
+]) {
+	if (!globalStyles.includes(marker)) failures.push(`shell: missing ${marker}`);
+}
+
+for (const [locale, source, expected] of [
+	[
+		"es",
+		spanishTranslations,
+		['"browseArticles": "Ver artículos"', '"tocCurrent": "Sección actual"'],
+	],
+	[
+		"en",
+		englishTranslations,
+		['"browseArticles": "Browse articles"', '"tocCurrent": "Current section"'],
+	],
+]) {
+	for (const marker of expected) {
+		if (!source.includes(marker)) {
+			failures.push(`${locale} translations: missing ${marker}`);
+		}
+	}
+}
+
+if (!archive.includes('class="blog-page"')) {
+	failures.push("archive: missing blog-page marker");
+}
+if (!paginated.includes('class="blog-page"')) {
+	failures.push("pagination: missing blog-page marker");
+}
+
 if (failures.length > 0) {
 	console.error("Blog editorial redesign verification failed:\n");
 	for (const failure of failures) console.error(`- ${failure}`);

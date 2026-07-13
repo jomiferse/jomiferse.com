@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import BlogFeaturedPost from "@/components/cards/BlogFeaturedPost.astro";
 import BlogPostCard from "@/components/cards/BlogPostCard.astro";
@@ -48,90 +49,107 @@ const structuredData = [
 	structuredData={structuredData}
 	keywords={["Engineering Blog", "Software Engineering", "Automation"]}
 >
-	<section class="section-reveal py-8 md:py-14">
-		<p class="eyebrow">{page.eyebrow}</p>
-		<h1
-			class="mt-5 max-w-4xl text-4xl font-black text-[var(--text)] sm:text-5xl md:text-6xl"
+	<div class="blog-page">
+		<section
+			class="section-reveal grid gap-8 pt-5 pb-12 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.42fr)] md:items-end md:pt-8 md:pb-16"
 		>
-			{page.title}
-			<span class="accent-text"> {page.titleAccent}</span>
-		</h1>
-		<p class="muted-copy mt-5 max-w-2xl text-lg leading-8">
-			{page.intro}
-		</p>
-	</section>
+			<div>
+				<p class="eyebrow text-[var(--action)]">{page.eyebrow}</p>
+				<h1
+					class="mt-4 max-w-5xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
+				>
+					{page.title}
+					{page.titleAccent}
+				</h1>
+			</div>
+			<div>
+				<p class="muted-copy text-lg leading-8">{page.intro}</p>
+				<a href="#blog-archive" class="button-action mt-6">
+					{page.browseArticles}
+					<Icon
+						name="arrow-right"
+						class="h-4 w-4 rotate-90"
+						aria-hidden="true"
+					/>
+				</a>
+			</div>
+		</section>
 
-	<section class="section-reveal pb-12 md:pb-16">
-		{
-			primaryFeatured ? (
-				<BlogFeaturedPost
-					href={`${blogBasePath}/${getLocalBlogSlug(primaryFeatured.id, locale)}`}
-					title={primaryFeatured.data.title}
-					description={primaryFeatured.data.description}
-					dateLabel={primaryFeatured.data.date.toLocaleDateString(dateLocale, {
-						year: "numeric",
-						month: "short",
-						day: "numeric",
-					})}
-					readingTime={primaryFeatured.data.readingTime}
-					cover={primaryFeatured.data.cover}
-					featuredLabel={page.featuredEyebrow}
-					readLabel={page.readArticle}
-				/>
-			) : (
-				<div class="dark-card p-6 text-[var(--text-muted)]">
-					{empty.featured}
-				</div>
-			)
-		}
-	</section>
-
-	<section class="section-reveal pb-16 md:pb-24">
-		<div class="mb-7 flex flex-col gap-2">
-			<h2 class="text-3xl font-black text-[var(--text)] md:text-4xl">
-				{sections.latest.title}
-			</h2>
-			<p class="muted-copy">{sections.latest.subtitle}</p>
-		</div>
-		{
-			latestPosts.length > 0 ? (
-				<div class="stagger-children grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-					{latestPosts.map((post) => (
-						<BlogPostCard
-							href={`${blogBasePath}/${getLocalBlogSlug(post.id, locale)}`}
-							title={post.data.title}
-							description={post.data.description}
-							dateLabel={post.data.date.toLocaleDateString(dateLocale, {
+		<section class="section-reveal pb-12 md:pb-16">
+			{
+				primaryFeatured ? (
+					<BlogFeaturedPost
+						href={`${blogBasePath}/${getLocalBlogSlug(primaryFeatured.id, locale)}`}
+						title={primaryFeatured.data.title}
+						description={primaryFeatured.data.description}
+						dateLabel={primaryFeatured.data.date.toLocaleDateString(
+							dateLocale,
+							{
 								year: "numeric",
 								month: "short",
 								day: "numeric",
-							})}
-							tags={post.data.tags ?? []}
-							readingTime={post.data.readingTime}
-							cover={post.data.cover}
-						/>
-					))}
-				</div>
-			) : (
-				<div class="dark-card p-6 text-[var(--text-muted)]">
-					{posts.length > 0 ? empty.latest : page.empty}
-				</div>
-			)
-		}
-		<BlogPagination
-			locale={locale}
-			currentPage={currentPage}
-			totalPages={totalPages}
-			labels={pagination}
-		/>
-	</section>
+							},
+						)}
+						readingTime={primaryFeatured.data.readingTime}
+						cover={primaryFeatured.data.cover}
+						featuredLabel={page.featuredEyebrow}
+						readLabel={page.readArticle}
+					/>
+				) : (
+					<div class="dark-card p-6 text-[var(--text-muted)]">
+						{empty.featured}
+					</div>
+				)
+			}
+		</section>
 
-	<ConversionCta
-		eyebrow={page.cta.eyebrow}
-		title={page.cta.title}
-		text={page.cta.text}
-		primary={{ label: page.cta.services, href: `/${locale}/services` }}
-		secondary={{ label: page.cta.contact, href: `/${locale}/contact` }}
-		headingId="blog-conversion-title"
-	/>
+		<section id="blog-archive" class="section-reveal pb-16 md:pb-24">
+			<div class="mb-7 flex flex-col gap-2">
+				<h2 class="text-3xl font-black text-[var(--text)] md:text-4xl">
+					{sections.latest.title}
+				</h2>
+				<p class="muted-copy">{sections.latest.subtitle}</p>
+			</div>
+			{
+				latestPosts.length > 0 ? (
+					<div class="stagger-children grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+						{latestPosts.map((post) => (
+							<BlogPostCard
+								href={`${blogBasePath}/${getLocalBlogSlug(post.id, locale)}`}
+								title={post.data.title}
+								description={post.data.description}
+								dateLabel={post.data.date.toLocaleDateString(dateLocale, {
+									year: "numeric",
+									month: "short",
+									day: "numeric",
+								})}
+								tags={post.data.tags ?? []}
+								readingTime={post.data.readingTime}
+								cover={post.data.cover}
+							/>
+						))}
+					</div>
+				) : (
+					<div class="dark-card p-6 text-[var(--text-muted)]">
+						{posts.length > 0 ? empty.latest : page.empty}
+					</div>
+				)
+			}
+			<BlogPagination
+				locale={locale}
+				currentPage={currentPage}
+				totalPages={totalPages}
+				labels={pagination}
+			/>
+		</section>
+
+		<ConversionCta
+			eyebrow={page.cta.eyebrow}
+			title={page.cta.title}
+			text={page.cta.text}
+			primary={{ label: page.cta.services, href: `/${locale}/services` }}
+			secondary={{ label: page.cta.contact, href: `/${locale}/contact` }}
+			headingId="blog-conversion-title"
+		/>
+	</div>
 </BaseLayout>
