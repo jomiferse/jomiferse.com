@@ -132,15 +132,37 @@ if (paginated.includes("BlogFeaturedPost")) {
 	failures.push("pagination: featured story must not repeat");
 }
 for (const marker of [
+	"data-blog-card",
+	"data-blog-card-action",
 	"aspect-[16/9]",
 	"cover.src",
 	"cover.alt",
 	"line-clamp-2",
+	"line-clamp-3",
+	'name="calendar"',
+	'name="arrow-right"',
+	"readLabel",
 ]) {
 	if (!card.includes(marker)) failures.push(`card: missing ${marker}`);
 }
-for (const marker of ["data-blog-featured", "button-action", "cover.src"]) {
+for (const marker of [
+	"data-blog-featured",
+	"data-blog-featured-action",
+	'name="calendar"',
+	'name="arrow-right"',
+	"cover.src",
+	"readLabel",
+]) {
 	if (!featured.includes(marker)) failures.push(`featured: missing ${marker}`);
+}
+
+for (const [name, source] of [
+	["archive", archive],
+	["pagination", paginated],
+]) {
+	if (!source.includes("readLabel={page.readArticle}")) {
+		failures.push(`${name}: cards are missing localized readLabel`);
+	}
 }
 
 const articleRoute = await readFile(
