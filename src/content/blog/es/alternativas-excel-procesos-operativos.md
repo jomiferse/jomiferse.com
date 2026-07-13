@@ -6,6 +6,9 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "excel-alternatives-operational-workflows"
+cover:
+  src: "/images/blog/covers/excel-alternatives-operational-workflows.avif"
+  alt: "Ilustración editorial sobre Alternativas a Excel para procesos operativos de empresa"
 tags: [excel, herramientas-internas, software-a-medida, operaciones]
 ---
 

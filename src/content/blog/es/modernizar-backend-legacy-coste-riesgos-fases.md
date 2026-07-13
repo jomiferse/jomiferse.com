@@ -6,6 +6,9 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "12 min"
 translationSlug: "legacy-backend-modernization-cost-risks-phases"
+cover:
+  src: "/images/blog/covers/legacy-backend-modernization-cost-risks-phases.avif"
+  alt: "Ilustración editorial sobre Modernizar un backend legacy: coste, riesgos y fases"
 tags: [backend, legacy, modernizacion, spring-boot, arquitectura]
 ---
 

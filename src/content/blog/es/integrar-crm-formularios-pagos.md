@@ -6,6 +6,9 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "12 min"
 translationSlug: "integrate-crm-forms-payments"
+cover:
+  src: "/images/blog/covers/integrate-crm-forms-payments.avif"
+  alt: "Ilustración editorial sobre Cómo integrar CRM, formularios web y pagos sin perder datos"
 tags: [crm, formularios, pagos, integraciones-api, webhooks]
 ---
 

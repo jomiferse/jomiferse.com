@@ -6,6 +6,9 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "backend-audit-before-rewrite"
+cover:
+  src: "/images/blog/covers/backend-audit-before-rewrite.avif"
+  alt: "Ilustración editorial sobre Qué revisar en un backend antes de decidir una reescritura"
 tags: [backend, auditoria, arquitectura, legacy, reescritura]
 ---
 

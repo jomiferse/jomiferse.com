@@ -6,6 +6,9 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
 translationSlug: "que-debe-tener-web-profesional-para-captar-clientes"
+cover:
+  src: "/images/blog/covers/what-a-professional-website-needs-to-get-clients.avif"
+  alt: "Technical editorial illustration about What a professional website needs to get clients"
 tags: [professional-website, seo, conversion, business, portfolio, freelance]
 ---
 

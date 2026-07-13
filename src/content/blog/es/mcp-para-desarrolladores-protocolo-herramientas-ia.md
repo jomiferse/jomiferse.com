@@ -6,6 +6,9 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "6 min"
 translationSlug: "mcp-for-developers-ai-coding-tools-protocol"
+cover:
+  src: "/images/blog/covers/mcp-for-developers-ai-coding-tools-protocol.avif"
+  alt: "Ilustración editorial sobre MCP para desarrolladores: por qué las herramientas de código con IA se están unificando en un mismo protocolo"
 featured: true
 tags: [mcp, ia-coding, claude-code, codex, cursor, productividad-desarrollador]
 ---

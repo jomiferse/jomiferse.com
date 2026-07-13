@@ -6,6 +6,9 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "6 min"
 translationSlug: "cuanto-cuesta-crear-herramienta-interna-a-medida"
+cover:
+  src: "/images/blog/covers/how-much-does-a-custom-internal-tool-cost.avif"
+  alt: "Technical editorial illustration about How much does a custom internal tool cost, and when is it worth it?"
 featured: true
 tags:
   [

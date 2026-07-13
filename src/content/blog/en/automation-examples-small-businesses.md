@@ -6,6 +6,9 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "12 min"
 translationSlug: "ejemplos-automatizacion-pymes"
+cover:
+  src: "/images/blog/covers/automation-examples-small-businesses.avif"
+  alt: "Technical editorial illustration about Practical automation examples for small businesses"
 tags: [automation, small-business, operations, api-integrations]
 ---
 

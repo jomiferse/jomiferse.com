@@ -6,6 +6,9 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "10 min"
 translationSlug: "cuanto-cuesta-automatizar-proceso-administrativo"
+cover:
+  src: "/images/blog/covers/cost-to-automate-administrative-process.avif"
+  alt: "Technical editorial illustration about How much does it cost to automate an administrative process?"
 tags: [automation, administration, small-business, processes, cost]
 ---
 

@@ -6,6 +6,9 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "14 min"
 translationSlug: "monolito-modular-vs-microservicios"
+cover:
+  src: "/images/blog/covers/modular-monolith-vs-microservices.avif"
+  alt: "Technical editorial illustration about Modular Monolith vs Microservices: What I'd Choose"
 tags:
   [
     backend-architecture,

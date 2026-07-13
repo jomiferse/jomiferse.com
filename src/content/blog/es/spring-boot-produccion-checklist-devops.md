@@ -7,6 +7,9 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "8 min"
 translationSlug: "spring-boot-production-devops-checklist"
+cover:
+  src: "/images/blog/covers/spring-boot-production-devops-checklist.avif"
+  alt: "Ilustración editorial sobre Spring Boot en producción: checklist DevOps para no ir a ciegas"
 tags: [spring-boot, java, devops, produccion, backend, observabilidad]
 ---
 

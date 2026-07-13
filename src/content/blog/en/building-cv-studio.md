@@ -3,6 +3,9 @@ title: "CV Studio: Building a Cleaner Way to Write a Developer CV"
 description: "Notes from building CV Studio, a developer-focused CV builder with live preview, structured data and PDF export."
 date: 2025-12-25
 translationSlug: "creando-cv-studio"
+cover:
+  src: "/images/blog/covers/building-cv-studio.avif"
+  alt: "Technical editorial illustration about CV Studio: Building a Cleaner Way to Write a Developer CV"
 tags:
   - cv
   - developer-tools

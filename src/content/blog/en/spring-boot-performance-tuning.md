@@ -6,6 +6,9 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
 translationSlug: "rendimiento-spring-boot-cambios-que-de-verdad-se-notan"
+cover:
+  src: "/images/blog/covers/spring-boot-performance-tuning.avif"
+  alt: "Technical editorial illustration about Spring Boot performance tuning: the changes that actually move the needle"
 tags: [spring-boot, java, performance, backend, observability]
 ---
 

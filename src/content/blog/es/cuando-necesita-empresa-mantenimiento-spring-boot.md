@@ -5,6 +5,9 @@ date: 2026-07-11
 author: "José Miguel Fernández"
 readingTime: "6 min"
 translationSlug: "when-company-needs-spring-boot-maintenance"
+cover:
+  src: "/images/blog/covers/when-company-needs-spring-boot-maintenance.avif"
+  alt: "Ilustración editorial sobre Cuándo necesita una empresa mantenimiento Spring Boot"
 tags: [spring-boot, java, mantenimiento, backend, produccion]
 ---
 

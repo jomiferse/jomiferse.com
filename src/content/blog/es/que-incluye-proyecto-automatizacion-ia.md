@@ -6,6 +6,9 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "what-ai-automation-project-should-include"
+cover:
+  src: "/images/blog/covers/what-ai-automation-project-should-include.avif"
+  alt: "Ilustración editorial sobre Qué debería incluir un proyecto de automatización con IA"
 tags: [ia, automatizacion, evaluacion, operaciones, documentos]
 ---
 

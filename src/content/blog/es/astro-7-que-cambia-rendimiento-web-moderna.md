@@ -6,6 +6,9 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "12 min"
 translationSlug: "astro-7-what-changed-performance-modern-web"
+cover:
+  src: "/images/blog/covers/astro-7-what-changed-performance-modern-web.avif"
+  alt: "Ilustración editorial sobre Astro 7: qué cambia, rendimiento y por qué importa para la web moderna"
 tags: [astro, frontend, performance, javascript, web-development]
 ---
 

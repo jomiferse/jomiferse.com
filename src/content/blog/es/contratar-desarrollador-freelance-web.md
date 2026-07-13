@@ -6,6 +6,9 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "hire-freelance-web-developer-business"
+cover:
+  src: "/images/blog/covers/hire-freelance-web-developer-business.avif"
+  alt: "Ilustración editorial sobre Cómo contratar un desarrollador freelance para un proyecto web"
 tags: [freelance, desarrollo-web, contratacion, pymes]
 ---
 

@@ -6,6 +6,9 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "evaluar-presupuesto-software-a-medida"
+cover:
+  src: "/images/blog/covers/evaluate-custom-software-proposal.avif"
+  alt: "Technical editorial illustration about How to evaluate a custom software proposal"
 tags: [custom-software, proposal, small-business, consulting]
 ---
 

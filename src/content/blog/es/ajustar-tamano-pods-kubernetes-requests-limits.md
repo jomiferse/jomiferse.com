@@ -6,6 +6,9 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "7 min"
 translationSlug: "right-sizing-kubernetes-pods-requests-limits"
+cover:
+  src: "/images/blog/covers/right-sizing-kubernetes-pods-requests-limits.avif"
+  alt: "Ilustración editorial sobre Cómo ajustar el tamaño de los pods en Kubernetes sin ir a ciegas"
 tags: [kubernetes, devops, cloud-native, rendimiento, platform-engineering]
 ---
 

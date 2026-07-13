@@ -6,6 +6,9 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "hexagonal-architecture-what-it-is-how-to-apply-backend-projects"
+cover:
+  src: "/images/blog/covers/hexagonal-architecture-what-it-is-how-to-apply-backend-projects.avif"
+  alt: "Ilustración editorial sobre Arquitectura Hexagonal: qué es y cómo aplicarla en proyectos backend"
 tags: [arquitectura-hexagonal, backend, java, spring-boot, clean-architecture]
 ---
 

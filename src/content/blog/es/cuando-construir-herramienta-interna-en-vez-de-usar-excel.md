@@ -6,6 +6,9 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "5 min"
 translationSlug: "when-to-build-an-internal-tool-instead-of-using-excel"
+cover:
+  src: "/images/blog/covers/when-to-build-an-internal-tool-instead-of-using-excel.avif"
+  alt: "Ilustración editorial sobre Cuándo construir una herramienta interna en vez de seguir usando Excel"
 featured: true
 tags:
   [

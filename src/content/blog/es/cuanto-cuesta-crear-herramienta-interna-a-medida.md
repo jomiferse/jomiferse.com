@@ -6,6 +6,9 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "6 min"
 translationSlug: "how-much-does-a-custom-internal-tool-cost"
+cover:
+  src: "/images/blog/covers/how-much-does-a-custom-internal-tool-cost.avif"
+  alt: "Ilustración editorial sobre Cuánto cuesta crear una herramienta interna a medida y cuándo merece la pena"
 featured: true
 tags:
   [

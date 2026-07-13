@@ -6,6 +6,9 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "9 min"
 translationSlug: "cuando-deberias-usar-kafka-rabbitmq-o-simplemente-una-base-de-datos"
+cover:
+  src: "/images/blog/covers/when-should-you-use-kafka-rabbitmq-or-just-a-database.avif"
+  alt: "Technical editorial illustration about When Should You Use Kafka, RabbitMQ or Just a Database?"
 tags:
   [backend, kafka, rabbitmq, messaging, spring-boot, postgresql, architecture]
 ---

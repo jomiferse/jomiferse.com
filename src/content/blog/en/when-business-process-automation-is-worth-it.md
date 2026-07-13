@@ -6,6 +6,9 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
 translationSlug: "automatizar-procesos-empresa-cuando-merece-la-pena"
+cover:
+  src: "/images/blog/covers/when-business-process-automation-is-worth-it.avif"
+  alt: "Technical editorial illustration about When business process automation is worth it and how to start"
 tags:
   [automation, business-processes, internal-tools, api-integrations, operations]
 ---

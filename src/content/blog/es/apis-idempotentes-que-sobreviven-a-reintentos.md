@@ -6,6 +6,9 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "6 min"
 translationSlug: "idempotent-apis-that-survive-retries"
+cover:
+  src: "/images/blog/covers/idempotent-apis-that-survive-retries.avif"
+  alt: "Ilustración editorial sobre APIs idempotentes que sobreviven a reintentos: guía práctica para backend developers"
 tags: [api-design, backend, reintentos, idempotencia, rest, webhooks, pagos]
 ---
 

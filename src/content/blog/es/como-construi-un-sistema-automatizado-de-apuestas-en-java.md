@@ -3,6 +3,9 @@ title: "Cómo construí un sistema automatizado de apuestas en Java"
 description: "Cómo construí BetX, un sistema automatizado de apuestas en Java y Spring Boot con arquitectura hexagonal, backtesting, paper trading y control de riesgo."
 date: 2026-06-22
 translationSlug: "how-i-built-an-automated-betting-system-in-java"
+cover:
+  src: "/images/blog/covers/how-i-built-an-automated-betting-system-in-java.avif"
+  alt: "Ilustración editorial sobre Cómo construí un sistema automatizado de apuestas en Java"
 tags:
   - java
   - spring-boot
