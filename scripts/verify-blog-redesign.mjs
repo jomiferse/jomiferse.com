@@ -238,6 +238,7 @@ for (const marker of [
 for (const marker of [
 	"BlogArticleToc",
 	'class="blog-article-page"',
+	"data-blog-article-hero",
 	"frontmatter.cover.src",
 	"frontmatter.cover.alt",
 	'name="arrow-left"',
@@ -248,6 +249,34 @@ for (const marker of [
 	if (!articleLayout.includes(marker)) {
 		failures.push(`article layout: missing ${marker}`);
 	}
+}
+
+const articleHeroMarkers = [
+	"data-blog-article-title",
+	"data-blog-article-cover",
+	"data-blog-article-meta",
+	"data-blog-article-description",
+];
+const articleHeroPositions = articleHeroMarkers.map((marker) =>
+	articleLayout.indexOf(marker),
+);
+
+if (articleHeroPositions.some((position) => position === -1)) {
+	failures.push("article layout: pyramid hero markers are incomplete");
+} else if (
+	articleHeroPositions.some(
+		(position, index) =>
+			index > 0 && position <= articleHeroPositions[index - 1],
+	)
+) {
+	failures.push("article layout: pyramid hero order is incorrect");
+}
+
+if (
+	articleLayout.includes("frontmatter.tags?.length") ||
+	articleLayout.includes('class="tag-pill"')
+) {
+	failures.push("article layout: visible tag pills must be removed");
 }
 
 const proseStyles = await readFile(

@@ -52,92 +52,17 @@ const postCta = postCopy.cta;
 		</a>
 	</nav>
 
-	<header
-		class="section-reveal grid gap-9 py-10 md:py-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(24rem,1.08fr)] lg:items-center lg:gap-14"
-	>
-		<div>
-			<div
-				class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-bold text-[var(--text-muted)]"
-			>
-				<span class="inline-flex items-center gap-2">
-					<Icon
-						name="calendar"
-						class="h-4 w-4 text-[var(--action)]"
-						aria-hidden="true"
-					/>
-					<time datetime={frontmatter.date.toISOString()}>
-						{
-							frontmatter.date.toLocaleDateString(dateLocale, {
-								year: "numeric",
-								month: "long",
-								day: "numeric",
-							})
-						}
-					</time>
-				</span>
-				{
-					wasUpdated ? (
-						<time datetime={frontmatter.dateModified?.toISOString()}>
-							{locale === "es" ? "Actualizado" : "Updated"}{" "}
-							{frontmatter.dateModified?.toLocaleDateString(dateLocale, {
-								year: "numeric",
-								month: "long",
-								day: "numeric",
-							})}
-						</time>
-					) : null
-				}
-				{
-					frontmatter.readingTime ? (
-						<span class="inline-flex items-center gap-2">
-							<Icon
-								name="clock"
-								class="h-4 w-4 text-[var(--action)]"
-								aria-hidden="true"
-							/>
-							{frontmatter.readingTime}
-						</span>
-					) : null
-				}
-				{
-					frontmatter.author ? (
-						<a
-							href={`/${locale}/about`}
-							class="hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
-						>
-							{frontmatter.author}
-						</a>
-					) : null
-				}
-			</div>
-
-			<h1
-				class="mt-5 max-w-4xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
-			>
-				{frontmatter.title}
-			</h1>
-
-			{
-				frontmatter.description ? (
-					<p class="muted-copy mt-6 max-w-3xl text-lg leading-8">
-						{frontmatter.description}
-					</p>
-				) : null
-			}
-
-			{
-				frontmatter.tags?.length ? (
-					<div class="mt-6 flex flex-wrap gap-2">
-						{frontmatter.tags.map((tag) => (
-							<span class="tag-pill">{tag}</span>
-						))}
-					</div>
-				) : null
-			}
-		</div>
+	<header data-blog-article-hero class="section-reveal py-10 md:py-14">
+		<h1
+			data-blog-article-title
+			class="mx-auto max-w-5xl text-center text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
+		>
+			{frontmatter.title}
+		</h1>
 
 		<div
-			class="overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_46%),var(--bg-band)] shadow-[var(--shadow-card)]"
+			data-blog-article-cover
+			class="mx-auto mt-8 max-w-6xl overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_46%),var(--bg-band)] shadow-[var(--shadow-card)] md:mt-10"
 		>
 			<img
 				src={frontmatter.cover.src}
@@ -149,6 +74,73 @@ const postCta = postCopy.cta;
 				class="aspect-[16/9] h-full w-full object-cover"
 			/>
 		</div>
+
+		<div
+			data-blog-article-meta
+			class="mx-auto mt-6 flex max-w-4xl flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center text-sm font-bold text-[var(--text-muted)]"
+		>
+			<span class="inline-flex items-center gap-2">
+				<Icon
+					name="calendar"
+					class="h-4 w-4 text-[var(--action)]"
+					aria-hidden="true"
+				/>
+				<time datetime={frontmatter.date.toISOString()}>
+					{
+						frontmatter.date.toLocaleDateString(dateLocale, {
+							year: "numeric",
+							month: "long",
+							day: "numeric",
+						})
+					}
+				</time>
+			</span>
+			{
+				wasUpdated ? (
+					<time datetime={frontmatter.dateModified?.toISOString()}>
+						{locale === "es" ? "Actualizado" : "Updated"}{" "}
+						{frontmatter.dateModified?.toLocaleDateString(dateLocale, {
+							year: "numeric",
+							month: "long",
+							day: "numeric",
+						})}
+					</time>
+				) : null
+			}
+			{
+				frontmatter.readingTime ? (
+					<span class="inline-flex items-center gap-2">
+						<Icon
+							name="clock"
+							class="h-4 w-4 text-[var(--action)]"
+							aria-hidden="true"
+						/>
+						{frontmatter.readingTime}
+					</span>
+				) : null
+			}
+			{
+				frontmatter.author ? (
+					<a
+						href={`/${locale}/about`}
+						class="hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
+					>
+						{frontmatter.author}
+					</a>
+				) : null
+			}
+		</div>
+
+		{
+			frontmatter.description ? (
+				<p
+					data-blog-article-description
+					class="muted-copy mx-auto mt-5 max-w-3xl text-left text-lg leading-8 sm:text-center"
+				>
+					{frontmatter.description}
+				</p>
+			) : null
+		}
 	</header>
 
 	<div
