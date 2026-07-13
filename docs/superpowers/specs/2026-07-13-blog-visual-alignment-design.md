@@ -115,7 +115,7 @@ Use a two-column desktop composition inspired by the project detail page:
 - Gap: approximately `3rem` to `4rem` depending on viewport.
 - A full-width top border separates the hero from the reading area.
 
-Place the article content first in source order and the navigation second. Use CSS grid placement to show the navigation on the left at large widths if that remains visually strongest, without compromising logical reading order for assistive technology.
+Place the contextual navigation first in source order and the article content second. This keeps the mobile disclosure before the body and preserves the same logical relationship on desktop, where the navigation remains in the left rail.
 
 The prose system should use the same navy headings, coral markers and links, shared surfaces, radii, and shadows. Preserve readable line length and existing support for code, tables, callouts, figures, and inline diagrams.
 
