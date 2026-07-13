@@ -7,7 +7,6 @@ interface Props {
 	description: string;
 	dateLabel: string;
 	readLabel: string;
-	tags?: string[];
 	readingTime?: string;
 	cover: {
 		src: string;
@@ -15,18 +14,8 @@ interface Props {
 	};
 }
 
-const {
-	href,
-	title,
-	description,
-	dateLabel,
-	readLabel,
-	tags = [],
-	readingTime,
-	cover,
-} = Astro.props as Props;
-
-const cleanTags = tags.filter((tag) => tag !== "featured").slice(0, 2);
+const { href, title, description, dateLabel, readLabel, readingTime, cover } =
+	Astro.props as Props;
 ---
 
 <article data-blog-card class="group h-full">
@@ -79,16 +68,6 @@ const cleanTags = tags.filter((tag) => tag !== "featured").slice(0, 2);
 			<p class="muted-copy mt-3 line-clamp-3 text-sm leading-6">
 				{description}
 			</p>
-
-			{
-				cleanTags.length ? (
-					<div class="mt-4 flex flex-wrap gap-2">
-						{cleanTags.map((tag) => (
-							<span class="tag-pill">{tag}</span>
-						))}
-					</div>
-				) : null
-			}
 
 			<span
 				data-blog-card-action

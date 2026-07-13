@@ -145,6 +145,9 @@ for (const marker of [
 ]) {
 	if (!card.includes(marker)) failures.push(`card: missing ${marker}`);
 }
+for (const marker of ["cleanTags", "tag-pill"]) {
+	if (card.includes(marker)) failures.push(`card: must not render ${marker}`);
+}
 for (const marker of [
 	"data-blog-featured",
 	"data-blog-featured-action",
