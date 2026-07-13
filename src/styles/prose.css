@@ -10,7 +10,7 @@
 .prose-wrapper h4,
 .prose-wrapper h5,
 .prose-wrapper h6 {
-	color: var(--text);
+	color: var(--home-navy);
 	font-weight: 900;
 	line-height: 1.15;
 	scroll-margin-top: 5.75rem;
@@ -59,27 +59,25 @@
 }
 
 .prose-wrapper a {
-	color: var(--accent-strong);
+	color: var(--action);
 	font-weight: 700;
 	overflow-wrap: anywhere;
 	word-break: break-word;
 	text-decoration-line: underline;
-	text-decoration-color: color-mix(
-		in srgb,
-		var(--accent-line) 72%,
-		transparent
-	);
+	text-decoration-color: color-mix(in srgb, var(--action) 48%, transparent);
 	text-decoration-thickness: 0.12em;
 	text-underline-offset: 0.18em;
 }
 
-.dark .prose-wrapper a {
-	color: var(--accent);
+.prose-wrapper a:hover {
+	color: var(--home-navy);
+	text-decoration-color: var(--action);
 }
 
-.prose-wrapper a:hover {
-	color: var(--text);
-	text-decoration-color: var(--accent);
+.prose-wrapper a:focus-visible {
+	border-radius: 0.2rem;
+	outline: 2px solid var(--action);
+	outline-offset: 3px;
 }
 
 .prose-wrapper strong {
@@ -115,12 +113,8 @@
 }
 
 .prose-wrapper li::marker {
-	color: var(--accent-strong);
+	color: var(--action);
 	font-weight: 800;
-}
-
-.dark .prose-wrapper li::marker {
-	color: var(--accent);
 }
 
 .prose-wrapper ul ul,
@@ -133,7 +127,7 @@
 .prose-wrapper blockquote {
 	position: relative;
 	margin-block: 2rem;
-	border: 1px solid var(--accent-line);
+	border: 1px solid color-mix(in srgb, var(--action) 32%, var(--surface-border));
 	border-left-width: 0.35rem;
 	border-radius: var(--radius-card);
 	background:
@@ -180,17 +174,13 @@
 }
 
 .prose-wrapper :not(pre) > code {
-	border: 1px solid var(--accent-line);
+	border: 1px solid color-mix(in srgb, var(--action) 32%, var(--surface-border));
 	border-radius: 0.45rem;
 	background: var(--accent-soft);
 	padding: 0.12rem 0.38rem;
-	color: var(--accent-strong);
+	color: var(--action);
 	font-size: 0.9em;
 	font-weight: 700;
-}
-
-.dark .prose-wrapper :not(pre) > code {
-	color: var(--accent);
 }
 
 .prose-wrapper :not(pre) > code::before,
@@ -285,7 +275,7 @@
 
 .prose-wrapper .callout.info,
 .prose-wrapper .callout.success {
-	border-color: var(--accent-line);
+	border-color: color-mix(in srgb, var(--action) 32%, var(--surface-border));
 	background: linear-gradient(135deg, var(--accent-soft), var(--surface) 62%);
 }
 
@@ -306,11 +296,7 @@
 }
 
 .prose-wrapper summary:hover {
-	color: var(--accent-strong);
-}
-
-.dark .prose-wrapper summary:hover {
-	color: var(--accent);
+	color: var(--action);
 }
 
 .prose-wrapper details[open] summary {
@@ -339,11 +325,7 @@
 	margin-right: 0.5rem;
 	width: 1rem;
 	height: 1rem;
-	accent-color: var(--accent-strong);
-}
-
-.dark .prose-wrapper input[type="checkbox"] {
-	accent-color: var(--accent);
+	accent-color: var(--action);
 }
 
 .prose-wrapper ul > li:has(input[type="checkbox"]) {
@@ -352,7 +334,7 @@
 
 .prose-wrapper mark {
 	border-radius: 0.3rem;
-	background: color-mix(in srgb, var(--accent) 24%, transparent);
+	background: color-mix(in srgb, var(--action) 18%, transparent);
 	padding-inline: 0.18rem;
 	color: var(--text);
 }

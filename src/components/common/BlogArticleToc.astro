@@ -8,6 +8,7 @@ interface Heading {
 interface Props {
 	headings: Heading[];
 	label: string;
+	currentLabel?: string;
 }
 
 const { headings, label } = Astro.props as Props;

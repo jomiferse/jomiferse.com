@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import BlogArticleToc from "@/components/common/BlogArticleToc.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
 import { getLocaleFromPath, getTranslations, type Locale, t } from "@/i18n";
@@ -40,76 +41,85 @@ const postCopy = getTranslations(locale).blog.post;
 const postCta = postCopy.cta;
 ---
 
-<article>
-	<nav class="mb-8 md:mb-10">
-		<a href={blogPath} class="button-secondary min-h-0 px-4 py-2 text-sm">
+<article class="blog-article-page">
+	<nav>
+		<a
+			href={blogPath}
+			class="inline-flex items-center gap-2 text-sm font-black text-[var(--text)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
+		>
+			<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
 			{t(locale, "blog.post.back")}
 		</a>
 	</nav>
 
 	<header
-		class="grid items-center gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)] lg:gap-12"
+		class="section-reveal grid gap-9 py-10 md:py-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(24rem,1.08fr)] lg:items-center lg:gap-14"
 	>
 		<div>
 			<div
-				class="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-semibold text-[var(--text-muted)]"
+				class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-bold text-[var(--text-muted)]"
 			>
-				<time datetime={frontmatter.date.toISOString()}>
-					{
-						frontmatter.date.toLocaleDateString(dateLocale, {
-							year: "numeric",
-							month: "long",
-							day: "numeric",
-						})
-					}
-				</time>
+				<span class="inline-flex items-center gap-2">
+					<Icon
+						name="calendar"
+						class="h-4 w-4 text-[var(--action)]"
+						aria-hidden="true"
+					/>
+					<time datetime={frontmatter.date.toISOString()}>
+						{
+							frontmatter.date.toLocaleDateString(dateLocale, {
+								year: "numeric",
+								month: "long",
+								day: "numeric",
+							})
+						}
+					</time>
+				</span>
 				{
 					wasUpdated ? (
-						<>
-							<span aria-hidden="true">·</span>
-							<time datetime={frontmatter.dateModified?.toISOString()}>
-								{locale === "es" ? "Actualizado" : "Updated"}{" "}
-								{frontmatter.dateModified?.toLocaleDateString(dateLocale, {
-									year: "numeric",
-									month: "long",
-									day: "numeric",
-								})}
-							</time>
-						</>
+						<time datetime={frontmatter.dateModified?.toISOString()}>
+							{locale === "es" ? "Actualizado" : "Updated"}{" "}
+							{frontmatter.dateModified?.toLocaleDateString(dateLocale, {
+								year: "numeric",
+								month: "long",
+								day: "numeric",
+							})}
+						</time>
 					) : null
 				}
 				{
 					frontmatter.readingTime ? (
-						<>
-							<span aria-hidden="true">·</span>
-							<span>{frontmatter.readingTime}</span>
-						</>
+						<span class="inline-flex items-center gap-2">
+							<Icon
+								name="clock"
+								class="h-4 w-4 text-[var(--action)]"
+								aria-hidden="true"
+							/>
+							{frontmatter.readingTime}
+						</span>
 					) : null
 				}
 				{
 					frontmatter.author ? (
-						<>
-							<span aria-hidden="true">·</span>
-							<a
-								href={`/${locale}/about`}
-								class="hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
-							>
-								{frontmatter.author}
-							</a>
-						</>
+						<a
+							href={`/${locale}/about`}
+							class="hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
+						>
+							{frontmatter.author}
+						</a>
 					) : null
 				}
 			</div>
 
 			<h1
-				class="mt-5 text-4xl leading-[1.08] font-black text-[var(--text)] sm:text-5xl lg:text-6xl"
+				class="mt-5 max-w-4xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
 			>
 				{frontmatter.title}
 			</h1>
 
 			{
 				frontmatter.description ? (
-					<p class="muted-copy mt-5 text-lg leading-8">
+					<p class="muted-copy mt-6 max-w-3xl text-lg leading-8">
 						{frontmatter.description}
 					</p>
 				) : null
@@ -126,7 +136,9 @@ const postCta = postCopy.cta;
 			}
 		</div>
 
-		<div class="dark-card overflow-hidden">
+		<div
+			class="overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_46%),var(--bg-band)] shadow-[var(--shadow-card)]"
+		>
 			<img
 				src={frontmatter.cover.src}
 				alt={frontmatter.cover.alt}
@@ -134,15 +146,19 @@ const postCta = postCopy.cta;
 				height="900"
 				loading="eager"
 				fetchpriority="high"
-				class="aspect-[16/9] w-full object-cover"
+				class="aspect-[16/9] h-full w-full object-cover"
 			/>
 		</div>
 	</header>
 
 	<div
-		class="mx-auto mt-12 grid max-w-6xl items-start gap-8 md:mt-16 lg:grid-cols-[minmax(12rem,16rem)_minmax(0,48rem)] lg:justify-center lg:gap-12 xl:gap-16"
+		class="grid items-start gap-8 border-t border-[var(--surface-border)] py-14 md:py-18 lg:grid-cols-[19rem_minmax(0,48rem)] lg:justify-center lg:gap-12 xl:gap-16"
 	>
-		<BlogArticleToc headings={headings} label={postCopy.toc} />
+		<BlogArticleToc
+			headings={headings}
+			label={postCopy.toc}
+			currentLabel={postCopy.tocCurrent}
+		/>
 		<div class="prose-wrapper max-w-3xl min-w-0">
 			<slot />
 		</div>
@@ -162,8 +178,9 @@ const postCta = postCopy.cta;
 	<footer class="hairline mt-16 border-t pt-8 md:mt-20">
 		<a
 			href={blogPath}
-			class="inline-flex items-center gap-2 text-sm font-semibold text-[var(--text)] hover:text-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
+			class="inline-flex items-center gap-2 text-sm font-black text-[var(--text)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
 		>
+			<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
 			{t(locale, "blog.post.backToList")}
 		</a>
 	</footer>

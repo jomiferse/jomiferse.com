@@ -208,14 +208,25 @@ for (const marker of [
 
 for (const marker of [
 	"BlogArticleToc",
+	'class="blog-article-page"',
 	"frontmatter.cover.src",
 	"frontmatter.cover.alt",
-	"lg:grid-cols-[minmax(0,0.9fr)_minmax(24rem,1.1fr)]",
+	'name="arrow-left"',
+	"lg:grid-cols-[19rem_minmax(0,48rem)]",
+	"currentLabel={postCopy.tocCurrent}",
 	"ConversionCta",
 ]) {
 	if (!articleLayout.includes(marker)) {
 		failures.push(`article layout: missing ${marker}`);
 	}
+}
+
+const proseStyles = await readFile(
+	join(root, "src", "styles", "prose.css"),
+	"utf8",
+);
+for (const marker of ["var(--home-navy)", "var(--action)", ":focus-visible"]) {
+	if (!proseStyles.includes(marker)) failures.push(`prose: missing ${marker}`);
 }
 
 for (const marker of ["<nav", "<details", "<summary", "heading.slug"]) {
