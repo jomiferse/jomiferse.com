@@ -165,6 +165,24 @@ for (const [name, source] of [
 	}
 }
 
+const blogPagination = await readFile(
+	join(root, "src", "components", "common", "BlogPagination.astro"),
+	"utf8",
+);
+
+for (const marker of [
+	"data-blog-pagination",
+	'aria-current="page"',
+	'aria-disabled="true"',
+	'name="arrow-left"',
+	'name="arrow-right"',
+	"var(--action)",
+]) {
+	if (!blogPagination.includes(marker)) {
+		failures.push(`pagination component: missing ${marker}`);
+	}
+}
+
 const articleRoute = await readFile(
 	join(root, "src/pages/[locale]/blog/[...slug].astro"),
 	"utf8",
