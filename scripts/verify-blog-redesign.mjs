@@ -229,8 +229,25 @@ for (const marker of ["var(--home-navy)", "var(--action)", ":focus-visible"]) {
 	if (!proseStyles.includes(marker)) failures.push(`prose: missing ${marker}`);
 }
 
-for (const marker of ["<nav", "<details", "<summary", "heading.slug"]) {
+for (const marker of [
+	"<nav",
+	"<details",
+	"<summary",
+	"heading.slug",
+	"data-article-toc",
+	"data-toc-link",
+	"data-toc-current",
+	'"aria-current", "location"',
+	"IntersectionObserver",
+	'rootMargin: "-112px 0px -65% 0px"',
+	'addEventListener("astro:page-load"',
+	'name="book-open"',
+]) {
 	if (!toc.includes(marker)) failures.push(`article TOC: missing ${marker}`);
+}
+
+if (toc.includes("history.replaceState")) {
+	failures.push("article TOC: scroll tracking must not rewrite the URL");
 }
 
 const globalStyles = await readFile(

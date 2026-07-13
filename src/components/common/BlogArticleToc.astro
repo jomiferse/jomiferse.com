@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Heading {
 	depth: number;
 	slug: string;
@@ -8,28 +10,47 @@ interface Heading {
 interface Props {
 	headings: Heading[];
 	label: string;
-	currentLabel?: string;
+	currentLabel: string;
 }
 
-const { headings, label } = Astro.props as Props;
+const { headings, label, currentLabel } = Astro.props as Props;
 const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 ---
 
 {
 	sectionHeadings.length > 0 ? (
-		<>
+		<div data-article-toc data-current-label={currentLabel}>
 			<nav
 				aria-label={label}
-				class="dark-card hidden p-5 lg:sticky lg:top-28 lg:block"
+				class="relative isolate hidden h-fit overflow-hidden rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[radial-gradient(circle_at_100%_0%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_11rem),var(--surface)] p-5 shadow-[var(--shadow-card)] lg:sticky lg:top-24 lg:block"
 			>
-				<p class="eyebrow text-[var(--action)]">{label}</p>
-				<ol class="mt-4 space-y-3">
+				<div class="flex items-center gap-3">
+					<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,transparent)] bg-[color-mix(in_srgb,var(--action)_12%,var(--surface))] text-[var(--action)]">
+						<Icon name="book-open" class="h-5 w-5" aria-hidden="true" />
+					</span>
+					<p class="eyebrow text-[var(--action)]">{label}</p>
+				</div>
+				<div
+					class="mt-5 h-1 overflow-hidden rounded-full bg-[var(--surface-border)]"
+					aria-hidden="true"
+				>
+					<span
+						data-toc-progress
+						class="block h-full origin-left scale-x-0 rounded-full bg-[var(--action)] transition-transform"
+					/>
+				</div>
+				<ol class="mt-4 space-y-1.5">
 					{sectionHeadings.map((heading) => (
 						<li>
 							<a
+								data-toc-link
 								href={`#${heading.slug}`}
-								class="block text-sm leading-6 font-semibold text-[var(--text-muted)] transition hover:text-[var(--accent-strong)] focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
+								class="relative block rounded-xl border border-transparent px-3 py-2.5 text-sm leading-5 font-bold text-[var(--text-muted)] transition hover:bg-[color-mix(in_srgb,var(--action)_8%,transparent)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--action)] data-[active]:border-[color-mix(in_srgb,var(--action)_18%,transparent)] data-[active]:bg-[color-mix(in_srgb,var(--action)_10%,var(--surface))] data-[active]:text-[var(--home-navy)]"
 							>
+								<span
+									class="toc-link-indicator absolute inset-y-2 left-0 hidden w-0.5 rounded-full bg-[var(--action)]"
+									aria-hidden="true"
+								/>
 								{heading.text}
 							</a>
 						</li>
@@ -37,20 +58,32 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 				</ol>
 			</nav>
 
-			<details class="dark-card p-5 lg:hidden">
-				<summary class="cursor-pointer font-bold text-[var(--text)] marker:text-[var(--action)]">
-					{label}
+			<details class="rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[var(--surface)] p-5 shadow-[var(--shadow-card)] lg:hidden">
+				<summary class="cursor-pointer list-none text-[var(--text)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]">
+					<span class="flex items-center gap-3">
+						<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,transparent)] bg-[color-mix(in_srgb,var(--action)_12%,var(--surface))] text-[var(--action)]">
+							<Icon name="book-open" class="h-5 w-5" aria-hidden="true" />
+						</span>
+						<span>
+							<span class="eyebrow block text-[var(--action)]">{label}</span>
+							<span class="mt-1 block text-xs font-semibold text-[var(--text-muted)]">
+								<span class="sr-only">{currentLabel}: </span>
+								<span data-toc-current>{sectionHeadings[0]?.text}</span>
+							</span>
+						</span>
+					</span>
 				</summary>
 				<nav
 					aria-label={label}
 					class="mt-4 border-t border-[var(--surface-border)] pt-4"
 				>
-					<ol class="space-y-3">
+					<ol class="space-y-1.5">
 						{sectionHeadings.map((heading) => (
 							<li>
 								<a
+									data-toc-link
 									href={`#${heading.slug}`}
-									class="block text-sm leading-6 font-semibold text-[var(--text-muted)] hover:text-[var(--accent-strong)] focus-visible:rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent-strong)] dark:hover:text-[var(--accent)]"
+									class="block rounded-xl border border-transparent px-3 py-2.5 text-sm leading-5 font-bold text-[var(--text-muted)] hover:bg-[color-mix(in_srgb,var(--action)_8%,transparent)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--action)] data-[active]:border-[color-mix(in_srgb,var(--action)_18%,transparent)] data-[active]:bg-[color-mix(in_srgb,var(--action)_10%,var(--surface))] data-[active]:text-[var(--home-navy)]"
 								>
 									{heading.text}
 								</a>
@@ -59,6 +92,81 @@ const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 					</ol>
 				</nav>
 			</details>
-		</>
+		</div>
 	) : null
 }
+
+<script>
+	const setupArticleToc = () => {
+		document
+			.querySelectorAll<HTMLElement>("[data-article-toc]")
+			.forEach((toc) => {
+				if (toc.dataset.enhanced === "true") return;
+				toc.dataset.enhanced = "true";
+
+				const links = Array.from(
+					toc.querySelectorAll<HTMLAnchorElement>("[data-toc-link]"),
+				);
+				const ids = [...new Set(links.map((link) => link.hash.slice(1)))];
+				const headings = ids
+					.map((id) => document.getElementById(id))
+					.filter((heading): heading is HTMLElement => Boolean(heading));
+				const current = toc.querySelector<HTMLElement>("[data-toc-current]");
+				const progress = toc.querySelector<HTMLElement>("[data-toc-progress]");
+				const disclosure = toc.querySelector<HTMLDetailsElement>("details");
+
+				if (!headings.length) return;
+
+				const setActive = (id: string) => {
+					links.forEach((link) => {
+						const isActive = link.hash === `#${id}`;
+						link.toggleAttribute("data-active", isActive);
+						if (isActive) link.setAttribute("aria-current", "location");
+						else link.removeAttribute("aria-current");
+					});
+
+					const index = headings.findIndex((heading) => heading.id === id);
+					current?.replaceChildren(headings[index]?.textContent?.trim() ?? "");
+					const ratio =
+						headings.length === 1 ? 1 : index / (headings.length - 1);
+					progress?.style.setProperty("transform", `scaleX(${ratio})`);
+				};
+
+				const updateActive = () => {
+					const threshold = 128;
+					const passed = headings.filter(
+						(heading) => heading.getBoundingClientRect().top <= threshold,
+					);
+					const atEnd =
+						window.innerHeight + window.scrollY >=
+						document.documentElement.scrollHeight - 2;
+					const active = atEnd
+						? headings.at(-1)
+						: (passed.at(-1) ?? headings[0]);
+					if (active) setActive(active.id);
+				};
+
+				const observer = new IntersectionObserver(updateActive, {
+					rootMargin: "-112px 0px -65% 0px",
+					threshold: [0, 1],
+				});
+				headings.forEach((heading) => observer.observe(heading));
+				window.addEventListener("scroll", updateActive, { passive: true });
+				links.forEach((link) =>
+					link.addEventListener("click", () =>
+						disclosure?.removeAttribute("open"),
+					),
+				);
+				updateActive();
+			});
+	};
+
+	document.addEventListener("astro:page-load", setupArticleToc);
+	setupArticleToc();
+</script>
+
+<style>
+	[data-toc-link][data-active] .toc-link-indicator {
+		display: block;
+	}
+</style>
