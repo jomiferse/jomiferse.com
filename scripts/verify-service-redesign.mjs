@@ -397,6 +397,8 @@ if (includesPhase("detail")) {
 		"padding-block: clamp(1.5rem, 3vw, 2.5rem)",
 		"font-size: clamp(2.75rem, 5vw, 4.65rem);",
 		"font-size: 1rem;",
+		"margin-bottom: 1.25rem;",
+		"margin-top: auto;",
 	]);
 	rejectMarkers("compact service detail", detail, [
 		"padding-block: clamp(4.5rem, 8vw, 7rem);",

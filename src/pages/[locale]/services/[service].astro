@@ -548,7 +548,11 @@ const structuredData = [
 
 <style>
 	.service-detail-page {
-		--detail-heading: clamp(2.2rem, 4.4vw, 4.1rem);
+		--services-section-space: clamp(3.25rem, 5vw, 4.5rem);
+		--services-content-gap: 2.25rem;
+		--services-card-padding: clamp(1.35rem, 2vw, 1.75rem);
+		--services-list-gap: 0.75rem;
+		--detail-heading: clamp(2.15rem, 3.8vw, 3.75rem);
 	}
 
 	.service-detail-page .eyebrow {
@@ -560,7 +564,7 @@ const structuredData = [
 		grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.55fr);
 		gap: clamp(2.5rem, 7vw, 7rem);
 		align-items: end;
-		padding-block: clamp(2rem, 6vw, 5.5rem);
+		padding-block: clamp(1.5rem, 3vw, 2.5rem) clamp(3.5rem, 5vw, 4.5rem);
 	}
 
 	.service-detail-hero__back {
@@ -580,17 +584,17 @@ const structuredData = [
 		display: flex;
 		gap: 1rem;
 		align-items: center;
-		margin-top: 2.5rem;
+		margin-top: 2rem;
 	}
 
 	.service-detail-hero h1 {
 		max-width: 15ch;
-		margin-top: 1.5rem;
+		margin-top: 1.25rem;
 		color: var(--home-navy);
-		font-size: clamp(3rem, 6vw, 5.75rem);
+		font-size: clamp(2.75rem, 5vw, 4.65rem);
 		font-weight: 950;
-		letter-spacing: -0.07em;
-		line-height: 0.94;
+		letter-spacing: -0.065em;
+		line-height: 0.95;
 		text-wrap: balance;
 	}
 
@@ -696,7 +700,7 @@ const structuredData = [
 	.service-detail-proof,
 	.related-services,
 	.service-detail-faq {
-		padding-block: clamp(4.5rem, 8vw, 7rem);
+		padding-block: var(--services-section-space);
 	}
 
 	.service-detail-heading {
@@ -726,7 +730,7 @@ const structuredData = [
 		display: grid;
 		grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
 		gap: clamp(2.5rem, 7vw, 6rem);
-		margin-top: 3.5rem;
+		margin-top: var(--services-content-gap);
 	}
 
 	.service-outcome__problem > strong {
@@ -788,18 +792,18 @@ const structuredData = [
 
 	.service-pricing :global([data-service-pricing]),
 	.service-detail-proof :global([data-service-proof]) {
-		margin-top: 3rem;
+		margin-top: var(--services-content-gap);
 	}
 
 	.service-scope__columns {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 1rem;
-		margin-top: 3rem;
+		margin-top: var(--services-content-gap);
 	}
 
 	.service-scope__columns article {
-		padding: clamp(1.5rem, 3vw, 2.5rem);
+		padding: var(--services-card-padding);
 		border: 1px solid var(--surface-border);
 		border-radius: 1.15rem;
 		background: var(--surface);
@@ -819,7 +823,7 @@ const structuredData = [
 	}
 
 	.service-scope h3 {
-		margin-top: 1.5rem;
+		margin-top: 1.25rem;
 		color: var(--text);
 		font-size: 1.3rem;
 		font-weight: 900;
@@ -827,8 +831,8 @@ const structuredData = [
 
 	.service-scope ul {
 		display: grid;
-		gap: 0.85rem;
-		margin-top: 1.3rem;
+		gap: var(--services-list-gap);
+		margin-top: 1rem;
 	}
 
 	.service-scope li {
@@ -849,12 +853,12 @@ const structuredData = [
 	.service-detail-process ol {
 		display: grid;
 		grid-template-columns: repeat(4, minmax(0, 1fr));
-		margin-top: 3rem;
+		margin-top: var(--services-content-gap);
 		border-block: 1px solid var(--surface-border);
 	}
 
 	.service-detail-process li {
-		padding: 2rem;
+		padding: 1.5rem;
 	}
 
 	.service-detail-process li + li {
@@ -869,9 +873,9 @@ const structuredData = [
 	}
 
 	.service-detail-process li p {
-		margin-top: 1.4rem;
+		margin-top: 1rem;
 		color: var(--text-muted);
-		font-size: 0.86rem;
+		font-size: 0.9rem;
 		line-height: 1.65;
 	}
 
@@ -879,14 +883,14 @@ const structuredData = [
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1rem;
-		margin-top: 3rem;
+		margin-top: var(--services-content-gap);
 	}
 
 	.related-services__grid article {
 		display: flex;
 		min-width: 0;
 		flex-direction: column;
-		padding: 1.5rem;
+		padding: var(--services-card-padding);
 		border: 1px solid var(--surface-border);
 		border-radius: 1.15rem;
 		background: var(--surface);
@@ -894,7 +898,7 @@ const structuredData = [
 	}
 
 	.related-services h3 {
-		margin-top: 1.5rem;
+		margin-top: 1.25rem;
 		color: var(--home-navy);
 		font-size: 1.25rem;
 		font-weight: 900;
@@ -905,9 +909,10 @@ const structuredData = [
 		display: -webkit-box;
 		overflow: hidden;
 		margin-top: 0.75rem;
+		margin-bottom: 1.25rem;
 		color: var(--text-muted);
-		font-size: 0.84rem;
-		line-height: 1.65;
+		font-size: 0.875rem;
+		line-height: 1.6;
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 3;
 	}
@@ -915,15 +920,14 @@ const structuredData = [
 	.related-services .button-secondary {
 		width: 100%;
 		margin-top: auto;
-		transform: translateY(1.2rem);
-		font-size: 0.78rem;
+		font-size: 0.8rem;
 	}
 
 	.service-detail-faq__list {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 0 2.5rem;
-		margin-top: 3rem;
+		margin-top: var(--services-content-gap);
 		border-top: 1px solid var(--surface-border);
 	}
 
@@ -939,6 +943,7 @@ const structuredData = [
 		min-height: 5.25rem;
 		padding-block: 1rem;
 		color: var(--text);
+		font-size: 1rem;
 		font-weight: 850;
 		line-height: 1.45;
 		cursor: pointer;
@@ -967,7 +972,7 @@ const structuredData = [
 	.service-detail-faq details > p {
 		padding: 0 2rem 1.5rem 0;
 		color: var(--text-muted);
-		font-size: 0.88rem;
+		font-size: 1rem;
 		line-height: 1.7;
 	}
 
@@ -998,8 +1003,12 @@ const structuredData = [
 	}
 
 	@media (max-width: 680px) {
+		.service-detail-page {
+			--services-content-gap: 1.75rem;
+		}
+
 		.service-detail-hero h1 {
-			font-size: clamp(2.65rem, 13vw, 4rem);
+			font-size: clamp(2.5rem, 12vw, 3.5rem);
 		}
 
 		.service-detail-hero__actions,
