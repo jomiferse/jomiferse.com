@@ -2,19 +2,45 @@
 import { Icon } from "astro-icon/components";
 import { getTranslations, t, type Locale } from "@/i18n";
 import type { ContactSourceCategory } from "@/lib/contact-source";
+import { pricingKeys, type PricingKey } from "@/lib/service-commercial";
+import { getServicePages } from "@/lib/services";
 
 const {
 	locale,
 	sourceCategory = "direct",
 	sourcePath,
 	idPrefix = "contact",
+	selectedService,
+	selectedScope,
 } = Astro.props as {
 	locale: Locale;
 	sourceCategory?: ContactSourceCategory;
 	sourcePath?: string;
 	idPrefix?: string;
+	selectedService?: string;
+	selectedScope?: PricingKey;
 };
-const projectTypes = getTranslations(locale).contactForm.projectTypes;
+const contactCopy = getTranslations(locale).contactForm;
+const projectTypes = contactCopy.projectTypes;
+const serviceOptions = [
+	{ value: "assessment", label: contactCopy.assessmentLabel },
+	...getServicePages(locale).map((service) => ({
+		value: service.slug,
+		label: service.title,
+	})),
+].filter(
+	(option, index, options) =>
+		options.findIndex((candidate) => candidate.value === option.value) ===
+		index,
+);
+const resolvedService = serviceOptions.find(
+	(option) => option.value === selectedService,
+);
+const resolvedScope =
+	selectedScope && pricingKeys.includes(selectedScope)
+		? selectedScope
+		: undefined;
+const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 ---
 
 <form
@@ -22,8 +48,21 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 	method="post"
 	enctype="multipart/form-data"
 	class="dark-card p-5 md:p-6"
+	data-contact-form
 >
 	<input type="hidden" name="locale" value={locale} />
+	<input
+		type="hidden"
+		name="service"
+		value={resolvedService?.value ?? ""}
+		data-selected-service
+	/>
+	<input
+		type="hidden"
+		name="scope"
+		value={resolvedScope ?? ""}
+		data-selected-scope
+	/>
 	<input
 		type="hidden"
 		name="sourceCategory"
@@ -36,6 +75,50 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 		value={sourcePath ?? ""}
 		data-source-path
 	/>
+	{
+		serviceOptions.map((option) => (
+			<span
+				hidden
+				data-service-option
+				data-service-value={option.value}
+				data-service-label={option.label}
+			/>
+		))
+	}
+	{
+		pricingKeys.map((scope) => (
+			<span
+				hidden
+				data-scope-option
+				data-scope-value={scope}
+				data-scope-label={scopeLabels[scope]}
+			/>
+		))
+	}
+
+	<section
+		hidden={!resolvedService}
+		data-service-selection-summary
+		class="contact-selection mb-6"
+		aria-labelledby={`${idPrefix}-selection-title`}
+	>
+		<div class="contact-selection__heading">
+			<Icon name="briefcase-business" class="h-5 w-5" aria-hidden="true" />
+			<h2 id={`${idPrefix}-selection-title`}>{contactCopy.selectionTitle}</h2>
+		</div>
+		<dl>
+			<div>
+				<dt>{contactCopy.selectedServiceLabel}</dt>
+				<dd data-selected-service-label>{resolvedService?.label ?? ""}</dd>
+			</div>
+			<div hidden={!resolvedScope} data-selected-scope-row>
+				<dt>{contactCopy.selectedScopeLabel}</dt>
+				<dd data-selected-scope-label>
+					{resolvedScope ? scopeLabels[resolvedScope] : ""}
+				</dd>
+			</div>
+		</dl>
+	</section>
 
 	<div class="grid gap-5 md:grid-cols-2">
 		<div>
@@ -135,6 +218,58 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 	</button>
 </form>
 
+<style>
+	.contact-selection {
+		padding: 1rem;
+		border: 1px solid
+			color-mix(in srgb, var(--action) 24%, var(--surface-border));
+		border-radius: 0.95rem;
+		background: color-mix(in srgb, var(--action) 7%, var(--surface));
+	}
+
+	.contact-selection__heading {
+		display: flex;
+		gap: 0.6rem;
+		align-items: center;
+		color: var(--action);
+	}
+
+	.contact-selection__heading h2 {
+		color: var(--text);
+		font-size: 0.88rem;
+		font-weight: 900;
+	}
+
+	.contact-selection dl {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.75rem 1.5rem;
+		margin-top: 0.9rem;
+		padding-top: 0.9rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.contact-selection dt {
+		color: var(--text-muted);
+		font-size: 0.68rem;
+		font-weight: 750;
+	}
+
+	.contact-selection dd {
+		margin-top: 0.22rem;
+		color: var(--text);
+		font-size: 0.8rem;
+		font-weight: 850;
+		line-height: 1.4;
+	}
+
+	@media (max-width: 520px) {
+		.contact-selection dl {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
 <script>
 	const allowedCategories = new Set([
 		"service",
@@ -153,4 +288,67 @@ const projectTypes = getTranslations(locale).contactForm.projectTypes;
 			.querySelectorAll<HTMLInputElement>("[data-source-path]")
 			.forEach((input) => (input.value = path));
 	}
+
+	const validScopes = new Set(["intervention", "project", "support"]);
+	const queryService = params.get("service") ?? "";
+	const queryScope = params.get("scope") ?? "";
+
+	const updateSelection = (
+		form: HTMLFormElement,
+		service: string,
+		scope: string,
+	) => {
+		const serviceOption = Array.from(
+			form.querySelectorAll<HTMLElement>("[data-service-option]"),
+		).find((option) => option.dataset.serviceValue === service);
+		const resolvedScope = validScopes.has(scope) ? scope : "";
+		const scopeOption = Array.from(
+			form.querySelectorAll<HTMLElement>("[data-scope-option]"),
+		).find((option) => option.dataset.scopeValue === resolvedScope);
+		const serviceInput = form.querySelector<HTMLInputElement>(
+			"[data-selected-service]",
+		);
+		const scopeInput = form.querySelector<HTMLInputElement>(
+			"[data-selected-scope]",
+		);
+		const summary = form.querySelector<HTMLElement>(
+			"[data-service-selection-summary]",
+		);
+		const serviceLabel = form.querySelector<HTMLElement>(
+			"[data-selected-service-label]",
+		);
+		const scopeRow = form.querySelector<HTMLElement>(
+			"[data-selected-scope-row]",
+		);
+		const scopeLabel = form.querySelector<HTMLElement>(
+			"[data-selected-scope-label]",
+		);
+
+		if (!serviceInput || !scopeInput || !summary || !serviceLabel) return;
+		serviceInput.value = serviceOption?.dataset.serviceValue ?? "";
+		scopeInput.value = serviceOption ? resolvedScope : "";
+		serviceLabel.textContent = serviceOption?.dataset.serviceLabel ?? "";
+		summary.hidden = !serviceOption;
+		if (scopeRow) scopeRow.hidden = !serviceOption || !scopeOption;
+		if (scopeLabel)
+			scopeLabel.textContent = scopeOption?.dataset.scopeLabel ?? "";
+	};
+
+	document
+		.querySelectorAll<HTMLFormElement>("[data-contact-form]")
+		.forEach((form) => {
+			if (queryService) updateSelection(form, queryService, queryScope);
+		});
+
+	document
+		.querySelectorAll<HTMLElement>("[data-service-selection]")
+		.forEach((trigger) => {
+			trigger.addEventListener("click", () => {
+				const service = trigger.dataset.serviceSelection ?? "";
+				const scope = trigger.dataset.scopeSelection ?? "";
+				document
+					.querySelectorAll<HTMLFormElement>("[data-contact-form]")
+					.forEach((form) => updateSelection(form, service, scope));
+			});
+		});
 </script>

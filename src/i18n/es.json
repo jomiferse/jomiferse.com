@@ -755,6 +755,15 @@
     "status": "ESTADO"
   },
   "contactForm": {
+    "selectionTitle": "Tu consulta",
+    "selectedServiceLabel": "Servicio consultado",
+    "selectedScopeLabel": "Modalidad",
+    "assessmentLabel": "Primera valoración gratuita",
+    "scopes": {
+      "intervention": "Intervención puntual",
+      "project": "Proyecto completo",
+      "support": "Soporte mensual"
+    },
     "nameLabel": "Nombre",
     "namePlaceholder": "Tu nombre",
     "emailLabel": "Email",

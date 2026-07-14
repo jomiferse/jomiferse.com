@@ -755,6 +755,15 @@
     "status": "STATUS"
   },
   "contactForm": {
+    "selectionTitle": "Your enquiry",
+    "selectedServiceLabel": "Selected service",
+    "selectedScopeLabel": "Engagement",
+    "assessmentLabel": "Free initial assessment",
+    "scopes": {
+      "intervention": "Focused intervention",
+      "project": "Complete project",
+      "support": "Monthly support"
+    },
     "nameLabel": "Name",
     "namePlaceholder": "Your name",
     "emailLabel": "Email",
