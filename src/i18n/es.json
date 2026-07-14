@@ -709,6 +709,35 @@
     "backToTop": "Volver arriba",
     "opensNewWindow": "se abre en una pestaña nueva"
   },
+  "popups": {
+    "contact": {
+      "eyebrow": "Primera valoración gratuita",
+      "title": "Cuéntame qué necesitas resolver.",
+      "description": "Con tres datos es suficiente para entender el contexto y decirte cuál sería el siguiente paso.",
+      "close": "Cerrar formulario de contacto",
+      "submit": "Enviar consulta",
+      "submitting": "Enviando consulta…",
+      "successTitle": "He recibido tu consulta.",
+      "successText": "La revisaré y te responderé personalmente lo antes posible.",
+      "validationError": "Revisa los campos marcados antes de enviar.",
+      "deliveryError": "No se ha podido enviar ahora mismo. Puedes escribirme por WhatsApp o email.",
+      "whatsapp": "Escribir por WhatsApp"
+    },
+    "exitIntent": {
+      "eyebrow": "Antes de cerrar",
+      "genericTitle": "¿Quieres que mire tu caso antes de irte?",
+      "serviceTitle": "¿Encaja {title} con lo que necesitas?",
+      "projectTitle": "¿Tienes un reto parecido a {title}?",
+      "articleTitle": "¿Quieres aplicar lo que has leído a tu caso?",
+      "description": "Cuéntame el contexto. Te diré con claridad si puedo ayudarte y cuál sería el siguiente paso razonable.",
+      "pointOne": "Sin compromiso",
+      "pointTwo": "Respuesta directa",
+      "primary": "Cuéntame tu proyecto",
+      "whatsapp": "Escribir por WhatsApp",
+      "dismiss": "Seguir navegando",
+      "close": "Cerrar este aviso"
+    }
+  },
   "cookies": {
     "bannerLabel": "Aviso de cookies",
     "bannerText": "Utilizo cookies para ofrecerte la mejor experiencia en esta web. Puedes aprender más sobre qué cookies utilizo o desactivarlas en la ",

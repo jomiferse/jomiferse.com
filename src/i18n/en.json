@@ -709,6 +709,35 @@
     "backToTop": "Back to top",
     "opensNewWindow": "opens in a new tab"
   },
+  "popups": {
+    "contact": {
+      "eyebrow": "Free initial assessment",
+      "title": "Tell me what you need to solve.",
+      "description": "Three details are enough for me to understand the context and suggest a sensible next step.",
+      "close": "Close contact form",
+      "submit": "Send enquiry",
+      "submitting": "Sending enquiry…",
+      "successTitle": "I have received your enquiry.",
+      "successText": "I will review it and reply personally as soon as possible.",
+      "validationError": "Check the highlighted fields before sending.",
+      "deliveryError": "It could not be sent just now. You can reach me by WhatsApp or email.",
+      "whatsapp": "Message on WhatsApp"
+    },
+    "exitIntent": {
+      "eyebrow": "Before you close this",
+      "genericTitle": "Would you like me to look at your case before you go?",
+      "serviceTitle": "Does {title} fit what you need?",
+      "projectTitle": "Do you have a challenge similar to {title}?",
+      "articleTitle": "Would you like to apply this to your own case?",
+      "description": "Share the context. I will tell you clearly whether I can help and what the most sensible next step would be.",
+      "pointOne": "No commitment",
+      "pointTwo": "Direct reply",
+      "primary": "Tell me about your project",
+      "whatsapp": "Message on WhatsApp",
+      "dismiss": "Keep browsing",
+      "close": "Close this prompt"
+    }
+  },
   "cookies": {
     "bannerLabel": "Cookie notice",
     "bannerText": "I use cookies to offer you the best experience on this website. You can learn more about which cookies I use or disable them in the ",
