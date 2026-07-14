@@ -16,10 +16,13 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "mobileNav": "Mobile navigation",
-    "availability": "Full-Stack Developer",
+    "role": "Full-stack developer",
+    "availability": "Available for new projects",
+    "preferences": "Preferences",
     "contactCta": "Start a project",
     "contactCtaShort": "Let's talk",
-    "assessmentCtaShort": "Free assessment"
+    "assessmentCtaShort": "Free assessment",
+    "assessmentCta": "Free initial assessment"
   },
   "theme": {
     "toggle": "Toggle theme",

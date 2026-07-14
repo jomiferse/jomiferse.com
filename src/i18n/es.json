@@ -16,10 +16,13 @@
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "mobileNav": "Navegación móvil",
-    "availability": "Full-Stack Developer",
+    "role": "Desarrollador full-stack",
+    "availability": "Disponible para nuevos proyectos",
+    "preferences": "Preferencias",
     "contactCta": "Empezar un proyecto",
     "contactCtaShort": "Hablemos",
-    "assessmentCtaShort": "Valoración gratis"
+    "assessmentCtaShort": "Valoración gratis",
+    "assessmentCta": "Primera valoración gratuita"
   },
   "theme": {
     "toggle": "Cambiar tema",
