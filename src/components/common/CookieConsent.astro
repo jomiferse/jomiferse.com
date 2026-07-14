@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+import DialogShell from "@/components/common/DialogShell.astro";
 import { t, type Locale } from "@/i18n";
 
 interface Props {
@@ -15,83 +17,123 @@ const privacyHref = `/${locale}/privacy`;
 	aria-label={t(locale, "cookies.bannerLabel")}
 	hidden
 >
-	<div class="cookie-consent__banner" role="region" aria-live="polite">
-		<p>
-			{t(locale, "cookies.bannerText")}
-			<a href={privacyHref}>{t(locale, "cookies.bannerPolicyLink")}</a>
-			{t(locale, "cookies.bannerTextAfterLink")}
-		</p>
+	<div
+		class="cookie-consent__banner"
+		role="region"
+		aria-live="polite"
+		data-cookie-banner
+	>
+		<div class="cookie-consent__copy">
+			<span class="cookie-consent__signal" aria-hidden="true">
+				<Icon name="info" class="h-4 w-4" />
+			</span>
+			<div>
+				<p class="cookie-consent__label">
+					{t(locale, "cookies.bannerLabel")}
+				</p>
+				<p class="cookie-consent__text">
+					{t(locale, "cookies.bannerText")}
+					<a href={privacyHref}>{t(locale, "cookies.bannerPolicyLink")}</a>
+					{t(locale, "cookies.bannerTextAfterLink")}
+				</p>
+			</div>
+		</div>
 		<div class="cookie-consent__actions">
-			<button type="button" class="button-secondary" data-cookie-reject>
+			<button
+				type="button"
+				class="button-secondary"
+				data-cookie-reject
+				data-cookie-equal-action
+			>
 				{t(locale, "cookies.reject")}
 			</button>
 			<button type="button" class="button-secondary" data-cookie-configure>
 				{t(locale, "cookies.configure")}
 			</button>
-			<button type="button" class="button-primary" data-cookie-accept>
+			<button
+				type="button"
+				class="button-action"
+				data-cookie-accept
+				data-cookie-equal-action
+			>
 				{t(locale, "cookies.accept")}
 			</button>
 		</div>
 	</div>
 
-	<dialog
+	<DialogShell
 		id="cookie-settings-dialog"
-		class="cookie-consent__dialog"
-		aria-labelledby="cookie-settings-title"
-		aria-describedby="cookie-settings-description"
+		labelledBy="cookie-settings-title"
+		describedBy="cookie-settings-description"
+		size="standard"
+		className="cookie-settings-dialog"
 	>
-		<div class="cookie-consent__panel">
+		<div slot="header" class="dialog-shell__header-layout">
 			<div>
-				<p class="eyebrow">{t(locale, "cookies.settingsEyebrow")}</p>
-				<h2 id="cookie-settings-title">{t(locale, "cookies.settingsTitle")}</h2>
-				<p id="cookie-settings-description" class="muted-copy">
+				<p class="dialog-shell__eyebrow">
+					{t(locale, "cookies.settingsEyebrow")}
+				</p>
+				<h2 id="cookie-settings-title" class="dialog-shell__title">
+					{t(locale, "cookies.settingsTitle")}
+				</h2>
+				<p id="cookie-settings-description" class="dialog-shell__description">
 					{t(locale, "cookies.settingsDescription")}
 				</p>
 			</div>
-
-			<div class="cookie-consent__options">
-				<div class="cookie-consent__option">
-					<div>
-						<h3>{t(locale, "cookies.necessaryTitle")}</h3>
-						<p>{t(locale, "cookies.necessaryDescription")}</p>
-					</div>
-					<span class="cookie-consent__status">
-						{t(locale, "cookies.alwaysActive")}
-					</span>
-				</div>
-
-				<label class="cookie-consent__option cookie-consent__option--toggle">
-					<span>
-						<span class="cookie-consent__option-title">
-							{t(locale, "cookies.analyticsTitle")}
-						</span>
-						<span class="cookie-consent__option-copy">
-							{t(locale, "cookies.analyticsDescription")}
-						</span>
-					</span>
-					<input
-						type="checkbox"
-						name="analytics"
-						class="cookie-consent__toggle"
-						data-cookie-analytics
-					/>
-				</label>
-			</div>
-
-			<p class="cookie-consent__privacy">
-				<a href={privacyHref}>{t(locale, "cookies.privacyLink")}</a>
-			</p>
-
-			<div class="cookie-consent__footer">
-				<button type="button" class="button-secondary" data-cookie-close>
-					{t(locale, "cookies.close")}
-				</button>
-				<button type="button" class="button-primary" data-cookie-save>
-					{t(locale, "cookies.save")}
-				</button>
-			</div>
+			<button
+				type="button"
+				class="dialog-shell__close"
+				aria-label={t(locale, "cookies.close")}
+				data-cookie-close
+				data-cookie-close-icon
+			>
+				<Icon name="x" class="h-5 w-5" aria-hidden="true" />
+			</button>
 		</div>
-	</dialog>
+
+		<div class="cookie-consent__options">
+			<div class="cookie-consent__option">
+				<div>
+					<h3>{t(locale, "cookies.necessaryTitle")}</h3>
+					<p>{t(locale, "cookies.necessaryDescription")}</p>
+				</div>
+				<span class="cookie-consent__status">
+					<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+					{t(locale, "cookies.alwaysActive")}
+				</span>
+			</div>
+
+			<label class="cookie-consent__option cookie-consent__option--toggle">
+				<span>
+					<span class="cookie-consent__option-title">
+						{t(locale, "cookies.analyticsTitle")}
+					</span>
+					<span class="cookie-consent__option-copy">
+						{t(locale, "cookies.analyticsDescription")}
+					</span>
+				</span>
+				<input
+					type="checkbox"
+					name="analytics"
+					class="cookie-consent__toggle"
+					data-cookie-analytics
+				/>
+			</label>
+		</div>
+
+		<p class="cookie-consent__privacy">
+			<a href={privacyHref}>{t(locale, "cookies.privacyLink")}</a>
+		</p>
+
+		<div slot="footer" class="cookie-consent__footer">
+			<button type="button" class="button-secondary" data-cookie-close>
+				{t(locale, "cookies.close")}
+			</button>
+			<button type="button" class="button-action" data-cookie-save>
+				{t(locale, "cookies.save")}
+			</button>
+		</div>
+	</DialogShell>
 </section>
 
 <script>
@@ -109,7 +151,7 @@ const privacyHref = `/${locale}/privacy`;
 	const dialog = document.getElementById(
 		"cookie-settings-dialog",
 	) as HTMLDialogElement | null;
-	const banner = root?.querySelector<HTMLElement>(".cookie-consent__banner");
+	const banner = root?.querySelector<HTMLElement>("[data-cookie-banner]");
 	const analyticsInput = root?.querySelector<HTMLInputElement>(
 		"[data-cookie-analytics]",
 	);
@@ -169,6 +211,8 @@ const privacyHref = `/${locale}/privacy`;
 
 	const openSettings = () => {
 		if (!dialog) return;
+		const openDialog = document.querySelector("dialog[open]");
+		if (openDialog && openDialog !== dialog) return;
 		lastFocusedElement = document.activeElement as HTMLElement | null;
 		syncDialogState();
 		if (typeof dialog.showModal === "function") {
@@ -184,8 +228,8 @@ const privacyHref = `/${locale}/privacy`;
 			dialog.close();
 		} else {
 			dialog.removeAttribute("open");
+			lastFocusedElement?.focus();
 		}
-		lastFocusedElement?.focus();
 	};
 
 	const savePreferences = (preferences: CookieConsentPreferences) => {
@@ -211,16 +255,21 @@ const privacyHref = `/${locale}/privacy`;
 		?.querySelector("[data-cookie-configure]")
 		?.addEventListener("click", openSettings);
 
-	root
-		?.querySelector("[data-cookie-close]")
-		?.addEventListener("click", closeSettings);
+	root?.querySelectorAll("[data-cookie-close]").forEach((button) => {
+		button.addEventListener("click", closeSettings);
+	});
 
 	root?.querySelector("[data-cookie-save]")?.addEventListener("click", () => {
 		savePreferences({ analytics: Boolean(analyticsInput?.checked) });
 	});
 
-	dialog?.addEventListener("cancel", () => {
+	dialog?.addEventListener("click", (event) => {
+		if (event.target === dialog) closeSettings();
+	});
+
+	dialog?.addEventListener("close", () => {
 		lastFocusedElement?.focus();
+		lastFocusedElement = null;
 	});
 
 	document.addEventListener("jomiferse:open-cookie-settings", openSettings);
@@ -244,9 +293,9 @@ const privacyHref = `/${locale}/privacy`;
 <style>
 	.cookie-consent {
 		position: fixed;
-		right: 1rem;
-		bottom: 1rem;
-		left: 1rem;
+		right: 0.75rem;
+		bottom: 0.75rem;
+		left: 0.75rem;
 		z-index: 80;
 		pointer-events: none;
 	}
@@ -254,105 +303,76 @@ const privacyHref = `/${locale}/privacy`;
 	.cookie-consent__banner {
 		display: grid;
 		gap: 1rem;
-		max-width: 54rem;
+		max-width: 76rem;
 		margin-inline: auto;
-		border: 1px solid var(--surface-border);
-		border-radius: 1rem;
-		background: color-mix(in srgb, var(--surface) 94%, transparent);
-		box-shadow: var(--shadow-card);
 		padding: 1rem;
+		border: 1px solid var(--surface-border);
+		border-top: 3px solid var(--action);
+		border-radius: 1rem;
+		background: color-mix(in srgb, var(--surface) 96%, transparent);
+		box-shadow: 0 18px 55px rgba(5, 12, 22, 0.2);
 		pointer-events: auto;
 		backdrop-filter: blur(18px);
 	}
 
-	.cookie-consent__banner p {
-		margin: 0;
-		color: var(--text-muted);
-		font-size: 0.92rem;
-		line-height: 1.65;
+	.cookie-consent__banner[hidden] {
+		display: none;
 	}
 
-	.cookie-consent__banner a {
-		color: var(--accent-strong);
-		font-weight: 800;
+	.cookie-consent__copy {
+		display: flex;
+		gap: 0.8rem;
+		align-items: flex-start;
+		min-width: 0;
+	}
+
+	.cookie-consent__signal {
+		display: inline-grid;
+		width: 2rem;
+		height: 2rem;
+		flex: 0 0 auto;
+		place-items: center;
+		border: 1px solid
+			color-mix(in srgb, var(--action) 28%, var(--surface-border));
+		border-radius: 0.65rem;
+		background: color-mix(in srgb, var(--action) 7%, var(--surface));
+		color: var(--action);
+	}
+
+	.cookie-consent__label {
+		color: var(--home-navy);
+		font-size: 0.72rem;
+		font-weight: 900;
+		letter-spacing: 0.15em;
+		line-height: 1.4;
+		text-transform: uppercase;
+	}
+
+	.cookie-consent__text {
+		margin-top: 0.25rem;
+		color: var(--text-muted);
+		font-size: 0.86rem;
+		line-height: 1.55;
+	}
+
+	.cookie-consent__text a,
+	.cookie-consent__privacy a {
+		color: var(--action);
+		font-weight: 850;
 		text-decoration: underline;
 		text-decoration-thickness: 0.08em;
 		text-underline-offset: 0.18em;
 	}
 
-	.dark .cookie-consent__banner a {
-		color: var(--accent);
-	}
-
-	.cookie-consent__actions,
-	.cookie-consent__footer {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.65rem;
-	}
-
 	.cookie-consent__actions {
-		justify-content: flex-end;
+		display: grid;
+		gap: 0.55rem;
 	}
 
 	.cookie-consent__actions button,
 	.cookie-consent__footer button {
+		min-height: 2.75rem;
 		cursor: pointer;
-	}
-
-	.cookie-consent__dialog {
-		width: min(100% - 2rem, 38rem);
-		max-height: calc(100dvh - 2rem);
-		margin: auto;
-		border: 0;
-		border-radius: 1rem;
-		background: transparent;
-		padding: 0;
-		color: var(--text);
-		pointer-events: auto;
-	}
-
-	.cookie-consent__dialog::backdrop {
-		background: rgba(5, 8, 13, 0.62);
-		backdrop-filter: blur(8px);
-	}
-
-	.cookie-consent__panel {
-		display: grid;
-		gap: 1.25rem;
-		border: 1px solid var(--surface-border);
-		border-radius: 1rem;
-		background: var(--surface);
-		box-shadow: var(--shadow-card);
-		padding: 1.25rem;
-		overflow: auto;
-	}
-
-	.cookie-consent__panel h2,
-	.cookie-consent__panel h3,
-	.cookie-consent__option-title {
-		display: block;
-		margin: 0;
-		color: var(--text);
-		font-weight: 900;
-	}
-
-	.cookie-consent__panel h2 {
-		margin-top: 0.45rem;
-		font-size: clamp(1.6rem, 4vw, 2.2rem);
-		line-height: 1.08;
-	}
-
-	.cookie-consent__panel h3,
-	.cookie-consent__option-title {
-		font-size: 1rem;
-	}
-
-	.cookie-consent__panel p,
-	.cookie-consent__option-copy {
-		margin: 0.45rem 0 0;
-		color: var(--text-muted);
-		line-height: 1.65;
 	}
 
 	.cookie-consent__options {
@@ -365,97 +385,104 @@ const privacyHref = `/${locale}/privacy`;
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
-		border: 1px solid var(--surface-border);
-		border-radius: 0.85rem;
-		background: color-mix(in srgb, var(--surface-strong) 78%, transparent);
 		padding: 1rem;
+		border: 1px solid var(--surface-border);
+		border-radius: 0.9rem;
+		background: var(--surface-strong);
+	}
+
+	.cookie-consent__option h3,
+	.cookie-consent__option-title {
+		display: block;
+		color: var(--home-navy);
+		font-size: 0.98rem;
+		font-weight: 900;
+	}
+
+	.cookie-consent__option p,
+	.cookie-consent__option-copy {
+		display: block;
+		margin-top: 0.35rem;
+		color: var(--text-muted);
+		font-size: 0.86rem;
+		line-height: 1.55;
 	}
 
 	.cookie-consent__option--toggle {
 		cursor: pointer;
 	}
 
-	.cookie-consent__status {
-		flex: none;
-		border: 1px solid var(--accent-line);
-		border-radius: var(--radius-pill);
-		background: var(--accent-soft);
-		padding: 0.35rem 0.65rem;
-		color: var(--accent-strong);
-		font-size: 0.75rem;
-		font-weight: 800;
+	.cookie-consent__option--toggle:has(input:focus-visible) {
+		outline: 2px solid var(--action);
+		outline-offset: 2px;
 	}
 
-	.dark .cookie-consent__status {
-		color: var(--accent);
+	.cookie-consent__status {
+		display: inline-flex;
+		flex: none;
+		gap: 0.35rem;
+		align-items: center;
+		color: var(--action);
+		font-size: 0.75rem;
+		font-weight: 850;
 	}
 
 	.cookie-consent__toggle {
-		width: 3rem;
-		height: 1.7rem;
+		width: 1.35rem;
+		height: 1.35rem;
 		flex: none;
-		border: 1px solid var(--surface-border);
-		border-radius: var(--radius-pill);
-		background:
-			radial-gradient(
-				circle at 0.75rem 50%,
-				var(--text-muted) 0.42rem,
-				transparent 0.46rem
-			),
-			var(--bg-band);
+		accent-color: var(--action);
 		cursor: pointer;
 	}
 
-	.cookie-consent__toggle:checked {
-		border-color: var(--accent-line);
-		background:
-			radial-gradient(
-				circle at 2.2rem 50%,
-				var(--text) 0.42rem,
-				transparent 0.46rem
-			),
-			var(--accent);
-	}
-
 	.cookie-consent__privacy {
-		font-size: 0.9rem;
-	}
-
-	.cookie-consent__privacy a {
-		color: var(--accent-strong);
-		font-weight: 800;
-	}
-
-	.dark .cookie-consent__privacy a {
-		color: var(--accent);
+		margin-top: 1rem;
+		font-size: 0.84rem;
 	}
 
 	.cookie-consent__footer {
-		justify-content: flex-end;
+		display: grid;
+		width: 100%;
+		gap: 0.65rem;
 	}
 
-	@media (min-width: 760px) {
-		.cookie-consent__banner {
-			grid-template-columns: 1fr auto;
-			align-items: center;
+	:global(.cookie-settings-dialog) {
+		pointer-events: auto;
+	}
+
+	@media (min-width: 40rem) {
+		.cookie-consent__footer {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 
-	@media (max-width: 520px) {
+	@media (min-width: 58rem) {
 		.cookie-consent {
-			right: 0.75rem;
-			bottom: 0.75rem;
-			left: 0.75rem;
+			right: 1rem;
+			bottom: 1rem;
+			left: 1rem;
 		}
 
-		.cookie-consent__actions > *,
-		.cookie-consent__footer > * {
-			width: 100%;
+		.cookie-consent__banner {
+			grid-template-columns: minmax(0, 1fr) auto;
+			gap: 1.5rem;
+			align-items: center;
+			padding: 1rem 1.15rem;
 		}
 
+		.cookie-consent__actions {
+			grid-template-columns: repeat(3, minmax(7.2rem, auto));
+		}
+	}
+
+	@media (max-width: 32rem) {
 		.cookie-consent__option {
 			align-items: flex-start;
 			flex-direction: column;
+		}
+
+		.cookie-consent__toggle {
+			align-self: flex-end;
 		}
 	}
 </style>

@@ -263,6 +263,29 @@ if (includesPhase("exit")) {
 	}
 }
 
+if (includesPhase("cookies")) {
+	const cookieConsent = await readSource(
+		"src",
+		"components",
+		"common",
+		"CookieConsent.astro",
+	);
+	requireMarkers("cookie consent", cookieConsent, [
+		"DialogShell",
+		"data-cookie-banner",
+		"data-cookie-equal-action",
+		'type="checkbox"',
+		"data-cookie-close-icon",
+		"event.target === dialog",
+		"lastFocusedElement?.focus()",
+		'role="region"',
+		'aria-live="polite"',
+	]);
+	rejectMarkers("cookie consent commercial palette", cookieConsent, [
+		"var(--accent",
+	]);
+}
+
 if (verifyDist) {
 	const generatedHome = join(root, "dist", "client", "es", "index.html");
 	try {
