@@ -346,6 +346,8 @@ if (includesPhase("detail-components")) {
 	}
 	requireMarkers("compact pricing card", card, [
 		"padding: var(--services-card-padding);",
+		"row-gap: 0.15rem;",
+		"padding-block: 1.1rem;",
 		"margin-bottom: 1.5rem;",
 		"margin-top: auto;",
 		"font-size: 0.875rem;",

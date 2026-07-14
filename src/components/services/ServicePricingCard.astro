@@ -164,8 +164,10 @@ const selectionHref = `${contactHref}${separator}service=${encodeURIComponent(se
 	}
 
 	.service-pricing-card__price {
+		display: grid;
+		row-gap: 0.15rem;
 		margin-top: 1.25rem;
-		padding-block: 1.15rem;
+		padding-block: 1.1rem;
 		border-block: 1px solid var(--surface-border);
 	}
 
@@ -181,7 +183,7 @@ const selectionHref = `${contactHref}${separator}service=${encodeURIComponent(se
 		display: flex;
 		gap: 0.4rem;
 		align-items: baseline;
-		margin-block: 0.15rem;
+		margin-block: 0;
 	}
 
 	.service-pricing-card__price strong {
