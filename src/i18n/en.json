@@ -694,14 +694,24 @@
     }
   },
   "footer": {
-    "title": "Simple, reliable software.",
-    "description": "Full-stack development with strong backend foundations for real products and workflows.",
-    "location": "Based in",
-    "contact": "Contact",
-    "tagline": "Simple, reliable software for real products.",
-    "backToTop": "Back to top ↑",
+    "eyebrow": "Free initial assessment",
+    "ctaTitle": "Something to improve, build or automate?",
+    "ctaDescription": "Tell me what you need and I’ll suggest the most sensible next step.",
+    "ctaLabel": "Request a free assessment",
+    "identityDescription": "Web development, custom software and automation with direct communication.",
+    "availability": "Available for new projects · Remote work",
+    "servicesLabel": "Services",
+    "viewAllServices": "View all services",
+    "exploreLabel": "Explore",
+    "contactLabel": "Direct contact",
+    "navigationLabel": "Footer navigation",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "linkedin": "LinkedIn",
     "privacy": "Privacy",
-    "cookieSettings": "Cookies"
+    "cookieSettings": "Cookie settings",
+    "backToTop": "Back to top",
+    "opensNewWindow": "opens in a new tab"
   },
   "cookies": {
     "bannerLabel": "Cookie notice",

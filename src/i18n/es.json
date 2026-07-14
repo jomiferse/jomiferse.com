@@ -694,14 +694,24 @@
     }
   },
   "footer": {
-    "title": "Software simple y fiable.",
-    "description": "Desarrollo full-stack con base sólida en backend para productos y flujos reales.",
-    "location": "Ubicado en",
-    "contact": "Contacto",
-    "tagline": "Software simple y fiable para productos reales.",
-    "backToTop": "Volver arriba ↑",
+    "eyebrow": "Primera valoración gratuita",
+    "ctaTitle": "¿Tienes algo que mejorar, construir o automatizar?",
+    "ctaDescription": "Cuéntame qué necesitas y te propondré el siguiente paso más razonable.",
+    "ctaLabel": "Solicitar valoración gratuita",
+    "identityDescription": "Desarrollo web, software a medida y automatización con trato directo.",
+    "availability": "Disponible para nuevos proyectos · Trabajo remoto",
+    "servicesLabel": "Servicios",
+    "viewAllServices": "Ver todos los servicios",
+    "exploreLabel": "Explorar",
+    "contactLabel": "Contacto directo",
+    "navigationLabel": "Navegación del pie de página",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "linkedin": "LinkedIn",
     "privacy": "Privacidad",
-    "cookieSettings": "Cookies"
+    "cookieSettings": "Configurar cookies",
+    "backToTop": "Volver arriba",
+    "opensNewWindow": "se abre en una pestaña nueva"
   },
   "cookies": {
     "bannerLabel": "Aviso de cookies",

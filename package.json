@@ -16,6 +16,7 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "verify:contact-redesign": "node scripts/verify-contact-redesign.mjs",
+    "verify:footer-redesign": "node scripts/verify-footer-redesign.mjs",
     "verify:header-redesign": "node scripts/verify-header-redesign.mjs",
     "verify:conversion-cta": "node scripts/verify-conversion-cta.mjs",
     "verify:ai-seo": "node scripts/verify-ai-seo.mjs",
