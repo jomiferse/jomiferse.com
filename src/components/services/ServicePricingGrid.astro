@@ -1,0 +1,63 @@
+---
+import type { Locale } from "@/i18n";
+import type { PricingOption } from "@/lib/service-commercial";
+import ServicePricingCard from "@/components/services/ServicePricingCard.astro";
+
+interface Props {
+	locale: Locale;
+	serviceSlug: string;
+	serviceTitle: string;
+	options: readonly [PricingOption, PricingOption, PricingOption];
+	contactHref: string;
+	copy: {
+		mostCommon: string;
+		from: string;
+		tax: string;
+		month: string;
+		included: string;
+		boundary: string;
+	};
+}
+
+const { locale, serviceSlug, serviceTitle, options, contactHref, copy } =
+	Astro.props as Props;
+const [intervention, project, support] = options;
+---
+
+<div data-service-pricing class="service-pricing-grid">
+	{
+		[intervention, project, support].map((option) => (
+			<ServicePricingCard
+				locale={locale}
+				serviceSlug={serviceSlug}
+				serviceTitle={serviceTitle}
+				option={option}
+				featured={option.key === "project"}
+				contactHref={contactHref}
+				mostCommonLabel={copy.mostCommon}
+				pricePrefix={copy.from}
+				taxLabel={copy.tax}
+				monthLabel={copy.month}
+				includedLabel={copy.included}
+				boundaryLabel={copy.boundary}
+			/>
+		))
+	}
+</div>
+
+<style>
+	.service-pricing-grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		align-items: stretch;
+		padding-bottom: 1.5rem;
+	}
+
+	@media (max-width: 960px) {
+		.service-pricing-grid {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+	}
+</style>

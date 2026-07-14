@@ -1,0 +1,264 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Locale } from "@/i18n";
+import type { PricingOption } from "@/lib/service-commercial";
+
+interface Props {
+	locale: Locale;
+	serviceSlug: string;
+	serviceTitle: string;
+	option: PricingOption;
+	featured?: boolean;
+	contactHref: string;
+	mostCommonLabel: string;
+	pricePrefix: string;
+	taxLabel: string;
+	monthLabel: string;
+	includedLabel: string;
+	boundaryLabel: string;
+}
+
+const {
+	locale,
+	serviceSlug,
+	serviceTitle,
+	option,
+	featured = false,
+	contactHref,
+	mostCommonLabel,
+	pricePrefix,
+	taxLabel,
+	monthLabel,
+	includedLabel,
+	boundaryLabel,
+} = Astro.props as Props;
+
+const formattedPrice = new Intl.NumberFormat(
+	locale === "es" ? "es-ES" : "en-GB",
+	{
+		style: "currency",
+		currency: option.currency,
+		maximumFractionDigits: 0,
+	},
+).format(option.amount);
+const separator = contactHref.includes("?") ? "&" : "?";
+const selectionHref = `${contactHref}${separator}service=${encodeURIComponent(serviceSlug)}&scope=${option.key}`;
+---
+
+<article
+	data-pricing-option={option.key}
+	data-pricing-featured={featured ? "true" : undefined}
+	class:list={["service-pricing-card", { "is-featured": featured }]}
+>
+	<header>
+		<div class="service-pricing-card__label">
+			<p>{option.label}</p>
+			{featured ? <span>{mostCommonLabel}</span> : null}
+		</div>
+		<p class="service-pricing-card__description">{option.description}</p>
+	</header>
+
+	<div class="service-pricing-card__price">
+		<span>{pricePrefix}</span>
+		<p>
+			<strong>{formattedPrice}</strong>
+			{option.billingUnit === "month" ? <small>{monthLabel}</small> : null}
+		</p>
+		<small>{taxLabel}</small>
+	</div>
+
+	<div class="service-pricing-card__deliverables">
+		<p>{includedLabel}</p>
+		<ul>
+			{
+				option.deliverables.map((deliverable) => (
+					<li>
+						<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+						<span>{deliverable}</span>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+
+	<p data-pricing-boundary class="service-pricing-card__boundary">
+		<Icon name="info" class="h-4 w-4" aria-hidden="true" />
+		<span><strong>{boundaryLabel}</strong> {option.boundary}</span>
+	</p>
+
+	<a
+		href={selectionHref}
+		class:list={[
+			featured ? "button-action" : "button-secondary",
+			"service-pricing-card__action",
+		]}
+		data-contact-modal-open
+		data-service-selection={serviceSlug}
+		data-service-title={serviceTitle}
+		data-scope-selection={option.key}
+	>
+		{option.ctaLabel}
+		<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+	</a>
+</article>
+
+<style>
+	.service-pricing-card {
+		display: flex;
+		min-width: 0;
+		flex-direction: column;
+		padding: clamp(1.3rem, 2.3vw, 2rem);
+		border: 1px solid var(--surface-border);
+		border-radius: 1.2rem;
+		background: var(--surface);
+		box-shadow: 0 14px 38px color-mix(in srgb, var(--home-navy) 6%, transparent);
+	}
+
+	.service-pricing-card.is-featured {
+		border-color: color-mix(in srgb, var(--action) 42%, var(--surface-border));
+		background:
+			radial-gradient(
+				circle at 100% 0%,
+				color-mix(in srgb, var(--action) 12%, transparent),
+				transparent 13rem
+			),
+			var(--surface);
+		box-shadow:
+			0 18px 44px color-mix(in srgb, var(--action) 9%, transparent),
+			inset 0 0 0 1px color-mix(in srgb, var(--action) 10%, transparent);
+	}
+
+	.service-pricing-card__label {
+		display: flex;
+		min-height: 2rem;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.service-pricing-card__label p {
+		color: var(--text);
+		font-size: 1.25rem;
+		font-weight: 900;
+		letter-spacing: -0.025em;
+	}
+
+	.service-pricing-card__label span {
+		border: 1px solid color-mix(in srgb, var(--action) 35%, transparent);
+		border-radius: 999px;
+		padding: 0.35rem 0.6rem;
+		background: color-mix(in srgb, var(--action) 11%, var(--surface));
+		color: var(--action);
+		font-size: 0.62rem;
+		font-weight: 900;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.service-pricing-card__description {
+		min-height: 6rem;
+		margin-top: 1rem;
+		color: var(--text-muted);
+		font-size: 0.86rem;
+		line-height: 1.65;
+	}
+
+	.service-pricing-card__price {
+		margin-top: 1.5rem;
+		padding-block: 1.4rem;
+		border-block: 1px solid var(--surface-border);
+	}
+
+	.service-pricing-card__price > span,
+	.service-pricing-card__price > small,
+	.service-pricing-card__price p small {
+		color: var(--text-muted);
+		font-size: 0.7rem;
+		font-weight: 750;
+	}
+
+	.service-pricing-card__price p {
+		display: flex;
+		gap: 0.4rem;
+		align-items: baseline;
+		margin-block: 0.15rem;
+	}
+
+	.service-pricing-card__price strong {
+		color: var(--home-navy);
+		font-size: clamp(2rem, 3.2vw, 2.8rem);
+		font-weight: 950;
+		letter-spacing: -0.055em;
+	}
+
+	.service-pricing-card__deliverables {
+		margin-top: 1.5rem;
+	}
+
+	.service-pricing-card__deliverables > p {
+		color: var(--text);
+		font-size: 0.72rem;
+		font-weight: 900;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.service-pricing-card__deliverables ul {
+		display: grid;
+		gap: 0.8rem;
+		margin-top: 1rem;
+	}
+
+	.service-pricing-card__deliverables li {
+		display: flex;
+		gap: 0.65rem;
+		align-items: start;
+		color: var(--text);
+		font-size: 0.8rem;
+		line-height: 1.55;
+	}
+
+	.service-pricing-card__deliverables li :global(svg) {
+		flex: none;
+		margin-top: 0.18rem;
+		color: var(--action);
+	}
+
+	.service-pricing-card__boundary {
+		display: flex;
+		gap: 0.6rem;
+		align-items: start;
+		margin-top: 1.5rem;
+		padding: 0.85rem;
+		border-radius: 0.75rem;
+		background: color-mix(in srgb, var(--bg-band) 78%, transparent);
+		color: var(--text-muted);
+		font-size: 0.72rem;
+		line-height: 1.5;
+	}
+
+	.service-pricing-card__boundary :global(svg) {
+		flex: none;
+		margin-top: 0.08rem;
+		color: var(--action);
+	}
+
+	.service-pricing-card__boundary strong {
+		color: var(--text);
+	}
+
+	.service-pricing-card__action {
+		width: 100%;
+		margin-top: auto;
+		padding-top: 0.9rem;
+		padding-bottom: 0.9rem;
+		transform: translateY(1.5rem);
+	}
+
+	@media (max-width: 960px) {
+		.service-pricing-card__description {
+			min-height: 0;
+		}
+	}
+</style>

@@ -1,0 +1,98 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface TrustSignal {
+	icon: string;
+	title: string;
+	text: string;
+}
+
+interface Props {
+	items: readonly [TrustSignal, TrustSignal, TrustSignal] | TrustSignal[];
+}
+
+const { items } = Astro.props as Props;
+---
+
+<ul data-service-trust class="service-trust-strip">
+	{
+		items.map((item) => (
+			<li>
+				<span class="service-trust-strip__icon" aria-hidden="true">
+					<Icon name={item.icon} class="h-5 w-5" />
+				</span>
+				<span>
+					<strong>{item.title}</strong>
+					<small>{item.text}</small>
+				</span>
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.service-trust-strip {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		border-block: 1px solid var(--surface-border);
+	}
+
+	.service-trust-strip li {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: 0.9rem;
+		align-items: start;
+		padding: 1.4rem clamp(1rem, 2.5vw, 2rem);
+	}
+
+	.service-trust-strip li + li {
+		border-left: 1px solid var(--surface-border);
+	}
+
+	.service-trust-strip__icon {
+		display: flex;
+		width: 2.5rem;
+		height: 2.5rem;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid
+			color-mix(in srgb, var(--action) 24%, var(--surface-border));
+		border-radius: 0.8rem;
+		background: color-mix(in srgb, var(--action) 9%, var(--surface));
+		color: var(--action);
+	}
+
+	.service-trust-strip strong,
+	.service-trust-strip small {
+		display: block;
+	}
+
+	.service-trust-strip strong {
+		color: var(--text);
+		font-size: 0.86rem;
+		font-weight: 850;
+		line-height: 1.35;
+	}
+
+	.service-trust-strip small {
+		margin-top: 0.3rem;
+		color: var(--text-muted);
+		font-size: 0.72rem;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 720px) {
+		.service-trust-strip {
+			grid-template-columns: 1fr;
+		}
+
+		.service-trust-strip li {
+			padding-inline: 0;
+		}
+
+		.service-trust-strip li + li {
+			border-top: 1px solid var(--surface-border);
+			border-left: 0;
+		}
+	}
+</style>
