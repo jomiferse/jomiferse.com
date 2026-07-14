@@ -286,6 +286,41 @@ if (includesPhase("cookies")) {
 	]);
 }
 
+if (includesPhase("project")) {
+	const projectCard = await readSource(
+		"src",
+		"components",
+		"cards",
+		"ProjectCard.astro",
+	);
+	requireMarkers("project dialog", projectCard, [
+		"DialogShell",
+		'size="detail"',
+		'type="button"',
+		'aria-haspopup="dialog"',
+		"data-project-dialog-open",
+		"projectDialogHandler",
+		"lastProjectTrigger",
+		"event.target === dialog",
+		"lastProjectTrigger?.focus()",
+	]);
+	rejectMarkers("project dialog legacy UI", projectCard, [
+		'role="button"',
+		"onclick=",
+		"onkeydown=",
+		"glass-panel m-auto",
+		"rounded-[2rem]",
+	]);
+	for (const locale of ["es", "en"]) {
+		const dictionary = JSON.parse(
+			await readSource("src", "i18n", `${locale}.json`),
+		);
+		if (!dictionary.projectCard?.openDialog) {
+			failures.push(`${locale}: missing projectCard.openDialog`);
+		}
+	}
+}
+
 if (verifyDist) {
 	const generatedHome = join(root, "dist", "client", "es", "index.html");
 	try {

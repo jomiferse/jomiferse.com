@@ -798,6 +798,7 @@
     "present": "Present"
   },
   "projectCard": {
+    "openDialog": "Open {title} details",
     "coverAlt": "Cover for {title}",
     "previewAlt": "Preview for {title}",
     "closeDialog": "Close dialog",

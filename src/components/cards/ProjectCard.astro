@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import DialogShell from "@/components/common/DialogShell.astro";
 import { t, type Locale } from "@/i18n";
 
 export interface Project {
@@ -26,7 +27,6 @@ interface Props {
 }
 
 const { project, locale = "es" } = Astro.props as Props;
-
 const dialogId =
 	"project-" +
 	project.title
@@ -34,255 +34,455 @@ const dialogId =
 		.trim()
 		.replace(/[^a-z0-9]+/g, "-")
 		.replace(/(^-|-$)/g, "");
-
+const titleId = `${dialogId}-title`;
+const descriptionId = `${dialogId}-summary`;
 const staticSrc = project.img?.imgStatic?.src;
 const hoverSrc = project.img?.imgHover?.src;
 const baseSrc = staticSrc ?? hoverSrc;
-
 const coverAlt =
 	project.img?.imgStatic?.alt ??
 	t(locale, "projectCard.coverAlt").replace("{title}", project.title);
-
 const previewAlt =
 	project.img?.imgHover?.alt ??
 	t(locale, "projectCard.previewAlt").replace("{title}", project.title);
+const openLabel = t(locale, "projectCard.openDialog").replace(
+	"{title}",
+	project.title,
+);
+const projectMeta = [
+	project.companyRelated,
+	project.role,
+	project.timeframe,
+].filter(Boolean);
 ---
 
-<div
-	role="button"
-	tabindex="0"
-	class="group block w-full cursor-pointer text-left"
-	aria-haspopup="dialog"
-	aria-controls={dialogId}
-	onclick={`document.getElementById('${dialogId}')?.showModal()`}
-	onkeydown={`if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); document.getElementById('${dialogId}')?.showModal(); }`}
->
-	<article
-		class="glass-panel surface-ring relative overflow-hidden rounded-[2rem]"
-	>
-		<div class="relative aspect-[1.2/1] w-full overflow-hidden">
-			{
-				baseSrc ? (
-					<>
+<article class="project-dialog-card group">
+	<div class="project-dialog-card__media">
+		{
+			baseSrc ? (
+				<>
+					<Image
+						src={baseSrc}
+						alt={coverAlt}
+						width={720}
+						height={600}
+						loading="lazy"
+						quality={92}
+						class="project-dialog-card__image"
+					/>
+					{hoverSrc ? (
 						<Image
-							src={baseSrc}
-							alt={coverAlt}
+							src={hoverSrc}
+							alt={previewAlt}
 							width={720}
 							height={600}
 							loading="lazy"
 							quality={92}
-							class="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+							class="project-dialog-card__image project-dialog-card__image--preview"
 						/>
+					) : null}
+				</>
+			) : (
+				<div class="project-dialog-card__placeholder" aria-hidden="true" />
+			)
+		}
+		<div class="project-dialog-card__shade" aria-hidden="true"></div>
+		{
+			project.status ? (
+				<span class="project-dialog-card__status">{project.status}</span>
+			) : null
+		}
+		<span class="project-dialog-card__open-signal" aria-hidden="true">
+			<Icon name="plus" class="h-5 w-5" />
+		</span>
+	</div>
 
-						{hoverSrc && (
-							<Image
-								src={hoverSrc}
-								alt={previewAlt}
-								width={720}
-								height={600}
-								loading="lazy"
-								quality={92}
-								class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-							/>
-						)}
-					</>
-				) : (
-					<div class="h-full w-full bg-[radial-gradient(circle_at_top_left,rgba(29,78,216,0.18),transparent_45%),linear-gradient(180deg,rgba(255,255,255,0.3),transparent)] dark:bg-[radial-gradient(circle_at_top_left,rgba(127,176,255,0.24),transparent_45%),linear-gradient(180deg,rgba(255,255,255,0.05),transparent)]" />
-				)
-			}
+	<div class="project-dialog-card__copy">
+		<h3>{project.title}</h3>
+		<p>{project.summary}</p>
+	</div>
 
-			<div
-				class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/55 to-transparent"
-			>
-			</div>
+	<button
+		type="button"
+		class="project-dialog-trigger"
+		aria-label={openLabel}
+		aria-haspopup="dialog"
+		aria-controls={dialogId}
+		data-project-dialog-open={dialogId}
+	>
+		<span class="sr-only">{openLabel}</span>
+	</button>
+</article>
 
-			{
-				project.status && (
-					<span class="absolute top-4 left-4 inline-flex min-h-9 items-center rounded-full border border-white/25 bg-slate-950/55 px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-white uppercase backdrop-blur">
-						{project.status}
-					</span>
-				)
-			}
-
-			<span
-				class="absolute right-4 bottom-4 inline-flex min-h-10 min-w-10 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white backdrop-blur"
-				aria-hidden="true"
-			>
-				<Icon name="plus" class="h-5 w-5" />
-			</span>
-		</div>
-
-		<div class="p-5">
-			<h3 class="text-xl font-semibold text-slate-950 dark:text-slate-50">
-				{project.title}
-			</h3>
-
-			<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-				{project.companyRelated ? `${project.companyRelated} - ` : ""}{
-					project.role
-				}
-				{project.timeframe ? <span>{` - ${project.timeframe}`}</span> : null}
-			</p>
-
-			<p class="mt-4 text-sm leading-7 text-slate-600 dark:text-slate-300">
-				{project.summary}
-			</p>
-
-			<div class="mt-5 flex flex-wrap gap-2">
-				{
-					project.technologies
-						.slice(0, 4)
-						.map((tech) => (
-							<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
-								{tech}
-							</span>
-						))
-				}
-				{
-					project.technologies.length > 4 && (
-						<span class="inline-flex items-center rounded-full border border-[var(--accent-line)] bg-[var(--accent-soft)] px-3 py-1.5 text-xs font-semibold text-[var(--accent-strong)]">
-							+{project.technologies.length - 4}
-						</span>
-					)
-				}
-			</div>
-		</div>
-	</article>
-</div>
-
-<dialog
+<DialogShell
 	id={dialogId}
-	class="glass-panel m-auto w-[min(760px,92vw)] rounded-[2rem] p-0 text-slate-950 dark:text-slate-50"
+	labelledBy={titleId}
+	describedBy={descriptionId}
+	size="detail"
+	className="project-detail-dialog"
 >
-	<div class="overflow-hidden rounded-[2rem]">
-		<div
-			class="border-b border-slate-200/80 p-5 md:p-6 dark:border-slate-800/70"
-		>
-			<div class="flex items-start justify-between gap-4">
-				<div class="min-w-0">
-					<div class="flex flex-wrap items-center gap-3">
-						<h3
-							class="text-2xl font-semibold text-slate-950 dark:text-slate-50"
-						>
-							{project.title}
-						</h3>
-						{
-							project.status && (
-								<span class="inline-flex min-h-9 items-center rounded-full border border-[var(--accent-line)] bg-[var(--accent-soft)] px-3 py-1.5 text-[11px] font-semibold tracking-[0.12em] text-[var(--accent-strong)] uppercase">
-									{project.status}
-								</span>
-							)
-						}
-					</div>
-
-					<p class="mt-2 text-sm text-slate-600 dark:text-slate-300">
-						{project.companyRelated ? `${project.companyRelated} - ` : ""}{
-							project.role
-						}
-						{
-							project.timeframe ? (
-								<span>{` - ${project.timeframe}`}</span>
-							) : null
-						}
-					</p>
-				</div>
-
-				<form method="dialog">
-					<button
-						class="inline-flex min-h-10 min-w-10 items-center justify-center rounded-2xl border border-slate-200/80 bg-white/80 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-100"
-						aria-label={t(locale, "projectCard.closeDialog")}
-					>
-						<Icon name="x" class="h-5 w-5" />
-					</button>
-				</form>
-			</div>
-		</div>
-
-		<div class="space-y-5 p-5 md:p-6">
+	<div slot="header" class="dialog-shell__header-layout">
+		<div>
+			<p class="dialog-shell__eyebrow">
+				{project.status ?? t(locale, "projectCard.status")}
+			</p>
+			<h2 id={titleId} class="dialog-shell__title">{project.title}</h2>
 			{
-				project.context && (
-					<div>
-						<p class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400">
-							{t(locale, "projectCard.context")}
-						</p>
-						<p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
-							{project.context}
-						</p>
-					</div>
-				)
-			}
-
-			<div>
-				<p
-					class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400"
-				>
-					{t(locale, "projectCard.summary")}
-				</p>
-				<p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">
-					{project.summary}
-				</p>
-			</div>
-
-			{
-				project.highlights?.length ? (
-					<div>
-						<p class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400">
-							{t(locale, "projectCard.highlights")}
-						</p>
-						<ul class="mt-3 grid gap-3 md:grid-cols-2">
-							{project.highlights.map((highlight) => (
-								<li class="flex gap-3 rounded-[1.25rem] border border-slate-200/80 bg-white/75 px-4 py-4 text-sm leading-7 text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
-									<span class="mt-1 h-2.5 w-2.5 rounded-full bg-[var(--accent)]" />
-									<span>{highlight}</span>
-								</li>
-							))}
-						</ul>
-					</div>
+				projectMeta.length ? (
+					<p class="project-detail-dialog__meta">{projectMeta.join(" · ")}</p>
 				) : null
 			}
-
-			<div>
-				<p
-					class="text-xs font-semibold tracking-[0.18em] text-slate-500 uppercase dark:text-slate-400"
-				>
-					{t(locale, "projectCard.technologies")}
-				</p>
-				<div class="mt-3 flex flex-wrap gap-2">
-					{
-						project.technologies.map((tech) => (
-							<span class="inline-flex items-center rounded-full border border-slate-200/80 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-slate-800/70 dark:bg-slate-950/35 dark:text-slate-200">
-								{tech}
-							</span>
-						))
-					}
-				</div>
-			</div>
-
-			{
-				project.link && (
-					<div class="pt-2">
-						<a
-							href={project.link}
-							target="_blank"
-							rel="noopener noreferrer nofollow"
-							class="inline-flex min-h-11 items-center gap-2 rounded-2xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-white"
-						>
-							{t(locale, "projectCard.viewProject")}
-							<Icon name="move-up-right" class="h-4 w-4" />
-						</a>
-					</div>
-				)
-			}
 		</div>
+		<form method="dialog">
+			<button
+				class="dialog-shell__close"
+				aria-label={t(locale, "projectCard.closeDialog")}
+			>
+				<Icon name="x" class="h-5 w-5" aria-hidden="true" />
+			</button>
+		</form>
 	</div>
-</dialog>
 
-<script is:inline>
+	<div data-project-dialog class="project-detail-dialog__content">
+		{
+			project.context ? (
+				<section class="project-detail-dialog__section">
+					<p class="project-detail-dialog__label">
+						{t(locale, "projectCard.context")}
+					</p>
+					<p>{project.context}</p>
+				</section>
+			) : null
+		}
+
+		<section class="project-detail-dialog__section">
+			<p class="project-detail-dialog__label">
+				{t(locale, "projectCard.summary")}
+			</p>
+			<p id={descriptionId}>{project.summary}</p>
+		</section>
+
+		{
+			project.highlights?.length ? (
+				<section class="project-detail-dialog__section">
+					<p class="project-detail-dialog__label">
+						{t(locale, "projectCard.highlights")}
+					</p>
+					<ul class="project-detail-dialog__highlights">
+						{project.highlights.map((highlight) => (
+							<li>
+								<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+								<span>{highlight}</span>
+							</li>
+						))}
+					</ul>
+				</section>
+			) : null
+		}
+
+		{
+			project.technologies.length ? (
+				<section class="project-detail-dialog__section">
+					<p class="project-detail-dialog__label">
+						{t(locale, "projectCard.technologies")}
+					</p>
+					<div class="project-detail-dialog__technologies">
+						{project.technologies.map((technology) => (
+							<span>{technology}</span>
+						))}
+					</div>
+				</section>
+			) : null
+		}
+	</div>
+
+	{
+		project.link ? (
+			<div slot="footer" class="project-detail-dialog__footer">
+				<a
+					href={project.link}
+					target="_blank"
+					rel="noopener noreferrer nofollow"
+					class="button-action"
+				>
+					{t(locale, "projectCard.viewProject")}
+					<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+			</div>
+		) : null
+	}
+</DialogShell>
+
+<style>
+	.project-dialog-card {
+		position: relative;
+		overflow: hidden;
+		border: 1px solid var(--surface-border);
+		border-radius: 1.25rem;
+		background: var(--surface);
+		box-shadow: var(--shadow-card);
+		transition:
+			transform 180ms ease,
+			border-color 180ms ease;
+	}
+
+	.project-dialog-card:hover {
+		transform: translateY(-2px);
+		border-color: color-mix(in srgb, var(--action) 28%, var(--surface-border));
+	}
+
+	.project-dialog-card:has(.project-dialog-trigger:focus-visible) {
+		outline: 3px solid var(--action);
+		outline-offset: 4px;
+	}
+
+	.project-dialog-card__media {
+		position: relative;
+		aspect-ratio: 1.2 / 1;
+		overflow: hidden;
+		background: var(--bg-band);
+	}
+
+	.project-dialog-card__image,
+	.project-dialog-card__placeholder {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.project-dialog-card__image {
+		object-fit: cover;
+		transition:
+			opacity 240ms ease,
+			transform 240ms ease;
+	}
+
+	.project-dialog-card:hover .project-dialog-card__image {
+		transform: scale(1.02);
+	}
+
+	.project-dialog-card__image--preview {
+		opacity: 0;
+	}
+
+	.project-dialog-card:hover .project-dialog-card__image--preview {
+		opacity: 1;
+	}
+
+	.project-dialog-card__placeholder {
+		background:
+			radial-gradient(
+				circle at 20% 15%,
+				color-mix(in srgb, var(--action) 13%, transparent),
+				transparent 48%
+			),
+			var(--bg-band);
+	}
+
+	.project-dialog-card__shade {
+		position: absolute;
+		inset: auto 0 0;
+		height: 7rem;
+		background: linear-gradient(to top, rgba(5, 12, 22, 0.58), transparent);
+	}
+
+	.project-dialog-card__status,
+	.project-dialog-card__open-signal {
+		position: absolute;
+		z-index: 1;
+		border: 1px solid rgba(255, 255, 255, 0.28);
+		background: rgba(5, 12, 22, 0.58);
+		color: white;
+		backdrop-filter: blur(10px);
+	}
+
+	.project-dialog-card__status {
+		top: 1rem;
+		left: 1rem;
+		padding: 0.45rem 0.7rem;
+		border-radius: 999px;
+		font-size: 0.68rem;
+		font-weight: 850;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.project-dialog-card__open-signal {
+		right: 1rem;
+		bottom: 1rem;
+		display: inline-grid;
+		width: 2.75rem;
+		height: 2.75rem;
+		place-items: center;
+		border-radius: 0.85rem;
+	}
+
+	.project-dialog-card__copy {
+		padding: 1.15rem 1.2rem 1.3rem;
+	}
+
+	.project-dialog-card__copy h3 {
+		color: var(--home-navy);
+		font-size: 1.2rem;
+		font-weight: 900;
+		line-height: 1.2;
+	}
+
+	.project-dialog-card__copy p {
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		margin-top: 0.55rem;
+		color: var(--text-muted);
+		font-size: 0.86rem;
+		line-height: 1.65;
+	}
+
+	.project-dialog-trigger {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		width: 100%;
+		border: 0;
+		border-radius: inherit;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	.project-dialog-trigger:focus-visible {
+		outline: none;
+	}
+
+	.project-detail-dialog__meta {
+		margin-top: 0.75rem;
+		color: var(--text-muted);
+		font-size: 0.82rem;
+		font-weight: 750;
+		line-height: 1.5;
+	}
+
+	.project-detail-dialog__section + .project-detail-dialog__section {
+		margin-top: 1.25rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.project-detail-dialog__label {
+		color: var(--action);
+		font-size: 0.68rem;
+		font-weight: 900;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.project-detail-dialog__section > p:not(.project-detail-dialog__label) {
+		margin-top: 0.6rem;
+		color: var(--text-muted);
+		font-size: 0.92rem;
+		line-height: 1.75;
+	}
+
+	.project-detail-dialog__highlights {
+		display: grid;
+		gap: 0.7rem;
+		margin-top: 0.8rem;
+	}
+
+	.project-detail-dialog__highlights li {
+		display: flex;
+		gap: 0.6rem;
+		align-items: flex-start;
+		color: var(--text);
+		font-size: 0.87rem;
+		font-weight: 700;
+		line-height: 1.6;
+	}
+
+	.project-detail-dialog__highlights :global(svg) {
+		margin-top: 0.25rem;
+		flex: 0 0 auto;
+		color: var(--action);
+	}
+
+	.project-detail-dialog__technologies {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 0.8rem;
+	}
+
+	.project-detail-dialog__technologies span {
+		padding: 0.42rem 0.65rem;
+		border: 1px solid var(--surface-border);
+		border-radius: 999px;
+		background: var(--surface-strong);
+		color: var(--text);
+		font-size: 0.75rem;
+		font-weight: 800;
+	}
+
+	.project-detail-dialog__footer,
+	.project-detail-dialog__footer :global(.button-action) {
+		width: 100%;
+	}
+
+	@media (min-width: 40rem) {
+		.project-detail-dialog__highlights {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.project-detail-dialog__footer {
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		.project-detail-dialog__footer :global(.button-action) {
+			width: auto;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.project-dialog-card,
+		.project-dialog-card__image {
+			transition: none;
+		}
+	}
+</style>
+
+<script>
 	if (!document.documentElement.dataset.projectDialogHandler) {
 		document.documentElement.dataset.projectDialogHandler = "true";
+		let lastProjectTrigger: HTMLElement | null = null;
+
 		document.addEventListener("click", (event) => {
-			const target = event.target;
-			if (target instanceof HTMLDialogElement) target.close();
+			const trigger =
+				event.target instanceof Element
+					? event.target.closest<HTMLElement>("[data-project-dialog-open]")
+					: null;
+			if (!trigger || document.querySelector("dialog[open]")) return;
+
+			const dialog = document.getElementById(
+				trigger.dataset.projectDialogOpen ?? "",
+			);
+			if (!(dialog instanceof HTMLDialogElement)) return;
+			lastProjectTrigger = trigger;
+			dialog.showModal();
 		});
+
+		document
+			.querySelectorAll<HTMLDialogElement>(
+				"[data-dialog-shell]:has([data-project-dialog])",
+			)
+			.forEach((dialog) => {
+				dialog.addEventListener("click", (event) => {
+					if (event.target === dialog) dialog.close();
+				});
+				dialog.addEventListener("close", () => {
+					lastProjectTrigger?.focus();
+					lastProjectTrigger = null;
+				});
+			});
 	}
 </script>
