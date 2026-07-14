@@ -197,3 +197,17 @@ const directContactLinks = [
 		</div>
 	</div>
 </footer>
+
+<script is:inline>
+	if (!document.documentElement.dataset.footerCookieSettingsHandler) {
+		document.documentElement.dataset.footerCookieSettingsHandler = "true";
+		document.addEventListener("click", (event) => {
+			const trigger =
+				event.target instanceof Element
+					? event.target.closest("[data-cookie-settings-trigger]")
+					: null;
+			if (!trigger) return;
+			document.dispatchEvent(new Event("jomiferse:open-cookie-settings"));
+		});
+	}
+</script>

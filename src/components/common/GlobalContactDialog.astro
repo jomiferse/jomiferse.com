@@ -105,17 +105,18 @@ const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
 				submitLabel={copy.submit}
 			/>
 		</div>
-
-		<a
-			href={whatsappHref}
-			target="_blank"
-			rel="noopener noreferrer nofollow"
-			class="button-secondary global-contact-whatsapp"
-		>
-			<Icon name="message-square" class="h-4 w-4" aria-hidden="true" />
-			{copy.whatsapp}
-		</a>
 	</div>
+
+	<a
+		slot="footer"
+		href={whatsappHref}
+		target="_blank"
+		rel="noopener noreferrer nofollow"
+		class="button-secondary global-contact-whatsapp"
+	>
+		<Icon name="message-square" class="h-4 w-4" aria-hidden="true" />
+		{copy.whatsapp}
+	</a>
 </DialogShell>
 
 <style>
@@ -182,7 +183,6 @@ const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
 
 	.global-contact-whatsapp {
 		width: 100%;
-		margin-top: 0.75rem;
 	}
 
 	@keyframes contact-status-spin {
@@ -354,6 +354,14 @@ const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
 		lastContactTrigger?.focus();
 		lastContactTrigger = null;
 	});
+
+	form?.addEventListener(
+		"invalid",
+		() => {
+			showContactStatus("validation");
+		},
+		true,
+	);
 
 	form?.addEventListener("submit", async (event) => {
 		if (!form.reportValidity()) {

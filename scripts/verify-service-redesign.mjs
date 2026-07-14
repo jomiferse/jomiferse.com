@@ -381,7 +381,6 @@ if (includesPhase("detail")) {
 		"data-related-services",
 		"data-service-faq",
 		"<ConversionCta",
-		'id="service-contact-dialog"',
 	]);
 	requireMarkers("service detail", detail, [
 		"ServiceTrustStrip",
@@ -389,6 +388,11 @@ if (includesPhase("detail")) {
 		"ServiceProofCard",
 		"getRelatedServices",
 		"getProjectPages",
+		"data-contact-dialog-open",
+	]);
+	rejectMarkers("service detail", detail, [
+		'id="service-contact-dialog"',
+		"data-contact-modal-open",
 	]);
 	if (/service\.pricing(?:\.|\[)/.test(detail)) {
 		failures.push("service detail: obsolete service.pricing");

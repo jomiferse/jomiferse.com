@@ -172,7 +172,7 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 					id={`${idPrefix}-message`}
 					name="message"
 					required
-					rows="6"
+					rows={variant === "modal" ? 4 : 6}
 					placeholder={t(locale, "contactForm.messagePlaceholder")}
 					class="form-input form-textarea leading-7"></textarea>
 			</div>
@@ -218,6 +218,19 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 		background: transparent;
 		box-shadow: none;
 		padding: 0;
+	}
+
+	.contact-form--modal .form-shell:focus-within {
+		border-color: color-mix(in srgb, var(--action) 42%, var(--surface-border));
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--action) 11%, transparent);
+	}
+
+	.contact-form--modal .form-shell:focus-within .form-icon {
+		color: var(--action);
+	}
+
+	.contact-form--modal .form-textarea {
+		min-height: 6rem;
 	}
 
 	.contact-selection {

@@ -53,7 +53,7 @@ for (const marker of [
 	"data-conversion-cta",
 	"data-conversion-primary",
 	"data-conversion-secondary",
-	"data-contact-modal-open",
+	"data-contact-dialog-open",
 	"aria-labelledby={headingId}",
 	'Icon name="arrow-right"',
 	'Icon name="move-up-right"',
@@ -209,7 +209,7 @@ if (verifyGeneratedOutput) {
 		const html = await readFile(serviceOutput, "utf8");
 		for (const marker of [
 			"data-conversion-cta",
-			"data-contact-modal-open",
+			"data-contact-dialog-open",
 			"https://wa.me/34609221290?text=",
 			'target="_blank"',
 			'rel="noopener noreferrer nofollow"',

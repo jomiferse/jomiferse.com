@@ -274,12 +274,6 @@ const privacyHref = `/${locale}/privacy`;
 
 	document.addEventListener("jomiferse:open-cookie-settings", openSettings);
 
-	document
-		.querySelectorAll("[data-cookie-settings-trigger]")
-		.forEach((trigger) => {
-			trigger.addEventListener("click", openSettings);
-		});
-
 	const storedPreferences = getStoredPreferences();
 	if (storedPreferences) {
 		updateConsentMode(storedPreferences);
@@ -431,6 +425,7 @@ const privacyHref = `/${locale}/privacy`;
 		width: 1.35rem;
 		height: 1.35rem;
 		flex: none;
+		appearance: auto;
 		accent-color: var(--action);
 		cursor: pointer;
 	}
