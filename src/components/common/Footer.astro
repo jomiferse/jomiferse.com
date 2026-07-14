@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
-import { t, type Locale } from "@/i18n";
+import { getTranslations, type Locale } from "@/i18n";
+import { getService, type ServiceSlug } from "@/lib/services";
 import { getCv } from "@cv";
 
 interface Props {
@@ -9,65 +10,201 @@ interface Props {
 
 const { locale = "es" } = Astro.props as Props;
 const cv = getCv(locale);
+const translations = getTranslations(locale);
+const footer = translations.footer;
 const year = new Date().getFullYear();
-const links = [
-	{ href: `/${locale}`, label: t(locale, "nav.home") },
-	{ href: `/${locale}/services`, label: t(locale, "nav.services") },
-	{ href: `/${locale}/blog`, label: t(locale, "nav.blog") },
-	{ href: `/${locale}/privacy`, label: t(locale, "footer.privacy") },
-	{ href: `/${locale}/contact`, label: t(locale, "nav.contact") },
+const contactHref = `/${locale}/contact?service=assessment`;
+const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(translations.contact.page.whatsappMessage)}`;
+
+const priorityServiceSlugs = [
+	"business-website",
+	"website-redesign",
+	"custom-web-application",
+	"internal-tools",
+	"automation-workflows",
+	"backend-spring-boot",
+] as const satisfies readonly ServiceSlug[];
+
+const serviceLinks = priorityServiceSlugs.map((slug) => {
+	const service = getService(locale, slug);
+	if (!service) throw new Error(`Missing footer service: ${locale}/${slug}`);
+
+	return {
+		href: service.canonicalPath ?? `/${locale}/services/${service.slug}`,
+		label: service.shortTitle,
+	};
+});
+
+const exploreLinks = [
+	{ href: `/${locale}/projects`, label: translations.nav.projects },
+	{ href: `/${locale}/about`, label: translations.nav.about },
+	{ href: `/${locale}/blog`, label: translations.nav.blog },
+	{ href: `/${locale}/contact`, label: translations.nav.contact },
+];
+
+const directContactLinks = [
+	{
+		href: whatsappHref,
+		label: footer.whatsapp,
+		icon: "message-square",
+		external: true,
+	},
+	{
+		href: `mailto:${cv.email}`,
+		label: footer.email,
+		icon: "mail",
+		external: false,
+	},
+	{
+		href: cv.links.linkedin,
+		label: footer.linkedin,
+		icon: "linkedin",
+		external: true,
+	},
 ];
 ---
 
-<footer class="footer-bar mt-auto">
-	<div class="site-shell px-4 py-8 md:px-6">
-		<div
-			class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
-		>
-			<p class="text-sm text-[var(--text-muted)]">
-				© {year}
-				{cv.name}
-			</p>
+<footer class="footer-bar mt-auto" data-site-footer>
+	<div class="footer-shell">
+		<section class="footer-conversion" data-footer-cta>
+			<div>
+				<p class="footer-eyebrow">{footer.eyebrow}</p>
+				<h2>{footer.ctaTitle}</h2>
+				<p class="footer-conversion__copy">{footer.ctaDescription}</p>
+			</div>
+			<a href={contactHref} class="button-action footer-cta">
+				{footer.ctaLabel}
+				<Icon name="arrow-right" aria-hidden="true" />
+			</a>
+		</section>
+
+		<div class="footer-directory">
+			<section class="footer-identity" aria-labelledby="footer-identity-title">
+				<p id="footer-identity-title" class="footer-group-title">
+					José Miguel Fernández
+				</p>
+				<p>{footer.identityDescription}</p>
+				<p class="footer-availability">
+					<span aria-hidden="true"></span>
+					{footer.availability}
+				</p>
+			</section>
 
 			<nav
-				aria-label="Footer"
-				class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-semibold text-[var(--text-muted)]"
+				class="footer-desktop-nav"
+				data-footer-desktop-nav
+				aria-label={footer.navigationLabel}
 			>
-				{
-					links.map((link) => (
-						<a href={link.href} class="hover:text-[var(--text)]">
-							{link.label}
-						</a>
-					))
-				}
+				<div class="footer-link-group">
+					<p class="footer-group-title">{footer.servicesLabel}</p>
+					<ul>
+						{
+							serviceLinks.map((link) => (
+								<li>
+									<a href={link.href}>{link.label}</a>
+								</li>
+							))
+						}
+						<li>
+							<a href={`/${locale}/services`} class="footer-group-more">
+								{footer.viewAllServices}
+								<Icon name="arrow-right" aria-hidden="true" />
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="footer-link-group">
+					<p class="footer-group-title">{footer.exploreLabel}</p>
+					<ul>
+						{
+							exploreLinks.map((link) => (
+								<li>
+									<a href={link.href}>{link.label}</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
 			</nav>
 
-			<div class="flex items-center gap-2">
-				<a
-					href={cv.links.github}
-					target="_blank"
-					rel="noopener noreferrer nofollow"
-					aria-label="GitHub"
-					class="header-utility inline-flex min-h-10 min-w-10 items-center justify-center rounded-full"
-				>
-					<Icon name="github" class="h-5 w-5" />
-				</a>
+			<div class="footer-mobile-disclosures" data-footer-mobile-disclosures>
+				<details class="footer-disclosure">
+					<summary>
+						{footer.servicesLabel}
+						<Icon name="plus" aria-hidden="true" />
+					</summary>
+					<ul>
+						{
+							serviceLinks.map((link) => (
+								<li>
+									<a href={link.href}>{link.label}</a>
+								</li>
+							))
+						}
+						<li>
+							<a href={`/${locale}/services`} class="footer-group-more">
+								{footer.viewAllServices}
+								<Icon name="arrow-right" aria-hidden="true" />
+							</a>
+						</li>
+					</ul>
+				</details>
+				<details class="footer-disclosure">
+					<summary>
+						{footer.exploreLabel}
+						<Icon name="plus" aria-hidden="true" />
+					</summary>
+					<ul>
+						{
+							exploreLinks.map((link) => (
+								<li>
+									<a href={link.href}>{link.label}</a>
+								</li>
+							))
+						}
+					</ul>
+				</details>
+			</div>
 
-				<a
-					href={cv.links.linkedin}
-					target="_blank"
-					rel="noopener noreferrer nofollow"
-					aria-label="LinkedIn"
-					class="header-utility inline-flex min-h-10 min-w-10 items-center justify-center rounded-full"
-				>
-					<Icon name="linkedin" class="h-5 w-5" />
-				</a>
+			<nav class="footer-contact" aria-label={footer.contactLabel}>
+				<p class="footer-group-title">{footer.contactLabel}</p>
+				<ul>
+					{
+						directContactLinks.map((link) => (
+							<li>
+								<a
+									href={link.href}
+									target={link.external ? "_blank" : undefined}
+									rel={
+										link.external ? "noopener noreferrer nofollow" : undefined
+									}
+									aria-label={
+										link.external
+											? `${link.label}, ${footer.opensNewWindow}`
+											: link.label
+									}
+								>
+									<Icon name={link.icon} aria-hidden="true" />
+									<span>{link.label}</span>
+									<Icon name="arrow-up-right" aria-hidden="true" />
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</div>
 
-				<a
-					href="#main-content"
-					class="ml-2 text-sm font-semibold text-[var(--text-muted)] hover:text-[var(--text)]"
-				>
-					{t(locale, "footer.backToTop")}
+		<div class="footer-legal">
+			<p>© {year} {cv.name}</p>
+			<div class="footer-legal__links">
+				<a href={`/${locale}/privacy`}>{footer.privacy}</a>
+				<button type="button" data-cookie-settings-trigger>
+					{footer.cookieSettings}
+				</button>
+				<a href="#top">
+					{footer.backToTop}
+					<span aria-hidden="true">↑</span>
 				</a>
 			</div>
 		</div>
