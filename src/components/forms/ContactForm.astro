@@ -21,7 +21,6 @@ const {
 	selectedScope?: PricingKey;
 };
 const contactCopy = getTranslations(locale).contactForm;
-const projectTypes = contactCopy.projectTypes;
 const serviceOptions = [
 	{ value: "assessment", label: contactCopy.assessmentLabel },
 	...getServicePages(locale).map((service) => ({
@@ -46,8 +45,7 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 <form
 	action="/api/contact"
 	method="post"
-	enctype="multipart/form-data"
-	class="dark-card p-5 md:p-6"
+	class="contact-form p-5 md:p-6"
 	data-contact-form
 >
 	<input type="hidden" name="locale" value={locale} />
@@ -157,26 +155,6 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 		</div>
 
 		<div class="md:col-span-2">
-			<label for={`${idPrefix}-project-type`} class="eyebrow mb-2 block">
-				{t(locale, "contactForm.projectTypeLabel")}
-			</label>
-			<div class="form-shell">
-				<Icon name="briefcase" class="form-icon h-5 w-5" />
-				<select
-					id={`${idPrefix}-project-type`}
-					name="projectType"
-					class="form-input"
-					required
-				>
-					<option value=""
-						>{t(locale, "contactForm.projectTypePlaceholder")}</option
-					>
-					{projectTypes.map((type) => <option value={type}>{type}</option>)}
-				</select>
-			</div>
-		</div>
-
-		<div class="md:col-span-2">
 			<label for={`${idPrefix}-message`} class="eyebrow mb-2 block">
 				{t(locale, "contactForm.messageLabel")}
 			</label>
@@ -191,34 +169,41 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 					class="form-input form-textarea leading-7"></textarea>
 			</div>
 		</div>
-
-		<div class="md:col-span-2">
-			<label for={`${idPrefix}-attachment`} class="eyebrow mb-2 block">
-				{t(locale, "contactForm.attachmentLabel")}
-			</label>
-			<div class="form-shell">
-				<Icon name="paperclip" class="form-icon h-5 w-5" />
-				<input
-					id={`${idPrefix}-attachment`}
-					type="file"
-					name="attachment"
-					accept="application/pdf,.pdf"
-					class="form-input form-file cursor-pointer"
-				/>
-			</div>
-			<p class="mt-2 text-xs text-[var(--text-muted)]">
-				{t(locale, "contactForm.attachmentHint")}
-			</p>
-		</div>
 	</div>
 
-	<button type="submit" class="button-primary form-button mt-6 w-full">
-		{t(locale, "contactForm.submit")}
-		<Icon name="arrow-right" class="h-4 w-4" />
+	<button type="submit" class="button-action mt-6 w-full">
+		{contactCopy.submit}
+		<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 	</button>
+	<p class="contact-form__privacy">
+		{t(locale, "contactForm.privacyNote")}
+		<a href={`/${locale}/privacy/`}>{t(locale, "contactForm.privacyLink")}</a>
+	</p>
 </form>
 
 <style>
+	.contact-form {
+		border: 1px solid var(--surface-border);
+		border-radius: 1.25rem;
+		background: var(--surface);
+		box-shadow: var(--shadow-card);
+	}
+
+	.contact-form__privacy {
+		margin-top: 1rem;
+		color: var(--text-muted);
+		font-size: 0.78rem;
+		line-height: 1.6;
+		text-align: center;
+	}
+
+	.contact-form__privacy a {
+		color: var(--action);
+		font-weight: 800;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
 	.contact-selection {
 		padding: 1rem;
 		border: 1px solid

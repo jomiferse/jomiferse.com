@@ -9,11 +9,30 @@ import { getServicePages } from "@/lib/services";
 export const prerender = false;
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
-const MAX_PDF_BYTES = 4 * 1024 * 1024;
 
 const isLocale = (v: string): v is Locale => v === "en" || v === "es";
 const isPricingKey = (value: string): value is PricingKey =>
 	pricingKeys.some((key) => key === value);
+const isValidEmail = (value: string) =>
+	/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+const redirectToContact = (
+	locale: Locale,
+	status: { sent?: "1"; error?: "missing" | "send" },
+	selectedService: string,
+	selectedScope: string,
+) => {
+	const params = new URLSearchParams();
+	if (status.sent) params.set("sent", status.sent);
+	if (status.error) params.set("error", status.error);
+	if (selectedService) params.set("service", selectedService);
+	if (selectedScope) params.set("scope", selectedScope);
+
+	return new Response(null, {
+		status: 303,
+		headers: { Location: `/${locale}/contact?${params.toString()}` },
+	});
+};
 
 export const POST: APIRoute = async ({ request }) => {
 	const form = await request.formData();
@@ -24,7 +43,6 @@ export const POST: APIRoute = async ({ request }) => {
 
 	const name = String(form.get("name") ?? "").trim();
 	const email = String(form.get("email") ?? "").trim();
-	const projectType = String(form.get("projectType") ?? "").trim();
 	const message = String(form.get("message") ?? "").trim();
 	const serviceRaw = String(form.get("service") ?? "").trim();
 	const scopeRaw = String(form.get("scope") ?? "").trim();
@@ -32,13 +50,6 @@ export const POST: APIRoute = async ({ request }) => {
 		String(form.get("sourceCategory") ?? "direct").trim(),
 		String(form.get("sourcePath") ?? "").trim(),
 	);
-
-	if (!name || !email || !projectType || !message) {
-		return new Response("Missing fields", { status: 400 });
-	}
-	if (scopeRaw && !isPricingKey(scopeRaw)) {
-		return new Response("Invalid scope", { status: 400 });
-	}
 
 	const servicePage = getServicePages(locale).find(
 		(service) => service.slug === serviceRaw,
@@ -56,55 +67,45 @@ export const POST: APIRoute = async ({ request }) => {
 		? contactCopy.scopes[selectedScope]
 		: undefined;
 
-	const subject = `Website contact from ${email}`;
-
-	let attachments: { filename: string; content: Buffer }[] = [];
-	const file = form.get("attachment");
-
-	if (file && typeof file === "object" && "arrayBuffer" in file) {
-		const f = file as {
-			size: number;
-			type?: string;
-			name?: string;
-			arrayBuffer: () => Promise<ArrayBuffer>;
-		};
-
-		if (f.size > 0) {
-			const filename = (f.name ?? "attachment.pdf").toString();
-			const type = (f.type ?? "").toString();
-
-			if (
-				type &&
-				type !== "application/pdf" &&
-				!filename.toLowerCase().endsWith(".pdf")
-			) {
-				return new Response("Only PDF files allowed", { status: 400 });
-			}
-
-			if (f.size > MAX_PDF_BYTES) {
-				return new Response("PDF too large (max 4MB)", { status: 400 });
-			}
-
-			const buffer = Buffer.from(await f.arrayBuffer());
-			attachments.push({ filename, content: buffer });
-		}
+	if (!name || !email || !isValidEmail(email) || !message) {
+		return redirectToContact(
+			locale,
+			{ error: "missing" },
+			selectedService,
+			selectedScope,
+		);
 	}
 
-	await resend.emails.send({
-		from: "Website <onboarding@resend.dev>",
-		to: cv.email,
-		replyTo: email,
-		subject,
-		text: `Name: ${name}\nEmail: ${email}\nProject type: ${projectType}\nService: ${selectedServiceLabel ?? "-"}\nScope: ${selectedScopeLabel ?? "-"}\nLocale: ${locale}\nSource: ${source.category}${source.path ? ` (${source.path})` : ""}\n\n${message}`,
-		attachments,
-	});
+	try {
+		const result = await resend.emails.send({
+			from: "Website <onboarding@resend.dev>",
+			to: cv.email,
+			replyTo: email,
+			subject: `Website contact from ${email}`,
+			text: `Name: ${name}\nEmail: ${email}\nService: ${selectedServiceLabel ?? "-"}\nScope: ${selectedScopeLabel ?? "-"}\nLocale: ${locale}\nSource: ${source.category}${source.path ? ` (${source.path})` : ""}\n\n${message}`,
+		});
 
-	const redirectParams = new URLSearchParams({ sent: "1" });
-	if (selectedService) redirectParams.set("service", selectedService);
-	if (selectedScope) redirectParams.set("scope", selectedScope);
+		if (result.error) {
+			return redirectToContact(
+				locale,
+				{ error: "send" },
+				selectedService,
+				selectedScope,
+			);
+		}
+	} catch {
+		return redirectToContact(
+			locale,
+			{ error: "send" },
+			selectedService,
+			selectedScope,
+		);
+	}
 
-	return new Response(null, {
-		status: 303,
-		headers: { Location: `/${locale}/contact?${redirectParams.toString()}` },
-	});
+	return redirectToContact(
+		locale,
+		{ sent: "1" },
+		selectedService,
+		selectedScope,
+	);
 };

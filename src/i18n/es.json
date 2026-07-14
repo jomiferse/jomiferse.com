@@ -772,21 +772,11 @@
     "namePlaceholder": "Tu nombre",
     "emailLabel": "Email",
     "emailPlaceholder": "tu@email.com",
-    "projectTypeLabel": "Tipo de proyecto",
-    "projectTypePlaceholder": "Elige el encaje principal",
-    "projectTypes": [
-      "Web de negocio o rediseño",
-      "Aplicación web a medida",
-      "Herramienta interna",
-      "Automatización o integración API",
-      "Backend / Spring Boot",
-      "Oportunidad profesional"
-    ],
     "messageLabel": "Mensaje",
-    "messagePlaceholder": "Cuéntame qué tienes ahora, qué problema quieres resolver y qué resultado buscas.",
-    "attachmentLabel": "Adjunto",
-    "attachmentHint": "Opcional. Solo PDF.",
-    "submit": "Enviar mensaje"
+    "messagePlaceholder": "Cuéntame qué tienes ahora, qué quieres mejorar y qué resultado buscas.",
+    "submit": "Enviar consulta",
+    "privacyNote": "Usaré tus datos únicamente para responder a esta consulta. ",
+    "privacyLink": "Ver privacidad"
   },
   "blog": {
     "page": {

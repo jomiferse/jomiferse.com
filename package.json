@@ -15,6 +15,7 @@
     "lint:fix": "eslint . --cache --cache-location .eslintcache --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
+    "verify:contact-redesign": "node scripts/verify-contact-redesign.mjs",
     "verify:conversion-cta": "node scripts/verify-conversion-cta.mjs",
     "verify:ai-seo": "node scripts/verify-ai-seo.mjs",
     "verify:service-redesign": "node scripts/verify-service-redesign.mjs",

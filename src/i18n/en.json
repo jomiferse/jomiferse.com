@@ -772,21 +772,11 @@
     "namePlaceholder": "Your name",
     "emailLabel": "Email",
     "emailPlaceholder": "you@example.com",
-    "projectTypeLabel": "Project type",
-    "projectTypePlaceholder": "Choose the main fit",
-    "projectTypes": [
-      "Business website or redesign",
-      "Custom web application",
-      "Internal tool",
-      "Automation or API integration",
-      "Backend / Spring Boot",
-      "Professional opportunity"
-    ],
     "messageLabel": "Message",
-    "messagePlaceholder": "Tell me what you have now, what problem you want to solve and what result you need.",
-    "attachmentLabel": "Attachment",
-    "attachmentHint": "Optional. PDF only.",
-    "submit": "Send message"
+    "messagePlaceholder": "Tell me what you have now, what you want to improve and what result you need.",
+    "submit": "Send enquiry",
+    "privacyNote": "I will only use your details to respond to this enquiry. ",
+    "privacyLink": "View privacy information"
   },
   "blog": {
     "page": {
