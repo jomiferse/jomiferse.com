@@ -33,6 +33,8 @@ Un bloque razonable puede corregir una incidencia, añadir observabilidad, prote
 
 Mi servicio de [mantenimiento y evolución Spring Boot](/es/mantenimiento-spring-boot/) está planteado alrededor de cambios acotados y verificables sobre sistemas existentes.
 
+Si la necesidad incluye también web, WordPress u otras aplicaciones, el servicio general de [mantenimiento y soporte técnico](/es/services/mantenimiento-y-soporte-tecnico/) permite ordenar correcciones, actualizaciones y mejoras recurrentes en un mismo alcance.
+
 ## FAQ
 
 ### ¿Mantenimiento significa solo corregir bugs?

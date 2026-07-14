@@ -11,10 +11,12 @@ const nonCanonicalServicePaths = new Set([
 	"/en/services/automation-workflows/",
 	"/en/services/business-website/",
 	"/en/services/custom-web-application/",
+	"/en/services/maintenance-support/",
 	"/es/services/api-integrations/",
 	"/es/services/automation-workflows/",
 	"/es/services/business-website/",
 	"/es/services/custom-web-application/",
+	"/es/services/maintenance-support/",
 ]);
 
 function isExternalHref(href) {

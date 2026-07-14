@@ -161,7 +161,11 @@
               "Backend y mantenimiento"
             ],
             "link": "Ver consultoría informática",
-            "slug": "asesoria-informatica"
+            "slug": "asesoria-informatica",
+            "secondaryLink": {
+              "label": "Mantenimiento y soporte técnico",
+              "href": "/es/services/mantenimiento-y-soporte-tecnico/"
+            }
           },
           {
             "number": "02",
@@ -1888,7 +1892,8 @@
       "schema": {
         "name": "Consultoría informática freelance, diseño web y automatización de José Miguel Fernández",
         "description": "Servicios freelance de diseño web, WordPress, software a medida, automatización, IA aplicada e integraciones API para negocios y equipos pequeños.",
-        "areaServed": "España y remoto"
+        "areaServed": "España y remoto",
+        "priceNote": "Precio de partida sujeto al alcance, integraciones y estado actual del proyecto."
       },
       "eyebrow": "Primera valoración gratuita",
       "title": "Soluciones digitales para",

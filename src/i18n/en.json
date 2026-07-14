@@ -161,7 +161,11 @@
               "Backend and maintenance"
             ],
             "link": "View IT consulting",
-            "slug": "it-advisory"
+            "slug": "it-advisory",
+            "secondaryLink": {
+              "label": "Maintenance and technical support",
+              "href": "/en/services/maintenance-and-technical-support/"
+            }
           },
           {
             "number": "02",
@@ -1888,7 +1892,8 @@
       "schema": {
         "name": "Freelance IT consulting, web design and automation by José Miguel Fernández",
         "description": "Freelance web design, WordPress, custom software, automation, applied AI and API integration services for small businesses and teams.",
-        "areaServed": "Spain and remote"
+        "areaServed": "Spain and remote",
+        "priceNote": "Starting price subject to scope, integrations and the current state of the project."
       },
       "eyebrow": "Free initial assessment",
       "title": "Digital solutions to",

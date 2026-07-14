@@ -178,6 +178,11 @@ requireMarkers("service resolver", services, [
 	"pricingOptions",
 	"featuredRank",
 ]);
+if (services.includes("if (pagesBySlug.has(offering.slug)) continue;")) {
+	failures.push(
+		"service resolver: localized slug collisions must not silently discard explicit offering metadata",
+	);
+}
 
 if (includesPhase("hub-components")) {
 	const iconBadge = await readSource(

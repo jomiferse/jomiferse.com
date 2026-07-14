@@ -543,7 +543,16 @@ export const getServicePages = (locale: Locale): ServiceItem[] => {
 
 	for (const group of getServiceGroups(locale)) {
 		for (const offering of group.offerings) {
-			if (pagesBySlug.has(offering.slug)) continue;
+			const existingPage = pagesBySlug.get(offering.slug);
+			if (existingPage?.isOffering) continue;
+			if (
+				existingPage &&
+				existingPage.canonicalSlug !== offering.service.canonicalSlug
+			) {
+				throw new Error(
+					`Service slug collision for ${locale}/${offering.slug}: ${existingPage.translationKey} and ${offering.translationKey}`,
+				);
+			}
 			const commercial = getCommercialServiceDefinition(
 				offering.translationKey,
 			);

@@ -96,6 +96,16 @@ const structuredData = [
 		audience: service.whoFor,
 		serviceType: service.shortTitle,
 		sameAs: [cv.links.linkedin, cv.links.github],
+		offers: service.pricingOptions.map((option) => ({
+			key: option.key,
+			name: option.label,
+			description: option.description,
+			price: option.amount,
+			currency: option.currency,
+			billingUnit: option.billingUnit,
+			path: canonicalPath,
+			priceNote: serviceCopy.pricingNote,
+		})),
 	}),
 	buildFaqPage(service.faq),
 	buildBreadcrumbList(site, [

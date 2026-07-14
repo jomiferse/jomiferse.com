@@ -47,6 +47,15 @@ const { locale, content } = Astro.props as Props;
 						{item.link}
 						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 					</a>
+					{"secondaryLink" in item && item.secondaryLink ? (
+						<a
+							class="specialized-service__secondary"
+							href={item.secondaryLink.href}
+						>
+							{item.secondaryLink.label}
+							<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+						</a>
+					) : null}
 				</article>
 			))
 		}
@@ -170,6 +179,18 @@ const { locale, content } = Astro.props as Props;
 
 	.specialized-service > a:hover {
 		border-color: var(--action);
+		color: var(--action);
+	}
+
+	.specialized-service > a.specialized-service__secondary {
+		margin-top: 0.75rem;
+		padding-top: 0;
+		border-bottom-color: transparent;
+		color: var(--text-muted);
+		font-size: 0.75rem;
+	}
+
+	.specialized-service > a.specialized-service__secondary:hover {
 		color: var(--action);
 	}
 

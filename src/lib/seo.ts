@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n";
+import type { BillingUnit, PricingKey } from "@/lib/service-commercial";
 
 const DEFAULT_IMAGE = "/images/og/portfolio-og.svg";
 
@@ -60,6 +61,18 @@ export interface ServiceSeo {
 	audience?: string[];
 	serviceType?: string;
 	sameAs?: string[];
+	offers?: StartingPriceOfferSeo[];
+}
+
+export interface StartingPriceOfferSeo {
+	key: PricingKey;
+	name: string;
+	description: string;
+	price: number;
+	currency: "EUR";
+	billingUnit: BillingUnit;
+	path: string;
+	priceNote?: string;
 }
 
 export interface ProfessionalServiceSeo {
@@ -75,6 +88,7 @@ export interface ProfessionalServiceSeo {
 		name: string;
 		description: string;
 		path: string;
+		offers?: StartingPriceOfferSeo[];
 	}>;
 }
 
@@ -85,6 +99,32 @@ export interface FaqSeo {
 
 export const absoluteUrl = (site: string, path: string) =>
 	new URL(path, site).toString();
+
+const buildStartingPriceOffer = (
+	site: string,
+	offer: StartingPriceOfferSeo,
+	service?: { name: string; description: string; provider?: StructuredData },
+): StructuredData => ({
+	"@type": "Offer",
+	name: offer.name,
+	description: [offer.description, offer.priceNote].filter(Boolean).join(" "),
+	url: absoluteUrl(site, `${offer.path}#pricing-options`),
+	priceCurrency: offer.currency,
+	priceSpecification: {
+		"@type": "UnitPriceSpecification",
+		price: offer.price,
+		priceCurrency: offer.currency,
+		unitText: offer.billingUnit === "month" ? "MONTH" : undefined,
+	},
+	itemOffered: service
+		? {
+				"@type": "Service",
+				name: service.name,
+				description: service.description,
+				provider: service.provider,
+			}
+		: undefined,
+});
 
 export const buildBreadcrumbList = (
 	site: string,
@@ -222,6 +262,7 @@ export const buildServicePage = ({
 	audience = [],
 	serviceType,
 	sameAs = [],
+	offers = [],
 }: ServiceSeo): StructuredData => ({
 	"@context": "https://schema.org",
 	"@type": "Service",
@@ -240,6 +281,7 @@ export const buildServicePage = ({
 		url: providerUrl,
 		sameAs,
 	},
+	offers: offers.map((offer) => buildStartingPriceOffer(site, offer)),
 });
 
 export const buildProfessionalService = ({
@@ -253,21 +295,34 @@ export const buildProfessionalService = ({
 	sameAs,
 	services,
 }: ProfessionalServiceSeo): StructuredData => {
-	const offers = services.map((service) => ({
-		"@type": "Offer",
-		url: absoluteUrl(site, service.path),
-		itemOffered: {
-			"@type": "Service",
-			name: service.name,
-			description: service.description,
-			provider: {
-				"@type": "Person",
-				name: providerName,
-				url: providerUrl,
-				sameAs,
-			},
-		},
-	}));
+	const provider = {
+		"@type": "Person",
+		name: providerName,
+		url: providerUrl,
+		sameAs,
+	};
+	const offers = services.flatMap((service) =>
+		service.offers?.length
+			? service.offers.map((offer) =>
+					buildStartingPriceOffer(site, offer, {
+						name: service.name,
+						description: service.description,
+						provider,
+					}),
+				)
+			: [
+					{
+						"@type": "Offer",
+						url: absoluteUrl(site, service.path),
+						itemOffered: {
+							"@type": "Service",
+							name: service.name,
+							description: service.description,
+							provider,
+						},
+					},
+				],
+	);
 
 	return {
 		"@context": "https://schema.org",
@@ -276,12 +331,7 @@ export const buildProfessionalService = ({
 		description,
 		url: absoluteUrl(site, path),
 		areaServed,
-		founder: {
-			"@type": "Person",
-			name: providerName,
-			url: providerUrl,
-			sameAs,
-		},
+		founder: provider,
 		hasOfferCatalog: {
 			"@type": "OfferCatalog",
 			name,

@@ -33,6 +33,8 @@ A reasonable block can fix one incident, add observability, protect the journey 
 
 My [Spring Boot maintenance and evolution service](/en/spring-boot-maintenance/) is built around bounded, verifiable changes to existing systems.
 
+When the need also covers a website, WordPress or other applications, the general [maintenance and technical support service](/en/services/maintenance-and-technical-support/) keeps fixes, updates and recurring improvements within one clear scope.
+
 ## FAQ
 
 ### Does maintenance only mean fixing bugs?
