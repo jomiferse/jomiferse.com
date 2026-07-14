@@ -297,7 +297,11 @@ const structuredData = [
 
 <style>
 	.services-page {
-		--services-heading: clamp(2.25rem, 4.6vw, 4.35rem);
+		--services-section-space: clamp(3.25rem, 5vw, 4.5rem);
+		--services-content-gap: 2.25rem;
+		--services-card-padding: clamp(1.35rem, 2vw, 1.75rem);
+		--services-list-gap: 0.75rem;
+		--services-heading: clamp(2.2rem, 4vw, 3.85rem);
 	}
 
 	.services-page .eyebrow {
@@ -309,17 +313,17 @@ const structuredData = [
 		grid-template-columns: minmax(0, 1.2fr) minmax(19rem, 0.55fr);
 		gap: clamp(2.5rem, 7vw, 7rem);
 		align-items: end;
-		padding-block: clamp(2.75rem, 7vw, 6.5rem);
+		padding-block: clamp(1.5rem, 3vw, 2.5rem) clamp(3.5rem, 5vw, 4.5rem);
 	}
 
 	.services-hero h1 {
 		max-width: 15ch;
 		margin-top: 1rem;
 		color: var(--home-navy);
-		font-size: clamp(3rem, 6.25vw, 6rem);
+		font-size: clamp(2.75rem, 5.1vw, 4.8rem);
 		font-weight: 950;
-		letter-spacing: -0.07em;
-		line-height: 0.93;
+		letter-spacing: -0.065em;
+		line-height: 0.95;
 		text-wrap: balance;
 	}
 
@@ -407,7 +411,7 @@ const structuredData = [
 	.services-areas,
 	.services-process,
 	.services-faq {
-		padding-block: clamp(4.5rem, 8vw, 7rem);
+		padding-block: var(--services-section-space);
 	}
 
 	.services-section-heading {
@@ -437,13 +441,13 @@ const structuredData = [
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 1.25rem;
-		margin-top: 3.25rem;
+		margin-top: var(--services-content-gap);
 	}
 
 	.services-proof {
 		width: 100vw;
 		margin-inline: calc(50% - 50vw);
-		padding: clamp(4.5rem, 8vw, 7rem) max(1rem, calc((100vw - 88rem) / 2));
+		padding: var(--services-section-space) max(1rem, calc((100vw - 88rem) / 2));
 		background: var(--bg-band);
 	}
 
@@ -451,13 +455,13 @@ const structuredData = [
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1rem;
-		margin-top: 3rem;
+		margin-top: var(--services-content-gap);
 	}
 
 	.services-process__steps {
 		display: grid;
 		grid-template-columns: repeat(4, minmax(0, 1fr));
-		margin-top: 3.25rem;
+		margin-top: var(--services-content-gap);
 		border-block: 1px solid var(--surface-border);
 	}
 
@@ -494,7 +498,7 @@ const structuredData = [
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 0 2.5rem;
-		margin-top: 3rem;
+		margin-top: var(--services-content-gap);
 		border-top: 1px solid var(--surface-border);
 	}
 
@@ -510,6 +514,7 @@ const structuredData = [
 		min-height: 5.25rem;
 		padding-block: 1rem;
 		color: var(--text);
+		font-size: 1rem;
 		font-weight: 850;
 		line-height: 1.45;
 		cursor: pointer;
@@ -539,7 +544,7 @@ const structuredData = [
 		max-width: 45rem;
 		padding: 0 2.5rem 1.5rem 0;
 		color: var(--text-muted);
-		font-size: 0.9rem;
+		font-size: 1rem;
 		line-height: 1.7;
 	}
 
@@ -573,12 +578,16 @@ const structuredData = [
 	}
 
 	@media (max-width: 680px) {
+		.services-page {
+			--services-content-gap: 1.75rem;
+		}
+
 		.services-hero {
-			padding-top: 2rem;
+			padding-top: 1.25rem;
 		}
 
 		.services-hero h1 {
-			font-size: clamp(2.75rem, 13vw, 4rem);
+			font-size: clamp(2.6rem, 12vw, 3.6rem);
 		}
 
 		.services-hero__actions,

@@ -71,7 +71,7 @@ const { content, mostCommonLabel } = Astro.props as Props;
 
 <style>
 	.engagement-models {
-		padding-block: clamp(4.5rem, 8vw, 7rem);
+		padding-block: var(--services-section-space);
 	}
 
 	.engagement-models__heading {
@@ -104,14 +104,13 @@ const { content, mostCommonLabel } = Astro.props as Props;
 	.engagement-models__list {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-		margin-top: 3.25rem;
+		margin-top: var(--services-content-gap);
 		border-block: 1px solid var(--surface-border);
 	}
 
 	.engagement-models__list li {
 		position: relative;
-		min-height: 22rem;
-		padding: clamp(1.5rem, 3vw, 2.5rem);
+		padding: var(--services-card-padding);
 	}
 
 	.engagement-models__list li + li {
@@ -152,7 +151,7 @@ const { content, mostCommonLabel } = Astro.props as Props;
 	}
 
 	.engagement-models h3 {
-		margin-top: 2.5rem;
+		margin-top: 1.75rem;
 		color: var(--text);
 		font-size: clamp(1.4rem, 2.3vw, 2rem);
 		font-weight: 900;
@@ -171,7 +170,7 @@ const { content, mostCommonLabel } = Astro.props as Props;
 
 	.engagement-models li > strong {
 		display: block;
-		margin-top: 2rem;
+		margin-top: 1.5rem;
 		color: var(--home-navy);
 		font-size: 1.1rem;
 		font-weight: 900;
@@ -188,7 +187,6 @@ const { content, mostCommonLabel } = Astro.props as Props;
 		}
 
 		.engagement-models__list li {
-			min-height: 0;
 			padding-inline: 0;
 		}
 
