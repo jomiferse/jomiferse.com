@@ -38,10 +38,6 @@ if (includesPhase("copy")) {
 			await readSource("src", "i18n", `${locale}.json`),
 		);
 		for (const key of [
-			"eyebrow",
-			"ctaTitle",
-			"ctaDescription",
-			"ctaLabel",
 			"identityDescription",
 			"availability",
 			"servicesLabel",
@@ -61,6 +57,11 @@ if (includesPhase("copy")) {
 				failures.push(`${locale}: missing footer.${key}`);
 			}
 		}
+		for (const key of ["eyebrow", "ctaTitle", "ctaDescription", "ctaLabel"]) {
+			if (dictionary.footer?.[key]) {
+				failures.push(`${locale}: obsolete footer.${key}`);
+			}
+		}
 	}
 }
 
@@ -74,8 +75,6 @@ if (includesPhase("structure")) {
 	const layout = await readSource("src", "layouts", "BaseLayout.astro");
 	requireMarkers("footer", footer, [
 		"data-site-footer",
-		"data-footer-cta",
-		"contact?service=assessment",
 		"data-footer-desktop-nav",
 		"data-footer-mobile-disclosures",
 		"<details",
@@ -92,7 +91,13 @@ if (includesPhase("structure")) {
 		'"backend-spring-boot"',
 	]);
 	requireMarkers("layout", layout, ['<body id="top"']);
-	rejectMarkers("footer", footer, ["cv.links.github", 'name="github"']);
+	rejectMarkers("footer", footer, [
+		"cv.links.github",
+		'name="github"',
+		"data-footer-cta",
+		"footer-conversion",
+		"contact?service=assessment",
+	]);
 }
 
 if (includesPhase("styles")) {
@@ -101,7 +106,6 @@ if (includesPhase("styles")) {
 		"--footer-bg",
 		".footer-shell",
 		"max-width: 88rem",
-		".footer-conversion",
 		".footer-directory",
 		".footer-mobile-disclosures",
 		".footer-disclosure[open]",
@@ -109,38 +113,43 @@ if (includesPhase("styles")) {
 		"@media (min-width: 68rem)",
 		"@media (prefers-reduced-motion: reduce)",
 	]);
+	rejectMarkers("footer styles", styles, [
+		".footer-conversion",
+		".footer-eyebrow",
+		".footer-cta",
+	]);
 }
 
 if (verifyDist) {
 	for (const [locale, expected] of [
-		[
-			"es",
-			[
-				"¿Tienes algo que mejorar, construir o automatizar?",
-				"Solicitar valoración gratuita",
-				"Disponible para nuevos proyectos",
-			],
-		],
-		[
-			"en",
-			[
-				"Something to improve, build or automate?",
-				"Request a free assessment",
-				"Available for new projects",
-			],
-		],
+		["es", ["Disponible para nuevos proyectos"]],
+		["en", ["Available for new projects"]],
 	]) {
 		const output = join(root, "dist", "client", locale, "index.html");
 		try {
 			await access(output);
 			const html = await readFile(output, "utf8");
+			const footerHtml =
+				html.match(/<footer\b[^>]*data-site-footer[\s\S]*?<\/footer>/)?.[0] ??
+				"";
+			if (!footerHtml) failures.push(`${locale}: dist footer missing`);
 			for (const marker of expected) {
-				if (!html.includes(marker)) {
+				if (!footerHtml.includes(marker)) {
 					failures.push(`${locale}: dist missing ${marker}`);
 				}
 			}
-			if (html.includes('aria-label="GitHub"')) {
+			if (footerHtml.includes('aria-label="GitHub"')) {
 				failures.push(`${locale}: dist still exposes GitHub in footer`);
+			}
+			for (const obsolete of [
+				"¿Tienes algo que mejorar, construir o automatizar?",
+				"Solicitar valoración gratuita",
+				"Something to improve, build or automate?",
+				"Request a free assessment",
+			]) {
+				if (footerHtml.includes(obsolete)) {
+					failures.push(`${locale}: dist still exposes footer CTA copy`);
+				}
 			}
 		} catch {
 			failures.push(`${locale}: generated home missing`);

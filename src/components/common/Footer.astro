@@ -13,7 +13,6 @@ const cv = getCv(locale);
 const translations = getTranslations(locale);
 const footer = translations.footer;
 const year = new Date().getFullYear();
-const contactHref = `/${locale}/contact?service=assessment`;
 const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(translations.contact.page.whatsappMessage)}`;
 
 const priorityServiceSlugs = [
@@ -66,18 +65,6 @@ const directContactLinks = [
 
 <footer class="footer-bar mt-auto" data-site-footer>
 	<div class="footer-shell">
-		<section class="footer-conversion" data-footer-cta>
-			<div>
-				<p class="footer-eyebrow">{footer.eyebrow}</p>
-				<h2>{footer.ctaTitle}</h2>
-				<p class="footer-conversion__copy">{footer.ctaDescription}</p>
-			</div>
-			<a href={contactHref} class="button-action footer-cta">
-				{footer.ctaLabel}
-				<Icon name="arrow-right" aria-hidden="true" />
-			</a>
-		</section>
-
 		<div class="footer-directory">
 			<section class="footer-identity" aria-labelledby="footer-identity-title">
 				<p id="footer-identity-title" class="footer-group-title">

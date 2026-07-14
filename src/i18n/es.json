@@ -694,10 +694,6 @@
     }
   },
   "footer": {
-    "eyebrow": "Primera valoración gratuita",
-    "ctaTitle": "¿Tienes algo que mejorar, construir o automatizar?",
-    "ctaDescription": "Cuéntame qué necesitas y te propondré el siguiente paso más razonable.",
-    "ctaLabel": "Solicitar valoración gratuita",
     "identityDescription": "Desarrollo web, software a medida y automatización con trato directo.",
     "availability": "Disponible para nuevos proyectos · Trabajo remoto",
     "servicesLabel": "Servicios",

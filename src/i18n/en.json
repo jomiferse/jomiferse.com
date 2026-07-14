@@ -694,10 +694,6 @@
     }
   },
   "footer": {
-    "eyebrow": "Free initial assessment",
-    "ctaTitle": "Something to improve, build or automate?",
-    "ctaDescription": "Tell me what you need and I’ll suggest the most sensible next step.",
-    "ctaLabel": "Request a free assessment",
     "identityDescription": "Web development, custom software and automation with direct communication.",
     "availability": "Available for new projects · Remote work",
     "servicesLabel": "Services",
