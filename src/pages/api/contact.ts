@@ -8,8 +8,6 @@ import { getServicePages } from "@/lib/services";
 
 export const prerender = false;
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
-
 const isLocale = (v: string): v is Locale => v === "en" || v === "es";
 const isPricingKey = (value: string): value is PricingKey =>
 	pricingKeys.some((key) => key === value);
@@ -77,6 +75,7 @@ export const POST: APIRoute = async ({ request }) => {
 	}
 
 	try {
+		const resend = new Resend(import.meta.env.RESEND_API_KEY);
 		const result = await resend.emails.send({
 			from: "Website <onboarding@resend.dev>",
 			to: cv.email,

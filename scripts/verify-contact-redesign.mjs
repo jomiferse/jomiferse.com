@@ -59,12 +59,14 @@ if (includesPhase("form")) {
 		"isValidEmail",
 		'error: "missing"',
 		'error: "send"',
+		"try {\n\t\tconst resend = new Resend",
 		"result.error",
 		"selectedServiceLabel",
 		"selectedScopeLabel",
 		"source.category",
 	]);
 	rejectMarkers("contact API", api, [
+		"const resend = new Resend(import.meta.env.RESEND_API_KEY);\n\nconst isLocale",
 		"MAX_PDF_BYTES",
 		"Buffer.from",
 		"attachments",
@@ -101,9 +103,8 @@ if (includesPhase("page")) {
 		"max-width: 88rem",
 	]);
 	for (const locale of ["es", "en"]) {
-		const copy = JSON.parse(
-			await readSource("src", "i18n", `${locale}.json`),
-		).contact.page;
+		const copy = JSON.parse(await readSource("src", "i18n", `${locale}.json`))
+			.contact.page;
 		for (const key of [
 			"eyebrow",
 			"title",
@@ -167,13 +168,54 @@ if (includesPhase("marquee")) {
 		"endorsement",
 	]);
 	for (const locale of ["es", "en"]) {
-		const copy = JSON.parse(
-			await readSource("src", "i18n", `${locale}.json`),
-		).contact.page;
+		const copy = JSON.parse(await readSource("src", "i18n", `${locale}.json`))
+			.contact.page;
 		if (!copy?.technologiesTitle)
 			failures.push(`${locale}: missing contact.page.technologiesTitle`);
 		if (!copy?.technologiesPauseLabel)
 			failures.push(`${locale}: missing contact.page.technologiesPauseLabel`);
+	}
+}
+
+if (verifyGeneratedOutput) {
+	for (const locale of ["es", "en"]) {
+		const output = join(
+			root,
+			"dist",
+			"client",
+			locale,
+			"contact",
+			"index.html",
+		);
+		try {
+			await access(output);
+			const html = await readFile(output, "utf8");
+			const expected =
+				locale === "es"
+					? [
+							"Cuéntame qué quieres resolver.",
+							"Enviar consulta",
+							"Tecnologías y plataformas con las que trabajo",
+							"WhatsApp",
+						]
+					: [
+							"Tell me what you want to solve.",
+							"Send enquiry",
+							"Technologies and platforms I work with",
+							"WhatsApp",
+						];
+			for (const marker of expected) {
+				if (!html.includes(marker))
+					failures.push(`${locale}: generated contact missing ${marker}`);
+			}
+			const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1] ?? "";
+			for (const forbidden of ["GitHub", "projectType", "attachment"]) {
+				if (main.includes(forbidden))
+					failures.push(`${locale}: generated contact includes ${forbidden}`);
+			}
+		} catch {
+			failures.push(`${locale}: generated contact output missing`);
+		}
 	}
 }
 
@@ -182,4 +224,4 @@ if (failures.length) {
 	process.exit(1);
 }
 
-console.log(`Contact redesign verification passed through ${phase}.`);
+console.warn(`Contact redesign verification passed through ${phase}.`);
