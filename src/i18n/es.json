@@ -967,6 +967,848 @@
     }
   },
   "services": {
+    "commercial": {
+      "areas": {
+        "web-conversion": {
+          "title": "Web y conversión",
+          "description": "Webs, rediseños y landings que explican mejor tu oferta y facilitan el contacto.",
+          "icon": "globe"
+        },
+        "custom-software": {
+          "title": "Software a medida",
+          "description": "Aplicaciones, herramientas internas e integraciones ajustadas al flujo real del negocio.",
+          "icon": "laptop"
+        },
+        "automation-ai": {
+          "title": "Automatización e IA aplicada",
+          "description": "Procesos conectados y automatizaciones con control sobre datos, errores y revisión humana.",
+          "icon": "sparkles"
+        },
+        "maintenance-support": {
+          "title": "Mantenimiento y soporte técnico",
+          "description": "Correcciones, actualizaciones y mejoras para que webs y aplicaciones sigan funcionando bien.",
+          "icon": "circle-check-big"
+        }
+      },
+      "timelines": {
+        "businessWebsite": "Entrega habitual desde 2 semanas",
+        "websiteRedesign": "Primeras mejoras desde 1 semana",
+        "customApplication": "Primera versión desde 4 semanas",
+        "internalTool": "Primera versión desde 3 semanas",
+        "workflowAutomation": "Primer flujo desde 1 semana",
+        "apiIntegration": "Primera integración desde 1 semana",
+        "springBackend": "Primer bloque desde 1 semana",
+        "technicalMaintenance": "Primera revisión en 2 o 3 días laborables",
+        "projectManagement": "Primer plan desde 1 semana",
+        "technicalAdvisory": "Primera sesión esta semana",
+        "secondOpinion": "Revisión habitual en 3 o 4 días laborables",
+        "wordpressWebsite": "Entrega habitual desde 2 semanas",
+        "wordpressMaintenance": "Primera revisión en 2 o 3 días laborables",
+        "wordpressOptimization": "Primeras mejoras desde 3 días laborables",
+        "woocommerce": "Primera versión desde 3 semanas",
+        "wordpressMigration": "Migración habitual desde 1 semana",
+        "landingPage": "Entrega habitual desde 1 semana",
+        "businessAi": "Primer caso validado desde 2 semanas",
+        "chatbot": "Primera versión desde 2 semanas",
+        "aiAutomation": "Primer flujo desde 2 semanas",
+        "aiAgent": "Primera versión desde 3 semanas",
+        "aiTraining": "Primera sesión esta semana"
+      },
+      "pricingProfiles": {
+        "businessWebsite": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión acotada para aclarar el mensaje y corregir el principal bloqueo de conversión.",
+            "deliverables": [
+              "Revisión de oferta, jerarquía y camino de contacto.",
+              "Lista priorizada de mejoras con alcance claro.",
+              "Una mejora concreta en la página principal o landing."
+            ],
+            "boundary": "No incluye el rediseño completo ni la creación de todas las páginas del sitio.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Una web profesional lista para explicar la oferta, generar confianza y captar contactos.",
+            "deliverables": [
+              "Arquitectura, mensajes y llamadas a la acción.",
+              "Diseño responsive y desarrollo de hasta cinco secciones.",
+              "Formulario, SEO técnico básico, rendimiento y despliegue.",
+              "Revisión final y entrega de accesos."
+            ],
+            "boundary": "No incluye identidad visual completa, campañas publicitarias ni contenido audiovisual.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Mantenimiento y pequeñas mejoras priorizadas después de publicar.",
+            "deliverables": [
+              "Revisión mensual de funcionamiento y formulario.",
+              "Actualizaciones técnicas y correcciones menores.",
+              "Cola priorizada de mejoras de contenido o conversión."
+            ],
+            "boundary": "No incluye disponibilidad 24/7 ni respuesta inmediata salvo acuerdo específico.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "websiteRedesign": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una auditoría breve para localizar qué está frenando claridad, móvil o contacto.",
+            "deliverables": [
+              "Revisión de páginas y navegación actuales.",
+              "Diagnóstico de problemas visuales y técnicos.",
+              "Corrección del bloqueo con mayor impacto."
+            ],
+            "boundary": "No incluye rehacer el sitio completo ni cambiar la identidad de marca.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Un rediseño enfocado que conserva lo útil y mejora estructura, rendimiento y conversión.",
+            "deliverables": [
+              "Nueva jerarquía y navegación.",
+              "Rediseño responsive de las páginas acordadas.",
+              "Mejoras de rendimiento, accesibilidad y SEO técnico.",
+              "Publicación y revisión final."
+            ],
+            "boundary": "No incluye una identidad visual nueva ni una migración de plataforma no acordada.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Mejoras continuas sobre una web que ya está publicada.",
+            "deliverables": [
+              "Revisión periódica de páginas clave.",
+              "Correcciones menores de interfaz y contenido.",
+              "Priorización de mejoras según uso y negocio."
+            ],
+            "boundary": "No incluye disponibilidad 24/7 ni rediseños completos dentro de la cuota.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "customApplication": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Un bloque para ordenar el alcance o resolver una parte concreta de una aplicación.",
+            "deliverables": [
+              "Revisión del flujo, usuarios y datos.",
+              "Propuesta de primera versión con límites.",
+              "Prototipo técnico o mejora acotada."
+            ],
+            "boundary": "No incluye construir una aplicación completa en este bloque.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Una primera aplicación funcional con interfaz, datos y despliegue.",
+            "deliverables": [
+              "Definición de flujos y permisos.",
+              "Frontend, backend y modelo de datos acordados.",
+              "Pruebas de recorridos críticos.",
+              "Despliegue, accesos y notas de operación."
+            ],
+            "boundary": "No incluye módulos o integraciones que queden fuera de la primera versión acordada.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Mantenimiento y evolución por prioridades después de la primera entrega.",
+            "deliverables": [
+              "Corrección de incidencias no urgentes.",
+              "Actualizaciones y revisión de dependencias.",
+              "Pequeñas mejoras de producto priorizadas."
+            ],
+            "boundary": "No incluye guardias, respuesta inmediata ni grandes módulos sin presupuesto propio.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "internalTool": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión del proceso manual para decidir qué merece convertirse en herramienta.",
+            "deliverables": [
+              "Mapa del flujo actual y sus excepciones.",
+              "Identificación del cuello de botella principal.",
+              "Propuesta de una primera pantalla o automatización."
+            ],
+            "boundary": "No incluye digitalizar todo el proceso ni migrar todos los datos históricos.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Una herramienta privada para gestionar un flujo concreto con datos reales.",
+            "deliverables": [
+              "Usuarios, permisos y operaciones principales.",
+              "Panel, formularios y vistas de seguimiento.",
+              "Modelo de datos e importación inicial acordada.",
+              "Despliegue y documentación básica."
+            ],
+            "boundary": "No incluye replicar un ERP completo ni procesos fuera del flujo acordado.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Ajustes y mantenimiento mientras el equipo usa la herramienta.",
+            "deliverables": [
+              "Corrección de incidencias priorizadas.",
+              "Ajustes pequeños de formularios y reglas.",
+              "Revisión de rendimiento y datos."
+            ],
+            "boundary": "No incluye soporte 24/7 ni nuevas áreas funcionales completas.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "workflowAutomation": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Un análisis corto para validar si una tarea repetida se puede automatizar con seguridad.",
+            "deliverables": [
+              "Mapa de pasos, reglas y excepciones.",
+              "Revisión de herramientas y accesos disponibles.",
+              "Prueba de un paso o recomendación ejecutable."
+            ],
+            "boundary": "No incluye automatizar un proceso inestable o sin responsable claro.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Un flujo automático con control de errores y una forma clara de revisar resultados.",
+            "deliverables": [
+              "Conexión de las herramientas acordadas.",
+              "Reglas, validaciones y gestión de fallos.",
+              "Registro de ejecuciones y avisos útiles.",
+              "Pruebas con casos reales y puesta en marcha."
+            ],
+            "boundary": "No incluye licencias externas ni pasos que dependan de decisiones humanas no definidas.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Seguimiento del flujo y ajustes cuando cambian herramientas o reglas.",
+            "deliverables": [
+              "Revisión de fallos y ejecuciones pendientes.",
+              "Ajustes pequeños de reglas y campos.",
+              "Mantenimiento de credenciales y dependencias."
+            ],
+            "boundary": "No incluye disponibilidad 24/7 ni procesos nuevos completos.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "apiIntegration": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión técnica para despejar contrato, autenticación y riesgos de una conexión.",
+            "deliverables": [
+              "Lectura de documentación y contratos actuales.",
+              "Prueba de autenticación o petición crítica.",
+              "Plan de errores, reintentos y datos necesarios."
+            ],
+            "boundary": "No incluye la integración completa ni cambios no documentados en el proveedor externo.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Una integración operativa con estados, errores y trazabilidad visibles.",
+            "deliverables": [
+              "Cliente y contratos de datos.",
+              "Autenticación, validación y manejo de errores.",
+              "Reintentos seguros y registro técnico.",
+              "Pruebas y despliegue del recorrido acordado."
+            ],
+            "boundary": "No incluye costes del proveedor ni endpoints fuera del alcance acordado.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Supervisión y evolución de una integración ya en uso.",
+            "deliverables": [
+              "Revisión de errores y cambios del proveedor.",
+              "Ajustes de contratos y credenciales.",
+              "Pequeñas mejoras de observabilidad."
+            ],
+            "boundary": "No incluye guardias ni migraciones mayores de la API dentro de la cuota.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "springBackend": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Un bloque acotado para diagnosticar o corregir un problema concreto en Spring Boot.",
+            "deliverables": [
+              "Revisión del recorrido y logs disponibles.",
+              "Prueba que reproduce el problema.",
+              "Corrección o plan técnico priorizado."
+            ],
+            "boundary": "No incluye reescribir el backend ni resolver deuda técnica ajena al problema.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Una API, integración o evolución backend lista para operar con contexto.",
+            "deliverables": [
+              "Contratos, datos y errores explícitos.",
+              "Implementación Spring Boot con pruebas.",
+              "Observabilidad y migraciones necesarias.",
+              "Despliegue y notas de operación."
+            ],
+            "boundary": "No incluye infraestructura o dominios funcionales fuera del alcance acordado.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Mantenimiento técnico y evolución priorizada de un backend existente.",
+            "deliverables": [
+              "Revisión de incidencias y dependencias.",
+              "Correcciones y cambios pequeños con pruebas.",
+              "Mejoras de logs, métricas y despliegue."
+            ],
+            "boundary": "No incluye guardias 24/7 ni proyectos de migración completos.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "technicalMaintenance": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión rápida para localizar una incidencia o riesgo y dejar un siguiente paso claro.",
+            "deliverables": [
+              "Diagnóstico del síntoma y el entorno.",
+              "Corrección acotada o medida de contención.",
+              "Notas con riesgos y prioridades siguientes."
+            ],
+            "boundary": "No incluye una auditoría completa ni garantiza resolver fallos de terceros.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Puesta a punto",
+            "description": "Un bloque completo para estabilizar, actualizar y ordenar una web o aplicación.",
+            "deliverables": [
+              "Revisión de errores, dependencias y despliegue.",
+              "Actualizaciones y correcciones acordadas.",
+              "Mejoras básicas de seguridad y observabilidad.",
+              "Documentación de accesos y próximos riesgos."
+            ],
+            "boundary": "No incluye reescrituras, nuevas áreas funcionales ni respuesta fuera de horario.",
+            "ctaLabel": "Solicitar valoración del bloque"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Una cola priorizada de mantenimiento y pequeñas mejoras con seguimiento directo.",
+            "deliverables": [
+              "Revisión periódica de incidencias y actualizaciones.",
+              "Correcciones menores dentro de la capacidad acordada.",
+              "Resumen de trabajo, riesgos y siguientes prioridades."
+            ],
+            "boundary": "No incluye disponibilidad 24/7 ni respuesta inmediata salvo acuerdo específico.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "projectManagement": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión para ordenar alcance, responsables y riesgos de un proyecto técnico.",
+            "deliverables": [
+              "Lectura del estado y documentación disponible.",
+              "Mapa de dependencias y bloqueos.",
+              "Plan de próximos pasos con responsables."
+            ],
+            "boundary": "No incluye dirigir la ejecución completa ni sustituir al equipo del proyecto.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Acompañamiento de proyecto",
+            "description": "Planificación y seguimiento técnico de una entrega con alcance concreto.",
+            "deliverables": [
+              "Plan, hitos y criterios de aceptación.",
+              "Seguimiento de riesgos y decisiones.",
+              "Coordinación técnica con proveedores o equipo.",
+              "Cierre y traspaso de documentación."
+            ],
+            "boundary": "No incluye trabajo indefinido ni funciones operativas fuera del proyecto.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Seguimiento mensual",
+            "description": "Apoyo técnico recurrente para revisar decisiones, riesgos y avances.",
+            "deliverables": [
+              "Sesión periódica de seguimiento.",
+              "Revisión de entregables y bloqueos.",
+              "Registro breve de decisiones y acciones."
+            ],
+            "boundary": "No incluye gestión diaria ni disponibilidad continua.",
+            "ctaLabel": "Consultar seguimiento mensual"
+          }
+        },
+        "technicalAdvisory": {
+          "intervention": {
+            "label": "Consulta puntual",
+            "description": "Una sesión para ordenar una decisión técnica y evitar inversión prematura.",
+            "deliverables": [
+              "Preparación sobre el contexto compartido.",
+              "Sesión centrada en una decisión.",
+              "Resumen con opciones, riesgos y siguiente paso."
+            ],
+            "boundary": "No incluye una auditoría profunda ni un presupuesto cerrado de desarrollo.",
+            "ctaLabel": "Reservar consulta"
+          },
+          "project": {
+            "label": "Bloque de asesoría",
+            "description": "Varias sesiones y revisión técnica para definir una iniciativa con más detalle.",
+            "deliverables": [
+              "Mapa del problema y restricciones.",
+              "Comparación de alternativas viables.",
+              "Alcance inicial y criterios de aceptación.",
+              "Revisión final con recomendaciones."
+            ],
+            "boundary": "No incluye la implementación salvo que se presupueste por separado.",
+            "ctaLabel": "Solicitar bloque de asesoría"
+          },
+          "support": {
+            "label": "Asesoría mensual",
+            "description": "Un espacio recurrente para resolver dudas y revisar decisiones antes de ejecutar.",
+            "deliverables": [
+              "Sesión mensual preparada.",
+              "Revisión breve de propuestas o cambios.",
+              "Seguimiento de decisiones abiertas."
+            ],
+            "boundary": "No incluye dirección diaria ni ejecución ilimitada.",
+            "ctaLabel": "Consultar asesoría mensual"
+          }
+        },
+        "secondOpinion": {
+          "intervention": {
+            "label": "Revisión puntual",
+            "description": "Una lectura independiente de una propuesta, arquitectura o decisión concreta.",
+            "deliverables": [
+              "Revisión del material disponible.",
+              "Señalamiento de supuestos y riesgos.",
+              "Conclusión clara con preguntas para el proveedor."
+            ],
+            "boundary": "No incluye certificar todo el sistema ni asumir la responsabilidad del proveedor.",
+            "ctaLabel": "Solicitar segunda opinión"
+          },
+          "project": {
+            "label": "Revisión técnica completa",
+            "description": "Un análisis más amplio con evidencias, alternativas y prioridades.",
+            "deliverables": [
+              "Revisión de arquitectura, alcance y costes.",
+              "Contraste de recorridos y dependencias críticas.",
+              "Informe breve con riesgos y alternativas.",
+              "Sesión de devolución y preguntas."
+            ],
+            "boundary": "No incluye corregir la implementación ni negociar en nombre del cliente.",
+            "ctaLabel": "Solicitar revisión completa"
+          },
+          "support": {
+            "label": "Apoyo mensual",
+            "description": "Revisión independiente durante una ejecución o relación con proveedor.",
+            "deliverables": [
+              "Revisión periódica de avances.",
+              "Contraste de cambios de alcance.",
+              "Preparación de preguntas y decisiones."
+            ],
+            "boundary": "No incluye gestión diaria ni aprobación formal de entregas.",
+            "ctaLabel": "Consultar apoyo mensual"
+          }
+        },
+        "wordpressWebsite": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión de estructura, edición y rendimiento de una web WordPress.",
+            "deliverables": [
+              "Revisión de tema, plugins y páginas clave.",
+              "Diagnóstico de edición y conversión.",
+              "Una corrección prioritaria."
+            ],
+            "boundary": "No incluye construir o rediseñar todo el sitio.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Una web WordPress profesional, editable y preparada para captar contactos.",
+            "deliverables": [
+              "Estructura, mensajes y diseño responsive.",
+              "Configuración de WordPress y edición de contenido.",
+              "Formulario, rendimiento y SEO técnico básico.",
+              "Publicación, accesos y guía de edición."
+            ],
+            "boundary": "No incluye plugins o licencias de pago ni identidad visual completa.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Actualizaciones y pequeñas mejoras para una web WordPress publicada.",
+            "deliverables": [
+              "Actualización controlada de núcleo y plugins.",
+              "Revisión de backups y formularios.",
+              "Pequeños cambios de contenido priorizados."
+            ],
+            "boundary": "No incluye disponibilidad 24/7 ni rediseños completos.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "wordpressMaintenance": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Un diagnóstico y una corrección acotada sobre una web WordPress existente.",
+            "deliverables": [
+              "Revisión de versiones, backups y errores.",
+              "Corrección de una incidencia prioritaria.",
+              "Lista de riesgos y siguientes acciones."
+            ],
+            "boundary": "No garantiza corregir plugins abandonados ni problemas del hosting externo.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Puesta a punto",
+            "description": "Una revisión completa para actualizar, proteger y estabilizar WordPress.",
+            "deliverables": [
+              "Backup y revisión de recuperación.",
+              "Actualización controlada de núcleo, tema y plugins.",
+              "Corrección de errores y limpieza básica.",
+              "Revisión final de seguridad, formularios y rendimiento."
+            ],
+            "boundary": "No incluye un rediseño ni desarrollar funcionalidades nuevas.",
+            "ctaLabel": "Solicitar puesta a punto"
+          },
+          "support": {
+            "label": "Mantenimiento mensual",
+            "description": "Actualizaciones programadas, comprobaciones y una cola pequeña de cambios.",
+            "deliverables": [
+              "Actualizaciones y comprobación de backups.",
+              "Revisión de seguridad, errores y formularios.",
+              "Correcciones menores priorizadas."
+            ],
+            "boundary": "No incluye soporte 24/7 ni cambios grandes de diseño o funcionalidad.",
+            "ctaLabel": "Consultar mantenimiento mensual"
+          }
+        },
+        "wordpressOptimization": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una medición de velocidad y una mejora concreta sobre el principal cuello de botella.",
+            "deliverables": [
+              "Medición de páginas y Core Web Vitals.",
+              "Revisión de plugins, imágenes y caché.",
+              "Corrección de un problema prioritario."
+            ],
+            "boundary": "No promete una puntuación fija si el hosting o servicios externos limitan el resultado.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Optimización completa",
+            "description": "Un bloque para mejorar carga, estabilidad y base técnica de WordPress.",
+            "deliverables": [
+              "Auditoría antes y después.",
+              "Limpieza y configuración de plugins.",
+              "Optimización de imágenes, fuentes, caché y base de datos.",
+              "Informe final con límites y mantenimiento."
+            ],
+            "boundary": "No incluye cambiar de hosting ni rehacer el tema salvo acuerdo.",
+            "ctaLabel": "Solicitar optimización"
+          },
+          "support": {
+            "label": "Seguimiento mensual",
+            "description": "Control periódico de rendimiento y pequeñas correcciones.",
+            "deliverables": [
+              "Medición de páginas clave.",
+              "Revisión de regresiones tras actualizaciones.",
+              "Ajustes menores de rendimiento."
+            ],
+            "boundary": "No incluye disponibilidad 24/7 ni reconstrucciones del sitio.",
+            "ctaLabel": "Consultar seguimiento mensual"
+          }
+        },
+        "woocommerce": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión de compra, pagos o configuración para resolver un bloqueo concreto.",
+            "deliverables": [
+              "Prueba del recorrido de compra.",
+              "Revisión de pagos, envíos y errores.",
+              "Corrección de una incidencia prioritaria."
+            ],
+            "boundary": "No incluye rehacer la tienda ni corregir servicios externos sin acceso.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Una tienda WooCommerce preparada para catálogo, pagos, envíos y gestión diaria.",
+            "deliverables": [
+              "Configuración de catálogo y compra.",
+              "Pagos, impuestos y envíos acordados.",
+              "Diseño responsive de páginas clave.",
+              "Pruebas, publicación y guía básica."
+            ],
+            "boundary": "No incluye carga masiva de catálogo, fotografía ni licencias de terceros.",
+            "ctaLabel": "Solicitar valoración de la tienda"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Mantenimiento técnico y pequeñas mejoras sobre una tienda en marcha.",
+            "deliverables": [
+              "Actualizaciones con revisión del checkout.",
+              "Seguimiento de errores de pago y pedidos.",
+              "Cambios menores priorizados."
+            ],
+            "boundary": "No incluye soporte comercial a clientes ni guardias 24/7.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "wordpressMigration": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión previa para medir contenido, riesgos y compatibilidad de la migración.",
+            "deliverables": [
+              "Inventario de páginas y funciones.",
+              "Revisión de dominio, hosting y accesos.",
+              "Plan de migración y comprobaciones."
+            ],
+            "boundary": "No incluye ejecutar la migración ni limpiar contenido que no esté inventariado.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Migración completa",
+            "description": "Traslado a una base WordPress editable con comprobaciones antes de publicar.",
+            "deliverables": [
+              "Preparación del nuevo entorno.",
+              "Migración del contenido y páginas acordadas.",
+              "Redirecciones y SEO técnico básico.",
+              "Pruebas, publicación y entrega de accesos."
+            ],
+            "boundary": "No incluye rediseño completo ni funciones que no existan en el alcance acordado.",
+            "ctaLabel": "Solicitar valoración de la migración"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Seguimiento después de migrar para corregir incidencias y actualizar la base.",
+            "deliverables": [
+              "Revisión de errores y redirecciones.",
+              "Actualizaciones y copias de seguridad.",
+              "Pequeñas correcciones de contenido o estilo."
+            ],
+            "boundary": "No incluye rediseños o nuevas funcionalidades completas.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "landingPage": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión del mensaje y el camino de conversión de una landing existente.",
+            "deliverables": [
+              "Revisión de propuesta y audiencia.",
+              "Diagnóstico de jerarquía y fricción.",
+              "Una mejora prioritaria de copy o interfaz."
+            ],
+            "boundary": "No incluye rehacer la página completa ni gestionar la campaña.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Landing completa",
+            "description": "Una página enfocada a una oferta y una acción principal.",
+            "deliverables": [
+              "Estructura y copy base.",
+              "Diseño y desarrollo responsive.",
+              "Formulario o acción de conversión.",
+              "SEO técnico, analítica básica y publicación."
+            ],
+            "boundary": "No incluye estrategia publicitaria, branding completo ni producción audiovisual.",
+            "ctaLabel": "Solicitar valoración de la landing"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Cambios pequeños y seguimiento técnico mientras la landing está activa.",
+            "deliverables": [
+              "Revisión de funcionamiento y formulario.",
+              "Ajustes pequeños de contenido.",
+              "Correcciones técnicas priorizadas."
+            ],
+            "boundary": "No incluye gestión de campañas ni experimentación ilimitada.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "businessAi": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una sesión para identificar un caso de IA útil y descartar los que no compensan.",
+            "deliverables": [
+              "Revisión del proceso y ejemplos disponibles.",
+              "Valoración de riesgo, datos y coste.",
+              "Recomendación de prueba pequeña o alternativa sin IA."
+            ],
+            "boundary": "No incluye una estrategia corporativa completa ni una demo sin datos representativos.",
+            "ctaLabel": "Consultar este caso"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Un primer caso de IA integrado en un proceso real y medido con ejemplos propios.",
+            "deliverables": [
+              "Preparación de muestras y criterios de evaluación.",
+              "Prototipo conectado al flujo acordado.",
+              "Revisión humana, límites y registro de resultados.",
+              "Puesta en marcha y documentación."
+            ],
+            "boundary": "No garantiza precisión total ni decisiones autónomas sin control.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Seguimiento de calidad, coste y cambios del caso de IA.",
+            "deliverables": [
+              "Revisión de muestras y errores.",
+              "Ajustes de instrucciones y límites.",
+              "Seguimiento de consumo y proveedores."
+            ],
+            "boundary": "No incluye operación 24/7 ni nuevos casos completos dentro de la cuota.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "chatbot": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión para acotar qué debe responder el asistente y cuándo debe derivar.",
+            "deliverables": [
+              "Mapa de preguntas y fuentes disponibles.",
+              "Definición de límites y derivación humana.",
+              "Prueba con una muestra pequeña."
+            ],
+            "boundary": "No incluye entrenar un modelo propio ni responder sin fuentes controladas.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Un asistente conectado a contenido real, con límites y revisión de respuestas.",
+            "deliverables": [
+              "Preparación de fuentes y preguntas de prueba.",
+              "Interfaz e integración del asistente.",
+              "Evaluación, derivación y registro de errores.",
+              "Publicación y documentación de uso."
+            ],
+            "boundary": "No garantiza respuestas perfectas ni sustituye soporte humano en casos sensibles.",
+            "ctaLabel": "Solicitar valoración del asistente"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Revisión de respuestas, fuentes y consumo después de publicar.",
+            "deliverables": [
+              "Muestreo de conversaciones y fallos.",
+              "Actualización de fuentes e instrucciones.",
+              "Seguimiento de coste y derivaciones."
+            ],
+            "boundary": "No incluye atención humana ni ampliaciones completas del asistente.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "aiAutomation": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una prueba con muestras reales para saber si la automatización merece avanzar.",
+            "deliverables": [
+              "Selección de ejemplos representativos.",
+              "Prueba de extracción, clasificación o borrador.",
+              "Medición inicial de errores, coste y revisión necesaria."
+            ],
+            "boundary": "No incluye automatizar decisiones irreversibles ni trabajar sin muestras reales.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Un flujo con IA, reglas claras, revisión humana y límites de uso.",
+            "deliverables": [
+              "Integración con entradas y herramientas acordadas.",
+              "Evaluación con casos representativos.",
+              "Cola de revisión y tratamiento de errores.",
+              "Límites de consumo, avisos y puesta en marcha."
+            ],
+            "boundary": "No garantiza precisión total ni elimina la revisión cuando el riesgo la exige.",
+            "ctaLabel": "Solicitar valoración del proyecto"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Seguimiento del flujo cuando cambian muestras, reglas o proveedores.",
+            "deliverables": [
+              "Revisión de errores y casos dudosos.",
+              "Ajustes de evaluación e instrucciones.",
+              "Control de consumo y cambios del proveedor."
+            ],
+            "boundary": "No incluye procesos nuevos ni disponibilidad 24/7.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "aiAgent": {
+          "intervention": {
+            "label": "Intervención puntual",
+            "description": "Una revisión para decidir qué acciones puede ejecutar un agente y cuáles deben seguir controladas.",
+            "deliverables": [
+              "Mapa de herramientas y permisos.",
+              "Análisis de riesgos y puntos de aprobación.",
+              "Prototipo de una acción reversible."
+            ],
+            "boundary": "No incluye acceso autónomo a acciones sensibles ni un agente generalista.",
+            "ctaLabel": "Consultar esta intervención"
+          },
+          "project": {
+            "label": "Proyecto completo",
+            "description": "Un agente limitado a un flujo concreto, con permisos, trazabilidad y control humano.",
+            "deliverables": [
+              "Herramientas y contratos de acción.",
+              "Permisos, límites y aprobaciones.",
+              "Registro, evaluación y recuperación de errores.",
+              "Despliegue controlado y documentación."
+            ],
+            "boundary": "No incluye autonomía abierta ni acciones irreversibles sin aprobación.",
+            "ctaLabel": "Solicitar valoración del agente"
+          },
+          "support": {
+            "label": "Soporte mensual",
+            "description": "Revisión de acciones, errores, coste y cambios del agente.",
+            "deliverables": [
+              "Muestreo de ejecuciones y fallos.",
+              "Ajuste de permisos e instrucciones.",
+              "Seguimiento de consumo y herramientas."
+            ],
+            "boundary": "No incluye nuevos flujos completos ni vigilancia 24/7.",
+            "ctaLabel": "Consultar soporte mensual"
+          }
+        },
+        "aiTraining": {
+          "intervention": {
+            "label": "Sesión puntual",
+            "description": "Una sesión práctica sobre tareas y herramientas que el equipo ya usa.",
+            "deliverables": [
+              "Preparación con ejemplos del negocio.",
+              "Sesión práctica y participativa.",
+              "Resumen con pautas y límites de uso."
+            ],
+            "boundary": "No incluye certificación, soporte continuo ni una política corporativa completa.",
+            "ctaLabel": "Consultar la sesión"
+          },
+          "project": {
+            "label": "Programa práctico",
+            "description": "Varias sesiones para introducir IA con casos, criterios y hábitos de revisión.",
+            "deliverables": [
+              "Selección de casos por equipo.",
+              "Sesiones con ejercicios propios.",
+              "Pautas de privacidad, revisión y calidad.",
+              "Material de consulta y sesión de cierre."
+            ],
+            "boundary": "No incluye desarrollar integraciones ni sustituir formación legal o de seguridad.",
+            "ctaLabel": "Solicitar propuesta de formación"
+          },
+          "support": {
+            "label": "Acompañamiento mensual",
+            "description": "Un espacio recurrente para revisar usos, dudas y nuevos casos.",
+            "deliverables": [
+              "Sesión mensual preparada.",
+              "Revisión de ejemplos y dificultades.",
+              "Actualización de pautas y herramientas."
+            ],
+            "boundary": "No incluye soporte bajo demanda ni desarrollo de automatizaciones.",
+            "ctaLabel": "Consultar acompañamiento mensual"
+          }
+        }
+      }
+    },
     "hub": {
       "meta": {
         "title": "Consultoría informática freelance | José Miguel Fernández",
@@ -1139,6 +1981,22 @@
               "title": "Formación en IA",
               "description": "Sesiones prácticas para usar IA en el día a día del negocio.",
               "service": "automation-workflows"
+            }
+          ]
+        },
+        "maintenance-support": {
+          "title": "Mantenimiento y soporte técnico",
+          "description": "Correcciones, actualizaciones y pequeñas mejoras con una responsabilidad técnica clara.",
+          "bullets": [
+            "Diagnóstico y resolución de incidencias acotadas.",
+            "Actualizaciones de WordPress, aplicaciones y backends.",
+            "Soporte mensual con prioridades y límites visibles."
+          ],
+          "offerings": [
+            {
+              "title": "Mantenimiento y soporte técnico",
+              "description": "Mantenimiento general para webs, aplicaciones y backend con intervención puntual o soporte mensual.",
+              "service": "maintenance-support"
             }
           ]
         }
@@ -1831,6 +2689,80 @@
           {
             "question": "¿Puedes ayudar en una migración legacy?",
             "answer": "Sí. Prefiero migraciones por fases: identificar límites, extraer flujos de valor y reducir riesgo antes de reescribir más de la cuenta."
+          }
+        ]
+      },
+      "maintenance-support": {
+        "title": "Mantenimiento y soporte técnico",
+        "shortTitle": "Mantenimiento técnico",
+        "description": "Mantenimiento para webs, aplicaciones y backends que necesitan correcciones, actualizaciones y pequeñas mejoras con un responsable técnico directo.",
+        "metaTitle": "Mantenimiento y soporte técnico | José Miguel Fernández",
+        "metaDescription": "Mantenimiento técnico freelance para webs, WordPress, aplicaciones y backend: correcciones, actualizaciones, rendimiento y soporte mensual.",
+        "pricing": {
+          "label": "Primera intervención",
+          "price": "Desde 90 €",
+          "note": "Para diagnosticar un problema concreto y resolverlo o dejar un plan claro.",
+          "scope": [
+            "Revisión del síntoma, entorno y accesos disponibles.",
+            "Corrección acotada o medida de contención.",
+            "Resumen de riesgos y siguientes prioridades."
+          ]
+        },
+        "overview": [
+          "El mantenimiento técnico sirve para que una web o aplicación siga siendo segura, estable y fácil de cambiar después de publicarla.",
+          "Puede empezar con una incidencia concreta, una puesta a punto o un acuerdo mensual. Priorizo el trabajo visible y dejo claro qué entra, qué queda pendiente y qué depende de terceros."
+        ],
+        "problem": "La web o aplicación funciona, pero acumula errores, actualizaciones pendientes o cambios que nadie termina de asumir.",
+        "benefits": [
+          {
+            "title": "Problemas con responsable",
+            "body": "Las incidencias dejan de quedar repartidas entre hosting, plugins, proveedor y equipo interno sin una siguiente acción clara."
+          },
+          {
+            "title": "Cambios más seguros",
+            "body": "Reviso backups, dependencias, despliegue y recorridos críticos antes de aplicar actualizaciones o correcciones."
+          },
+          {
+            "title": "Prioridades visibles",
+            "body": "Separamos urgencias, riesgo acumulado y mejoras opcionales para invertir primero donde más compensa."
+          }
+        ],
+        "whenNeeded": [
+          "Hay errores repetidos, formularios que fallan o partes que nadie se atreve a actualizar.",
+          "Las dependencias, plugins o versiones se han quedado atrás y empiezan a bloquear cambios.",
+          "Necesitas pequeñas mejoras periódicas sin abrir un proyecto nuevo cada vez.",
+          "Quieres ordenar accesos, backups, despliegue y responsabilidad técnica."
+        ],
+        "whoFor": [
+          "Profesionales y negocios con una web que ya forma parte de su actividad.",
+          "Equipos pequeños con una aplicación o backend sin capacidad fija de mantenimiento.",
+          "Founders que necesitan soporte técnico directo después de una primera entrega."
+        ],
+        "builds": [
+          "Diagnóstico y corrección de incidencias acotadas.",
+          "Actualizaciones de dependencias, plugins y versiones con comprobaciones.",
+          "Mejoras de rendimiento, estabilidad, logs y despliegue.",
+          "Cola priorizada de pequeños cambios y documentación de riesgos."
+        ],
+        "process": [
+          "Recoger el síntoma, el contexto, los accesos y el impacto real.",
+          "Separar la urgencia de la deuda acumulada y acordar el primer bloque.",
+          "Aplicar cambios con copia, pruebas o una vía de vuelta proporcionada al riesgo.",
+          "Cerrar con lo realizado, lo pendiente y la siguiente prioridad."
+        ],
+        "whyMe": [
+          "Trabajo desde frontend hasta backend y despliegue, así que puedo seguir el problema aunque cruce varias capas.",
+          "No escondo una incidencia dentro de una bolsa de horas: explico el diagnóstico, el límite y la siguiente decisión.",
+          "Puedo combinar intervenciones puntuales con soporte mensual cuando el sistema ya necesita continuidad."
+        ],
+        "faq": [
+          {
+            "question": "¿El soporte incluye urgencias fuera de horario?",
+            "answer": "No por defecto. El servicio mensual cubre una capacidad y prioridades acordadas, no disponibilidad 24/7 ni respuesta inmediata."
+          },
+          {
+            "question": "¿Puedes mantener una web o aplicación que no has desarrollado?",
+            "answer": "Sí, si puedo revisar la base, los accesos y el estado actual antes de comprometer un alcance. La primera intervención suele servir para obtener ese contexto."
           }
         ]
       }

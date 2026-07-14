@@ -1,4 +1,12 @@
 import { getServiceItems, getTranslations, type Locale } from "@/i18n";
+import {
+	getCommercialServiceDefinition,
+	getCommercialTimeline,
+	resolvePricingOptions,
+	serviceAreaSlugs,
+	type PricingOption,
+	type ServiceAreaSlug,
+} from "@/lib/service-commercial";
 
 export type ServiceSlug =
 	| "business-website"
@@ -7,7 +15,8 @@ export type ServiceSlug =
 	| "internal-tools"
 	| "automation-workflows"
 	| "api-integrations"
-	| "backend-spring-boot";
+	| "backend-spring-boot"
+	| "maintenance-support";
 
 export interface ServiceItem {
 	slug: string;
@@ -18,12 +27,18 @@ export interface ServiceItem {
 	description: string;
 	metaTitle: string;
 	metaDescription: string;
+	area: ServiceAreaSlug;
+	icon: string;
+	featuredRank?: 1 | 2 | 3;
+	pricingOptions: readonly [PricingOption, PricingOption, PricingOption];
+	/** @deprecated Kept while the legacy detail layout is replaced. */
 	pricing: {
 		label: string;
 		price: string;
 		note: string;
 		scope: string[];
 	};
+	timeline?: string;
 	overview: string[];
 	problem: string;
 	benefits: Array<{
@@ -52,7 +67,8 @@ export interface ServiceItem {
 export type ServiceGroupSlug =
 	| "it-consulting"
 	| "web-wordpress"
-	| "ai-automation";
+	| "ai-automation"
+	| "maintenance-support";
 
 export interface ServiceGroup {
 	slug: ServiceGroupSlug;
@@ -71,6 +87,17 @@ export interface ServiceGroup {
 	services: ServiceItem[];
 }
 
+export interface ServiceArea {
+	slug: ServiceAreaSlug;
+	title: string;
+	description: string;
+	icon: string;
+	entryPrice: number;
+	featuredServices: readonly [ServiceItem, ServiceItem, ServiceItem];
+	primaryService: ServiceItem;
+	services: ServiceItem[];
+}
+
 const serviceSlugs = [
 	"business-website",
 	"website-redesign",
@@ -79,6 +106,7 @@ const serviceSlugs = [
 	"automation-workflows",
 	"api-integrations",
 	"backend-spring-boot",
+	"maintenance-support",
 ] as const satisfies readonly ServiceSlug[];
 
 const slugifyService = (value: string) =>
@@ -210,11 +238,13 @@ const canonicalOfferingByLocale: Partial<
 		"custom-web-application": "software-a-medida",
 		"automation-workflows": "automatizacion-de-procesos",
 		"api-integrations": "integraciones-api",
+		"maintenance-support": "mantenimiento-y-soporte-tecnico",
 	},
 	en: {
 		"business-website": "wordpress-web-design",
 		"custom-web-application": "custom-software",
 		"automation-workflows": "process-automation",
+		"maintenance-support": "maintenance-and-technical-support",
 	},
 };
 
@@ -293,6 +323,22 @@ const relatedPostsByLocale: Record<
 				href: "/es/blog/que-debe-tener-web-profesional-para-captar-clientes/",
 			},
 		],
+		"base:maintenance-support": [
+			{
+				title: "Cuándo necesita mantenimiento una aplicación",
+				description:
+					"Señales operativas, dependencias y despliegues que conviene atender antes de una incidencia mayor.",
+				href: "/es/blog/cuando-necesita-empresa-mantenimiento-spring-boot/",
+			},
+		],
+		"maintenance-support:0": [
+			{
+				title: "Cuándo necesita mantenimiento una aplicación",
+				description:
+					"Señales operativas, dependencias y despliegues que conviene atender antes de una incidencia mayor.",
+				href: "/es/blog/cuando-necesita-empresa-mantenimiento-spring-boot/",
+			},
+		],
 	},
 	en: {
 		"base:backend-spring-boot": [
@@ -364,6 +410,22 @@ const relatedPostsByLocale: Record<
 				href: "/en/blog/what-a-professional-website-needs-to-get-clients/",
 			},
 		],
+		"base:maintenance-support": [
+			{
+				title: "When an application needs maintenance",
+				description:
+					"Operational signals, dependencies and delivery problems worth addressing before a larger incident.",
+				href: "/en/blog/when-company-needs-spring-boot-maintenance/",
+			},
+		],
+		"maintenance-support:0": [
+			{
+				title: "When an application needs maintenance",
+				description:
+					"Operational signals, dependencies and delivery problems worth addressing before a larger incident.",
+				href: "/en/blog/when-company-needs-spring-boot-maintenance/",
+			},
+		],
 	},
 };
 
@@ -392,6 +454,15 @@ const serviceGroups = [
 		primaryService: "automation-workflows",
 		services: ["automation-workflows", "internal-tools", "api-integrations"],
 	},
+	{
+		slug: "maintenance-support",
+		primaryService: "maintenance-support",
+		services: [
+			"maintenance-support",
+			"website-redesign",
+			"backend-spring-boot",
+		],
+	},
 ] as const satisfies ReadonlyArray<{
 	slug: ServiceGroupSlug;
 	primaryService: ServiceSlug;
@@ -401,17 +472,27 @@ const serviceGroups = [
 export const getServices = (locale: Locale): ServiceItem[] => {
 	const serviceItems = getServiceItems(locale);
 
-	return serviceSlugs.map((slug, index) => ({
-		slug,
-		translationKey: `base:${slug}`,
-		canonicalSlug: slug,
-		number: String(index + 1).padStart(2, "0"),
-		...serviceItems[slug],
-		relatedPosts: getRelatedPosts(locale, `base:${slug}`),
-		canonicalPath: canonicalOfferingByLocale[locale]?.[slug]
-			? `/${locale}/services/${canonicalOfferingByLocale[locale][slug]}/`
-			: undefined,
-	}));
+	return serviceSlugs.map((slug, index) => {
+		const translationKey = `base:${slug}`;
+		const commercial = getCommercialServiceDefinition(translationKey);
+
+		return {
+			slug,
+			translationKey,
+			canonicalSlug: slug,
+			number: String(index + 1).padStart(2, "0"),
+			...serviceItems[slug],
+			area: commercial.area,
+			icon: commercial.icon,
+			featuredRank: commercial.featuredRank,
+			pricingOptions: resolvePricingOptions(locale, translationKey),
+			timeline: getCommercialTimeline(locale, translationKey),
+			relatedPosts: getRelatedPosts(locale, translationKey),
+			canonicalPath: canonicalOfferingByLocale[locale]?.[slug]
+				? `/${locale}/services/${canonicalOfferingByLocale[locale][slug]}/`
+				: undefined,
+		};
+	});
 };
 
 export const getServiceGroups = (locale: Locale): ServiceGroup[] => {
@@ -470,6 +551,9 @@ export const getServicePages = (locale: Locale): ServiceItem[] => {
 	for (const group of getServiceGroups(locale)) {
 		for (const offering of group.offerings) {
 			if (pagesBySlug.has(offering.slug)) continue;
+			const commercial = getCommercialServiceDefinition(
+				offering.translationKey,
+			);
 
 			pagesBySlug.set(offering.slug, {
 				...offering.service,
@@ -492,12 +576,72 @@ export const getServicePages = (locale: Locale): ServiceItem[] => {
 				canonicalSlug: offering.service.canonicalSlug,
 				canonicalPath: undefined,
 				isOffering: true,
+				area: commercial.area,
+				icon: commercial.icon,
+				featuredRank: commercial.featuredRank,
+				pricingOptions: resolvePricingOptions(locale, offering.translationKey),
+				timeline: getCommercialTimeline(locale, offering.translationKey),
 				relatedPosts: getRelatedPosts(locale, offering.translationKey),
 			});
 		}
 	}
 
 	return Array.from(pagesBySlug.values());
+};
+
+export const getCanonicalServicePages = (locale: Locale) =>
+	getServicePages(locale).filter((service) => !service.canonicalPath);
+
+export const getServiceAreas = (locale: Locale): ServiceArea[] => {
+	const services = getCanonicalServicePages(locale);
+	const areaCopy = getTranslations(locale).services.commercial.areas;
+
+	return serviceAreaSlugs.map((slug) => {
+		const areaServices = services.filter((service) => service.area === slug);
+		const featuredServices = areaServices
+			.filter((service) => service.featuredRank !== undefined)
+			.sort(
+				(left, right) => (left.featuredRank ?? 4) - (right.featuredRank ?? 4),
+			);
+
+		if (featuredServices.length !== 3) {
+			throw new Error(
+				`Expected three featured services for ${locale}/${slug}, found ${featuredServices.length}`,
+			);
+		}
+
+		const primaryService = featuredServices[0];
+		if (!primaryService) {
+			throw new Error(`Missing primary service for ${locale}/${slug}`);
+		}
+
+		return {
+			slug,
+			...areaCopy[slug],
+			entryPrice: primaryService.pricingOptions[0].amount,
+			featuredServices: featuredServices as [
+				ServiceItem,
+				ServiceItem,
+				ServiceItem,
+			],
+			primaryService,
+			services: areaServices,
+		};
+	});
+};
+
+export const getRelatedServices = (
+	locale: Locale,
+	service: ServiceItem,
+	limit = 3,
+) => {
+	const candidates = getCanonicalServicePages(locale).filter(
+		(item) => item.translationKey !== service.translationKey,
+	);
+	const sameArea = candidates.filter((item) => item.area === service.area);
+	const otherAreas = candidates.filter((item) => item.area !== service.area);
+
+	return [...sameArea, ...otherAreas].slice(0, limit);
 };
 
 export const getService = (locale: Locale, slug: string) =>
