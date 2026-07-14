@@ -85,6 +85,32 @@ if (includesPhase("copy")) {
 	}
 }
 
+if (includesPhase("shell")) {
+	const shell = await readSource(
+		"src",
+		"components",
+		"common",
+		"DialogShell.astro",
+	);
+	const styles = await readSource("src", "styles", "global.css");
+	requireMarkers("dialog shell", shell, [
+		"<dialog",
+		"aria-labelledby={labelledBy}",
+		"aria-describedby={describedBy}",
+		"data-dialog-shell",
+		'<slot name="header"',
+		'<slot name="footer"',
+	]);
+	requireMarkers("dialog styles", styles, [
+		"--dialog-max-width",
+		".dialog-shell::backdrop",
+		".dialog-shell__surface",
+		".dialog-shell__close",
+		".dialog-shell[open]",
+		"@media (prefers-reduced-motion: reduce)",
+	]);
+}
+
 if (verifyDist) {
 	const generatedHome = join(root, "dist", "client", "es", "index.html");
 	try {

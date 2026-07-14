@@ -1,0 +1,42 @@
+---
+interface Props {
+	id: string;
+	labelledBy: string;
+	describedBy?: string;
+	size?: "compact" | "standard" | "form" | "detail";
+	className?: string;
+}
+
+const {
+	id,
+	labelledBy,
+	describedBy,
+	size = "standard",
+	className = "",
+} = Astro.props as Props;
+const hasFooter = Astro.slots.has("footer");
+---
+
+<dialog
+	id={id}
+	class:list={["dialog-shell", `dialog-shell--${size}`, className]}
+	aria-labelledby={labelledBy}
+	aria-describedby={describedBy}
+	data-dialog-shell
+>
+	<div class="dialog-shell__surface">
+		<header class="dialog-shell__header">
+			<slot name="header" />
+		</header>
+		<div class="dialog-shell__body">
+			<slot />
+		</div>
+		{
+			hasFooter ? (
+				<footer class="dialog-shell__footer">
+					<slot name="footer" />
+				</footer>
+			) : null
+		}
+	</div>
+</dialog>
