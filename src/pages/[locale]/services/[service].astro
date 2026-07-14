@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
-import ServicesExitIntent from "@/components/common/ServicesExitIntent.astro";
 import ServiceIconBadge from "@/components/services/ServiceIconBadge.astro";
 import ServicePricingGrid from "@/components/services/ServicePricingGrid.astro";
 import ServiceProofCard from "@/components/services/ServiceProofCard.astro";
@@ -122,6 +121,11 @@ const structuredData = [
 	alternatePaths={alternatePaths}
 	structuredData={structuredData}
 	keywords={keywords}
+	popupContext={{
+		kind: "service",
+		title: service.title,
+		service: service.slug,
+	}}
 >
 	<div class="services-page service-detail-page">
 		<section
@@ -461,14 +465,6 @@ const structuredData = [
 			headingId="service-conversion-title"
 		/>
 	</div>
-
-	<ServicesExitIntent
-		locale={locale}
-		serviceTitle={service.title}
-		contactHref={assessmentHref}
-		whatsappHref={whatsappHref}
-		openContactModal
-	/>
 </BaseLayout>
 
 <style>

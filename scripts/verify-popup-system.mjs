@@ -182,6 +182,87 @@ if (includesPhase("contact")) {
 	]);
 }
 
+if (includesPhase("exit")) {
+	const exitDialog = await readSource(
+		"src",
+		"components",
+		"common",
+		"GlobalExitIntent.astro",
+	);
+	const exitRules = await readSource("src", "lib", "exit-intent.ts");
+	const layout = await readSource("src", "layouts", "BaseLayout.astro");
+	const servicesHub = await readSource(
+		"src",
+		"pages",
+		"[locale]",
+		"services.astro",
+	);
+	const serviceDetail = await readSource(
+		"src",
+		"pages",
+		"[locale]",
+		"services",
+		"[service].astro",
+	);
+	const blogDetail = await readSource(
+		"src",
+		"pages",
+		"[locale]",
+		"blog",
+		"[...slug].astro",
+	);
+	const projectDetail = await readSource(
+		"src",
+		"pages",
+		"[locale]",
+		"projects",
+		"[project].astro",
+	);
+
+	requireMarkers("global exit dialog", exitDialog, [
+		"DialogShell",
+		'size="compact"',
+		"data-global-exit-dialog",
+		"data-contact-dialog-open",
+		"EXIT_INTENT_SESSION_KEY",
+		"CONSENT_STORAGE_KEY",
+		"cookieBannerVisible",
+		"25_000",
+	]);
+	requireMarkers("exit rules", exitRules, [
+		'"jomiferse.exit-intent.v2"',
+		"isExitIntentRouteExcluded",
+		"getExitIntentContext",
+		"canShowExitIntent",
+		"15_000",
+		"25_000",
+		"0.25",
+		"0.5",
+	]);
+	requireMarkers("global exit layout mount", layout, [
+		"GlobalExitIntent",
+		"popupContext?: PopupContext",
+		"isExitIntentRouteExcluded",
+		"getExitIntentContext",
+	]);
+	requireMarkers("service popup context", serviceDetail, [
+		"popupContext={{",
+		'kind: "service"',
+	]);
+	requireMarkers("article popup context", blogDetail, [
+		'popupContext={{ kind: "article"',
+	]);
+	requireMarkers("project popup context", projectDetail, [
+		'popupContext={{ kind: "project"',
+	]);
+	for (const [label, source] of [
+		["services hub", servicesHub],
+		["service detail", serviceDetail],
+	]) {
+		rejectMarkers(label, source, ["ServicesExitIntent"]);
+	}
+}
+
 if (verifyDist) {
 	const generatedHome = join(root, "dist", "client", "es", "index.html");
 	try {

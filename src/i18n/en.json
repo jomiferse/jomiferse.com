@@ -2255,20 +2255,6 @@
       "ctaText": "Send what you have now, what you want to improve and where time, clarity or money is being lost. I’ll reply with the most reasonable next step.",
       "ctaButton": "Request a free assessment"
     },
-    "exitIntent": {
-      "eyebrow": "Before you close this",
-      "signal": "Quick review",
-      "minutes": "min to shape the next step",
-      "pointOne": "No commitment",
-      "pointTwo": "Clear reply",
-      "title": "Want me to look at your case before you go?",
-      "serviceTitle": "Does {service} fit what you need?",
-      "text": "If you have a website, process or idea that feels stuck, send me the context. I will tell you whether it needs a website, automation, integration or something simpler.",
-      "primary": "Request a quick review",
-      "whatsapp": "Message on WhatsApp",
-      "secondary": "Keep browsing",
-      "close": "Close services prompt"
-    },
     "detail": {
       "eyebrow": "Freelance service",
       "backToServices": "Back to services",

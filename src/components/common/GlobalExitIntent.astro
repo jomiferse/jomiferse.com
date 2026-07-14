@@ -1,0 +1,254 @@
+---
+import { Icon } from "astro-icon/components";
+import DialogShell from "@/components/common/DialogShell.astro";
+import { getTranslations, type Locale } from "@/i18n";
+import type { ExitIntentContext } from "@/lib/exit-intent";
+import type { PricingKey } from "@/lib/service-commercial";
+
+interface Props {
+	locale: Locale;
+	context: ExitIntentContext;
+	contextTitle?: string;
+	service?: string;
+	scope?: PricingKey;
+}
+
+const { locale, context, contextTitle, service, scope } = Astro.props as Props;
+const translations = getTranslations(locale);
+const copy = translations.popups.exitIntent;
+const contextualTitle =
+	contextTitle && context !== "generic"
+		? copy[`${context}Title`].replace("{title}", contextTitle)
+		: copy.genericTitle;
+const contactParams = new URLSearchParams();
+if (service) contactParams.set("service", service);
+if (scope) contactParams.set("scope", scope);
+const contactHref = `/${locale}/contact${contactParams.size ? `?${contactParams}` : ""}`;
+const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
+	translations.contact.page.whatsappMessage,
+)}`;
+---
+
+<DialogShell
+	id="global-exit-intent"
+	labelledBy="global-exit-title"
+	describedBy="global-exit-description"
+	size="compact"
+	className="global-exit-dialog"
+>
+	<div slot="header" class="dialog-shell__header-layout">
+		<div>
+			<p class="dialog-shell__eyebrow">{copy.eyebrow}</p>
+			<h2 id="global-exit-title" class="dialog-shell__title">
+				{contextualTitle}
+			</h2>
+		</div>
+		<form method="dialog">
+			<button class="dialog-shell__close" aria-label={copy.close}>
+				<Icon name="x" class="h-5 w-5" aria-hidden="true" />
+			</button>
+		</form>
+	</div>
+
+	<div
+		data-global-exit-dialog
+		data-exit-context={context}
+		data-exit-context-title={contextTitle}
+	>
+		<p id="global-exit-description" class="global-exit-description">
+			{copy.description}
+		</p>
+		<ul class="global-exit-signals" aria-label={copy.eyebrow}>
+			<li>
+				<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+				{copy.pointOne}
+			</li>
+			<li>
+				<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+				{copy.pointTwo}
+			</li>
+		</ul>
+	</div>
+
+	<div slot="footer" class="global-exit-actions">
+		<a
+			href={contactHref}
+			class="button-action"
+			data-contact-dialog-open
+			data-service-selection={service}
+			data-scope-selection={scope}
+			data-source-category={context === "generic" ? "direct" : context}
+		>
+			{copy.primary}
+			<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+		</a>
+		<a
+			href={whatsappHref}
+			target="_blank"
+			rel="noopener noreferrer nofollow"
+			class="button-secondary"
+		>
+			<Icon name="message-square" class="h-4 w-4" aria-hidden="true" />
+			{copy.whatsapp}
+		</a>
+		<form method="dialog">
+			<button class="global-exit-dismiss" type="submit">
+				{copy.dismiss}
+			</button>
+		</form>
+	</div>
+</DialogShell>
+
+<style>
+	.global-exit-description {
+		color: var(--text-muted);
+		font-size: 0.98rem;
+		line-height: 1.7;
+	}
+
+	.global-exit-signals {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem 1rem;
+		margin-top: 1.25rem;
+		padding-top: 1.1rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.global-exit-signals li {
+		display: inline-flex;
+		gap: 0.45rem;
+		align-items: center;
+		color: var(--text);
+		font-size: 0.8rem;
+		font-weight: 850;
+	}
+
+	.global-exit-signals :global(svg) {
+		color: var(--action);
+	}
+
+	.global-exit-actions {
+		display: grid;
+		width: 100%;
+		gap: 0.65rem;
+	}
+
+	.global-exit-actions :global(.button-action),
+	.global-exit-actions :global(.button-secondary) {
+		width: 100%;
+	}
+
+	.global-exit-dismiss {
+		width: 100%;
+		min-height: 2.75rem;
+		border: 0;
+		background: transparent;
+		color: var(--text-muted);
+		font-size: 0.82rem;
+		font-weight: 800;
+		cursor: pointer;
+	}
+
+	.global-exit-dismiss:hover {
+		color: var(--action);
+	}
+
+	.global-exit-dismiss:focus-visible {
+		outline: 2px solid var(--action);
+		outline-offset: 2px;
+	}
+
+	@media (min-width: 32rem) {
+		.global-exit-actions {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.global-exit-actions form {
+			grid-column: 1 / -1;
+		}
+	}
+</style>
+
+<script>
+	import {
+		EXIT_INTENT_SESSION_KEY,
+		canShowExitIntent,
+	} from "@/lib/exit-intent";
+	import {
+		CONSENT_STORAGE_KEY,
+		parseStoredCookieConsent,
+	} from "@/lib/cookie-consent";
+
+	const exitDialog = document.getElementById("global-exit-intent");
+	const startedAt = performance.now();
+	const pointerCoarse = window.matchMedia("(pointer: coarse)").matches;
+	let scrollRatio = 0;
+
+	const getScrollRatio = () => {
+		const scrollable =
+			document.documentElement.scrollHeight - window.innerHeight;
+		return scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0;
+	};
+
+	const isCookieBannerVisible = () => {
+		const root = document.getElementById("cookie-consent");
+		const banner = root?.querySelector<HTMLElement>(
+			"[data-cookie-banner], .cookie-consent__banner",
+		);
+		const unresolved =
+			parseStoredCookieConsent(localStorage.getItem(CONSENT_STORAGE_KEY)) ===
+			null;
+		return (
+			unresolved || Boolean(root && !root.hidden && banner && !banner.hidden)
+		);
+	};
+
+	const showExitIntent = () => {
+		if (!(exitDialog instanceof HTMLDialogElement)) return;
+		const sessionShown =
+			sessionStorage.getItem(EXIT_INTENT_SESSION_KEY) === "shown";
+		const eligible = canShowExitIntent({
+			pointerCoarse,
+			elapsedMs: performance.now() - startedAt,
+			scrollRatio,
+			sessionShown,
+			hasOpenDialog: Boolean(document.querySelector("dialog[open]")),
+			cookieBannerVisible: isCookieBannerVisible(),
+			documentHidden: document.hidden,
+		});
+		if (!eligible) return;
+
+		sessionStorage.setItem(EXIT_INTENT_SESSION_KEY, "shown");
+		exitDialog.showModal();
+	};
+
+	document.addEventListener("mouseout", (event) => {
+		if (pointerCoarse || event.clientY > 8 || event.relatedTarget) return;
+		showExitIntent();
+	});
+
+	document.addEventListener(
+		"scroll",
+		() => {
+			scrollRatio = getScrollRatio();
+			if (pointerCoarse) showExitIntent();
+		},
+		{ passive: true },
+	);
+
+	window.setTimeout(() => {
+		if (!pointerCoarse) return;
+		scrollRatio = getScrollRatio();
+		showExitIntent();
+	}, 25_000);
+
+	exitDialog?.addEventListener("click", (event) => {
+		if (
+			event.target === exitDialog &&
+			exitDialog instanceof HTMLDialogElement
+		) {
+			exitDialog.close();
+		}
+	});
+</script>

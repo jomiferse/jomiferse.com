@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
-import ServicesExitIntent from "@/components/common/ServicesExitIntent.astro";
 import ProjectArchiveCard from "@/components/projects/ProjectArchiveCard.astro";
 import EngagementModels from "@/components/services/EngagementModels.astro";
 import ServiceAreaCard from "@/components/services/ServiceAreaCard.astro";
@@ -41,13 +40,6 @@ const pagePath = `/${locale}/services/`;
 const contactHref = `/${locale}/contact?service=assessment`;
 const getServiceHref = (service: (typeof services)[number]) =>
 	service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
-const exitIntentWhatsappMessage =
-	locale === "es"
-		? "Hola José Miguel, estaba revisando tus servicios y me gustaría contarte mi caso."
-		: "Hi José Miguel, I was reviewing your services and would like to tell you about my case.";
-const exitIntentWhatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
-	exitIntentWhatsappMessage,
-)}`;
 const keywords =
 	locale === "es"
 		? [
@@ -287,12 +279,6 @@ const structuredData = [
 			headingId="services-conversion-title"
 		/>
 	</div>
-
-	<ServicesExitIntent
-		locale={locale}
-		contactHref={contactHref}
-		whatsappHref={exitIntentWhatsappHref}
-	/>
 </BaseLayout>
 
 <style>

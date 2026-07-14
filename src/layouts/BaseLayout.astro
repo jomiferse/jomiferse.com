@@ -2,11 +2,25 @@
 import Footer from "@/components/common/Footer.astro";
 import CookieConsent from "@/components/common/CookieConsent.astro";
 import GlobalContactDialog from "@/components/common/GlobalContactDialog.astro";
+import GlobalExitIntent from "@/components/common/GlobalExitIntent.astro";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics.astro";
 import Header from "@/components/common/Header.astro";
 import "@/styles/global.css";
 import { getLocaleFromPath, t, type Locale } from "@/i18n";
+import {
+	getExitIntentContext,
+	isExitIntentRouteExcluded,
+	type ExitIntentContext,
+} from "@/lib/exit-intent";
+import type { PricingKey } from "@/lib/service-commercial";
 import { getCv } from "@cv";
+
+type PopupContext = {
+	kind?: ExitIntentContext;
+	title?: string;
+	service?: string;
+	scope?: PricingKey;
+};
 
 interface LayoutProps {
 	title: string;
@@ -19,6 +33,7 @@ interface LayoutProps {
 	keywords?: string[];
 	alternatePaths?: Partial<Record<Locale, string>>;
 	canonicalPath?: string;
+	popupContext?: PopupContext;
 }
 
 const {
@@ -32,13 +47,18 @@ const {
 	keywords = [],
 	alternatePaths,
 	canonicalPath,
+	popupContext,
 } = Astro.props as LayoutProps;
 
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
-const showGlobalContact = !/^\/(en|es)\/(contact|privacy)(?:\/|$)/.test(
-	Astro.url.pathname,
-);
+const showGlobalContact = !isExitIntentRouteExcluded(Astro.url.pathname);
+const resolvedPopupContext = {
+	kind: popupContext?.kind ?? getExitIntentContext(Astro.url.pathname),
+	title: popupContext?.title,
+	service: popupContext?.service,
+	scope: popupContext?.scope,
+};
 
 const canonicalUrl = Astro.site
 	? new URL(canonicalPath ?? Astro.url.pathname, Astro.site).toString()
@@ -216,7 +236,19 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		<Footer locale={locale} />
 		{
 			showGlobalContact ? (
-				<GlobalContactDialog locale={locale} sourcePath={Astro.url.pathname} />
+				<>
+					<GlobalContactDialog
+						locale={locale}
+						sourcePath={Astro.url.pathname}
+					/>
+					<GlobalExitIntent
+						locale={locale}
+						context={resolvedPopupContext.kind}
+						contextTitle={resolvedPopupContext.title}
+						service={resolvedPopupContext.service}
+						scope={resolvedPopupContext.scope}
+					/>
+				</>
 			) : null
 		}
 		<CookieConsent locale={locale} />

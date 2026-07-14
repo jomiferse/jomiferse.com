@@ -74,6 +74,7 @@ const structuredData = [
 	alternatePaths={alternatePaths}
 	image={post.data.cover.src}
 	imageAlt={post.data.cover.alt}
+	popupContext={{ kind: "article", title: post.data.title }}
 >
 	<BlogPostLayout frontmatter={post.data} locale={locale} headings={headings}>
 		<Content />

@@ -2255,20 +2255,6 @@
       "ctaText": "Envíame qué tienes ahora, qué te gustaría mejorar y dónde se pierde más tiempo, claridad o dinero. Te responderé con el siguiente paso más razonable.",
       "ctaButton": "Solicitar valoración gratuita"
     },
-    "exitIntent": {
-      "eyebrow": "Antes de cerrar",
-      "signal": "Revisión rápida",
-      "minutes": "min para orientar el siguiente paso",
-      "pointOne": "Sin compromiso",
-      "pointTwo": "Respuesta clara",
-      "title": "¿Quieres que mire tu caso antes de irte?",
-      "serviceTitle": "¿Encaja {service} con lo que necesitas?",
-      "text": "Si tienes una web, proceso o idea medio atascada, envíame el contexto. Te diré si lo resolvería con una web, una automatización, una integración o algo más simple.",
-      "primary": "Pedir una revisión rápida",
-      "whatsapp": "Escribir por WhatsApp",
-      "secondary": "Seguir mirando",
-      "close": "Cerrar aviso de servicios"
-    },
     "detail": {
       "eyebrow": "Servicio freelance",
       "backToServices": "Volver a servicios",
