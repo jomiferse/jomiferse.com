@@ -281,12 +281,15 @@ if (includesPhase("hub")) {
 		"--services-content-gap: 2.25rem;",
 		"--services-card-padding: clamp(1.35rem, 2vw, 1.75rem);",
 		"padding-block: clamp(1.5rem, 3vw, 2.5rem)",
-		"font-size: clamp(2.75rem, 5.1vw, 4.8rem);",
+		"max-width: 56rem;",
+		"font-size: clamp(3rem, 6.25vw, 6rem);",
+		".services-hero h1 span {\n\t\tdisplay: block;",
 		"font-size: 1rem;",
 	]);
 	rejectMarkers("compact services hub", hub, [
 		"padding-block: clamp(4.5rem, 8vw, 7rem);",
-		"font-size: clamp(3rem, 6.25vw, 6rem);",
+		"max-width: 15ch;",
+		"font-size: clamp(2.75rem, 5.1vw, 4.8rem);",
 	]);
 	for (const obsolete of [
 		"definitionTitle",
