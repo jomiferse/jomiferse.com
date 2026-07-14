@@ -971,10 +971,30 @@
       "common": {
         "from": "From",
         "tax": "+ VAT",
+        "month": "/month",
+        "included": "What is included",
+        "boundary": "Boundary:",
         "viewService": "View service",
         "exploreArea": "Explore this area",
         "mostCommon": "The most common option"
       },
+      "trust": [
+        {
+          "icon": "message-square",
+          "title": "Free initial assessment",
+          "text": "An initial conversation to clarify the most useful next step."
+        },
+        {
+          "icon": "user",
+          "title": "Direct communication",
+          "text": "You speak with the person analysing and building the work."
+        },
+        {
+          "icon": "badge-check",
+          "title": "Clear ownership",
+          "text": "Code, accounts, access and handover are defined."
+        }
+      ],
       "engagement": {
         "eyebrow": "Ways to work together",
         "title": "Choose the scope that fits now.",
@@ -2197,6 +2217,30 @@
     },
     "detail": {
       "eyebrow": "Freelance service",
+      "backToServices": "Back to services",
+      "assessmentButton": "Request a free assessment",
+      "summaryEyebrow": "Starting point",
+      "summaryPrice": "Intervention from",
+      "summaryTimeline": "Indicative timeline",
+      "compareOptions": "Compare all three options",
+      "outcomeEyebrow": "Problem and outcome",
+      "outcomeTitle": "What changes with this service.",
+      "outcomeIntro": "The scope is built around a real problem and a verifiable outcome, not a generic list of tasks.",
+      "pricingIntro": "Three ways to start depending on the size of the need. Prices are indicative and final scope is agreed after the initial assessment.",
+      "scopeEyebrow": "Service scope",
+      "scopeTitle": "What can be included and what is agreed separately.",
+      "includedTitle": "Work included according to scope",
+      "excludedTitle": "Boundaries we put in writing",
+      "processTitle": "A short process with visible decisions.",
+      "proofEyebrow": "Related proof",
+      "proofProject": "Related project",
+      "proofArticle": "Related article",
+      "proofTitle": "A case or analysis close to this service.",
+      "viewCase": "View case",
+      "readArticle": "Read article",
+      "relatedIntro": "Other services in the same area that may complete or replace this scope.",
+      "viewRelatedService": "View service",
+      "faqIntro": "Specific questions about this service before defining the scope.",
       "pricingEyebrow": "Guide price",
       "pricingTitle": "Scope and pricing",
       "pricingScope": "What it usually includes",
@@ -2216,7 +2260,7 @@
       "contactEyebrow": "Contact",
       "contactTitle": "Does this fit your project?",
       "contactText": "Tell me what you want to build, what you have now and what outcome you need. If it fits, I’ll suggest a clear next step.",
-      "contactButton": "Contact me",
+      "contactButton": "Request a free assessment",
       "contactModalTitle": "Share your case",
       "contactModalText": "Send the project context and I’ll reply with the most reasonable next step.",
       "closeContactModal": "Close contact form",

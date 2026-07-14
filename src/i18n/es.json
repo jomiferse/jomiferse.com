@@ -971,10 +971,30 @@
       "common": {
         "from": "Desde",
         "tax": "+ IVA",
+        "month": "/mes",
+        "included": "Qué incluye",
+        "boundary": "Límite:",
         "viewService": "Ver servicio",
         "exploreArea": "Explorar esta área",
         "mostCommon": "La opción más habitual"
       },
+      "trust": [
+        {
+          "icon": "message-square",
+          "title": "Primera valoración gratuita",
+          "text": "Una conversación inicial para orientar el siguiente paso."
+        },
+        {
+          "icon": "user",
+          "title": "Comunicación directa",
+          "text": "Hablas con la persona que analiza y desarrolla el trabajo."
+        },
+        {
+          "icon": "badge-check",
+          "title": "Propiedad clara",
+          "text": "Código, cuentas, accesos y traspaso quedan definidos."
+        }
+      ],
       "engagement": {
         "eyebrow": "Formas de trabajar",
         "title": "Elige el alcance que encaja ahora.",
@@ -2197,6 +2217,30 @@
     },
     "detail": {
       "eyebrow": "Servicio freelance",
+      "backToServices": "Volver a servicios",
+      "assessmentButton": "Solicitar valoración gratuita",
+      "summaryEyebrow": "Punto de partida",
+      "summaryPrice": "Intervención desde",
+      "summaryTimeline": "Plazo orientativo",
+      "compareOptions": "Comparar las tres opciones",
+      "outcomeEyebrow": "Problema y resultado",
+      "outcomeTitle": "Qué cambia con este servicio.",
+      "outcomeIntro": "El alcance se define alrededor de un problema real y un resultado comprobable, no de una lista genérica de tareas.",
+      "pricingIntro": "Tres formas de empezar según el tamaño de la necesidad. Los importes son orientativos y el alcance final se acuerda después de la primera valoración.",
+      "scopeEyebrow": "Alcance del servicio",
+      "scopeTitle": "Qué puede entrar y qué se acuerda aparte.",
+      "includedTitle": "Trabajo incluido según el alcance",
+      "excludedTitle": "Límites que dejamos por escrito",
+      "processTitle": "Un proceso corto, con decisiones visibles.",
+      "proofEyebrow": "Prueba relacionada",
+      "proofProject": "Proyecto relacionado",
+      "proofArticle": "Artículo relacionado",
+      "proofTitle": "Un caso o análisis cercano a este servicio.",
+      "viewCase": "Ver caso",
+      "readArticle": "Leer artículo",
+      "relatedIntro": "Otros servicios de la misma área que pueden completar o sustituir este alcance.",
+      "viewRelatedService": "Ver servicio",
+      "faqIntro": "Dudas concretas sobre este servicio antes de definir el alcance.",
       "pricingEyebrow": "Precio orientativo",
       "pricingTitle": "Alcance y precio",
       "pricingScope": "Qué suele incluir",
@@ -2216,7 +2260,7 @@
       "contactEyebrow": "Contacto",
       "contactTitle": "¿Tiene sentido para tu proyecto?",
       "contactText": "Cuéntame qué quieres construir, qué tienes ahora y qué resultado buscas. Si encaja, te propondré un siguiente paso claro.",
-      "contactButton": "Contactar",
+      "contactButton": "Solicitar valoración gratuita",
       "contactModalTitle": "Cuéntame tu caso",
       "contactModalText": "Déjame el contexto del proyecto y te responderé con el siguiente paso más razonable.",
       "closeContactModal": "Cerrar formulario de contacto",

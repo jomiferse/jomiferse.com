@@ -337,9 +337,11 @@ if (includesPhase("detail")) {
 		"getRelatedServices",
 		"getProjectPages",
 	]);
-	for (const obsolete of ["service.pricing", "getRelatedKeys"]) {
-		if (detail.includes(obsolete))
-			failures.push(`service detail: obsolete ${obsolete}`);
+	if (/service\.pricing(?:\.|\[)/.test(detail)) {
+		failures.push("service detail: obsolete service.pricing");
+	}
+	if (detail.includes("getRelatedKeys")) {
+		failures.push("service detail: obsolete getRelatedKeys");
 	}
 }
 

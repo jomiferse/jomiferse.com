@@ -31,13 +31,6 @@ export interface ServiceItem {
 	icon: string;
 	featuredRank?: 1 | 2 | 3;
 	pricingOptions: readonly [PricingOption, PricingOption, PricingOption];
-	/** @deprecated Kept while the legacy detail layout is replaced. */
-	pricing: {
-		label: string;
-		price: string;
-		note: string;
-		scope: string[];
-	};
 	timeline?: string;
 	overview: string[];
 	problem: string;

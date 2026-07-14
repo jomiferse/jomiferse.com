@@ -1,17 +1,23 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
 import ServicesExitIntent from "@/components/common/ServicesExitIntent.astro";
-import { Icon } from "astro-icon/components";
+import ServiceIconBadge from "@/components/services/ServiceIconBadge.astro";
+import ServicePricingGrid from "@/components/services/ServicePricingGrid.astro";
+import ServiceProofCard from "@/components/services/ServiceProofCard.astro";
+import ServiceTrustStrip from "@/components/services/ServiceTrustStrip.astro";
+import { getTranslations, locales, t, type Locale } from "@/i18n";
+import { getProjectPages } from "@/lib/projects";
 import {
+	getRelatedServices,
 	getService,
 	getServiceAlternatePaths,
 	getServicePages,
 } from "@/lib/services";
-import { getTranslations, locales, t, type Locale } from "@/i18n";
-import { getCv } from "@cv";
 import { buildBreadcrumbList, buildFaqPage, buildServicePage } from "@/lib/seo";
+import { getCv } from "@cv";
 
 export function getStaticPaths() {
 	return locales.flatMap((locale) =>
@@ -27,79 +33,41 @@ const service = getService(locale, slug);
 if (!service) throw new Error(`Service not found: ${locale}/${slug}`);
 
 const cv = getCv(locale);
-const servicePages = getServicePages(locale);
-const getServiceHref = (item: (typeof servicePages)[number]) =>
-	item.canonicalPath ?? `/${locale}/services/${item.slug}/`;
-const getRelatedKeys = () => {
-	if (service.translationKey.startsWith("web-wordpress:")) {
-		return [
-			"web-wordpress:0",
-			"web-wordpress:1",
-			"web-wordpress:2",
-			"web-wordpress:3",
-			"web-wordpress:4",
-			"it-consulting:4",
-		];
-	}
-
-	if (service.translationKey.startsWith("ai-automation:")) {
-		return [
-			"ai-automation:0",
-			"ai-automation:1",
-			"ai-automation:2",
-			"it-consulting:5",
-			"base:internal-tools",
-			"it-consulting:4",
-		];
-	}
-
-	if (
-		service.translationKey.startsWith("it-consulting:") ||
-		service.translationKey === "base:custom-web-application" ||
-		service.translationKey === "base:api-integrations" ||
-		service.translationKey === "base:automation-workflows"
-	) {
-		return [
-			"it-consulting:3",
-			"it-consulting:4",
-			"it-consulting:5",
-			"base:internal-tools",
-			"base:backend-spring-boot",
-		];
-	}
-
-	return [
-		"it-consulting:4",
-		"it-consulting:5",
-		"base:internal-tools",
-		"base:backend-spring-boot",
-	];
-};
-const relatedServices =
-	getRelatedKeys()
-		.map((key) => servicePages.find((item) => item.translationKey === key))
-		.filter(
-			(item): item is (typeof servicePages)[number] =>
-				item !== undefined && item.slug !== service.slug,
-		)
-		.slice(0, 3) ?? [];
+const translations = getTranslations(locale);
+const serviceCopy = translations.services.detail;
+const commercial = translations.services.commercial;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const servicePath = `/${locale}/services/${service.slug}/`;
 const canonicalPath = service.canonicalPath ?? servicePath;
 const alternatePaths = getServiceAlternatePaths(locale, service);
-const serviceCopy = getTranslations(locale).services.detail;
 const contactHref = `/${locale}/contact`;
+const assessmentHref = `${contactHref}?service=${encodeURIComponent(service.slug)}`;
 const whatsappMessage = serviceCopy.whatsappMessage.replace(
 	"{service}",
 	service.title,
 );
-const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
-	whatsappMessage,
-)}`;
-const overviewTitle = serviceCopy.overviewTitle.replace(
-	"{service}",
-	service.title,
-);
+const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(whatsappMessage)}`;
+const intervention = service.pricingOptions[0];
+const formattedEntryPrice = new Intl.NumberFormat(
+	locale === "es" ? "es-ES" : "en-GB",
+	{
+		style: "currency",
+		currency: intervention.currency,
+		maximumFractionDigits: 0,
+	},
+).format(intervention.amount);
+const boundaries = [
+	...new Set(service.pricingOptions.map((option) => option.boundary)),
+];
+const relatedServices = getRelatedServices(locale, service, 3);
+const getServiceHref = (item: (typeof relatedServices)[number]) =>
+	item.canonicalPath ?? `/${locale}/services/${item.slug}/`;
+const project = getProjectPages(locale).find((item) => {
+	const proofServiceHref = item.caseStudy?.serviceHref;
+	return proofServiceHref === canonicalPath || proofServiceHref === servicePath;
+});
+const article = service.relatedPosts?.[0];
+const projectImage = project?.img?.imgStatic;
 const keywords =
 	locale === "es"
 		? [
@@ -123,7 +91,7 @@ const structuredData = [
 		name: service.title,
 		description: service.description,
 		providerName: cv.name,
-		providerUrl: new URL(`/${locale}`, site).toString(),
+		providerUrl: new URL(`/${locale}/`, site).toString(),
 		areaServed: serviceCopy.areaServed,
 		audience: service.whoFor,
 		serviceType: service.shortTitle,
@@ -131,8 +99,8 @@ const structuredData = [
 	}),
 	buildFaqPage(service.faq),
 	buildBreadcrumbList(site, [
-		{ name: t(locale, "nav.home"), path: `/${locale}` },
-		{ name: t(locale, "nav.services"), path: `/${locale}/services` },
+		{ name: t(locale, "nav.home"), path: `/${locale}/` },
+		{ name: t(locale, "nav.services"), path: `/${locale}/services/` },
 		{ name: service.title, path: canonicalPath },
 	]),
 ];
@@ -146,341 +114,344 @@ const structuredData = [
 	structuredData={structuredData}
 	keywords={keywords}
 >
-	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{serviceCopy.eyebrow}</p>
-		<h1
-			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+	<div class="services-page service-detail-page">
+		<section
+			data-service-hero
+			class="service-detail-hero section-reveal"
+			aria-labelledby="service-title"
 		>
-			{service.title}
-		</h1>
-		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
-			{service.description}
-		</p>
-		<div class="mt-9 flex flex-col gap-3 sm:flex-row">
-			<a
-				href={contactHref}
-				class="button-primary w-full sm:w-auto"
-				data-contact-modal-open
-			>
-				{serviceCopy.contactButton}
-			</a>
-			<a
-				href={whatsappHref}
-				target="_blank"
-				rel="noopener noreferrer nofollow"
-				class="button-secondary w-full sm:w-auto"
-			>
-				{serviceCopy.whatsappButton}
-				<Icon name="move-up-right" class="h-4 w-4" />
-			</a>
-			<a href={`/${locale}/services`} class="button-secondary w-full sm:w-auto">
-				{serviceCopy.servicesButton}
-			</a>
-		</div>
-	</section>
-
-	<section class="section-reveal py-16 md:py-24">
-		<div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-			<div>
-				<p class="eyebrow">{serviceCopy.overviewEyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{overviewTitle}
-				</h2>
-				<div class="mt-6 space-y-4">
-					{
-						service.overview.map((paragraph) => (
-							<p class="muted-copy text-lg leading-8">{paragraph}</p>
-						))
-					}
+			<div class="service-detail-hero__copy">
+				<a href={`/${locale}/services/`} class="service-detail-hero__back">
+					<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
+					{serviceCopy.backToServices}
+				</a>
+				<div class="service-detail-hero__identity">
+					<ServiceIconBadge name={service.icon} size="lg" />
+					<p class="eyebrow">{serviceCopy.eyebrow}</p>
+				</div>
+				<h1 id="service-title">{service.title}</h1>
+				<p class="service-detail-hero__intro">{service.description}</p>
+				<div class="service-detail-hero__actions">
+					<a
+						href={assessmentHref}
+						class="button-action"
+						data-contact-modal-open
+						data-service-selection={service.slug}
+					>
+						{serviceCopy.assessmentButton}
+						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+					</a>
+					<a
+						href={whatsappHref}
+						target="_blank"
+						rel="noopener noreferrer nofollow"
+						class="button-secondary"
+					>
+						{serviceCopy.whatsappButton}
+						<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+					</a>
 				</div>
 			</div>
 
-			<div>
-				<p class="eyebrow">{serviceCopy.benefitsEyebrow}</p>
-				<h2 class="mt-4 text-2xl font-black text-[var(--text)] md:text-3xl">
-					{serviceCopy.benefitsTitle}
-				</h2>
-				<div class="mt-7 grid gap-4">
+			<aside
+				class="service-detail-summary"
+				aria-label={serviceCopy.summaryEyebrow}
+			>
+				<div class="service-detail-summary__topline">
+					<p class="eyebrow">{serviceCopy.summaryEyebrow}</p>
+					<span aria-hidden="true">01</span>
+				</div>
+				<div class="service-detail-summary__price">
+					<span>{serviceCopy.summaryPrice}</span>
+					<strong>{formattedEntryPrice}</strong>
+					<small>{commercial.common.tax}</small>
+				</div>
+				{
+					service.timeline ? (
+						<div class="service-detail-summary__timeline">
+							<Icon name="clock" class="h-5 w-5" aria-hidden="true" />
+							<span>
+								<small>{serviceCopy.summaryTimeline}</small>
+								<strong>{service.timeline}</strong>
+							</span>
+						</div>
+					) : null
+				}
+				<a href="#pricing-options" class="button-secondary">
+					{serviceCopy.compareOptions}
+					<Icon
+						name="arrow-right"
+						class="h-4 w-4 rotate-90"
+						aria-hidden="true"
+					/>
+				</a>
+			</aside>
+		</section>
+
+		<div data-service-trust>
+			<ServiceTrustStrip items={commercial.trust} />
+		</div>
+
+		<section
+			data-service-outcome
+			class="service-outcome section-reveal"
+			aria-labelledby="service-outcome-title"
+		>
+			<header class="service-detail-heading">
+				<div>
+					<p class="eyebrow">{serviceCopy.outcomeEyebrow}</p>
+					<h2 id="service-outcome-title">{serviceCopy.outcomeTitle}</h2>
+				</div>
+				<p>{serviceCopy.outcomeIntro}</p>
+			</header>
+
+			<div class="service-outcome__content">
+				<div class="service-outcome__problem">
+					<p class="eyebrow">{serviceCopy.problem}</p>
+					<strong>{service.problem}</strong>
+					<div>
+						{service.overview.map((paragraph) => <p>{paragraph}</p>)}
+					</div>
+				</div>
+				<div class="service-outcome__benefits">
 					{
-						service.benefits.map((benefit) => (
-							<article class="dark-card p-5">
-								<h3 class="text-lg font-black text-[var(--text)]">
-									{benefit.title}
-								</h3>
-								<p class="muted-copy mt-3 leading-7">{benefit.body}</p>
+						service.benefits.map((benefit, index) => (
+							<article>
+								<span aria-hidden="true">
+									{String(index + 1).padStart(2, "0")}
+								</span>
+								<h3>{benefit.title}</h3>
+								<p>{benefit.body}</p>
 							</article>
 						))
 					}
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section-band section-reveal py-14 md:py-20">
-		<div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-			<div>
-				<p class="eyebrow">{serviceCopy.pricingEyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{serviceCopy.pricingTitle}
-				</h2>
-				<p class="muted-copy mt-5 max-w-xl text-base leading-8">
-					{service.pricing.note}
-				</p>
-				<p class="muted-copy mt-5 max-w-xl text-sm leading-7">
-					{serviceCopy.pricingNote}
-				</p>
-			</div>
-
-			<article class="dark-card overflow-hidden">
-				<div
-					class="border-b border-[var(--surface-border)] bg-[var(--surface-strong)] p-6 md:p-7 dark:bg-white/[0.03]"
-				>
-					<p
-						class="text-sm font-black text-[var(--accent-strong)] dark:text-[var(--accent)]"
-					>
-						{service.pricing.label}
-					</p>
-					<p class="mt-4 text-4xl font-black text-[var(--text)] md:text-5xl">
-						{service.pricing.price}
-					</p>
+		<section
+			id="pricing-options"
+			data-service-pricing
+			class="service-pricing section-reveal"
+			aria-labelledby="service-pricing-title"
+		>
+			<header class="service-detail-heading">
+				<div>
+					<p class="eyebrow">{serviceCopy.pricingEyebrow}</p>
+					<h2 id="service-pricing-title">{serviceCopy.pricingTitle}</h2>
 				</div>
+				<p>{serviceCopy.pricingIntro}</p>
+			</header>
 
-				<div class="p-6 md:p-7">
-					<p class="eyebrow">{serviceCopy.pricingScope}</p>
-					<ul class="mt-5 space-y-4">
+			<ServicePricingGrid
+				locale={locale}
+				serviceSlug={service.slug}
+				serviceTitle={service.title}
+				options={service.pricingOptions}
+				contactHref={contactHref}
+				copy={commercial.common}
+			/>
+		</section>
+
+		<section
+			data-service-scope
+			class="service-scope section-reveal"
+			aria-labelledby="service-scope-title"
+		>
+			<header class="service-detail-heading">
+				<div>
+					<p class="eyebrow">{serviceCopy.scopeEyebrow}</p>
+					<h2 id="service-scope-title">{serviceCopy.scopeTitle}</h2>
+				</div>
+				<p>{serviceCopy.pricingNote}</p>
+			</header>
+
+			<div class="service-scope__columns">
+				<article>
+					<div class="service-scope__icon">
+						<Icon name="circle-check-big" class="h-6 w-6" aria-hidden="true" />
+					</div>
+					<h3>{serviceCopy.includedTitle}</h3>
+					<ul>
 						{
-							service.pricing.scope.map((item) => (
-								<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-									<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-										✓
-									</span>
+							service.builds.map((item) => (
+								<li>
+									<Icon name="check" class="h-4 w-4" aria-hidden="true" />
 									<span>{item}</span>
 								</li>
 							))
 						}
 					</ul>
-					<div class="mt-7 flex flex-col gap-3 sm:flex-row">
-						<a
-							href={contactHref}
-							class="button-primary w-full sm:w-auto"
-							data-contact-modal-open
-						>
-							{serviceCopy.contactButton}
-						</a>
-						<a
-							href={whatsappHref}
-							target="_blank"
-							rel="noopener noreferrer nofollow"
-							class="button-secondary w-full sm:w-auto"
-						>
-							{serviceCopy.whatsappButton}
-							<Icon name="move-up-right" class="h-4 w-4" />
-						</a>
-						<a
-							href={`/${locale}/services`}
-							class="button-secondary w-full sm:w-auto"
-						>
-							{serviceCopy.servicesButton}
-						</a>
+				</article>
+				<article>
+					<div class="service-scope__icon">
+						<Icon name="info" class="h-6 w-6" aria-hidden="true" />
 					</div>
+					<h3>{serviceCopy.excludedTitle}</h3>
+					<ul>
+						{
+							boundaries.map((item) => (
+								<li>
+									<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<section
+			data-service-process
+			class="service-detail-process section-reveal"
+			aria-labelledby="service-process-title"
+		>
+			<header class="service-detail-heading">
+				<div>
+					<p class="eyebrow">{serviceCopy.process}</p>
+					<h2 id="service-process-title">{serviceCopy.processTitle}</h2>
 				</div>
-			</article>
-		</div>
-	</section>
+				<p>{service.whyMe[0]}</p>
+			</header>
 
-	<section class="section-reveal py-16 md:py-24">
-		<div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-			<div>
-				<p class="eyebrow">{serviceCopy.problem}</p>
-				<p class="mt-5 max-w-3xl text-lg leading-8 text-[var(--text)]">
-					{service.problem}
-				</p>
-			</div>
-
-			<article class="dark-card p-6">
-				<h2 class="text-3xl font-black text-[var(--text)]">
-					{serviceCopy.whenNeeded}
-				</h2>
-				<ul class="mt-6 space-y-4">
-					{
-						service.whenNeeded.map((item) => (
-							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-									✓
-								</span>
-								<span>{item}</span>
-							</li>
-						))
-					}
-				</ul>
-			</article>
-		</div>
-	</section>
-
-	<section class="section-reveal py-16 md:py-24">
-		<div class="grid gap-5 lg:grid-cols-2">
-			<article class="dark-card p-6">
-				<h2 class="text-3xl font-black text-[var(--text)]">
-					{serviceCopy.whoFor}
-				</h2>
-				<ul class="mt-6 space-y-4">
-					{
-						service.whoFor.map((item) => (
-							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-									✓
-								</span>
-								<span>{item}</span>
-							</li>
-						))
-					}
-				</ul>
-			</article>
-
-			<article class="dark-card p-6">
-				<h2 class="text-3xl font-black text-[var(--text)]">
-					{serviceCopy.builds}
-				</h2>
-				<ul class="mt-6 space-y-4">
-					{
-						service.builds.map((item) => (
-							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-									✓
-								</span>
-								<span>{item}</span>
-							</li>
-						))
-					}
-				</ul>
-			</article>
-		</div>
-	</section>
-
-	<section class="section-band section-reveal py-16 md:py-24">
-		<div class="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-			<div>
-				<p class="eyebrow">{serviceCopy.whyMe}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{serviceCopy.whyMeTitle}
-				</h2>
-			</div>
-			<div class="grid gap-4 sm:grid-cols-3">
+			<ol>
 				{
-					service.whyMe.map((item) => (
-						<article class="dark-card p-5">
-							<p class="muted-copy leading-7">{item}</p>
+					service.process.map((step, index) => (
+						<li>
+							<span aria-hidden="true">
+								{String(index + 1).padStart(2, "0")}
+							</span>
+							<p>{step}</p>
+						</li>
+					))
+				}
+			</ol>
+		</section>
+
+		<section
+			data-service-proof
+			class="service-detail-proof section-reveal"
+			aria-labelledby="service-proof-title"
+		>
+			<header class="service-detail-heading">
+				<div>
+					<p class="eyebrow">{serviceCopy.proofEyebrow}</p>
+					<h2 id="service-proof-title">{serviceCopy.proofTitle}</h2>
+				</div>
+				<p>{serviceCopy.blogText}</p>
+			</header>
+
+			{
+				project ? (
+					<ServiceProofCard
+						eyebrow={serviceCopy.proofProject}
+						title={project.title}
+						description={project.summary}
+						href={`/${locale}/projects/${project.slug}/`}
+						actionLabel={serviceCopy.viewCase}
+						image={
+							projectImage
+								? { src: projectImage.src, alt: projectImage.alt }
+								: undefined
+						}
+					/>
+				) : article ? (
+					<ServiceProofCard
+						eyebrow={serviceCopy.proofArticle}
+						title={article.title}
+						description={article.description}
+						href={article.href}
+						actionLabel={serviceCopy.readArticle}
+					/>
+				) : (
+					<ServiceProofCard
+						eyebrow={serviceCopy.proofArticle}
+						title={serviceCopy.blogTitle}
+						description={serviceCopy.blogText}
+						href={`/${locale}/blog/`}
+						actionLabel={serviceCopy.blogButton}
+					/>
+				)
+			}
+		</section>
+
+		<section
+			data-related-services
+			class="related-services section-reveal"
+			aria-labelledby="related-services-title"
+		>
+			<header class="service-detail-heading">
+				<div>
+					<p class="eyebrow">{serviceCopy.relatedTitle}</p>
+					<h2 id="related-services-title">
+						{translations.services.commercial.areas[service.area].title}
+					</h2>
+				</div>
+				<p>{serviceCopy.relatedIntro}</p>
+			</header>
+
+			<div class="related-services__grid">
+				{
+					relatedServices.map((item) => (
+						<article>
+							<ServiceIconBadge name={item.icon} size="md" />
+							<h3>{item.title}</h3>
+							<p>{item.description}</p>
+							<a href={getServiceHref(item)} class="button-secondary">
+								{serviceCopy.viewRelatedService}
+								<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+							</a>
 						</article>
 					))
 				}
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section-reveal py-16 md:py-24">
-		<p class="eyebrow">{serviceCopy.process}</p>
-		<div class="stagger-children mt-8 grid gap-4 md:grid-cols-4">
-			{
-				service.process.map((step, index) => (
-					<article class="dark-card p-5">
-						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
-							{String(index + 1).padStart(2, "0")}
-						</p>
-						<p class="mt-5 leading-7 text-[var(--text-muted)]">{step}</p>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	<section class="section-band section-reveal py-16 md:py-24">
-		<h2 class="text-3xl font-black text-[var(--text)] md:text-5xl">
-			{serviceCopy.faq}
-		</h2>
-		<div class="mt-8 grid gap-4 md:grid-cols-2">
-			{
-				service.faq.map((item) => (
-					<article class="rounded-3xl border border-[var(--surface-border)] bg-[var(--surface)] p-6">
-						<h3 class="text-xl font-black text-[var(--text)]">
-							{item.question}
-						</h3>
-						<p class="muted-copy mt-4 leading-7">{item.answer}</p>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	<section class="section-reveal py-16 md:py-24">
-		<div class="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">
-			<article class="dark-card p-6 md:p-8">
-				<p class="eyebrow">{serviceCopy.relatedTitle}</p>
-				<div class="mt-6 flex flex-wrap gap-3">
-					{
-						relatedServices.slice(0, 3).map((item) => (
-							<a
-								href={getServiceHref(item)}
-								class="tag-pill hover:border-[var(--accent-strong)]"
-							>
-								{item.shortTitle}
-							</a>
-						))
-					}
+		<section
+			data-service-faq
+			class="service-detail-faq section-reveal"
+			aria-labelledby="service-faq-title"
+		>
+			<header class="service-detail-heading">
+				<div>
+					<p class="eyebrow">{serviceCopy.faq}</p>
+					<h2 id="service-faq-title">{serviceCopy.faqIntro}</h2>
 				</div>
-			</article>
+			</header>
 
-			<article class="dark-card p-6 md:p-8">
-				<h2 class="text-2xl font-black text-[var(--text)]">
-					{serviceCopy.blogTitle}
-				</h2>
-				<p class="muted-copy mt-4 leading-7">{serviceCopy.blogText}</p>
+			<div class="service-detail-faq__list">
 				{
-					service.relatedPosts?.length ? (
-						<div class="mt-6 grid gap-3">
-							{service.relatedPosts.map((post) => (
-								<a
-									href={post.href}
-									class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface)] p-4 transition hover:border-[var(--accent-line)]"
-								>
-									<h3 class="font-black text-[var(--text)]">{post.title}</h3>
-									<p class="muted-copy mt-2 text-sm leading-6">
-										{post.description}
-									</p>
-								</a>
-							))}
-						</div>
-					) : (
-						<a href={`/${locale}/blog`} class="button-secondary mt-6">
-							{serviceCopy.blogButton}
-						</a>
-					)
+					service.faq.map((item, index) => (
+						<details open={index === 0}>
+							<summary>
+								<span>{item.question}</span>
+								<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
+							</summary>
+							<p>{item.answer}</p>
+						</details>
+					))
 				}
-			</article>
-		</div>
-	</section>
+			</div>
+		</section>
 
-	<ConversionCta
-		eyebrow={serviceCopy.contactEyebrow}
-		title={serviceCopy.contactTitle}
-		text={serviceCopy.contactText}
-		primary={{
-			label: serviceCopy.contactButton,
-			href: contactHref,
-			opensContactModal: true,
-		}}
-		secondary={{
-			label: serviceCopy.whatsappButton,
-			href: whatsappHref,
-			external: true,
-		}}
-		headingId="service-conversion-title"
-	/>
+		<ConversionCta
+			eyebrow={serviceCopy.contactEyebrow}
+			title={serviceCopy.contactTitle}
+			text={serviceCopy.contactText}
+			primary={{
+				label: serviceCopy.assessmentButton,
+				href: assessmentHref,
+				opensContactModal: true,
+			}}
+			secondary={{
+				label: serviceCopy.whatsappButton,
+				href: whatsappHref,
+				external: true,
+			}}
+			headingId="service-conversion-title"
+		/>
+	</div>
 
 	<dialog
 		id="service-contact-dialog"
@@ -491,8 +462,10 @@ const structuredData = [
 				class="flex items-start justify-between gap-4 border-b border-[var(--surface-border)] p-5 md:p-6"
 			>
 				<div>
-					<p class="eyebrow">{service.title}</p>
-					<h2 class="mt-3 text-2xl font-black text-[var(--text)] md:text-3xl">
+					<p class="eyebrow text-[var(--action)]">{service.title}</p>
+					<h2
+						class="mt-3 text-2xl font-black text-[var(--home-navy)] md:text-3xl"
+					>
 						{serviceCopy.contactModalTitle}
 					</h2>
 					<p class="muted-copy mt-3 max-w-xl leading-7">
@@ -504,7 +477,7 @@ const structuredData = [
 						class="header-utility inline-flex min-h-11 min-w-11 items-center justify-center rounded-full"
 						aria-label={serviceCopy.closeContactModal}
 					>
-						<Icon name="x" class="h-5 w-5" />
+						<Icon name="x" class="h-5 w-5" aria-hidden="true" />
 					</button>
 				</form>
 			</header>
@@ -523,7 +496,7 @@ const structuredData = [
 					class="button-secondary mt-4 w-full"
 				>
 					{serviceCopy.whatsappButton}
-					<Icon name="move-up-right" class="h-4 w-4" />
+					<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
 				</a>
 			</div>
 		</div>
@@ -556,8 +529,488 @@ const structuredData = [
 	<ServicesExitIntent
 		locale={locale}
 		serviceTitle={service.title}
-		contactHref={contactHref}
+		contactHref={assessmentHref}
 		whatsappHref={whatsappHref}
 		openContactModal
 	/>
 </BaseLayout>
+
+<style>
+	.service-detail-page {
+		--detail-heading: clamp(2.2rem, 4.4vw, 4.1rem);
+	}
+
+	.service-detail-page .eyebrow {
+		color: var(--action);
+	}
+
+	.service-detail-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1.15fr) minmax(19rem, 0.55fr);
+		gap: clamp(2.5rem, 7vw, 7rem);
+		align-items: end;
+		padding-block: clamp(2rem, 6vw, 5.5rem);
+	}
+
+	.service-detail-hero__back {
+		display: inline-flex;
+		gap: 0.5rem;
+		align-items: center;
+		color: var(--text-muted);
+		font-size: 0.78rem;
+		font-weight: 800;
+	}
+
+	.service-detail-hero__back:hover {
+		color: var(--action);
+	}
+
+	.service-detail-hero__identity {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		margin-top: 2.5rem;
+	}
+
+	.service-detail-hero h1 {
+		max-width: 15ch;
+		margin-top: 1.5rem;
+		color: var(--home-navy);
+		font-size: clamp(3rem, 6vw, 5.75rem);
+		font-weight: 950;
+		letter-spacing: -0.07em;
+		line-height: 0.94;
+		text-wrap: balance;
+	}
+
+	.service-detail-hero__intro {
+		max-width: 46rem;
+		margin-top: 1.5rem;
+		color: var(--text-muted);
+		font-size: clamp(1rem, 1.5vw, 1.16rem);
+		line-height: 1.75;
+	}
+
+	.service-detail-hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 2rem;
+	}
+
+	.service-detail-summary {
+		padding: 1.6rem;
+		border: 1px solid var(--surface-border);
+		border-radius: 1.25rem;
+		background:
+			radial-gradient(
+				circle at 100% 0%,
+				color-mix(in srgb, var(--action) 12%, transparent),
+				transparent 12rem
+			),
+			var(--surface);
+		box-shadow: var(--shadow-card);
+	}
+
+	.service-detail-summary__topline {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.service-detail-summary__topline span {
+		color: var(--action);
+		font-size: 0.7rem;
+		font-weight: 900;
+		letter-spacing: 0.18em;
+	}
+
+	.service-detail-summary__price {
+		margin-top: 1.5rem;
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.service-detail-summary__price span,
+	.service-detail-summary__price small {
+		display: block;
+		color: var(--text-muted);
+		font-size: 0.72rem;
+		font-weight: 750;
+	}
+
+	.service-detail-summary__price strong {
+		display: block;
+		margin-block: 0.15rem;
+		color: var(--home-navy);
+		font-size: clamp(2.4rem, 4vw, 3.5rem);
+		font-weight: 950;
+		letter-spacing: -0.06em;
+	}
+
+	.service-detail-summary__timeline {
+		display: flex;
+		gap: 0.8rem;
+		align-items: start;
+		padding-block: 1.25rem;
+		color: var(--action);
+	}
+
+	.service-detail-summary__timeline small,
+	.service-detail-summary__timeline strong {
+		display: block;
+	}
+
+	.service-detail-summary__timeline small {
+		color: var(--text-muted);
+		font-size: 0.68rem;
+	}
+
+	.service-detail-summary__timeline strong {
+		margin-top: 0.2rem;
+		color: var(--text);
+		font-size: 0.82rem;
+		line-height: 1.45;
+	}
+
+	.service-detail-summary .button-secondary {
+		width: 100%;
+		font-size: 0.78rem;
+	}
+
+	.service-outcome,
+	.service-pricing,
+	.service-scope,
+	.service-detail-process,
+	.service-detail-proof,
+	.related-services,
+	.service-detail-faq {
+		padding-block: clamp(4.5rem, 8vw, 7rem);
+	}
+
+	.service-detail-heading {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.72fr);
+		gap: 2rem 5rem;
+		align-items: end;
+	}
+
+	.service-detail-heading h2 {
+		max-width: 18ch;
+		margin-top: 0.9rem;
+		color: var(--home-navy);
+		font-size: var(--detail-heading);
+		font-weight: 950;
+		letter-spacing: -0.06em;
+		line-height: 0.99;
+		text-wrap: balance;
+	}
+
+	.service-detail-heading > p {
+		color: var(--text-muted);
+		line-height: 1.75;
+	}
+
+	.service-outcome__content {
+		display: grid;
+		grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+		gap: clamp(2.5rem, 7vw, 6rem);
+		margin-top: 3.5rem;
+	}
+
+	.service-outcome__problem > strong {
+		display: block;
+		margin-top: 1rem;
+		color: var(--text);
+		font-size: clamp(1.4rem, 2.4vw, 2rem);
+		font-weight: 900;
+		line-height: 1.25;
+	}
+
+	.service-outcome__problem > div {
+		display: grid;
+		gap: 1rem;
+		margin-top: 1.5rem;
+		color: var(--text-muted);
+		line-height: 1.75;
+	}
+
+	.service-outcome__benefits {
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.service-outcome__benefits article {
+		display: grid;
+		grid-template-columns: 2rem minmax(0, 1fr);
+		gap: 0 1rem;
+		padding-block: 1.5rem;
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.service-outcome__benefits span {
+		grid-row: 1 / 3;
+		color: var(--action);
+		font-size: 0.7rem;
+		font-weight: 900;
+	}
+
+	.service-outcome__benefits h3 {
+		color: var(--text);
+		font-size: 1.12rem;
+		font-weight: 900;
+	}
+
+	.service-outcome__benefits p {
+		margin-top: 0.5rem;
+		color: var(--text-muted);
+		font-size: 0.86rem;
+		line-height: 1.65;
+	}
+
+	.service-pricing,
+	.service-detail-proof {
+		width: 100vw;
+		margin-inline: calc(50% - 50vw);
+		padding-inline: max(1rem, calc((100vw - 88rem) / 2));
+		background: var(--bg-band);
+	}
+
+	.service-pricing :global([data-service-pricing]),
+	.service-detail-proof :global([data-service-proof]) {
+		margin-top: 3rem;
+	}
+
+	.service-scope__columns {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 3rem;
+	}
+
+	.service-scope__columns article {
+		padding: clamp(1.5rem, 3vw, 2.5rem);
+		border: 1px solid var(--surface-border);
+		border-radius: 1.15rem;
+		background: var(--surface);
+	}
+
+	.service-scope__icon {
+		display: flex;
+		width: 3rem;
+		height: 3rem;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid
+			color-mix(in srgb, var(--action) 24%, var(--surface-border));
+		border-radius: 0.9rem;
+		background: color-mix(in srgb, var(--action) 9%, var(--surface));
+		color: var(--action);
+	}
+
+	.service-scope h3 {
+		margin-top: 1.5rem;
+		color: var(--text);
+		font-size: 1.3rem;
+		font-weight: 900;
+	}
+
+	.service-scope ul {
+		display: grid;
+		gap: 0.85rem;
+		margin-top: 1.3rem;
+	}
+
+	.service-scope li {
+		display: flex;
+		gap: 0.65rem;
+		align-items: start;
+		color: var(--text-muted);
+		font-size: 0.84rem;
+		line-height: 1.6;
+	}
+
+	.service-scope li :global(svg) {
+		flex: none;
+		margin-top: 0.2rem;
+		color: var(--action);
+	}
+
+	.service-detail-process ol {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		margin-top: 3rem;
+		border-block: 1px solid var(--surface-border);
+	}
+
+	.service-detail-process li {
+		padding: 2rem;
+	}
+
+	.service-detail-process li + li {
+		border-left: 1px solid var(--surface-border);
+	}
+
+	.service-detail-process li span {
+		color: var(--action);
+		font-size: 0.7rem;
+		font-weight: 900;
+		letter-spacing: 0.16em;
+	}
+
+	.service-detail-process li p {
+		margin-top: 1.4rem;
+		color: var(--text-muted);
+		font-size: 0.86rem;
+		line-height: 1.65;
+	}
+
+	.related-services__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 3rem;
+	}
+
+	.related-services__grid article {
+		display: flex;
+		min-width: 0;
+		flex-direction: column;
+		padding: 1.5rem;
+		border: 1px solid var(--surface-border);
+		border-radius: 1.15rem;
+		background: var(--surface);
+		box-shadow: var(--shadow-card);
+	}
+
+	.related-services h3 {
+		margin-top: 1.5rem;
+		color: var(--home-navy);
+		font-size: 1.25rem;
+		font-weight: 900;
+		letter-spacing: -0.03em;
+	}
+
+	.related-services article > p {
+		display: -webkit-box;
+		overflow: hidden;
+		margin-top: 0.75rem;
+		color: var(--text-muted);
+		font-size: 0.84rem;
+		line-height: 1.65;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+
+	.related-services .button-secondary {
+		width: 100%;
+		margin-top: auto;
+		transform: translateY(1.2rem);
+		font-size: 0.78rem;
+	}
+
+	.service-detail-faq__list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0 2.5rem;
+		margin-top: 3rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.service-detail-faq details {
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.service-detail-faq summary {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 1rem;
+		align-items: center;
+		min-height: 5.25rem;
+		padding-block: 1rem;
+		color: var(--text);
+		font-weight: 850;
+		line-height: 1.45;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	.service-detail-faq summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.service-detail-faq summary:focus-visible {
+		border-radius: 0.75rem;
+		outline: 2px solid var(--action);
+		outline-offset: 4px;
+	}
+
+	.service-detail-faq summary :global(svg) {
+		color: var(--action);
+		transition: transform 180ms ease;
+	}
+
+	.service-detail-faq details[open] summary :global(svg) {
+		transform: rotate(45deg);
+	}
+
+	.service-detail-faq details > p {
+		padding: 0 2rem 1.5rem 0;
+		color: var(--text-muted);
+		font-size: 0.88rem;
+		line-height: 1.7;
+	}
+
+	@media (max-width: 900px) {
+		.service-detail-hero,
+		.service-detail-heading,
+		.service-outcome__content {
+			grid-template-columns: 1fr;
+		}
+
+		.service-detail-summary {
+			max-width: 42rem;
+		}
+
+		.service-detail-process ol,
+		.related-services__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.service-detail-process li:nth-child(3) {
+			border-top: 1px solid var(--surface-border);
+			border-left: 0;
+		}
+
+		.service-detail-process li:nth-child(4) {
+			border-top: 1px solid var(--surface-border);
+		}
+	}
+
+	@media (max-width: 680px) {
+		.service-detail-hero h1 {
+			font-size: clamp(2.65rem, 13vw, 4rem);
+		}
+
+		.service-detail-hero__actions,
+		.service-detail-hero__actions a {
+			width: 100%;
+		}
+
+		.service-scope__columns,
+		.service-detail-process ol,
+		.related-services__grid,
+		.service-detail-faq__list {
+			grid-template-columns: 1fr;
+		}
+
+		.service-detail-process li {
+			padding-inline: 0;
+		}
+
+		.service-detail-process li + li,
+		.service-detail-process li:nth-child(4) {
+			border-top: 1px solid var(--surface-border);
+			border-left: 0;
+		}
+	}
+</style>
