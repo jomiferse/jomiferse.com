@@ -74,6 +74,61 @@ if (includesPhase("form")) {
 	]);
 }
 
+if (includesPhase("page")) {
+	const page = await readSource("src", "pages", "[locale]", "contact.astro");
+	const styles = await readSource("src", "styles", "global.css");
+	requireMarkers("contact page", page, [
+		"contact-page",
+		"data-contact-hero",
+		"data-contact-methods",
+		"data-contact-status",
+		"page.signals",
+		"page.whatsappMessage",
+		"https://wa.me/34609221290",
+		"ContactForm",
+		"cv.links.linkedin",
+		"cv.email",
+		"button-secondary",
+	]);
+	rejectMarkers("contact page", page, [
+		"cv.links.github",
+		">GitHub<",
+		"page.github",
+		"dark-card hover-card",
+	]);
+	requireMarkers("contact shell", styles, [
+		"body:has(.contact-page) main.site-shell",
+		"max-width: 88rem",
+	]);
+	for (const locale of ["es", "en"]) {
+		const copy = JSON.parse(
+			await readSource("src", "i18n", `${locale}.json`),
+		).contact.page;
+		for (const key of [
+			"eyebrow",
+			"title",
+			"intro",
+			"signals",
+			"methodsEyebrow",
+			"whatsappLabel",
+			"whatsappText",
+			"whatsappMessage",
+			"emailText",
+			"linkedinText",
+			"successTitle",
+			"successText",
+			"missingTitle",
+			"missingText",
+			"errorTitle",
+			"errorText",
+		]) {
+			if (!copy?.[key]) failures.push(`${locale}: missing contact.page.${key}`);
+		}
+		if (copy?.signals?.length !== 3)
+			failures.push(`${locale}: contact page needs three signals`);
+	}
+}
+
 if (failures.length) {
 	console.error(failures.join("\n"));
 	process.exit(1);

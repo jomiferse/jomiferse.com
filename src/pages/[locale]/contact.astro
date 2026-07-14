@@ -15,6 +15,7 @@ const cv = getCv(locale);
 const page = getTranslations(locale).contact.page;
 const pageTitle = page.meta.title;
 const pageDescription = page.meta.description;
+const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(page.whatsappMessage)}`;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	{
@@ -37,85 +38,249 @@ const structuredData = [
 	structuredData={structuredData}
 	keywords={["Contact Software Engineer", "Freelance Developer"]}
 >
-	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{page.eyebrow}</p>
-		<h1
-			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
-		>
-			{page.title}
-			<span class="accent-text">{page.titleAccent}</span>
-		</h1>
-		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
-			{page.intro}
-		</p>
-	</section>
+	<div class="contact-page">
+		<section data-contact-hero class="contact-hero section-reveal">
+			<div class="contact-hero__copy">
+				<p class="eyebrow">{page.eyebrow}</p>
+				<h1>{page.title}</h1>
+				<p class="contact-hero__intro">{page.intro}</p>
+				<ul class="contact-signals" aria-label={page.eyebrow}>
+					{
+						page.signals.map((signal) => (
+							<li>
+								<Icon name="check" aria-hidden="true" />
+								{signal}
+							</li>
+						))
+					}
+				</ul>
 
-	<section class="section-reveal pb-20 md:pb-28">
-		<div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
-			<aside class="space-y-4">
-				<a
-					href={`mailto:${cv.email}`}
-					class="dark-card hover-card flex items-center justify-between gap-4 p-5"
-				>
-					<span>
-						<span class="eyebrow block">Email</span>
-						<span class="mt-2 block font-bold text-[var(--text)]"
-							>{cv.email}</span
-						>
-					</span>
-					<Icon name="move-up-right" class="h-4 w-4" />
-				</a>
-				<a
-					href={cv.links.linkedin}
-					target="_blank"
-					rel="noopener noreferrer nofollow"
-					class="dark-card hover-card flex items-center justify-between gap-4 p-5"
-				>
-					<span>
-						<span class="eyebrow block">LinkedIn</span>
-						<span class="mt-2 block font-bold text-[var(--text)]">
-							{page.linkedin}
+				<div data-contact-methods class="contact-methods">
+					<p class="eyebrow">{page.methodsEyebrow}</p>
+					<a
+						href={whatsappHref}
+						target="_blank"
+						rel="noopener noreferrer nofollow"
+						class="contact-method contact-method--whatsapp button-secondary"
+					>
+						<span>
+							<strong>{page.whatsappLabel}</strong>
+							<small>{page.whatsappText}</small>
 						</span>
-					</span>
-					<Icon name="move-up-right" class="h-4 w-4" />
-				</a>
-				<a
-					href={cv.links.github}
-					target="_blank"
-					rel="noopener noreferrer nofollow"
-					class="dark-card hover-card flex items-center justify-between gap-4 p-5"
-				>
-					<span>
-						<span class="eyebrow block">GitHub</span>
-						<span class="mt-2 block font-bold text-[var(--text)]">
-							{page.github}
+						<Icon name="message-square" aria-hidden="true" />
+					</a>
+					<a
+						href={`mailto:${cv.email}`}
+						class="contact-method"
+						aria-label={`${page.emailText}: ${cv.email}`}
+					>
+						<span>
+							<strong>Email</strong>
+							<small>{cv.email}</small>
 						</span>
-					</span>
-					<Icon name="move-up-right" class="h-4 w-4" />
-				</a>
-			</aside>
+						<Icon name="move-up-right" aria-hidden="true" />
+					</a>
+					<a
+						href={cv.links.linkedin}
+						target="_blank"
+						rel="noopener noreferrer nofollow"
+						class="contact-method"
+					>
+						<span>
+							<strong>LinkedIn</strong>
+							<small>{page.linkedinText}</small>
+						</span>
+						<Icon name="move-up-right" aria-hidden="true" />
+					</a>
+				</div>
+			</div>
 
-			<div>
-				<p
-					id="contact-success"
+			<div class="contact-form-column">
+				<div
+					data-contact-status="sent"
 					hidden
-					class="mb-6 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 px-5 py-4 text-sm font-semibold text-emerald-200"
+					class="contact-status contact-status--success"
+					role="status"
 				>
-					{t(locale, "contact.success")}
-				</p>
-
+					<strong>{page.successTitle}</strong>
+					<p>{page.successText}</p>
+				</div>
+				<div
+					data-contact-status="missing"
+					hidden
+					class="contact-status"
+					role="alert"
+				>
+					<strong>{page.missingTitle}</strong>
+					<p>{page.missingText}</p>
+				</div>
+				<div
+					data-contact-status="send"
+					hidden
+					class="contact-status"
+					role="alert"
+				>
+					<strong>{page.errorTitle}</strong>
+					<p>{page.errorText}</p>
+					<div class="contact-status__actions">
+						<a href={whatsappHref}>{page.whatsappLabel}</a>
+						<a href={`mailto:${cv.email}`}>Email</a>
+					</div>
+				</div>
 				<ContactForm locale={locale} />
 			</div>
-		</div>
-	</section>
+		</section>
+	</div>
 
 	<script>
-		const successMessage = document.getElementById("contact-success");
-		if (
-			successMessage &&
-			new URLSearchParams(window.location.search).get("sent") === "1"
-		) {
-			successMessage.hidden = false;
+		const params = new URLSearchParams(window.location.search);
+		const status = params.get("sent") === "1" ? "sent" : params.get("error");
+		if (status) {
+			document
+				.querySelector<HTMLElement>(`[data-contact-status="${status}"]`)
+				?.removeAttribute("hidden");
 		}
 	</script>
 </BaseLayout>
+
+<style>
+	.contact-page .eyebrow {
+		color: var(--action);
+	}
+
+	.contact-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(30rem, 1.1fr);
+		gap: clamp(3rem, 7vw, 7rem);
+		align-items: start;
+		padding-block: clamp(1.5rem, 3vw, 2.5rem) clamp(3.5rem, 5vw, 4.5rem);
+	}
+
+	.contact-hero h1 {
+		max-width: 12ch;
+		margin-top: 1rem;
+		color: var(--home-navy);
+		font-size: clamp(3rem, 5.6vw, 5.4rem);
+		font-weight: 950;
+		letter-spacing: -0.065em;
+		line-height: 0.95;
+		text-wrap: balance;
+	}
+
+	.contact-hero__intro {
+		max-width: 39rem;
+		margin-top: 1.5rem;
+		color: var(--text-muted);
+		font-size: 1.05rem;
+		line-height: 1.75;
+	}
+
+	.contact-signals {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem 1.2rem;
+		margin-top: 1.6rem;
+	}
+
+	.contact-signals li {
+		display: inline-flex;
+		gap: 0.45rem;
+		align-items: center;
+		color: var(--text);
+		font-size: 0.82rem;
+		font-weight: 800;
+	}
+
+	.contact-signals :global(svg) {
+		width: 1rem;
+		color: var(--action);
+	}
+
+	.contact-methods {
+		margin-top: 2.4rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.contact-methods > .eyebrow {
+		padding-block: 1.2rem;
+	}
+
+	.contact-method {
+		display: flex;
+		min-height: 4.75rem;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		border-top: 1px solid var(--surface-border);
+		color: var(--text);
+	}
+
+	.contact-method strong,
+	.contact-method small {
+		display: block;
+	}
+
+	.contact-method small {
+		margin-top: 0.25rem;
+		color: var(--text-muted);
+		font-size: 0.8rem;
+	}
+
+	.contact-method:hover strong {
+		color: var(--action);
+	}
+
+	.contact-method--whatsapp {
+		width: 100%;
+		margin-block: 0.2rem 0.9rem;
+		padding-inline: 1rem;
+	}
+
+	.contact-method--whatsapp :global(svg) {
+		color: #25d366;
+	}
+
+	.contact-status {
+		margin-bottom: 1rem;
+		padding: 1rem 1.1rem;
+		border: 1px solid
+			color-mix(in srgb, var(--action) 28%, var(--surface-border));
+		border-radius: 1rem;
+		background: color-mix(in srgb, var(--action) 7%, var(--surface));
+		color: var(--text);
+	}
+
+	.contact-status p {
+		margin-top: 0.25rem;
+		color: var(--text-muted);
+		line-height: 1.6;
+	}
+
+	.contact-status__actions {
+		display: flex;
+		gap: 1rem;
+		margin-top: 0.65rem;
+	}
+
+	.contact-status a {
+		color: var(--action);
+		font-weight: 850;
+	}
+
+	@media (max-width: 900px) {
+		.contact-hero {
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.contact-hero {
+			padding-top: 1.25rem;
+		}
+
+		.contact-hero h1 {
+			font-size: clamp(2.75rem, 12vw, 3.65rem);
+		}
+	}
+</style>

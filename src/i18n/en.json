@@ -654,12 +654,22 @@
         "title": "Contact - José Miguel Fernández",
         "description": "Contact José Miguel Fernández for freelance full-stack development, internal tools, automation workflows, API integrations and backend systems."
       },
-      "eyebrow": "Contact",
-      "title": "Let’s talk about what you want to",
-      "titleAccent": "build.",
-      "intro": "Tell me what you have now, what problem you want to solve and what result you need. If it fits, I’ll suggest a clear next step.",
-      "linkedin": "Connect on LinkedIn",
-      "github": "View my code"
+      "eyebrow": "Free initial assessment",
+      "title": "Tell me what you want to solve.",
+      "intro": "Briefly explain what you have now and what you would like to improve. I will reply personally with the next step I think makes the most sense.",
+      "signals": ["No obligation", "Direct contact", "Personal reply"],
+      "methodsEyebrow": "You can also contact me directly",
+      "whatsappLabel": "WhatsApp",
+      "whatsappText": "Tell me about your case by message",
+      "whatsappMessage": "Hi José Miguel, I would like to discuss a digital need and find out what the most sensible next step would be.",
+      "emailText": "Send an email",
+      "linkedinText": "Connect on LinkedIn",
+      "successTitle": "Enquiry sent",
+      "successText": "I have received your message. I will reply personally as soon as possible.",
+      "missingTitle": "Some information is missing",
+      "missingText": "Check the name, email and message before sending again.",
+      "errorTitle": "The enquiry could not be sent",
+      "errorText": "There was a temporary problem. You can contact me by WhatsApp or email."
     },
     "meta": {
       "title": "Contact",

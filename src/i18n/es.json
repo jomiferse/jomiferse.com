@@ -654,12 +654,22 @@
         "title": "Contacto - José Miguel Fernández",
         "description": "Contacta con José Miguel Fernández para desarrollo full-stack freelance, herramientas internas, automatizaciones, integraciones API y backend."
       },
-      "eyebrow": "Contacto",
-      "title": "Hablemos sobre lo que quieres",
-      "titleAccent": "construir.",
-      "intro": "Cuéntame qué tienes ahora, qué problema quieres resolver y qué resultado buscas. Si encaja, te propondré un siguiente paso claro.",
-      "linkedin": "Conectar en LinkedIn",
-      "github": "Ver mi código"
+      "eyebrow": "Primera valoración gratuita",
+      "title": "Cuéntame qué quieres resolver.",
+      "intro": "Explícame brevemente qué tienes ahora y qué te gustaría mejorar. Te responderé personalmente con el siguiente paso que considero más razonable.",
+      "signals": ["Sin compromiso", "Trato directo", "Respuesta personal"],
+      "methodsEyebrow": "También puedes escribirme directamente",
+      "whatsappLabel": "WhatsApp",
+      "whatsappText": "Cuéntame tu caso por mensaje",
+      "whatsappMessage": "Hola José Miguel, me gustaría comentarte una necesidad digital y saber cuál sería el siguiente paso más razonable.",
+      "emailText": "Escribir por email",
+      "linkedinText": "Conectar en LinkedIn",
+      "successTitle": "Consulta enviada",
+      "successText": "He recibido tu mensaje. Te responderé personalmente lo antes posible.",
+      "missingTitle": "Falta algún dato",
+      "missingText": "Revisa el nombre, el email y el mensaje antes de volver a enviarlo.",
+      "errorTitle": "No se ha podido enviar",
+      "errorText": "Ha ocurrido un problema temporal. Puedes escribirme por WhatsApp o email."
     },
     "meta": {
       "title": "Contacto",

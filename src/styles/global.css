@@ -231,6 +231,10 @@ body:has(.blog-article-page) main.site-shell {
 	max-width: 88rem;
 }
 
+body:has(.contact-page) main.site-shell {
+	max-width: 88rem;
+}
+
 .projects-page .eyebrow {
 	color: var(--action);
 }
