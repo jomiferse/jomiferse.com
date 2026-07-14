@@ -968,6 +968,48 @@
   },
   "services": {
     "commercial": {
+      "common": {
+        "from": "From",
+        "tax": "+ VAT",
+        "viewService": "View service",
+        "exploreArea": "Explore this area",
+        "mostCommon": "The most common option"
+      },
+      "engagement": {
+        "eyebrow": "Ways to work together",
+        "title": "Choose the scope that fits now.",
+        "intro": "You can start with a focused intervention, tackle the full project or reserve monthly capacity for improvements and support.",
+        "models": [
+          {
+            "key": "intervention",
+            "number": "01",
+            "title": "Focused intervention",
+            "text": "For reviewing, unblocking or fixing a well-defined need without opening a large project.",
+            "price": "From €90"
+          },
+          {
+            "key": "project",
+            "number": "02",
+            "title": "Complete project",
+            "text": "For designing and delivering a solution with an agreed scope, schedule and outcome.",
+            "price": "From €290"
+          },
+          {
+            "key": "support",
+            "number": "03",
+            "title": "Monthly support",
+            "text": "For maintenance, prioritised improvements and technical help without expanding the team.",
+            "price": "From €69/month"
+          }
+        ]
+      },
+      "directory": {
+        "eyebrow": "Service directory",
+        "title": "Every solution, organised by need.",
+        "intro": "If you already know what you need, open an area and go straight to the specific service.",
+        "openLabel": "Open area",
+        "servicesLabel": "services"
+      },
       "areas": {
         "web-conversion": {
           "title": "Web and conversion",

@@ -1,0 +1,228 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Locale } from "@/i18n";
+import type { ServiceArea, ServiceItem } from "@/lib/services";
+import ServiceIconBadge from "@/components/services/ServiceIconBadge.astro";
+
+interface Props {
+	locale: Locale;
+	area: ServiceArea;
+	number: string;
+	copy: {
+		from: string;
+		tax: string;
+		viewService: string;
+		exploreArea: string;
+	};
+}
+
+const { locale, area, number, copy } = Astro.props as Props;
+
+const getHref = (service: ServiceItem) =>
+	service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
+
+const formattedPrice = new Intl.NumberFormat(locale, {
+	style: "currency",
+	currency: "EUR",
+	maximumFractionDigits: 0,
+}).format(area.entryPrice);
+---
+
+<article data-service-area-card class="service-area-card">
+	<header class="service-area-card__header">
+		<ServiceIconBadge name={area.icon} size="lg" />
+		<span class="service-area-card__number" aria-hidden="true">{number}</span>
+	</header>
+
+	<div class="service-area-card__intro">
+		<h3>{area.title}</h3>
+		<p>{area.description}</p>
+	</div>
+
+	<ul class="service-area-card__services">
+		{
+			area.featuredServices.map((service) => (
+				<li>
+					<a
+						href={getHref(service)}
+						aria-label={`${copy.viewService}: ${service.title}`}
+					>
+						<ServiceIconBadge name={service.icon} size="sm" />
+						<span>
+							<strong>{service.title}</strong>
+							<small>{service.description}</small>
+						</span>
+						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+					</a>
+				</li>
+			))
+		}
+	</ul>
+
+	<footer class="service-area-card__footer">
+		<p>
+			<span>{copy.from}</span>
+			<strong>{formattedPrice}</strong>
+			<small>{copy.tax}</small>
+		</p>
+		<a href={getHref(area.primaryService)} class="button-secondary">
+			{copy.exploreArea}
+			<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+		</a>
+	</footer>
+</article>
+
+<style>
+	.service-area-card {
+		display: flex;
+		min-width: 0;
+		flex-direction: column;
+		padding: clamp(1.35rem, 2.4vw, 2rem);
+		border: 1px solid var(--surface-border);
+		border-radius: 1.35rem;
+		background: linear-gradient(
+			145deg,
+			color-mix(in srgb, var(--surface) 96%, transparent),
+			color-mix(in srgb, var(--bg-band) 78%, var(--surface))
+		);
+		box-shadow: var(--shadow-card);
+	}
+
+	.service-area-card__header,
+	.service-area-card__footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.service-area-card__number {
+		align-self: flex-start;
+		color: var(--action);
+		font-size: 0.7rem;
+		font-weight: 900;
+		letter-spacing: 0.18em;
+	}
+
+	.service-area-card__intro {
+		min-height: 10.5rem;
+		padding-top: 2rem;
+	}
+
+	.service-area-card h3 {
+		max-width: 14ch;
+		color: var(--home-navy);
+		font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+		font-weight: 900;
+		letter-spacing: -0.045em;
+		line-height: 1.02;
+		text-wrap: balance;
+	}
+
+	.service-area-card__intro p {
+		max-width: 36rem;
+		margin-top: 0.9rem;
+		color: var(--text-muted);
+		font-size: 0.92rem;
+		line-height: 1.65;
+	}
+
+	.service-area-card__services {
+		display: grid;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.service-area-card__services li {
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.service-area-card__services a {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		gap: 0.85rem;
+		align-items: center;
+		padding: 1rem 0;
+		color: var(--text);
+	}
+
+	.service-area-card__services a:hover strong,
+	.service-area-card__services a:hover > :global(svg) {
+		color: var(--action);
+	}
+
+	.service-area-card__services strong,
+	.service-area-card__services small {
+		display: block;
+	}
+
+	.service-area-card__services strong {
+		font-size: 0.9rem;
+		font-weight: 850;
+		line-height: 1.3;
+	}
+
+	.service-area-card__services small {
+		display: -webkit-box;
+		overflow: hidden;
+		margin-top: 0.25rem;
+		color: var(--text-muted);
+		font-size: 0.75rem;
+		line-height: 1.45;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+	}
+
+	.service-area-card__services a > :global(svg) {
+		color: var(--text-muted);
+		transition: transform 180ms ease;
+	}
+
+	.service-area-card__services a:hover > :global(svg) {
+		transform: translateX(0.2rem);
+	}
+
+	.service-area-card__footer {
+		align-items: end;
+		margin-top: auto;
+		padding-top: 1.4rem;
+	}
+
+	.service-area-card__footer p span,
+	.service-area-card__footer p small {
+		display: block;
+		color: var(--text-muted);
+		font-size: 0.7rem;
+		font-weight: 750;
+	}
+
+	.service-area-card__footer p strong {
+		display: block;
+		margin-block: 0.12rem;
+		color: var(--home-navy);
+		font-size: 1.5rem;
+		font-weight: 950;
+		letter-spacing: -0.04em;
+	}
+
+	.service-area-card__footer .button-secondary {
+		min-height: 2.75rem;
+		padding: 0.7rem 1rem;
+		font-size: 0.78rem;
+	}
+
+	@media (max-width: 520px) {
+		.service-area-card__intro {
+			min-height: 0;
+			padding-bottom: 1.5rem;
+		}
+
+		.service-area-card__footer {
+			align-items: stretch;
+			flex-direction: column;
+		}
+
+		.service-area-card__footer .button-secondary {
+			width: 100%;
+		}
+	}
+</style>

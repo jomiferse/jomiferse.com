@@ -968,6 +968,48 @@
   },
   "services": {
     "commercial": {
+      "common": {
+        "from": "Desde",
+        "tax": "+ IVA",
+        "viewService": "Ver servicio",
+        "exploreArea": "Explorar esta área",
+        "mostCommon": "La opción más habitual"
+      },
+      "engagement": {
+        "eyebrow": "Formas de trabajar",
+        "title": "Elige el alcance que encaja ahora.",
+        "intro": "Puedes empezar por una intervención concreta, abordar el proyecto completo o reservar capacidad mensual para mejoras y soporte.",
+        "models": [
+          {
+            "key": "intervention",
+            "number": "01",
+            "title": "Intervención puntual",
+            "text": "Para revisar, desbloquear o corregir una necesidad bien delimitada sin abrir un proyecto grande.",
+            "price": "Desde 90 €"
+          },
+          {
+            "key": "project",
+            "number": "02",
+            "title": "Proyecto completo",
+            "text": "Para diseñar y entregar una solución con alcance, calendario y resultado acordados.",
+            "price": "Desde 290 €"
+          },
+          {
+            "key": "support",
+            "number": "03",
+            "title": "Soporte mensual",
+            "text": "Para mantener, priorizar mejoras y contar con apoyo técnico sin ampliar equipo.",
+            "price": "Desde 69 €/mes"
+          }
+        ]
+      },
+      "directory": {
+        "eyebrow": "Directorio de servicios",
+        "title": "Todas las soluciones, ordenadas por necesidad.",
+        "intro": "Si ya sabes qué necesitas, abre un área y entra directamente en el servicio concreto.",
+        "openLabel": "Abrir área",
+        "servicesLabel": "servicios"
+      },
       "areas": {
         "web-conversion": {
           "title": "Web y conversión",
