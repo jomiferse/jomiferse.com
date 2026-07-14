@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import ContactTechnologyMarquee from "@/components/contact/ContactTechnologyMarquee.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
 import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
@@ -130,6 +131,11 @@ const structuredData = [
 				<ContactForm locale={locale} />
 			</div>
 		</section>
+
+		<ContactTechnologyMarquee
+			title={page.technologiesTitle}
+			pauseLabel={page.technologiesPauseLabel}
+		/>
 	</div>
 
 	<script>

@@ -669,7 +669,9 @@
       "missingTitle": "Some information is missing",
       "missingText": "Check the name, email and message before sending again.",
       "errorTitle": "The enquiry could not be sent",
-      "errorText": "There was a temporary problem. You can contact me by WhatsApp or email."
+      "errorText": "There was a temporary problem. You can contact me by WhatsApp or email.",
+      "technologiesTitle": "Technologies and platforms I work with",
+      "technologiesPauseLabel": "Moving technology list. Keep focus here to pause the animation."
     },
     "meta": {
       "title": "Contact",

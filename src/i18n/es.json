@@ -669,7 +669,9 @@
       "missingTitle": "Falta algún dato",
       "missingText": "Revisa el nombre, el email y el mensaje antes de volver a enviarlo.",
       "errorTitle": "No se ha podido enviar",
-      "errorText": "Ha ocurrido un problema temporal. Puedes escribirme por WhatsApp o email."
+      "errorText": "Ha ocurrido un problema temporal. Puedes escribirme por WhatsApp o email.",
+      "technologiesTitle": "Tecnologías y plataformas con las que trabajo",
+      "technologiesPauseLabel": "Tecnologías en movimiento. Mantén el foco aquí para pausar la animación."
     },
     "meta": {
       "title": "Contacto",

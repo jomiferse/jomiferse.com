@@ -129,6 +129,54 @@ if (includesPhase("page")) {
 	}
 }
 
+if (includesPhase("marquee")) {
+	const page = await readSource("src", "pages", "[locale]", "contact.astro");
+	const marquee = await readSource(
+		"src",
+		"components",
+		"contact",
+		"ContactTechnologyMarquee.astro",
+	);
+	requireMarkers("contact page marquee", page, [
+		"ContactTechnologyMarquee",
+		"page.technologiesTitle",
+		"page.technologiesPauseLabel",
+	]);
+	requireMarkers("technology marquee", marquee, [
+		"data-contact-technologies",
+		'tabindex="0"',
+		'aria-hidden="true"',
+		"contact-marquee__track",
+		"animation-play-state: paused",
+		"@media (prefers-reduced-motion: reduce)",
+		"Java",
+		"Spring Boot",
+		"Docker",
+		"Kubernetes",
+		"React",
+		"Astro",
+		"PostgreSQL",
+		"Redis",
+		"Apache Kafka",
+		"WordPress",
+	]);
+	rejectMarkers("technology marquee", marquee, [
+		"partner",
+		"Partner",
+		"client",
+		"endorsement",
+	]);
+	for (const locale of ["es", "en"]) {
+		const copy = JSON.parse(
+			await readSource("src", "i18n", `${locale}.json`),
+		).contact.page;
+		if (!copy?.technologiesTitle)
+			failures.push(`${locale}: missing contact.page.technologiesTitle`);
+		if (!copy?.technologiesPauseLabel)
+			failures.push(`${locale}: missing contact.page.technologiesPauseLabel`);
+	}
+}
+
 if (failures.length) {
 	console.error(failures.join("\n"));
 	process.exit(1);

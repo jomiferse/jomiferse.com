@@ -1,0 +1,169 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { title, pauseLabel } = Astro.props as {
+	title: string;
+	pauseLabel: string;
+};
+const technologies = [
+	{ label: "Java", icon: "java" },
+	{ label: "Spring Boot", icon: "springboot" },
+	{ label: "Docker", icon: "docker" },
+	{ label: "Kubernetes", icon: "kubernetes" },
+	{ label: "React", icon: "react" },
+	{ label: "Astro", icon: "astro" },
+	{ label: "PostgreSQL", icon: "postgresql" },
+	{ label: "Redis", icon: "redis" },
+	{ label: "Apache Kafka", icon: "apachekafka" },
+	{ label: "WordPress", icon: "wordpress" },
+] as const;
+---
+
+<section
+	data-contact-technologies
+	class="contact-technologies section-reveal"
+	aria-labelledby="contact-technologies-title"
+>
+	<p class="eyebrow">Stack</p>
+	<h2 id="contact-technologies-title">{title}</h2>
+	<div
+		class="contact-marquee"
+		tabindex="0"
+		role="region"
+		aria-label={pauseLabel}
+	>
+		<div class="contact-marquee__track">
+			<ul class="contact-marquee__list">
+				{
+					technologies.map((technology) => (
+						<li>
+							<Icon name={technology.icon} aria-hidden="true" />
+							<span>{technology.label}</span>
+						</li>
+					))
+				}
+			</ul>
+			<ul class="contact-marquee__list" aria-hidden="true">
+				{
+					technologies.map((technology) => (
+						<li>
+							<Icon name={technology.icon} aria-hidden="true" />
+							<span>{technology.label}</span>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact-technologies {
+		padding-block: clamp(3.25rem, 5vw, 4.5rem);
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.contact-technologies .eyebrow {
+		color: var(--action);
+	}
+
+	.contact-technologies h2 {
+		max-width: 18ch;
+		margin-top: 0.9rem;
+		color: var(--home-navy);
+		font-size: clamp(2.2rem, 4vw, 3.8rem);
+		font-weight: 950;
+		letter-spacing: -0.055em;
+		line-height: 0.98;
+		text-wrap: balance;
+	}
+
+	.contact-marquee {
+		margin-top: 2.5rem;
+		overflow: hidden;
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 7%,
+			black 93%,
+			transparent
+		);
+		mask-image: linear-gradient(
+			to right,
+			transparent,
+			black 7%,
+			black 93%,
+			transparent
+		);
+	}
+
+	.contact-marquee__track {
+		display: flex;
+		width: max-content;
+		animation: contact-marquee 34s linear infinite;
+	}
+
+	.contact-marquee__list {
+		display: flex;
+		gap: 0.85rem;
+		padding-right: 0.85rem;
+	}
+
+	.contact-marquee__list li {
+		display: inline-flex;
+		min-width: 10rem;
+		min-height: 5rem;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		padding: 1rem 1.2rem;
+		border: 1px solid var(--surface-border);
+		border-radius: 1rem;
+		background: color-mix(in srgb, var(--surface) 84%, transparent);
+		color: var(--text);
+		font-size: 0.9rem;
+		font-weight: 850;
+	}
+
+	.contact-marquee__list :global(svg) {
+		width: 1.6rem;
+		height: 1.6rem;
+		color: var(--text-muted);
+		fill: currentColor;
+	}
+
+	.contact-marquee:hover .contact-marquee__track,
+	.contact-marquee:focus .contact-marquee__track {
+		animation-play-state: paused;
+	}
+
+	@keyframes contact-marquee {
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.contact-marquee {
+			overflow: visible;
+			-webkit-mask-image: none;
+			mask-image: none;
+		}
+
+		.contact-marquee__track {
+			width: 100%;
+			animation: none;
+		}
+
+		.contact-marquee__list {
+			width: 100%;
+			flex-wrap: wrap;
+			justify-content: center;
+			padding: 0;
+		}
+
+		.contact-marquee__list[aria-hidden="true"] {
+			display: none;
+		}
+	}
+</style>
