@@ -38,6 +38,11 @@ const requireMarkers = (name, source, markers) => {
 		if (!source.includes(marker)) failures.push(`${name}: missing ${marker}`);
 	}
 };
+const rejectMarkers = (name, source, markers) => {
+	for (const marker of markers) {
+		if (source.includes(marker)) failures.push(`${name}: forbidden ${marker}`);
+	}
+};
 const requireOrder = (name, source, markers) => {
 	let previousIndex = -1;
 	for (const marker of markers) {
@@ -224,6 +229,21 @@ if (includesPhase("hub-components")) {
 		"<details",
 		"<summary",
 	]);
+	requireMarkers("compact area card", areaCard, [
+		"padding: var(--services-card-padding);",
+		"padding-block: 1.5rem;",
+	]);
+	rejectMarkers("compact area card", areaCard, ["min-height: 10.5rem;"]);
+	requireMarkers("compact engagement models", models, [
+		"padding-block: var(--services-section-space);",
+		"padding: var(--services-card-padding);",
+	]);
+	rejectMarkers("compact engagement models", models, ["min-height: 22rem;"]);
+	requireMarkers("readable service directory", directory, [
+		"padding-block: var(--services-section-space);",
+		"font-size: 0.875rem;",
+		"line-height: 1.55;",
+	]);
 	for (const source of [areaCard, models, directory]) {
 		if (source.includes("carousel"))
 			failures.push("hub components: carousel is forbidden");
@@ -255,6 +275,18 @@ if (includesPhase("hub")) {
 	requireMarkers("service styles", globalStyles, [
 		"body:has(.services-page) main.site-shell",
 		"max-width: 88rem",
+	]);
+	requireMarkers("compact services hub", hub, [
+		"--services-section-space: clamp(3.25rem, 5vw, 4.5rem);",
+		"--services-content-gap: 2.25rem;",
+		"--services-card-padding: clamp(1.35rem, 2vw, 1.75rem);",
+		"padding-block: clamp(1.5rem, 3vw, 2.5rem)",
+		"font-size: clamp(2.75rem, 5.1vw, 4.8rem);",
+		"font-size: 1rem;",
+	]);
+	rejectMarkers("compact services hub", hub, [
+		"padding-block: clamp(4.5rem, 8vw, 7rem);",
+		"font-size: clamp(3rem, 6.25vw, 6rem);",
 	]);
 	for (const obsolete of [
 		"definitionTitle",
@@ -312,6 +344,16 @@ if (includesPhase("detail-components")) {
 	if (`${card}${grid}`.includes("carousel")) {
 		failures.push("pricing components: carousel is forbidden");
 	}
+	requireMarkers("compact pricing card", card, [
+		"padding: var(--services-card-padding);",
+		"margin-top: 1.5rem;",
+		"font-size: 0.875rem;",
+	]);
+	rejectMarkers("compact pricing card", card, [
+		"min-height: 6rem;",
+		"transform: translateY(1.5rem);",
+	]);
+	rejectMarkers("compact pricing grid", grid, ["padding-bottom: 1.5rem;"]);
 }
 
 if (includesPhase("detail")) {
@@ -348,6 +390,17 @@ if (includesPhase("detail")) {
 	if (detail.includes("getRelatedKeys")) {
 		failures.push("service detail: obsolete getRelatedKeys");
 	}
+	requireMarkers("compact service detail", detail, [
+		"--services-section-space: clamp(3.25rem, 5vw, 4.5rem);",
+		"--services-content-gap: 2.25rem;",
+		"padding-block: clamp(1.5rem, 3vw, 2.5rem)",
+		"font-size: clamp(2.75rem, 5vw, 4.65rem);",
+		"font-size: 1rem;",
+	]);
+	rejectMarkers("compact service detail", detail, [
+		"padding-block: clamp(4.5rem, 8vw, 7rem);",
+		"transform: translateY(1.2rem);",
+	]);
 }
 
 if (includesPhase("contact")) {
