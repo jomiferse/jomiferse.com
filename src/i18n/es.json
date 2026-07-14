@@ -1861,12 +1861,26 @@
         "description": "Servicios freelance de diseño web, WordPress, software a medida, automatización, IA aplicada e integraciones API para negocios y equipos pequeños.",
         "areaServed": "España y remoto"
       },
-      "eyebrow": "Servicios freelance",
-      "title": "Consultoría informática freelance,",
-      "titleAccent": "diseño web y automatización.",
-      "intro": "Ayudo a profesionales, pequeños negocios, startups y equipos técnicos a convertir problemas digitales en soluciones concretas: una web que explica mejor tu oferta, una herramienta interna que ahorra tiempo, una automatización que reduce tareas manuales o una integración que conecta sistemas que hoy trabajan separados.",
-      "heroPrimaryCta": "Cuéntame tu caso",
+      "eyebrow": "Primera valoración gratuita",
+      "title": "Soluciones digitales para",
+      "titleAccent": "vender mejor y trabajar con menos fricción.",
+      "intro": "Diseño y desarrollo webs, software a medida y automatizaciones para profesionales, pequeños negocios y equipos que necesitan resolver algo concreto.",
+      "heroPrimaryCta": "Solicitar valoración gratuita",
       "heroSecondaryCta": "Ver proyectos",
+      "heroSignals": [
+        "Puedes empezar por una intervención acotada.",
+        "Alcance y límites claros antes de desarrollar.",
+        "Trato directo con quien hace el trabajo."
+      ],
+      "areasEyebrow": "Áreas de servicio",
+      "areasTitle": "Cuatro formas de mejorar la parte digital de tu negocio.",
+      "areasIntro": "Empieza por la necesidad que más se parece a la tuya. Dentro encontrarás servicios concretos, plazos orientativos y tres niveles de alcance.",
+      "proofEyebrow": "Trabajo seleccionado",
+      "proofShowcaseTitle": "Proyectos reales, desde producto web hasta sistemas backend.",
+      "proofShowcaseIntro": "Casos que muestran cómo abordo interfaz, lógica de negocio, integraciones y operación técnica con una misma responsabilidad de entrega.",
+      "viewProject": "Ver caso",
+      "processIntro": "Cada proyecto cambia, pero el orden de las decisiones no debería hacerlo. Primero se aclara el resultado y después se elige la solución técnica.",
+      "faqIntro": "Respuestas directas sobre alcance, tecnología, propiedad y forma de trabajar antes de pedir una valoración.",
       "bestForLead": "Ideal para:",
       "bestForText": "personas que buscan contratar a un desarrollador freelance con criterio técnico, comunicación directa y capacidad para llevar una solución de la idea al despliegue.",
       "definitionEyebrow": "Qué es",
@@ -2165,7 +2179,7 @@
       "ctaEyebrow": "Primera valoración gratuita",
       "ctaTitle": "Cuéntame tu caso y vemos si tiene sentido.",
       "ctaText": "Envíame qué tienes ahora, qué te gustaría mejorar y dónde se pierde más tiempo, claridad o dinero. Te responderé con el siguiente paso más razonable.",
-      "ctaButton": "Cuéntame tu caso"
+      "ctaButton": "Solicitar valoración gratuita"
     },
     "exitIntent": {
       "eyebrow": "Antes de cerrar",

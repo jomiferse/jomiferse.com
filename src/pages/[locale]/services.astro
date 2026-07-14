@@ -1,10 +1,15 @@
 ---
+import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
 import ServicesExitIntent from "@/components/common/ServicesExitIntent.astro";
-import { getCommercialLandingPages } from "@/lib/commercial-landings";
-import { getServiceGroups, getServicePages } from "@/lib/services";
-import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
+import ProjectArchiveCard from "@/components/projects/ProjectArchiveCard.astro";
+import EngagementModels from "@/components/services/EngagementModels.astro";
+import ServiceAreaCard from "@/components/services/ServiceAreaCard.astro";
+import ServiceDirectory from "@/components/services/ServiceDirectory.astro";
+import { getLocaleStaticPaths, getTranslations, t, type Locale } from "@/i18n";
+import { getProjectPages } from "@/lib/projects";
+import { getCanonicalServicePages, getServiceAreas } from "@/lib/services";
 import {
 	buildBreadcrumbList,
 	buildCollectionPage,
@@ -17,14 +22,25 @@ export function getStaticPaths() {
 	return getLocaleStaticPaths();
 }
 
-const { locale } = Astro.params;
-const cv = getCv(locale);
-const services = getServicePages(locale);
-const serviceGroups = getServiceGroups(locale);
-const commercialLandings = getCommercialLandingPages(locale);
+const locale = Astro.params.locale as Locale;
 const page = getTranslations(locale).services.hub;
+const commercial = getTranslations(locale).services.commercial;
+const cv = getCv(locale);
+const areas = getServiceAreas(locale);
+const services = getCanonicalServicePages(locale);
+const selectedProjectIds = new Set([
+	"cv-studio",
+	"educash-affiliate-platform",
+	"realtime-websocket-gateway",
+]);
+const proofProjects = getProjectPages(locale).filter((project) =>
+	selectedProjectIds.has(project.id),
+);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
-const contactHref = `/${locale}/contact`;
+const pagePath = `/${locale}/services/`;
+const contactHref = `/${locale}/contact?service=assessment`;
+const getServiceHref = (service: (typeof services)[number]) =>
+	service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
 const exitIntentWhatsappMessage =
 	locale === "es"
 		? "Hola José Miguel, estaba revisando tus servicios y me gustaría contarte mi caso."
@@ -32,9 +48,6 @@ const exitIntentWhatsappMessage =
 const exitIntentWhatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
 	exitIntentWhatsappMessage,
 )}`;
-const getServiceHref = (service: (typeof services)[number]) =>
-	service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
-const schemaServices = services.filter((service) => !service.canonicalPath);
 const keywords =
 	locale === "es"
 		? [
@@ -42,57 +55,38 @@ const keywords =
 				"Diseño web WordPress",
 				"Software a medida",
 				"Automatización de procesos",
+				"Mantenimiento web",
 				"Integraciones API",
-				"Desarrollador full-stack freelance",
 			]
 		: [
-				"Freelance IT Consulting",
-				"WordPress Web Design",
-				"Custom Software",
-				"Process Automation",
-				"API Integrations",
-				"Freelance Full-Stack Developer",
+				"Freelance IT consulting",
+				"WordPress web design",
+				"Custom software",
+				"Process automation",
+				"Website maintenance",
+				"API integrations",
 			];
-const commercialLandingCopy =
-	locale === "es"
-		? {
-				eyebrow: "Búsquedas concretas",
-				title: "Páginas para problemas concretos",
-				intro:
-					"Algunas necesidades no empiezan con el nombre técnico del servicio, sino con un problema claro: ordenar un proceso, automatizar tareas o elegir bien antes de invertir.",
-			}
-		: {
-				eyebrow: "Specific searches",
-				title: "Pages for concrete problems",
-				intro:
-					"Some needs do not start with the technical name of the service, but with a clear problem: organizing a workflow, automating tasks or making a better decision before investing.",
-			};
 const structuredData = [
 	buildProfessionalService({
 		site,
-		path: `/${locale}/services`,
+		path: pagePath,
 		name: page.schema.name,
 		description: page.schema.description,
 		providerName: cv.name,
-		providerUrl: new URL(`/${locale}`, site).toString(),
+		providerUrl: new URL(`/${locale}/`, site).toString(),
 		areaServed: page.schema.areaServed,
 		sameAs: [cv.links.linkedin, cv.links.github],
-		services: schemaServices.map((service) => ({
+		services: services.map((service) => ({
 			name: service.title,
 			description: service.description,
 			path: getServiceHref(service),
 		})),
 	}),
-	buildCollectionPage(
-		site,
-		`/${locale}/services`,
-		page.meta.title,
-		page.meta.description,
-	),
+	buildCollectionPage(site, pagePath, page.meta.title, page.meta.description),
 	buildFaqPage(page.faq),
 	buildBreadcrumbList(site, [
-		{ name: t(locale, "nav.home"), path: `/${locale}` },
-		{ name: t(locale, "nav.services"), path: `/${locale}/services` },
+		{ name: t(locale, "nav.home"), path: `/${locale}/` },
+		{ name: t(locale, "nav.services"), path: pagePath },
 	]),
 ];
 ---
@@ -100,378 +94,189 @@ const structuredData = [
 <BaseLayout
 	title={page.meta.title}
 	description={page.meta.description}
+	canonicalPath={pagePath}
 	structuredData={structuredData}
 	keywords={keywords}
 >
-	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{page.eyebrow}</p>
-		<h1
-			class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+	<div class="services-page">
+		<section
+			data-services-hero
+			class="services-hero section-reveal"
+			aria-labelledby="services-title"
 		>
-			{page.title}
-			<span class="accent-text">{page.titleAccent}</span>
-		</h1>
-		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">{page.intro}</p>
-		<div class="mt-9 flex flex-col gap-3 sm:flex-row">
-			<a href={`/${locale}/contact`} class="button-primary w-full sm:w-auto">
-				{page.heroPrimaryCta}
-			</a>
-			<a href={`/${locale}/projects`} class="button-secondary w-full sm:w-auto">
-				{page.heroSecondaryCta}
-			</a>
-		</div>
-	</section>
-
-	<section class="section-band section-reveal py-16">
-		<p class="muted-copy text-lg leading-8">
-			<span class="font-bold text-[var(--text)]">{page.bestForLead}</span>
-			{" "}
-			{page.bestForText}
-		</p>
-	</section>
-
-	<section class="section-reveal py-16 md:py-24">
-		<div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-			<div>
-				<p class="eyebrow">{page.definitionEyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.definitionTitle}
-				</h2>
-				<div class="mt-6 space-y-4">
-					{
-						page.definitionBody.map((paragraph) => (
-							<p class="muted-copy text-lg leading-8">{paragraph}</p>
-						))
-					}
-				</div>
-			</div>
-
-			<div>
-				<p class="eyebrow">{page.advantagesEyebrow}</p>
-				<h2 class="mt-4 text-2xl font-black text-[var(--text)] md:text-3xl">
-					{page.advantagesTitle}
-				</h2>
-				<div class="mt-7 grid gap-4 sm:grid-cols-2">
-					{
-						page.advantages.map((advantage) => (
-							<article class="dark-card p-5">
-								<h3 class="text-lg font-black text-[var(--text)]">
-									{advantage.title}
-								</h3>
-								<p class="muted-copy mt-3 leading-7">{advantage.body}</p>
-							</article>
-						))
-					}
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="section-reveal py-16 md:py-24">
-		<div class="mb-12 max-w-3xl">
-			<p class="eyebrow">{page.servicesEyebrow}</p>
-			<h2
-				class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-			>
-				{page.servicesTitle}
-			</h2>
-			<p class="muted-copy mt-5 text-lg leading-8">{page.servicesIntro}</p>
-		</div>
-
-		<div class="stagger-children space-y-6">
-			{
-				serviceGroups.map((group) => (
-					<article class="hairline border-t pt-8 first:border-t-0 first:pt-0">
-						<div class="grid gap-7 lg:grid-cols-[0.38fr_0.62fr]">
-							<div>
-								<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
-									{group.number}
-								</p>
-								<h3 class="mt-5 text-3xl font-black text-[var(--text)] md:text-4xl">
-									{group.title}
-								</h3>
-								<p class="muted-copy mt-4 leading-7">{group.description}</p>
-								<ul class="mt-6 space-y-3">
-									{group.bullets.map((item) => (
-										<li class="flex gap-3 text-sm leading-6 text-[var(--text-muted)]">
-											<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-												✓
-											</span>
-											<span>{item}</span>
-										</li>
-									))}
-								</ul>
-								<a
-									href={getServiceHref(group.primaryService)}
-									class="button-secondary mt-7 w-full justify-center sm:w-fit"
-								>
-									{page.viewService}
-								</a>
-							</div>
-
-							<div>
-								<p class="eyebrow">{page.included}</p>
-								<div class="mt-4 grid gap-3 sm:grid-cols-2">
-									{group.offerings.map((offering) => (
-										<a
-											href={`/${locale}/services/${offering.slug}/`}
-											class="group rounded-lg border border-[var(--surface-border)] bg-[var(--surface-strong)] p-4 transition hover:-translate-y-0.5 hover:border-[var(--accent-line)] dark:bg-white/[0.03]"
-										>
-											<h3 class="text-base font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] dark:group-hover:text-[var(--accent)]">
-												{offering.title}
-											</h3>
-											<p class="muted-copy mt-2 text-sm leading-6">
-												{offering.description}
-											</p>
-										</a>
-									))}
-								</div>
-								<div class="hairline mt-6 border-t pt-5">
-									<p class="eyebrow">{page.serviceLinks}</p>
-									<div class="mt-4 flex flex-wrap gap-3">
-										{group.services.map((service) => (
-											<a
-												href={getServiceHref(service)}
-												class="tag-pill hover:border-[var(--accent-strong)]"
-											>
-												{service.shortTitle}
-											</a>
-										))}
-									</div>
-								</div>
-							</div>
-						</div>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	<section class="section-band section-reveal py-16 md:py-24">
-		<div class="mb-10 max-w-3xl">
-			<p class="eyebrow">{commercialLandingCopy.eyebrow}</p>
-			<h2
-				class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-			>
-				{commercialLandingCopy.title}
-			</h2>
-			<p class="muted-copy mt-5 text-lg leading-8">
-				{commercialLandingCopy.intro}
-			</p>
-		</div>
-		<div class="stagger-children grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-			{
-				commercialLandings.map((landing) => (
-					<a
-						href={`/${locale}/${landing.slug}/`}
-						class="group rounded-lg border border-[var(--surface-border)] bg-[var(--surface)] p-5 transition hover:-translate-y-0.5 hover:border-[var(--accent-line)] md:p-6"
-					>
-						<p class="text-sm font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
-							{landing.eyebrow}
-						</p>
-						<h3 class="mt-4 text-xl font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] dark:group-hover:text-[var(--accent)]">
-							{landing.title}
-						</h3>
-						<p class="muted-copy mt-3 text-sm leading-6">
-							{landing.metaDescription}
-						</p>
+			<div class="services-hero__copy">
+				<p class="eyebrow">{page.eyebrow}</p>
+				<h1 id="services-title">
+					{page.title}
+					<span>{page.titleAccent}</span>
+				</h1>
+				<p class="services-hero__intro">{page.intro}</p>
+				<div class="services-hero__actions">
+					<a href={contactHref} class="button-action">
+						{page.heroPrimaryCta}
+						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 					</a>
-				))
-			}
-		</div>
-	</section>
+					<a href={`/${locale}/projects/`} class="button-secondary">
+						{page.heroSecondaryCta}
+					</a>
+				</div>
+			</div>
 
-	<section class="section-reveal py-20 md:py-28">
-		<div class="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-			<div>
-				<p class="eyebrow">{page.recommendationEyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.recommendationTitle}
-				</h2>
-				<p class="muted-copy mt-5 text-lg leading-8">
-					{page.recommendationIntro}
-				</p>
-			</div>
-			<div class="grid gap-5">
-				<article class="dark-card p-6">
-					<h3 class="text-2xl font-black text-[var(--text)]">
-						{page.recommendedForTitle}
-					</h3>
-					<ul class="mt-6 space-y-4">
-						{
-							page.recommendedFor.map((item) => (
-								<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-									<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-										✓
-									</span>
-									<span>{item}</span>
-								</li>
-							))
-						}
-					</ul>
-				</article>
-				<article class="dark-card p-6">
-					<h3 class="text-2xl font-black text-[var(--text)]">
-						{page.notRecommendedForTitle}
-					</h3>
-					<ul class="mt-6 space-y-4">
-						{
-							page.notRecommendedFor.map((item) => (
-								<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-									<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-										-
-									</span>
-									<span>{item}</span>
-								</li>
-							))
-						}
-					</ul>
-				</article>
-			</div>
-		</div>
-	</section>
-
-	<section class="section-band section-reveal py-20 md:py-28">
-		<div class="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-			<div>
-				<p class="eyebrow">{page.processEyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.processTitle}
-				</h2>
-			</div>
-			<div class="stagger-children grid gap-4 sm:grid-cols-2">
-				{
-					page.process.map((step, index) => (
-						<article class="dark-card p-5">
-							<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
-								{String(index + 1).padStart(2, "0")}
-							</p>
-							<h3 class="mt-5 text-xl font-black text-[var(--text)]">
-								{step.title}
-							</h3>
-							<p class="muted-copy mt-3 leading-7">{step.body}</p>
-						</article>
-					))
-				}
-			</div>
-		</div>
-	</section>
-
-	<section class="section-reveal py-20 md:py-28">
-		<div class="grid gap-10 lg:grid-cols-[1fr_1fr]">
-			<div>
-				<p class="eyebrow">{page.useCasesEyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.useCasesTitle}
-				</h2>
-				<ul class="mt-8 space-y-4">
+			<aside class="services-hero__signals" aria-label={page.bestForLead}>
+				<div class="services-hero__signal-heading">
+					<span aria-hidden="true">01</span>
+					<Icon name="badge-check" class="h-7 w-7" aria-hidden="true" />
+				</div>
+				<p><strong>{page.bestForLead}</strong> {page.bestForText}</p>
+				<ul>
 					{
-						page.useCases.map((item) => (
-							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-									✓
-								</span>
-								<span>{item}</span>
+						page.heroSignals.map((signal) => (
+							<li>
+								<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+								<span>{signal}</span>
 							</li>
 						))
 					}
 				</ul>
-			</div>
+			</aside>
+		</section>
 
-			<article class="dark-card p-6 md:p-8">
-				<p class="eyebrow">{page.contentEyebrow}</p>
-				<h2 class="mt-4 text-2xl font-black text-[var(--text)] md:text-3xl">
-					{page.contentTitle}
-				</h2>
-				<div class="mt-7 grid gap-3">
-					{
-						page.contentLinks.map((link) => (
-							<a
-								href={`/${locale}${link.href}`}
-								class="rounded-2xl border border-[var(--surface-border)] bg-[var(--surface)] p-4 font-bold text-[var(--text)] transition hover:border-[var(--accent-strong)]"
-							>
-								{link.label}
-							</a>
-						))
-					}
+		<section
+			data-services-areas
+			class="services-areas section-reveal"
+			aria-labelledby="services-areas-title"
+		>
+			<header class="services-section-heading">
+				<div>
+					<p class="eyebrow">{page.areasEyebrow}</p>
+					<h2 id="services-areas-title">{page.areasTitle}</h2>
 				</div>
-			</article>
-		</div>
-	</section>
+				<p>{page.areasIntro}</p>
+			</header>
 
-	<section class="section-band section-reveal py-20 md:py-28">
-		<div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-			<div>
-				<p class="eyebrow">{page.proofEyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.proofTitle}
-				</h2>
-				<p class="muted-copy mt-5 text-lg leading-8">{page.proofText}</p>
-				<div class="mt-8 flex flex-wrap gap-3">
-					{
-						page.proofLinks.map((link) => (
-							<a
-								href={`/${locale}${link.href}`}
-								class="tag-pill hover:border-[var(--accent-strong)]"
-							>
-								{link.label}
-							</a>
-						))
-					}
-				</div>
-			</div>
-			<div class="grid gap-4 sm:grid-cols-2">
+			<div class="services-areas__grid stagger-children">
 				{
-					page.proofPoints.map((item) => (
-						<article class="dark-card p-5">
-							<p class="muted-copy leading-7">{item}</p>
-						</article>
+					areas.map((area, index) => (
+						<ServiceAreaCard
+							locale={locale}
+							area={area}
+							number={String(index + 1).padStart(2, "0")}
+							copy={commercial.common}
+						/>
 					))
 				}
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section-reveal py-20 md:py-28">
-		<div class="mb-10 max-w-3xl">
-			<p class="eyebrow">{page.faqEyebrow}</p>
-			<h2
-				class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-			>
-				{page.faqTitle}
-			</h2>
+		<div data-engagement-models>
+			<EngagementModels
+				content={commercial.engagement}
+				mostCommonLabel={commercial.common.mostCommon}
+			/>
 		</div>
-		<div class="grid gap-4 lg:grid-cols-2">
-			{
-				page.faq.map((item) => (
-					<article class="hairline border-t pt-6">
-						<h3 class="text-xl font-black text-[var(--text)]">
-							{item.question}
-						</h3>
-						<p class="muted-copy mt-3 leading-7">{item.answer}</p>
-					</article>
-				))
-			}
-		</div>
-	</section>
 
-	<ConversionCta
-		eyebrow={page.ctaEyebrow}
-		title={page.ctaTitle}
-		text={page.ctaText}
-		primary={{ label: page.ctaButton, href: contactHref }}
-		headingId="services-conversion-title"
-	/>
+		<section
+			data-services-proof
+			class="services-proof section-reveal"
+			aria-labelledby="services-proof-title"
+		>
+			<header class="services-section-heading">
+				<div>
+					<p class="eyebrow">{page.proofEyebrow}</p>
+					<h2 id="services-proof-title">{page.proofShowcaseTitle}</h2>
+				</div>
+				<p>{page.proofShowcaseIntro}</p>
+			</header>
+
+			<div class="services-proof__grid stagger-children">
+				{
+					proofProjects.map((project) => (
+						<ProjectArchiveCard
+							project={project}
+							locale={locale}
+							viewLabel={page.viewProject}
+						/>
+					))
+				}
+			</div>
+		</section>
+
+		<section
+			data-services-process
+			class="services-process section-reveal"
+			aria-labelledby="services-process-title"
+		>
+			<header class="services-section-heading">
+				<div>
+					<p class="eyebrow">{page.processEyebrow}</p>
+					<h2 id="services-process-title">{page.processTitle}</h2>
+				</div>
+				<p>{page.processIntro}</p>
+			</header>
+
+			<ol class="services-process__steps">
+				{
+					page.process.map((step, index) => (
+						<li>
+							<span aria-hidden="true">
+								{String(index + 1).padStart(2, "0")}
+							</span>
+							<h3>{step.title}</h3>
+							<p>{step.body}</p>
+						</li>
+					))
+				}
+			</ol>
+		</section>
+
+		<div data-service-directory>
+			<ServiceDirectory
+				locale={locale}
+				areas={areas}
+				content={commercial.directory}
+			/>
+		</div>
+
+		<section
+			data-services-faq
+			class="services-faq section-reveal"
+			aria-labelledby="services-faq-title"
+		>
+			<header class="services-section-heading">
+				<div>
+					<p class="eyebrow">{page.faqEyebrow}</p>
+					<h2 id="services-faq-title">{page.faqTitle}</h2>
+				</div>
+				<p>{page.faqIntro}</p>
+			</header>
+
+			<div class="services-faq__list">
+				{
+					page.faq.map((item, index) => (
+						<details open={index === 0}>
+							<summary>
+								<span>{item.question}</span>
+								<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
+							</summary>
+							<p>{item.answer}</p>
+						</details>
+					))
+				}
+			</div>
+		</section>
+
+		<ConversionCta
+			eyebrow={page.ctaEyebrow}
+			title={page.ctaTitle}
+			text={page.ctaText}
+			primary={{ label: page.ctaButton, href: contactHref }}
+			secondary={{
+				label: page.heroSecondaryCta,
+				href: `/${locale}/projects/`,
+			}}
+			headingId="services-conversion-title"
+		/>
+	</div>
 
 	<ServicesExitIntent
 		locale={locale}
@@ -479,3 +284,313 @@ const structuredData = [
 		whatsappHref={exitIntentWhatsappHref}
 	/>
 </BaseLayout>
+
+<style>
+	.services-page {
+		--services-heading: clamp(2.25rem, 4.6vw, 4.35rem);
+	}
+
+	.services-page .eyebrow {
+		color: var(--action);
+	}
+
+	.services-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(19rem, 0.55fr);
+		gap: clamp(2.5rem, 7vw, 7rem);
+		align-items: end;
+		padding-block: clamp(2.75rem, 7vw, 6.5rem);
+	}
+
+	.services-hero h1 {
+		max-width: 15ch;
+		margin-top: 1rem;
+		color: var(--home-navy);
+		font-size: clamp(3rem, 6.25vw, 6rem);
+		font-weight: 950;
+		letter-spacing: -0.07em;
+		line-height: 0.93;
+		text-wrap: balance;
+	}
+
+	.services-hero h1 span {
+		color: var(--action);
+	}
+
+	.services-hero__intro {
+		max-width: 45rem;
+		margin-top: 1.6rem;
+		color: var(--text-muted);
+		font-size: clamp(1rem, 1.5vw, 1.18rem);
+		line-height: 1.75;
+	}
+
+	.services-hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		margin-top: 2rem;
+	}
+
+	.services-hero__signals {
+		padding: 1.6rem;
+		border: 1px solid var(--surface-border);
+		border-radius: 1.25rem;
+		background:
+			radial-gradient(
+				circle at 100% 0%,
+				color-mix(in srgb, var(--action) 12%, transparent),
+				transparent 12rem
+			),
+			var(--surface);
+		box-shadow: var(--shadow-card);
+	}
+
+	.services-hero__signal-heading {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: var(--action);
+	}
+
+	.services-hero__signal-heading span {
+		font-size: 0.7rem;
+		font-weight: 900;
+		letter-spacing: 0.18em;
+	}
+
+	.services-hero__signals > p {
+		margin-top: 1.5rem;
+		color: var(--text-muted);
+		font-size: 0.86rem;
+		line-height: 1.65;
+	}
+
+	.services-hero__signals > p strong {
+		color: var(--text);
+	}
+
+	.services-hero__signals ul {
+		display: grid;
+		gap: 0.8rem;
+		margin-top: 1.5rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.services-hero__signals li {
+		display: flex;
+		gap: 0.7rem;
+		align-items: start;
+		color: var(--text);
+		font-size: 0.8rem;
+		font-weight: 750;
+		line-height: 1.5;
+	}
+
+	.services-hero__signals li :global(svg) {
+		flex: none;
+		margin-top: 0.15rem;
+		color: var(--action);
+	}
+
+	.services-areas,
+	.services-process,
+	.services-faq {
+		padding-block: clamp(4.5rem, 8vw, 7rem);
+	}
+
+	.services-section-heading {
+		display: grid;
+		grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.72fr);
+		gap: 2rem 5rem;
+		align-items: end;
+	}
+
+	.services-section-heading h2 {
+		max-width: 18ch;
+		margin-top: 0.9rem;
+		color: var(--home-navy);
+		font-size: var(--services-heading);
+		font-weight: 950;
+		letter-spacing: -0.06em;
+		line-height: 0.98;
+		text-wrap: balance;
+	}
+
+	.services-section-heading > p {
+		color: var(--text-muted);
+		line-height: 1.75;
+	}
+
+	.services-areas__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin-top: 3.25rem;
+	}
+
+	.services-proof {
+		width: 100vw;
+		margin-inline: calc(50% - 50vw);
+		padding: clamp(4.5rem, 8vw, 7rem) max(1rem, calc((100vw - 88rem) / 2));
+		background: var(--bg-band);
+	}
+
+	.services-proof__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 3rem;
+	}
+
+	.services-process__steps {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		margin-top: 3.25rem;
+		border-block: 1px solid var(--surface-border);
+	}
+
+	.services-process__steps li {
+		padding: 2rem;
+	}
+
+	.services-process__steps li + li {
+		border-left: 1px solid var(--surface-border);
+	}
+
+	.services-process__steps span {
+		color: var(--action);
+		font-size: 0.7rem;
+		font-weight: 900;
+		letter-spacing: 0.18em;
+	}
+
+	.services-process__steps h3 {
+		margin-top: 1.5rem;
+		color: var(--text);
+		font-size: 1.25rem;
+		font-weight: 900;
+	}
+
+	.services-process__steps p {
+		margin-top: 0.75rem;
+		color: var(--text-muted);
+		font-size: 0.88rem;
+		line-height: 1.65;
+	}
+
+	.services-faq__list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0 2.5rem;
+		margin-top: 3rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.services-faq details {
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.services-faq summary {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 1rem;
+		align-items: center;
+		min-height: 5.25rem;
+		padding-block: 1rem;
+		color: var(--text);
+		font-weight: 850;
+		line-height: 1.45;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	.services-faq summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.services-faq summary:focus-visible {
+		border-radius: 0.75rem;
+		outline: 2px solid var(--action);
+		outline-offset: 4px;
+	}
+
+	.services-faq summary :global(svg) {
+		color: var(--action);
+		transition: transform 180ms ease;
+	}
+
+	.services-faq details[open] summary :global(svg) {
+		transform: rotate(45deg);
+	}
+
+	.services-faq details p {
+		max-width: 45rem;
+		padding: 0 2.5rem 1.5rem 0;
+		color: var(--text-muted);
+		font-size: 0.9rem;
+		line-height: 1.7;
+	}
+
+	@media (max-width: 900px) {
+		.services-hero,
+		.services-section-heading {
+			grid-template-columns: 1fr;
+		}
+
+		.services-hero {
+			gap: 2rem;
+		}
+
+		.services-hero__signals {
+			max-width: 42rem;
+		}
+
+		.services-proof__grid,
+		.services-process__steps {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.services-process__steps li:nth-child(3) {
+			border-top: 1px solid var(--surface-border);
+			border-left: 0;
+		}
+
+		.services-process__steps li:nth-child(4) {
+			border-top: 1px solid var(--surface-border);
+		}
+	}
+
+	@media (max-width: 680px) {
+		.services-hero {
+			padding-top: 2rem;
+		}
+
+		.services-hero h1 {
+			font-size: clamp(2.75rem, 13vw, 4rem);
+		}
+
+		.services-hero__actions,
+		.services-hero__actions a {
+			width: 100%;
+		}
+
+		.services-areas__grid,
+		.services-proof__grid,
+		.services-process__steps,
+		.services-faq__list {
+			grid-template-columns: 1fr;
+		}
+
+		.services-process__steps li {
+			padding-inline: 0;
+		}
+
+		.services-process__steps li + li,
+		.services-process__steps li:nth-child(4) {
+			border-top: 1px solid var(--surface-border);
+			border-left: 0;
+		}
+	}
+</style>

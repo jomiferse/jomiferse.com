@@ -222,6 +222,10 @@ body:has(.projects-page) main.site-shell {
 	max-width: 88rem;
 }
 
+body:has(.services-page) main.site-shell {
+	max-width: 88rem;
+}
+
 body:has(.blog-page) main.site-shell,
 body:has(.blog-article-page) main.site-shell {
 	max-width: 88rem;

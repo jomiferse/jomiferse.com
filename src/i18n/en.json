@@ -1861,12 +1861,26 @@
         "description": "Freelance web design, WordPress, custom software, automation, applied AI and API integration services for small businesses and teams.",
         "areaServed": "Spain and remote"
       },
-      "eyebrow": "Freelance services",
-      "title": "Freelance IT consulting,",
-      "titleAccent": "web design and automation.",
-      "intro": "I help solo professionals, small businesses, startups and technical teams turn digital problems into concrete solutions: a website that explains the offer better, an internal tool that saves time, an automation that reduces manual work or an integration that connects systems that currently work apart.",
-      "heroPrimaryCta": "Share your case",
+      "eyebrow": "Free initial assessment",
+      "title": "Digital solutions to",
+      "titleAccent": "sell more clearly and work with less friction.",
+      "intro": "I design and build websites, custom software and automations for independent professionals, small businesses and teams that need to solve something concrete.",
+      "heroPrimaryCta": "Request a free assessment",
       "heroSecondaryCta": "View projects",
+      "heroSignals": [
+        "You can start with a focused intervention.",
+        "Clear scope and boundaries before development.",
+        "Direct contact with the person doing the work."
+      ],
+      "areasEyebrow": "Service areas",
+      "areasTitle": "Four ways to improve the digital side of your business.",
+      "areasIntro": "Start with the need that looks most like yours. Each area contains specific services, indicative timelines and three levels of scope.",
+      "proofEyebrow": "Selected work",
+      "proofShowcaseTitle": "Real projects, from web products to backend systems.",
+      "proofShowcaseIntro": "Cases that show how I handle interfaces, business logic, integrations and technical operations with the same delivery responsibility.",
+      "viewProject": "View case",
+      "processIntro": "Every project is different, but the order of decisions should not be. We clarify the outcome first, then choose the technical solution.",
+      "faqIntro": "Direct answers about scope, technology, ownership and ways of working before you request an assessment.",
       "bestForLead": "Best for:",
       "bestForText": "people looking to hire a freelance developer with technical judgment, direct communication and the ability to take a solution from idea to deployment.",
       "definitionEyebrow": "What it is",
@@ -2165,7 +2179,7 @@
       "ctaEyebrow": "Free initial assessment",
       "ctaTitle": "Share your case and we can see if it makes sense.",
       "ctaText": "Send what you have now, what you want to improve and where time, clarity or money is being lost. I’ll reply with the most reasonable next step.",
-      "ctaButton": "Share your case"
+      "ctaButton": "Request a free assessment"
     },
     "exitIntent": {
       "eyebrow": "Before you close this",
