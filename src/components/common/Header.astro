@@ -1,7 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
-import ThemeToggle from "@/components/common/ThemeToggle.astro";
 import LanguageToggle from "@/components/common/LanguageToggle.astro";
+import MobileHeaderMenu from "@/components/common/MobileHeaderMenu.astro";
+import ThemeToggle from "@/components/common/ThemeToggle.astro";
 import { t, type Locale } from "@/i18n";
 
 interface NavLink {
@@ -9,100 +10,94 @@ interface NavLink {
 	labelKey: string;
 }
 
-const links: NavLink[] = [
-	{ href: "/", labelKey: "nav.home" },
-	{ href: "/about", labelKey: "nav.about" },
-	{ href: "/projects", labelKey: "nav.projects" },
-	{ href: "/blog", labelKey: "nav.blog" },
-	{ href: "/services", labelKey: "nav.services" },
-];
-
 interface Props {
 	locale?: Locale;
 	languageHref?: string;
 }
 
+const links: NavLink[] = [
+	{ href: "/", labelKey: "nav.home" },
+	{ href: "/services", labelKey: "nav.services" },
+	{ href: "/projects", labelKey: "nav.projects" },
+	{ href: "/about", labelKey: "nav.about" },
+	{ href: "/blog", labelKey: "nav.blog" },
+];
+
 const { locale = "es", languageHref } = Astro.props as Props;
 
 const normalizePath = (path: string) =>
 	path === "/" ? "/" : path.replace(/\/$/, "");
-
 const withLocale = (href: string, loc: Locale) =>
 	href === "/" ? `/${loc}` : `/${loc}${href}`;
-
 const stripLocalePrefix = (pathname: string) =>
 	pathname.replace(/^\/(en|es)(?=\/|$)/, "") || "/";
 
 const normalizedCurrent = normalizePath(stripLocalePrefix(Astro.url.pathname));
-const isHome = normalizedCurrent === "/";
-const contactHref = isHome ? "/contact?service=assessment" : "/contact";
-const contactLabel = isHome
-	? t(locale, "header.assessmentCtaShort")
-	: t(locale, "header.contactCtaShort");
+const contactHref = withLocale("/contact?service=assessment", locale);
+const navigationItems = links.map((link, index) => ({
+	index: String(index + 1).padStart(2, "0"),
+	href: withLocale(link.href, locale),
+	label: t(locale, link.labelKey),
+	active:
+		normalizedCurrent === link.href ||
+		(link.href !== "/" && normalizedCurrent.startsWith(`${link.href}/`)),
+}));
 ---
 
-<header class="header-bar sticky top-0 z-50">
-	<div class="site-shell px-4 md:px-6">
-		<div
-			class="flex min-h-16 items-center justify-between gap-3 md:min-h-18 md:gap-4"
-		>
+<header
+	class="header-bar sticky top-0 z-50"
+	data-site-header
+	data-compact="false"
+>
+	<div class="header-shell">
+		<div class="header-inner" data-header-inner>
 			<a
 				href={withLocale("/", locale)}
-				class="flex min-w-0 items-center gap-3 py-3"
+				class="header-brand"
 				aria-label={t(locale, "nav.home")}
 			>
-				<span
-					class="grid h-9 w-9 place-items-center rounded-full border border-[var(--surface-border)] bg-[var(--surface)] text-xs font-black text-[var(--accent-strong)] dark:text-[var(--accent)]"
-				>
-					JMF
-				</span>
-				<span class="hidden text-sm font-bold text-[var(--text)] sm:block">
-					José Miguel Fernández
+				<span class="header-brand__mark">JMF</span>
+				<span class="header-brand__copy">
+					<strong>
+						<span class="header-brand__name-short">José Miguel</span>
+						<span class="header-brand__name-full">José Miguel Fernández</span>
+					</strong>
+					<span>{t(locale, "header.role")}</span>
 				</span>
 			</a>
 
-			<nav aria-label="Main" class="hidden items-center gap-1 lg:flex">
+			<nav class="header-desktop-nav" aria-label="Main">
 				{
-					links.map((link) => {
-						const active =
-							normalizedCurrent === link.href ||
-							(link.href !== "/" &&
-								normalizedCurrent.startsWith(`${link.href}/`));
-						return (
-							<a
-								href={withLocale(link.href, locale)}
-								aria-current={active ? "page" : undefined}
-								class:list={[
-									"header-nav-link px-3.5 py-2 text-sm font-semibold",
-									active ? "is-active" : null,
-								]}
-							>
-								{t(locale, link.labelKey)}
-							</a>
-						);
-					})
+					navigationItems.map((link) => (
+						<a
+							href={link.href}
+							class="header-nav-link"
+							aria-current={link.active ? "page" : undefined}
+						>
+							{link.label}
+						</a>
+					))
 				}
 			</nav>
 
-			<div class="hidden items-center gap-1 md:flex">
+			<div class="header-desktop-actions">
 				<LanguageToggle locale={locale} href={languageHref} />
 				<ThemeToggle locale={locale} />
-				<a
-					href={withLocale(contactHref, locale)}
-					class="button-primary ml-2 min-h-10 px-4 py-2 text-sm"
-				>
-					{contactLabel}
+				<a href={contactHref} class="button-action header-cta">
+					{t(locale, "header.assessmentCta")}
+					<Icon name="arrow-right" class="h-4 w-4" />
 				</a>
 			</div>
 
-			<div class="flex shrink-0 items-center gap-1 md:hidden">
+			<div class="header-mobile-actions">
 				<LanguageToggle locale={locale} href={languageHref} />
-				<ThemeToggle locale={locale} />
 				<button
-					id="menu-open"
-					aria-label={t(locale, "header.openMenu")}
-					class="header-utility inline-flex min-h-10 min-w-10 items-center justify-center rounded-full"
 					type="button"
+					class="header-utility header-menu-trigger"
+					data-menu-open
+					aria-expanded="false"
+					aria-controls="mobile-header-menu"
+					aria-label={t(locale, "header.openMenu")}
 				>
 					<Icon name="menu" class="h-5 w-5" />
 				</button>
@@ -111,170 +106,15 @@ const contactLabel = isHome
 	</div>
 </header>
 
-<div
-	id="mobile-menu"
-	class="fixed inset-0 z-50 hidden md:hidden"
-	aria-hidden="true"
->
-	<div
-		id="menu-overlay"
-		class="absolute inset-0 bg-black/60 opacity-0 backdrop-blur-sm transition-opacity duration-200"
-	>
-	</div>
+<MobileHeaderMenu
+	locale={locale}
+	languageHref={languageHref}
+	links={navigationItems}
+	contactHref={contactHref}
+/>
 
-	<aside
-		id="menu-panel"
-		class="dark-card absolute top-3 right-3 bottom-3 w-[min(22rem,calc(100vw-1.5rem))] translate-x-[105%] p-5 transition-transform duration-250 ease-out"
-		aria-label={t(locale, "header.mobileNav")}
-	>
-		<div class="mb-8 flex items-center justify-between gap-3">
-			<div>
-				<p class="text-sm font-bold text-[var(--text)]">
-					José Miguel Fernández
-				</p>
-				<p class="text-xs text-[var(--text-muted)]">
-					{t(locale, "header.availability")}
-				</p>
-			</div>
+<script>
+	import { initSiteHeader } from "@/lib/header-controller";
 
-			<button
-				id="menu-close"
-				aria-label={t(locale, "header.closeMenu")}
-				class="header-utility inline-flex min-h-10 min-w-10 items-center justify-center rounded-full"
-				type="button"
-			>
-				<Icon name="x" class="h-5 w-5" />
-			</button>
-		</div>
-
-		<nav class="flex flex-col gap-2">
-			{
-				links.map((link) => {
-					const active =
-						normalizedCurrent === link.href ||
-						(link.href !== "/" &&
-							normalizedCurrent.startsWith(`${link.href}/`));
-					return (
-						<a
-							href={withLocale(link.href, locale)}
-							aria-current={active ? "page" : undefined}
-							class:list={[
-								"rounded-2xl px-4 py-3 text-sm font-bold",
-								active
-									? "bg-[var(--surface-strong)] text-[var(--text)]"
-									: "text-[var(--text-muted)] hover:bg-[var(--surface-strong)] hover:text-[var(--text)]",
-							]}
-							data-close-menu
-						>
-							{t(locale, link.labelKey)}
-						</a>
-					);
-				})
-			}
-		</nav>
-
-		<a
-			href={withLocale(contactHref, locale)}
-			class="button-primary mt-6 w-full"
-			data-close-menu
-		>
-			{contactLabel}
-			<Icon name="arrow-right" class="h-4 w-4" />
-		</a>
-	</aside>
-</div>
-
-<script is:inline>
-	(() => {
-		document.querySelectorAll("a[data-lang]").forEach((el) => {
-			el.addEventListener("click", () => {
-				const lang = el.getAttribute("data-lang");
-				if (lang !== "en" && lang !== "es") return;
-
-				try {
-					localStorage.setItem("lang", lang);
-				} catch {}
-			});
-		});
-
-		const buttons = document.querySelectorAll("button.theme-toggle");
-		if (buttons.length) {
-			const isDark = () => document.documentElement.classList.contains("dark");
-
-			const syncButton = (btn) => {
-				const sun = btn.querySelector('[data-theme-icon="sun"]');
-				const moon = btn.querySelector('[data-theme-icon="moon"]');
-				if (!sun || !moon) return;
-
-				const dark = isDark();
-				sun.classList.toggle("hidden", !dark);
-				moon.classList.toggle("hidden", dark);
-
-				const darkLabel =
-					btn.getAttribute("data-label-light") || "Switch to light mode";
-				const lightLabel =
-					btn.getAttribute("data-label-dark") || "Switch to dark mode";
-
-				btn.setAttribute("aria-label", dark ? darkLabel : lightLabel);
-			};
-
-			const syncAll = () => buttons.forEach(syncButton);
-			syncAll();
-
-			buttons.forEach((btn) => {
-				btn.addEventListener("click", () => {
-					const nextIsDark = !isDark();
-					document.documentElement.classList.toggle("dark", nextIsDark);
-					localStorage.setItem("theme", nextIsDark ? "dark" : "light");
-					syncAll();
-				});
-			});
-		}
-
-		const openBtn = document.getElementById("menu-open");
-		const root = document.getElementById("mobile-menu");
-		const overlay = document.getElementById("menu-overlay");
-		const panel = document.getElementById("menu-panel");
-		const closeBtn = document.getElementById("menu-close");
-
-		if (!openBtn || !root || !overlay || !panel) return;
-
-		const DURATION = 250;
-
-		const openMenu = () => {
-			root.classList.remove("hidden");
-			root.setAttribute("aria-hidden", "false");
-			document.body.style.overflow = "hidden";
-
-			requestAnimationFrame(() => {
-				overlay.classList.remove("opacity-0");
-				overlay.classList.add("opacity-100");
-				panel.classList.remove("translate-x-[105%]");
-			});
-		};
-
-		const closeMenu = () => {
-			overlay.classList.remove("opacity-100");
-			overlay.classList.add("opacity-0");
-			panel.classList.add("translate-x-[105%]");
-			document.body.style.overflow = "";
-
-			window.setTimeout(() => {
-				root.classList.add("hidden");
-				root.setAttribute("aria-hidden", "true");
-			}, DURATION);
-		};
-
-		openBtn.addEventListener("click", openMenu);
-		closeBtn?.addEventListener("click", closeMenu);
-		overlay.addEventListener("click", closeMenu);
-
-		root.querySelectorAll("[data-close-menu]").forEach((el) => {
-			el.addEventListener("click", closeMenu);
-		});
-
-		window.addEventListener("keydown", (e) => {
-			if (e.key === "Escape" && !root.classList.contains("hidden")) closeMenu();
-		});
-	})();
+	initSiteHeader();
 </script>

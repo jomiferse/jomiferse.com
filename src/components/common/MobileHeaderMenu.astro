@@ -1,0 +1,103 @@
+---
+import { Icon } from "astro-icon/components";
+import LanguageToggle from "@/components/common/LanguageToggle.astro";
+import ThemeToggle from "@/components/common/ThemeToggle.astro";
+import { t, type Locale } from "@/i18n";
+
+interface HeaderNavigationItem {
+	index: string;
+	href: string;
+	label: string;
+	active: boolean;
+}
+
+interface Props {
+	locale: Locale;
+	languageHref?: string;
+	links: HeaderNavigationItem[];
+	contactHref: string;
+}
+
+const { locale, languageHref, links, contactHref } = Astro.props as Props;
+---
+
+<div
+	id="mobile-header-menu"
+	class="mobile-header-menu"
+	data-mobile-menu
+	aria-hidden="true"
+	hidden
+>
+	<section
+		class="mobile-header-menu__panel"
+		data-menu-panel
+		role="dialog"
+		aria-modal="true"
+		aria-labelledby="mobile-header-title"
+	>
+		<header class="mobile-header-menu__top">
+			<div>
+				<p id="mobile-header-title" class="mobile-header-menu__name">
+					José Miguel Fernández
+				</p>
+				<p class="mobile-header-menu__role">
+					{t(locale, "header.role")}
+				</p>
+			</div>
+			<button
+				type="button"
+				class="header-utility mobile-header-menu__close"
+				data-menu-close
+				aria-label={t(locale, "header.closeMenu")}
+			>
+				<Icon name="x" class="h-5 w-5" />
+			</button>
+		</header>
+
+		<div class="mobile-header-menu__body">
+			<nav aria-label={t(locale, "header.mobileNav")}>
+				<ul class="mobile-header-menu__list">
+					{
+						links.map((link) => (
+							<li>
+								<a
+									href={link.href}
+									class="mobile-header-menu__link"
+									aria-current={link.active ? "page" : undefined}
+									data-close-menu
+								>
+									<span class="mobile-header-menu__link-index">
+										{link.index}
+									</span>
+									<span>{link.label}</span>
+									<Icon name="arrow-up-right" class="h-5 w-5" />
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+
+			<div class="mobile-header-menu__preferences">
+				<div>
+					<p class="eyebrow">{t(locale, "header.preferences")}</p>
+					<p class="mobile-header-menu__availability">
+						<span aria-hidden="true"></span>
+						{t(locale, "header.availability")}
+					</p>
+				</div>
+				<div class="mobile-header-menu__controls">
+					<LanguageToggle locale={locale} href={languageHref} />
+					<ThemeToggle locale={locale} />
+				</div>
+			</div>
+		</div>
+
+		<footer class="mobile-header-menu__footer">
+			<a href={contactHref} class="button-action w-full" data-close-menu>
+				{t(locale, "header.assessmentCta")}
+				<Icon name="arrow-right" class="h-4 w-4" />
+			</a>
+		</footer>
+	</section>
+</div>
