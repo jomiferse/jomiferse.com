@@ -12,6 +12,8 @@ const {
 	idPrefix = "contact",
 	selectedService,
 	selectedScope,
+	variant = "page",
+	submitLabel,
 } = Astro.props as {
 	locale: Locale;
 	sourceCategory?: ContactSourceCategory;
@@ -19,6 +21,8 @@ const {
 	idPrefix?: string;
 	selectedService?: string;
 	selectedScope?: PricingKey;
+	variant?: "page" | "modal";
+	submitLabel?: string;
 };
 const contactCopy = getTranslations(locale).contactForm;
 const serviceOptions = [
@@ -45,8 +49,12 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 <form
 	action="/api/contact"
 	method="post"
-	class="contact-form p-5 md:p-6"
+	class:list={[
+		"contact-form p-5 md:p-6",
+		variant === "modal" && "contact-form--modal",
+	]}
 	data-contact-form
+	data-contact-form-variant={variant}
 >
 	<input type="hidden" name="locale" value={locale} />
 	<input
@@ -171,8 +179,8 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 		</div>
 	</div>
 
-	<button type="submit" class="button-action mt-6 w-full">
-		{contactCopy.submit}
+	<button type="submit" class="button-action mt-6 w-full" data-contact-submit>
+		<span data-contact-submit-label>{submitLabel ?? contactCopy.submit}</span>
 		<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 	</button>
 	<p class="contact-form__privacy">
@@ -202,6 +210,14 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 		font-weight: 800;
 		text-decoration: underline;
 		text-underline-offset: 0.2em;
+	}
+
+	.contact-form--modal {
+		border: 0;
+		border-radius: 0;
+		background: transparent;
+		box-shadow: none;
+		padding: 0;
 	}
 
 	.contact-selection {

@@ -1,6 +1,7 @@
 ---
 import Footer from "@/components/common/Footer.astro";
 import CookieConsent from "@/components/common/CookieConsent.astro";
+import GlobalContactDialog from "@/components/common/GlobalContactDialog.astro";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics.astro";
 import Header from "@/components/common/Header.astro";
 import "@/styles/global.css";
@@ -35,6 +36,9 @@ const {
 
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
+const showGlobalContact = !/^\/(en|es)\/(contact|privacy)(?:\/|$)/.test(
+	Astro.url.pathname,
+);
 
 const canonicalUrl = Astro.site
 	? new URL(canonicalPath ?? Astro.url.pathname, Astro.site).toString()
@@ -210,6 +214,11 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 			<slot />
 		</main>
 		<Footer locale={locale} />
+		{
+			showGlobalContact ? (
+				<GlobalContactDialog locale={locale} sourcePath={Astro.url.pathname} />
+			) : null
+		}
 		<CookieConsent locale={locale} />
 	</body>
 </html>

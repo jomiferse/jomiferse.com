@@ -13,7 +13,9 @@ const phases = [
 	"project",
 	"dist",
 ];
-const phaseArgument = process.argv.find((value) => value.startsWith("--phase="));
+const phaseArgument = process.argv.find((value) =>
+	value.startsWith("--phase="),
+);
 const requestedPhase = phaseArgument?.split("=")[1] ?? "project";
 const requestedIndex = phases.indexOf(requestedPhase);
 const verifyDist = process.argv.includes("--dist") || requestedPhase === "dist";
@@ -108,6 +110,75 @@ if (includesPhase("shell")) {
 		".dialog-shell__close",
 		".dialog-shell[open]",
 		"@media (prefers-reduced-motion: reduce)",
+	]);
+}
+
+if (includesPhase("contact")) {
+	const dialog = await readSource(
+		"src",
+		"components",
+		"common",
+		"GlobalContactDialog.astro",
+	);
+	const form = await readSource(
+		"src",
+		"components",
+		"forms",
+		"ContactForm.astro",
+	);
+	const layout = await readSource("src", "layouts", "BaseLayout.astro");
+	const serviceDetail = await readSource(
+		"src",
+		"pages",
+		"[locale]",
+		"services",
+		"[service].astro",
+	);
+	const conversionCta = await readSource(
+		"src",
+		"components",
+		"common",
+		"ConversionCta.astro",
+	);
+	const pricingCard = await readSource(
+		"src",
+		"components",
+		"services",
+		"ServicePricingCard.astro",
+	);
+
+	requireMarkers("global contact dialog", dialog, [
+		"DialogShell",
+		'size="form"',
+		"data-global-contact-dialog",
+		"ContactForm",
+		"data-contact-status",
+		"data-contact-dialog-open",
+		"parseContactSubmissionResult",
+		"fetch(form.action",
+		"reportValidity()",
+		"lastContactTrigger",
+		"requestAnimationFrame",
+	]);
+	requireMarkers("modal contact form", form, [
+		'variant?: "page" | "modal"',
+		"data-contact-form-variant",
+	]);
+	requireMarkers("contact layout mount", layout, [
+		"GlobalContactDialog",
+		"showGlobalContact",
+	]);
+	for (const [label, source] of [
+		["service detail", serviceDetail],
+		["conversion CTA", conversionCta],
+		["pricing card", pricingCard],
+	]) {
+		requireMarkers(label, source, ["data-contact-dialog-open"]);
+		rejectMarkers(label, source, ["data-contact-modal-open"]);
+	}
+	rejectMarkers("service detail", serviceDetail, [
+		'id="service-contact-dialog"',
+		"contactDialog.showModal()",
 	]);
 }
 
