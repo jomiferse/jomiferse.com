@@ -39,29 +39,33 @@
         "title": "Página no encontrada - José Miguel Fernández",
         "description": "La página que buscas no existe. Vuelve al inicio de la web, lee el blog o ponte en contacto."
       },
-      "eyebrow": "404",
-      "title": "Esta página ya no está aquí.",
-      "intro": "El enlace puede estar desactualizado, movido o mal escrito. Puedes volver a la web, leer el blog o enviarme un mensaje.",
+      "eyebrow": "Página no encontrada",
+      "code": "404",
+      "title": "Ese enlace no lleva a ninguna página.",
+      "intro": "Puede que la página se haya movido o que la dirección no sea correcta. Puedes volver al inicio o seguir por una de estas rutas.",
       "actions": {
-        "home": "Ir al inicio",
-        "blog": "Leer blog",
-        "contact": "Contactar"
+        "home": "Volver al inicio",
+        "contact": "Avisarme del enlace roto"
       },
-      "cards": [
+      "destinationsLabel": "También puedes seguir por aquí",
+      "destinations": [
         {
-          "label": "Inicio",
-          "title": "Web",
-          "body": "Vuelve a la vista principal de proyectos, experiencia y servicios."
+          "label": "01",
+          "title": "Servicios",
+          "body": "Webs, software a medida, automatización e integraciones.",
+          "href": "services"
         },
         {
-          "label": "Escritura",
+          "label": "02",
+          "title": "Proyectos",
+          "body": "Casos reales, decisiones técnicas y resultados.",
+          "href": "projects"
+        },
+        {
+          "label": "03",
           "title": "Blog",
-          "body": "Notas recientes sobre backend, producto y software práctico."
-        },
-        {
-          "label": "Contacto",
-          "title": "Encaje de proyecto",
-          "body": "Si esperabas algo concreto, envíame el contexto y lo reviso."
+          "body": "Guías prácticas sobre producto, backend y desarrollo web.",
+          "href": "blog"
         }
       ]
     }

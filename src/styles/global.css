@@ -179,6 +179,10 @@ body:has(.consultancy-hero) main.site-shell {
 	max-width: 88rem;
 }
 
+body:has(.not-found) main.site-shell {
+	max-width: 88rem;
+}
+
 body:has(.about-page) main.site-shell {
 	max-width: 88rem;
 }

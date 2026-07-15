@@ -6,51 +6,264 @@ const { locale } = Astro.props as { locale: Locale };
 const page = getTranslations(locale).notFound.page;
 ---
 
-<section class="section-reveal py-10 md:py-20">
-	<div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
-		<div>
+<section class="not-found section-reveal" aria-labelledby="not-found-title">
+	<div class="not-found__hero">
+		<p class="not-found__code" aria-hidden="true">{page.code}</p>
+
+		<div class="not-found__message">
 			<p class="eyebrow">{page.eyebrow}</p>
-			<h1
-				class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
-			>
-				{page.title}
-			</h1>
-		</div>
-		<div class="dark-card p-5 md:p-7">
-			<p class="muted-copy max-w-xl text-base leading-8 md:text-lg">
-				{page.intro}
-			</p>
-			<div class="mt-8 flex flex-col gap-3 sm:flex-row">
-				<a href={`/${locale}/`} class="button-primary w-full sm:w-auto">
+			<h1 id="not-found-title">{page.title}</h1>
+			<p class="not-found__intro">{page.intro}</p>
+
+			<div class="not-found__actions">
+				<a href={`/${locale}/`} class="button-action">
 					{page.actions.home}
 					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 				</a>
-				<a href={`/${locale}/blog/`} class="button-secondary w-full sm:w-auto">
-					{page.actions.blog}
-				</a>
-				<a
-					href={`/${locale}/contact/`}
-					class="button-secondary w-full sm:w-auto"
-				>
+				<a href={`/${locale}/contact/`} class="not-found__contact">
 					{page.actions.contact}
+					<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
 				</a>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section class="section-band section-reveal py-16 md:py-24">
-	<div class="grid gap-5 md:grid-cols-3">
-		{
-			page.cards.map((card) => (
-				<article class="dark-card p-5 md:p-6">
-					<p class="eyebrow">{card.label}</p>
-					<h2 class="mt-4 text-xl font-black text-[var(--text)]">
-						{card.title}
-					</h2>
-					<p class="muted-copy mt-3 text-sm leading-7">{card.body}</p>
-				</article>
-			))
-		}
+<section
+	class="not-found__destinations section-reveal"
+	aria-labelledby="not-found-destinations-title"
+>
+	<div class="not-found__destinations-inner">
+		<h2 id="not-found-destinations-title">{page.destinationsLabel}</h2>
+		<nav aria-label={page.destinationsLabel}>
+			{
+				page.destinations.map((destination) => (
+					<a
+						href={`/${locale}/${destination.href}/`}
+						class="not-found__destination"
+					>
+						<span class="not-found__destination-number">
+							{destination.label}
+						</span>
+						<span class="not-found__destination-copy">
+							<strong>{destination.title}</strong>
+							<small>{destination.body}</small>
+						</span>
+						<Icon name="arrow-right" class="h-5 w-5" aria-hidden="true" />
+					</a>
+				))
+			}
+		</nav>
 	</div>
 </section>
+
+<style>
+	.not-found {
+		padding-block: clamp(1rem, 4vw, 3.5rem) clamp(4rem, 8vw, 7rem);
+	}
+
+	.not-found__hero {
+		display: grid;
+		grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+		gap: clamp(3rem, 8vw, 8rem);
+		align-items: end;
+	}
+
+	.not-found__code {
+		color: transparent;
+		font-size: clamp(8rem, 19vw, 17rem);
+		font-weight: 900;
+		letter-spacing: -0.09em;
+		line-height: 0.72;
+		-webkit-text-stroke: 2px
+			color-mix(in srgb, var(--home-navy) 24%, transparent);
+	}
+
+	.not-found__message {
+		max-width: 48rem;
+	}
+
+	.not-found__message h1 {
+		max-width: 46rem;
+		margin-top: 1rem;
+		color: var(--home-navy);
+		font-size: clamp(2.7rem, 5.4vw, 5rem);
+		font-weight: 900;
+		letter-spacing: -0.06em;
+		line-height: 0.98;
+		text-wrap: balance;
+	}
+
+	.not-found__intro {
+		max-width: 41rem;
+		margin-top: 1.5rem;
+		color: var(--text-muted);
+		font-size: clamp(1rem, 1.6vw, 1.12rem);
+		line-height: 1.75;
+	}
+
+	.not-found__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem 1.25rem;
+		align-items: center;
+		margin-top: 2rem;
+	}
+
+	.not-found__contact {
+		display: inline-flex;
+		min-height: 3rem;
+		align-items: center;
+		gap: 0.5rem;
+		border-bottom: 1px solid var(--surface-border);
+		color: var(--text);
+		font-size: 0.9rem;
+		font-weight: 800;
+	}
+
+	.not-found__contact:hover {
+		border-color: var(--action);
+		color: var(--action);
+	}
+
+	.not-found__destinations {
+		width: 100vw;
+		margin: 0 calc(50% - 50vw) -5rem;
+		padding: clamp(3.5rem, 7vw, 5.5rem) max(1rem, calc((100vw - 88rem) / 2));
+		background: var(--surface-strong);
+	}
+
+	.not-found__destinations-inner {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.45fr) minmax(0, 1fr);
+		gap: clamp(2rem, 7vw, 7rem);
+		align-items: start;
+	}
+
+	.not-found__destinations h2 {
+		max-width: 22rem;
+		padding-inline: clamp(0.5rem, 2vw, 1.5rem);
+		color: var(--home-navy);
+		font-size: clamp(2.2rem, 4vw, 3.6rem);
+		font-weight: 900;
+		letter-spacing: -0.035em;
+		line-height: 1.12;
+		text-wrap: balance;
+	}
+
+	.not-found__destinations nav {
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.not-found__destination {
+		display: grid;
+		grid-template-columns: 3rem minmax(0, 1fr) auto;
+		gap: 1rem;
+		min-height: 7.5rem;
+		align-items: center;
+		padding: 1.25rem 0;
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.not-found__destination-number {
+		align-self: start;
+		padding-top: 0.2rem;
+		color: var(--action);
+		font-size: 0.75rem;
+		font-weight: 900;
+		letter-spacing: 0.12em;
+	}
+
+	.not-found__destination-copy {
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	.not-found__destination strong {
+		color: var(--text);
+		font-size: clamp(1.15rem, 2vw, 1.45rem);
+		font-weight: 900;
+		letter-spacing: -0.025em;
+	}
+
+	.not-found__destination small {
+		color: var(--text-muted);
+		font-size: 0.92rem;
+		line-height: 1.55;
+	}
+
+	.not-found__destination > :global(svg) {
+		color: var(--text-muted);
+		transition:
+			color 180ms ease,
+			transform 180ms ease;
+	}
+
+	.not-found__destination:hover > :global(svg) {
+		color: var(--action);
+		transform: translateX(0.35rem);
+	}
+
+	.not-found__destination:hover strong {
+		color: var(--action);
+	}
+
+	@media (min-width: 761px) {
+		.not-found__destinations {
+			margin-bottom: -5rem;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.not-found {
+			padding-top: 0;
+		}
+
+		.not-found__hero,
+		.not-found__destinations-inner {
+			grid-template-columns: 1fr;
+		}
+
+		.not-found__hero {
+			gap: 2.5rem;
+		}
+
+		.not-found__code {
+			font-size: clamp(7rem, 39vw, 10rem);
+			line-height: 0.78;
+		}
+
+		.not-found__actions {
+			align-items: stretch;
+			flex-direction: column;
+		}
+
+		.not-found__actions .button-action {
+			width: 100%;
+		}
+
+		.not-found__contact {
+			justify-content: center;
+			border-bottom: 0;
+		}
+
+		.not-found__destinations {
+			margin-bottom: -3.5rem;
+		}
+
+		.not-found__destinations h2 {
+			max-width: 21rem;
+		}
+
+		.not-found__destination {
+			grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+			min-height: 7rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.not-found__destination > :global(svg) {
+			transition: none;
+		}
+	}
+</style>

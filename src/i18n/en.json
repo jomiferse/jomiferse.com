@@ -39,29 +39,33 @@
         "title": "Page not found - José Miguel Fernández",
         "description": "The page you are looking for does not exist. Return to the website home, read the blog or get in touch."
       },
-      "eyebrow": "404",
-      "title": "This page is not here anymore.",
-      "intro": "The link may be outdated, moved or mistyped. You can go back to the main website, read recent writing or send me a message.",
+      "eyebrow": "Page not found",
+      "code": "404",
+      "title": "That link doesn't lead to a page.",
+      "intro": "The page may have moved, or the address may be wrong. You can return home or try one of these routes.",
       "actions": {
-        "home": "Go home",
-        "blog": "Read blog",
-        "contact": "Contact"
+        "home": "Return home",
+        "contact": "Tell me about the broken link"
       },
-      "cards": [
+      "destinationsLabel": "You can also continue here",
+      "destinations": [
         {
-          "label": "Start",
-          "title": "Website",
-          "body": "Go back to the main view of projects, experience and services."
+          "label": "01",
+          "title": "Services",
+          "body": "Websites, custom software, automation and integrations.",
+          "href": "services"
         },
         {
-          "label": "Writing",
+          "label": "02",
+          "title": "Projects",
+          "body": "Real work, technical decisions and outcomes.",
+          "href": "projects"
+        },
+        {
+          "label": "03",
           "title": "Blog",
-          "body": "Recent notes about backend systems, product work and practical software."
-        },
-        {
-          "label": "Contact",
-          "title": "Project fit",
-          "body": "If you expected something specific, send me the context and I will check it."
+          "body": "Practical guides on product, backend and web development.",
+          "href": "blog"
         }
       ]
     }
