@@ -91,6 +91,18 @@ pnpm run build
 pnpm run preview
 ```
 
+### Contact email configuration
+
+The contact endpoint requires `RESEND_API_KEY`, `CONTACT_FROM` and `CONTACT_TO`.
+Copy `.env.example` into the environment used locally or on Vercel. The
+`CONTACT_FROM` address must belong to a domain verified in Resend before the
+site is deployed; do not commit the real API key.
+
+The endpoint rate-limits a salted hash of Vercel's protected client-address
+header and uses Resend idempotency as a cross-instance backstop. It does not
+store raw IP addresses or contact message content. Resend retains the opaque
+idempotency key for 24 hours.
+
 ## 📬 Contact
 
 If you'd like to reach out, here are my official channels:

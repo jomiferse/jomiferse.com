@@ -98,8 +98,8 @@ const structuredData = [
 
 			<div class="contact-form-column">
 				<div
+					id="contact-status-sent"
 					data-contact-status="sent"
-					hidden
 					class="contact-status contact-status--success"
 					role="status"
 				>
@@ -107,8 +107,8 @@ const structuredData = [
 					<p>{page.successText}</p>
 				</div>
 				<div
+					id="contact-status-missing"
 					data-contact-status="missing"
-					hidden
 					class="contact-status"
 					role="alert"
 				>
@@ -116,8 +116,8 @@ const structuredData = [
 					<p>{page.missingText}</p>
 				</div>
 				<div
+					id="contact-status-send"
 					data-contact-status="send"
-					hidden
 					class="contact-status"
 					role="alert"
 				>
@@ -146,7 +146,7 @@ const structuredData = [
 		if (status) {
 			document
 				.querySelector<HTMLElement>(`[data-contact-status="${status}"]`)
-				?.removeAttribute("hidden");
+				?.classList.add("contact-status--visible");
 		}
 	</script>
 </BaseLayout>
@@ -249,6 +249,7 @@ const structuredData = [
 	}
 
 	.contact-status {
+		display: none;
 		margin-bottom: 1rem;
 		padding: 1rem 1.1rem;
 		border: 1px solid
@@ -256,6 +257,11 @@ const structuredData = [
 		border-radius: 1rem;
 		background: color-mix(in srgb, var(--action) 7%, var(--surface));
 		color: var(--text);
+	}
+
+	.contact-status:target,
+	.contact-status--visible {
+		display: block;
 	}
 
 	.contact-status p {
