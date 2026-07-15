@@ -78,6 +78,19 @@ test("prefers changed no-JavaScript selections over preselected enhanced values"
 	}
 });
 
+test("lets no-JavaScript users clear preselected service and scope", () => {
+	const cleared = validForm();
+	cleared.set("serviceFallback", "");
+	cleared.set("scopeFallback", "");
+
+	const result = parseContactFormData(cleared, allowedServices);
+	assert.equal(result.ok, true);
+	if (result.ok) {
+		assert.equal(result.input.service, "");
+		assert.equal(result.input.scope, "");
+	}
+});
+
 test("rejects empty, malformed and oversized contact fields", () => {
 	const invalidForms = [
 		validForm({ name: "" }),

@@ -74,11 +74,11 @@ export function parseContactFormData(
 		? localeRaw
 		: "es";
 	const serviceEnhanced = readString(form, "service") ?? "";
-	const serviceFallback = readString(form, "serviceFallback") ?? "";
+	const serviceFallback = readString(form, "serviceFallback");
 	const scopeEnhanced = readString(form, "scope") ?? "";
-	const scopeFallback = readString(form, "scopeFallback") ?? "";
-	const serviceRaw = serviceFallback || serviceEnhanced;
-	const scopeRaw = scopeFallback || scopeEnhanced;
+	const scopeFallback = readString(form, "scopeFallback");
+	const serviceRaw = serviceFallback ?? serviceEnhanced;
+	const scopeRaw = scopeFallback ?? scopeEnhanced;
 	const safeService = allowedServices.has(serviceRaw) ? serviceRaw : "";
 	const safeScope = isOneOf(scopeRaw, contactScopes) ? scopeRaw : "";
 	const redirect = {

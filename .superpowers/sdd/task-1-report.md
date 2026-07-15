@@ -253,3 +253,21 @@ pnpm run check             118 files, 0 errors, 0 warnings, 0 hints
 pnpm run lint              exit 0, zero warnings
 pnpm run format:check      exit 0, all files matched Prettier style
 ```
+
+## Final nullable-fallback correction
+
+The native fallback parser now distinguishes a missing control (`null`) from an
+explicitly submitted empty value (`""`). It uses nullish precedence so a
+no-JavaScript user can clear both server-rendered service and scope selections,
+while JavaScript-enhanced submissions that omit fallback controls continue to
+use their hidden values.
+
+The regression was observed failing against truthy fallback selection, then
+passed after the nullable change. Final verification for this correction:
+
+```text
+focused contact tests      26 passed, 0 failed, 0 skipped
+pnpm run check             118 files, 0 errors, 0 warnings, 0 hints
+pnpm run lint              exit 0, zero warnings
+pnpm run format:check      exit 0, all files matched Prettier style
+```
