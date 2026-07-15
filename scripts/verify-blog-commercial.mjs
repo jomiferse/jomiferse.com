@@ -315,5 +315,5 @@ if (failures.length > 0) {
 	console.error(failures.join("\n"));
 	process.exitCode = 1;
 } else {
-	console.log("Blog commercial source verification passed.");
+	console.warn("Blog commercial source verification passed.");
 }
