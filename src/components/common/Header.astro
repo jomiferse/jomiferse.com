@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import BrandMark from "@/components/common/BrandMark.astro";
 import LanguageToggle from "@/components/common/LanguageToggle.astro";
 import MobileHeaderMenu from "@/components/common/MobileHeaderMenu.astro";
 import ThemeToggle from "@/components/common/ThemeToggle.astro";
@@ -56,7 +57,7 @@ const navigationItems = links.map((link, index) => ({
 				class="header-brand"
 				aria-label={t(locale, "nav.home")}
 			>
-				<span class="header-brand__mark">JMF</span>
+				<BrandMark class="header-brand__mark" />
 				<span class="header-brand__copy">
 					<strong>
 						<span class="header-brand__name-short">José Miguel</span>
