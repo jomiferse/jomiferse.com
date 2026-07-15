@@ -40,6 +40,10 @@ const requiredPaths = [
 	"featuredWork.link",
 	"process.steps",
 	"proof.points",
+	"skills.eyebrow",
+	"skills.title",
+	"skills.text",
+	"skills.pauseLabel",
 	"cta.button",
 ];
 
@@ -92,6 +96,29 @@ for (const [source, marker] of [
 	if (!source.includes(marker)) {
 		failures.push(`home density: missing compact desktop rule ${marker}`);
 	}
+}
+
+for (const marker of [
+	'import TechnologyMarquee from "@/components/common/TechnologyMarquee.astro"',
+	"<HomeSpecializedServices",
+	"<TechnologyMarquee",
+	"<HomeProcess",
+	'headingId="home-technologies-title"',
+	"page.skills.eyebrow",
+	"page.skills.title",
+	"page.skills.text",
+	"page.skills.pauseLabel",
+]) {
+	if (!homePage.includes(marker)) {
+		failures.push(`home technology marquee: missing ${marker}`);
+	}
+}
+
+const servicesIndex = homePage.indexOf("<HomeSpecializedServices");
+const marqueeIndex = homePage.indexOf("<TechnologyMarquee");
+const processIndex = homePage.indexOf("<HomeProcess");
+if (!(servicesIndex < marqueeIndex && marqueeIndex < processIndex)) {
+	failures.push("home technology marquee: incorrect section order");
 }
 
 for (const locale of ["en", "es"]) {

@@ -5,6 +5,7 @@ import HomeProcess from "@/components/home/HomeProcess.astro";
 import HomeServicePaths from "@/components/home/HomeServicePaths.astro";
 import HomeSpecializedServices from "@/components/home/HomeSpecializedServices.astro";
 import HomeTrust from "@/components/home/HomeTrust.astro";
+import TechnologyMarquee from "@/components/common/TechnologyMarquee.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
@@ -62,6 +63,14 @@ const structuredData = [
 	<HomeServicePaths locale={locale} content={page.assessment} />
 
 	<HomeSpecializedServices locale={locale} content={page.specializedServices} />
+
+	<TechnologyMarquee
+		eyebrow={page.skills.eyebrow}
+		title={page.skills.title}
+		description={page.skills.text}
+		pauseLabel={page.skills.pauseLabel}
+		headingId="home-technologies-title"
+	/>
 
 	<HomeProcess content={page.process} />
 	<HomeTrust content={page.proof} />
