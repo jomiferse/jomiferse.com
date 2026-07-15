@@ -328,7 +328,6 @@
       "skills": {
         "eyebrow": "Stack",
         "title": "Technologies I work with",
-        "text": "Backend is my base, but I can move across the stack when the project needs it.",
         "pauseLabel": "Moving technology list. Keep focus here to pause the animation.",
         "groups": [
           {

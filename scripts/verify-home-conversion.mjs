@@ -42,7 +42,6 @@ const requiredPaths = [
 	"proof.points",
 	"skills.eyebrow",
 	"skills.title",
-	"skills.text",
 	"skills.pauseLabel",
 	"cta.button",
 ];
@@ -106,7 +105,6 @@ for (const marker of [
 	'headingId="home-technologies-title"',
 	"page.skills.eyebrow",
 	"page.skills.title",
-	"page.skills.text",
 	"page.skills.pauseLabel",
 ]) {
 	if (!homePage.includes(marker)) {
