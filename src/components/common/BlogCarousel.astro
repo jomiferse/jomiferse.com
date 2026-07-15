@@ -27,6 +27,7 @@ const initialPosition = copy.carouselPosition
 ---
 
 <div
+	role="region"
 	aria-label={label}
 	aria-roledescription="carousel"
 	data-blog-carousel
@@ -69,9 +70,13 @@ const initialPosition = copy.carouselPosition
 		data-carousel-track
 	>
 		{
-			posts.map((post) => (
+			posts.map((post, index) => (
 				<li
 					class="flex w-[86%] shrink-0 snap-start sm:w-auto sm:shrink"
+					role="group"
+					aria-label={copy.carouselPosition
+						.replace("{current}", String(index + 1))
+						.replace("{total}", String(posts.length))}
 					data-blog-slide
 				>
 					<BlogPostCard

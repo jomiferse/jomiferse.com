@@ -169,16 +169,21 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 		</dl>
 	</section>
 
+	<p class="contact-form__required-note" data-required-note>
+		{contactCopy.requiredNote}
+	</p>
 	<div class="grid gap-5 md:grid-cols-2">
 		<div>
 			<label for={`${idPrefix}-name`} class="eyebrow mb-2 block">
 				{t(locale, "contactForm.nameLabel")}
+				<span aria-hidden="true">*</span>
 			</label>
 			<div class="form-shell">
 				<Icon name="user" class="form-icon h-5 w-5" />
 				<input
 					id={`${idPrefix}-name`}
 					name="name"
+					aria-describedby={`${idPrefix}-name-error`}
 					autocomplete="name"
 					required
 					minlength="2"
@@ -187,11 +192,21 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 					class="form-input"
 				/>
 			</div>
+			<p
+				id={`${idPrefix}-name-error`}
+				class="form-error"
+				data-field-error="name"
+				role="alert"
+				hidden
+			>
+				{contactCopy.nameError}
+			</p>
 		</div>
 
 		<div>
 			<label for={`${idPrefix}-email`} class="eyebrow mb-2 block">
 				{t(locale, "contactForm.emailLabel")}
+				<span aria-hidden="true">*</span>
 			</label>
 			<div class="form-shell">
 				<Icon name="mail" class="form-icon h-5 w-5" />
@@ -199,6 +214,7 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 					id={`${idPrefix}-email`}
 					type="email"
 					name="email"
+					aria-describedby={`${idPrefix}-email-error`}
 					autocomplete="email"
 					required
 					maxlength="254"
@@ -206,17 +222,28 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 					class="form-input"
 				/>
 			</div>
+			<p
+				id={`${idPrefix}-email-error`}
+				class="form-error"
+				data-field-error="email"
+				role="alert"
+				hidden
+			>
+				{contactCopy.emailError}
+			</p>
 		</div>
 
 		<div class="md:col-span-2">
 			<label for={`${idPrefix}-message`} class="eyebrow mb-2 block">
 				{t(locale, "contactForm.messageLabel")}
+				<span aria-hidden="true">*</span>
 			</label>
 			<div class="form-shell form-shell-textarea">
 				<Icon name="pencil" class="form-icon form-textarea-icon h-5 w-5" />
 				<textarea
 					id={`${idPrefix}-message`}
 					name="message"
+					aria-describedby={`${idPrefix}-message-error`}
 					required
 					minlength="20"
 					maxlength="5000"
@@ -224,6 +251,15 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 					placeholder={t(locale, "contactForm.messagePlaceholder")}
 					class="form-input form-textarea leading-7"></textarea>
 			</div>
+			<p
+				id={`${idPrefix}-message-error`}
+				class="form-error"
+				data-field-error="message"
+				role="alert"
+				hidden
+			>
+				{contactCopy.messageError}
+			</p>
 		</div>
 	</div>
 
@@ -276,6 +312,24 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 		text-align: center;
 	}
 
+	.contact-form__required-note {
+		margin-bottom: 1rem;
+		color: var(--text-muted);
+		font-size: 0.78rem;
+	}
+
+	.form-error {
+		margin-top: 0.5rem;
+		color: var(--action);
+		font-size: 0.78rem;
+		font-weight: 700;
+		line-height: 1.45;
+	}
+
+	.form-error[hidden] {
+		display: none;
+	}
+
 	.contact-form__privacy a {
 		color: var(--action);
 		font-weight: 800;
@@ -292,8 +346,8 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 	}
 
 	.contact-form--modal .form-shell:focus-within {
-		border-color: color-mix(in srgb, var(--action) 42%, var(--surface-border));
-		box-shadow: 0 0 0 4px color-mix(in srgb, var(--action) 11%, transparent);
+		border-color: var(--focus-ring);
+		box-shadow: 0 0 0 4px color-mix(in srgb, var(--focus-ring) 18%, transparent);
 	}
 
 	.contact-form--modal .form-shell:focus-within .form-icon {
@@ -422,6 +476,40 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 	document
 		.querySelectorAll<HTMLFormElement>("[data-contact-form]")
 		.forEach((form) => {
+			const syncFieldValidity = (
+				field: HTMLInputElement | HTMLTextAreaElement,
+			) => {
+				const error = form.querySelector<HTMLElement>(
+					`[data-field-error="${field.name}"]`,
+				);
+				const invalid = !field.validity.valid;
+				field.setAttribute("aria-invalid", String(invalid));
+				if (error) error.hidden = !invalid;
+			};
+
+			form.addEventListener(
+				"invalid",
+				(event) => {
+					const field = event.target;
+					if (
+						field instanceof HTMLInputElement ||
+						field instanceof HTMLTextAreaElement
+					) {
+						syncFieldValidity(field);
+					}
+				},
+				true,
+			);
+			form.addEventListener("input", (event) => {
+				const field = event.target;
+				if (
+					field instanceof HTMLInputElement ||
+					field instanceof HTMLTextAreaElement
+				) {
+					syncFieldValidity(field);
+				}
+			});
+
 			if (queryService) updateSelection(form, queryService, queryScope);
 		});
 

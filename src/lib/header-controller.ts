@@ -4,6 +4,34 @@ const FOCUSABLE_SELECTOR = [
 	'[tabindex]:not([tabindex="-1"])',
 ].join(",");
 
+interface MenuInertTarget {
+	inert: boolean;
+	dataset: {
+		mobileMenuInert?: string;
+	};
+}
+
+export const toggleMenuBackgroundInert = (
+	targets: MenuInertTarget[],
+	menu: MenuInertTarget,
+	active: boolean,
+): void => {
+	for (const target of targets) {
+		if (target === menu) continue;
+
+		if (active) {
+			if (target.inert) continue;
+			target.inert = true;
+			target.dataset.mobileMenuInert = "true";
+			continue;
+		}
+
+		if (target.dataset.mobileMenuInert !== "true") continue;
+		target.inert = false;
+		delete target.dataset.mobileMenuInert;
+	}
+};
+
 const isDark = () => document.documentElement.classList.contains("dark");
 
 const setStoredPreference = (key: string, value: string) => {
@@ -76,6 +104,13 @@ export const initSiteHeader = (): void => {
 		menu.setAttribute("aria-hidden", "true");
 		trigger?.setAttribute("aria-expanded", "false");
 		document.body.classList.remove("mobile-menu-open");
+		toggleMenuBackgroundInert(
+			Array.from(document.body.children).filter(
+				(element): element is HTMLElement => element instanceof HTMLElement,
+			),
+			menu,
+			false,
+		);
 		closeTimer = window.setTimeout(
 			() => finishClose(restoreFocus),
 			reducedMotion.matches ? 0 : 220,
@@ -90,6 +125,13 @@ export const initSiteHeader = (): void => {
 		menu.setAttribute("aria-hidden", "false");
 		trigger.setAttribute("aria-expanded", "true");
 		document.body.classList.add("mobile-menu-open");
+		toggleMenuBackgroundInert(
+			Array.from(document.body.children).filter(
+				(element): element is HTMLElement => element instanceof HTMLElement,
+			),
+			menu,
+			true,
+		);
 		requestAnimationFrame(() => {
 			menu.dataset.open = "true";
 			closeButton?.focus();

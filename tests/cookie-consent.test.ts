@@ -63,8 +63,8 @@ test("loads analytics only when both consent and a measurement id exist", () => 
 	assert.equal(getShouldLoadAnalytics(null, "G-ABC123"), false);
 });
 
-test("shows analytics enabled by default before the user saves preferences", () => {
-	assert.equal(getInitialAnalyticsPreference(null), true);
+test("keeps analytics disabled until the user opts in", () => {
+	assert.equal(getInitialAnalyticsPreference(null), false);
 	assert.equal(getInitialAnalyticsPreference({ analytics: true }), true);
 	assert.equal(getInitialAnalyticsPreference({ analytics: false }), false);
 });

@@ -66,6 +66,18 @@ test("renders validated contact selection and status from the request URL", asyn
 			selectedHtml,
 			/data-contact-status="missing" class="contact-status contact-status--visible"/,
 		);
+		assert.match(
+			selectedHtml,
+			/name="name"[\s\S]*aria-describedby="contact-name-error"/,
+		);
+		assert.match(
+			selectedHtml,
+			/id="contact-name-error"[\s\S]*data-field-error="name"[\s\S]*role="alert"/,
+		);
+		assert.match(
+			selectedHtml,
+			/data-required-note[^>]*>\s*Fields marked with \* are required\./,
+		);
 
 		const invalidHtml = await render(
 			"https://www.jomiferse.com/en/contact?service=unknown-service&scope=project",

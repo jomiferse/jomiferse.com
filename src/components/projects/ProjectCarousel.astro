@@ -26,6 +26,7 @@ const initialPosition = copy.carouselPosition
 	id="project-cases"
 	class="projects-collection section-reveal pb-18 md:pb-24"
 	aria-label={copy.viewCase}
+	aria-roledescription="carousel"
 	data-project-carousel
 	data-position-template={copy.carouselPosition}
 >
@@ -66,9 +67,13 @@ const initialPosition = copy.carouselPosition
 		data-carousel-track
 	>
 		{
-			projects.map((project) => (
+			projects.map((project, index) => (
 				<li
 					class="w-[86%] shrink-0 snap-start sm:w-auto sm:shrink"
+					role="group"
+					aria-label={copy.carouselPosition
+						.replace("{current}", String(index + 1))
+						.replace("{total}", String(projects.length))}
 					data-project-slide
 				>
 					<ProjectArchiveCard

@@ -941,6 +941,10 @@
     "emailPlaceholder": "you@example.com",
     "messageLabel": "Message",
     "messagePlaceholder": "Tell me what you have now, what you want to improve and what result you need.",
+    "requiredNote": "Fields marked with * are required.",
+    "nameError": "Enter a name between 2 and 100 characters.",
+    "emailError": "Enter a valid email address.",
+    "messageError": "Write between 20 and 5,000 characters.",
     "submit": "Send enquiry",
     "privacyNote": "I will only use your details to respond to this enquiry. ",
     "privacyLink": "View privacy information"

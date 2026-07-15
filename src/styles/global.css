@@ -18,8 +18,13 @@
 	--accent-strong: #007fa3;
 	--accent-soft: rgba(56, 215, 255, 0.12);
 	--accent-line: rgba(0, 127, 163, 0.22);
-	--action: #c8432f;
-	--action-hover: #a93424;
+	--action: #a93424;
+	--action-hover: #8f2a1d;
+	--action-surface: #c8432f;
+	--action-surface-hover: #a93424;
+	--focus-ring: #005fcc;
+	--layer-cookie: 80;
+	--layer-mobile-menu: 90;
 	--home-navy: #102d4f;
 	--footer-bg: #0b223b;
 	--footer-rule: rgba(244, 248, 252, 0.045);
@@ -51,6 +56,9 @@
 	--accent-line: rgba(56, 215, 255, 0.24);
 	--action: #ff8068;
 	--action-hover: #ff9a86;
+	--action-surface: #ff8068;
+	--action-surface-hover: #ff9a86;
+	--focus-ring: #74e3ff;
 	--home-navy: #dce9f7;
 	--footer-bg: #05070b;
 	--footer-rule: rgba(244, 247, 251, 0.035);
@@ -129,7 +137,7 @@ select {
 }
 
 :focus-visible {
-	outline: 2px solid var(--accent);
+	outline: 2px solid var(--focus-ring);
 	outline-offset: 4px;
 }
 
@@ -137,12 +145,6 @@ input,
 textarea,
 select {
 	appearance: none;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-	outline: none;
 }
 
 :target,
@@ -413,10 +415,11 @@ body:has(.privacy-page) main.site-shell {
 }
 
 .button-action {
-	border: 1px solid color-mix(in srgb, var(--action) 82%, black);
-	background: var(--action);
+	border: 1px solid color-mix(in srgb, var(--action-surface) 82%, black);
+	background: var(--action-surface);
 	color: white;
-	box-shadow: 0 12px 30px color-mix(in srgb, var(--action) 24%, transparent);
+	box-shadow: 0 12px 30px
+		color-mix(in srgb, var(--action-surface) 24%, transparent);
 }
 
 [data-cookie-settings-trigger] {
@@ -425,9 +428,10 @@ body:has(.privacy-page) main.site-shell {
 
 .button-action:hover {
 	transform: translateY(-1px);
-	border-color: var(--action-hover);
-	background: var(--action-hover);
-	box-shadow: 0 16px 36px color-mix(in srgb, var(--action) 30%, transparent);
+	border-color: var(--action-surface-hover);
+	background: var(--action-surface-hover);
+	box-shadow: 0 16px 36px
+		color-mix(in srgb, var(--action-surface) 30%, transparent);
 }
 
 .dark .button-action {
@@ -687,7 +691,7 @@ body:has(.privacy-page) main.site-shell {
 .mobile-header-menu {
 	position: fixed;
 	inset: 0;
-	z-index: 70;
+	z-index: var(--layer-mobile-menu);
 	background: var(--bg);
 	opacity: 0;
 	visibility: hidden;
@@ -1109,7 +1113,10 @@ body.mobile-menu-open {
 }
 
 .footer-legal button {
-	padding: 0;
+	display: inline-flex;
+	min-height: 2.75rem;
+	align-items: center;
+	padding: 0 0.35rem;
 	border: 0;
 	background: transparent;
 	cursor: pointer;
@@ -1351,8 +1358,12 @@ body.mobile-menu-open {
 }
 
 .form-shell:focus-within {
-	border-color: var(--accent-line);
-	box-shadow: 0 0 0 4px var(--accent-soft);
+	border-color: var(--focus-ring);
+	box-shadow: 0 0 0 4px color-mix(in srgb, var(--focus-ring) 18%, transparent);
+}
+
+body:has(.cookie-consent__banner:not([hidden])) :focus {
+	scroll-margin-bottom: 14rem;
 }
 
 .form-shell:has(.form-input[aria-invalid="true"]),

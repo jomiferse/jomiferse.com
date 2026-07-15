@@ -53,5 +53,5 @@ export function getShouldLoadAnalytics(
 export function getInitialAnalyticsPreference(
 	preferences: CookieConsentPreferences | null,
 ): boolean {
-	return preferences?.analytics ?? true;
+	return preferences?.analytics ?? false;
 }

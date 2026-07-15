@@ -941,6 +941,10 @@
     "emailPlaceholder": "tu@email.com",
     "messageLabel": "Mensaje",
     "messagePlaceholder": "Cuéntame qué tienes ahora, qué quieres mejorar y qué resultado buscas.",
+    "requiredNote": "Los campos marcados con * son obligatorios.",
+    "nameError": "Escribe un nombre de entre 2 y 100 caracteres.",
+    "emailError": "Escribe una dirección de email válida.",
+    "messageError": "Escribe entre 20 y 5.000 caracteres.",
     "submit": "Enviar consulta",
     "privacyNote": "Usaré tus datos únicamente para responder a esta consulta. ",
     "privacyLink": "Ver privacidad"
