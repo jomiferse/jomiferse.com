@@ -150,15 +150,16 @@ const { items, label, currentLabel, icon = "book-open" } = Astro.props as Props;
 						else link.removeAttribute("aria-current");
 					});
 
+					const activeLink = links.find(
+						(link) => decodeURIComponent(link.hash.slice(1)) === id,
+					);
+					current?.replaceChildren(activeLink?.textContent?.trim() ?? "");
+
 					const index = sections.findIndex((section) => section.id === id);
-					current?.replaceChildren(sections[index]?.textContent?.trim() ?? "");
 					const ratio =
 						sections.length === 1 ? 1 : index / (sections.length - 1);
 					progress?.style.setProperty("transform", `scaleX(${ratio})`);
 
-					const activeLink = links.find(
-						(link) => decodeURIComponent(link.hash.slice(1)) === id,
-					);
 					if (activeLink && list && list.offsetParent !== null) {
 						const listRect = list.getBoundingClientRect();
 						const linkRect = activeLink.getBoundingClientRect();
