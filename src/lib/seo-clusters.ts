@@ -14,8 +14,7 @@ export const commercialSeoClusterKeys = [
 	"technical-audit",
 ] as const;
 
-export type CommercialSeoClusterKey =
-	(typeof commercialSeoClusterKeys)[number];
+export type CommercialSeoClusterKey = (typeof commercialSeoClusterKeys)[number];
 
 export interface CommercialSeoCluster {
 	key: CommercialSeoClusterKey;
