@@ -449,6 +449,10 @@ body:has(.contact-page) main.site-shell {
 	box-shadow: 0 12px 30px color-mix(in srgb, var(--action) 24%, transparent);
 }
 
+[data-cookie-settings-trigger] {
+	cursor: pointer;
+}
+
 .button-action:hover {
 	transform: translateY(-1px);
 	border-color: var(--action-hover);

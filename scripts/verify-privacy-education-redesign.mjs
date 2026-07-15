@@ -226,6 +226,6 @@ if (failures.length) {
 	process.exit(1);
 }
 
-console.log(
-	`Privacy and education redesign verification passed through ${requestedPhase}.`,
+process.stdout.write(
+	`Privacy and education redesign verification passed through ${requestedPhase}.\n`,
 );
