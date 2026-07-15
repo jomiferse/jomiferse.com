@@ -19,6 +19,7 @@
     "verify:contact-redesign": "node scripts/verify-contact-redesign.mjs",
     "verify:footer-redesign": "node scripts/verify-footer-redesign.mjs",
     "verify:header-redesign": "node scripts/verify-header-redesign.mjs",
+    "verify:global-background": "node scripts/verify-global-background.mjs",
     "verify:popup-system": "node scripts/verify-popup-system.mjs",
     "verify:privacy-education-redesign": "node scripts/verify-privacy-education-redesign.mjs",
     "verify:conversion-cta": "node scripts/verify-conversion-cta.mjs",
