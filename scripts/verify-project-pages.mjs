@@ -12,10 +12,7 @@ for (const locale of ["en", "es"]) {
 			"utf8",
 		),
 	);
-	const projects = [
-		...(cv.projects?.company ?? []),
-		...(cv.projects?.personal ?? []),
-	];
+	const projects = cv.projects?.items ?? [];
 
 	for (const project of projects) {
 		const route = `/${locale}/projects/${project.slug}/`;
@@ -41,11 +38,31 @@ for (const locale of ["en", "es"]) {
 			if (!html.includes(marker)) failures.push(`${route}: missing ${marker}`);
 		}
 
-		if (
-			!html.includes("SoftwareApplication") &&
-			!html.includes("CreativeWork")
-		) {
-			failures.push(`${route}: missing project structured data`);
+		if (!html.includes("CreativeWork")) {
+			failures.push(`${route}: missing CreativeWork structured data`);
+		}
+		if (html.includes("SoftwareApplication")) {
+			failures.push(`${route}: obsolete SoftwareApplication structured data`);
+		}
+
+		for (const marker of [
+			project.clientLabel,
+			project.sector,
+			project.caseStudy?.outcome,
+			"sourceCategory=project",
+			`sourcePath=%2F${locale}%2Fprojects%2F${project.slug}%2F`,
+		]) {
+			if (marker && !html.includes(marker)) {
+				failures.push(`${route}: missing ${marker}`);
+			}
+		}
+
+		const serviceSlug = project.caseStudy?.serviceHref
+			?.split("/")
+			.filter(Boolean)
+			.at(-1);
+		if (serviceSlug && !html.includes(`service=${serviceSlug}`)) {
+			failures.push(`${route}: missing related service contact context`);
 		}
 	}
 }

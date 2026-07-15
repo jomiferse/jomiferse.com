@@ -20,25 +20,22 @@ author: "José Miguel Fernández"
 readingTime: "5 min"
 ---
 
-Empecé CV Studio porque escribir un CV developer sigue siendo más difícil de lo que debería.
+CV Studio nació de un encargo concreto: el cliente necesitaba un editor de currículums sencillo, con vista previa en vivo y una exportación que mantuviera el diseño final.
 
-La mayoría de generadores te dan plantillas rígidas, demasiado ruido visual o PDFs que cambian al descargarlos. Quería algo más limpio: datos estructurados, vista previa en vivo y una salida en la que pudiera confiar.
+La mayoría de generadores obligan a trabajar sobre plantillas rígidas, introducen demasiado ruido visual o producen PDFs que cambian al descargarlos. La solución debía ser más directa: datos estructurados, vista previa en vivo y una salida consistente.
 
-De ahí salió **CV Studio**.
+De esa necesidad salió **CV Studio**.
 
 Esa misma idea aplica a una web profesional: no se trata de poner más secciones, sino de explicar mejor qué haces y facilitar el siguiente paso. Lo desarrollo en [qué debe tener una web profesional para captar clientes](/es/blog/que-debe-tener-web-profesional-para-captar-clientes/).
-
-**Repositorio del proyecto:**  
-[https://github.com/jomiferse/cv-studio](https://github.com/jomiferse/cv-studio)
 
 ---
 
 ## Por qué lo construí
 
-CV Studio es un proyecto personal con un objetivo simple:
-**ayudar a developers a escribir un CV claro sin perder control sobre la estructura ni el PDF final.**
+CV Studio es un proyecto de cliente con un objetivo simple:
+**permitir que cualquier persona edite un CV claro sin perder control sobre la estructura ni el PDF final.**
 
-Quería que la experiencia de edición fuese sencilla, pero apoyada en un modelo de datos sólido. El CV debía ser fácil de cambiar, fácil de validar y fiable al exportarlo.
+La experiencia de edición debía ser sencilla, pero apoyada en un modelo de datos sólido. El CV tenía que ser fácil de cambiar, fácil de validar y fiable al exportarlo.
 
 Por eso CV Studio trata el CV primero como **datos estructurados** y después como documento pulido.
 
@@ -88,7 +85,7 @@ La validación por esquemas y el tipado fuerte mantienen los datos del CV consis
 
 ## Qué viene después
 
-CV Studio sigue evolucionando. Algunas mejoras previstas:
+El producto puede seguir creciendo con mejoras como:
 
 - Varias plantillas profesionales de CV
 - Más personalización manteniendo la estructura
@@ -97,12 +94,9 @@ CV Studio sigue evolucionando. Algunas mejoras previstas:
 
 ## Cierre
 
-CV Studio es un producto pequeño, pero refleja bastante bien cómo me gusta construir: interfaz simple, datos claros, salida fiable y margen para mejorar.
+CV Studio demuestra que un encargo acotado también necesita buenas decisiones de producto: interfaz simple, datos claros, salida fiable y una arquitectura que permita evolucionar sin rehacerlo todo.
 
-Puedes explorar el proyecto aquí:  
-**[CV Studio en GitHub](https://github.com/jomiferse/cv-studio)**
-
-Publicaré más notas conforme el proyecto evolucione.
+Puedes consultar el [caso de CV Studio](/es/projects/cv-studio/) o ver cómo planteo un [proyecto de software a medida](/es/services/software-a-medida/).
 
 ## FAQ
 

@@ -8,7 +8,6 @@ import {
 	buildBreadcrumbList,
 	buildCollectionPage,
 	buildCreativeWork,
-	buildSoftwareApplication,
 } from "@/lib/seo";
 
 export function getStaticPaths() {
@@ -31,19 +30,12 @@ const structuredData = [
 	...projects.map((project) => {
 		const path = `/${locale}/projects/${project.slug}/`;
 
-		return project.kind === "personal"
-			? buildSoftwareApplication({
-					name: project.title,
-					description: project.summary,
-					url: new URL(path, site).toString(),
-					technologies: project.technologies,
-				})
-			: buildCreativeWork(site, {
-					name: project.title,
-					description: project.summary,
-					technologies: project.technologies,
-					path,
-				});
+		return buildCreativeWork(site, {
+			name: project.title,
+			description: project.summary,
+			technologies: project.technologies,
+			path,
+		});
 	}),
 ];
 ---

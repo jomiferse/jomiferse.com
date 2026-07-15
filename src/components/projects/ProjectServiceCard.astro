@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import TechnologyGrid from "@/components/common/TechnologyGrid.astro";
 
 interface Props {
 	technologies: string[];
@@ -16,51 +17,6 @@ interface Props {
 
 const { technologies, serviceHref, serviceLabel, externalHref, copy } =
 	Astro.props as Props;
-
-const brandIcons: Array<[RegExp, string]> = [
-	[/spring boot/i, "springboot"],
-	[/docker/i, "docker"],
-	[/kubernetes/i, "kubernetes"],
-	[/postgresql/i, "postgresql"],
-	[/rabbitmq/i, "rabbitmq"],
-	[/kafka/i, "apachekafka"],
-	[/liquibase/i, "liquibase"],
-];
-
-const getTechnologyIcon = (technology: string) => {
-	const brandIcon = brandIcons.find(([pattern]) => pattern.test(technology));
-	if (brandIcon) return brandIcon[1];
-
-	const normalizedTechnology = technology.toLowerCase();
-
-	if (
-		/(websocket|restclient|rest client|http|api)/.test(normalizedTechnology)
-	) {
-		return "globe";
-	}
-
-	if (
-		/(grpc|redis|pub\/sub|messaging|distributed)/.test(normalizedTechnology)
-	) {
-		return "git-branch";
-	}
-
-	if (
-		/(spring cloud|cloud|helm|ci\/cd|jenkins|devops)/.test(normalizedTechnology)
-	) {
-		return "cloud";
-	}
-
-	if (
-		/(sqlite|mysql|database|elasticsearch|mongodb|storage)/.test(
-			normalizedTechnology,
-		)
-	) {
-		return "layers";
-	}
-
-	return "code";
-};
 
 const hasService = Boolean(serviceHref && serviceLabel);
 ---
@@ -108,30 +64,7 @@ const hasService = Boolean(serviceHref && serviceLabel);
 			? "mt-6 border-t border-[var(--surface-border)] pt-6"
 			: ""}
 	>
-		<div class="flex items-center justify-between gap-3">
-			<p class="eyebrow text-[var(--action)]">{copy.technologies}</p>
-			<span
-				class="text-xs font-black text-[var(--text-muted)]"
-				aria-hidden="true"
-			>
-				{String(technologies.length).padStart(2, "0")}
-			</span>
-		</div>
-
-		<div data-project-technology-list class="mt-4 grid grid-cols-2 gap-2">
-			{
-				technologies.map((technology) => (
-					<span class="flex min-w-0 items-center gap-2 rounded-xl border border-[var(--surface-border)] bg-[color-mix(in_srgb,var(--surface-strong)_72%,transparent)] px-2.5 py-2 text-[0.72rem] leading-tight font-bold text-[var(--text-muted)]">
-						<Icon
-							name={getTechnologyIcon(technology)}
-							class="h-3.5 w-3.5 shrink-0 text-[var(--action)]"
-							aria-hidden="true"
-						/>
-						<span class="min-w-0 break-words">{technology}</span>
-					</span>
-				))
-			}
-		</div>
+		<TechnologyGrid technologies={technologies} label={copy.technologies} />
 	</section>
 
 	{

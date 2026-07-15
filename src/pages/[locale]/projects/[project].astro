@@ -7,13 +7,10 @@ import { getTranslations, locales, t, type Locale } from "@/i18n";
 import {
 	getProject,
 	getProjectAlternatePaths,
+	getProjectContactHref,
 	getProjectPages,
 } from "@/lib/projects";
-import {
-	buildBreadcrumbList,
-	buildCreativeWork,
-	buildSoftwareApplication,
-} from "@/lib/seo";
+import { buildBreadcrumbList, buildCreativeWork } from "@/lib/seo";
 
 export function getStaticPaths() {
 	return locales.flatMap((locale) =>
@@ -37,28 +34,37 @@ const alternatePaths = getProjectAlternatePaths(project);
 const image = project.img?.imgStatic;
 const caseStudy = project.caseStudy;
 const facts = [
-	project.role ? { label: copy.role, value: project.role } : null,
-	project.companyRelated
-		? { label: copy.organization, value: project.companyRelated }
+	project.clientLabel
+		? { label: copy.client, value: project.clientLabel }
 		: null,
+	project.sector ? { label: copy.sector, value: project.sector } : null,
 	project.timeframe
 		? { label: copy.timeframe, value: project.timeframe }
 		: null,
 ].filter((fact): fact is { label: string; value: string } => Boolean(fact));
+const challengeBody = [
+	project.context,
+	caseStudy?.problem,
+	caseStudy?.constraints,
+]
+	.filter(Boolean)
+	.join(" ");
+const narrativeSections = [
+	{ title: copy.challenge, body: challengeBody },
+	{ title: copy.solution, body: caseStudy?.decisions },
+	{ title: copy.delivered, body: caseStudy?.delivered },
+	{ title: copy.outcome, body: caseStudy?.outcome },
+].filter((section): section is { title: string; body: string } =>
+	Boolean(section.body),
+);
+const contactHref = getProjectContactHref(locale, project);
 const structuredData = [
-	project.kind === "personal"
-		? buildSoftwareApplication({
-				name: project.title,
-				description: project.summary,
-				url: new URL(detailPath, site).toString(),
-				technologies: project.technologies,
-			})
-		: buildCreativeWork(site, {
-				name: project.title,
-				description: project.summary,
-				technologies: project.technologies,
-				path: detailPath,
-			}),
+	buildCreativeWork(site, {
+		name: project.title,
+		description: project.summary,
+		technologies: project.technologies,
+		path: detailPath,
+	}),
 	buildBreadcrumbList(site, [
 		{ name: t(locale, "nav.home"), path: `/${locale}/` },
 		{ name: t(locale, "nav.projects"), path: archivePath },
@@ -91,11 +97,9 @@ const structuredData = [
 			class="project-detail-hero section-reveal grid gap-9 py-10 md:py-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(24rem,1.08fr)] lg:items-center lg:gap-14"
 		>
 			<div>
-				{
-					project.status ? (
-						<p class="eyebrow text-[var(--action)]">{project.status}</p>
-					) : null
-				}
+				<p class="eyebrow text-[var(--action)]">
+					{copy.caseLabel} · {project.sector}
+				</p>
 				<h1
 					class="mt-4 max-w-4xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
 				>
@@ -153,66 +157,25 @@ const structuredData = [
 		>
 			<div class="project-narrative grid gap-12">
 				{
-					project.context ? (
+					narrativeSections.map((section, index) => (
 						<section>
-							<p class="eyebrow text-[var(--action)]">01</p>
-							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
-								{copy.context}
-							</h2>
-							<p class="muted-copy mt-4 max-w-3xl leading-8">
-								{project.context}
+							<p class="eyebrow text-[var(--action)]">
+								{String(index + 1).padStart(2, "0")}
 							</p>
-						</section>
-					) : null
-				}
-
-				{
-					caseStudy?.problem || caseStudy?.constraints ? (
-						<section>
-							<p class="eyebrow text-[var(--action)]">02</p>
 							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
-								{copy.challenge}
+								{section.title}
 							</h2>
-							<p class="muted-copy mt-4 max-w-3xl leading-8">
-								{caseStudy.problem}
-								{caseStudy.constraints ? ` ${caseStudy.constraints}` : ""}
-							</p>
+							<p class="muted-copy mt-4 max-w-3xl leading-8">{section.body}</p>
 						</section>
-					) : null
-				}
-
-				{
-					caseStudy?.decisions ? (
-						<section>
-							<p class="eyebrow text-[var(--action)]">03</p>
-							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
-								{copy.decisions}
-							</h2>
-							<p class="muted-copy mt-4 max-w-3xl leading-8">
-								{caseStudy.decisions}
-							</p>
-						</section>
-					) : null
-				}
-
-				{
-					caseStudy?.delivered ? (
-						<section>
-							<p class="eyebrow text-[var(--action)]">04</p>
-							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
-								{copy.outcome}
-							</h2>
-							<p class="muted-copy mt-4 max-w-3xl leading-8">
-								{caseStudy.delivered}
-							</p>
-						</section>
-					) : null
+					))
 				}
 
 				{
 					project.highlights?.length ? (
 						<section>
-							<p class="eyebrow text-[var(--action)]">05</p>
+							<p class="eyebrow text-[var(--action)]">
+								{String(narrativeSections.length + 1).padStart(2, "0")}
+							</p>
 							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
 								{copy.highlights}
 							</h2>
@@ -248,7 +211,7 @@ const structuredData = [
 			text={copy.cta.text}
 			primary={{
 				label: copy.cta.primary,
-				href: `/${locale}/contact?service=assessment`,
+				href: contactHref,
 			}}
 			secondary={{ label: copy.cta.secondary, href: archivePath }}
 			headingId="project-conversion-title"

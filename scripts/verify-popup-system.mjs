@@ -226,6 +226,8 @@ if (includesPhase("exit")) {
 		'size="compact"',
 		"data-global-exit-dialog",
 		"data-contact-dialog-open",
+		"white-space: nowrap",
+		"padding-inline: 1rem",
 		"EXIT_INTENT_SESSION_KEY",
 		"CONSENT_STORAGE_KEY",
 		"cookieBannerVisible",

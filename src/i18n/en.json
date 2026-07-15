@@ -76,7 +76,8 @@
         "eyebrow": "Independent IT consultant",
         "title": "IT consulting to improve how your business works.",
         "intro": "I combine development and technical judgment to solve real needs: attracting clients with a better website, automating work, connecting tools or building custom software.",
-        "experience": "More than five years building and improving production software.",
+        "experience": "More than six years building and improving production software.",
+        "yearsSuffix": "years",
         "challenge": "Have a challenge? Let us see whether technology can solve it in a practical way.",
         "primaryCta": "Request a free assessment",
         "caseCta": "View real case studies",
@@ -436,71 +437,48 @@
   "projects": {
     "page": {
       "meta": {
-        "title": "Software projects and work delivered | José Miguel Fernández",
-        "description": "Work delivered across backend systems, web products, internal tools and practical full-stack delivery."
+        "title": "Client case studies and software projects | José Miguel Fernández",
+        "description": "Real client cases covering platforms, internal tools and systems built to solve business needs."
       },
-      "eyebrow": "Work delivered",
-      "title": "Software projects and work delivered",
+      "eyebrow": "Client case studies",
+      "title": "Projects built to solve real business needs",
       "titleAccent": ".",
-      "intro": "A selection of products, platforms and systems I have contributed to. Each entry explains the context and contribution at the appropriate level of detail.",
-      "browseCases": "Explore case studies",
+      "intro": "A selection of platforms, internal tools and digital products built for clients and companies. Each case explains the challenge, solution and outcome at the level of detail the project allows.",
+      "browseCases": "View client cases",
       "fallbackImage": "Technical preview unavailable",
       "viewWork": "View work",
       "viewCase": "View case study",
+      "outcomeLabel": "Outcome",
       "carouselPrevious": "View previous project",
       "carouselNext": "View next project",
       "carouselPosition": "Project {current} of {total}"
     },
     "detail": {
-      "back": "Back to work delivered",
-      "context": "Context",
+      "back": "Back to client case studies",
       "challenge": "Challenge",
-      "contribution": "Contribution",
-      "decisions": "Technical decisions",
+      "solution": "Solution",
       "delivered": "Work delivered",
-      "outcome": "Outcome and work delivered",
-      "highlights": "Selected contribution",
-      "facts": "Project facts",
-      "role": "Role",
-      "organization": "Organization",
+      "outcome": "Outcome",
+      "highlights": "Project highlights",
+      "facts": "Case facts",
+      "caseLabel": "Client case",
+      "client": "Client",
+      "sector": "Sector",
       "timeframe": "Timeframe",
       "technologies": "Technologies",
       "relatedService": "Related service",
       "externalLink": "View external project",
       "serviceCard": {
-        "eyebrow": "Related service",
-        "body": "The experience applied in this project is also available for similar needs."
+        "eyebrow": "Need something similar?",
+        "body": "I can apply the same approach to a business need, with a clear scope from the start."
       },
       "cta": {
         "eyebrow": "Facing a similar challenge?",
-        "title": "Let’s turn your need into a clear technical plan.",
-        "text": "Tell me what you want to improve, build or automate. The first assessment is free and carries no obligation.",
+        "title": "Let’s discuss a similar need.",
+        "text": "Tell me what you want to improve or build. I will review the context and suggest the most sensible next step.",
         "primary": "Request a free assessment",
         "secondary": "View all projects"
       }
-    },
-    "meta": {
-      "title": "Projects",
-      "description": "Selected engineering work by {name}, focused on systems, product execution and technical delivery."
-    },
-    "hero": {
-      "titlePrefix": "Selected",
-      "titleHighlight": "projects",
-      "subtitle": "A clear view of personal projects and professional work I contributed to, from backend systems to practical web products."
-    },
-    "sections": {
-      "personal": {
-        "title": "Personal Projects",
-        "subtitle": "Side builds and technical explorations"
-      },
-      "company": {
-        "title": "Company Projects",
-        "subtitle": "Professional product delivery"
-      }
-    },
-    "empty": {
-      "personal": "Coming soon — personal projects in progress.",
-      "company": "No company projects available yet."
     }
   },
   "experience": {
@@ -992,26 +970,6 @@
         "contact": "Contact me"
       }
     },
-      },
-      "commercialCta": {
-        "buyer-led": {
-          "eyebrow": "Decision and next step",
-          "title": "Would you like to apply this decision to your case?",
-          "text": "I can help you review the context, reduce the initial scope and choose a solution proportionate to the problem.",
-          "contact": "Share my case"
-        },
-        "technical-authority": {
-          "eyebrow": "Applying this to a real system",
-          "title": "Do you need to review this problem in production?",
-          "text": "I can assess the architecture, risks and next useful change without turning the solution into a larger project than necessary.",
-          "contact": "Review my case"
-        },
-        "case-study": {
-          "eyebrow": "A project with real constraints",
-          "title": "Do you have a similar problem to solve?",
-          "text": "We can start from the workflow, constraints and outcome you need to define a verifiable first delivery.",
-          "contact": "Share my project"
-        }
     "meta": {
       "title": "Blog",
       "description": "Short notes and articles by {name}."
@@ -1034,6 +992,26 @@
         "text": "I work on websites, internal tools, automation workflows, API integrations and focused web applications. If you have a concrete problem, send it over.",
         "services": "View services",
         "contact": "Contact me"
+      },
+      "commercialCta": {
+        "buyer-led": {
+          "eyebrow": "Decision and next step",
+          "title": "Would you like to apply this decision to your case?",
+          "text": "I can help you review the context, reduce the initial scope and choose a solution proportionate to the problem.",
+          "contact": "Share my case"
+        },
+        "technical-authority": {
+          "eyebrow": "Applying this to a real system",
+          "title": "Do you need to review this problem in production?",
+          "text": "I can assess the architecture, risks and next useful change without turning the solution into a larger project than necessary.",
+          "contact": "Review my case"
+        },
+        "case-study": {
+          "eyebrow": "A project with real constraints",
+          "title": "Do you have a similar problem to solve?",
+          "text": "We can start from the workflow, constraints and outcome you need to define a verifiable first delivery.",
+          "contact": "Share my project"
+        }
       }
     },
     "sections": {
@@ -1064,7 +1042,7 @@
     "page": {
       "meta": {
         "title": "About and experience - José Miguel Fernández",
-        "description": "Meet José Miguel Fernández, a consultant and full-stack developer with over five years of experience in websites, automation, custom software and backend systems."
+        "description": "Meet José Miguel Fernández, a consultant and full-stack developer with over six years of experience in websites, automation, custom software and backend systems."
       },
       "eyebrow": "About",
       "title": "I turn business problems into",
@@ -1076,7 +1054,7 @@
       "portraitNote": "You work directly with me, from the first conversation through delivery.",
       "trustSignals": [
         {
-          "value": "5+ years",
+          "value": "6+ years",
           "label": "building software"
         },
         {
@@ -1136,9 +1114,29 @@
         "currentLabel": "Current",
         "impactLabel": "Selected contributions",
         "stackLabel": "Main technologies",
+        "showMore": "View more ({count})",
+        "showLess": "View less",
         "roleStacks": [
-          ["Java", "Spring Boot", "RabbitMQ", "Kubernetes", "Observability"],
-          ["PHP", "JavaScript", "Docker", "Elasticsearch", "Web performance"]
+          [
+            "Java",
+            "Spring Boot",
+            "Microservices",
+            "RabbitMQ",
+            "Kubernetes",
+            "Grafana",
+            "Kibana",
+            "CI/CD"
+          ],
+          [
+            "PHP",
+            "Phalcon",
+            "JavaScript",
+            "Docker",
+            "Elasticsearch",
+            "Payments",
+            "Technical SEO",
+            "Core Web Vitals"
+          ]
         ]
       },
       "workingStyle": {

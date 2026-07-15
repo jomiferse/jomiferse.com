@@ -2,30 +2,17 @@ import { getCv } from "@cv";
 import { locales, type Locale } from "@/i18n";
 
 type ProjectCollections = NonNullable<ReturnType<typeof getCv>["projects"]>;
-type ProjectKind = "personal" | "client";
-type ProjectSource =
-	| ProjectCollections["personal"][number]
-	| ProjectCollections["company"][number];
+type ProjectSource = ProjectCollections["items"][number];
 
 export type ProjectEntry = ProjectSource & {
 	id: string;
 	slug: string;
-	kind: ProjectKind;
 };
 
 export const getProjectPages = (locale: Locale): ProjectEntry[] => {
 	const projects = getCv(locale).projects;
 
-	return [
-		...(projects?.company ?? []).map((project) => ({
-			...project,
-			kind: "client" as const,
-		})),
-		...(projects?.personal ?? []).map((project) => ({
-			...project,
-			kind: "personal" as const,
-		})),
-	];
+	return projects?.items ?? [];
 };
 
 export const getProject = (locale: Locale, slug: string) =>
@@ -46,3 +33,21 @@ export const getProjectAlternatePaths = (
 			];
 		}),
 	);
+
+export const getProjectContactHref = (
+	locale: Locale,
+	project: ProjectEntry,
+) => {
+	const sourcePath = `/${locale}/projects/${project.slug}/`;
+	const relatedService = project.caseStudy?.serviceHref
+		?.split("/")
+		.filter(Boolean)
+		.at(-1);
+	const params = new URLSearchParams({
+		service: relatedService ?? "assessment",
+		sourceCategory: "project",
+		sourcePath,
+	});
+
+	return `/${locale}/contact?${params.toString()}`;
+};

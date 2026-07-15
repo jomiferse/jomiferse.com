@@ -20,8 +20,9 @@ const { locale } = Astro.params;
 const cv = getCv(locale);
 const projects = getProjectPages(locale);
 const featuredProject =
-	projects.find((project) => project.id === "euroinnova-education-platform") ??
-	projects[0];
+	projects.find(
+		(project) => project.id === "getyourticket-ticketing-platform",
+	) ?? projects[0];
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const page = getTranslations(locale).home.page;
 const pageTitle = page.meta.title;

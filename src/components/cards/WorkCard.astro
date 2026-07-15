@@ -64,9 +64,7 @@ const hoverImage = project.img?.imgHover;
 
 		<div class="flex flex-1 flex-col p-5 md:p-6">
 			<p class="muted-copy text-sm font-semibold">
-				{project.role}{
-					project.companyRelated ? ` · ${project.companyRelated}` : ""
-				}
+				{project.role}{project.clientLabel ? ` · ${project.clientLabel}` : ""}
 			</p>
 			<h2 class="mt-3 text-xl font-black text-[var(--text)] md:text-2xl">
 				{project.title}

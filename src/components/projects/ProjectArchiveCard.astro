@@ -13,6 +13,11 @@ const { project, locale, viewLabel } = Astro.props as Props;
 const href = `/${locale}/projects/${project.slug}/`;
 const staticImage = project.img?.imgStatic;
 const hoverImage = project.img?.imgHover;
+const problem = project.caseStudy.problem;
+const copy = {
+	viewLabel,
+	outcomeLabel: t(locale, "projects.page.outcomeLabel"),
+};
 ---
 
 <article class="project-archive-card group h-full">
@@ -54,13 +59,11 @@ const hoverImage = project.img?.imgHover;
 				)
 			}
 
-			{
-				project.status ? (
-					<span class="absolute top-3 left-3 rounded-full border border-white/20 bg-slate-950/75 px-3 py-1.5 text-[0.65rem] font-black tracking-[0.12em] text-white uppercase backdrop-blur">
-						{project.status}
-					</span>
-				) : null
-			}
+			<span
+				class="absolute top-3 left-3 max-w-[calc(100%-1.5rem)] rounded-full border border-white/20 bg-slate-950/78 px-3 py-1.5 text-[0.65rem] font-black tracking-[0.12em] text-white uppercase backdrop-blur"
+			>
+				{project.sector}
+			</span>
 		</div>
 
 		<div class="flex flex-1 flex-col p-4 sm:p-5">
@@ -68,13 +71,29 @@ const hoverImage = project.img?.imgHover;
 				{project.title}
 			</h2>
 			<p class="muted-copy mt-3 line-clamp-3 text-sm leading-6">
-				{project.summary}
+				{problem}
 			</p>
 
+			<div class="mt-5 flex gap-3 border-t border-[var(--surface-border)] pt-4">
+				<span
+					class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[color-mix(in_srgb,var(--action)_11%,var(--surface))] text-[var(--action)]"
+				>
+					<Icon name="check" class="h-3.5 w-3.5" aria-hidden="true" />
+				</span>
+				<div>
+					<p class="eyebrow text-[0.62rem] text-[var(--action)]">
+						{copy.outcomeLabel}
+					</p>
+					<p class="mt-1 text-sm leading-6 font-bold text-[var(--text)]">
+						{project.impact}
+					</p>
+				</div>
+			</div>
+
 			<span
-				class="mt-5 inline-flex items-center gap-2 border-t border-[var(--surface-border)] pt-4 text-sm font-black text-[var(--text)] group-hover:text-[var(--action)]"
+				class="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-black text-[var(--text)] group-hover:text-[var(--action)]"
 			>
-				{viewLabel}
+				{copy.viewLabel}
 				<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 			</span>
 		</div>

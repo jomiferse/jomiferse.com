@@ -1,5 +1,7 @@
 ---
+import { Icon } from "astro-icon/components";
 import { getCv } from "@cv";
+import TechnologyGrid from "@/components/common/TechnologyGrid.astro";
 import { t, type Locale } from "@/i18n";
 
 type Experience = ReturnType<typeof getCv>["experience"];
@@ -15,6 +17,8 @@ interface Props {
 		currentLabel: string;
 		impactLabel: string;
 		stackLabel: string;
+		showMore: string;
+		showLess: string;
 		roleStacks: string[][];
 	};
 	experience: Experience;
@@ -53,6 +57,12 @@ const { locale, content, experience, yearsWorking } = Astro.props as Props;
 							? t(locale, "experienceCard.present")
 							: role.endDate;
 					const stack = content.roleStacks[index] ?? [];
+					const visibleHighlights = role.highlights?.slice(0, 3) ?? [];
+					const hiddenHighlights = role.highlights?.slice(3) ?? [];
+					const showMoreLabel = content.showMore.replace(
+						"{count}",
+						String(hiddenHighlights.length),
+					);
 
 					return (
 						<article class="about-timeline__item">
@@ -82,21 +92,41 @@ const { locale, content, experience, yearsWorking } = Astro.props as Props;
 								<div>
 									<p class="eyebrow">{content.impactLabel}</p>
 									<ul class="mt-4 grid gap-3">
-										{role.highlights?.slice(0, 3).map((highlight) => (
+										{visibleHighlights.map((highlight) => (
 											<li class="flex gap-3 text-sm leading-7 text-[var(--text-muted)]">
 												<span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action)]" />
 												<span>{highlight}</span>
 											</li>
 										))}
 									</ul>
+
+									{hiddenHighlights.length ? (
+										<details class="about-highlights-more mt-5">
+											<summary>
+												<span class="show-more-label">{showMoreLabel}</span>
+												<span class="show-less-label">{content.showLess}</span>
+												<Icon
+													name="plus"
+													class="about-highlights-more__icon h-4 w-4"
+													aria-hidden="true"
+												/>
+											</summary>
+											<ul class="mt-4 grid gap-3 border-t border-[var(--surface-border)] pt-4">
+												{hiddenHighlights.map((highlight) => (
+													<li class="flex gap-3 text-sm leading-7 text-[var(--text-muted)]">
+														<span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action)]" />
+														<span>{highlight}</span>
+													</li>
+												))}
+											</ul>
+										</details>
+									) : null}
 								</div>
-								<div>
-									<p class="eyebrow">{content.stackLabel}</p>
-									<div class="mt-4 flex flex-wrap gap-2">
-										{stack.map((technology) => (
-											<span class="tag-pill">{technology}</span>
-										))}
-									</div>
+								<div class="h-fit rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[radial-gradient(circle_at_100%_0%,color-mix(in_srgb,var(--action)_10%,transparent),transparent_9rem),var(--surface)] p-5 shadow-[var(--shadow-card)]">
+									<TechnologyGrid
+										technologies={stack}
+										label={content.stackLabel}
+									/>
 								</div>
 							</div>
 						</article>
@@ -106,3 +136,60 @@ const { locale, content, experience, yearsWorking } = Astro.props as Props;
 		</div>
 	</div>
 </section>
+
+<style>
+	.about-highlights-more summary {
+		display: inline-flex;
+		min-height: 2.75rem;
+		align-items: center;
+		gap: 0.6rem;
+		padding: 0.65rem 0.9rem;
+		border: 1px solid var(--surface-border);
+		border-radius: 999px;
+		color: var(--text);
+		font-size: 0.8rem;
+		font-weight: 900;
+		list-style: none;
+		cursor: pointer;
+		transition:
+			color 160ms ease,
+			border-color 160ms ease,
+			background-color 160ms ease;
+	}
+
+	.about-highlights-more summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.about-highlights-more summary:hover {
+		border-color: color-mix(in srgb, var(--action) 45%, var(--surface-border));
+		background: color-mix(in srgb, var(--action) 7%, var(--surface));
+		color: var(--action);
+	}
+
+	.about-highlights-more summary:focus-visible {
+		outline: 2px solid var(--action);
+		outline-offset: 4px;
+	}
+
+	.about-highlights-more:not([open]) .show-less-label,
+	.about-highlights-more[open] .show-more-label {
+		display: none;
+	}
+
+	.about-highlights-more__icon {
+		color: var(--action);
+		transition: transform 160ms ease;
+	}
+
+	.about-highlights-more[open] .about-highlights-more__icon {
+		transform: rotate(45deg);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.about-highlights-more summary,
+		.about-highlights-more__icon {
+			transition: none;
+		}
+	}
+</style>

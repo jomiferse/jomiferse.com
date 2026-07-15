@@ -76,7 +76,8 @@
         "eyebrow": "Consultor informático independiente",
         "title": "Consultoría informática para mejorar cómo funciona tu negocio.",
         "intro": "Combino desarrollo y criterio técnico para resolver necesidades reales: captar clientes con una mejor web, automatizar trabajo, conectar herramientas o construir software a medida.",
-        "experience": "Más de cinco años construyendo y mejorando software en producción.",
+        "experience": "Más de seis años construyendo y mejorando software en producción.",
+        "yearsSuffix": "años",
         "challenge": "¿Tienes un reto? Revisemos si la tecnología puede resolverlo de forma razonable.",
         "primaryCta": "Solicitar valoración gratuita",
         "caseCta": "Ver casos reales",
@@ -436,71 +437,48 @@
   "projects": {
     "page": {
       "meta": {
-        "title": "Proyectos de software y trabajos realizados | José Miguel Fernández",
-        "description": "Trabajos realizados en sistemas backend, productos web, herramientas internas y delivery full-stack práctico."
+        "title": "Casos de clientes y proyectos de software | José Miguel Fernández",
+        "description": "Casos reales de plataformas, herramientas internas y sistemas desarrollados para resolver necesidades de clientes y empresas."
       },
-      "eyebrow": "Trabajos realizados",
-      "title": "Proyectos de software y trabajos realizados",
+      "eyebrow": "Casos de clientes",
+      "title": "Proyectos creados para resolver necesidades reales de negocio",
       "titleAccent": ".",
-      "intro": "Una selección de productos, plataformas y sistemas en los que he colaborado. Cada trabajo explica el contexto y la contribución con el detalle adecuado.",
-      "browseCases": "Explorar casos",
+      "intro": "Una selección de plataformas, herramientas internas y productos digitales desarrollados para clientes y empresas. Cada caso explica el reto, la solución y el resultado con el detalle que permite el proyecto.",
+      "browseCases": "Ver casos de éxito",
       "fallbackImage": "Vista técnica no disponible",
       "viewWork": "Ver trabajo",
-      "viewCase": "Ver caso",
+      "viewCase": "Ver caso de éxito",
+      "outcomeLabel": "Resultado",
       "carouselPrevious": "Ver proyecto anterior",
       "carouselNext": "Ver proyecto siguiente",
       "carouselPosition": "Proyecto {current} de {total}"
     },
     "detail": {
-      "back": "Volver a trabajos realizados",
-      "context": "Contexto",
+      "back": "Volver a casos de clientes",
       "challenge": "Reto",
-      "contribution": "Contribución",
-      "decisions": "Decisiones técnicas",
+      "solution": "Solución",
       "delivered": "Trabajo realizado",
-      "outcome": "Resultado y trabajo entregado",
-      "highlights": "Contribución destacada",
-      "facts": "Datos del proyecto",
-      "role": "Rol",
-      "organization": "Organización",
+      "outcome": "Resultado",
+      "highlights": "Claves del proyecto",
+      "facts": "Datos del caso",
+      "caseLabel": "Caso de cliente",
+      "client": "Cliente",
+      "sector": "Sector",
       "timeframe": "Periodo",
       "technologies": "Tecnologías",
       "relatedService": "Servicio relacionado",
       "externalLink": "Ver proyecto externo",
       "serviceCard": {
-        "eyebrow": "Servicio relacionado",
-        "body": "La experiencia aplicada en este proyecto también está disponible para necesidades similares."
+        "eyebrow": "¿Necesitas algo parecido?",
+        "body": "Puedo aplicar este mismo enfoque a una necesidad de tu negocio, con un alcance claro desde el principio."
       },
       "cta": {
         "eyebrow": "¿Tienes un reto parecido?",
-        "title": "Convirtamos tu necesidad en un plan técnico claro.",
-        "text": "Cuéntame qué quieres mejorar, construir o automatizar. La primera valoración es gratuita y sin compromiso.",
+        "title": "Hablemos de una necesidad parecida.",
+        "text": "Cuéntame qué quieres mejorar o construir. Revisaré el contexto y te propondré el siguiente paso más razonable.",
         "primary": "Solicitar valoración gratuita",
         "secondary": "Ver todos los proyectos"
       }
-    },
-    "meta": {
-      "title": "Proyectos",
-      "description": "Trabajo de ingeniería seleccionado de {name}, centrado en sistemas, producto y delivery técnico."
-    },
-    "hero": {
-      "titlePrefix": "Proyectos",
-      "titleHighlight": "seleccionados",
-      "subtitle": "Una vista clara de proyectos personales y trabajo profesional en el que he contribuido, desde sistemas backend hasta productos web prácticos."
-    },
-    "sections": {
-      "personal": {
-        "title": "Proyectos personales",
-        "subtitle": "Side builds y exploraciones técnicas"
-      },
-      "company": {
-        "title": "Proyectos de empresa",
-        "subtitle": "Delivery de producto profesional"
-      }
-    },
-    "empty": {
-      "personal": "Próximamente — proyectos personales en progreso.",
-      "company": "Aún no hay proyectos de empresa disponibles."
     }
   },
   "experience": {
@@ -992,26 +970,6 @@
         "contact": "Contactar"
       }
     },
-      },
-      "commercialCta": {
-        "buyer-led": {
-          "eyebrow": "Decisión y siguiente paso",
-          "title": "¿Quieres aterrizar esta decisión en tu caso?",
-          "text": "Puedo ayudarte a revisar el contexto, reducir el alcance inicial y elegir una solución proporcionada al problema.",
-          "contact": "Contar mi caso"
-        },
-        "technical-authority": {
-          "eyebrow": "Aplicación en un sistema real",
-          "title": "¿Necesitas revisar este problema en producción?",
-          "text": "Puedo analizar la arquitectura, los riesgos y el siguiente cambio útil sin convertir la solución en un proyecto más grande de lo necesario.",
-          "contact": "Revisar mi caso"
-        },
-        "case-study": {
-          "eyebrow": "Un proyecto con restricciones reales",
-          "title": "¿Tienes un problema parecido que resolver?",
-          "text": "Podemos partir del proceso, los límites y el resultado que necesitas para definir una primera entrega verificable.",
-          "contact": "Contar mi proyecto"
-        }
     "meta": {
       "title": "Blog",
       "description": "Notas y artículos breves de {name}."
@@ -1034,6 +992,26 @@
         "text": "Trabajo en webs, herramientas internas, automatizaciones, integraciones API y aplicaciones web enfocadas. Si tienes un problema concreto, cuéntamelo.",
         "services": "Ver servicios",
         "contact": "Contactar"
+      },
+      "commercialCta": {
+        "buyer-led": {
+          "eyebrow": "Decisión y siguiente paso",
+          "title": "¿Quieres aterrizar esta decisión en tu caso?",
+          "text": "Puedo ayudarte a revisar el contexto, reducir el alcance inicial y elegir una solución proporcionada al problema.",
+          "contact": "Contar mi caso"
+        },
+        "technical-authority": {
+          "eyebrow": "Aplicación en un sistema real",
+          "title": "¿Necesitas revisar este problema en producción?",
+          "text": "Puedo analizar la arquitectura, los riesgos y el siguiente cambio útil sin convertir la solución en un proyecto más grande de lo necesario.",
+          "contact": "Revisar mi caso"
+        },
+        "case-study": {
+          "eyebrow": "Un proyecto con restricciones reales",
+          "title": "¿Tienes un problema parecido que resolver?",
+          "text": "Podemos partir del proceso, los límites y el resultado que necesitas para definir una primera entrega verificable.",
+          "contact": "Contar mi proyecto"
+        }
       }
     },
     "sections": {
@@ -1064,7 +1042,7 @@
     "page": {
       "meta": {
         "title": "Sobre mí y experiencia - José Miguel Fernández",
-        "description": "Conoce a José Miguel Fernández, consultor y desarrollador full-stack con más de cinco años de experiencia en webs, automatización, software a medida y backend."
+        "description": "Conoce a José Miguel Fernández, consultor y desarrollador full-stack con más de seis años de experiencia en webs, automatización, software a medida y backend."
       },
       "eyebrow": "Sobre mí",
       "title": "Convierto problemas de negocio en",
@@ -1076,7 +1054,7 @@
       "portraitNote": "Trabajo directamente contigo, desde la primera conversación hasta la entrega.",
       "trustSignals": [
         {
-          "value": "+5 años",
+          "value": "+6 años",
           "label": "construyendo software"
         },
         {
@@ -1136,9 +1114,29 @@
         "currentLabel": "Actual",
         "impactLabel": "Aportaciones seleccionadas",
         "stackLabel": "Tecnologías principales",
+        "showMore": "Ver más ({count})",
+        "showLess": "Ver menos",
         "roleStacks": [
-          ["Java", "Spring Boot", "RabbitMQ", "Kubernetes", "Observabilidad"],
-          ["PHP", "JavaScript", "Docker", "Elasticsearch", "Web performance"]
+          [
+            "Java",
+            "Spring Boot",
+            "Microservicios",
+            "RabbitMQ",
+            "Kubernetes",
+            "Grafana",
+            "Kibana",
+            "CI/CD"
+          ],
+          [
+            "PHP",
+            "Phalcon",
+            "JavaScript",
+            "Docker",
+            "Elasticsearch",
+            "Pagos",
+            "SEO técnico",
+            "Core Web Vitals"
+          ]
         ]
       },
       "workingStyle": {

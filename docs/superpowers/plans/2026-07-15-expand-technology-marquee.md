@@ -90,13 +90,14 @@ node -e 'const fs=require("node:fs");const s=fs.readFileSync("src/components/com
 
 Expected: exit code 0 with no output.
 
-- [ ] **Step 6: Format only the task files**
+- [ ] **Step 6: Format the Astro component and validate the SVG files**
 
 ```bash
-pnpm exec prettier --write src/components/common/TechnologyMarquee.astro src/icons/php.svg src/icons/laravel.svg src/icons/chatgpt.svg src/icons/claude.svg src/icons/python.svg src/icons/gitlab.svg
+pnpm exec prettier --write src/components/common/TechnologyMarquee.astro
+xmllint --noout src/icons/php.svg src/icons/laravel.svg src/icons/chatgpt.svg src/icons/claude.svg src/icons/python.svg src/icons/gitlab.svg
 ```
 
-Expected: Prettier reports all seven paths without an error.
+Expected: Prettier reports the Astro component without an error, and `xmllint` exits with code 0 and no output.
 
 - [ ] **Step 7: Run repository validation**
 

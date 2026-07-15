@@ -11,6 +11,9 @@ const failures = [];
 const backgroundStart = styles.indexOf(":root {");
 const backgroundEnd = styles.indexOf("h1,");
 const backgroundStyles = styles.slice(backgroundStart, backgroundEnd);
+const footerStart = styles.indexOf(".footer-bar {");
+const footerEnd = styles.indexOf(".footer-shell {");
+const footerStyles = styles.slice(footerStart, footerEnd);
 
 for (const marker of [
 	"--page-rule:",
@@ -36,6 +39,30 @@ for (const marker of [
 ]) {
 	if (backgroundStyles.includes(marker)) {
 		failures.push(`global background: forbidden ${marker}`);
+	}
+}
+
+if ((backgroundStyles.match(/--footer-rule:/g) ?? []).length !== 2) {
+	failures.push("footer background: light and dark rule tokens are required");
+}
+
+for (const marker of [
+	"background-color: var(--footer-bg);",
+	"var(--footer-rule) calc(var(--page-rule-spacing) - 1px)",
+	"background-size: 100% var(--page-rule-spacing);",
+]) {
+	if (!footerStyles.includes(marker)) {
+		failures.push(`footer background: missing ${marker}`);
+	}
+}
+
+for (const marker of [
+	"radial-gradient",
+	"linear-gradient(90deg",
+	"72px 72px",
+]) {
+	if (footerStyles.includes(marker)) {
+		failures.push(`footer background: forbidden ${marker}`);
 	}
 }
 

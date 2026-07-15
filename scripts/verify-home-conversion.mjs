@@ -10,6 +10,7 @@ const requiredPaths = [
 	"consultancyHero.eyebrow",
 	"consultancyHero.title",
 	"consultancyHero.intro",
+	"consultancyHero.yearsSuffix",
 	"consultancyHero.primaryCta",
 	"consultancyHero.caseCta",
 	"serviceSelector.title",
@@ -82,6 +83,14 @@ if (
 	failures.push("home density: desktop shell must use a max width of 88rem");
 }
 
+if (homeHero.includes("{yearsWorking}+ años")) {
+	failures.push("home hero: years suffix must not be hard-coded in Spanish");
+}
+
+if (!homeHero.includes("{yearsWorking}+ {content.yearsSuffix}")) {
+	failures.push("home hero: years suffix must come from localized content");
+}
+
 for (const [source, marker] of [
 	[homeHero, "padding-bottom: 4.5rem"],
 	[assessment, "calc((100vw - 88rem) / 2)"],
@@ -119,11 +128,38 @@ if (!(servicesIndex < marqueeIndex && marqueeIndex < processIndex)) {
 	failures.push("home technology marquee: incorrect section order");
 }
 
+if (!homePage.includes('project.id === "getyourticket-ticketing-platform"')) {
+	failures.push("home featured case: GetYourTicket must be selected");
+}
+
+if (homePage.includes('project.id === "euroinnova-education-platform"')) {
+	failures.push("home featured case: Euroinnova must not be selected");
+}
+
 for (const locale of ["en", "es"]) {
 	const translations = JSON.parse(
 		await readFile(join(root, "src", "i18n", `${locale}.json`), "utf8"),
 	);
+	const cv = JSON.parse(
+		await readFile(join(root, "src", "data", `cv.${locale}.json`), "utf8"),
+	);
 	const page = translations.home?.page;
+	const expectedYearsSuffix = locale === "en" ? "years" : "años";
+	const expectedExperience = locale === "en" ? /six years/i : /seis años/i;
+
+	if (cv.yearsWorking !== "6") {
+		failures.push(`${locale}: yearsWorking must be 6`);
+	}
+
+	if (page?.consultancyHero?.yearsSuffix !== expectedYearsSuffix) {
+		failures.push(
+			`${locale}: consultancyHero.yearsSuffix must be ${expectedYearsSuffix}`,
+		);
+	}
+
+	if (!expectedExperience.test(page?.consultancyHero?.experience ?? "")) {
+		failures.push(`${locale}: consultancy experience must mention six years`);
+	}
 
 	for (const path of requiredPaths) {
 		const value = getPath(page, path);
@@ -170,15 +206,19 @@ for (const locale of ["en", "es"]) {
 				locale === "es"
 					? [
 							"Consultoría informática para mejorar",
+							"6+ años",
 							"Solicitar valoración gratuita",
 							"Nuestros servicios especializados",
+							"/es/projects/plataforma-ticketing-getyourticket/",
 							"/es/contact",
 							"/es/services",
 						]
 					: [
 							"IT consulting to improve",
+							"6+ years",
 							"Request a free assessment",
 							"Our specialized services",
+							"/en/projects/getyourticket-ticketing-platform/",
 							"/en/contact",
 							"/en/services",
 						];

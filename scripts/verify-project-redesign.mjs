@@ -46,6 +46,12 @@ const serviceCard = await readSource(
 	"projects",
 	"ProjectServiceCard.astro",
 );
+const technologyGrid = await readSource(
+	"src",
+	"components",
+	"common",
+	"TechnologyGrid.astro",
+);
 const globalStyles = await readSource("src", "styles", "global.css");
 const cvByLocale = Object.fromEntries(
 	await Promise.all(
@@ -90,6 +96,17 @@ if (
 	failures.push("card: technologies must not be shown in archive cards");
 }
 
+for (const marker of [
+	"project.sector",
+	"project.caseStudy.problem",
+	"project.impact",
+	"copy.outcomeLabel",
+]) {
+	if (!card.includes(marker)) {
+		failures.push(`card: missing client-oriented marker ${marker}`);
+	}
+}
+
 for (const marker of ["project.technicalView", "copy.technicalView"]) {
 	if (detail.includes(marker)) {
 		failures.push(`detail: obsolete technical view marker ${marker}`);
@@ -117,10 +134,19 @@ if (detail.includes("<aside")) {
 for (const marker of [
 	"data-project-service-card",
 	"data-project-service-action",
-	"data-project-technology-list",
 	"button-action",
 	"arrow-right",
 	"move-up-right",
+	"TechnologyGrid",
+	"<TechnologyGrid",
+]) {
+	if (!serviceCard.includes(marker)) {
+		failures.push(`service card: missing ${marker}`);
+	}
+}
+
+for (const marker of [
+	"data-project-technology-list",
 	"getTechnologyIcon",
 	'"springboot"',
 	'"docker"',
@@ -135,14 +161,14 @@ for (const marker of [
 	'"layers"',
 	'"code"',
 ]) {
-	if (!serviceCard.includes(marker)) {
-		failures.push(`service card: missing ${marker}`);
+	if (!technologyGrid.includes(marker)) {
+		failures.push(`technology grid: missing ${marker}`);
 	}
 }
 
 if (
 	serviceCard.indexOf("data-project-service-action") >
-	serviceCard.indexOf("data-project-technology-list")
+	serviceCard.indexOf("<TechnologyGrid")
 ) {
 	failures.push(
 		"service card: related service action must precede technologies",
@@ -191,10 +217,13 @@ for (const [sourceName, source, markers] of [
 		detail,
 		[
 			"projects-page",
+			"project.clientLabel",
+			"project.sector",
 			"caseStudy?.problem",
 			"caseStudy?.decisions",
 			"caseStudy?.delivered",
-			"contact?service=assessment",
+			"caseStudy?.outcome",
+			"getProjectContactHref",
 			"var(--home-navy)",
 			"var(--action)",
 		],
@@ -207,6 +236,17 @@ for (const [sourceName, source, markers] of [
 	}
 }
 
+for (const marker of [
+	'kind === "personal"',
+	"buildSoftwareApplication",
+	"project.companyRelated",
+	"project.role ?",
+]) {
+	if (archive.includes(marker) || detail.includes(marker)) {
+		failures.push(`projects: obsolete client-case marker ${marker}`);
+	}
+}
+
 for (const locale of ["en", "es"]) {
 	const translations = JSON.parse(
 		await readSource("src", "i18n", `${locale}.json`),
@@ -215,11 +255,17 @@ for (const locale of ["en", "es"]) {
 
 	for (const path of [
 		"projects.page.viewCase",
+		"projects.page.outcomeLabel",
 		"projects.page.carouselPrevious",
 		"projects.page.carouselNext",
 		"projects.page.carouselPosition",
 		"projects.detail.challenge",
+		"projects.detail.solution",
+		"projects.detail.delivered",
 		"projects.detail.outcome",
+		"projects.detail.client",
+		"projects.detail.sector",
+		"projects.detail.caseLabel",
 		"projects.detail.cta.eyebrow",
 		"projects.detail.cta.title",
 		"projects.detail.cta.text",
@@ -233,22 +279,43 @@ for (const locale of ["en", "es"]) {
 		}
 	}
 
-	const projects = [
-		...(cv.projects?.company ?? []),
-		...(cv.projects?.personal ?? []),
-	];
+	const projects = [...(cv.projects?.items ?? [])];
 	if (getPath(translations, "projects.detail.technicalView")) {
 		failures.push(`${locale}: obsolete projects.detail.technicalView copy`);
+	}
+	for (const path of [
+		"projects.detail.context",
+		"projects.detail.contribution",
+		"projects.detail.decisions",
+		"projects.detail.role",
+		"projects.detail.organization",
+	]) {
+		if (getPath(translations, path)) {
+			failures.push(`${locale}: obsolete ${path} copy`);
+		}
 	}
 
 	for (const project of projects) {
 		if (project.technicalView) {
 			failures.push(`${locale}/${project.id}: obsolete technicalView data`);
 		}
+		for (const path of [
+			"clientLabel",
+			"sector",
+			"impact",
+			"caseStudy.outcome",
+		]) {
+			if (!getPath(project, path)) {
+				failures.push(`${locale}/${project.id}: missing ${path}`);
+			}
+		}
+		if (project.companyRelated) {
+			failures.push(`${locale}/${project.id}: obsolete companyRelated data`);
+		}
 	}
 
-	for (const id of ["betx", "realtime-websocket-gateway"]) {
-		const project = projects.find((item) => item.id === id);
+	for (const project of projects) {
+		const id = project.id;
 		const imageSrc = project?.img?.imgStatic?.src;
 
 		if (!imageSrc) {
@@ -303,8 +370,17 @@ for (const locale of ["en", "es"]) {
 					`${locale}/${project.slug}: project CTA marker is missing`,
 				);
 			}
-			if (!html.includes(`/${locale}/contact?service=assessment`)) {
-				failures.push(`${locale}/${project.slug}: project CTA is missing`);
+			if (!html.includes("sourceCategory=project")) {
+				failures.push(`${locale}/${project.slug}: project source is missing`);
+			}
+			if (
+				!html.includes(
+					`sourcePath=%2F${locale}%2Fprojects%2F${project.slug}%2F`,
+				)
+			) {
+				failures.push(
+					`${locale}/${project.slug}: project source path is missing`,
+				);
 			}
 			if (!html.includes("data-project-service-card")) {
 				failures.push(`${locale}/${project.slug}: service card is missing`);

@@ -22,6 +22,7 @@
 	--action-hover: #a93424;
 	--home-navy: #102d4f;
 	--footer-bg: #0b223b;
+	--footer-rule: rgba(244, 248, 252, 0.045);
 	--footer-surface: #102d4f;
 	--footer-text: #f4f8fc;
 	--footer-muted: #aebdcb;
@@ -52,6 +53,7 @@
 	--action-hover: #ff9a86;
 	--home-navy: #dce9f7;
 	--footer-bg: #05070b;
+	--footer-rule: rgba(244, 247, 251, 0.035);
 	--footer-surface: #0b1018;
 	--footer-text: #f4f7fb;
 	--footer-muted: #a1acba;
@@ -923,28 +925,14 @@ body.mobile-menu-open {
 	position: relative;
 	isolation: isolate;
 	overflow: clip;
-	background: var(--footer-bg);
+	background-color: var(--footer-bg);
+	background-image: linear-gradient(
+		to bottom,
+		transparent calc(var(--page-rule-spacing) - 1px),
+		var(--footer-rule) calc(var(--page-rule-spacing) - 1px)
+	);
+	background-size: 100% var(--page-rule-spacing);
 	color: var(--footer-text);
-}
-
-.footer-bar::before {
-	position: absolute;
-	inset: 0;
-	z-index: -1;
-	pointer-events: none;
-	content: "";
-	background:
-		radial-gradient(
-			circle at 92% 8%,
-			color-mix(in srgb, var(--action) 18%, transparent),
-			transparent 26rem
-		),
-		linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-		linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-	background-size:
-		auto,
-		72px 72px,
-		72px 72px;
 }
 
 .footer-shell {

@@ -19,6 +19,8 @@ const requiredAboutPaths = [
 	"experience.eyebrow",
 	"experience.title",
 	"experience.intro",
+	"experience.showMore",
+	"experience.showLess",
 	"experience.roleStacks",
 	"workingStyle.eyebrow",
 	"workingStyle.title",
@@ -73,6 +75,18 @@ const aboutComponents = await Promise.all([
 	readSource("src", "components", "about", "AboutHelp.astro"),
 	readSource("src", "components", "about", "AboutExperience.astro"),
 ]);
+const projectServiceCard = await readSource(
+	"src",
+	"components",
+	"projects",
+	"ProjectServiceCard.astro",
+);
+const technologyGrid = await readSource(
+	"src",
+	"components",
+	"common",
+	"TechnologyGrid.astro",
+).catch(() => "");
 const aboutStyles = await readSource("src", "styles", "global.css");
 const aboutStyleStart = aboutStyles.indexOf("body:has(.about-page)");
 const aboutStyleEnd = aboutStyles.indexOf(".section-band", aboutStyleStart);
@@ -108,6 +122,45 @@ if (!aboutSources.some((source) => source.includes("var(--action)"))) {
 	failures.push("about palette: signals must use the home action variable");
 }
 
+for (const marker of [
+	'import TechnologyGrid from "@/components/common/TechnologyGrid.astro"',
+	"<TechnologyGrid",
+	"<details",
+	"<summary",
+	"role.highlights?.slice(0, 3)",
+	"role.highlights?.slice(3)",
+	"content.showMore",
+	"content.showLess",
+]) {
+	if (!aboutComponents[1].includes(marker)) {
+		failures.push(`about experience details: missing ${marker}`);
+	}
+}
+
+if (
+	!projectServiceCard.includes(
+		'import TechnologyGrid from "@/components/common/TechnologyGrid.astro"',
+	) ||
+	!projectServiceCard.includes("<TechnologyGrid")
+) {
+	failures.push("project technology card: shared TechnologyGrid is not used");
+}
+
+if (projectServiceCard.includes("const brandIcons")) {
+	failures.push("project technology card: icon mapping remains duplicated");
+}
+
+for (const marker of [
+	"const brandIcons",
+	"getTechnologyIcon",
+	'String(technologies.length).padStart(2, "0")',
+	"data-project-technology-list",
+]) {
+	if (!technologyGrid.includes(marker)) {
+		failures.push(`shared technology grid: missing ${marker}`);
+	}
+}
+
 if (!aboutStyleBlock.includes("max-width: 88rem")) {
 	failures.push("about density: desktop shell must use a max width of 88rem");
 }
@@ -129,6 +182,7 @@ for (const locale of ["en", "es"]) {
 	const translations = JSON.parse(
 		await readSource("src", "i18n", `${locale}.json`),
 	);
+	const cv = JSON.parse(await readSource("src", "data", `cv.${locale}.json`));
 	const page = translations.about?.page;
 
 	for (const path of requiredAboutPaths) {
@@ -144,6 +198,26 @@ for (const locale of ["en", "es"]) {
 
 	if ((page?.trustSignals ?? []).length !== 4) {
 		failures.push(`${locale}: expected four About trust signals`);
+	}
+
+	const expectedYears = locale === "en" ? "6+ years" : "+6 años";
+	const expectedDescription = locale === "en" ? /six years/i : /seis años/i;
+	if (page?.trustSignals?.[0]?.value !== expectedYears) {
+		failures.push(
+			`${locale}: first About trust signal must be ${expectedYears}`,
+		);
+	}
+
+	if (!expectedDescription.test(page?.meta?.description ?? "")) {
+		failures.push(`${locale}: About description must mention six years`);
+	}
+
+	for (const role of cv.experience ?? []) {
+		if (role.highlights?.length !== 6) {
+			failures.push(
+				`${locale}/${role.company}: expected all six experience contributions`,
+			);
+		}
 	}
 
 	if ((page?.help?.items ?? []).length !== 4) {
@@ -166,11 +240,13 @@ for (const locale of ["en", "es"]) {
 				locale === "es"
 					? [
 							"Experiencia aplicada",
+							"+6 años",
 							"Cómo es trabajar conmigo",
 							"Solicitar valoración gratuita",
 						]
 					: [
 							"Applied experience",
+							"6+ years",
 							"What it is like to work with me",
 							"Request a free assessment",
 						];
@@ -178,6 +254,23 @@ for (const locale of ["en", "es"]) {
 			for (const marker of expectedMarkers) {
 				if (!html.includes(marker)) {
 					failures.push(`${locale}: generated About is missing ${marker}`);
+				}
+			}
+
+			const disclosureLabel = locale === "es" ? "Ver más (3)" : "View more (3)";
+			if (!html.includes(disclosureLabel)) {
+				failures.push(
+					`${locale}: generated About is missing ${disclosureLabel}`,
+				);
+			}
+
+			for (const role of cv.experience ?? []) {
+				for (const highlight of role.highlights ?? []) {
+					if (!html.includes(highlight)) {
+						failures.push(
+							`${locale}: generated About is missing contribution for ${role.company}`,
+						);
+					}
 				}
 			}
 		} catch {

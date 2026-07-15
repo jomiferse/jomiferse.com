@@ -12,7 +12,7 @@
     "I build websites, tools, automations and backend systems that are <span class=\"font-semibold text-[var(--accent-strong)]\">simple to use</span>, reliable in practice and <span class=\"font-semibold text-[var(--accent-strong)]\">easy to maintain</span>.",
     "My strongest base is <span class=\"font-semibold text-[var(--accent-strong)]\">backend development with Java, Spring Boot and production systems</span>, but I can move across the stack when a product needs it."
   ],
-  "yearsWorking": "5",
+  "yearsWorking": "6",
   "currentCompany": "CGI for The Workshop",
   "links": {
     "linkedin": "https://www.linkedin.com/in/jomiferse/",
@@ -269,18 +269,20 @@
     }
   },
   "projects": {
-    "company": [
+    "items": [
       {
         "title": "Microservices Modernization Platform",
         "id": "microservices-modernization",
         "slug": "microservices-platform-modernization",
         "role": "Backend Software Engineer",
-        "companyRelated": "CGI (for The Workshop)",
+        "clientLabel": "CGI for The Workshop",
+        "sector": "Enterprise digital platform",
         "status": "Client project",
         "link": "",
         "context": "International backend team modernizing a cloud platform for a product organization operating at enterprise scale.",
         "timeframe": "12/2024 – Present",
-        "summary": "Contributed to platform modernization work around service boundaries, secure APIs, database delivery workflows and release confidence during the move away from a legacy monolith.",
+        "summary": "Backend work to modernize an enterprise platform through clearer service boundaries, secure APIs and better controlled database delivery.",
+        "impact": "A clearer foundation for modernizing services and maintaining confidence in each release.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/microservices-modernization-platform.avif",
@@ -307,6 +309,7 @@
           "constraints": "System coexistence, service contracts, database changes and the need to retain confidence in every release.",
           "decisions": "Work through service boundaries, strengthen secure APIs, automate database delivery and use contract testing to expose incompatibilities.",
           "delivered": "Backend contributions across Spring Boot services, security, PostgreSQL/Liquibase, contract tests and Kubernetes delivery workflows.",
+          "outcome": "The platform moved toward better defined services, controlled database changes and a release workflow with more verification points.",
           "serviceHref": "/en/services/backend-spring-boot/",
           "serviceLabel": "View Spring Boot backend services"
         }
@@ -316,12 +319,14 @@
         "id": "realtime-websocket-gateway",
         "slug": "realtime-websocket-gateway",
         "role": "Backend Software Engineer",
-        "companyRelated": "CGI (for The Workshop)",
+        "clientLabel": "CGI for The Workshop",
+        "sector": "Real-time platform",
         "status": "Client PoC",
         "link": "",
         "context": "Backend proof of concept for real-time communication between digital clients and internal services inside an enterprise platform.",
         "timeframe": "02/2026 – 05/2026",
-        "summary": "Contributed to a WebSocket gateway PoC built with Java and Spring Boot to manage user connections, rooms, event broadcasting and communication with internal services through Redis pub/sub and gRPC.",
+        "summary": "Backend PoC for managing WebSocket connections, rooms and event distribution between users and internal services through Redis and gRPC.",
+        "impact": "A reproducible architecture for validating real-time communication between users and services.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/websocket.avif",
@@ -352,6 +357,7 @@
           "constraints": "The PoC had to coordinate connection state, broadcasting across multiple instances and communication with internal services, while remaining reproducible to run and test locally.",
           "decisions": "Separate connection management from event exchange, use Redis pub/sub to propagate messages between instances and gRPC for internal contracts, with Micrometer observability and Kubernetes-ready delivery.",
           "delivered": "Contributions to Atmosphere-based WebSocket infrastructure, room and session management, Redis/gRPC integration, Spring Cloud configuration, and documented local execution and test scenarios.",
+          "outcome": "The PoC validated connection management and event exchange across instances with a documented, repeatable local environment.",
           "serviceHref": "/en/services/backend-spring-boot/",
           "serviceLabel": "View Spring Boot backend services"
         }
@@ -361,12 +367,14 @@
         "id": "euroinnova-education-platform",
         "slug": "euroinnova-education-platform",
         "role": "Full-Stack Software Engineer",
-        "companyRelated": "EDUCA EDTECH Group",
+        "clientLabel": "EDUCA EDTECH Group",
+        "sector": "EdTech and education",
         "status": "Production platform",
         "link": "",
         "context": "Core digital product used to capture, convert and serve educational demand across multiple markets.",
         "timeframe": "02/2021 – 12/2024",
-        "summary": "Contributed across backend, frontend and infrastructure on a large-scale education platform, with focus on performance, business delivery and maintainable evolution.",
+        "summary": "Full-stack evolution of a live education platform supporting acquisition, search, payments and international growth.",
+        "impact": "A platform prepared to operate across more languages, portals and markets.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/euroinnova.avif",
@@ -397,8 +405,9 @@
           "constraints": "The live product had to keep delivering business changes while adding languages, portals and volume without compromising performance or stability.",
           "decisions": "Work incrementally across backend and frontend, strengthen search with Elasticsearch, keep the MySQL data layer operable and use containers to reduce differences between environments.",
           "delivered": "Full-stack functionality across acquisition, catalogue, search and payment journeys; multi-language and multi-portal evolution; and continuous improvements to performance, user experience and maintainability.",
-          "serviceHref": "/en/services/custom-web-application/",
-          "serviceLabel": "View custom web application services"
+          "outcome": "The product expanded to more languages and portals while keeping its acquisition, search and payment journeys running.",
+          "serviceHref": "/en/services/custom-software/",
+          "serviceLabel": "View custom software services"
         }
       },
       {
@@ -406,12 +415,14 @@
         "id": "educash-affiliate-platform",
         "slug": "educash-affiliate-platform",
         "role": "Full-Stack Software Engineer",
-        "companyRelated": "EDUCA EDTECH Group",
+        "clientLabel": "EDUCA EDTECH Group",
+        "sector": "Affiliates and operations",
         "status": "Business tool",
         "link": "",
         "context": "Affiliate management product supporting operational reporting, partner workflows and payment-related processes.",
         "timeframe": "08/2020 – 12/2024",
-        "summary": "Contributed to the delivery and evolution of an internal digital product used to manage affiliate relationships, reporting flows and operational processes tied to growth channels.",
+        "summary": "Development and evolution of an internal tool for managing affiliates, reporting and operational processes related to payments.",
+        "impact": "A clearer operational flow for managing affiliates, reporting and payments.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/educash.avif",
@@ -433,23 +444,24 @@
           "constraints": "The tool had to adapt to real workflows as operations evolved, retain trustworthy reporting data and remain practical for non-technical users.",
           "decisions": "Model workflows around partners and operational states, centralise reporting and frequent tasks, and iterate the interface alongside daily use instead of overdesigning a fixed first release.",
           "delivered": "Contributions from initial implementation through product evolution, including affiliate workflows, reporting, payment-process support and internal tooling for operations and growth.",
+          "outcome": "Teams gained one product for tracking affiliate activity, reviewing reports and completing frequent operational tasks.",
           "serviceHref": "/en/services/internal-tools/",
           "serviceLabel": "View internal tool development services"
         }
-      }
-    ],
-    "personal": [
+      },
       {
         "title": "Betx",
         "id": "betx",
         "slug": "betx",
         "role": "Software Engineer",
-        "companyRelated": "Personal project",
-        "status": "Active build",
-        "link": "https://github.com/jomiferse/betx",
-        "context": "Technical CLI for recording bets, odds, states and results locally, with declarative configuration and lightweight persistence.",
+        "clientLabel": "Gambling-sector client",
+        "sector": "Gambling",
+        "status": "Client project",
+        "link": "",
+        "context": "A commission to move a gambling-sector workflow into a backend tool operated from the terminal.",
         "timeframe": "2026 – Present",
-        "summary": "Backend project built as a terminal tool for keeping a structured local betting record. The focus is on modeling the flow clearly, separating HTTP integrations, reading configuration from betx.yml and keeping a SQLite database simple to operate.",
+        "summary": "A terminal-based backend application with declarative configuration, local persistence and HTTP integrations for managing betting workflows without a complex interface.",
+        "impact": "A direct operational workflow for reviewing and updating bets from the terminal.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/betx.avif",
@@ -473,10 +485,11 @@
           "Separated SQLite persistence, CLI commands and HTTP integrations so the backend stays easier to test and evolve."
         ],
         "caseStudy": {
-          "problem": "Record bets, odds, states and results in a structured way without depending on a web interface or complex storage.",
+          "problem": "The client needed to record bets, odds, statuses and results in a structured way without depending on a web interface or complex storage.",
           "constraints": "Local use, configuration outside code, lightweight persistence and clear separation between terminal, data and HTTP integrations.",
           "decisions": "Use Picocli for the workflow, YAML for configuration and SQLite for simple operation, with explicit adapter boundaries.",
           "delivered": "A working CLI, declarative configuration, local persistence, HTTP clients and tests around the primary flow.",
+          "outcome": "The client received a lightweight tool for running the main workflow from the terminal, with local data and configuration kept outside the code.",
           "serviceHref": "/en/services/backend-spring-boot/",
           "serviceLabel": "View Spring Boot backend development"
         }
@@ -486,12 +499,14 @@
         "id": "cv-studio",
         "slug": "cv-studio",
         "role": "Software Engineer",
-        "companyRelated": "Personal project",
-        "status": "Active build",
-        "link": "https://github.com/jomiferse/cv-studio",
-        "context": "A professional CV builder designed for technical profiles with live editing, strong data modeling and polished PDF output.",
+        "clientLabel": "Professional-tools client",
+        "sector": "Employment and documents",
+        "status": "Client project",
+        "link": "",
+        "context": "A professional-tool commission focused on simplifying CV editing and document generation.",
         "timeframe": "12/2025 – Present",
-        "summary": "A personal product built around structured CV data, live editing and document generation. The focus was not just the interface, but the data model, validation and a clear user workflow.",
+        "summary": "A CV editor with structured data, validation, reusable templates, synchronized preview and PDF export.",
+        "impact": "A simpler process for editing a CV and producing a consistent document.",
         "img": {
           "imgStatic": {
             "src": "/images/projects/cv-studio.avif",
@@ -518,12 +533,58 @@
           "Combined product polish with typed validation and document-generation architecture."
         ],
         "caseStudy": {
-          "problem": "Let a technical professional edit structured information and see a consistent final document without working directly in a rigid template.",
+          "problem": "The client needed users to edit their CV information and see the result without working directly in a rigid template.",
           "constraints": "Form-preview synchronization, typed validation and PDF generation with stable layout.",
           "decisions": "Separate the CV model, editing flow, templates and export so each area can evolve without mixing responsibilities.",
           "delivered": "Live editor, synchronized preview, validated data, reusable templates and ATS-oriented PDF export.",
+          "outcome": "The client received a clear editor that keeps CV data, live preview and final document export synchronized.",
           "serviceHref": "/en/services/custom-software/",
           "serviceLabel": "View custom software services"
+        }
+      },
+      {
+        "title": "GetYourTicket · Ticketing platform",
+        "id": "getyourticket-ticketing-platform",
+        "slug": "getyourticket-ticketing-platform",
+        "role": "Full-Stack Software Engineer",
+        "clientLabel": "GetYourTicket",
+        "sector": "Ticketing and events",
+        "status": "In production",
+        "link": "https://www.getyourticket.es/",
+        "context": "The commission started from Attendize, an open-source ticketing codebase that had gone unmaintained and needed to be made operational again.",
+        "timeframe": "Ongoing maintenance",
+        "summary": "Recovery and production launch of an Attendize-based ticketing platform with Docker, VPS hosting, HTTPS, Stripe and a registration flow adapted for event managers.",
+        "impact": "More than 10 events managed, each with over 1,000 attendees.",
+        "img": {
+          "imgStatic": {
+            "src": "/images/projects/get-your-ticket.avif",
+            "alt": "Editorial cover for GetYourTicket, a ticket sales and event management platform"
+          }
+        },
+        "technologies": [
+          "Attendize",
+          "Laravel",
+          "PHP",
+          "Docker",
+          "Stripe",
+          "Certbot",
+          "VPS",
+          "HTTPS"
+        ],
+        "highlights": [
+          "Recovered an unmaintained codebase by fixing errors that prevented the platform from operating normally.",
+          "Set up Docker, the VPS and the HTTPS certificate with Certbot to get the system running in production.",
+          "Adapted registration for new nightclub and event managers and integrated payments with Stripe.",
+          "Continue to maintain the platform and resolve issues as new events are added."
+        ],
+        "caseStudy": {
+          "problem": "The client needed their own ticket sales and event management platform, but the chosen Attendize codebase had gone unmaintained and was too broken to launch in production.",
+          "constraints": "The existing project had to be recovered, its ticketing functionality preserved and the infrastructure made stable enough to handle live events and real payments.",
+          "decisions": "Repair and adapt Attendize instead of rebuilding the whole product, containerise deployment with Docker, configure the VPS and HTTPS with Certbot, and extend registration for nightclub and event managers.",
+          "delivered": "A repaired Attendize codebase, Docker environment, configured VPS and certificate, Stripe payments, adapted manager registration and ongoing technical maintenance.",
+          "outcome": "GetYourTicket remains in production and has managed more than 10 events, each with over 1,000 attendees.",
+          "serviceHref": "/en/services/maintenance-and-technical-support/",
+          "serviceLabel": "View maintenance and technical support"
         }
       }
     ]
