@@ -760,32 +760,159 @@
   },
   "privacy": {
     "meta": {
-      "title": "Privacidad y cookies",
-      "description": "Información sobre las cookies necesarias, Google Analytics con consentimiento y cómo cambiar tus preferencias en jomiferse.com."
+      "title": "Política de privacidad y cookies",
+      "description": "Información clara sobre privacidad, cookies, analítica opcional y tus derechos en jomiferse.com."
     },
-    "eyebrow": "Privacidad",
-    "title": "Privacidad y cookies",
-    "intro": "Esta web usa una configuración sencilla: lo necesario para que funcione y analítica solo si la aceptas.",
-    "manageCookies": "Cambiar preferencias",
-    "contactLink": "Contactar",
-    "sections": [
-      {
-        "title": "Cookies necesarias",
-        "body": "Las cookies o almacenamiento necesario se usan para recordar preferencias locales, como el tema visual y tu decisión sobre cookies. No se utilizan para publicidad ni para crear perfiles."
+    "eyebrow": "Privacidad y cookies",
+    "title": "Tus datos, explicados con claridad.",
+    "intro": "Esta página explica qué información trata la web, para qué se utiliza y qué decisiones puedes tomar. No uso tus datos para publicidad ni creo perfiles comerciales.",
+    "updated": "Última actualización: 15 de julio de 2026",
+    "summary": {
+      "controller": "Responsable",
+      "contact": "Contacto de privacidad",
+      "analytics": "Analítica opcional",
+      "analyticsValue": "Solo después de aceptarla",
+      "profiles": "Publicidad y perfiles",
+      "profilesValue": "No se utilizan"
+    },
+    "navigation": {
+      "label": "Contenido de privacidad",
+      "currentLabel": "Sección actual"
+    },
+    "actions": {
+      "manageCookies": "Configurar cookies",
+      "email": "Escribir sobre privacidad"
+    },
+    "sections": {
+      "controller": {
+        "title": "Responsable del tratamiento",
+        "body": "José Miguel Fernández es responsable de los datos que envías mediante esta web. Puedes plantear cualquier consulta o ejercer tus derechos escribiendo al correo indicado en esta sección."
       },
-      {
-        "title": "Google Analytics",
-        "body": "Google Analytics solo se carga si aceptas la opción de analítica. Antes de tu decisión, y si rechazas, el consentimiento de analítica permanece denegado."
+      "data": {
+        "title": "Qué datos trato",
+        "intro": "La web solo trata la información necesaria para responder consultas, funcionar correctamente y medir visitas cuando lo autorizas.",
+        "items": [
+          "Formulario: nombre, correo electrónico, mensaje, servicio o alcance seleccionado, idioma y página de procedencia.",
+          "Analítica: datos de uso y dispositivo recogidos por Google Analytics únicamente después de aceptar la analítica.",
+          "Preferencias locales: tema visual, decisión de cookies y un indicador temporal para no repetir el aviso de salida durante la misma sesión."
+        ]
       },
-      {
-        "title": "Cambiar preferencias",
-        "body": "Puedes reabrir el panel de preferencias desde el enlace de cookies del footer y cambiar tu decisión cuando quieras."
+      "purposes": {
+        "title": "Finalidades y base jurídica",
+        "items": [
+          {
+            "title": "Responder a tu consulta",
+            "body": "Uso los datos del formulario para entender la necesidad, responderte y valorar una posible prestación de servicios. La base es aplicar medidas precontractuales solicitadas por ti."
+          },
+          {
+            "title": "Medir y mejorar la web",
+            "body": "Google Analytics se activa con tu consentimiento. Puedes rechazarlo o retirarlo sin que eso limite el acceso a la web."
+          },
+          {
+            "title": "Mantener la web segura",
+            "body": "El hosting puede generar registros técnicos necesarios para servir, diagnosticar y proteger la web. La base es el interés legítimo en mantener un servicio seguro y estable."
+          }
+        ]
       },
-      {
-        "title": "Dónde se guarda la decisión",
-        "body": "La preferencia se guarda en localStorage dentro de tu navegador. Si borras los datos del sitio, el banner volverá a aparecer."
+      "retention": {
+        "title": "Cuánto tiempo conservo los datos",
+        "body": "Las consultas se conservan mientras se gestionan y hasta 12 meses después de la última comunicación. Si la consulta da lugar a una relación profesional o existe una obligación legal, se conservarán durante los plazos aplicables. Las preferencias permanecen en tu navegador hasta que las eliminas o cambia la versión de la política."
+      },
+      "providers": {
+        "title": "Proveedores que intervienen",
+        "intro": "Uso proveedores técnicos para alojar la web, entregar los mensajes y medir visitas consentidas.",
+        "items": [
+          {
+            "name": "Vercel",
+            "purpose": "Alojamiento, entrega de la web y ejecución del formulario.",
+            "href": "https://vercel.com/legal/privacy-policy"
+          },
+          {
+            "name": "Resend",
+            "purpose": "Entrega por correo electrónico de las consultas enviadas.",
+            "href": "https://resend.com/legal/privacy-policy"
+          },
+          {
+            "name": "Google Analytics",
+            "purpose": "Analítica agregada solo cuando la aceptas.",
+            "href": "https://policies.google.com/privacy"
+          }
+        ],
+        "linkLabel": "Consultar privacidad de {name}"
+      },
+      "transfers": {
+        "title": "Transferencias internacionales",
+        "body": "Algunos proveedores pueden tratar información fuera del Espacio Económico Europeo. En esos casos, el tratamiento queda sujeto a las garantías que el proveedor declare en sus condiciones vigentes. Los enlaces anteriores permiten consultar esa información directamente."
+      },
+      "rights": {
+        "title": "Tus derechos",
+        "intro": "Puedes solicitar acceso, rectificación, supresión, oposición, limitación o portabilidad, y retirar un consentimiento en cualquier momento.",
+        "instruction": "Para ejercerlos, escribe desde el correo relacionado con la consulta e indica qué derecho quieres ejercer. También puedes reclamar ante la Agencia Española de Protección de Datos.",
+        "aepd": "Ir a la Agencia Española de Protección de Datos"
+      },
+      "cookies": {
+        "title": "Cookies y almacenamiento del navegador",
+        "intro": "Las preferencias necesarias se guardan localmente. Las cookies de Google Analytics solo aparecen si aceptas la categoría de analítica.",
+        "gaSource": "Consultar la documentación de cookies de Google Analytics"
+      },
+      "withdraw": {
+        "title": "Cambiar o retirar tu consentimiento",
+        "body": "Puedes reabrir el panel de preferencias desde esta página o desde el pie de cualquier página. Rechazar la analítica no afecta a las funciones principales de la web."
       }
-    ]
+    },
+    "storageTable": {
+      "caption": "Almacenamiento utilizado por jomiferse.com",
+      "headers": {
+        "name": "Nombre",
+        "type": "Tipo",
+        "provider": "Proveedor",
+        "purpose": "Finalidad",
+        "duration": "Duración",
+        "consent": "Base"
+      },
+      "rows": [
+        {
+          "name": "theme",
+          "type": "Almacenamiento local",
+          "provider": "jomiferse.com",
+          "purpose": "Recordar el tema claro u oscuro.",
+          "duration": "Hasta que lo elimines.",
+          "consent": "Preferencia necesaria"
+        },
+        {
+          "name": "jomiferse.cookie-consent.v1",
+          "type": "Almacenamiento local",
+          "provider": "jomiferse.com",
+          "purpose": "Recordar tu decisión sobre cookies.",
+          "duration": "Hasta que lo elimines o cambie la versión.",
+          "consent": "Preferencia necesaria"
+        },
+        {
+          "name": "jomiferse.exit-intent.v2",
+          "type": "Almacenamiento de sesión",
+          "provider": "jomiferse.com",
+          "purpose": "No repetir el aviso de salida en una sesión.",
+          "duration": "Sesión del navegador.",
+          "consent": "Estado necesario de interfaz"
+        },
+        {
+          "name": "_ga",
+          "type": "Cookie analítica propia",
+          "provider": "Google Analytics",
+          "purpose": "Distinguir usuarios para analítica agregada.",
+          "duration": "Hasta 2 años por defecto.",
+          "consent": "Consentimiento de analítica"
+        },
+        {
+          "name": "_ga_<container-id>",
+          "type": "Cookie analítica propia",
+          "provider": "Google Analytics",
+          "purpose": "Conservar el estado de la sesión.",
+          "duration": "Hasta 2 años por defecto.",
+          "consent": "Consentimiento de analítica"
+        }
+      ]
+    }
   },
   "certificationCard": {
     "idLabel": "ID:",

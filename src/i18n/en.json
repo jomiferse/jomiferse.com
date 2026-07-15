@@ -760,32 +760,159 @@
   },
   "privacy": {
     "meta": {
-      "title": "Privacy and cookies",
-      "description": "Information about necessary cookies, Google Analytics with consent, and how to change your preferences on jomiferse.com."
+      "title": "Privacy and cookie policy",
+      "description": "Clear information about privacy, cookies, optional analytics and your rights on jomiferse.com."
     },
-    "eyebrow": "Privacy",
-    "title": "Privacy and cookies",
-    "intro": "This website uses a simple setup: what is needed for it to work, and analytics only if you accept it.",
-    "manageCookies": "Change preferences",
-    "contactLink": "Contact",
-    "sections": [
-      {
-        "title": "Necessary cookies",
-        "body": "Necessary cookies or storage are used to remember local preferences, such as the visual theme and your cookie decision. They are not used for advertising or profiling."
+    "eyebrow": "Privacy and cookies",
+    "title": "Your data, explained clearly.",
+    "intro": "This page explains what information the website processes, why it is used and which choices you can make. I do not use your data for advertising or build commercial profiles.",
+    "updated": "Last updated: July 15, 2026",
+    "summary": {
+      "controller": "Controller",
+      "contact": "Privacy contact",
+      "analytics": "Optional analytics",
+      "analyticsValue": "Only after you accept it",
+      "profiles": "Advertising and profiling",
+      "profilesValue": "Not used"
+    },
+    "navigation": {
+      "label": "Privacy contents",
+      "currentLabel": "Current section"
+    },
+    "actions": {
+      "manageCookies": "Configure cookies",
+      "email": "Ask about privacy"
+    },
+    "sections": {
+      "controller": {
+        "title": "Data controller",
+        "body": "José Miguel Fernández is responsible for the data you send through this website. You can ask a question or exercise your rights by writing to the email address shown in this section."
       },
-      {
-        "title": "Google Analytics",
-        "body": "Google Analytics loads only if you accept analytics. Before your decision, and if you reject it, analytics consent stays denied."
+      "data": {
+        "title": "What data I process",
+        "intro": "The website only processes information needed to answer enquiries, operate correctly and measure visits when you allow it.",
+        "items": [
+          "Form: name, email address, message, selected service or scope, language and source page.",
+          "Analytics: usage and device data collected by Google Analytics only after analytics has been accepted.",
+          "Local preferences: visual theme, cookie decision and a temporary flag that prevents the exit prompt from repeating during the same session."
+        ]
       },
-      {
-        "title": "Changing preferences",
-        "body": "You can reopen the preferences panel from the cookies link in the footer and change your decision whenever you want."
+      "purposes": {
+        "title": "Purposes and legal bases",
+        "items": [
+          {
+            "title": "Reply to your enquiry",
+            "body": "I use form data to understand the need, reply and assess a possible service. The legal basis is taking pre-contractual steps at your request."
+          },
+          {
+            "title": "Measure and improve the website",
+            "body": "Google Analytics is enabled with your consent. You can reject or withdraw it without losing access to the website."
+          },
+          {
+            "title": "Keep the website secure",
+            "body": "The hosting service may generate technical logs needed to serve, diagnose and protect the website. The legal basis is the legitimate interest in maintaining a secure and stable service."
+          }
+        ]
       },
-      {
-        "title": "Where the decision is stored",
-        "body": "The preference is stored in localStorage in your browser. If you clear site data, the banner will appear again."
+      "retention": {
+        "title": "How long I keep data",
+        "body": "Enquiries are retained while they are handled and for up to 12 months after the last communication. If an enquiry leads to a professional relationship or a legal obligation applies, data is retained for the applicable periods. Preferences remain in your browser until you remove them or the policy version changes."
+      },
+      "providers": {
+        "title": "Providers involved",
+        "intro": "I use technical providers to host the website, deliver messages and measure consented visits.",
+        "items": [
+          {
+            "name": "Vercel",
+            "purpose": "Website hosting, delivery and form execution.",
+            "href": "https://vercel.com/legal/privacy-policy"
+          },
+          {
+            "name": "Resend",
+            "purpose": "Email delivery for submitted enquiries.",
+            "href": "https://resend.com/legal/privacy-policy"
+          },
+          {
+            "name": "Google Analytics",
+            "purpose": "Aggregate analytics only when you accept it.",
+            "href": "https://policies.google.com/privacy"
+          }
+        ],
+        "linkLabel": "View {name} privacy information"
+      },
+      "transfers": {
+        "title": "International transfers",
+        "body": "Some providers may process information outside the European Economic Area. In those cases, processing is subject to the safeguards stated in the provider's current terms. The links above let you consult that information directly."
+      },
+      "rights": {
+        "title": "Your rights",
+        "intro": "You can request access, rectification, erasure, objection, restriction or portability, and withdraw consent at any time.",
+        "instruction": "To exercise a right, write from the email address connected with the enquiry and state which right you want to exercise. You may also complain to the Spanish Data Protection Agency.",
+        "aepd": "Visit the Spanish Data Protection Agency"
+      },
+      "cookies": {
+        "title": "Cookies and browser storage",
+        "intro": "Necessary preferences are stored locally. Google Analytics cookies only appear if you accept the analytics category.",
+        "gaSource": "View Google Analytics cookie documentation"
+      },
+      "withdraw": {
+        "title": "Change or withdraw consent",
+        "body": "You can reopen the preferences panel from this page or the footer of any page. Rejecting analytics does not affect the website's main functions."
       }
-    ]
+    },
+    "storageTable": {
+      "caption": "Storage used by jomiferse.com",
+      "headers": {
+        "name": "Name",
+        "type": "Type",
+        "provider": "Provider",
+        "purpose": "Purpose",
+        "duration": "Duration",
+        "consent": "Basis"
+      },
+      "rows": [
+        {
+          "name": "theme",
+          "type": "Local storage",
+          "provider": "jomiferse.com",
+          "purpose": "Remember the light or dark theme.",
+          "duration": "Until you remove it.",
+          "consent": "Necessary preference"
+        },
+        {
+          "name": "jomiferse.cookie-consent.v1",
+          "type": "Local storage",
+          "provider": "jomiferse.com",
+          "purpose": "Remember your cookie decision.",
+          "duration": "Until you remove it or the version changes.",
+          "consent": "Necessary preference"
+        },
+        {
+          "name": "jomiferse.exit-intent.v2",
+          "type": "Session storage",
+          "provider": "jomiferse.com",
+          "purpose": "Avoid repeating the exit prompt in one session.",
+          "duration": "Browser session.",
+          "consent": "Necessary interface state"
+        },
+        {
+          "name": "_ga",
+          "type": "First-party analytics cookie",
+          "provider": "Google Analytics",
+          "purpose": "Distinguish users for aggregate analytics.",
+          "duration": "Up to 2 years by default.",
+          "consent": "Analytics consent"
+        },
+        {
+          "name": "_ga_<container-id>",
+          "type": "First-party analytics cookie",
+          "provider": "Google Analytics",
+          "purpose": "Preserve session state.",
+          "duration": "Up to 2 years by default.",
+          "consent": "Analytics consent"
+        }
+      ]
+    }
   },
   "certificationCard": {
     "idLabel": "ID:",
