@@ -193,6 +193,8 @@ Then keep adjusting as traffic, code, and dependencies change.
 
 This is especially relevant for backend applications in production. If your service is Spring Boot, I would also review the [Spring Boot production checklist](/en/blog/spring-boot-production-devops-checklist/) before changing CPU and memory values without data.
 
+If the problem includes latency, restarts or unexplained resource use in a Java application, a [Spring Boot maintenance and evolution review](/en/spring-boot-maintenance/) can connect application, JVM and Kubernetes metrics before changing capacity.
+
 That keeps the cluster efficient without turning every deploy into a guess.
 
 ## FAQ

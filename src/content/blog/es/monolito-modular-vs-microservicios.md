@@ -402,7 +402,7 @@ La arquitectura consiste en trade-offs.
 
 Los microservicios son potentes, pero caros. Los monolitos modulares no están obsoletos, pero exigen disciplina. La mejor arquitectura backend es la que tu equipo puede construir, desplegar, observar y evolucionar con seguridad.
 
-Si estás construyendo un sistema backend y necesitas ayuda para elegir la arquitectura adecuada, puedes [contactar conmigo](/es/contact/).
+Si la decisión afecta a un backend existente, una [auditoría de backend, API y arquitectura](/es/auditoria-backend-api-arquitectura/) puede comparar límites, coste operativo y una primera transición verificable antes de separar servicios.
 
 ## FAQ
 

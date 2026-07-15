@@ -402,7 +402,7 @@ Architecture is about trade-offs.
 
 Microservices are powerful, but they are expensive. Modular monoliths are not outdated, but they require discipline. The best backend architecture is the one your team can build, deploy, observe, and evolve safely.
 
-If you are building a backend system and want help choosing the right architecture, feel free to [contact me](/en/contact/).
+If the decision affects an existing backend, a [backend, API and architecture audit](/en/backend-api-architecture-audit/) can compare boundaries, operating cost and a first verifiable transition before splitting services.
 
 ## FAQ
 

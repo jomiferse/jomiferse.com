@@ -62,6 +62,34 @@ for (const locale of ["es", "en"]) {
 	}
 }
 
+const expectedBodyLinks = new Map([
+	[
+		"es/ajustar-tamano-pods-kubernetes-requests-limits.md",
+		"/es/mantenimiento-spring-boot/",
+	],
+	[
+		"en/right-sizing-kubernetes-pods-requests-limits.md",
+		"/en/spring-boot-maintenance/",
+	],
+	[
+		"es/monolito-modular-vs-microservicios.md",
+		"/es/auditoria-backend-api-arquitectura/",
+	],
+	[
+		"en/modular-monolith-vs-microservices.md",
+		"/en/backend-api-architecture-audit/",
+	],
+]);
+
+for (const [entryPath, expectedLink] of expectedBodyLinks) {
+	const entry = entries.find(
+		(candidate) => `${candidate.locale}/${candidate.file}` === entryPath,
+	);
+	if (!entry?.source.includes(expectedLink)) {
+		failures.push(`${entryPath}: missing body link ${expectedLink}`);
+	}
+}
+
 const classifiedEntries = entries.map((entry) => {
 	const frontmatter = getFrontmatter(entry.source);
 	const commercial = {
