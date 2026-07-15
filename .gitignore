@@ -1,6 +1,7 @@
 # build output
 dist/
 docs/
+scripts/
 .worktrees/
 
 # generated types
