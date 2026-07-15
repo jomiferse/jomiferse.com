@@ -57,6 +57,7 @@ if (includesPhase("nav")) {
 		"IntersectionObserver",
 		"prefers-reduced-motion",
 		"max-h-[calc(100svh-7.5rem)]",
+		"lg:self-start",
 	]);
 	requireMarkers("blog navigation wrapper", blogToc, [
 		"SectionToc",
