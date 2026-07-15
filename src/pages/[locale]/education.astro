@@ -1,9 +1,10 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
 import CertificationCard from "@/components/cards/CertificationCard.astro";
-import EducationCard from "@/components/cards/EducationCard.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
+import EducationCard from "@/components/cards/EducationCard.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getCv } from "@cv";
 import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
 
@@ -17,6 +18,11 @@ const page = getTranslations(locale).education.page;
 
 const certifications = cv.certifications ?? [];
 const education = cv.education ?? [];
+const summaryItems = [
+	{ value: String(certifications.length), label: page.summary.courses },
+	{ value: String(education.length), label: page.summary.qualifications },
+	{ value: page.summary.focusValue, label: page.summary.focus },
+];
 
 const pageTitle = `${page.meta.title} - ${cv.name}`;
 const pageDescription = page.meta.description.replace("{name}", cv.name);
@@ -35,91 +41,163 @@ const structuredData = [
 	description={pageDescription}
 	structuredData={structuredData}
 	keywords={[
-		"Education",
-		"Technical Courses",
-		"Software Engineering",
-		"Technical Background",
+		"software engineering education",
+		"technical courses",
+		"backend development training",
+		"software development qualifications",
 	]}
 >
-	<section class="section-reveal pt-4 md:pt-8">
-		<div class="max-w-4xl">
-			<p class="eyebrow">{page.eyebrow}</p>
-			<h1 class="mt-5 text-5xl font-black text-[var(--text)] md:text-7xl">
+	<div data-education-page class="education-page">
+		<section class="section-reveal pt-6 pb-14 md:pt-10 md:pb-18">
+			<p class="eyebrow text-[var(--action)]">{page.eyebrow}</p>
+			<h1
+				class="mt-5 max-w-5xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
+			>
 				{page.title}
-				<span class="accent-text">{page.titleAccent}</span>
 			</h1>
-			<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
+			<p class="muted-copy mt-7 max-w-3xl text-lg leading-8 md:text-xl">
 				{page.intro}
 			</p>
-		</div>
-	</section>
+		</section>
 
-	<section class="section-reveal py-16 md:py-24">
-		<div class="stagger-children grid gap-4 md:grid-cols-3">
+		<section
+			class="education-summary border-y border-[var(--surface-border)]"
+			aria-label={page.eyebrow}
+		>
 			{
-				page.signals.map((signal) => (
-					<article class="dark-card hover-card p-5 md:p-6">
-						<p class="eyebrow">{signal.label}</p>
-						<h2 class="mt-4 text-xl font-black text-[var(--text)]">
-							{signal.title}
-						</h2>
-						<p class="muted-copy mt-3 text-sm leading-7">{signal.body}</p>
-					</article>
+				summaryItems.map((item) => (
+					<div class="education-summary__item">
+						<p class="text-2xl font-black text-[var(--home-navy)]">
+							{item.value}
+						</p>
+						<p class="muted-copy mt-1 text-sm">{item.label}</p>
+					</div>
 				))
 			}
-		</div>
-	</section>
+		</section>
 
-	<section class="section-band section-reveal py-16 md:py-28">
-		<div class="grid gap-10 lg:grid-cols-[0.32fr_1fr] lg:gap-14">
-			<div>
-				<p class="eyebrow">{page.certifications.eyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.certifications.title}
-				</h2>
-				<p class="muted-copy mt-5 leading-7">{page.certifications.text}</p>
-			</div>
+		<section data-applied-learning class="section-reveal py-16 md:py-20">
+			<header class="grid gap-5 lg:grid-cols-[0.34fr_0.66fr] lg:gap-14">
+				<div>
+					<p class="eyebrow text-[var(--action)]">
+						{page.applied.eyebrow}
+					</p>
+					<h2
+						class="mt-4 text-4xl font-black text-[var(--home-navy)] md:text-5xl"
+					>
+						{page.applied.title}
+					</h2>
+				</div>
+				<p class="muted-copy max-w-2xl text-lg leading-8">
+					{page.applied.intro}
+				</p>
+			</header>
 
-			<div class="stagger-children space-y-5">
+			<div
+				class="mt-10 divide-y divide-[var(--surface-border)] border-y border-[var(--surface-border)]"
+			>
 				{
-					certifications.map((certification) => (
-						<CertificationCard certification={certification} locale={locale} />
+					page.applied.items.map((item) => (
+						<article class="grid gap-4 py-6 md:grid-cols-[4rem_minmax(0,0.35fr)_minmax(0,0.65fr)] md:items-start md:py-7">
+							<span class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,var(--surface-border))] text-[var(--action)]">
+								<Icon name={item.icon} class="h-5 w-5" aria-hidden="true" />
+							</span>
+							<h3 class="text-xl font-black text-[var(--home-navy)]">
+								{item.title}
+							</h3>
+							<p class="muted-copy max-w-2xl leading-7">{item.body}</p>
+						</article>
 					))
 				}
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section-reveal py-16 md:py-28">
-		<div class="grid gap-10 lg:grid-cols-[0.32fr_1fr] lg:gap-14">
-			<div>
-				<p class="eyebrow">{page.education.eyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.education.title}
-				</h2>
-				<p class="muted-copy mt-5 leading-7">{page.education.text}</p>
+		<section class="section-band section-reveal py-16 md:py-20">
+			<div class="grid gap-10 lg:grid-cols-[0.3fr_minmax(0,0.7fr)] lg:gap-16">
+				<header>
+					<p class="eyebrow text-[var(--action)]">
+						{page.certifications.eyebrow}
+					</p>
+					<h2
+						class="mt-4 text-4xl font-black text-[var(--home-navy)] md:text-5xl"
+					>
+						{page.certifications.title}
+					</h2>
+					<p class="muted-copy mt-5 leading-7">
+						{page.certifications.text}
+					</p>
+				</header>
+				<div>
+					{
+						certifications.map((certification) => (
+							<CertificationCard
+								certification={certification}
+								locale={locale}
+							/>
+						))
+					}
+				</div>
 			</div>
+		</section>
 
-			<div class="stagger-children space-y-5">
-				{
-					education.map((item) => (
-						<EducationCard education={item} locale={locale} />
-					))
-				}
+		<section class="section-reveal py-16 md:py-20">
+			<div class="grid gap-10 lg:grid-cols-[0.3fr_minmax(0,0.7fr)] lg:gap-16">
+				<header>
+					<p class="eyebrow text-[var(--action)]">{page.education.eyebrow}</p>
+					<h2
+						class="mt-4 text-4xl font-black text-[var(--home-navy)] md:text-5xl"
+					>
+						{page.education.title}
+					</h2>
+					<p class="muted-copy mt-5 leading-7">{page.education.text}</p>
+				</header>
+				<div>
+					{
+						education.map((item) => (
+							<EducationCard education={item} locale={locale} />
+						))
+					}
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<ConversionCta
-		eyebrow={page.cta.eyebrow}
-		title={page.cta.title}
-		text={page.cta.text}
-		primary={{ label: page.cta.primary, href: `/${locale}/about` }}
-		secondary={{ label: page.cta.secondary, href: `/${locale}/contact` }}
-		headingId="education-conversion-title"
-	/>
+		<ConversionCta
+			eyebrow={page.cta.eyebrow}
+			title={page.cta.title}
+			text={page.cta.text}
+			primary={{ label: page.cta.primary, href: `/${locale}/projects` }}
+			secondary={{ label: page.cta.secondary, href: `/${locale}/about` }}
+			headingId="education-conversion-title"
+		/>
+	</div>
 </BaseLayout>
+
+<style>
+	.education-summary {
+		display: grid;
+		grid-template-columns: minmax(0, 0.7fr) minmax(0, 0.7fr) minmax(
+				14rem,
+				1.6fr
+			);
+	}
+
+	.education-summary__item {
+		padding: 1.25rem 1rem;
+		border-inline-end: 1px solid var(--surface-border);
+	}
+
+	.education-summary__item:last-child {
+		border-inline-end: 0;
+	}
+
+	@media (max-width: 47.99rem) {
+		.education-summary {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.education-summary__item:last-child {
+			grid-column: 1 / -1;
+			border-top: 1px solid var(--surface-border);
+		}
+	}
+</style>
