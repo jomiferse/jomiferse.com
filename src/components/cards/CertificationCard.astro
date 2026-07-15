@@ -19,55 +19,50 @@ const { certification, locale = "es" } = Astro.props as {
 ---
 
 <article
-	class="dark-card hover-card grid gap-6 p-5 md:p-7 lg:grid-cols-[0.32fr_1fr]"
+	data-certification-record
+	class="certification-record grid gap-5 border-t border-[var(--surface-border)] py-6 md:grid-cols-[9rem_minmax(0,1fr)_auto] md:items-start md:gap-8 md:py-7"
 >
-	<div class="space-y-3">
-		<div
-			class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--surface-border)] bg-[var(--accent-soft)] text-[var(--accent-strong)] dark:text-[var(--accent)]"
-			aria-hidden="true"
-		>
-			<Icon name="badge-check" class="h-5 w-5" />
-		</div>
-		<p class="text-sm font-black text-[var(--text)]">
+	<div>
+		<p class="eyebrow text-[var(--action)]">{certification.year}</p>
+		<p class="mt-2 text-sm font-black text-[var(--text)]">
 			{certification.provider}
 		</p>
-		<p class="muted-copy text-sm">{certification.year}</p>
+	</div>
+
+	<div class="min-w-0">
+		<h3
+			class="text-xl leading-tight font-black text-[var(--home-navy)] md:text-2xl"
+		>
+			{certification.name}
+		</h3>
+
+		<div
+			class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-semibold text-[var(--text-muted)]"
+		>
+			{certification.skills?.slice(0, 4).map((skill) => <span>{skill}</span>)}
+		</div>
+
 		{
 			certification.credentialId ? (
-				<p class="muted-copy max-w-xs text-xs leading-6">
+				<p class="mt-4 text-xs break-all text-[var(--text-muted)]">
 					{t(locale, "certificationCard.idLabel")} {certification.credentialId}
 				</p>
 			) : null
 		}
 	</div>
 
-	<div class="max-w-4xl">
-		<h3
-			class="text-2xl leading-tight font-black text-[var(--text)] md:text-3xl"
-		>
-			{certification.name}
-		</h3>
-
-		<div class="mt-6 flex flex-wrap gap-2">
-			{
-				certification.skills
-					?.slice(0, 5)
-					.map((skill) => <span class="tag-pill">{skill}</span>)
-			}
-		</div>
-
-		{
-			certification.url ? (
-				<a
-					href={certification.url}
-					target="_blank"
-					rel="noopener noreferrer nofollow"
-					class="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[var(--accent-strong)] hover:text-[var(--text)] dark:text-[var(--accent)]"
-				>
-					{t(locale, "certificationCard.viewCredential")}
-					<Icon name="move-up-right" class="h-4 w-4" />
-				</a>
-			) : null
-		}
-	</div>
+	{
+		certification.url ? (
+			<a
+				href={certification.url}
+				target="_blank"
+				rel="noopener noreferrer nofollow"
+				class="button-secondary w-full md:w-auto"
+				aria-label={`${t(locale, "certificationCard.viewCredential")}: ${certification.name}, ${t(locale, "certificationCard.opensNewWindow")}`}
+			>
+				{t(locale, "certificationCard.viewCredential")}
+				<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+			</a>
+		) : null
+	}
 </article>

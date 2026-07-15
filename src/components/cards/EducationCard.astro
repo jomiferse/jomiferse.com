@@ -21,42 +21,46 @@ const dateLabel = `${education.startDate} - ${education.endDate}`;
 ---
 
 <article
-	class="dark-card hover-card grid gap-6 p-5 md:p-7 lg:grid-cols-[0.32fr_1fr]"
+	data-education-record
+	class="education-record relative grid gap-5 border-t border-[var(--surface-border)] py-7 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-10 md:py-8"
 >
-	<div class="space-y-3">
-		<p class="eyebrow">{dateLabel}</p>
-		<p class="text-sm font-black text-[var(--text)]">{education.institution}</p>
-		<p class="muted-copy text-sm">{education.location}</p>
+	<div data-education-period>
+		<p class="eyebrow text-[var(--action)]">{dateLabel}</p>
+		<p class="mt-3 text-sm font-black text-[var(--text)]">
+			{education.institution}
+		</p>
+		<p class="muted-copy mt-1 text-sm">{education.location}</p>
 	</div>
 
-	<div class="max-w-4xl">
+	<div class="min-w-0">
 		<h3
-			class="text-2xl leading-tight font-black text-[var(--text)] md:text-3xl"
+			class="text-2xl leading-tight font-black text-[var(--home-navy)] md:text-3xl"
 		>
 			{education.degree}
 		</h3>
 
-		<p class="muted-copy mt-5 max-w-2xl text-base leading-7">
+		<p class="muted-copy mt-4 max-w-3xl leading-7">
 			{education.description}
 		</p>
 
-		<div class="mt-6 flex flex-wrap gap-2">
+		<div
+			class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[var(--text-muted)]"
+		>
+			{
+				education.notes ? (
+					<p>
+						<strong class="text-[var(--text)]">
+							{t(locale, "educationCard.gradeLabel")}
+						</strong>{" "}
+						{education.notes}
+					</p>
+				) : null
+			}
 			{
 				education.skills
 					?.slice(0, 4)
-					.map((skill) => <span class="tag-pill">{skill}</span>)
+					.map((skill) => <span class="font-semibold">{skill}</span>)
 			}
 		</div>
-
-		{
-			education.notes ? (
-				<p class="muted-copy mt-5 text-sm">
-					<span class="font-bold text-[var(--text)]">
-						{t(locale, "educationCard.gradeLabel")}
-					</span>{" "}
-					{education.notes}
-				</p>
-			) : null
-		}
 	</div>
 </article>

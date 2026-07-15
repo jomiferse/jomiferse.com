@@ -926,7 +926,8 @@
   },
   "certificationCard": {
     "idLabel": "ID:",
-    "viewCredential": "Ver curso"
+    "viewCredential": "Ver curso",
+    "opensNewWindow": "se abre en una pestaña nueva"
   },
   "educationCard": {
     "gradeLabel": "Nota:"
