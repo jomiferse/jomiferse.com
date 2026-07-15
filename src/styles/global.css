@@ -1427,12 +1427,7 @@ body:has(.cookie-consent__banner:not([hidden])) :focus {
 
 .form-shell:hover .form-icon,
 .form-shell:focus-within .form-icon {
-	color: var(--accent-strong);
-}
-
-.dark .form-shell:hover .form-icon,
-.dark .form-shell:focus-within .form-icon {
-	color: var(--accent);
+	color: var(--action);
 }
 
 .form-file {

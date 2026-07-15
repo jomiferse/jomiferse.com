@@ -147,12 +147,7 @@ const structuredData = [
 				<h1 id="service-title">{service.title}</h1>
 				<p class="service-detail-hero__intro">{service.description}</p>
 				<div class="service-detail-hero__actions">
-					<a
-						href={assessmentHref}
-						class="button-action"
-						data-contact-dialog-open
-						data-service-selection={service.slug}
-					>
+					<a href={assessmentHref} class="button-action">
 						{serviceCopy.assessmentButton}
 						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 					</a>
