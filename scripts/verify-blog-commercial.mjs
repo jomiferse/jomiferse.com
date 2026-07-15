@@ -1,9 +1,20 @@
 import { readFile, readdir } from "node:fs/promises";
-import { join } from "node:path";
+import { isAbsolute, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const failures = [];
+const verifyGeneratedOutput = process.argv.includes("--dist");
+const distRootArgumentIndex = process.argv.indexOf("--dist-root");
+const distRootArgument =
+	distRootArgumentIndex >= 0
+		? process.argv[distRootArgumentIndex + 1]
+		: undefined;
+const distRoot = distRootArgument
+	? isAbsolute(distRootArgument)
+		? distRootArgument
+		: resolve(root, distRootArgument)
+	: join(root, "dist", "client");
 const validRoles = new Set(["buyer-led", "technical-authority", "case-study"]);
 const validAudiences = new Set(["business", "technical"]);
 const expectedClusters = new Set([
@@ -203,6 +214,99 @@ if (!tupleSource) {
 	for (const cluster of actualClusters) {
 		if (!expectedClusters.has(cluster)) {
 			failures.push(`seo clusters: unexpected ${cluster}`);
+		}
+	}
+}
+
+if (verifyGeneratedOutput) {
+	const readGenerated = async (label, ...parts) => {
+		try {
+			return await readFile(join(distRoot, ...parts), "utf8");
+		} catch {
+			failures.push(`dist: missing ${label}`);
+			return "";
+		}
+	};
+	const decodeHtmlEntities = (value) =>
+		value
+			.replaceAll("&amp;", "&")
+			.replaceAll("&#38;", "&")
+			.replaceAll("&#x26;", "&");
+	const getConversionHref = (html, marker) =>
+		decodeHtmlEntities(
+			html.match(new RegExp(`<a href="([^"]+)"[^>]*${marker}`))?.[1] ?? "",
+		);
+
+	const sitemap = await readGenerated("sitemap-0.xml", "sitemap-0.xml");
+	for (const entry of entries) {
+		const slug = entry.file.replace(/\.md$/, "");
+		const expectedUrl = `https://www.jomiferse.com/${entry.locale}/blog/${slug}/`;
+		if (!sitemap.includes(expectedUrl)) {
+			failures.push(`dist sitemap: missing ${expectedUrl}`);
+		}
+	}
+	if (sitemap.includes("/blog/page/")) {
+		failures.push("dist sitemap: blog pagination must be excluded");
+	}
+
+	const representativePages = [
+		{
+			label: "Spanish buyer-led article",
+			locale: "es",
+			slug: "evaluar-presupuesto-software-a-medida",
+			primary: "/es/services/software-a-medida/",
+			service: "software-a-medida",
+		},
+		{
+			label: "English technical-authority article",
+			locale: "en",
+			slug: "modular-monolith-vs-microservices",
+			primary: "/en/backend-api-architecture-audit/",
+			service: "technology-second-opinion",
+		},
+		{
+			label: "Spanish case-study article",
+			locale: "es",
+			slug: "creando-cv-studio",
+			primary: "/es/services/software-a-medida/",
+			service: "software-a-medida",
+		},
+	];
+
+	for (const page of representativePages) {
+		const html = await readGenerated(
+			page.label,
+			page.locale,
+			"blog",
+			page.slug,
+			"index.html",
+		);
+		if (!html) continue;
+
+		const primaryHref = getConversionHref(html, "data-conversion-primary");
+		const secondaryHref = getConversionHref(html, "data-conversion-secondary");
+		const articlePath = `/${page.locale}/blog/${page.slug}/`;
+
+		if (primaryHref !== page.primary) {
+			failures.push(
+				`dist ${page.label}: expected primary ${page.primary}, found ${primaryHref || "none"}`,
+			);
+		}
+		if (!secondaryHref.includes(`service=${page.service}`)) {
+			failures.push(
+				`dist ${page.label}: missing contact service ${page.service}`,
+			);
+		}
+		if (!secondaryHref.includes("sourceCategory=article")) {
+			failures.push(`dist ${page.label}: missing article source category`);
+		}
+		if (
+			!secondaryHref.includes(`sourcePath=${encodeURIComponent(articlePath)}`)
+		) {
+			failures.push(`dist ${page.label}: missing encoded source path`);
+		}
+		if (primaryHref === `/${page.locale}/services`) {
+			failures.push(`dist ${page.label}: generic services primary remains`);
 		}
 	}
 }
