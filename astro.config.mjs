@@ -90,6 +90,7 @@ function rehypeEditorialImages() {
 export default defineConfig({
 	redirects: {
 		"/": "/es/",
+		"/contact": "/es/contact",
 		"/es/experience": "/es/about",
 		"/en/experience": "/en/about",
 		...serviceAliasRedirects,
@@ -128,6 +129,9 @@ export default defineConfig({
 	i18n: {
 		locales: ["es", "en"],
 		defaultLocale: "es",
+		routing: {
+			prefixDefaultLocale: true,
+		},
 	},
 	darkMode: "class",
 });
