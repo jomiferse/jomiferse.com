@@ -59,6 +59,9 @@ const projectImage = project?.img?.imgStatic;
 								width="640"
 								height="400"
 								loading="eager"
+								decoding="async"
+								fetchpriority="high"
+								sizes="(max-width: 64rem) calc(100vw - 2rem), 40rem"
 							/>
 						) : (
 							<span

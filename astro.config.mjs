@@ -4,10 +4,14 @@ import icon from "astro-icon";
 import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import { unified } from "@astrojs/markdown-remark";
+import sharp from "sharp";
+import { fileURLToPath } from "node:url";
 import { serviceAliasRedirects } from "./src/lib/service-aliases.ts";
+import { getEditorialImageAttributes } from "./src/lib/media-delivery.ts";
 
 const siteUrl = new URL("https://www.jomiferse.com");
 const internalHosts = new Set([siteUrl.hostname, "jomiferse.com"]);
+const imageDimensions = new Map();
 function isExternalHref(href) {
 	try {
 		const url = new URL(href, siteUrl);
@@ -49,6 +53,40 @@ function rehypeSafeExternalLinks() {
 	};
 }
 
+function rehypeEditorialImages() {
+	return async (tree) => {
+		const images = [];
+		const walk = (node) => {
+			if (!node || typeof node !== "object") return;
+			if (node.type === "element" && node.tagName === "img") images.push(node);
+			if (Array.isArray(node.children)) node.children.forEach(walk);
+		};
+
+		walk(tree);
+		await Promise.all(
+			images.map(async (node) => {
+				const src = String(node.properties?.src ?? "");
+				if (!src.startsWith("/images/")) return;
+				let dimensions = imageDimensions.get(src);
+				if (!dimensions) {
+					const metadata = await sharp(
+						fileURLToPath(
+							new URL(`.${src}`, new URL("./public/", import.meta.url)),
+						),
+					).metadata();
+					if (!metadata.width || !metadata.height) return;
+					dimensions = { width: metadata.width, height: metadata.height };
+					imageDimensions.set(src, dimensions);
+				}
+				node.properties = {
+					...node.properties,
+					...getEditorialImageAttributes(dimensions.width, dimensions.height),
+				};
+			}),
+		);
+	};
+}
+
 export default defineConfig({
 	redirects: {
 		"/": "/es/",
@@ -62,7 +100,9 @@ export default defineConfig({
 	site: "https://www.jomiferse.com",
 	compressHTML: true,
 	markdown: {
-		processor: unified({ rehypePlugins: [rehypeSafeExternalLinks] }),
+		processor: unified({
+			rehypePlugins: [rehypeSafeExternalLinks, rehypeEditorialImages],
+		}),
 	},
 	integrations: [
 		icon(),
@@ -81,7 +121,7 @@ export default defineConfig({
 		}),
 	],
 	build: {
-		inlineStylesheets: "always",
+		inlineStylesheets: "auto",
 	},
 	output: "static",
 	adapter: vercel(),

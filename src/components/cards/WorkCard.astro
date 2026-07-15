@@ -31,15 +31,21 @@ const hoverImage = project.img?.imgHover;
 							width="960"
 							height="600"
 							loading="lazy"
+							decoding="async"
+							sizes="(max-width: 48rem) calc(100vw - 2rem), 40rem"
 							class="h-full w-full object-cover transition duration-500 motion-safe:group-hover:scale-[1.02]"
 						/>
 						{hoverImage ? (
 							<img
-								src={hoverImage.src}
+								data-hover-preview
+								data-hover-src={hoverImage.src}
 								alt=""
 								width="960"
 								height="600"
 								loading="lazy"
+								decoding="async"
+								fetchpriority="low"
+								sizes="(max-width: 48rem) calc(100vw - 2rem), 40rem"
 								class="project-preview-hover absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 motion-safe:group-hover:opacity-100"
 							/>
 						) : null}
@@ -91,6 +97,18 @@ const hoverImage = project.img?.imgHover;
 		</div>
 	</a>
 </article>
+
+<script>
+	import { loadHoverPreviews } from "@/lib/media-delivery";
+
+	const connection = (
+		navigator as Navigator & { connection?: { saveData?: boolean } }
+	).connection;
+	loadHoverPreviews(document, {
+		hover: window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+		saveData: connection?.saveData === true,
+	});
+</script>
 
 <style>
 	@media (hover: none) {
