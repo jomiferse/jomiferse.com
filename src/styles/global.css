@@ -245,6 +245,11 @@ body:has(.contact-page) main.site-shell {
 	max-width: 88rem;
 }
 
+body:has(.education-page) main.site-shell,
+body:has(.privacy-page) main.site-shell {
+	max-width: 88rem;
+}
+
 .projects-page .eyebrow {
 	color: var(--action);
 }
@@ -258,8 +263,20 @@ body:has(.contact-page) main.site-shell {
 	color: var(--action);
 }
 
+.education-page .eyebrow,
+.privacy-page .eyebrow {
+	color: var(--action);
+}
+
 .about-page h1,
 .about-page h2 {
+	color: var(--home-navy);
+}
+
+.education-page h1,
+.education-page h2,
+.privacy-page h1,
+.privacy-page h2 {
 	color: var(--home-navy);
 }
 

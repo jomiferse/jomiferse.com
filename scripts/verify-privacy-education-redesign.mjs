@@ -63,6 +63,16 @@ if (includesPhase("nav")) {
 		"headings",
 		"currentLabel",
 	]);
+
+	const globalStyles = await readSource("src", "styles", "global.css");
+	requireMarkers("education and privacy visual alignment", globalStyles, [
+		"body:has(.education-page) main.site-shell",
+		"body:has(.privacy-page) main.site-shell",
+		".education-page .eyebrow",
+		".privacy-page .eyebrow",
+		".education-page h1",
+		".privacy-page h1",
+	]);
 }
 
 for (const locale of ["es", "en"]) {
