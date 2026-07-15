@@ -25,6 +25,10 @@ test("keeps a two-column privacy summary at the required mobile width", () => {
 test("supports safe wrapping for privacy values and storage keys", () => {
 	assert.match(privacy, /overflow-wrap:\s*anywhere/);
 	assert.match(privacy, /privacy-storage-table tbody th code/);
+	assert.match(
+		privacy,
+		/\.privacy-summary__item p:last-child \{[\s\S]*?font-size:\s*0\.82rem/,
+	);
 });
 
 test("uses an editorial section index instead of a raised card", () => {

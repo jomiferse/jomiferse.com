@@ -75,9 +75,9 @@ const { items, label, currentLabel, icon = "book-open" } = Astro.props as Props;
 							<span class="mt-1 block text-xs font-semibold text-[var(--text-muted)]">
 								<>
 									<span class="sr-only">{currentLabel}: </span>
-									<span class="line-clamp-2" data-section-toc-current
-										>{items[0]?.text}</span
-									>
+									<span class="line-clamp-2" data-section-toc-current>
+										{items[0]?.text}
+									</span>
 								</>
 							</span>
 						</span>
