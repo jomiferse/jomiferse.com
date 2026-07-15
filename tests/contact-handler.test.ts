@@ -324,6 +324,20 @@ test("reserves a hash atomically and shortens failed attempts to a cooldown", ()
 	);
 });
 
+test("sweeps expired successful reservations while acquiring new identities", () => {
+	const limiter = new FixedWindowContactRateLimiter();
+	for (let index = 0; index <= 1_000; index += 1) {
+		assert.equal(limiter.acquire(`client-${index}`, 0), true);
+	}
+
+	assert.equal(
+		limiter.acquire("current-client", CONTACT_RATE_LIMIT_WINDOW_MS),
+		true,
+	);
+	const records = Reflect.get(limiter, "records") as Map<string, number>;
+	assert.ok(records.size <= 1_000);
+});
+
 test("reserves before transport so concurrent submissions send only once", async () => {
 	let releaseTransport: (() => void) | undefined;
 	let transportStarted: (() => void) | undefined;
@@ -359,24 +373,43 @@ test("reserves before transport so concurrent submissions send only once", async
 test("retains a failure cooldown before allowing another provider attempt", async () => {
 	let now = 1_000;
 	let sendCount = 0;
+	let releaseFirstFailure: (() => void) | undefined;
+	let firstTransportStarted: (() => void) | undefined;
+	const firstStarted = new Promise<void>((resolve) => {
+		firstTransportStarted = resolve;
+	});
+	const firstFailure = new Promise<void>((resolve) => {
+		releaseFirstFailure = resolve;
+	});
 	const harness = makeHarness({
 		now: () => now,
 		rateLimiter: new FixedWindowContactRateLimiter(),
 		transport: {
 			async send() {
 				sendCount += 1;
+				if (sendCount === 1) {
+					firstTransportStarted?.();
+					await firstFailure;
+				}
 				return "failed";
 			},
 		},
 	});
 
-	const first = await harness.handler(requestFor(validForm()));
+	const firstPending = harness.handler(requestFor(validForm()));
+	await firstStarted;
+	now += 5_000;
+	releaseFirstFailure?.();
+	const first = await firstPending;
 	const repeated = await harness.handler(requestFor(validForm()));
-	now += CONTACT_FAILURE_COOLDOWN_MS;
+	now = 1_000 + CONTACT_FAILURE_COOLDOWN_MS;
+	const beforeFailureCooldown = await harness.handler(requestFor(validForm()));
+	now = 6_000 + CONTACT_FAILURE_COOLDOWN_MS;
 	const afterCooldown = await harness.handler(requestFor(validForm()));
 
 	assert.match(first.headers.get("location") ?? "", /error=send/);
 	assert.match(repeated.headers.get("location") ?? "", /sent=1/);
+	assert.match(beforeFailureCooldown.headers.get("location") ?? "", /sent=1/);
 	assert.match(afterCooldown.headers.get("location") ?? "", /error=send/);
 	assert.equal(sendCount, 2);
 });

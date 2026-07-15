@@ -55,7 +55,7 @@ test("accepts a bounded page path for the direct global contact form", () => {
 	assert.deepEqual(result.input.source, { category: "direct", path: null });
 });
 
-test("accepts native no-JavaScript selection fields and rejects conflicts", () => {
+test("prefers changed no-JavaScript selections over preselected enhanced values", () => {
 	const fallback = validForm({ service: "", scope: "" });
 	fallback.set("serviceFallback", "business-website");
 	fallback.set("scopeFallback", "project");
@@ -67,9 +67,15 @@ test("accepts native no-JavaScript selection fields and rejects conflicts", () =
 		assert.equal(result.input.scope, "project");
 	}
 
-	const conflict = validForm();
-	conflict.set("serviceFallback", "assessment");
-	assert.equal(parseContactFormData(conflict, allowedServices).ok, false);
+	const changed = validForm();
+	changed.set("serviceFallback", "assessment");
+	changed.set("scopeFallback", "intervention");
+	const changedResult = parseContactFormData(changed, allowedServices);
+	assert.equal(changedResult.ok, true);
+	if (changedResult.ok) {
+		assert.equal(changedResult.input.service, "assessment");
+		assert.equal(changedResult.input.scope, "intervention");
+	}
 });
 
 test("rejects empty, malformed and oversized contact fields", () => {

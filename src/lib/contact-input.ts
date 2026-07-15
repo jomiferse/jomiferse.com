@@ -77,13 +77,8 @@ export function parseContactFormData(
 	const serviceFallback = readString(form, "serviceFallback") ?? "";
 	const scopeEnhanced = readString(form, "scope") ?? "";
 	const scopeFallback = readString(form, "scopeFallback") ?? "";
-	const conflictingService =
-		Boolean(serviceEnhanced && serviceFallback) &&
-		serviceEnhanced !== serviceFallback;
-	const conflictingScope =
-		Boolean(scopeEnhanced && scopeFallback) && scopeEnhanced !== scopeFallback;
-	const serviceRaw = serviceEnhanced || serviceFallback;
-	const scopeRaw = scopeEnhanced || scopeFallback;
+	const serviceRaw = serviceFallback || serviceEnhanced;
+	const scopeRaw = scopeFallback || scopeEnhanced;
 	const safeService = allowedServices.has(serviceRaw) ? serviceRaw : "";
 	const safeScope = isOneOf(scopeRaw, contactScopes) ? scopeRaw : "";
 	const redirect = {
@@ -115,8 +110,6 @@ export function parseContactFormData(
 
 	if (
 		!validLocale ||
-		conflictingService ||
-		conflictingScope ||
 		!validService ||
 		!validScope ||
 		sourceCategory === null ||

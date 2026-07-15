@@ -226,3 +226,30 @@ The deployment concerns above remain unchanged: production mail settings and a
 real delivery check require external Resend configuration, and the local
 frequency reservation remains warm-instance scoped with provider idempotency as
 the cross-instance duplicate backstop.
+
+## Second-review follow-up
+
+The second review found two remaining no-JavaScript/rate-limit edge cases and a
+cache-maintenance issue. They were resolved in a third RED/GREEN pass:
+
+- When native fallback selectors are submitted, their validated values now take
+  precedence over the preselected hidden enhanced values. A no-JavaScript user
+  can therefore change the service or scope without triggering a false conflict
+  rejection.
+- Provider failure cooldowns now use a fresh clock reading after the transport
+  completes. The regression advances the clock while the first provider call is
+  pending and confirms that retry remains blocked for 30 seconds from failure,
+  rather than from reservation.
+- Successful expired reservations are swept during `acquire`, not only while
+  recording provider failures, preventing stale success entries from
+  accumulating indefinitely in a warm instance.
+
+The exact final verification for this pass was:
+
+```text
+focused contact tests      25 passed, 0 failed, 0 skipped
+pnpm test                  57 passed, 0 failed, 0 skipped
+pnpm run check             118 files, 0 errors, 0 warnings, 0 hints
+pnpm run lint              exit 0, zero warnings
+pnpm run format:check      exit 0, all files matched Prettier style
+```

@@ -233,7 +233,6 @@ export function createContactHandler(deps: ContactHandlerDependencies) {
 		}
 
 		let acquiredKey: string | undefined;
-		let acquiredAt: number | undefined;
 		try {
 			const now = deps.now();
 			const identity = await deps.getRateLimitIdentity(
@@ -245,7 +244,6 @@ export function createContactHandler(deps: ContactHandlerDependencies) {
 				return redirectToContact(parsed.redirect, { sent: "1" });
 			}
 			acquiredKey = identity.key;
-			acquiredAt = now;
 
 			const labels = deps.getSelectionLabels(parsed.input);
 			const result = await sendContactEmail(
@@ -260,14 +258,14 @@ export function createContactHandler(deps: ContactHandlerDependencies) {
 			);
 
 			if (result === "failed") {
-				deps.rateLimiter.recordFailure(identity.key, now);
+				deps.rateLimiter.recordFailure(identity.key, deps.now());
 				return redirectToContact(parsed.redirect, { error: "send" });
 			}
 
 			return redirectToContact(parsed.redirect, { sent: "1" });
 		} catch {
-			if (acquiredKey !== undefined && acquiredAt !== undefined) {
-				deps.rateLimiter.recordFailure(acquiredKey, acquiredAt);
+			if (acquiredKey !== undefined) {
+				deps.rateLimiter.recordFailure(acquiredKey, deps.now());
 			}
 			return redirectToContact(parsed.redirect, { error: "send" });
 		}
@@ -313,6 +311,11 @@ export class FixedWindowContactRateLimiter implements ContactRateLimiter {
 	private readonly records = new Map<string, number>();
 
 	acquire(key: string, now: number) {
+		if (this.records.size > 1_000) {
+			for (const [recordKey, expiresAt] of this.records) {
+				if (expiresAt <= now) this.records.delete(recordKey);
+			}
+		}
 		const expiresAt = this.records.get(key);
 		if (expiresAt !== undefined && expiresAt > now) {
 			return false;
@@ -322,11 +325,6 @@ export class FixedWindowContactRateLimiter implements ContactRateLimiter {
 	}
 
 	recordFailure(key: string, now: number) {
-		if (this.records.size > 1_000) {
-			for (const [recordKey, expiresAt] of this.records) {
-				if (expiresAt <= now) this.records.delete(recordKey);
-			}
-		}
 		this.records.set(key, now + CONTACT_FAILURE_COOLDOWN_MS);
 	}
 }
