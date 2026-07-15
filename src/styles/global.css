@@ -1082,8 +1082,8 @@ body.mobile-menu-open {
 	color: var(--action);
 }
 
-.footer-group-more {
-	color: var(--footer-text) !important;
+a.footer-group-more {
+	color: var(--footer-text);
 }
 
 .footer-contact a {
