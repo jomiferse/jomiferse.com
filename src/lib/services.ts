@@ -58,10 +58,7 @@ export interface ServiceItem {
 }
 
 export type ServiceGroupSlug =
-	| "it-consulting"
-	| "web-wordpress"
-	| "ai-automation"
-	| "maintenance-support";
+	"it-consulting" | "web-wordpress" | "ai-automation" | "maintenance-support";
 
 export interface ServiceGroup {
 	slug: ServiceGroupSlug;
