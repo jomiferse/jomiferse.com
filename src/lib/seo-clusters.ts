@@ -1,17 +1,21 @@
 import type { Locale } from "@/i18n";
 
+export const commercialSeoClusterKeys = [
+	"freelance-developer",
+	"wordpress",
+	"custom-software",
+	"excel-replacement",
+	"process-automation",
+	"ai-automation",
+	"api-integrations",
+	"spring-boot-development",
+	"spring-boot-maintenance",
+	"legacy-modernization",
+	"technical-audit",
+] as const;
+
 export type CommercialSeoClusterKey =
-	| "freelance-developer"
-	| "wordpress"
-	| "custom-software"
-	| "excel-replacement"
-	| "process-automation"
-	| "ai-automation"
-	| "api-integrations"
-	| "spring-boot-development"
-	| "spring-boot-maintenance"
-	| "legacy-modernization"
-	| "technical-audit";
+	(typeof commercialSeoClusterKeys)[number];
 
 export interface CommercialSeoCluster {
 	key: CommercialSeoClusterKey;
