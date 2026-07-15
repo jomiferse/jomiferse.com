@@ -6,6 +6,10 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "7 min"
 translationSlug: "when-business-process-automation-is-worth-it"
+commercial:
+  role: buyer-led
+  audience: business
+  cluster: process-automation
 cover:
   src: "/images/blog/covers/when-business-process-automation-is-worth-it.avif"
   alt: "Ilustración editorial sobre Automatizar procesos de empresa: cuándo merece la pena y cómo empezar"

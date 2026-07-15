@@ -1,9 +1,11 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const failures = [];
+const validRoles = new Set(["buyer-led", "technical-authority", "case-study"]);
+const validAudiences = new Set(["business", "technical"]);
 const expectedClusters = new Set([
 	"freelance-developer",
 	"wordpress",
@@ -17,6 +19,99 @@ const expectedClusters = new Set([
 	"legacy-modernization",
 	"technical-audit",
 ]);
+
+const contentRoot = join(root, "src", "content", "blog");
+const readEntries = async (locale) => {
+	const directory = join(contentRoot, locale);
+	const files = (await readdir(directory)).filter((file) =>
+		file.endsWith(".md"),
+	);
+
+	return Promise.all(
+		files.map(async (file) => ({
+			locale,
+			file,
+			source: await readFile(join(directory, file), "utf8"),
+		})),
+	);
+};
+
+const getFrontmatter = (source) =>
+	source.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? "";
+const getTopLevelField = (frontmatter, name) =>
+	frontmatter
+		.match(new RegExp(`^${name}: ["']?([^"'\\n]+)["']?$`, "m"))?.[1]
+		?.trim();
+const getCommercialField = (frontmatter, name) => {
+	const commercialBlock = frontmatter.match(
+		/^commercial:\n((?: {2}[^\n]+\n?)*)/m,
+	)?.[1];
+	return commercialBlock
+		?.match(new RegExp(`^  ${name}: ["']?([^"'\\n]+)["']?$`, "m"))?.[1]
+		?.trim();
+};
+
+const entries = [...(await readEntries("es")), ...(await readEntries("en"))];
+if (entries.length !== 54) {
+	failures.push(`blog entries: expected 54, found ${entries.length}`);
+}
+for (const locale of ["es", "en"]) {
+	const localeCount = entries.filter((entry) => entry.locale === locale).length;
+	if (localeCount !== 27) {
+		failures.push(`${locale} entries: expected 27, found ${localeCount}`);
+	}
+}
+
+const classifiedEntries = entries.map((entry) => {
+	const frontmatter = getFrontmatter(entry.source);
+	const commercial = {
+		role: getCommercialField(frontmatter, "role"),
+		audience: getCommercialField(frontmatter, "audience"),
+		cluster: getCommercialField(frontmatter, "cluster"),
+	};
+
+	if (!validRoles.has(commercial.role)) {
+		failures.push(`${entry.locale}/${entry.file}: invalid commercial.role`);
+	}
+	if (!validAudiences.has(commercial.audience)) {
+		failures.push(`${entry.locale}/${entry.file}: invalid commercial.audience`);
+	}
+	if (!expectedClusters.has(commercial.cluster)) {
+		failures.push(`${entry.locale}/${entry.file}: invalid commercial.cluster`);
+	}
+
+	return {
+		...entry,
+		translationSlug: getTopLevelField(frontmatter, "translationSlug"),
+		commercial,
+	};
+});
+
+const englishEntries = new Map(
+	classifiedEntries
+		.filter((entry) => entry.locale === "en")
+		.map((entry) => [entry.file.replace(/\.md$/, ""), entry]),
+);
+
+for (const spanishEntry of classifiedEntries.filter(
+	(entry) => entry.locale === "es",
+)) {
+	const englishEntry = englishEntries.get(spanishEntry.translationSlug);
+	if (!englishEntry) {
+		failures.push(
+			`es/${spanishEntry.file}: missing English translation ${spanishEntry.translationSlug ?? ""}`,
+		);
+		continue;
+	}
+
+	for (const field of ["role", "audience", "cluster"]) {
+		if (spanishEntry.commercial[field] !== englishEntry.commercial[field]) {
+			failures.push(
+				`es/${spanishEntry.file}: commercial.${field} differs from en/${englishEntry.file}`,
+			);
+		}
+	}
+}
 
 const clusterSource = await readFile(
 	join(root, "src", "lib", "seo-clusters.ts"),

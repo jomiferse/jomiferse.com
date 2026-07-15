@@ -6,6 +6,10 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "contratar-desarrollador-freelance-web"
+commercial:
+  role: buyer-led
+  audience: business
+  cluster: freelance-developer
 cover:
   src: "/images/blog/covers/hire-freelance-web-developer-business.avif"
   alt: "Technical editorial illustration about How to hire a freelance developer for a business web project"

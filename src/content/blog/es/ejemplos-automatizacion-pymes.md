@@ -6,6 +6,10 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "12 min"
 translationSlug: "automation-examples-small-businesses"
+commercial:
+  role: buyer-led
+  audience: business
+  cluster: process-automation
 cover:
   src: "/images/blog/covers/automation-examples-small-businesses.avif"
   alt: "Ilustración editorial sobre Ejemplos de automatización para pymes que sí tienen sentido"

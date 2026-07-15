@@ -6,6 +6,10 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "arquitectura-hexagonal-que-es-como-aplicarla-proyectos-backend"
+commercial:
+  role: technical-authority
+  audience: technical
+  cluster: technical-audit
 cover:
   src: "/images/blog/covers/hexagonal-architecture-what-it-is-how-to-apply-backend-projects.avif"
   alt: "Technical editorial illustration about Hexagonal Architecture: what it is and how to apply it in backend projects"

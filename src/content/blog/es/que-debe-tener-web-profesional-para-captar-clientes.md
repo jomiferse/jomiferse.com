@@ -6,6 +6,10 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "7 min"
 translationSlug: "what-a-professional-website-needs-to-get-clients"
+commercial:
+  role: buyer-led
+  audience: business
+  cluster: wordpress
 cover:
   src: "/images/blog/covers/what-a-professional-website-needs-to-get-clients.avif"
   alt: "Ilustración editorial sobre Qué debe tener una web profesional para captar clientes"

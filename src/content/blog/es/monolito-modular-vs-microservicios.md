@@ -6,6 +6,10 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "15 min"
 translationSlug: "modular-monolith-vs-microservices"
+commercial:
+  role: technical-authority
+  audience: technical
+  cluster: technical-audit
 cover:
   src: "/images/blog/covers/modular-monolith-vs-microservices.avif"
   alt: "Ilustración editorial sobre Monolito modular vs microservicios: qué elegiría"

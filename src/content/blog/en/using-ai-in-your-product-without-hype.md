@@ -6,6 +6,10 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
 translationSlug: "usar-ia-en-tu-producto-sin-humo"
+commercial:
+  role: buyer-led
+  audience: technical
+  cluster: ai-automation
 cover:
   src: "/images/blog/covers/using-ai-in-your-product-without-hype.avif"
   alt: "Technical editorial illustration about How to use AI in your product without turning it into hype"

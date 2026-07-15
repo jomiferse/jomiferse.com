@@ -6,6 +6,10 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "12 min"
 translationSlug: "legacy-backend-modernization-cost-risks-phases"
+commercial:
+  role: buyer-led
+  audience: technical
+  cluster: legacy-modernization
 cover:
   src: "/images/blog/covers/legacy-backend-modernization-cost-risks-phases.avif"
   alt: "Ilustración editorial sobre Modernizar un backend legacy: coste, riesgos y fases"

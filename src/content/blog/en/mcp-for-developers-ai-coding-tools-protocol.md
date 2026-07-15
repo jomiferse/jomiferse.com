@@ -6,6 +6,10 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "6 min"
 translationSlug: "mcp-para-desarrolladores-protocolo-herramientas-ia"
+commercial:
+  role: technical-authority
+  audience: technical
+  cluster: api-integrations
 cover:
   src: "/images/blog/covers/mcp-for-developers-ai-coding-tools-protocol.avif"
   alt: "Technical editorial illustration about MCP for developers: why AI coding tools are converging on one protocol"

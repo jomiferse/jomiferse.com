@@ -6,6 +6,10 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "8 min"
 translationSlug: "when-should-a-company-migrate-a-legacy-backend-to-java-spring-boot"
+commercial:
+  role: buyer-led
+  audience: technical
+  cluster: legacy-modernization
 cover:
   src: "/images/blog/covers/when-should-a-company-migrate-a-legacy-backend-to-java-spring-boot.avif"
   alt: "Ilustración editorial sobre ¿Cuándo debería una empresa migrar un backend heredado a Java Spring Boot?"

@@ -6,6 +6,10 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "evaluate-custom-software-proposal"
+commercial:
+  role: buyer-led
+  audience: business
+  cluster: custom-software
 cover:
   src: "/images/blog/covers/evaluate-custom-software-proposal.avif"
   alt: "Ilustración editorial sobre Cómo evaluar un presupuesto de software a medida"

@@ -6,6 +6,10 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "6 min"
 translationSlug: "apis-idempotentes-que-sobreviven-a-reintentos"
+commercial:
+  role: technical-authority
+  audience: technical
+  cluster: api-integrations
 cover:
   src: "/images/blog/covers/idempotent-apis-that-survive-retries.avif"
   alt: "Technical editorial illustration about Idempotent APIs That Survive Retries: A Practical Guide for Backend Developers"

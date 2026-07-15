@@ -6,6 +6,10 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "12 min"
 translationSlug: "integrar-crm-formularios-pagos"
+commercial:
+  role: buyer-led
+  audience: business
+  cluster: api-integrations
 cover:
   src: "/images/blog/covers/integrate-crm-forms-payments.avif"
   alt: "Technical editorial illustration about How to integrate CRM, website forms and payments without losing data"

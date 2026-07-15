@@ -6,6 +6,10 @@ language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
 translationSlug: "ajustar-tamano-pods-kubernetes-requests-limits"
+commercial:
+  role: technical-authority
+  audience: technical
+  cluster: spring-boot-maintenance
 cover:
   src: "/images/blog/covers/right-sizing-kubernetes-pods-requests-limits.avif"
   alt: "Technical editorial illustration about Right-Sizing Kubernetes Pods: Set Requests and Limits Without Guessing"

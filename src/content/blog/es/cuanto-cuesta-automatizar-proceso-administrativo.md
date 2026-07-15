@@ -6,6 +6,10 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "10 min"
 translationSlug: "cost-to-automate-administrative-process"
+commercial:
+  role: buyer-led
+  audience: business
+  cluster: process-automation
 cover:
   src: "/images/blog/covers/cost-to-automate-administrative-process.avif"
   alt: "Ilustración editorial sobre Cuánto cuesta automatizar un proceso administrativo"

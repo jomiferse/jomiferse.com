@@ -6,6 +6,10 @@ language: "es"
 author: "José Miguel Fernández"
 readingTime: "8 min"
 translationSlug: "spring-boot-performance-tuning"
+commercial:
+  role: technical-authority
+  audience: technical
+  cluster: spring-boot-maintenance
 cover:
   src: "/images/blog/covers/spring-boot-performance-tuning.avif"
   alt: "Ilustración editorial sobre Rendimiento en Spring Boot: los cambios que de verdad se notan"

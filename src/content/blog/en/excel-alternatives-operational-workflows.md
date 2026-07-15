@@ -6,6 +6,10 @@ dateModified: 2026-07-12
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "alternativas-excel-procesos-operativos"
+commercial:
+  role: buyer-led
+  audience: business
+  cluster: excel-replacement
 cover:
   src: "/images/blog/covers/excel-alternatives-operational-workflows.avif"
   alt: "Technical editorial illustration about Alternatives to Excel for operational business workflows"

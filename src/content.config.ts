@@ -1,6 +1,11 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import {
+	blogAudienceValues,
+	blogEditorialRoleValues,
+} from "./lib/blog-commercial";
+import { commercialSeoClusterKeys } from "./lib/seo-clusters";
 
 const blog = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/blog" }),
@@ -15,6 +20,11 @@ const blog = defineCollection({
 		featured: z.boolean().optional(),
 		draft: z.boolean().optional(),
 		translationSlug: z.string().optional(),
+		commercial: z.object({
+			role: z.enum(blogEditorialRoleValues),
+			audience: z.enum(blogAudienceValues),
+			cluster: z.enum(commercialSeoClusterKeys),
+		}),
 		cover: z.object({
 			src: z.string(),
 			alt: z.string(),
