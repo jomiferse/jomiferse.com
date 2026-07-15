@@ -548,7 +548,7 @@
         "clientLabel": "GetYourTicket",
         "sector": "Ticketing and events",
         "status": "In production",
-        "link": "https://www.getyourticket.es/",
+        "link": "",
         "context": "The commission started from Attendize, an open-source ticketing codebase that had gone unmaintained and needed to be made operational again.",
         "timeframe": "Ongoing maintenance",
         "summary": "Recovery and production launch of an Attendize-based ticketing platform with Docker, VPS hosting, HTTPS, Stripe and a registration flow adapted for event managers.",

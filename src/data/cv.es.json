@@ -548,7 +548,7 @@
         "clientLabel": "GetYourTicket",
         "sector": "Ticketing y eventos",
         "status": "En producción",
-        "link": "https://www.getyourticket.es/",
+        "link": "",
         "context": "El encargo partía de Attendize, una base open source para ticketing que llevaba tiempo sin mantenimiento y necesitaba volver a ser operable.",
         "timeframe": "Mantenimiento activo",
         "summary": "Recuperación de una plataforma de ticketing Attendize con Docker, VPS, HTTPS y Stripe, adaptando el registro para gestores de eventos.",
