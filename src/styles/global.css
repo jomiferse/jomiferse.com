@@ -1358,8 +1358,8 @@ body.mobile-menu-open {
 }
 
 .form-shell:focus-within {
-	border-color: var(--focus-ring);
-	box-shadow: 0 0 0 4px color-mix(in srgb, var(--focus-ring) 18%, transparent);
+	border-color: var(--action);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--action) 18%, transparent);
 }
 
 body:has(.cookie-consent__banner:not([hidden])) :focus {
@@ -1383,6 +1383,10 @@ body:has(.cookie-consent__banner:not([hidden])) :focus {
 	color: inherit;
 	font-size: 0.92rem;
 	line-height: 1.6;
+}
+
+.form-input:focus-visible {
+	outline: none;
 }
 
 .form-input::placeholder {
