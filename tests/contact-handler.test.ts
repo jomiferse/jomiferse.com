@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import {
+	CONTACT_FAILURE_COOLDOWN_MS,
 	CONTACT_RATE_LIMIT_WINDOW_MS,
 	FixedWindowContactRateLimiter,
 	createContactHandler,
@@ -11,6 +12,7 @@ import {
 	sendContactEmail,
 	type ContactEmailMessage,
 	type ContactEmailTransport,
+	type ContactRateLimiter,
 } from "../src/lib/contact-handler.ts";
 import type { ContactInput } from "../src/lib/contact-input.ts";
 
@@ -79,13 +81,17 @@ const requestFor = (form: FormData, headers?: HeadersInit) =>
 const makeHarness = (
 	options: {
 		transportStatus?: "sent" | "suppressed" | "failed";
+		transport?: ContactEmailTransport;
 		environment?: typeof environment | null;
 		limited?: boolean;
+		rateLimiter?: ContactRateLimiter;
+		now?: () => number;
 	} = {},
 ) => {
 	const messages: ContactEmailMessage[] = [];
-	let rateRecords = 0;
-	const transport: ContactEmailTransport = {
+	let rateReservations = 0;
+	let failureCooldowns = 0;
+	const defaultTransport: ContactEmailTransport = {
 		async send(message) {
 			messages.push(message);
 			return options.transportStatus ?? "sent";
@@ -95,11 +101,15 @@ const makeHarness = (
 		allowedServices: new Set(["assessment", "business-website"]),
 		getEnvironment: () =>
 			options.environment === undefined ? environment : options.environment,
-		transport,
-		rateLimiter: {
-			isLimited: () => options.limited ?? false,
-			record: () => {
-				rateRecords += 1;
+		transport: options.transport ?? defaultTransport,
+		rateLimiter: options.rateLimiter ?? {
+			acquire: () => {
+				if (options.limited) return false;
+				rateReservations += 1;
+				return true;
+			},
+			recordFailure: () => {
+				failureCooldowns += 1;
 			},
 		},
 		getRateLimitIdentity: async () => ({
@@ -110,14 +120,17 @@ const makeHarness = (
 			service: input.service === "business-website" ? "Business website" : "-",
 			scope: input.scope === "project" ? "Complete project" : "-",
 		}),
-		now: () => 1_000,
+		now: options.now ?? (() => 1_000),
 	});
 
 	return {
 		handler,
 		messages,
-		get rateRecords() {
-			return rateRecords;
+		get rateReservations() {
+			return rateReservations;
+		},
+		get failureCooldowns() {
+			return failureCooldowns;
 		},
 	};
 };
@@ -138,7 +151,7 @@ test("redirects a valid submission to success and preserves its selection", asyn
 		harness.messages[0]?.idempotencyKey,
 		"contact/123/hashed-client",
 	);
-	assert.equal(harness.rateRecords, 1);
+	assert.equal(harness.rateReservations, 1);
 });
 
 test("redirects empty, malformed and excessive bodies to validation", async () => {
@@ -220,7 +233,8 @@ test("redirects controlled configuration and provider failures", async () => {
 		);
 	}
 	assert.equal(missingConfig.messages.length, 0);
-	assert.equal(providerFailure.rateRecords, 0);
+	assert.equal(providerFailure.rateReservations, 1);
+	assert.equal(providerFailure.failureCooldowns, 1);
 });
 
 test("normalizes user-controlled email text and keeps the subject fixed", async () => {
@@ -289,15 +303,80 @@ test("uses only Vercel's protected forwarding header for rate identity", async (
 	);
 });
 
-test("limits a recorded hash for one full window without retaining its IP", () => {
+test("reserves a hash atomically and shortens failed attempts to a cooldown", () => {
 	const limiter = new FixedWindowContactRateLimiter();
 	const key = "already-hashed-client";
 
-	assert.equal(limiter.isLimited(key, 1_000), false);
-	limiter.record(key, 1_000);
-	assert.equal(limiter.isLimited(key, 1_001), true);
+	assert.equal(limiter.acquire(key, 1_000), true);
+	assert.equal(limiter.acquire(key, 1_001), false);
+	limiter.recordFailure(key, 1_001);
 	assert.equal(
-		limiter.isLimited(key, 1_000 + CONTACT_RATE_LIMIT_WINDOW_MS),
+		limiter.acquire(key, 1_001 + CONTACT_FAILURE_COOLDOWN_MS - 1),
 		false,
 	);
+	assert.equal(limiter.acquire(key, 1_001 + CONTACT_FAILURE_COOLDOWN_MS), true);
+	assert.equal(
+		limiter.acquire(
+			key,
+			1_001 + CONTACT_FAILURE_COOLDOWN_MS + CONTACT_RATE_LIMIT_WINDOW_MS - 1,
+		),
+		false,
+	);
+});
+
+test("reserves before transport so concurrent submissions send only once", async () => {
+	let releaseTransport: (() => void) | undefined;
+	let transportStarted: (() => void) | undefined;
+	const started = new Promise<void>((resolve) => {
+		transportStarted = resolve;
+	});
+	const release = new Promise<void>((resolve) => {
+		releaseTransport = resolve;
+	});
+	let sendCount = 0;
+	const harness = makeHarness({
+		rateLimiter: new FixedWindowContactRateLimiter(),
+		transport: {
+			async send() {
+				sendCount += 1;
+				transportStarted?.();
+				await release;
+				return "sent";
+			},
+		},
+	});
+
+	const first = harness.handler(requestFor(validForm()));
+	await started;
+	const second = await harness.handler(requestFor(validForm()));
+	releaseTransport?.();
+	await first;
+
+	assert.equal(sendCount, 1);
+	assert.match(second.headers.get("location") ?? "", /sent=1/);
+});
+
+test("retains a failure cooldown before allowing another provider attempt", async () => {
+	let now = 1_000;
+	let sendCount = 0;
+	const harness = makeHarness({
+		now: () => now,
+		rateLimiter: new FixedWindowContactRateLimiter(),
+		transport: {
+			async send() {
+				sendCount += 1;
+				return "failed";
+			},
+		},
+	});
+
+	const first = await harness.handler(requestFor(validForm()));
+	const repeated = await harness.handler(requestFor(validForm()));
+	now += CONTACT_FAILURE_COOLDOWN_MS;
+	const afterCooldown = await harness.handler(requestFor(validForm()));
+
+	assert.match(first.headers.get("location") ?? "", /error=send/);
+	assert.match(repeated.headers.get("location") ?? "", /sent=1/);
+	assert.match(afterCooldown.headers.get("location") ?? "", /error=send/);
+	assert.equal(sendCount, 2);
 });

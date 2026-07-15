@@ -3,6 +3,7 @@ import { test } from "node:test";
 
 import {
 	MAX_CONTACT_BODY_BYTES,
+	MAX_CONTACT_SOURCE_PATH_LENGTH,
 	parseContactFormData,
 } from "../src/lib/contact-input.ts";
 
@@ -100,6 +101,24 @@ test("rejects disallowed locale, service, scope and source values", () => {
 	for (const form of invalidForms) {
 		assert.equal(parseContactFormData(form, allowedServices).ok, false);
 	}
+});
+
+test("accepts a 2048-character source path and rejects longer paths", () => {
+	const prefix = "/en/";
+	const boundaryPath = `${prefix}${"a".repeat(
+		MAX_CONTACT_SOURCE_PATH_LENGTH - prefix.length,
+	)}`;
+	const boundary = parseContactFormData(
+		validForm({ sourcePath: boundaryPath }),
+		allowedServices,
+	);
+	const excessive = parseContactFormData(
+		validForm({ sourcePath: `${boundaryPath}a` }),
+		allowedServices,
+	);
+
+	assert.equal(boundary.ok, true);
+	assert.equal(excessive.ok, false);
 });
 
 test("exposes a conservative maximum encoded body size", () => {

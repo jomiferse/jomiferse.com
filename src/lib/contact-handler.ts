@@ -6,6 +6,7 @@ import {
 } from "./contact-input.ts";
 
 export const CONTACT_RATE_LIMIT_WINDOW_MS = 60 * 60 * 1_000;
+export const CONTACT_FAILURE_COOLDOWN_MS = 30 * 1_000;
 
 export interface ContactEnvironment {
 	apiKey: string;
@@ -63,8 +64,8 @@ export interface ContactRateLimitIdentity {
 }
 
 export interface ContactRateLimiter {
-	isLimited(key: string, now: number): boolean;
-	record(key: string, now: number): void;
+	acquire(key: string, now: number): boolean;
+	recordFailure(key: string, now: number): void;
 }
 
 export interface ContactHandlerDependencies {
@@ -231,6 +232,8 @@ export function createContactHandler(deps: ContactHandlerDependencies) {
 			return redirectToContact(parsed.redirect, { error: "send" });
 		}
 
+		let acquiredKey: string | undefined;
+		let acquiredAt: number | undefined;
 		try {
 			const now = deps.now();
 			const identity = await deps.getRateLimitIdentity(
@@ -238,9 +241,11 @@ export function createContactHandler(deps: ContactHandlerDependencies) {
 				environment.apiKey,
 				now,
 			);
-			if (deps.rateLimiter.isLimited(identity.key, now)) {
+			if (!deps.rateLimiter.acquire(identity.key, now)) {
 				return redirectToContact(parsed.redirect, { sent: "1" });
 			}
+			acquiredKey = identity.key;
+			acquiredAt = now;
 
 			const labels = deps.getSelectionLabels(parsed.input);
 			const result = await sendContactEmail(
@@ -255,12 +260,15 @@ export function createContactHandler(deps: ContactHandlerDependencies) {
 			);
 
 			if (result === "failed") {
+				deps.rateLimiter.recordFailure(identity.key, now);
 				return redirectToContact(parsed.redirect, { error: "send" });
 			}
 
-			deps.rateLimiter.record(identity.key, now);
 			return redirectToContact(parsed.redirect, { sent: "1" });
 		} catch {
+			if (acquiredKey !== undefined && acquiredAt !== undefined) {
+				deps.rateLimiter.recordFailure(acquiredKey, acquiredAt);
+			}
 			return redirectToContact(parsed.redirect, { error: "send" });
 		}
 	};
@@ -304,22 +312,21 @@ export async function createContactRateLimitIdentity(
 export class FixedWindowContactRateLimiter implements ContactRateLimiter {
 	private readonly records = new Map<string, number>();
 
-	isLimited(key: string, now: number) {
+	acquire(key: string, now: number) {
 		const expiresAt = this.records.get(key);
-		if (expiresAt === undefined) return false;
-		if (expiresAt <= now) {
-			this.records.delete(key);
+		if (expiresAt !== undefined && expiresAt > now) {
 			return false;
 		}
+		this.records.set(key, now + CONTACT_RATE_LIMIT_WINDOW_MS);
 		return true;
 	}
 
-	record(key: string, now: number) {
+	recordFailure(key: string, now: number) {
 		if (this.records.size > 1_000) {
 			for (const [recordKey, expiresAt] of this.records) {
 				if (expiresAt <= now) this.records.delete(recordKey);
 			}
 		}
-		this.records.set(key, now + CONTACT_RATE_LIMIT_WINDOW_MS);
+		this.records.set(key, now + CONTACT_FAILURE_COOLDOWN_MS);
 	}
 }

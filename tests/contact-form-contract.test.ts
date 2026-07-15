@@ -24,8 +24,17 @@ test("includes a keyboard and screen-reader hidden honeypot", () => {
 });
 
 test("offers native service and scope controls when JavaScript is unavailable", () => {
+	assert.match(
+		source,
+		/<form[\s\S]*action="\/api\/contact"[\s\S]*method="post"/,
+	);
 	assert.match(source, /<noscript>[\s\S]*name="serviceFallback"/);
 	assert.match(source, /<noscript>[\s\S]*name="scopeFallback"/);
+	assert.match(
+		source,
+		/<option[\s\S]*value=\{option\.value\}[\s\S]*selected=\{resolvedService\?\.value === option\.value\}/,
+	);
+	assert.match(source, /option value=\{scope\} selected=\{[^}]*scope/);
 });
 
 test("contact-page redirects can reveal a status without JavaScript", async () => {

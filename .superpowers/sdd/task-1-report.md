@@ -18,8 +18,8 @@ DONE_WITH_CONCERNS
 - Added a one-hour fixed-window limiter using only a HMAC digest of Vercel's
   protected `x-vercel-forwarded-for` header. Raw IP addresses are not retained.
 - Added Resend idempotency using the same hourly client bucket as a
-  cross-instance backstop. Duplicate/concurrent requests receive the same
-  neutral public success redirect without another email send.
+  cross-instance backstop for completed duplicate requests. Warm-instance
+  concurrency is handled by the local reservation described below.
 - Extracted `sendContactEmail(input, transport, ...)`, injected the transport
   into the handler, and kept all handler tests offline.
 - Moved sender and recipient to validated `RESEND_API_KEY`, `CONTACT_FROM` and
@@ -87,6 +87,7 @@ normalizing direct attribution to no stored path.
 - `tests/contact-form-contract.test.ts`
 - `tests/contact-handler.test.ts`
 - `tests/contact-input.test.ts`
+- `tests/contact-page-render.test.ts`
 - `tests/resend-contact-transport.test.ts`
 
 ## Exact final verification
@@ -184,3 +185,44 @@ Exit `0`, no output.
 - The in-memory limiter is per warm serverless instance; Resend idempotency is
   the cross-instance enforcement layer. If the provider is replaced, equivalent
   shared idempotency/rate storage must be added before removing this backstop.
+
+## Final-review follow-up
+
+The final review identified three additional gaps, all resolved in a second
+TDD pass:
+
+- The localized contact page now validates `service` and `scope` from
+  `Astro.url.searchParams` and server-renders the hidden values and selected
+  native fallback options. It is an on-demand Vercel route so this state also
+  works with JavaScript disabled. Redirect status messages receive their
+  visible class server-side.
+- The warm-instance limiter now reserves an identity before starting the email
+  transport. A concurrent request receives the same neutral public success
+  redirect, while a failed provider attempt is reduced to a 30-second cooldown
+  before retry is allowed.
+- `sourcePath` has an explicit 2,048-character limit, with exact-boundary tests.
+
+The RED coverage added for this pass exercised unrendered query selections,
+concurrent requests entering the transport twice, immediate retries after a
+provider failure, and an over-limit source path. The page regression test uses
+Astro's container with an in-process Vite server, so it verifies rendered HTML
+without opening a network listener or contacting external services.
+
+### Follow-up verification
+
+All commands used Node 24.15.0. The exact final results were:
+
+```text
+pnpm test                 56 passed, 0 failed, 0 skipped
+pnpm run check            118 files, 0 errors, 0 warnings, 0 hints
+pnpm run lint             exit 0, zero warnings
+pnpm run format:check     exit 0, all files matched Prettier style
+pnpm run verify:ai-seo    exit 0, verification passed
+pnpm run build            exit 0, Vercel server bundle and sitemap generated
+git diff --check          exit 0, no output
+```
+
+The deployment concerns above remain unchanged: production mail settings and a
+real delivery check require external Resend configuration, and the local
+frequency reservation remains warm-instance scoped with provider idempotency as
+the cross-instance duplicate backstop.

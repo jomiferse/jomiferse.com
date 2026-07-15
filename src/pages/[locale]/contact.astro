@@ -3,20 +3,39 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import TechnologyMarquee from "@/components/common/TechnologyMarquee.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
 import { Icon } from "astro-icon/components";
-import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
+import { getTranslations, t, type Locale } from "@/i18n";
 import { getCv } from "@cv";
 import { buildBreadcrumbList } from "@/lib/seo";
+import { pricingKeys, type PricingKey } from "@/lib/service-commercial";
+import { getServicePages } from "@/lib/services";
 
-export function getStaticPaths() {
-	return getLocaleStaticPaths();
+export const prerender = false;
+
+const localeParam = Astro.params.locale;
+if (localeParam !== "en" && localeParam !== "es") {
+	return Astro.redirect("/es/contact", 302);
 }
-
-const { locale } = Astro.params;
+const locale: Locale = localeParam;
 const cv = getCv(locale);
 const page = getTranslations(locale).contact.page;
 const pageTitle = page.meta.title;
 const pageDescription = page.meta.description;
 const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(page.whatsappMessage)}`;
+const requestedService = Astro.url.searchParams.get("service") ?? "";
+const selectedService =
+	requestedService === "assessment" ||
+	getServicePages(locale).some((service) => service.slug === requestedService)
+		? requestedService
+		: undefined;
+const requestedScope = Astro.url.searchParams.get("scope") ?? "";
+const selectedScope =
+	selectedService && pricingKeys.includes(requestedScope as PricingKey)
+		? (requestedScope as PricingKey)
+		: undefined;
+const status =
+	Astro.url.searchParams.get("sent") === "1"
+		? "sent"
+		: Astro.url.searchParams.get("error");
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	{
@@ -100,7 +119,10 @@ const structuredData = [
 				<div
 					id="contact-status-sent"
 					data-contact-status="sent"
-					class="contact-status contact-status--success"
+					class:list={[
+						"contact-status contact-status--success",
+						status === "sent" && "contact-status--visible",
+					]}
 					role="status"
 				>
 					<strong>{page.successTitle}</strong>
@@ -109,7 +131,10 @@ const structuredData = [
 				<div
 					id="contact-status-missing"
 					data-contact-status="missing"
-					class="contact-status"
+					class:list={[
+						"contact-status",
+						status === "missing" && "contact-status--visible",
+					]}
 					role="alert"
 				>
 					<strong>{page.missingTitle}</strong>
@@ -118,7 +143,10 @@ const structuredData = [
 				<div
 					id="contact-status-send"
 					data-contact-status="send"
-					class="contact-status"
+					class:list={[
+						"contact-status",
+						status === "send" && "contact-status--visible",
+					]}
 					role="alert"
 				>
 					<strong>{page.errorTitle}</strong>
@@ -128,7 +156,11 @@ const structuredData = [
 						<a href={`mailto:${cv.email}`}>Email</a>
 					</div>
 				</div>
-				<ContactForm locale={locale} />
+				<ContactForm
+					locale={locale}
+					selectedService={selectedService}
+					selectedScope={selectedScope}
+				/>
 			</div>
 		</section>
 

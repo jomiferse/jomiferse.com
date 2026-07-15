@@ -97,10 +97,15 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 				{contactCopy.selectedServiceLabel}
 			</label>
 			<select id={`${idPrefix}-service-fallback`} name="serviceFallback">
-				<option value="">—</option>
+				<option value="" selected={!resolvedService}>—</option>
 				{
 					serviceOptions.map((option) => (
-						<option value={option.value}>{option.label}</option>
+						<option
+							value={option.value}
+							selected={resolvedService?.value === option.value}
+						>
+							{option.label}
+						</option>
 					))
 				}
 			</select>
@@ -108,10 +113,12 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 				{contactCopy.selectedScopeLabel}
 			</label>
 			<select id={`${idPrefix}-scope-fallback`} name="scopeFallback">
-				<option value="">—</option>
+				<option value="" selected={!resolvedScope}>—</option>
 				{
 					pricingKeys.map((scope) => (
-						<option value={scope}>{scopeLabels[scope]}</option>
+						<option value={scope} selected={resolvedScope === scope}>
+							{scopeLabels[scope]}
+						</option>
 					))
 				}
 			</select>

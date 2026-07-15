@@ -1,4 +1,5 @@
 export const MAX_CONTACT_BODY_BYTES = 32_768;
+export const MAX_CONTACT_SOURCE_PATH_LENGTH = 2_048;
 
 export const contactLocales = ["en", "es"] as const;
 export type ContactLocale = (typeof contactLocales)[number];
@@ -60,6 +61,7 @@ const isEmail = (value: string) =>
 	value.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 const isPublicLocalizedPath = (value: string, locale: ContactLocale) =>
+	value.length <= MAX_CONTACT_SOURCE_PATH_LENGTH &&
 	new RegExp(`^/${locale}(?:/[a-z0-9-]+)*/?$`).test(value) &&
 	!value.startsWith(`/${locale}/api/`);
 
