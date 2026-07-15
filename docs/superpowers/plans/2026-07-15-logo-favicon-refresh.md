@@ -70,7 +70,7 @@ test("defines the approved JF geometry and palette", () => {
 test("renders a theme-aware favicon SVG", () => {
 	const svg = renderBrandSvg({ themeAware: true });
 
-	assert.match(svg, /prefers-color-scheme: dark/);
+	assert.match(svg, /prefers-color-scheme:dark/);
 	assert.match(svg, /#102d4f/);
 	assert.match(svg, /#ff8068/);
 	assert.match(svg, /aria-hidden="true"/);
@@ -538,9 +538,9 @@ git commit --only scripts/generate-brand-assets.mjs public/site.webmanifest publ
 
 - [ ] **Step 1: Format all task files**
 
-Run: `pnpm exec prettier --write src/lib/brand-mark.ts src/components/common/BrandMark.astro src/components/common/Header.astro src/styles/global.css scripts/generate-brand-assets.mjs scripts/verify-brand-assets.mjs tests/brand-mark.test.ts public/site.webmanifest public/favicon.svg`
+Run: `pnpm exec prettier --write src/lib/brand-mark.ts src/components/common/BrandMark.astro src/components/common/Header.astro src/styles/global.css scripts/generate-brand-assets.mjs scripts/verify-brand-assets.mjs tests/brand-mark.test.ts public/site.webmanifest`
 
-Expected: Prettier completes without errors. Re-run `node scripts/generate-brand-assets.mjs` if formatting changes `favicon.svg` away from the deterministic generated output.
+Expected: Prettier completes without errors. `favicon.svg` remains the deterministic output of `node scripts/generate-brand-assets.mjs` and is not passed to Prettier because the project has no SVG parser configured.
 
 - [ ] **Step 2: Run focused checks**
 

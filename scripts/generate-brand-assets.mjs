@@ -32,11 +32,7 @@ const createIco = (images) => {
 		return entry;
 	});
 
-	return Buffer.concat([
-		header,
-		...entries,
-		...images.map(({ data }) => data),
-	]);
+	return Buffer.concat([header, ...entries, ...images.map(({ data }) => data)]);
 };
 
 await writeFile(
