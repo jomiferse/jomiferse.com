@@ -97,6 +97,21 @@ for (const locale of ["es", "en"]) {
 				failures.push(`${locale}: missing privacy.sections.${key}`);
 			}
 		}
+		for (const storageKey of [
+			"theme",
+			"jomiferse.cookie-consent.v1",
+			"jomiferse.exit-intent.v2",
+			"_ga",
+			"_ga_<container-id>",
+		]) {
+			if (
+				!dictionary.privacy?.storageTable?.rows?.some(
+					(row) => row.name === storageKey,
+				)
+			) {
+				failures.push(`${locale}: missing privacy storage entry ${storageKey}`);
+			}
+		}
 	}
 	if (includesPhase("education-copy")) {
 		for (const key of [
@@ -128,8 +143,6 @@ if (includesPhase("privacy-page")) {
 		"data-cookie-settings-trigger",
 		"cv.email",
 		"noindex",
-		"jomiferse.exit-intent.v2",
-		"_ga_<container-id>",
 	]);
 	rejectMarkers("privacy commercial palette", privacy, ["var(--accent"]);
 }

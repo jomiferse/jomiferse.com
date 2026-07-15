@@ -1,6 +1,9 @@
 ---
+import { Icon } from "astro-icon/components";
+import SectionToc from "@/components/common/SectionToc.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
+import { getCv } from "@cv";
 import { buildBreadcrumbList } from "@/lib/seo";
 
 export function getStaticPaths() {
@@ -9,6 +12,7 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params;
 const page = getTranslations(locale).privacy;
+const cv = getCv(locale);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
 	{
@@ -23,6 +27,38 @@ const structuredData = [
 		{ name: page.meta.title, path: `/${locale}/privacy` },
 	]),
 ];
+
+const sectionEntries = [
+	{ slug: "privacy-controller", text: page.sections.controller.title },
+	{ slug: "privacy-data", text: page.sections.data.title },
+	{ slug: "privacy-purposes", text: page.sections.purposes.title },
+	{ slug: "privacy-retention", text: page.sections.retention.title },
+	{ slug: "privacy-providers", text: page.sections.providers.title },
+	{ slug: "privacy-transfers", text: page.sections.transfers.title },
+	{ slug: "privacy-rights", text: page.sections.rights.title },
+	{ slug: "privacy-cookies", text: page.sections.cookies.title },
+	{ slug: "privacy-withdraw", text: page.sections.withdraw.title },
+];
+const privacyEmailHref = `mailto:${cv.email}?subject=${encodeURIComponent(
+	locale === "es" ? "Consulta sobre privacidad" : "Privacy enquiry",
+)}`;
+const summaryItems = [
+	{ icon: "user", label: page.summary.controller, value: cv.name },
+	{ icon: "mail", label: page.summary.contact, value: cv.email },
+	{
+		icon: "globe",
+		label: page.summary.analytics,
+		value: page.summary.analyticsValue,
+	},
+	{
+		icon: "badge-check",
+		label: page.summary.profiles,
+		value: page.summary.profilesValue,
+	},
+];
+const storageHeaders = page.storageTable.headers;
+const providerLabel = (name: string) =>
+	page.sections.providers.linkLabel.replace("{name}", name);
 ---
 
 <BaseLayout
@@ -30,55 +66,483 @@ const structuredData = [
 	description={page.meta.description}
 	noindex
 	structuredData={structuredData}
-	keywords={["privacy policy", "cookies", "Google Analytics consent"]}
+	keywords={["privacy policy", "cookie policy", "Google Analytics consent"]}
 >
-	<section class="section-reveal py-10 md:py-16">
-		<p class="eyebrow">{page.eyebrow}</p>
-		<h1
-			class="mt-5 max-w-3xl text-5xl font-black text-[var(--text)] md:text-7xl"
-		>
-			{page.title}
-		</h1>
-		<p class="muted-copy mt-6 max-w-2xl text-lg leading-8">
-			{page.intro}
-		</p>
-	</section>
-
-	<section class="section-reveal pb-20 md:pb-28">
-		<div class="max-w-3xl">
-			<ol class="space-y-10">
-				{
-					page.sections.map((section, index) => (
-						<li class="grid gap-4 border-b border-[var(--surface-border)] pb-10 sm:grid-cols-[3.5rem_1fr]">
-							<p
-								aria-hidden="true"
-								class="text-sm font-black text-[var(--accent-strong)] dark:text-[var(--accent)]"
-							>
-								{String(index + 1).padStart(2, "0")}
-							</p>
-							<div>
-								<h2 class="text-2xl font-black text-[var(--text)]">
-									{section.title}
-								</h2>
-								<p class="muted-copy mt-4 leading-8">{section.body}</p>
-							</div>
-						</li>
-					))
-				}
-			</ol>
-
-			<div class="mt-10 flex flex-wrap gap-3">
+	<div data-privacy-page class="privacy-page">
+		<section class="section-reveal pt-6 pb-12 md:pt-10 md:pb-16">
+			<p class="eyebrow text-[var(--action)]">{page.eyebrow}</p>
+			<div
+				class="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
+			>
+				<div class="max-w-4xl">
+					<h1
+						class="text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
+					>
+						{page.title}
+					</h1>
+					<p class="muted-copy mt-6 max-w-3xl text-lg leading-8 md:text-xl">
+						{page.intro}
+					</p>
+					<p class="mt-4 text-sm font-bold text-[var(--text-muted)]">
+						{page.updated}
+					</p>
+				</div>
 				<button
 					type="button"
 					data-cookie-settings-trigger
-					class="button-primary"
+					class="button-action w-full lg:w-auto"
 				>
-					{page.manageCookies}
+					{page.actions.manageCookies}
+					<Icon name="layers" class="h-4 w-4" aria-hidden="true" />
 				</button>
-				<a href={`/${locale}/contact`} class="button-secondary">
-					{page.contactLink}
-				</a>
 			</div>
+		</section>
+
+		<section
+			data-privacy-summary
+			class="privacy-summary border-y border-[var(--surface-border)]"
+			aria-label={page.eyebrow}
+		>
+			{
+				summaryItems.map((item) => (
+					<div class="privacy-summary__item">
+						<Icon
+							name={item.icon}
+							class="h-5 w-5 text-[var(--action)]"
+							aria-hidden="true"
+						/>
+						<p class="eyebrow mt-4 text-[var(--action)]">{item.label}</p>
+						<p class="mt-2 font-black text-[var(--home-navy)]">{item.value}</p>
+					</div>
+				))
+			}
+		</section>
+
+		<div
+			class="section-reveal grid gap-10 py-14 lg:grid-cols-[minmax(15rem,0.28fr)_minmax(0,0.72fr)] lg:gap-16 lg:py-18"
+		>
+			<SectionToc
+				items={sectionEntries}
+				label={page.navigation.label}
+				currentLabel={page.navigation.currentLabel}
+				icon="badge-check"
+			/>
+
+			<article class="privacy-document min-w-0">
+				<section id="privacy-controller" class="scroll-mt-28">
+					<p class="eyebrow text-[var(--action)]">01</p>
+					<h2>{page.sections.controller.title}</h2>
+					<p>{page.sections.controller.body}</p>
+					<dl class="privacy-facts mt-6">
+						<div>
+							<dt>{page.summary.controller}</dt>
+							<dd>{cv.name}</dd>
+						</div>
+						<div>
+							<dt>{page.summary.contact}</dt>
+							<dd><a href={privacyEmailHref}>{cv.email}</a></dd>
+						</div>
+					</dl>
+				</section>
+
+				<section id="privacy-data" class="scroll-mt-28">
+					<p class="eyebrow text-[var(--action)]">02</p>
+					<h2>{page.sections.data.title}</h2>
+					<p>{page.sections.data.intro}</p>
+					<ul class="privacy-check-list">
+						{
+							page.sections.data.items.map((item) => (
+								<li>
+									<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</section>
+
+				<section id="privacy-purposes" class="scroll-mt-28">
+					<p class="eyebrow text-[var(--action)]">03</p>
+					<h2>{page.sections.purposes.title}</h2>
+					<div class="privacy-editorial-list">
+						{
+							page.sections.purposes.items.map((item) => (
+								<div>
+									<h3>{item.title}</h3>
+									<p>{item.body}</p>
+								</div>
+							))
+						}
+					</div>
+				</section>
+
+				<section id="privacy-retention" class="scroll-mt-28">
+					<p class="eyebrow text-[var(--action)]">04</p>
+					<h2>{page.sections.retention.title}</h2>
+					<p>{page.sections.retention.body}</p>
+				</section>
+
+				<section id="privacy-providers" class="scroll-mt-28">
+					<p class="eyebrow text-[var(--action)]">05</p>
+					<h2>{page.sections.providers.title}</h2>
+					<p>{page.sections.providers.intro}</p>
+					<div class="privacy-editorial-list">
+						{
+							page.sections.providers.items.map((provider) => (
+								<div>
+									<h3>{provider.name}</h3>
+									<p>{provider.purpose}</p>
+									<a
+										href={provider.href}
+										target="_blank"
+										rel="noopener noreferrer nofollow"
+										class="privacy-source-link"
+									>
+										{providerLabel(provider.name)}
+										<Icon
+											name="move-up-right"
+											class="h-4 w-4"
+											aria-hidden="true"
+										/>
+									</a>
+								</div>
+							))
+						}
+					</div>
+				</section>
+
+				<section id="privacy-transfers" class="scroll-mt-28">
+					<p class="eyebrow text-[var(--action)]">06</p>
+					<h2>{page.sections.transfers.title}</h2>
+					<p>{page.sections.transfers.body}</p>
+				</section>
+
+				<section id="privacy-rights" class="scroll-mt-28">
+					<p class="eyebrow text-[var(--action)]">07</p>
+					<h2>{page.sections.rights.title}</h2>
+					<p>{page.sections.rights.intro}</p>
+					<p class="mt-4">{page.sections.rights.instruction}</p>
+					<div class="mt-6 flex flex-col gap-3 sm:flex-row">
+						<a
+							href={privacyEmailHref}
+							class="button-secondary w-full sm:w-auto"
+						>
+							{page.actions.email}
+						</a>
+						<a
+							href="https://www.aepd.es/"
+							target="_blank"
+							rel="noopener noreferrer nofollow"
+							class="button-secondary w-full sm:w-auto"
+						>
+							{page.sections.rights.aepd}
+							<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+						</a>
+					</div>
+				</section>
+
+				<section id="privacy-cookies" class="scroll-mt-28">
+					<p class="eyebrow text-[var(--action)]">08</p>
+					<h2>{page.sections.cookies.title}</h2>
+					<p>{page.sections.cookies.intro}</p>
+					<div data-privacy-storage-table class="privacy-storage-table mt-7">
+						<table>
+							<caption class="sr-only">{page.storageTable.caption}</caption>
+							<thead>
+								<tr>
+									<th scope="col">{storageHeaders.name}</th>
+									<th scope="col">{storageHeaders.type}</th>
+									<th scope="col">{storageHeaders.provider}</th>
+									<th scope="col">{storageHeaders.purpose}</th>
+									<th scope="col">{storageHeaders.duration}</th>
+									<th scope="col">{storageHeaders.consent}</th>
+								</tr>
+							</thead>
+							<tbody>
+								{
+									page.storageTable.rows.map((row) => (
+										<tr>
+											<th scope="row">
+												<code>{row.name}</code>
+											</th>
+											<td data-label={storageHeaders.type}>{row.type}</td>
+											<td data-label={storageHeaders.provider}>
+												{row.provider}
+											</td>
+											<td data-label={storageHeaders.purpose}>{row.purpose}</td>
+											<td data-label={storageHeaders.duration}>
+												{row.duration}
+											</td>
+											<td data-label={storageHeaders.consent}>{row.consent}</td>
+										</tr>
+									))
+								}
+							</tbody>
+						</table>
+					</div>
+					<a
+						href="https://support.google.com/analytics/answer/11397207?hl=en-GB"
+						target="_blank"
+						rel="noopener noreferrer nofollow"
+						class="privacy-source-link mt-5"
+					>
+						{page.sections.cookies.gaSource}
+						<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+					</a>
+				</section>
+
+				<section id="privacy-withdraw" class="scroll-mt-28">
+					<p class="eyebrow text-[var(--action)]">09</p>
+					<h2>{page.sections.withdraw.title}</h2>
+					<p>{page.sections.withdraw.body}</p>
+					<button
+						type="button"
+						data-cookie-settings-trigger
+						class="button-action mt-6 w-full sm:w-auto"
+					>
+						{page.actions.manageCookies}
+						<Icon name="layers" class="h-4 w-4" aria-hidden="true" />
+					</button>
+				</section>
+			</article>
 		</div>
-	</section>
+	</div>
 </BaseLayout>
+
+<style>
+	.privacy-summary {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.privacy-summary__item {
+		min-width: 0;
+		padding: 1.25rem 1rem;
+		border-inline-end: 1px solid var(--surface-border);
+	}
+
+	.privacy-summary__item:last-child {
+		border-inline-end: 0;
+	}
+
+	.privacy-document {
+		max-width: 58rem;
+	}
+
+	.privacy-document > section {
+		padding-block: 2.25rem;
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.privacy-document > section:first-child {
+		padding-top: 0;
+	}
+
+	.privacy-document h2 {
+		margin-top: 0.7rem;
+		color: var(--home-navy);
+		font-size: clamp(1.7rem, 3vw, 2.35rem);
+		font-weight: 900;
+		letter-spacing: -0.035em;
+		line-height: 1.05;
+	}
+
+	.privacy-document h3 {
+		color: var(--home-navy);
+		font-size: 1.05rem;
+		font-weight: 850;
+	}
+
+	.privacy-document p {
+		max-width: 50rem;
+		margin-top: 1rem;
+		color: var(--text-muted);
+		line-height: 1.75;
+	}
+
+	.privacy-facts {
+		display: grid;
+		gap: 0.75rem;
+		padding: 1rem;
+		border: 1px solid var(--surface-border);
+		border-radius: 1rem;
+		background: var(--surface-strong);
+	}
+
+	.privacy-facts dt {
+		color: var(--action);
+		font-size: 0.68rem;
+		font-weight: 900;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.privacy-facts dd {
+		margin-top: 0.2rem;
+		font-weight: 750;
+	}
+
+	.privacy-facts a,
+	.privacy-source-link {
+		color: var(--action);
+	}
+
+	.privacy-check-list {
+		display: grid;
+		gap: 0.8rem;
+		margin-top: 1.5rem;
+	}
+
+	.privacy-check-list li {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		gap: 0.65rem;
+		align-items: start;
+		color: var(--text-muted);
+		line-height: 1.65;
+	}
+
+	.privacy-check-list svg {
+		margin-top: 0.3rem;
+		color: var(--action);
+	}
+
+	.privacy-editorial-list {
+		margin-top: 1.5rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.privacy-editorial-list > div {
+		padding-block: 1.25rem;
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.privacy-source-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		margin-top: 0.9rem;
+		font-size: 0.9rem;
+		font-weight: 800;
+		line-height: 1.4;
+	}
+
+	.privacy-source-link:hover {
+		color: var(--home-navy);
+	}
+
+	.privacy-source-link:focus-visible {
+		outline: 2px solid var(--action);
+		outline-offset: 3px;
+	}
+
+	.privacy-storage-table {
+		overflow-x: auto;
+	}
+
+	.privacy-storage-table table {
+		width: 100%;
+		min-width: 54rem;
+		border-collapse: collapse;
+	}
+
+	.privacy-storage-table th,
+	.privacy-storage-table td {
+		padding: 1rem;
+		border-bottom: 1px solid var(--surface-border);
+		text-align: left;
+		vertical-align: top;
+	}
+
+	.privacy-storage-table thead th {
+		color: var(--home-navy);
+		font-size: 0.75rem;
+		font-weight: 900;
+	}
+
+	.privacy-storage-table tbody th {
+		color: var(--home-navy);
+		font-size: 0.85rem;
+	}
+
+	.privacy-storage-table td {
+		color: var(--text-muted);
+		font-size: 0.84rem;
+		line-height: 1.55;
+	}
+
+	@media (max-width: 47.99rem) {
+		.privacy-summary {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.privacy-summary__item:nth-child(2n) {
+			border-inline-end: 0;
+		}
+
+		.privacy-summary__item:nth-child(n + 3) {
+			border-top: 1px solid var(--surface-border);
+		}
+
+		.privacy-storage-table {
+			overflow: visible;
+		}
+
+		.privacy-storage-table table,
+		.privacy-storage-table tbody,
+		.privacy-storage-table tr,
+		.privacy-storage-table th,
+		.privacy-storage-table td {
+			display: block;
+			width: 100%;
+			min-width: 0;
+		}
+
+		.privacy-storage-table thead {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			overflow: hidden;
+			clip: rect(0 0 0 0);
+		}
+
+		.privacy-storage-table tr {
+			margin-top: 1rem;
+			padding: 1rem;
+			border: 1px solid var(--surface-border);
+			border-radius: 1rem;
+			background: var(--surface);
+		}
+
+		.privacy-storage-table th,
+		.privacy-storage-table td {
+			padding: 0.45rem 0;
+			border: 0;
+		}
+
+		.privacy-storage-table td::before {
+			display: block;
+			content: attr(data-label);
+			color: var(--action);
+			font-size: 0.68rem;
+			font-weight: 900;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+		}
+	}
+
+	@media (max-width: 31rem) {
+		.privacy-summary {
+			grid-template-columns: 1fr;
+		}
+
+		.privacy-summary__item {
+			border-inline-end: 0;
+			border-top: 1px solid var(--surface-border);
+		}
+
+		.privacy-summary__item:first-child {
+			border-top: 0;
+		}
+	}
+</style>
