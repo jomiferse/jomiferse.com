@@ -579,43 +579,53 @@
         "title": "Formación y cursos técnicos",
         "description": "Formación académica y cursos técnicos completados por {name}."
       },
-      "eyebrow": "Formación",
-      "title": "Base técnica para",
-      "titleAccent": "software práctico.",
-      "intro": "Una vista compacta de la formación y el aprendizaje continuo detrás de cómo construyo, mantengo y entrego software.",
-      "signals": [
-        {
-          "label": "Base",
-          "title": "Desarrollo de software",
-          "body": "Formación en desarrollo de aplicaciones, bases de datos, testing, control de versiones y delivery de producto."
-        },
-        {
-          "label": "Foco actual",
-          "title": "Sistemas backend",
-          "body": "El aprendizaje reciente está centrado en Spring Boot, microservicios, delivery cloud-native y operación fiable."
-        },
-        {
-          "label": "Forma de trabajar",
-          "title": "Salida útil y mantenible",
-          "body": "Elijo qué aprender según los sistemas que quiero construir: claros, resilientes y fáciles de evolucionar."
-        }
-      ],
+      "eyebrow": "Formación aplicada",
+      "title": "Aprender para resolver mejor.",
+      "intro": "La formación tiene valor cuando mejora las decisiones, reduce errores y ayuda a entregar software que puede mantenerse después.",
+      "summary": {
+        "courses": "Cursos técnicos",
+        "qualifications": "Titulaciones",
+        "focus": "Foco actual",
+        "focusValue": "Backend, calidad y operación"
+      },
+      "applied": {
+        "eyebrow": "Lo que aplico hoy",
+        "title": "Conocimiento que llega al proyecto.",
+        "intro": "Elijo qué estudiar según los problemas que necesito resolver en sistemas reales.",
+        "items": [
+          {
+            "icon": "code",
+            "title": "Backend fiable",
+            "body": "Diseño APIs y servicios pensando en fallos, rendimiento, integraciones y evolución, no solo en que funcionen el primer día."
+          },
+          {
+            "icon": "badge-check",
+            "title": "Calidad y testing",
+            "body": "Uso pruebas y límites claros para reducir regresiones y poder cambiar el software con más seguridad."
+          },
+          {
+            "icon": "cloud",
+            "title": "Despliegue y operación",
+            "body": "Docker, Kubernetes y observabilidad me ayudan a entregar sistemas que también pueden operarse y diagnosticarse."
+          }
+        ]
+      },
       "certifications": {
-        "eyebrow": "Cursos técnicos",
-        "title": "Aprendizaje técnico continuo",
-        "text": "Cursos elegidos alrededor de profundidad backend, testing, disciplina de delivery y sistemas orientados a producción."
+        "eyebrow": "Aprendizaje continuo",
+        "title": "Cursos técnicos recientes",
+        "text": "Una selección cronológica centrada en Spring Boot, testing, microservicios, infraestructura y sistemas de producción."
       },
       "education": {
         "eyebrow": "Formación reglada",
         "title": "Base académica",
-        "text": "La base estructurada detrás de mi rango full-stack, desde desarrollo de aplicaciones hasta tecnologías web y móviles."
+        "text": "La formación estructurada que sostiene mi rango full-stack y mi forma de abordar un producto de principio a fin."
       },
       "cta": {
-        "eyebrow": "Siguiente",
-        "title": "Mira cómo se traduce en trabajo real.",
-        "text": "La formación importa cuando ayuda a tomar mejores decisiones en sistemas en producción y delivery de producto.",
-        "primary": "Ver experiencia",
-        "secondary": "Contactar"
+        "eyebrow": "Trabajo real",
+        "title": "La formación se demuestra construyendo.",
+        "text": "Mira cómo este criterio se traduce en plataformas, backends, integraciones y productos que ya han estado en producción.",
+        "primary": "Ver proyectos",
+        "secondary": "Conocer mi experiencia"
       }
     },
     "meta": {

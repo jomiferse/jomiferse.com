@@ -579,43 +579,53 @@
         "title": "Education & Technical Courses",
         "description": "Education background and technical courses completed by {name}."
       },
-      "eyebrow": "Education",
-      "title": "Technical foundation for",
-      "titleAccent": "practical software.",
-      "intro": "A compact view of the formal training and continuous learning behind how I build, maintain and ship software.",
-      "signals": [
-        {
-          "label": "Foundation",
-          "title": "Software development",
-          "body": "Formal training in application development, databases, testing, version control and product delivery."
-        },
-        {
-          "label": "Current focus",
-          "title": "Backend systems",
-          "body": "Recent learning is focused on Spring Boot, microservices, cloud-native delivery and reliable operations."
-        },
-        {
-          "label": "Working style",
-          "title": "Useful, maintainable output",
-          "body": "Learning choices are tied to the kind of systems I want to build: clear, resilient and easy to evolve."
-        }
-      ],
+      "eyebrow": "Applied learning",
+      "title": "Learning to solve better.",
+      "intro": "Training matters when it improves decisions, reduces mistakes and helps deliver software that can still be maintained afterwards.",
+      "summary": {
+        "courses": "Technical courses",
+        "qualifications": "Qualifications",
+        "focus": "Current focus",
+        "focusValue": "Backend, quality and operations"
+      },
+      "applied": {
+        "eyebrow": "What I apply today",
+        "title": "Knowledge that reaches the project.",
+        "intro": "I choose what to study according to the problems I need to solve in real systems.",
+        "items": [
+          {
+            "icon": "code",
+            "title": "Reliable backend",
+            "body": "I design APIs and services around failure, performance, integrations and evolution, not only around making them work on day one."
+          },
+          {
+            "icon": "badge-check",
+            "title": "Quality and testing",
+            "body": "I use tests and clear boundaries to reduce regressions and change software with greater confidence."
+          },
+          {
+            "icon": "cloud",
+            "title": "Deployment and operations",
+            "body": "Docker, Kubernetes and observability help me deliver systems that can also be operated and diagnosed."
+          }
+        ]
+      },
       "certifications": {
-        "eyebrow": "Technical courses",
-        "title": "Continuous technical learning",
-        "text": "Courses selected around backend depth, testing, delivery discipline and production-oriented systems."
+        "eyebrow": "Continuous learning",
+        "title": "Recent technical courses",
+        "text": "A chronological selection focused on Spring Boot, testing, microservices, infrastructure and production systems."
       },
       "education": {
         "eyebrow": "Formal education",
         "title": "Academic background",
-        "text": "The structured base behind my full-stack range, from application development to web and mobile technologies."
+        "text": "The structured training behind my full-stack range and my ability to approach a product from beginning to end."
       },
       "cta": {
-        "eyebrow": "Next",
-        "title": "See how this translates into real work.",
-        "text": "The education path matters most when it supports practical decisions in production systems and product delivery.",
-        "primary": "View experience",
-        "secondary": "Contact me"
+        "eyebrow": "Real work",
+        "title": "Learning is proven by building.",
+        "text": "See how this judgment translates into platforms, backends, integrations and products that have already run in production.",
+        "primary": "View projects",
+        "secondary": "See my experience"
       }
     },
     "meta": {
