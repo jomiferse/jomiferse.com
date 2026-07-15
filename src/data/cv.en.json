@@ -460,7 +460,7 @@
         "link": "",
         "context": "A commission to move a gambling-sector workflow into a backend tool operated from the terminal.",
         "timeframe": "2026 – Present",
-        "summary": "A terminal-based backend application with declarative configuration, local persistence and HTTP integrations for managing betting workflows without a complex interface.",
+        "summary": "A terminal-based Java application with local persistence and HTTP integrations for managing betting workflows without a complex interface.",
         "impact": "A direct operational workflow for reviewing and updating bets from the terminal.",
         "img": {
           "imgStatic": {

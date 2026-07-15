@@ -1,5 +1,6 @@
 ---
 title: "Astro 7: qué cambia, rendimiento y por qué importa para la web moderna"
+metaTitle: "Astro 7: rendimiento, routing y cuándo migrar"
 description: "Una guía técnica y práctica sobre Astro 7: Vite 8, compilador en Rust, Sätteri, Advanced Routing, DX, rendimiento y cuándo conviene migrar."
 date: 2026-06-23
 language: "es"
@@ -184,7 +185,7 @@ Aquí conviene ir con calma. Astro 7 no es una actualización para hacer a ciega
 
 Astro 7 usa Sätteri como procesador Markdown y MDX por defecto. Si tu proyecto no depende de plugins remark o rehype, puede que no tengas que tocar nada.
 
-Pero si usas plugins, toca revisar. Este sitio, por ejemplo, mantiene `@astrojs/markdown-remark` y configura `unified()` para añadir `nofollow`, `noopener` y `noreferrer` a enlaces externos. En un caso así, no basta con asumir que Sätteri cubrirá el mismo comportamiento.
+Pero si usas plugins, toca revisar. Este sitio, por ejemplo, mantiene `@astrojs/markdown-remark` y configura `unified()` para añadir `noopener` y `noreferrer` a enlaces externos. En un caso así, no basta con asumir que Sätteri cubrirá el mismo comportamiento.
 
 Configuración para seguir con unified:
 

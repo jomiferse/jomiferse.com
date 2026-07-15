@@ -1,5 +1,6 @@
 ---
 title: "Cuánto cuesta crear una herramienta interna a medida y cuándo merece la pena"
+metaTitle: "Cuánto cuesta una herramienta interna a medida"
 description: "Una guía práctica para estimar el coste de una herramienta interna a medida, entender qué encarece el proyecto y decidir si compensa construir una primera versión."
 date: 2026-05-26
 language: "es"

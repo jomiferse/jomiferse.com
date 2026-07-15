@@ -1,5 +1,6 @@
 ---
 title: "How much does a custom internal tool cost, and when is it worth it?"
+metaTitle: "Custom Internal Tool Cost: What Changes the Budget"
 description: "A practical guide to estimating the cost of a custom internal tool, understanding what drives the budget, and deciding whether a small first version makes sense."
 date: 2026-05-26
 language: "en"
@@ -122,7 +123,7 @@ Before talking about screens, I would look at the current process:
 
 From there, I would define a small and measurable scope. If the project needs a backend, database, authentication, API integrations or automations, those pieces are added because the workflow requires them, not because they sound good in a proposal.
 
-That kind of scope usually fits [internal tools](/en/services/internal-tools/), [custom web applications](/en/services/custom-web-application/) or [API integrations](/en/services/api-integrations/), depending on where the real pain is.
+That kind of scope usually fits [internal tools](/en/services/internal-tools/), [custom software](/en/services/custom-software/) or [API integrations](/en/services/api-integrations/), depending on where the real pain is.
 
 I would also separate three things clearly: initial build, deployment and maintenance. An internal tool does not end the day it goes live. It needs small adjustments, bug fixes, changes when the business changes and someone who understands how it is built.
 

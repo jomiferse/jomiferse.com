@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+import { getTranslations, type Locale } from "@/i18n";
+
+const { locale } = Astro.props as { locale: Locale };
+const page = getTranslations(locale).notFound.page;
+---
+
+<section class="section-reveal py-10 md:py-20">
+	<div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+		<div>
+			<p class="eyebrow">{page.eyebrow}</p>
+			<h1
+				class="mt-5 max-w-4xl text-5xl font-black text-[var(--text)] md:text-7xl"
+			>
+				{page.title}
+			</h1>
+		</div>
+		<div class="dark-card p-5 md:p-7">
+			<p class="muted-copy max-w-xl text-base leading-8 md:text-lg">
+				{page.intro}
+			</p>
+			<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+				<a href={`/${locale}/`} class="button-primary w-full sm:w-auto">
+					{page.actions.home}
+					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+				<a href={`/${locale}/blog/`} class="button-secondary w-full sm:w-auto">
+					{page.actions.blog}
+				</a>
+				<a
+					href={`/${locale}/contact/`}
+					class="button-secondary w-full sm:w-auto"
+				>
+					{page.actions.contact}
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section-band section-reveal py-16 md:py-24">
+	<div class="grid gap-5 md:grid-cols-3">
+		{
+			page.cards.map((card) => (
+				<article class="dark-card p-5 md:p-6">
+					<p class="eyebrow">{card.label}</p>
+					<h2 class="mt-4 text-xl font-black text-[var(--text)]">
+						{card.title}
+					</h2>
+					<p class="muted-copy mt-3 text-sm leading-7">{card.body}</p>
+				</article>
+			))
+		}
+	</div>
+</section>

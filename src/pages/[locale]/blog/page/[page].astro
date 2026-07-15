@@ -70,7 +70,11 @@ const structuredData = [
 <BaseLayout
 	title={pageTitle}
 	description={pageDescription}
-	noindex
+	canonicalPath={pagePath}
+	alternatePaths={{
+		en: getBlogPagePath("en", pageNumber),
+		es: getBlogPagePath("es", pageNumber),
+	}}
 	structuredData={structuredData}
 	keywords={["Engineering Blog", "Software Engineering", "Automation"]}
 >

@@ -6,13 +6,11 @@
   <circle cx="920" cy="548" r="252" fill="#2563EB" fill-opacity="0.10"/>
   <rect x="64" y="56" width="1072" height="518" rx="36" fill="#0F1723" stroke="#273449"/>
   <rect x="112" y="118" width="132" height="132" rx="28" fill="#122340" stroke="#3B82F6" stroke-opacity="0.45"/>
-  <path d="M152.6 206V160.4H168.5L182.9 191.2L197.35 160.4H213.25V206H202.6V178.7L190.4 204.55H175.25L163.2 178.7V206H152.6Z" fill="#EAF2FF"/>
-  <path d="M221.15 206V196.35H234.55V168.95H222.45V160.4H257.5V168.95H245.45V196.35H258.85V206H221.15Z" fill="#EAF2FF"/>
-  <path d="M317 173.2C312.8 169.4 307.55 167.5 301.25 167.5C294.45 167.5 288.9 169.85 284.6 174.55C280.3 179.25 278.15 185.15 278.15 192.25C278.15 199.35 280.25 205.2 284.45 209.8C288.65 214.35 294 216.65 300.5 216.65C307.45 216.65 313.05 214.35 317.3 209.75L324.5 216.95C318.05 224 309.95 227.55 300.2 227.55C290.15 227.55 281.75 224.2 275 217.5C268.25 210.75 264.9 202.35 264.9 192.3C264.9 182.15 268.35 173.65 275.25 166.8C282.15 159.95 290.65 156.55 300.75 156.55C310.2 156.55 318.1 160.05 324.45 167.05L317 173.2Z" fill="#F8FBFF"/>
+  <text x="145" y="211" fill="#F8FBFF" font-family="Segoe UI, Arial, sans-serif" font-size="74" font-weight="800">JF</text>
   <text x="112" y="326" fill="#8FA4BE" font-family="Segoe UI, Arial, sans-serif" font-size="20" letter-spacing="3.2">JOSE MIGUEL FERNANDEZ</text>
-  <text x="112" y="392" fill="#F8FBFF" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="700">Backend Software Engineer</text>
-  <text x="112" y="446" fill="#A8C7FF" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="600">Java · Spring Boot · Distributed Systems · Microservices</text>
-  <text x="112" y="504" fill="#93A4BA" font-family="Segoe UI, Arial, sans-serif" font-size="24">Resilient services, clean architecture and product-minded execution.</text>
+  <text x="112" y="392" fill="#F8FBFF" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700">Freelance Full-Stack Developer</text>
+  <text x="112" y="446" fill="#A8C7FF" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="600">Web · Automation · APIs · Java &amp; Spring Boot</text>
+  <text x="112" y="504" fill="#93A4BA" font-family="Segoe UI, Arial, sans-serif" font-size="24">Practical software for businesses, products and internal teams.</text>
   <rect x="112" y="534" width="292" height="18" rx="9" fill="#122340"/>
   <rect x="112" y="534" width="164" height="18" rx="9" fill="#7FB0FF"/>
   <rect x="432" y="534" width="204" height="18" rx="9" fill="#122340"/>

@@ -19,9 +19,11 @@ import { getCv } from "@cv";
 
 export function getStaticPaths() {
 	return locales.flatMap((locale) =>
-		getServicePages(locale).map((service) => ({
-			params: { locale, service: service.slug },
-		})),
+		getServicePages(locale)
+			.filter((service) => !service.canonicalPath)
+			.map((service) => ({
+				params: { locale, service: service.slug },
+			})),
 	);
 }
 
@@ -157,7 +159,7 @@ const structuredData = [
 					<a
 						href={whatsappHref}
 						target="_blank"
-						rel="noopener noreferrer nofollow"
+						rel="noopener noreferrer"
 						class="button-secondary"
 					>
 						{serviceCopy.whatsappButton}

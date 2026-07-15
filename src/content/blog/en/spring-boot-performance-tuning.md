@@ -1,5 +1,6 @@
 ---
 title: "Spring Boot performance tuning: the changes that actually move the needle"
+metaTitle: "Spring Boot Performance Tuning That Actually Matters"
 description: "A practical guide to Spring Boot performance tuning focused on measurement, caching, async work, connection pools, and observability."
 date: "2026-05-22"
 language: "en"

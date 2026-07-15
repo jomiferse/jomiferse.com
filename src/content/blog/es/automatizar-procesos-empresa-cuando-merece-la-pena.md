@@ -1,5 +1,6 @@
 ---
 title: "Automatizar procesos de empresa: cuándo merece la pena y cómo empezar"
+metaTitle: "Cuándo merece la pena automatizar procesos de empresa"
 description: "Guía práctica para decidir cuándo automatizar un proceso de empresa, qué señales mirar, qué errores evitar y cómo construir una primera automatización útil."
 date: 2026-05-26
 language: "es"

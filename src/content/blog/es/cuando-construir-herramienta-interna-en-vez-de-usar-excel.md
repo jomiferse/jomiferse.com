@@ -1,6 +1,8 @@
 ---
 title: "Cuándo construir una herramienta interna en vez de seguir usando Excel"
+metaTitle: "Cuándo sustituir Excel por una herramienta interna"
 description: "Señales prácticas para saber cuándo una hoja de cálculo se ha quedado corta y conviene construir una herramienta interna simple, mantenible y conectada al flujo real."
+metaDescription: "Señales para saber cuándo Excel se ha quedado corto y conviene crear una herramienta interna sencilla, mantenible y conectada al proceso."
 date: 2026-05-25
 language: "es"
 author: "José Miguel Fernández"

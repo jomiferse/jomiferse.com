@@ -1,5 +1,6 @@
 ---
 title: "How to integrate CRM, website forms and payments without losing data"
+metaTitle: "CRM, Forms and Payments: A Reliable Integration Design"
 description: "A practical design for forms, CRM and payment integration with validation, idempotency, retries and error review."
 date: 2026-07-11
 dateModified: 2026-07-12
@@ -24,7 +25,7 @@ The goal is not to synchronise everything with everything. It is to complete def
 
 Start with business events, not endpoints. A basic journey might be: a person submits a form; consent is validated; a contact is created or updated; an opportunity opens; a payment session is generated; the provider confirms payment; the CRM marks the opportunity won; confirmation is sent.
 
-Include unhappy paths: duplicate contact, inconsistent amount, declined payment, refund and withdrawn consent. For every step, name the input, precondition, responsible system, result and failure action. This reveals whether an [automation workflow](/en/services/automation-workflows/) is enough or the integration needs durable state.
+Include unhappy paths: duplicate contact, inconsistent amount, declined payment, refund and withdrawn consent. For every step, name the input, precondition, responsible system, result and failure action. This reveals whether [process automation](/en/services/process-automation/) is enough or the integration needs durable state.
 
 Do not automate ambiguity. If sales and finance disagree about when a customer becomes “active”, code merely makes that disagreement travel faster.
 

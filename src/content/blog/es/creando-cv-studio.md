@@ -1,5 +1,6 @@
 ---
 title: "CV Studio: construyendo una forma más clara de escribir un CV developer"
+metaTitle: "CV Studio: cómo construir un generador de CV"
 description: "Notas sobre la construcción de CV Studio, un generador de CV para developers con vista previa en vivo, datos estructurados y exportación PDF."
 date: 2025-12-25
 translationSlug: "building-cv-studio"

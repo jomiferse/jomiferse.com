@@ -1,5 +1,6 @@
 ---
 title: "Hexagonal Architecture: what it is and how to apply it in backend projects"
+metaTitle: "Hexagonal Architecture in Java and Spring Boot"
 description: "A practical guide to hexagonal architecture in Java and Spring Boot: ports, adapters, folder structure, example code, and common mistakes."
 date: "2026-06-01"
 language: "en"

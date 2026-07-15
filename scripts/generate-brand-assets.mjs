@@ -1,4 +1,4 @@
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
@@ -67,5 +67,13 @@ const icoImages = await Promise.all(
 	})),
 );
 await writeFile(join(publicDir, "favicon.ico"), createIco(icoImages));
+
+const portfolioOg = await readFile(
+	join(publicDir, "images", "og", "portfolio-og.svg"),
+);
+await sharp(portfolioOg)
+	.resize(1200, 630)
+	.png({ compressionLevel: 9 })
+	.toFile(join(publicDir, "images", "og", "portfolio-og.png"));
 
 console.warn("Brand assets generated.");

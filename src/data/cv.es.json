@@ -553,7 +553,7 @@
         "link": "https://www.getyourticket.es/",
         "context": "El encargo partía de Attendize, una base open source para ticketing que llevaba tiempo sin mantenimiento y necesitaba volver a ser operable.",
         "timeframe": "Mantenimiento activo",
-        "summary": "Recuperación y puesta en producción de una plataforma de ticketing basada en Attendize, con Docker, VPS, HTTPS, Stripe y un registro adaptado para gestores de eventos.",
+        "summary": "Recuperación de una plataforma de ticketing Attendize con Docker, VPS, HTTPS y Stripe, adaptando el registro para gestores de eventos.",
         "impact": "Más de 10 eventos gestionados, con más de 1.000 asistentes en cada evento.",
         "img": {
           "imgStatic": {

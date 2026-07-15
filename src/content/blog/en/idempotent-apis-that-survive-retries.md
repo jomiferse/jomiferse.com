@@ -1,5 +1,6 @@
 ---
 title: "Idempotent APIs That Survive Retries: A Practical Guide for Backend Developers"
+metaTitle: "Idempotent APIs: Practical Patterns for Safe Retries"
 description: "Learn how to design idempotent APIs that survive retries without creating duplicate payments, orders, or jobs. Practical patterns, examples, and trade-offs."
 date: 2026-05-23
 language: "en"
@@ -186,7 +187,7 @@ Better that than discovering double charges at 2 a.m.
 
 ## Sources and references
 
-- <a href="https://docs.stripe.com/api/idempotent_requests" rel="nofollow noopener noreferrer">Stripe: Idempotent requests</a>
-- <a href="https://www.ietf.org/archive/id/draft-ietf-httpapi-idempotency-key-header-01.html" rel="nofollow noopener noreferrer">IETF draft: The Idempotency-Key HTTP Header Field</a>
-- <a href="https://datatracker.ietf.org/doc/html/rfc9457" rel="nofollow noopener noreferrer">RFC 9457: Problem Details for HTTP APIs</a>
-- <a href="https://swagger.io/blog/problem-details-rfc9457-api-error-handling/" rel="nofollow noopener noreferrer">Swagger: Problem Details (RFC 9457) API error handling</a>
+- <a href="https://docs.stripe.com/api/idempotent_requests" rel="noopener noreferrer">Stripe: Idempotent requests</a>
+- <a href="https://www.ietf.org/archive/id/draft-ietf-httpapi-idempotency-key-header-01.html" rel="noopener noreferrer">IETF draft: The Idempotency-Key HTTP Header Field</a>
+- <a href="https://datatracker.ietf.org/doc/html/rfc9457" rel="noopener noreferrer">RFC 9457: Problem Details for HTTP APIs</a>
+- <a href="https://swagger.io/blog/problem-details-rfc9457-api-error-handling/" rel="noopener noreferrer">Swagger: Problem Details (RFC 9457) API error handling</a>

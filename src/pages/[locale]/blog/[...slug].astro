@@ -4,26 +4,29 @@ import BlogPostLayout from "@/layouts/BlogPostLayout.astro";
 import { getCollection, getEntry, render } from "astro:content";
 import { getTranslatedBlogPath } from "@/lib/blog-translation";
 import { buildBlogPosting, buildBreadcrumbList } from "@/lib/seo";
+import { isPublishedBlogPost } from "@/lib/blog-publication";
 import { t, type Locale } from "@/i18n";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
 
-	return posts.map((p) => {
-		const slugParts = p.id.split("/");
-		const locale = slugParts[0];
-		const slug = slugParts.slice(1).join("/");
+	return posts
+		.filter((post) => isPublishedBlogPost(post.data))
+		.map((p) => {
+			const slugParts = p.id.split("/");
+			const locale = slugParts[0];
+			const slug = slugParts.slice(1).join("/");
 
-		return {
-			params: {
-				locale,
-				slug,
-			},
-			props: {
-				fullSlug: p.id,
-			},
-		};
-	});
+			return {
+				params: {
+					locale,
+					slug,
+				},
+				props: {
+					fullSlug: p.id,
+				},
+			};
+		});
 }
 
 const locale = Astro.params.locale as Locale;
@@ -56,6 +59,7 @@ const structuredData = [
 		author: post.data.author ?? "José Miguel Fernández",
 		tags: post.data.tags,
 		readingTime: post.data.readingTime,
+		image: post.data.cover.src,
 	}),
 	buildBreadcrumbList(site, [
 		{ name: t(locale, "nav.home"), path: `/${locale}` },
@@ -66,14 +70,16 @@ const structuredData = [
 ---
 
 <BaseLayout
-	title={post.data.title}
-	description={post.data.description}
+	title={post.data.metaTitle ?? post.data.title}
+	description={post.data.metaDescription ?? post.data.description}
 	ogType="article"
 	structuredData={structuredData}
 	keywords={post.data.tags ?? []}
 	alternatePaths={alternatePaths}
 	image={post.data.cover.src}
 	imageAlt={post.data.cover.alt}
+	imageWidth={1600}
+	imageHeight={900}
 	popupContext={{ kind: "article", title: post.data.title }}
 >
 	<BlogPostLayout frontmatter={post.data} locale={locale} headings={headings}>

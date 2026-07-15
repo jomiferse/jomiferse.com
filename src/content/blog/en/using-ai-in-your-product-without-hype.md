@@ -76,7 +76,7 @@ Examples:
 
 The useful phrase here is _first draft_. AI works better as a starting point than as the final answer.
 
-When the workflow needs to move data between tools, send notifications or coordinate states, I would connect it with [automation workflows](/en/services/automation-workflows/) before designing a more complex AI feature.
+When the workflow needs to move data between tools, send notifications or coordinate states, I would connect it with [process automation](/en/services/process-automation/) before designing a more complex AI feature.
 
 ### Decision support
 

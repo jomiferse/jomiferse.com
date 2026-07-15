@@ -4,21 +4,10 @@ import icon from "astro-icon";
 import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import { unified } from "@astrojs/markdown-remark";
+import { serviceAliasRedirects } from "./src/lib/service-aliases.ts";
 
 const siteUrl = new URL("https://www.jomiferse.com");
 const internalHosts = new Set([siteUrl.hostname, "jomiferse.com"]);
-const nonCanonicalServicePaths = new Set([
-	"/en/services/automation-workflows/",
-	"/en/services/business-website/",
-	"/en/services/custom-web-application/",
-	"/en/services/maintenance-support/",
-	"/es/services/api-integrations/",
-	"/es/services/automation-workflows/",
-	"/es/services/business-website/",
-	"/es/services/custom-web-application/",
-	"/es/services/maintenance-support/",
-]);
-
 function isExternalHref(href) {
 	try {
 		const url = new URL(href, siteUrl);
@@ -31,7 +20,7 @@ function isExternalHref(href) {
 	}
 }
 
-function rehypeExternalLinksNofollow() {
+function rehypeSafeExternalLinks() {
 	return (tree) => {
 		const walk = (node) => {
 			if (!node || typeof node !== "object") return;
@@ -45,7 +34,7 @@ function rehypeExternalLinksNofollow() {
 				const rel = String(node.properties.rel ?? "")
 					.split(/\s+/)
 					.filter(Boolean);
-				for (const token of ["nofollow", "noopener", "noreferrer"]) {
+				for (const token of ["noopener", "noreferrer"]) {
 					if (!rel.includes(token)) rel.push(token);
 				}
 				node.properties.rel = rel.join(" ");
@@ -62,8 +51,10 @@ function rehypeExternalLinksNofollow() {
 
 export default defineConfig({
 	redirects: {
+		"/": "/es/",
 		"/es/experience": "/es/about",
 		"/en/experience": "/en/about",
+		...serviceAliasRedirects,
 	},
 	vite: {
 		plugins: [tailwindcss()],
@@ -71,9 +62,7 @@ export default defineConfig({
 	site: "https://www.jomiferse.com",
 	compressHTML: true,
 	markdown: {
-		processor: unified({
-			rehypePlugins: [rehypeExternalLinksNofollow],
-		}),
+		processor: unified({ rehypePlugins: [rehypeSafeExternalLinks] }),
 	},
 	integrations: [
 		icon(),
@@ -86,9 +75,7 @@ export default defineConfig({
 					!pathname.startsWith("/api/") &&
 					!pathname.startsWith("/_astro/") &&
 					!pathname.startsWith("/drafts/") &&
-					!pathname.endsWith("/privacy/") &&
-					!pathname.includes("/blog/page/") &&
-					!nonCanonicalServicePaths.has(pathname)
+					!pathname.endsWith("/privacy/")
 				);
 			},
 		}),

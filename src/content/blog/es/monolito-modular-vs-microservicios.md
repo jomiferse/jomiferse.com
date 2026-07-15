@@ -1,6 +1,7 @@
 ---
 title: "Monolito modular vs microservicios: qué elegiría"
 description: "Los microservicios son potentes, pero no siempre son el mejor punto de partida. Aprende cuándo elegir un monolito modular, cuándo tienen sentido los microservicios y cómo hacer la transición de forma segura."
+metaDescription: "Cuándo elegir un monolito modular o microservicios, qué costes introduce cada opción y cómo hacer una transición segura si llega a ser necesaria."
 date: 2026-07-02
 language: "es"
 author: "José Miguel Fernández"

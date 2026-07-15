@@ -1,6 +1,7 @@
 ---
 title: "When business process automation is worth it and how to start"
 description: "A practical guide to deciding when a business process is worth automating, what signals to look for, which mistakes to avoid, and how to scope a useful first version."
+metaDescription: "How to decide whether a business process is worth automating, identify useful signals, avoid common mistakes and scope a first version."
 date: 2026-05-26
 language: "en"
 author: "José Miguel Fernández"
@@ -88,7 +89,7 @@ A first version can be modest:
 
 You do not need to build a platform. Sometimes one focused automation that removes 30 minutes of daily manual work is enough.
 
-If the workflow grows, it can later become a [custom web application](/en/services/custom-web-application/) or an internal tool with a panel, permissions and reporting.
+If the workflow grows, it can later become [custom software](/en/services/custom-software/) or an internal tool with a panel, permissions and reporting.
 
 ## Where AI fits
 

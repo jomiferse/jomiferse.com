@@ -7,6 +7,7 @@ import {
 	type PricingOption,
 	type ServiceAreaSlug,
 } from "@/lib/service-commercial";
+import { getServiceAliasRedirect } from "@/lib/service-aliases";
 
 export type ServiceSlug =
 	| "business-website"
@@ -217,26 +218,8 @@ const getOfferingMetaDescription = (
 ) =>
 	offeringMeta[locale]?.[translationKey]?.description ??
 	(locale === "es"
-		? `${description} Servicio freelance con criterio técnico, alcance claro y ejecución directa.`
-		: `${description} Freelance service with technical judgment, clear scope and direct execution.`);
-
-const canonicalOfferingByLocale: Partial<
-	Record<Locale, Partial<Record<ServiceSlug, string>>>
-> = {
-	es: {
-		"business-website": "diseno-web-wordpress",
-		"custom-web-application": "software-a-medida",
-		"automation-workflows": "automatizacion-de-procesos",
-		"api-integrations": "integraciones-api",
-		"maintenance-support": "mantenimiento-y-soporte-tecnico",
-	},
-	en: {
-		"business-website": "wordpress-web-design",
-		"custom-web-application": "custom-software",
-		"automation-workflows": "process-automation",
-		"maintenance-support": "maintenance-and-technical-support",
-	},
-};
+		? `${description} Alcance claro y ejecución directa.`
+		: `${description} Clear scope and direct execution.`);
 
 const relatedPostsByLocale: Record<
 	Locale,
@@ -478,9 +461,7 @@ export const getServices = (locale: Locale): ServiceItem[] => {
 			pricingOptions: resolvePricingOptions(locale, translationKey),
 			timeline: getCommercialTimeline(locale, translationKey),
 			relatedPosts: getRelatedPosts(locale, translationKey),
-			canonicalPath: canonicalOfferingByLocale[locale]?.[slug]
-				? `/${locale}/services/${canonicalOfferingByLocale[locale][slug]}/`
-				: undefined,
+			canonicalPath: getServiceAliasRedirect(locale, slug),
 		};
 	});
 };

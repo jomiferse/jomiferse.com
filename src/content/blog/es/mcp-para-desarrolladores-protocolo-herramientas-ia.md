@@ -1,5 +1,6 @@
 ---
 title: "MCP para desarrolladores: por qué las herramientas de código con IA se están unificando en un mismo protocolo"
+metaTitle: "MCP para desarrolladores: cómo conectan las herramientas de IA"
 description: "Una visión práctica de MCP, Claude Code, Codex y Cursor desde la perspectiva de un full-stack developer."
 date: "2026-05-21"
 language: "es"

@@ -1,5 +1,6 @@
 ---
 title: "¿Cuándo debería una empresa migrar un backend heredado a Java Spring Boot?"
+metaTitle: "Cuándo migrar un backend heredado a Spring Boot"
 description: "Una guía práctica para decidir si merece la pena pasar un backend heredado a Spring Boot, con señales reales, riesgos y una estrategia incremental."
 date: "2026-05-25"
 language: "es"

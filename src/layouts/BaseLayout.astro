@@ -13,6 +13,7 @@ import {
 	type ExitIntentContext,
 } from "@/lib/exit-intent";
 import type { PricingKey } from "@/lib/service-commercial";
+import { getSeoEntityIds } from "@/lib/seo";
 import { getCv } from "@cv";
 
 type PopupContext = {
@@ -27,6 +28,8 @@ interface LayoutProps {
 	description: string;
 	image?: string;
 	imageAlt?: string;
+	imageWidth?: number;
+	imageHeight?: number;
 	noindex?: boolean;
 	structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 	ogType?: "website" | "article";
@@ -39,8 +42,10 @@ interface LayoutProps {
 const {
 	title,
 	description,
-	image = "/images/og/portfolio-og.svg",
+	image = "/images/og/portfolio-og.png",
 	imageAlt = title,
+	imageWidth = image === "/images/og/portfolio-og.png" ? 1200 : undefined,
+	imageHeight = image === "/images/og/portfolio-og.png" ? 630 : undefined,
 	noindex = false,
 	structuredData,
 	ogType = "website",
@@ -82,12 +87,50 @@ const defaultAlternate = alternateEs;
 const otherLocale: Locale = locale === "en" ? "es" : "en";
 const languageHref = alternatePaths?.[otherLocale];
 const ogImage = Astro.site ? new URL(image, Astro.site).toString() : image;
+const ogImageType = image.endsWith(".png")
+	? "image/png"
+	: image.endsWith(".webp")
+		? "image/webp"
+		: image.endsWith(".jpg") || image.endsWith(".jpeg")
+			? "image/jpeg"
+			: undefined;
 const robots = noindex ? "noindex,follow" : "index,follow";
+const seoTitle =
+	title.length > 65
+		? title.replace(/\s+\|\s+José Miguel Fernández$/, "")
+		: title;
+const schemaSite = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const schemaIds = getSeoEntityIds(
+	schemaSite,
+	canonicalPath ?? Astro.url.pathname,
+);
+const localizedOffers =
+	locale === "es"
+		? [
+				["Diseño web para negocios", "/es/services/diseno-web-wordpress/"],
+				["Software a medida", "/es/services/software-a-medida/"],
+				["Herramientas internas", "/es/services/internal-tools/"],
+				[
+					"Automatización de procesos",
+					"/es/services/automatizacion-de-procesos/",
+				],
+				["Integraciones API", "/es/services/integraciones-api/"],
+				["Backends con Spring Boot", "/es/services/backend-spring-boot/"],
+			]
+		: [
+				["Business websites", "/en/services/wordpress-web-design/"],
+				["Custom software", "/en/services/custom-software/"],
+				["Internal tools", "/en/services/internal-tools/"],
+				["Process automation", "/en/services/process-automation/"],
+				["API integrations", "/en/services/api-integrations/"],
+				["Spring Boot backends", "/en/services/backend-spring-boot/"],
+			];
 
 const baseStructuredData = [
 	{
 		"@context": "https://schema.org",
 		"@type": "Person",
+		"@id": schemaIds.person,
 		name: cv.name,
 		jobTitle: cv.currentRole,
 		description: cv.tagline,
@@ -114,15 +157,11 @@ const baseStructuredData = [
 			skills:
 				"Full-stack development, internal tools, workflow automation, API integrations, Java, Spring Boot, TypeScript, Astro",
 		},
-		makesOffer: [
-			"Business websites",
-			"Website redesign",
-			"Custom web applications",
-			"Internal tools",
-			"Workflow automation",
-			"API integrations",
-			"Spring Boot backend development",
-		],
+		makesOffer: localizedOffers.map(([name, path]) => ({
+			"@type": "Offer",
+			url: new URL(path, schemaSite).toString(),
+			itemOffered: { "@type": "Service", name },
+		})),
 		knowsAbout: [
 			"Java",
 			"Spring Boot",
@@ -141,9 +180,22 @@ const baseStructuredData = [
 	{
 		"@context": "https://schema.org",
 		"@type": "WebSite",
+		"@id": schemaIds.website,
 		name: cv.name,
 		url: Astro.site?.toString() ?? "/",
 		inLanguage: locale,
+		publisher: { "@id": schemaIds.person },
+	},
+	{
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		"@id": schemaIds.page,
+		name: seoTitle,
+		description,
+		url: canonicalUrl,
+		inLanguage: locale,
+		isPartOf: { "@id": schemaIds.website },
+		about: { "@id": schemaIds.person },
 	},
 ];
 
@@ -161,7 +213,7 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<title>{title}</title>
+		<title>{seoTitle}</title>
 		<meta name="description" content={description} />
 		<meta name="author" content={cv.name} />
 		<meta name="robots" content={robots} />
@@ -178,16 +230,31 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		<link rel="alternate" hreflang="x-default" href={defaultAlternate} />
 
 		<meta property="og:type" content={ogType} />
-		<meta property="og:title" content={title} />
+		<meta property="og:title" content={seoTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:site_name" content={cv.name} />
 		<meta property="og:locale" content={locale === "es" ? "es_ES" : "en_US"} />
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:alt" content={imageAlt} />
+		{
+			ogImageType ? (
+				<meta property="og:image:type" content={ogImageType} />
+			) : null
+		}
+		{
+			imageWidth ? (
+				<meta property="og:image:width" content={String(imageWidth)} />
+			) : null
+		}
+		{
+			imageHeight ? (
+				<meta property="og:image:height" content={String(imageHeight)} />
+			) : null
+		}
 
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
+		<meta name="twitter:title" content={seoTitle} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
 		<meta name="twitter:image:alt" content={imageAlt} />

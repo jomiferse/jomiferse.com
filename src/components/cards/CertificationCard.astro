@@ -56,7 +56,7 @@ const { certification, locale = "es" } = Astro.props as {
 			<a
 				href={certification.url}
 				target="_blank"
-				rel="noopener noreferrer nofollow"
+				rel="noopener noreferrer"
 				class="button-secondary w-full md:w-auto"
 				aria-label={`${t(locale, "certificationCard.viewCredential")}: ${certification.name}, ${t(locale, "certificationCard.opensNewWindow")}`}
 			>

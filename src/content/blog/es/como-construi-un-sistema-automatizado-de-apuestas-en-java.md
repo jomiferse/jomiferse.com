@@ -1,5 +1,6 @@
 ---
 title: "Betx: una herramienta operativa de apuestas con Java y Spring Boot"
+metaTitle: "Betx: gestión de apuestas con Java y Spring Boot"
 description: "Cómo planteé Betx, una aplicación de terminal para registrar y gestionar apuestas, cuotas, estados y resultados con Java, Spring Boot y SQLite."
 date: 2026-06-22
 translationSlug: "how-i-built-an-automated-betting-system-in-java"

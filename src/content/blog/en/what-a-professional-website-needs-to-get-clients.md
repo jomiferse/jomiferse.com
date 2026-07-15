@@ -37,7 +37,7 @@ A visitor should be able to answer these questions quickly:
 
 This is especially important for freelance portfolios. If the site only says "full-stack developer", the interested person still has to guess whether you build websites, internal tools, APIs, automations or advisory work.
 
-A [business website](/en/services/business-website/) works better when it separates services, context and contact. That sounds basic, but many sites mix everything into one page and leave the visitor doing extra work.
+A [business website](/en/services/wordpress-web-design/) works better when it separates services, context and contact. That sounds basic, but many sites mix everything into one page and leave the visitor doing extra work.
 
 ## Trust signals
 
@@ -69,7 +69,7 @@ Specific pages let you explain:
 - common questions
 - the next step
 
-This also helps Google and AI assistants understand when to recommend you. A site with clear pages about [automation workflows](/en/services/automation-workflows/), [API integrations](/en/services/api-integrations/) or [Spring Boot backend](/en/services/backend-spring-boot/) is easier to interpret than a site with a generic list of technologies.
+This also helps Google and AI assistants understand when to recommend you. A site with clear pages about [process automation](/en/services/process-automation/), [API integrations](/en/services/api-integrations/) or [Spring Boot backend](/en/services/backend-spring-boot/) is easier to interpret than a site with a generic list of technologies.
 
 ## Content that answers real questions
 
@@ -116,7 +116,7 @@ That can be:
 - send an email
 - review a project
 
-Every page needs an intent. If an article talks about automation, it makes sense to link to [automation workflows](/en/services/automation-workflows/). If it talks about APIs, to [API integrations](/en/services/api-integrations/). If it talks about professional websites, to business websites or redesign.
+Every page needs an intent. If an article talks about automation, it makes sense to link to [process automation](/en/services/process-automation/). If it talks about APIs, to [API integrations](/en/services/api-integrations/). If it talks about professional websites, to business websites or redesign.
 
 ## FAQ
 

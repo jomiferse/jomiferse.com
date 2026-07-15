@@ -1,6 +1,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
 import type { Locale } from "@/i18n";
+import { isPublishedBlogPost } from "@/lib/blog-publication";
 
 export type BlogPost = CollectionEntry<"blog">;
 
@@ -11,7 +12,7 @@ export async function getPublishedBlogPosts(locale: Locale) {
 
 	return posts
 		.filter((post) => post.id.startsWith(`${locale}/`))
-		.filter((post) => !post.data.draft)
+		.filter((post) => isPublishedBlogPost(post.data))
 		.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 }
 

@@ -1,5 +1,6 @@
 ---
 title: "Right-Sizing Kubernetes Pods: Set Requests and Limits Without Guessing"
+metaTitle: "Kubernetes Requests and Limits Without Guessing"
 description: "A practical guide to sizing Kubernetes pods from real usage, not from vibes. Learn how requests, limits, HPA, and VPA fit together."
 date: "2026-05-21"
 language: "en"

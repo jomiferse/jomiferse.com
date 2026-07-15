@@ -1,9 +1,14 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import NotFoundPage from "@/components/common/NotFoundPage.astro";
-import { getTranslations } from "@/i18n";
+import { getTranslations, locales, type Locale } from "@/i18n";
 
-const locale = "es";
+export const prerender = false;
+
+const requestedLocale = Astro.params.locale;
+const locale: Locale = locales.includes(requestedLocale as Locale)
+	? (requestedLocale as Locale)
+	: "es";
 const page = getTranslations(locale).notFound.page;
 Astro.response.status = 404;
 ---

@@ -1,5 +1,6 @@
 ---
 title: "¿Cuándo deberías usar Kafka, RabbitMQ o simplemente una base de datos?"
+metaTitle: "Kafka, RabbitMQ o base de datos: cómo elegir"
 description: "Guía para elegir entre Kafka, RabbitMQ y workflows con base de datos para procesos asíncronos."
 date: 2026-06-13
 language: "es"

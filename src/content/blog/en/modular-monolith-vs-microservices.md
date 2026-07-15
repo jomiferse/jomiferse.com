@@ -1,6 +1,7 @@
 ---
 title: "Modular Monolith vs Microservices: What I'd Choose"
 description: "Microservices are powerful, but they are not always the right starting point. Learn when to choose a modular monolith, when microservices make sense, and how to make the transition safely."
+metaDescription: "Compare modular monoliths and microservices, when each fits, and how to move safely without adding distributed complexity too early."
 date: 2026-07-02
 language: "en"
 author: "José Miguel Fernández"

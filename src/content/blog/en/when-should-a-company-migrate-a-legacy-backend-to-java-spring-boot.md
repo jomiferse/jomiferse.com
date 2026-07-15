@@ -1,5 +1,6 @@
 ---
 title: "When should a company migrate a legacy backend to Java Spring Boot?"
+metaTitle: "When to Migrate a Legacy Backend to Spring Boot"
 description: "A practical way to decide whether a legacy backend is worth moving to Spring Boot, with the signals, trade-offs, and migration path that actually matter."
 date: "2026-05-25"
 language: "en"

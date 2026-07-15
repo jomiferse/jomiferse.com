@@ -1,5 +1,6 @@
 ---
 title: "Astro 7: What Changed, Performance, and Why It Matters for the Modern Web"
+metaTitle: "Astro 7: Performance, Routing and Upgrade Trade-offs"
 description: "A practical technical guide to Astro 7: Vite 8, the Rust compiler, Sätteri, Advanced Routing, DX, performance, and when to upgrade."
 date: 2026-06-23
 language: "en"
@@ -34,7 +35,7 @@ The difference from a traditional SPA is not just "Astro is fast". The differenc
 
 [![Conceptual Astro Islands diagram: a page sends HTML and hydrates only the interactive components that need JavaScript](/images/blog/astro-islands-architecture.svg)](/images/blog/astro-islands-architecture.svg)
 
-For a portfolio like this site, that trade-off fits well. Service pages, articles, and project write-ups should be indexable, fast, and easy to read. For a client who needs a [business website](/en/services/business-website/) or a [website redesign](/en/services/website-redesign/), the user should understand the offer without waiting for a full app to hydrate.
+For a portfolio like this site, that trade-off fits well. Service pages, articles, and project write-ups should be indexable, fast, and easy to read. For a client who needs [WordPress web design](/en/services/wordpress-web-design/) or a [website redesign](/en/services/website-redesign/), the user should understand the offer without waiting for a full app to hydrate.
 
 Astro 7 does not change that model. It improves several internal pieces that become more visible as a project grows: more Markdown, more pages, more integrations, more server logic, and more frequent builds.
 
@@ -162,7 +163,7 @@ export default {
 };
 ```
 
-I would not add this to a simple blog just because it exists. I would look at it for a [custom web application](/en/services/custom-web-application/), an [internal tool](/en/services/internal-tools/), or an integration where Astro lives next to APIs and middleware.
+I would not add this to a simple blog just because it exists. I would look at it for [custom software](/en/services/custom-software/), an [internal tool](/en/services/internal-tools/), or an integration where Astro lives next to APIs and middleware.
 
 Structured logging is also useful for SSR:
 
@@ -184,7 +185,7 @@ This is where it is worth slowing down. Astro 7 is not the kind of upgrade I wou
 
 Astro 7 uses Sätteri as the default Markdown and MDX processor. If your project does not depend on remark or rehype plugins, you may not need to change anything.
 
-If you do use plugins, check them carefully. This site, for example, keeps `@astrojs/markdown-remark` and configures `unified()` to add `nofollow`, `noopener`, and `noreferrer` to external links. In that kind of project, you should not assume Sätteri will preserve the same behavior out of the box.
+If you do use plugins, check them carefully. This site, for example, keeps `@astrojs/markdown-remark` and configures `unified()` to add `noopener` and `noreferrer` to external links. In that kind of project, you should not assume Sätteri will preserve the same behavior out of the box.
 
 Configuration for staying on unified:
 

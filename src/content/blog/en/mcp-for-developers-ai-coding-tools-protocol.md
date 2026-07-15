@@ -1,5 +1,6 @@
 ---
 title: "MCP for developers: why AI coding tools are converging on one protocol"
+metaTitle: "MCP for Developers: How AI Coding Tools Connect"
 description: "A practical take on MCP, Claude Code, Codex and Cursor from a full-stack developer perspective."
 date: "2026-05-21"
 language: "en"

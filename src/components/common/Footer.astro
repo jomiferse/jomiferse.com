@@ -162,9 +162,7 @@ const directContactLinks = [
 								<a
 									href={link.href}
 									target={link.external ? "_blank" : undefined}
-									rel={
-										link.external ? "noopener noreferrer nofollow" : undefined
-									}
+									rel={link.external ? "noopener noreferrer" : undefined}
 									aria-label={
 										link.external
 											? `${link.label}, ${footer.opensNewWindow}`
