@@ -6,7 +6,6 @@ import type { PricingOption } from "@/lib/service-commercial";
 interface Props {
 	locale: Locale;
 	serviceSlug: string;
-	serviceTitle: string;
 	option: PricingOption;
 	featured?: boolean;
 	contactHref: string;
@@ -21,7 +20,6 @@ interface Props {
 const {
 	locale,
 	serviceSlug,
-	serviceTitle,
 	option,
 	featured = false,
 	contactHref,
@@ -92,10 +90,6 @@ const selectionHref = `${contactHref}${separator}service=${encodeURIComponent(se
 			featured ? "button-action" : "button-secondary",
 			"service-pricing-card__action",
 		]}
-		data-contact-dialog-open
-		data-service-selection={serviceSlug}
-		data-service-title={serviceTitle}
-		data-scope-selection={option.key}
 	>
 		{option.ctaLabel}
 		<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />

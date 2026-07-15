@@ -6,7 +6,6 @@ import ServicePricingCard from "@/components/services/ServicePricingCard.astro";
 interface Props {
 	locale: Locale;
 	serviceSlug: string;
-	serviceTitle: string;
 	options: readonly [PricingOption, PricingOption, PricingOption];
 	contactHref: string;
 	copy: {
@@ -19,7 +18,7 @@ interface Props {
 	};
 }
 
-const { locale, serviceSlug, serviceTitle, options, contactHref, copy } =
+const { locale, serviceSlug, options, contactHref, copy } =
 	Astro.props as Props;
 const [intervention, project, support] = options;
 ---
@@ -30,7 +29,6 @@ const [intervention, project, support] = options;
 			<ServicePricingCard
 				locale={locale}
 				serviceSlug={serviceSlug}
-				serviceTitle={serviceTitle}
 				option={option}
 				featured={option.key === "project"}
 				contactHref={contactHref}
