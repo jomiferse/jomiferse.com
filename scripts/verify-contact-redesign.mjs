@@ -135,19 +135,24 @@ if (includesPhase("marquee")) {
 	const marquee = await readSource(
 		"src",
 		"components",
-		"contact",
-		"ContactTechnologyMarquee.astro",
+		"common",
+		"TechnologyMarquee.astro",
 	);
 	requireMarkers("contact page marquee", page, [
-		"ContactTechnologyMarquee",
+		"TechnologyMarquee",
+		'headingId="contact-technologies-title"',
 		"page.technologiesTitle",
 		"page.technologiesPauseLabel",
 	]);
 	requireMarkers("technology marquee", marquee, [
-		"data-contact-technologies",
+		"data-technology-marquee",
+		"description?: string",
+		"headingId: string",
+		"min(52rem, 100%)",
+		"max-width: 42rem",
 		'tabindex="0"',
 		'aria-hidden="true"',
-		"contact-marquee__track",
+		"technology-marquee__track",
 		"animation-play-state: paused",
 		"@media (prefers-reduced-motion: reduce)",
 		"Java",
@@ -161,6 +166,7 @@ if (includesPhase("marquee")) {
 		"Apache Kafka",
 		"WordPress",
 	]);
+	rejectMarkers("contact page marquee", page, ["ContactTechnologyMarquee"]);
 	rejectMarkers("technology marquee", marquee, [
 		"partner",
 		"Partner",

@@ -1,10 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const { title, pauseLabel } = Astro.props as {
+interface Props {
+	eyebrow: string;
 	title: string;
+	description?: string;
 	pauseLabel: string;
-};
+	headingId: string;
+}
+
+const { eyebrow, title, description, pauseLabel, headingId } =
+	Astro.props as Props;
 const technologies = [
 	{ label: "Java", icon: "java" },
 	{ label: "Spring Boot", icon: "springboot" },
@@ -20,20 +26,25 @@ const technologies = [
 ---
 
 <section
-	data-contact-technologies
-	class="contact-technologies section-reveal"
-	aria-labelledby="contact-technologies-title"
+	data-technology-marquee
+	class="technology-marquee section-reveal"
+	aria-labelledby={headingId}
 >
-	<p class="eyebrow">Stack</p>
-	<h2 id="contact-technologies-title">{title}</h2>
+	<p class="eyebrow">{eyebrow}</p>
+	<h2 id={headingId}>{title}</h2>
+	{
+		description ? (
+			<p class="technology-marquee__description">{description}</p>
+		) : null
+	}
 	<div
-		class="contact-marquee"
+		class="technology-marquee__viewport"
 		tabindex="0"
 		role="region"
 		aria-label={pauseLabel}
 	>
-		<div class="contact-marquee__track">
-			<ul class="contact-marquee__list">
+		<div class="technology-marquee__track">
+			<ul class="technology-marquee__list">
 				{
 					technologies.map((technology) => (
 						<li>
@@ -43,7 +54,7 @@ const technologies = [
 					))
 				}
 			</ul>
-			<ul class="contact-marquee__list" aria-hidden="true">
+			<ul class="technology-marquee__list" aria-hidden="true">
 				{
 					technologies.map((technology) => (
 						<li>
@@ -58,17 +69,17 @@ const technologies = [
 </section>
 
 <style>
-	.contact-technologies {
+	.technology-marquee {
 		padding-block: clamp(3.25rem, 5vw, 4.5rem);
 		border-top: 1px solid var(--surface-border);
 	}
 
-	.contact-technologies .eyebrow {
+	.technology-marquee .eyebrow {
 		color: var(--action);
 	}
 
-	.contact-technologies h2 {
-		max-width: 18ch;
+	.technology-marquee h2 {
+		max-width: min(52rem, 100%);
 		margin-top: 0.9rem;
 		color: var(--home-navy);
 		font-size: clamp(2.2rem, 4vw, 3.8rem);
@@ -78,7 +89,14 @@ const technologies = [
 		text-wrap: balance;
 	}
 
-	.contact-marquee {
+	.technology-marquee__description {
+		max-width: 42rem;
+		margin-top: 1.1rem;
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	.technology-marquee__viewport {
 		margin-top: 2.5rem;
 		overflow: hidden;
 		-webkit-mask-image: linear-gradient(
@@ -97,19 +115,19 @@ const technologies = [
 		);
 	}
 
-	.contact-marquee__track {
+	.technology-marquee__track {
 		display: flex;
 		width: max-content;
-		animation: contact-marquee 34s linear infinite;
+		animation: technology-marquee 34s linear infinite;
 	}
 
-	.contact-marquee__list {
+	.technology-marquee__list {
 		display: flex;
 		gap: 0.85rem;
 		padding-right: 0.85rem;
 	}
 
-	.contact-marquee__list li {
+	.technology-marquee__list li {
 		display: inline-flex;
 		min-width: 10rem;
 		min-height: 5rem;
@@ -125,44 +143,44 @@ const technologies = [
 		font-weight: 850;
 	}
 
-	.contact-marquee__list :global(svg) {
+	.technology-marquee__list :global(svg) {
 		width: 1.6rem;
 		height: 1.6rem;
 		color: var(--text-muted);
 		fill: currentColor;
 	}
 
-	.contact-marquee:hover .contact-marquee__track,
-	.contact-marquee:focus .contact-marquee__track {
+	.technology-marquee__viewport:hover .technology-marquee__track,
+	.technology-marquee__viewport:focus .technology-marquee__track {
 		animation-play-state: paused;
 	}
 
-	@keyframes contact-marquee {
+	@keyframes technology-marquee {
 		to {
 			transform: translateX(-50%);
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.contact-marquee {
+		.technology-marquee__viewport {
 			overflow: visible;
 			-webkit-mask-image: none;
 			mask-image: none;
 		}
 
-		.contact-marquee__track {
+		.technology-marquee__track {
 			width: 100%;
 			animation: none;
 		}
 
-		.contact-marquee__list {
+		.technology-marquee__list {
 			width: 100%;
 			flex-wrap: wrap;
 			justify-content: center;
 			padding: 0;
 		}
 
-		.contact-marquee__list[aria-hidden="true"] {
+		.technology-marquee__list[aria-hidden="true"] {
 			display: none;
 		}
 	}

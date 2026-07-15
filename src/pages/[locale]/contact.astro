@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import ContactTechnologyMarquee from "@/components/contact/ContactTechnologyMarquee.astro";
+import TechnologyMarquee from "@/components/common/TechnologyMarquee.astro";
 import ContactForm from "@/components/forms/ContactForm.astro";
 import { Icon } from "astro-icon/components";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
@@ -132,9 +132,11 @@ const structuredData = [
 			</div>
 		</section>
 
-		<ContactTechnologyMarquee
+		<TechnologyMarquee
+			eyebrow="Stack"
 			title={page.technologiesTitle}
 			pauseLabel={page.technologiesPauseLabel}
+			headingId="contact-technologies-title"
 		/>
 	</div>
 
