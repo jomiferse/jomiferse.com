@@ -992,6 +992,26 @@
         "contact": "Contact me"
       }
     },
+      },
+      "commercialCta": {
+        "buyer-led": {
+          "eyebrow": "Decision and next step",
+          "title": "Would you like to apply this decision to your case?",
+          "text": "I can help you review the context, reduce the initial scope and choose a solution proportionate to the problem.",
+          "contact": "Share my case"
+        },
+        "technical-authority": {
+          "eyebrow": "Applying this to a real system",
+          "title": "Do you need to review this problem in production?",
+          "text": "I can assess the architecture, risks and next useful change without turning the solution into a larger project than necessary.",
+          "contact": "Review my case"
+        },
+        "case-study": {
+          "eyebrow": "A project with real constraints",
+          "title": "Do you have a similar problem to solve?",
+          "text": "We can start from the workflow, constraints and outcome you need to define a verifiable first delivery.",
+          "contact": "Share my project"
+        }
     "meta": {
       "title": "Blog",
       "description": "Short notes and articles by {name}."

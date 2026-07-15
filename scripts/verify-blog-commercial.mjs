@@ -113,6 +113,45 @@ for (const spanishEntry of classifiedEntries.filter(
 	}
 }
 
+const layoutSource = await readFile(
+	join(root, "src", "layouts", "BlogPostLayout.astro"),
+	"utf8",
+);
+for (const marker of [
+	"resolveBlogCommercialCta",
+	"frontmatter.commercial",
+	"postCopy.commercialCta",
+	"primary={commercialCta.primary}",
+	"secondary={commercialCta.secondary}",
+]) {
+	if (!layoutSource.includes(marker)) {
+		failures.push(`blog layout: missing ${marker}`);
+	}
+}
+if (layoutSource.includes("postCta.services")) {
+	failures.push("blog layout: generic services CTA is still present");
+}
+
+for (const locale of ["es", "en"]) {
+	const translations = JSON.parse(
+		await readFile(join(root, "src", "i18n", `${locale}.json`), "utf8"),
+	);
+	const commercialCta = translations.blog?.post?.commercialCta;
+
+	for (const role of validRoles) {
+		for (const field of ["eyebrow", "title", "text", "contact"]) {
+			if (
+				typeof commercialCta?.[role]?.[field] !== "string" ||
+				commercialCta[role][field].trim().length === 0
+			) {
+				failures.push(
+					`${locale} translations: missing blog.post.commercialCta.${role}.${field}`,
+				);
+			}
+		}
+	}
+}
+
 const clusterSource = await readFile(
 	join(root, "src", "lib", "seo-clusters.ts"),
 	"utf8",

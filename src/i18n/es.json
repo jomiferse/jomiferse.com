@@ -992,6 +992,26 @@
         "contact": "Contactar"
       }
     },
+      },
+      "commercialCta": {
+        "buyer-led": {
+          "eyebrow": "Decisión y siguiente paso",
+          "title": "¿Quieres aterrizar esta decisión en tu caso?",
+          "text": "Puedo ayudarte a revisar el contexto, reducir el alcance inicial y elegir una solución proporcionada al problema.",
+          "contact": "Contar mi caso"
+        },
+        "technical-authority": {
+          "eyebrow": "Aplicación en un sistema real",
+          "title": "¿Necesitas revisar este problema en producción?",
+          "text": "Puedo analizar la arquitectura, los riesgos y el siguiente cambio útil sin convertir la solución en un proyecto más grande de lo necesario.",
+          "contact": "Revisar mi caso"
+        },
+        "case-study": {
+          "eyebrow": "Un proyecto con restricciones reales",
+          "title": "¿Tienes un problema parecido que resolver?",
+          "text": "Podemos partir del proceso, los límites y el resultado que necesitas para definir una primera entrega verificable.",
+          "contact": "Contar mi proyecto"
+        }
     "meta": {
       "title": "Blog",
       "description": "Notas y artículos breves de {name}."

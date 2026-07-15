@@ -3,6 +3,10 @@ import { Icon } from "astro-icon/components";
 import BlogArticleToc from "@/components/common/BlogArticleToc.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
 import { getLocaleFromPath, getTranslations, type Locale, t } from "@/i18n";
+import {
+	resolveBlogCommercialCta,
+	type BlogCommercialContext,
+} from "@/lib/blog-commercial";
 
 interface Frontmatter {
 	title: string;
@@ -12,6 +16,7 @@ interface Frontmatter {
 	tags?: string[];
 	author?: string;
 	readingTime?: string;
+	commercial: BlogCommercialContext;
 	cover: {
 		src: string;
 		alt: string;
@@ -32,13 +37,17 @@ const { frontmatter, headings } = Astro.props as {
 
 const blogPath = `/${locale}/blog`;
 const articlePath = Astro.url.pathname;
-const contactPath = `/${locale}/contact/?sourceCategory=article&sourcePath=${encodeURIComponent(articlePath)}`;
 const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 const wasUpdated =
 	frontmatter.dateModified &&
 	frontmatter.dateModified.getTime() !== frontmatter.date.getTime();
 const postCopy = getTranslations(locale).blog.post;
-const postCta = postCopy.cta;
+const commercialCta = resolveBlogCommercialCta(
+	locale,
+	frontmatter.commercial,
+	articlePath,
+	postCopy.commercialCta[frontmatter.commercial.role],
+);
 ---
 
 <article class="blog-article-page">
@@ -185,11 +194,11 @@ const postCta = postCopy.cta;
 
 	<div class="mt-16 md:mt-20">
 		<ConversionCta
-			eyebrow={postCta.eyebrow}
-			title={postCta.title}
-			text={postCta.text}
-			primary={{ label: postCta.services, href: `/${locale}/services` }}
-			secondary={{ label: postCta.contact, href: contactPath }}
+			eyebrow={commercialCta.eyebrow}
+			title={commercialCta.title}
+			text={commercialCta.text}
+			primary={commercialCta.primary}
+			secondary={commercialCta.secondary}
 			headingId="article-conversion-title"
 		/>
 	</div>
