@@ -68,253 +68,525 @@ const structuredData = [
 	structuredData={structuredData}
 	keywords={page.keywords}
 >
-	<section class="section-reveal py-10 md:py-20">
-		<p class="eyebrow">{page.eyebrow}</p>
-		<h1
-			class="mt-5 max-w-5xl text-4xl leading-[1.04] font-black text-[var(--text)] sm:text-5xl md:text-7xl"
+	<div class="commercial-landing">
+		<section class="commercial-landing__hero section-reveal py-10 md:py-20">
+			<p class="eyebrow">{page.eyebrow}</p>
+			<h1
+				class="mt-5 max-w-5xl text-4xl leading-[1.04] font-black text-[var(--home-navy)] sm:text-5xl md:text-7xl"
+			>
+				{page.title}
+			</h1>
+			<p class="muted-copy mt-6 max-w-3xl text-lg leading-8">
+				{page.intro}
+			</p>
+			<div class="mt-9 flex flex-col gap-3 sm:flex-row">
+				<a href={contactHref} class="button-action w-full sm:w-auto">
+					{page.primaryCta}
+					<Icon name="arrow-right" class="h-4 w-4" />
+				</a>
+				<a href="#related-services" class="commercial-landing__secondary-link">
+					{page.secondaryCta}
+					<Icon
+						name="arrow-right"
+						class="h-4 w-4 rotate-90"
+						aria-hidden="true"
+					/>
+				</a>
+			</div>
+		</section>
+
+		<section
+			class="commercial-landing__problem section-band section-reveal py-16 md:py-24"
 		>
-			{page.title}
-		</h1>
-		<p class="muted-copy mt-6 max-w-3xl text-lg leading-8">
-			{page.intro}
-		</p>
-		<div class="mt-9 flex flex-col gap-3 sm:flex-row">
-			<a href={contactHref} class="button-primary w-full sm:w-auto">
-				{page.primaryCta}
-				<Icon name="arrow-right" class="h-4 w-4" />
-			</a>
-			<a href="#related-services" class="button-secondary w-full sm:w-auto">
-				{page.secondaryCta}
-			</a>
-		</div>
-	</section>
-
-	<section class="section-band section-reveal py-16 md:py-24">
-		<div class="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
-			<div>
-				<p class="eyebrow">{page.problem.eyebrow}</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.problem.title}
-				</h2>
+			<div class="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+				<div>
+					<p class="eyebrow">{page.problem.eyebrow}</p>
+					<h2
+						class="mt-4 text-3xl font-black text-[var(--home-navy)] sm:text-4xl md:text-5xl"
+					>
+						{page.problem.title}
+					</h2>
+				</div>
+				<div class="space-y-5 text-lg leading-8 text-[var(--text-muted)]">
+					{page.problem.body.map((paragraph) => <p>{paragraph}</p>)}
+				</div>
 			</div>
-			<div class="space-y-5 text-lg leading-8 text-[var(--text-muted)]">
-				{page.problem.body.map((paragraph) => <p>{paragraph}</p>)}
-			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section-reveal py-16 md:py-24">
-		<div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-			<div>
+		<section class="commercial-landing__decision section-reveal py-16 md:py-24">
+			<div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+				<div>
+					<p class="eyebrow">
+						{locale === "es" ? "Decisión de inversión" : "Investment decision"}
+					</p>
+					<h2
+						class="mt-4 text-3xl font-black text-[var(--home-navy)] sm:text-4xl md:text-5xl"
+					>
+						{page.whenWorthIt.title}
+					</h2>
+				</div>
+				<div class="commercial-landing__signal-list">
+					{
+						page.whenWorthIt.items.map((item, index) => (
+							<div class="commercial-landing__signal-row">
+								<span aria-hidden="true">
+									{String(index + 1).padStart(2, "0")}
+								</span>
+								<p>{item}</p>
+							</div>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="commercial-landing__cases section-reveal py-16 md:py-24">
+			<div class="mb-10 max-w-3xl">
 				<p class="eyebrow">
-					{locale === "es" ? "Decisión de inversión" : "Investment decision"}
+					{locale === "es" ? "Trabajo frecuente" : "Frequent work"}
 				</p>
 				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+					class="mt-4 text-3xl font-black text-[var(--home-navy)] sm:text-4xl md:text-5xl"
 				>
-					{page.whenWorthIt.title}
+					{page.cases.title}
 				</h2>
+				<p class="muted-copy mt-5 text-lg leading-8">{page.cases.intro}</p>
 			</div>
-			<div class="grid gap-3">
+			<div class="commercial-landing__case-list stagger-children">
 				{
-					page.whenWorthIt.items.map((item) => (
-						<div class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface-strong)] p-4 text-[var(--text-muted)] dark:bg-white/[0.03]">
-							<span class="mr-3 text-[var(--accent-strong)] dark:text-[var(--accent)]">
-								✓
+					page.cases.items.map((item, index) => (
+						<article class="commercial-landing__case-row">
+							<span aria-hidden="true">
+								{String(index + 1).padStart(2, "0")}
 							</span>
-							{item}
-						</div>
+							<div>
+								<h3>{item.title}</h3>
+								<p>{item.body}</p>
+							</div>
+						</article>
 					))
 				}
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section-reveal py-16 md:py-24">
-		<div class="mb-10 max-w-3xl">
+		<section class="section-band section-reveal py-16 md:py-24">
+			<div class="commercial-landing__scope-grid">
+				<article class="commercial-landing__scope-column">
+					<p class="eyebrow">
+						{locale === "es" ? "Alcance posible" : "Possible scope"}
+					</p>
+					<h2
+						class="mt-4 text-3xl font-black text-[var(--home-navy)] md:text-4xl"
+					>
+						{page.builds.title}
+					</h2>
+					<ul class="commercial-landing__scope-list">
+						{
+							page.builds.items.map((item) => (
+								<li>
+									<span aria-hidden="true">✓</span>
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</article>
+
+				<article class="commercial-landing__scope-column">
+					<p class="eyebrow">
+						{locale === "es" ? "Criterio de trabajo" : "Working criteria"}
+					</p>
+					<h2
+						class="mt-4 text-3xl font-black text-[var(--home-navy)] md:text-4xl"
+					>
+						{page.avoid.title}
+					</h2>
+					<ul class="commercial-landing__scope-list">
+						{
+							page.avoid.items.map((item) => (
+								<li>
+									<span aria-hidden="true">•</span>
+									<span>{item}</span>
+								</li>
+							))
+						}
+					</ul>
+				</article>
+			</div>
+		</section>
+
+		<section class="commercial-landing__process section-reveal py-16 md:py-24">
 			<p class="eyebrow">
-				{locale === "es" ? "Trabajo frecuente" : "Frequent work"}
+				{locale === "es" ? "Ejecución" : "Execution"}
 			</p>
 			<h2
-				class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
+				class="mt-4 max-w-3xl text-3xl font-black text-[var(--home-navy)] sm:text-4xl md:text-5xl"
 			>
-				{page.cases.title}
+				{page.process.title}
 			</h2>
-			<p class="muted-copy mt-5 text-lg leading-8">{page.cases.intro}</p>
-		</div>
-		<div class="stagger-children grid gap-4 md:grid-cols-2">
-			{
-				page.cases.items.map((item) => (
-					<article class="dark-card p-5 md:p-6">
-						<h3 class="text-xl font-black text-[var(--text)]">{item.title}</h3>
-						<p class="muted-copy mt-4 leading-7">{item.body}</p>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	<section class="section-band section-reveal py-16 md:py-24">
-		<div class="grid gap-10 lg:grid-cols-2">
-			<article>
-				<p class="eyebrow">
-					{locale === "es" ? "Alcance posible" : "Possible scope"}
-				</p>
-				<h2 class="mt-4 text-3xl font-black text-[var(--text)] md:text-4xl">
-					{page.builds.title}
-				</h2>
-				<ul class="mt-7 space-y-4">
-					{
-						page.builds.items.map((item) => (
-							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-									✓
-								</span>
-								<span>{item}</span>
-							</li>
-						))
-					}
-				</ul>
-			</article>
-
-			<article>
-				<p class="eyebrow">
-					{locale === "es" ? "Criterio de trabajo" : "Working criteria"}
-				</p>
-				<h2 class="mt-4 text-3xl font-black text-[var(--text)] md:text-4xl">
-					{page.avoid.title}
-				</h2>
-				<ul class="mt-7 space-y-4">
-					{
-						page.avoid.items.map((item) => (
-							<li class="flex gap-3 leading-7 text-[var(--text-muted)]">
-								<span class="text-[var(--accent-strong)] dark:text-[var(--accent)]">
-									•
-								</span>
-								<span>{item}</span>
-							</li>
-						))
-					}
-				</ul>
-			</article>
-		</div>
-	</section>
-
-	<section class="section-reveal py-16 md:py-24">
-		<p class="eyebrow">
-			{locale === "es" ? "Ejecución" : "Execution"}
-		</p>
-		<h2
-			class="mt-4 max-w-3xl text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-		>
-			{page.process.title}
-		</h2>
-		<div class="stagger-children mt-8 grid gap-4 md:grid-cols-4">
-			{
-				page.process.steps.map((step, index) => (
-					<article class="dark-card p-5">
-						<p class="font-black text-[var(--accent-strong)] dark:text-[var(--accent)]">
-							{String(index + 1).padStart(2, "0")}
-						</p>
-						<p class="mt-5 leading-7 text-[var(--text-muted)]">{step}</p>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	<section
-		id="related-services"
-		class="section-band section-reveal py-16 md:py-24"
-	>
-		<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-			<div>
-				<p class="eyebrow">
-					{locale === "es" ? "Siguiente paso" : "Next step"}
-				</p>
-				<h2
-					class="mt-4 text-3xl font-black text-[var(--text)] sm:text-4xl md:text-5xl"
-				>
-					{page.relatedServicesTitle}
-				</h2>
-			</div>
-			<div class="grid gap-3 sm:grid-cols-2">
+			<ol class="commercial-landing__process-list stagger-children">
 				{
-					relatedServices.map((service) => (
-						<a
-							href={getServiceHref(service)}
-							class="group rounded-lg border border-[var(--surface-border)] bg-[var(--surface-strong)] p-4 transition hover:-translate-y-0.5 hover:border-[var(--accent-line)] dark:bg-white/[0.03]"
-						>
-							<h3 class="text-lg font-black text-[var(--text)] group-hover:text-[var(--accent-strong)] dark:group-hover:text-[var(--accent)]">
-								{service.shortTitle}
-							</h3>
-							<p class="muted-copy mt-2 text-sm leading-6">
-								{service.description}
+					page.process.steps.map((step, index) => (
+						<li>
+							<span aria-hidden="true">
+								{String(index + 1).padStart(2, "0")}
+							</span>
+							<p>{step}</p>
+						</li>
+					))
+				}
+			</ol>
+		</section>
+
+		<section
+			id="related-services"
+			class="section-band section-reveal py-16 md:py-24"
+		>
+			<div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+				<div>
+					<p class="eyebrow">
+						{locale === "es" ? "Siguiente paso" : "Next step"}
+					</p>
+					<h2
+						class="mt-4 text-3xl font-black text-[var(--home-navy)] sm:text-4xl md:text-5xl"
+					>
+						{page.relatedServicesTitle}
+					</h2>
+				</div>
+				<div class="commercial-landing__related-grid">
+					{
+						relatedServices.map((service) => (
+							<a
+								href={getServiceHref(service)}
+								class="commercial-landing__related-card group"
+							>
+								<h3>{service.shortTitle}</h3>
+								<p class="muted-copy mt-2 text-sm leading-6">
+									{service.description}
+								</p>
+							</a>
+						))
+					}
+				</div>
+			</div>
+		</section>
+
+		<section class="commercial-landing__posts section-reveal py-16 md:py-24">
+			<div
+				class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
+			>
+				<div>
+					<p class="eyebrow">
+						{locale === "es" ? "Contexto útil" : "Useful context"}
+					</p>
+					<h2
+						class="mt-4 text-3xl font-black text-[var(--home-navy)] md:text-5xl"
+					>
+						{page.relatedPostsTitle}
+					</h2>
+				</div>
+				<a href={`/${locale}/blog/`} class="button-secondary w-fit">
+					{locale === "es" ? "Ver blog" : "View blog"}
+				</a>
+			</div>
+			<div class="commercial-landing__post-grid stagger-children">
+				{
+					page.relatedPosts.map((post) => (
+						<a href={post.href} class="commercial-landing__post-link">
+							<h3>{post.title}</h3>
+							<p class="muted-copy mt-4 text-sm leading-6">
+								{post.description}
 							</p>
 						</a>
 					))
 				}
 			</div>
-		</div>
-	</section>
+		</section>
 
-	<section class="section-reveal py-16 md:py-24">
-		<div
-			class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
-		>
-			<div>
-				<p class="eyebrow">
-					{locale === "es" ? "Contexto útil" : "Useful context"}
-				</p>
-				<h2 class="mt-4 text-3xl font-black text-[var(--text)] md:text-5xl">
-					{page.relatedPostsTitle}
-				</h2>
+		<section class="section-band section-reveal py-16 md:py-24">
+			<h2 class="text-3xl font-black text-[var(--home-navy)] md:text-5xl">
+				{
+					locale === "es"
+						? "Preguntas frecuentes"
+						: "Frequently asked questions"
+				}
+			</h2>
+			<div class="commercial-landing__faq-list">
+				{
+					page.faq.map((item, index) => (
+						<details open={index === 0}>
+							<summary>
+								<span>{item.question}</span>
+								<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
+							</summary>
+							<p>{item.answer}</p>
+						</details>
+					))
+				}
 			</div>
-			<a href={`/${locale}/blog/`} class="button-secondary w-fit">
-				{locale === "es" ? "Ver blog" : "View blog"}
-			</a>
-		</div>
-		<div class="stagger-children grid gap-4 md:grid-cols-3">
-			{
-				page.relatedPosts.map((post) => (
-					<a href={post.href} class="dark-card hover-card p-5 md:p-6">
-						<h3 class="text-xl font-black text-[var(--text)]">{post.title}</h3>
-						<p class="muted-copy mt-4 text-sm leading-6">{post.description}</p>
-					</a>
-				))
-			}
-		</div>
-	</section>
+		</section>
 
-	<section class="section-band section-reveal py-16 md:py-24">
-		<h2 class="text-3xl font-black text-[var(--text)] md:text-5xl">
-			{locale === "es" ? "Preguntas frecuentes" : "Frequently asked questions"}
-		</h2>
-		<div class="mt-8 grid gap-4 md:grid-cols-2">
-			{
-				page.faq.map((item) => (
-					<article class="rounded-lg border border-[var(--surface-border)] bg-[var(--surface)] p-6">
-						<h3 class="text-xl font-black text-[var(--text)]">
-							{item.question}
-						</h3>
-						<p class="muted-copy mt-4 leading-7">{item.answer}</p>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	<ConversionCta
-		eyebrow={page.cta.eyebrow}
-		title={page.cta.title}
-		text={page.cta.text}
-		primary={{ label: page.cta.button, href: contactHref }}
-		secondary={{
-			label: locale === "es" ? "Ver todos los servicios" : "View all services",
-			href: servicesHref,
-		}}
-		headingId="landing-conversion-title"
-	/>
+		<ConversionCta
+			eyebrow={page.cta.eyebrow}
+			title={page.cta.title}
+			text={page.cta.text}
+			primary={{ label: page.cta.button, href: contactHref }}
+			secondary={{
+				label:
+					locale === "es" ? "Ver todos los servicios" : "View all services",
+				href: servicesHref,
+			}}
+			headingId="landing-conversion-title"
+		/>
+	</div>
 </BaseLayout>
+
+<style>
+	.commercial-landing {
+		--landing-rule: color-mix(
+			in srgb,
+			var(--home-navy) 13%,
+			var(--surface-border)
+		);
+	}
+
+	.commercial-landing__hero {
+		max-width: 72rem;
+	}
+
+	.commercial-landing__secondary-link {
+		display: inline-flex;
+		min-height: 2.75rem;
+		align-items: center;
+		justify-content: center;
+		gap: 0.55rem;
+		padding-inline: 0.75rem;
+		color: var(--text);
+		font-size: 0.875rem;
+		font-weight: 850;
+		text-decoration: underline;
+		text-decoration-color: color-mix(in srgb, var(--action) 42%, transparent);
+		text-underline-offset: 0.35rem;
+	}
+
+	.commercial-landing__secondary-link:hover {
+		color: var(--action);
+	}
+
+	.commercial-landing__secondary-link:focus-visible {
+		outline: 2px solid var(--focus-ring);
+		outline-offset: 4px;
+	}
+
+	.commercial-landing__signal-list,
+	.commercial-landing__case-list,
+	.commercial-landing__process-list,
+	.commercial-landing__faq-list {
+		border-top: 1px solid var(--landing-rule);
+	}
+
+	.commercial-landing__signal-row,
+	.commercial-landing__case-row {
+		display: grid;
+		grid-template-columns: 2.5rem minmax(0, 1fr);
+		gap: 1rem;
+		border-bottom: 1px solid var(--landing-rule);
+		padding-block: 1.2rem;
+	}
+
+	.commercial-landing__signal-row > span,
+	.commercial-landing__case-row > span,
+	.commercial-landing__process-list > li > span {
+		color: var(--action);
+		font-size: 0.75rem;
+		font-weight: 900;
+		letter-spacing: 0.12em;
+	}
+
+	.commercial-landing__signal-row p,
+	.commercial-landing__case-row p,
+	.commercial-landing__process-list p {
+		color: var(--text-muted);
+		line-height: 1.75;
+	}
+
+	.commercial-landing__case-row h3,
+	.commercial-landing__related-card h3,
+	.commercial-landing__post-link h3 {
+		color: var(--home-navy);
+		font-size: 1.2rem;
+		font-weight: 900;
+		line-height: 1.25;
+	}
+
+	.commercial-landing__case-row p {
+		margin-top: 0.55rem;
+	}
+
+	.commercial-landing__scope-grid {
+		display: grid;
+		gap: 3rem;
+	}
+
+	.commercial-landing__scope-column {
+		border-top: 3px solid var(--action);
+		padding-top: 1.4rem;
+	}
+
+	.commercial-landing__scope-list {
+		margin-top: 1.75rem;
+		border-top: 1px solid var(--landing-rule);
+	}
+
+	.commercial-landing__scope-list li {
+		display: grid;
+		grid-template-columns: 1.25rem minmax(0, 1fr);
+		gap: 0.75rem;
+		border-bottom: 1px solid var(--landing-rule);
+		padding-block: 0.9rem;
+		color: var(--text-muted);
+		line-height: 1.65;
+	}
+
+	.commercial-landing__scope-list li > span:first-child {
+		color: var(--action);
+		font-weight: 900;
+	}
+
+	.commercial-landing__process-list {
+		display: grid;
+		margin-top: 2rem;
+	}
+
+	.commercial-landing__process-list > li {
+		display: grid;
+		grid-template-columns: 2.5rem minmax(0, 1fr);
+		gap: 1rem;
+		border-bottom: 1px solid var(--landing-rule);
+		padding-block: 1.25rem;
+	}
+
+	.commercial-landing__related-grid,
+	.commercial-landing__post-grid {
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	.commercial-landing__related-card,
+	.commercial-landing__post-link {
+		display: block;
+		border: 1px solid var(--surface-border);
+		border-radius: 0.75rem;
+		background: var(--surface);
+		padding: 1.25rem;
+		transition:
+			border-color 180ms ease,
+			transform 180ms ease;
+	}
+
+	.commercial-landing__related-card:hover,
+	.commercial-landing__post-link:hover {
+		transform: translateY(-0.15rem);
+		border-color: color-mix(in srgb, var(--action) 42%, var(--surface-border));
+	}
+
+	.commercial-landing__related-card:hover h3,
+	.commercial-landing__post-link:hover h3 {
+		color: var(--action);
+	}
+
+	.commercial-landing__related-card:focus-visible,
+	.commercial-landing__post-link:focus-visible,
+	.commercial-landing__faq-list summary:focus-visible {
+		outline: 2px solid var(--focus-ring);
+		outline-offset: 3px;
+	}
+
+	.commercial-landing__faq-list details {
+		border-bottom: 1px solid var(--landing-rule);
+	}
+
+	.commercial-landing__faq-list summary {
+		display: flex;
+		min-height: 4.5rem;
+		cursor: pointer;
+		list-style: none;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		color: var(--home-navy);
+		font-size: 1.1rem;
+		font-weight: 900;
+	}
+
+	.commercial-landing__faq-list summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.commercial-landing__faq-list summary svg {
+		flex: 0 0 auto;
+		color: var(--action);
+		transition: transform 180ms ease;
+	}
+
+	.commercial-landing__faq-list details[open] summary svg {
+		transform: rotate(45deg);
+	}
+
+	.commercial-landing__faq-list details > p {
+		max-width: 60rem;
+		padding: 0 2.5rem 1.5rem 0;
+		color: var(--text-muted);
+		line-height: 1.75;
+	}
+
+	@media (min-width: 40rem) {
+		.commercial-landing__secondary-link {
+			width: auto;
+		}
+
+		.commercial-landing__related-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 48rem) {
+		.commercial-landing__case-row {
+			grid-template-columns: 3rem minmax(12rem, 0.38fr) minmax(0, 0.62fr);
+			gap: 1.5rem;
+			align-items: start;
+		}
+
+		.commercial-landing__case-row > div {
+			display: contents;
+		}
+
+		.commercial-landing__case-row p {
+			margin-top: 0;
+		}
+
+		.commercial-landing__process-list {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.commercial-landing__process-list > li:nth-child(odd) {
+			padding-right: 2rem;
+		}
+
+		.commercial-landing__process-list > li:nth-child(even) {
+			border-left: 1px solid var(--landing-rule);
+			padding-left: 2rem;
+		}
+
+		.commercial-landing__post-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.commercial-landing__scope-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 5rem;
+		}
+	}
+</style>
