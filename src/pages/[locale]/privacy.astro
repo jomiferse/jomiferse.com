@@ -69,18 +69,20 @@ const providerLabel = (name: string) =>
 	keywords={["privacy policy", "cookie policy", "Google Analytics consent"]}
 >
 	<div data-privacy-page class="privacy-page">
-		<section class="section-reveal pt-6 pb-12 md:pt-10 md:pb-16">
+		<section class="privacy-hero section-reveal pt-8 pb-10 md:pt-12 md:pb-14">
 			<p class="eyebrow text-[var(--action)]">{page.eyebrow}</p>
 			<div
-				class="mt-5 grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
+				class="mt-4 grid gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
 			>
 				<div class="max-w-4xl">
 					<h1
-						class="text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
+						class="text-[clamp(2.65rem,13vw,4.5rem)] leading-[0.96] font-black tracking-[-0.055em] text-[var(--home-navy)]"
 					>
 						{page.title}
 					</h1>
-					<p class="muted-copy mt-6 max-w-3xl text-lg leading-8 md:text-xl">
+					<p
+						class="muted-copy mt-5 max-w-3xl text-base leading-7 sm:text-lg md:text-xl md:leading-8"
+					>
 						{page.intro}
 					</p>
 					<p class="mt-4 text-sm font-bold text-[var(--text-muted)]">
@@ -119,7 +121,7 @@ const providerLabel = (name: string) =>
 		</section>
 
 		<div
-			class="section-reveal grid gap-10 py-14 lg:grid-cols-[minmax(15rem,0.28fr)_minmax(0,0.72fr)] lg:gap-16 lg:py-18"
+			class="privacy-content section-reveal grid gap-9 py-10 lg:grid-cols-[minmax(15rem,0.27fr)_minmax(0,0.73fr)] lg:gap-16 lg:py-18"
 		>
 			<SectionToc
 				items={sectionEntries}
@@ -317,8 +319,12 @@ const providerLabel = (name: string) =>
 
 	.privacy-summary__item {
 		min-width: 0;
-		padding: 1.25rem 1rem;
+		padding: 1.35rem 1.15rem;
 		border-inline-end: 1px solid var(--surface-border);
+	}
+
+	.privacy-summary__item p:last-child {
+		overflow-wrap: anywhere;
 	}
 
 	.privacy-summary__item:last-child {
@@ -380,6 +386,7 @@ const providerLabel = (name: string) =>
 	.privacy-facts dd {
 		margin-top: 0.2rem;
 		font-weight: 750;
+		overflow-wrap: anywhere;
 	}
 
 	.privacy-facts a,
@@ -465,6 +472,11 @@ const providerLabel = (name: string) =>
 		font-size: 0.85rem;
 	}
 
+	.privacy-storage-table tbody th code {
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+
 	.privacy-storage-table td {
 		color: var(--text-muted);
 		font-size: 0.84rem;
@@ -473,7 +485,22 @@ const providerLabel = (name: string) =>
 
 	@media (max-width: 47.99rem) {
 		.privacy-summary {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.privacy-summary__item {
+			padding: 1.1rem 0.85rem;
+		}
+
+		.privacy-summary__item .eyebrow {
+			margin-top: 0.75rem;
+			font-size: 0.61rem;
+		}
+
+		.privacy-summary__item p:last-child {
+			margin-top: 0.4rem;
+			font-size: 0.9rem;
+			line-height: 1.35;
 		}
 
 		.privacy-summary__item:nth-child(2n) {
@@ -482,6 +509,10 @@ const providerLabel = (name: string) =>
 
 		.privacy-summary__item:nth-child(n + 3) {
 			border-top: 1px solid var(--surface-border);
+		}
+
+		.privacy-document > section {
+			padding-block: 2rem;
 		}
 
 		.privacy-storage-table {
@@ -507,11 +538,22 @@ const providerLabel = (name: string) =>
 		}
 
 		.privacy-storage-table tr {
+			position: relative;
 			margin-top: 1rem;
-			padding: 1rem;
+			padding: 1rem 1rem 1rem 1.15rem;
 			border: 1px solid var(--surface-border);
-			border-radius: 1rem;
+			border-radius: 0.85rem;
 			background: var(--surface);
+		}
+
+		.privacy-storage-table tr::before {
+			position: absolute;
+			inset-block: 0.8rem;
+			inset-inline-start: 0;
+			width: 0.2rem;
+			border-radius: 999px;
+			background: var(--action);
+			content: "";
 		}
 
 		.privacy-storage-table th,
@@ -531,18 +573,4 @@ const providerLabel = (name: string) =>
 		}
 	}
 
-	@media (max-width: 31rem) {
-		.privacy-summary {
-			grid-template-columns: 1fr;
-		}
-
-		.privacy-summary__item {
-			border-inline-end: 0;
-			border-top: 1px solid var(--surface-border);
-		}
-
-		.privacy-summary__item:first-child {
-			border-top: 0;
-		}
-	}
 </style>

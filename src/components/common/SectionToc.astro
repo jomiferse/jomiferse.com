@@ -25,7 +25,7 @@ const { items, label, currentLabel, icon = "book-open" } = Astro.props as Props;
 		>
 			<nav
 				aria-label={label}
-				class="relative isolate hidden max-h-[calc(100svh-7.5rem)] min-h-0 flex-col overflow-hidden rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[var(--surface)] p-5 shadow-[var(--shadow-card)] lg:flex"
+				class="section-toc-desktop relative isolate hidden max-h-[calc(100svh-7.5rem)] min-h-0 flex-col overflow-hidden border-t-2 border-[color-mix(in_srgb,var(--action)_52%,var(--surface-border))] bg-transparent py-5 lg:flex"
 			>
 				<div class="flex shrink-0 items-center gap-3">
 					<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,transparent)] bg-[color-mix(in_srgb,var(--action)_12%,var(--surface))] text-[var(--action)]">
@@ -64,18 +64,20 @@ const { items, label, currentLabel, icon = "book-open" } = Astro.props as Props;
 				</ol>
 			</nav>
 
-			<details class="rounded-[1.15rem] border border-[color-mix(in_srgb,var(--action)_26%,var(--surface-border))] bg-[var(--surface)] p-5 shadow-[var(--shadow-card)] lg:hidden">
-				<summary class="cursor-pointer list-none text-[var(--text)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]">
+			<details class="rounded-[1rem] border border-[color-mix(in_srgb,var(--action)_24%,var(--surface-border))] bg-[var(--surface)] px-4 py-3 lg:hidden">
+				<summary class="flex min-h-11 cursor-pointer list-none items-center text-[var(--text)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]">
 					<span class="flex items-center gap-3">
 						<span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,transparent)] bg-[color-mix(in_srgb,var(--action)_12%,var(--surface))] text-[var(--action)]">
 							<Icon name={icon} class="h-5 w-5" aria-hidden="true" />
 						</span>
-						<span>
+						<span class="min-w-0">
 							<span class="eyebrow block text-[var(--action)]">{label}</span>
 							<span class="mt-1 block text-xs font-semibold text-[var(--text-muted)]">
 								<>
 									<span class="sr-only">{currentLabel}: </span>
-									<span data-section-toc-current>{items[0]?.text}</span>
+									<span class="line-clamp-2" data-section-toc-current
+										>{items[0]?.text}</span
+									>
 								</>
 							</span>
 						</span>
@@ -91,7 +93,7 @@ const { items, label, currentLabel, icon = "book-open" } = Astro.props as Props;
 								<a
 									data-section-toc-link
 									href={`#${item.slug}`}
-									class="block rounded-xl border border-transparent px-3 py-2.5 text-sm leading-5 font-bold text-[var(--text-muted)] hover:bg-[color-mix(in_srgb,var(--action)_8%,transparent)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--action)] data-[active]:border-[color-mix(in_srgb,var(--action)_18%,transparent)] data-[active]:bg-[color-mix(in_srgb,var(--action)_10%,var(--surface))] data-[active]:text-[var(--home-navy)]"
+									class="flex min-h-11 items-center rounded-xl border border-transparent px-3 py-2.5 text-sm leading-5 font-bold text-[var(--text-muted)] hover:bg-[color-mix(in_srgb,var(--action)_8%,transparent)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--action)] data-[active]:border-[color-mix(in_srgb,var(--action)_18%,transparent)] data-[active]:bg-[color-mix(in_srgb,var(--action)_10%,var(--surface))] data-[active]:text-[var(--home-navy)]"
 								>
 									{item.text}
 								</a>
