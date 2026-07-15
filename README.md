@@ -42,7 +42,7 @@
 - Language switcher integrated into the header
 - Translation dictionaries for UI text
 - Localized metadata (`title`, `description`, `aria-labels`)
-- Automatic redirect from `/` to the appropriate locale
+- Permanent redirect from `/` to the Spanish home page
 
 ---
 
@@ -77,6 +77,9 @@
 
 ## 🛠️ Running Locally
 
+Use Node 24 or newer and pnpm 11. The package-manager version is pinned in
+`package.json`.
+
 ```bash
 # Install dependencies
 pnpm install
@@ -87,9 +90,18 @@ pnpm run dev
 # Build for production
 pnpm run build
 
+# Run the complete pre-publication gate
+pnpm run quality
+
 # Preview the build
 pnpm run preview
 ```
+
+`pnpm run test:build` audits the generated production artifact and therefore
+expects `pnpm run build` to have run first. It checks public routes, internal
+links, canonical and language alternates, structured data, discovery files,
+redirects, image delivery and HTML/CSS budgets. The full rationale and manual
+visual checklist live in [`docs/quality-gate.md`](docs/quality-gate.md).
 
 ### Contact email configuration
 

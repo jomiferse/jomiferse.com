@@ -2,6 +2,7 @@
   "name": "jomiferse.com",
   "version": "1.1.0",
   "private": true,
+  "packageManager": "pnpm@11.1.3",
   "type": "module",
   "engines": {
     "node": ">=24.0.0"
@@ -11,22 +12,13 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "test": "node --test tests/*.test.ts",
+    "test:build": "node --test tests/build/*.test.ts",
     "check": "astro check",
     "lint": "eslint . --cache --cache-location .eslintcache --max-warnings 0",
     "lint:fix": "eslint . --cache --cache-location .eslintcache --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "verify:contact-redesign": "node scripts/verify-contact-redesign.mjs",
-    "verify:footer-redesign": "node scripts/verify-footer-redesign.mjs",
-    "verify:header-redesign": "node scripts/verify-header-redesign.mjs",
-    "verify:global-background": "node scripts/verify-global-background.mjs",
-    "verify:popup-system": "node scripts/verify-popup-system.mjs",
-    "verify:privacy-education-redesign": "node scripts/verify-privacy-education-redesign.mjs",
-    "verify:conversion-cta": "node scripts/verify-conversion-cta.mjs",
-    "verify:blog-commercial": "node scripts/verify-blog-commercial.mjs",
-    "verify:ai-seo": "node scripts/verify-ai-seo.mjs",
-    "verify:service-redesign": "node scripts/verify-service-redesign.mjs",
-    "verify:project-pages": "node scripts/verify-project-pages.mjs"
+    "quality": "pnpm run format:check && pnpm run lint && pnpm run test && pnpm run check && pnpm run build && pnpm run test:build"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
