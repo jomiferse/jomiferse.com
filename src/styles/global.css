@@ -1112,11 +1112,15 @@ body.mobile-menu-open {
 	gap: 0.65rem 1.25rem;
 }
 
+.footer-legal__links a,
 .footer-legal button {
 	display: inline-flex;
 	min-height: 2.75rem;
 	align-items: center;
-	padding: 0 0.35rem;
+	padding: 0;
+}
+
+.footer-legal button {
 	border: 0;
 	background: transparent;
 	cursor: pointer;
