@@ -2384,6 +2384,11 @@ const commercialLandingPages = {
 					answer:
 						"Sí, si esa es una necesidad del proyecto. WordPress permite editar páginas y entradas; con Astro acordamos qué contenido debe ser editable y cuál conviene mantener en código.",
 				},
+				{
+					question: "¿Cuánto tiempo requiere crear la web?",
+					answer:
+						"El plazo depende del número de páginas, de si el contenido está preparado y de las revisiones necesarias. Antes de empezar dejo por escrito las fases, qué necesito de tu parte y qué fecha de publicación es razonable.",
+				},
 			],
 			cta: {
 				eyebrow: "Valoración inicial",
@@ -3136,6 +3141,11 @@ const commercialLandingPages = {
 					question: "Will I be able to edit the website?",
 					answer:
 						"Yes, when that is part of the project. WordPress lets you edit pages and posts; with Astro we agree which content should be editable and what is better maintained in code.",
+				},
+				{
+					question: "How long does it take to build the website?",
+					answer:
+						"Timing depends on the number of pages, whether the content is ready and how many review rounds the project needs. Before work starts, I set out the phases, what I need from you and a realistic launch date.",
 				},
 			],
 			cta: {

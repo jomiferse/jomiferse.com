@@ -44,3 +44,15 @@ test("keeps the Granada landing focused on a concrete web project", () => {
 	assert.match(page.cta.button, /proyecto|web/i);
 	assert.doesNotMatch(page.title, /agencia/i);
 });
+
+test("answers four purchase questions on both Granada landings", () => {
+	for (const [locale, slug] of [
+		["es", "diseno-web-granada"],
+		["en", "web-design-granada"],
+	] as const) {
+		const page = getCommercialLanding(locale, slug);
+		assert.ok(page);
+		assert.equal(page.faq.length, 4);
+		assert.match(page.faq.at(-1)?.question ?? "", /tiempo|long/i);
+	}
+});

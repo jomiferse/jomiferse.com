@@ -260,6 +260,36 @@ export const auditBuildArtifact = async (
 	) {
 		failures.push("Granada landing is missing its local areaServed schema");
 	}
+	const granadaMarkers = [
+		"data-granada-hero",
+		"data-granada-decision",
+		"data-granada-services",
+		"data-granada-proof",
+		"data-granada-process",
+		"data-granada-faq",
+		"data-granada-cta",
+	];
+	for (const path of ["/es/diseno-web-granada/", "/en/web-design-granada/"]) {
+		const page = canonicalMap.get(normalizePublicUrl(path));
+		for (const marker of granadaMarkers) {
+			if (!page?.html.includes(marker)) {
+				failures.push(`${path}: missing home-derived marker ${marker}`);
+			}
+		}
+		if (page?.html.includes("data-granada-related-posts")) {
+			failures.push(`${path}: still renders the removed related-post section`);
+		}
+	}
+	for (const href of [
+		"/es/services/diseno-web-wordpress/",
+		"/es/services/website-redesign/",
+		"/es/services/landing-pages/",
+		"/es/projects/plataforma-ticketing-getyourticket/",
+	]) {
+		if (!granadaPage?.html.includes(`href="${href}"`)) {
+			failures.push(`Granada landing is missing buyer path ${href}`);
+		}
+	}
 
 	for (const page of pages.filter((candidate) => candidate.indexable)) {
 		for (const language of ["en", "es", "x-default"]) {
