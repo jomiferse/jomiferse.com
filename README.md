@@ -97,12 +97,6 @@ pnpm run quality
 pnpm run preview
 ```
 
-`pnpm run test:build` audits the generated production artifact and therefore
-expects `pnpm run build` to have run first. It checks public routes, internal
-links, canonical and language alternates, structured data, discovery files,
-redirects, image delivery and HTML/CSS budgets. The full rationale and manual
-visual checklist live in [`docs/quality-gate.md`](docs/quality-gate.md).
-
 ### Contact email configuration
 
 The contact endpoint requires `RESEND_API_KEY`, `CONTACT_FROM` and `CONTACT_TO`.
