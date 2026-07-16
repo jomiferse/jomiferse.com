@@ -36,7 +36,7 @@
   "notFound": {
     "page": {
       "meta": {
-        "title": "Page not found | José Miguel Fernández",
+        "title": "Page not found",
         "description": "The page you are looking for does not exist. Return to the website home, read the blog or get in touch."
       },
       "eyebrow": "Page not found",
@@ -442,7 +442,7 @@
   "projects": {
     "page": {
       "meta": {
-        "title": "Client case studies and software projects | José Miguel Fernández",
+        "title": "Client case studies and software projects",
         "description": "Real client cases covering platforms, internal tools and systems built to solve business needs."
       },
       "eyebrow": "Client case studies",
@@ -489,7 +489,7 @@
   "experience": {
     "page": {
       "meta": {
-        "title": "Experience | José Miguel Fernández",
+        "title": "Experience",
         "description": "Professional experience of José Miguel Fernández across backend engineering, full-stack delivery, microservices, web platforms and production systems."
       },
       "eyebrow": "Experience",
@@ -647,7 +647,7 @@
   "contact": {
     "page": {
       "meta": {
-        "title": "Contact | José Miguel Fernández",
+        "title": "Contact",
         "description": "Contact José Miguel Fernández for freelance full-stack development, internal tools, automation workflows, API integrations and backend systems."
       },
       "eyebrow": "Free initial assessment",
@@ -957,7 +957,7 @@
   "blog": {
     "page": {
       "meta": {
-        "title": "Web development and software blog | José Miguel Fernández",
+        "title": "Web development and software blog",
         "description": "Practical guides to web design, WordPress, custom software, automation, API integrations and backend work for businesses."
       },
       "eyebrow": "Writing",
@@ -1039,7 +1039,7 @@
       "next": "Next",
       "page": "Page",
       "pageLabel": "Page {current} of {total}",
-      "metaTitle": "Blog | Page {page} | José Miguel Fernández",
+      "metaTitle": "Blog | Page {page}",
       "metaDescription": "Page {page} of short notes about software engineering, systems, tools and practical product building."
     },
     "empty": {
@@ -1050,7 +1050,7 @@
   "about": {
     "page": {
       "meta": {
-        "title": "About and experience | José Miguel Fernández",
+        "title": "About and experience",
         "description": "Meet José Miguel Fernández, a consultant and full-stack developer with over six years of experience in websites, automation, custom software and backend systems."
       },
       "eyebrow": "About",
@@ -2092,7 +2092,7 @@
     },
     "hub": {
       "meta": {
-        "title": "Freelance IT Consulting | José Miguel Fernández",
+        "title": "Freelance IT Consulting",
         "description": "Freelance web design, WordPress, custom software, automation and API integration services for businesses that need to move forward."
       },
       "schema": {
@@ -2484,7 +2484,7 @@
         "title": "Business Website",
         "shortTitle": "Business site",
         "description": "A clean, fast website that explains what you do, builds trust and makes it easy for the right client to contact you.",
-        "metaTitle": "Business Website Development | José Miguel Fernández",
+        "metaTitle": "Business Website Development",
         "metaDescription": "Freelance business website development for small teams and solo professionals who need a clear, fast and maintainable website.",
         "pricing": {
           "label": "Professional website",
@@ -2558,7 +2558,7 @@
         "title": "Website Redesign",
         "shortTitle": "Redesign",
         "description": "A focused redesign for an existing website that feels dated, unclear, slow or difficult to update.",
-        "metaTitle": "Website Redesign for Clearer Conversion | José Miguel Fernández",
+        "metaTitle": "Website Redesign for Clearer Conversion",
         "metaDescription": "Freelance website redesign for existing sites that need better structure, performance, messaging and conversion paths.",
         "pricing": {
           "label": "Focused redesign",
@@ -2632,7 +2632,7 @@
         "title": "Custom Web Application",
         "shortTitle": "Web app",
         "description": "A focused web application built around a real workflow, with the right amount of frontend, backend and data modeling.",
-        "metaTitle": "Custom Web Application Development | José Miguel Fernández",
+        "metaTitle": "Custom Web Application Development",
         "metaDescription": "Freelance custom web application development with TypeScript, backend systems, databases and practical product delivery.",
         "pricing": {
           "label": "Useful first version",
@@ -2706,7 +2706,7 @@
         "title": "Internal Tools",
         "shortTitle": "Internal tools",
         "description": "Small, practical tools for teams that need to manage operations without forcing everything through spreadsheets.",
-        "metaTitle": "Internal Tool Development | José Miguel Fernández",
+        "metaTitle": "Internal Tool Development",
         "metaDescription": "Freelance internal tool development for teams that need dashboards, admin panels and operational workflows.",
         "pricing": {
           "label": "Internal tool",
@@ -2780,7 +2780,7 @@
         "title": "Automation Workflows",
         "shortTitle": "Automation",
         "description": "Practical automation for repeated work: moving data, sending notifications, generating outputs and keeping systems in sync.",
-        "metaTitle": "Automation Workflow Development | José Miguel Fernández",
+        "metaTitle": "Automation Workflow Development",
         "metaDescription": "Freelance automation workflow development for repeated business tasks, integrations, notifications and operational tooling.",
         "pricing": {
           "label": "Focused automation",
@@ -2854,7 +2854,7 @@
         "title": "API Integrations",
         "shortTitle": "API integrations",
         "description": "Reliable connections between tools, platforms and internal systems so data can move without manual copying.",
-        "metaTitle": "API Integration Development | José Miguel Fernández",
+        "metaTitle": "API Integration Development",
         "metaDescription": "Freelance API integration development for connecting products, internal tools, data flows and third-party services.",
         "pricing": {
           "label": "API integration",
@@ -2928,7 +2928,7 @@
         "title": "Spring Boot Backend",
         "shortTitle": "Spring backend",
         "description": "Development and evolution of APIs, backend services and integrations with Java and Spring Boot, prioritizing maintainability, testability and reliability.",
-        "metaTitle": "Spring Boot Backend Development | José Miguel Fernández",
+        "metaTitle": "Spring Boot Backend Development",
         "metaDescription": "Freelance backend development with Java and Spring Boot for APIs, services, integrations, legacy migrations and maintainable systems.",
         "pricing": {
           "label": "Backend intervention",
@@ -3002,7 +3002,7 @@
         "title": "Maintenance and technical support",
         "shortTitle": "Technical maintenance",
         "description": "Maintenance for websites, applications and backends that need fixes, updates and small improvements with one direct technical contact.",
-        "metaTitle": "Maintenance and technical support | José Miguel Fernández",
+        "metaTitle": "Maintenance and technical support",
         "metaDescription": "Freelance technical maintenance for websites, WordPress, applications and backends: fixes, updates, performance and monthly support.",
         "pricing": {
           "label": "Initial intervention",

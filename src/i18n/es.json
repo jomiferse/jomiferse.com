@@ -36,7 +36,7 @@
   "notFound": {
     "page": {
       "meta": {
-        "title": "Página no encontrada | José Miguel Fernández",
+        "title": "Página no encontrada",
         "description": "La página que buscas no existe. Vuelve al inicio de la web, lee el blog o ponte en contacto."
       },
       "eyebrow": "Página no encontrada",
@@ -442,7 +442,7 @@
   "projects": {
     "page": {
       "meta": {
-        "title": "Casos de clientes y proyectos de software | José Miguel Fernández",
+        "title": "Casos de clientes y proyectos de software",
         "description": "Casos reales de plataformas, herramientas internas y sistemas desarrollados para resolver necesidades de clientes y empresas."
       },
       "eyebrow": "Casos de clientes",
@@ -489,7 +489,7 @@
   "experience": {
     "page": {
       "meta": {
-        "title": "Experiencia | José Miguel Fernández",
+        "title": "Experiencia",
         "description": "Experiencia profesional de José Miguel Fernández en backend, delivery full-stack, microservicios, plataformas web y sistemas en producción."
       },
       "eyebrow": "Experiencia",
@@ -647,7 +647,7 @@
   "contact": {
     "page": {
       "meta": {
-        "title": "Contacto | José Miguel Fernández",
+        "title": "Contacto",
         "description": "Contacta con José Miguel Fernández para desarrollo full-stack freelance, herramientas internas, automatizaciones, integraciones API y backend."
       },
       "eyebrow": "Primera valoración gratuita",
@@ -957,7 +957,7 @@
   "blog": {
     "page": {
       "meta": {
-        "title": "Blog sobre desarrollo web y software | José Miguel Fernández",
+        "title": "Blog sobre desarrollo web y software",
         "description": "Guías sobre diseño web, WordPress, software a medida, automatización, integraciones API y backend para empresas."
       },
       "eyebrow": "Escritura",
@@ -1039,7 +1039,7 @@
       "next": "Siguiente",
       "page": "Página",
       "pageLabel": "Página {current} de {total}",
-      "metaTitle": "Blog | Página {page} | José Miguel Fernández",
+      "metaTitle": "Blog | Página {page}",
       "metaDescription": "Página {page} de notas breves sobre software engineering, sistemas, herramientas y construcción práctica de producto."
     },
     "empty": {
@@ -1050,7 +1050,7 @@
   "about": {
     "page": {
       "meta": {
-        "title": "Sobre mí y experiencia | José Miguel Fernández",
+        "title": "Sobre mí y experiencia",
         "description": "Conoce a José Miguel Fernández, consultor y desarrollador full-stack con más de seis años de experiencia en webs, automatización, software a medida y backend."
       },
       "eyebrow": "Sobre mí",
@@ -2092,7 +2092,7 @@
     },
     "hub": {
       "meta": {
-        "title": "Consultoría informática freelance | José Miguel Fernández",
+        "title": "Consultoría informática freelance",
         "description": "Servicios freelance de diseño web, WordPress, software a medida, automatización e integraciones API para negocios que quieren avanzar."
       },
       "schema": {
@@ -2484,7 +2484,7 @@
         "title": "Web de negocio",
         "shortTitle": "Web de negocio",
         "description": "Una web clara y rápida que explica qué haces, genera confianza y facilita que el cliente adecuado contacte contigo.",
-        "metaTitle": "Desarrollo de web de negocio | José Miguel Fernández",
+        "metaTitle": "Desarrollo de web de negocio",
         "metaDescription": "Desarrollo freelance de webs de negocio para profesionales y equipos pequeños que necesitan una web clara, rápida y mantenible.",
         "pricing": {
           "label": "Web profesional",
@@ -2558,7 +2558,7 @@
         "title": "Rediseño web",
         "shortTitle": "Rediseño",
         "description": "Un rediseño enfocado para una web que se siente antigua, confusa, lenta o difícil de actualizar.",
-        "metaTitle": "Rediseño web para mejorar claridad | José Miguel Fernández",
+        "metaTitle": "Rediseño web para mejorar claridad",
         "metaDescription": "Rediseño web freelance para sitios existentes que necesitan mejor estructura, rendimiento, mensaje y caminos de conversión.",
         "pricing": {
           "label": "Rediseño enfocado",
@@ -2632,7 +2632,7 @@
         "title": "Aplicación web a medida",
         "shortTitle": "App web",
         "description": "Una aplicación web enfocada en un flujo real, con el frontend, backend y modelo de datos que hagan falta.",
-        "metaTitle": "Desarrollo de aplicación web a medida | José Miguel Fernández",
+        "metaTitle": "Desarrollo de aplicación web a medida",
         "metaDescription": "Desarrollo freelance de aplicaciones web a medida con TypeScript, backend, bases de datos y delivery práctico.",
         "pricing": {
           "label": "Primera versión útil",
@@ -2706,7 +2706,7 @@
         "title": "Herramientas internas",
         "shortTitle": "Herramientas internas",
         "description": "Herramientas pequeñas y prácticas para equipos que necesitan gestionar operaciones sin depender de hojas de cálculo.",
-        "metaTitle": "Desarrollo de herramientas internas | José Miguel Fernández",
+        "metaTitle": "Desarrollo de herramientas internas",
         "metaDescription": "Desarrollo freelance de herramientas internas para dashboards, paneles de administración y flujos operativos.",
         "pricing": {
           "label": "Herramienta interna",
@@ -2780,7 +2780,7 @@
         "title": "Automatización de flujos",
         "shortTitle": "Automatización",
         "description": "Automatización práctica para trabajo repetitivo: mover datos, enviar avisos, generar salidas y sincronizar sistemas.",
-        "metaTitle": "Desarrollo de automatizaciones | José Miguel Fernández",
+        "metaTitle": "Desarrollo de automatizaciones",
         "metaDescription": "Desarrollo freelance de automatizaciones para tareas repetitivas, integraciones, notificaciones y tooling operativo.",
         "pricing": {
           "label": "Automatización acotada",
@@ -2854,7 +2854,7 @@
         "title": "Integraciones API",
         "shortTitle": "APIs",
         "description": "Conexiones fiables entre herramientas, plataformas y sistemas internos para que los datos se muevan sin copia manual.",
-        "metaTitle": "Desarrollo de integraciones API | José Miguel Fernández",
+        "metaTitle": "Desarrollo de integraciones API",
         "metaDescription": "Desarrollo freelance de integraciones API para conectar productos, herramientas internas, flujos de datos y servicios externos.",
         "pricing": {
           "label": "Integración API",
@@ -2928,7 +2928,7 @@
         "title": "Backend con Spring Boot",
         "shortTitle": "Backend Spring",
         "description": "Desarrollo y evolución de APIs, servicios backend e integraciones con Java y Spring Boot, priorizando mantenibilidad, testabilidad y fiabilidad.",
-        "metaTitle": "Desarrollo backend con Spring Boot | José Miguel Fernández",
+        "metaTitle": "Desarrollo backend con Spring Boot",
         "metaDescription": "Desarrollo freelance de backend con Java y Spring Boot para APIs, servicios, integraciones, migraciones legacy y sistemas mantenibles.",
         "pricing": {
           "label": "Intervención backend",
@@ -3002,7 +3002,7 @@
         "title": "Mantenimiento y soporte técnico",
         "shortTitle": "Mantenimiento técnico",
         "description": "Mantenimiento para webs, aplicaciones y backends que necesitan correcciones, actualizaciones y pequeñas mejoras con un responsable técnico directo.",
-        "metaTitle": "Mantenimiento y soporte técnico | José Miguel Fernández",
+        "metaTitle": "Mantenimiento y soporte técnico",
         "metaDescription": "Mantenimiento técnico freelance para webs, WordPress, aplicaciones y backend: correcciones, actualizaciones, rendimiento y soporte mensual.",
         "pricing": {
           "label": "Primera intervención",
