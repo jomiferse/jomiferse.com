@@ -128,10 +128,9 @@ const offeringMeta: Partial<
 				"Diseño web WordPress para negocios que necesitan una web clara, editable, rápida y preparada para captar contactos cualificados.",
 		},
 		"web-wordpress:1": {
-			title:
-				"Mantenimiento WordPress y soporte técnico | José Miguel Fernández",
+			title: "Servicio de mantenimiento WordPress | José Miguel Fernández",
 			description:
-				"Mantenimiento WordPress con actualizaciones, backups, seguridad, corrección de errores y soporte técnico para webs de negocio.",
+				"Servicio de mantenimiento WordPress con planes mensuales para actualizaciones, copias, seguridad, errores y soporte técnico.",
 		},
 		"web-wordpress:2": {
 			title:
@@ -166,14 +165,19 @@ const offeringMeta: Partial<
 				"IA para empresas aplicada a procesos reales: clasificación, búsqueda, asistencia interna, reporting y reducción de trabajo manual.",
 		},
 		"ai-automation:1": {
-			title: "Chatbots y asistentes para negocios | José Miguel Fernández",
+			title: "Chatbots para empresas y asistentes | José Miguel Fernández",
 			description:
-				"Chatbots y asistentes para responder dudas, filtrar contactos, consultar documentación y apoyar procesos internos con control humano.",
+				"Chatbots para empresas que responden dudas, filtran contactos o consultan documentación con límites y revisión humana.",
 		},
 		"ai-automation:2": {
 			title: "Automatizaciones con IA para empresas | José Miguel Fernández",
 			description:
 				"Automatizaciones con IA para emails, formularios, clasificación de mensajes, extracción de datos y reporting operativo.",
+		},
+		"ai-automation:3": {
+			title: "Agentes de IA para empresas | José Miguel Fernández",
+			description:
+				"Agentes de IA para empresas que conectan datos y herramientas para ejecutar flujos concretos con permisos, trazabilidad y control humano.",
 		},
 		"it-consulting:3": {
 			title: "Software a medida para empresas | José Miguel Fernández",
@@ -188,10 +192,19 @@ const offeringMeta: Partial<
 				"WordPress web design for businesses that need a clear, editable, fast website built to generate qualified conversations.",
 		},
 		"web-wordpress:1": {
-			title:
-				"WordPress Maintenance and Technical Support | José Miguel Fernández",
+			title: "WordPress Maintenance Service | José Miguel Fernández",
 			description:
-				"WordPress maintenance with updates, backups, security, bug fixing and technical support for business websites.",
+				"WordPress maintenance plans covering updates, backups, security checks, bug fixes and practical support for business websites.",
+		},
+		"ai-automation:1": {
+			title: "Chatbots for Businesses and Assistants | José Miguel Fernández",
+			description:
+				"Chatbots for businesses that answer questions, qualify enquiries or search documents with clear limits and human review.",
+		},
+		"ai-automation:3": {
+			title: "AI Agents for Businesses | José Miguel Fernández",
+			description:
+				"AI agents for businesses that connect tools and data to run defined workflows with permissions, traceability and human oversight.",
 		},
 		"it-consulting:5": {
 			title: "Process Automation for Companies | José Miguel Fernández",
