@@ -1,7 +1,7 @@
 import { access, readFile, readdir } from "node:fs/promises";
 import { extname, join, relative } from "node:path";
 
-import { serviceAliasRedirects } from "../../../src/lib/service-aliases.ts";
+import { legacyRedirects } from "../../../src/lib/legacy-redirects.ts";
 
 const SITE = "https://www.jomiferse.com";
 const MAX_HTML_BYTES = 180_000;
@@ -246,7 +246,7 @@ export const auditBuildArtifact = async (
 		}
 	}
 
-	const aliasPaths = new Set(Object.keys(serviceAliasRedirects));
+	const aliasPaths = new Set(Object.keys(legacyRedirects));
 	for (const page of pages) {
 		for (const tag of getTags(page.html, "a")) {
 			const href = getAttribute(tag, "href");
@@ -371,7 +371,7 @@ export const auditBuildArtifact = async (
 	) {
 		failures.push("root path is not a permanent redirect to /es/");
 	}
-	for (const [source, destination] of Object.entries(serviceAliasRedirects)) {
+	for (const [source, destination] of Object.entries(legacyRedirects)) {
 		const routeSource = `^${source.replace(/\/$/, "")}$`;
 		if (
 			!redirects.some(

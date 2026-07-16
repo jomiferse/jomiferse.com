@@ -2,8 +2,12 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import NotFoundPage from "@/components/common/NotFoundPage.astro";
 import { getTranslations, locales, type Locale } from "@/i18n";
+import { getLegacyRedirect } from "@/lib/legacy-redirects";
 
 export const prerender = false;
+
+const legacyDestination = getLegacyRedirect(Astro.url.pathname);
+if (legacyDestination) return Astro.redirect(legacyDestination, 301);
 
 const requestedLocale = Astro.params.locale;
 const locale: Locale = locales.includes(requestedLocale as Locale)

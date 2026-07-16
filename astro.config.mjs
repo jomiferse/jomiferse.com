@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 import { unified } from "@astrojs/markdown-remark";
 import sharp from "sharp";
 import { fileURLToPath } from "node:url";
-import { serviceAliasRedirects } from "./src/lib/service-aliases.ts";
+import { legacyRedirects } from "./src/lib/legacy-redirects.ts";
 import { getEditorialImageAttributes } from "./src/lib/media-delivery.ts";
 
 const siteUrl = new URL("https://www.jomiferse.com");
@@ -93,7 +93,7 @@ export default defineConfig({
 		"/contact": "/es/contact",
 		"/es/experience": "/es/about",
 		"/en/experience": "/en/about",
-		...serviceAliasRedirects,
+		...legacyRedirects,
 	},
 	vite: {
 		plugins: [tailwindcss()],

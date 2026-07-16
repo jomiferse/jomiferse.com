@@ -6,6 +6,10 @@ const component = await readFile(
 	new URL("../src/components/common/NotFoundPage.astro", import.meta.url),
 	"utf8",
 );
+const localizedRoute = await readFile(
+	new URL("../src/pages/[locale]/[...notFound].astro", import.meta.url),
+	"utf8",
+);
 const globalStyles = await readFile(
 	new URL("../src/styles/global.css", import.meta.url),
 	"utf8",
@@ -54,5 +58,14 @@ test("uses the commercial page width and a prominent destination heading", () =>
 	assert.match(
 		component,
 		/\.not-found__destinations h2\s*{[\s\S]*padding-inline: clamp\(0\.5rem, 2vw, 1\.5rem\);/,
+	);
+});
+
+test("resolves known legacy paths before returning the localized 404", () => {
+	assert.match(localizedRoute, /getLegacyRedirect/);
+	assert.match(localizedRoute, /Astro\.redirect\(legacyDestination, 301\)/);
+	assert.ok(
+		localizedRoute.indexOf("Astro.redirect(legacyDestination, 301)") <
+			localizedRoute.indexOf("Astro.response.status = 404"),
 	);
 });
