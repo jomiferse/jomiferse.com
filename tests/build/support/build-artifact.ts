@@ -232,6 +232,35 @@ export const auditBuildArtifact = async (
 		canonicalMap.set(normalized, page);
 	}
 
+	for (const [path, title] of [
+		["/es/blog/", "Blog sobre desarrollo web y software"],
+		["/en/blog/", "Web development and software blog"],
+	] as const) {
+		const page = canonicalMap.get(normalizePublicUrl(path));
+		if (!page) {
+			failures.push(`missing priority page ${path}`);
+		} else if (!page.html.includes(`<title>${title}`)) {
+			failures.push(`${path}: unexpected localized blog title`);
+		}
+	}
+
+	for (const path of ["/es/", "/es/services/"]) {
+		const page = canonicalMap.get(normalizePublicUrl(path));
+		if (!page?.html.includes('href="/es/diseno-web-granada/"')) {
+			failures.push(`${path}: missing Granada web design link`);
+		}
+	}
+
+	const granadaPage = canonicalMap.get(
+		normalizePublicUrl("/es/diseno-web-granada/"),
+	);
+	if (
+		!granadaPage ||
+		!JSON.stringify(granadaPage.schemas).includes("Granada, España y remoto")
+	) {
+		failures.push("Granada landing is missing its local areaServed schema");
+	}
+
 	for (const page of pages.filter((candidate) => candidate.indexable)) {
 		for (const language of ["en", "es", "x-default"]) {
 			const alternate = page.alternates.get(language);
@@ -337,6 +366,18 @@ export const auditBuildArtifact = async (
 
 	const robots = await readFile(join(dist, "robots.txt"), "utf8");
 	const llms = await readFile(join(dist, "llms.txt"), "utf8");
+	for (const path of ["/es/diseno-web-granada/", "/en/web-design-granada/"]) {
+		const occurrences = llms.split(path).length - 1;
+		if (occurrences !== 1) {
+			failures.push(`llms.txt contains ${occurrences} entries for ${path}`);
+		}
+	}
+	for (const path of [
+		"/es/desarrollador-freelance-espana/",
+		"/en/freelance-developer-spain/",
+	]) {
+		if (llms.includes(path)) failures.push(`llms.txt contains legacy path ${path}`);
+	}
 	if (!robots.includes("Allow: /") || !robots.includes("sitemap-index.xml")) {
 		failures.push("robots.txt is missing public crawl or sitemap directives");
 	}

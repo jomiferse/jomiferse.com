@@ -185,8 +185,9 @@
               "Redesign and optimization",
               "WordPress and landing pages"
             ],
-            "link": "View web design services",
-            "slug": "wordpress-web-design"
+            "link": "View web design in Granada",
+            "slug": "wordpress-web-design",
+            "href": "/en/web-design-granada/"
           },
           {
             "number": "03",
@@ -956,8 +957,8 @@
   "blog": {
     "page": {
       "meta": {
-        "title": "Blog - José Miguel Fernández",
-        "description": "Short notes about software engineering, systems, tools and practical product building."
+        "title": "Web development and software blog | José Miguel Fernández",
+        "description": "Practical guides to web design, WordPress, custom software, automation, API integrations and backend work for businesses."
       },
       "eyebrow": "Writing",
       "title": "Notes from",
@@ -2105,7 +2106,7 @@
       "titleAccent": "sell more clearly and work with less friction.",
       "intro": "I design and build websites, custom software and automations for independent professionals, small businesses and teams that need to solve something concrete.",
       "heroPrimaryCta": "Request a free assessment",
-      "heroSecondaryCta": "View projects",
+      "heroSecondaryCta": "Web design in Granada",
       "heroSignals": [
         "You can start with a focused intervention.",
         "Clear scope and boundaries before development.",

@@ -185,8 +185,9 @@
               "Rediseño y optimización",
               "WordPress y landing pages"
             ],
-            "link": "Ver servicios de diseño web",
-            "slug": "diseno-web-wordpress"
+            "link": "Ver diseño web en Granada",
+            "slug": "diseno-web-wordpress",
+            "href": "/es/diseno-web-granada/"
           },
           {
             "number": "03",
@@ -956,8 +957,8 @@
   "blog": {
     "page": {
       "meta": {
-        "title": "Blog - José Miguel Fernández",
-        "description": "Notas breves sobre software engineering, sistemas, herramientas y construcción práctica de producto."
+        "title": "Blog sobre desarrollo web y software | José Miguel Fernández",
+        "description": "Guías sobre diseño web, WordPress, software a medida, automatización, integraciones API y backend para empresas."
       },
       "eyebrow": "Escritura",
       "title": "Notas de",
@@ -2105,7 +2106,7 @@
       "titleAccent": "vender mejor y trabajar con menos fricción.",
       "intro": "Diseño y desarrollo webs, software a medida y automatizaciones para profesionales, pequeños negocios y equipos que necesitan resolver algo concreto.",
       "heroPrimaryCta": "Solicitar valoración gratuita",
-      "heroSecondaryCta": "Ver proyectos",
+      "heroSecondaryCta": "Diseño web en Granada",
       "heroSignals": [
         "Puedes empezar por una intervención acotada.",
         "Alcance y límites claros antes de desarrollar.",

@@ -13,6 +13,10 @@ interface Props {
 const { locale, content } = Astro.props as Props;
 const getServiceHref = (slug: string) =>
 	getServiceAliasRedirect(locale, slug) ?? `/${locale}/services/${slug}/`;
+const getItemHref = (item: (typeof content.items)[number]) =>
+	"href" in item && typeof item.href === "string"
+		? item.href
+		: getServiceHref(item.slug);
 ---
 
 <section
@@ -46,7 +50,7 @@ const getServiceHref = (slug: string) =>
 							</li>
 						))}
 					</ul>
-					<a href={getServiceHref(item.slug)}>
+					<a href={getItemHref(item)}>
 						{item.link}
 						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 					</a>

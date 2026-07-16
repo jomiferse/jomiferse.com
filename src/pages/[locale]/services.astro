@@ -38,6 +38,8 @@ const proofProjects = getProjectPages(locale).filter((project) =>
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const pagePath = `/${locale}/services/`;
 const contactHref = `/${locale}/contact?service=assessment`;
+const localWebDesignHref =
+	locale === "es" ? "/es/diseno-web-granada/" : "/en/web-design-granada/";
 const getServiceHref = (service: (typeof services)[number]) =>
 	service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
 const structuredData = [
@@ -99,7 +101,7 @@ const structuredData = [
 						{page.heroPrimaryCta}
 						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 					</a>
-					<a href={`/${locale}/projects/`} class="button-secondary">
+					<a href={localWebDesignHref} class="button-secondary">
 						{page.heroSecondaryCta}
 					</a>
 				</div>
