@@ -25,6 +25,7 @@ The page uses:
 
 - `var(--home-navy)` for primary headings.
 - `var(--action)` for the primary CTA, price emphasis, icons, and small commercial signals.
+- The same `88rem` content width as the home page, with the standard `1rem`/`1.5rem` responsive shell padding from `BaseLayout`.
 - Existing service surfaces, borders, spacing, pricing cards, proof treatment, FAQ, and final conversion CTA.
 - Direct first-person copy that makes clear the client works with José Miguel, not an agency or local office.
 
@@ -139,6 +140,8 @@ Use the shared `ConversionCta` service treatment. The primary action starts the 
 `[locale]/[landing].astro` remains responsible for routing, canonical and alternate paths, schema, service resolution, project resolution, contact attribution, and WhatsApp URL construction.
 
 The Granada presentation remains isolated in `GranadaWebDesignLanding.astro`. Its props should describe the data it needs rather than require it to query global collections. The current home-derived component implementation should be replaced, not layered underneath the service page.
+
+The component root must include the existing `services-page` hook so `main.site-shell` resolves to the same `88rem` maximum width used by the home. Full-width bands must align their inner content with `max(1rem, calc((100vw - 88rem) / 2))`; they must not introduce a narrower local container.
 
 Reuse these existing components where their interfaces fit:
 
