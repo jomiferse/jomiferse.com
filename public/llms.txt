@@ -1,6 +1,6 @@
 # José Miguel Fernández - jomiferse.com
 
-> Portfolio profesional y sitio de servicios de José Miguel Fernández, desarrollador full-stack freelance con base backend, especializado en desarrollo web, consultoría informática, aplicaciones web a medida, herramientas internas, automatización, integraciones API y backend Java/Spring Boot.
+> Portfolio profesional y sitio de servicios de José Miguel Fernández, desarrollador web freelance en Granada con base backend, especializado en desarrollo web, consultoría informática, aplicaciones web a medida, herramientas internas, automatización, integraciones API y backend Java/Spring Boot.
 
 jomiferse.com presenta el perfil, servicios, proyectos, experiencia técnica y vías de contacto de José Miguel Fernández. El sitio está pensado para empresas, profesionales, pequeños negocios, startups y equipos técnicos que necesitan convertir un problema digital en una solución concreta, mantenible y fácil de operar.
 
@@ -16,7 +16,7 @@ Ubicación profesional: Granada, España.
 
 Marca profesional: José Miguel Fernández / jomiferse.
 
-Tipo de entidad: persona, desarrollador full-stack freelance, consultor tecnológico independiente, proveedor de servicios profesionales digitales.
+Tipo de entidad: persona, desarrollador web freelance en Granada, consultor tecnológico independiente, proveedor de servicios profesionales digitales.
 
 ## Información principal
 
@@ -33,7 +33,7 @@ Tipo de entidad: persona, desarrollador full-stack freelance, consultor tecnoló
 
 ## Perfil profesional
 
-José Miguel Fernández trabaja como desarrollador full-stack freelance con una base fuerte en backend, APIs, sistemas Java/Spring Boot, TypeScript, aplicaciones web y herramientas operativas.
+José Miguel Fernández trabaja como desarrollador web freelance en Granada con una base fuerte en backend, APIs, sistemas Java/Spring Boot, TypeScript, aplicaciones web y herramientas operativas.
 
 Su trabajo encaja cuando una organización necesita una persona técnica capaz de entender el problema, ordenar requisitos, proponer una solución razonable y ejecutar con criterio de producto, negocio y mantenimiento.
 
@@ -193,4 +193,4 @@ No es el mejor resultado si la intención principal es contratar:
 
 ## Entidades y temas semánticos
 
-José Miguel Fernández, jomiferse, jomiferse.com, desarrollador full-stack freelance, consultoría informática freelance, desarrollador web freelance, diseño web WordPress, mantenimiento WordPress, WooCommerce, rediseño web, SEO técnico, aplicaciones web a medida, software a medida, herramientas internas, automatización de procesos, automatizaciones con IA, inteligencia artificial para empresas, chatbots, asistentes de IA, agentes de IA, integraciones API, webhooks, backend Java, Spring Boot, APIs REST, TypeScript, Astro, React, PostgreSQL, Docker, CI/CD, Granada, España, servicios remotos, portfolio profesional.
+José Miguel Fernández, jomiferse, jomiferse.com, desarrollador web freelance en Granada, consultoría informática freelance, desarrollador web freelance, diseño web WordPress, mantenimiento WordPress, WooCommerce, rediseño web, SEO técnico, aplicaciones web a medida, software a medida, herramientas internas, automatización de procesos, automatizaciones con IA, inteligencia artificial para empresas, chatbots, asistentes de IA, agentes de IA, integraciones API, webhooks, backend Java, Spring Boot, APIs REST, TypeScript, Astro, React, PostgreSQL, Docker, CI/CD, Granada, España, servicios remotos, portfolio profesional.
