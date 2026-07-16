@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n";
 
 export const commercialSeoClusterKeys = [
-	"freelance-developer",
+	"local-web-design",
 	"wordpress",
 	"custom-software",
 	"excel-replacement",
@@ -24,10 +24,10 @@ export interface CommercialSeoCluster {
 
 export const commercialSeoClusters: CommercialSeoCluster[] = [
 	{
-		key: "freelance-developer",
+		key: "local-web-design",
 		owner: {
-			es: "/es/desarrollador-freelance-espana/",
-			en: "/en/freelance-developer-spain/",
+			es: "/es/diseno-web-granada/",
+			en: "/en/web-design-granada/",
 		},
 		supporting: {
 			es: ["/es/", "/es/about/", "/es/projects/"],

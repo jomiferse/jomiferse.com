@@ -43,9 +43,15 @@ const clusterCtaConfiguration: Record<
 	CommercialSeoClusterKey,
 	ClusterCtaConfiguration
 > = {
-	"freelance-developer": {
-		label: { es: "Ver cómo trabajo", en: "See how I work" },
-		contactService: { es: "assessment", en: "assessment" },
+	"local-web-design": {
+		label: {
+			es: "Ver diseño web en Granada",
+			en: "Explore web design in Granada",
+		},
+		contactService: {
+			es: "diseno-web-wordpress",
+			en: "wordpress-web-design",
+		},
 	},
 	wordpress: {
 		label: {

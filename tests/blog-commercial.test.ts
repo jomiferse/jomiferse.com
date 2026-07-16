@@ -57,6 +57,24 @@ test("resolves a non-service owner with a valid contact service", () => {
 	assert.match(result.secondary.href, /service=technology-second-opinion/);
 });
 
+test("resolves the Granada web design owner", () => {
+	assert.equal(typeof resolveBlogCommercialCta, "function");
+	const result = resolveBlogCommercialCta(
+		"es",
+		{
+			role: "buyer-led",
+			audience: "business",
+			cluster: "local-web-design",
+		},
+		"/es/blog/contratar-desarrollador-freelance-web/",
+		copy,
+	);
+
+	assert.equal(result.primary.href, "/es/diseno-web-granada/");
+	assert.equal(result.primary.label, "Ver diseño web en Granada");
+	assert.match(result.secondary.href, /service=diseno-web-wordpress/);
+});
+
 test("rejects an article path from another locale", () => {
 	assert.equal(typeof resolveBlogCommercialCta, "function");
 	assert.throws(

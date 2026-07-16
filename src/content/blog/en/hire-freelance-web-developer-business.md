@@ -9,7 +9,7 @@ translationSlug: "contratar-desarrollador-freelance-web"
 commercial:
   role: buyer-led
   audience: business
-  cluster: freelance-developer
+  cluster: local-web-design
 cover:
   src: "/images/blog/covers/hire-freelance-web-developer-business.avif"
   alt: "Technical editorial illustration about How to hire a freelance developer for a business web project"
@@ -194,7 +194,7 @@ For most small-business web projects, I would look for a freelancer who asks goo
 
 The right person is not the one who lists the most technologies. It is the person who can explain what they will build, what they will not build yet, how you will check it works and what you will need to maintain it afterwards.
 
-My [freelance developer in Spain](/en/freelance-developer-spain/) page explains the project types I work on and how I approach that first conversation.
+My [web design in Granada](/en/web-design-granada/) page explains how I approach service websites, landing pages and redesigns for businesses that need better enquiries.
 
 ## Frequently asked questions
 

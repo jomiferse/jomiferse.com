@@ -9,7 +9,7 @@ translationSlug: "hire-freelance-web-developer-business"
 commercial:
   role: buyer-led
   audience: business
-  cluster: freelance-developer
+  cluster: local-web-design
 cover:
   src: "/images/blog/covers/hire-freelance-web-developer-business.avif"
   alt: "Ilustración editorial sobre Cómo contratar un desarrollador freelance para un proyecto web"
@@ -194,7 +194,7 @@ Para la mayoría de proyectos web de una pyme, buscaría un freelance que haga b
 
 La persona adecuada no es la que enumera más tecnologías. Es la que puede explicar qué va a construir, qué no va a construir todavía, cómo comprobaréis que funciona y qué necesitarás para mantenerlo después.
 
-Mi página como [desarrollador freelance en España](/es/desarrollador-freelance-espana/) explica los tipos de proyecto en los que trabajo y cómo planteo esa primera conversación.
+En mi página de [diseño web en Granada](/es/diseno-web-granada/) explico cómo planteo webs de servicios, landings y rediseños para negocios que necesitan captar contactos.
 
 ## Preguntas frecuentes
 
