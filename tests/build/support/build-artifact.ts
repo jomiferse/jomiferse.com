@@ -222,6 +222,9 @@ export const auditBuildArtifact = async (
 	);
 	const canonicalMap = new Map<string, BuiltPage>();
 	for (const page of pages) {
+		if (/<meta\s+[^>]*name=["']keywords["']/i.test(page.html)) {
+			failures.push(`${relative(root, page.file)}: obsolete meta keywords tag`);
+		}
 		if (!page.canonical) continue;
 		const normalized = normalizePublicUrl(page.canonical);
 		if (canonicalMap.has(normalized))

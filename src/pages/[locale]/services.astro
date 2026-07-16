@@ -40,24 +40,6 @@ const pagePath = `/${locale}/services/`;
 const contactHref = `/${locale}/contact?service=assessment`;
 const getServiceHref = (service: (typeof services)[number]) =>
 	service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
-const keywords =
-	locale === "es"
-		? [
-				"Consultoría informática freelance",
-				"Diseño web WordPress",
-				"Software a medida",
-				"Automatización de procesos",
-				"Mantenimiento web",
-				"Integraciones API",
-			]
-		: [
-				"Freelance IT consulting",
-				"WordPress web design",
-				"Custom software",
-				"Process automation",
-				"Website maintenance",
-				"API integrations",
-			];
 const structuredData = [
 	buildProfessionalService({
 		site,
@@ -98,7 +80,6 @@ const structuredData = [
 	description={page.meta.description}
 	canonicalPath={pagePath}
 	structuredData={structuredData}
-	keywords={keywords}
 >
 	<div class="services-page">
 		<section

@@ -68,22 +68,6 @@ const project = getProjectPages(locale).find((item) => {
 });
 const article = service.relatedPosts?.[0];
 const projectImage = project?.img?.imgStatic;
-const keywords =
-	locale === "es"
-		? [
-				service.title,
-				service.shortTitle,
-				"servicio freelance",
-				"consultoría informática",
-				"desarrollador full-stack freelance",
-			]
-		: [
-				service.title,
-				service.shortTitle,
-				"freelance service",
-				"IT consulting",
-				"freelance full-stack developer",
-			];
 const structuredData = [
 	buildServicePage({
 		site,
@@ -122,7 +106,6 @@ const structuredData = [
 	canonicalPath={canonicalPath}
 	alternatePaths={alternatePaths}
 	structuredData={structuredData}
-	keywords={keywords}
 	popupContext={{
 		kind: "service",
 		title: service.title,

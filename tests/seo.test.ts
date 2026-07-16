@@ -1,7 +1,18 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { test } from "node:test";
 
 import { buildBlogPosting, getSeoEntityIds } from "../src/lib/seo.ts";
+
+const baseLayout = await readFile(
+	new URL("../src/layouts/BaseLayout.astro", import.meta.url),
+	"utf8",
+);
+
+test("does not expose the obsolete meta keywords contract", () => {
+	assert.doesNotMatch(baseLayout, /name="keywords"/);
+	assert.doesNotMatch(baseLayout, /keywords\?:/);
+});
 
 test("uses stable website, person and page entity identifiers", () => {
 	assert.deepEqual(

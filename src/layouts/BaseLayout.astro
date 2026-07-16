@@ -33,7 +33,6 @@ interface LayoutProps {
 	noindex?: boolean;
 	structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 	ogType?: "website" | "article";
-	keywords?: string[];
 	alternatePaths?: Partial<Record<Locale, string>>;
 	canonicalPath?: string;
 	popupContext?: PopupContext;
@@ -49,7 +48,6 @@ const {
 	noindex = false,
 	structuredData,
 	ogType = "website",
-	keywords = [],
 	alternatePaths,
 	canonicalPath,
 	popupContext,
@@ -217,11 +215,6 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		<meta name="description" content={description} />
 		<meta name="author" content={cv.name} />
 		<meta name="robots" content={robots} />
-		{
-			keywords.length ? (
-				<meta name="keywords" content={keywords.join(", ")} />
-			) : null
-		}
 		<meta name="referrer" content="strict-origin-when-cross-origin" />
 
 		<link rel="canonical" href={canonicalUrl} />
