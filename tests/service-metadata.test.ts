@@ -19,7 +19,10 @@ const getSpanishMeta = (translationKey: string) => {
 };
 
 test("keeps priority service titles aligned with buyer searches", () => {
-	assert.match(getSpanishMeta("web-wordpress:0").title, /^Diseño web WordPress/);
+	assert.match(
+		getSpanishMeta("web-wordpress:0").title,
+		/^Diseño web WordPress/,
+	);
 	assert.match(getSpanishMeta("it-consulting:3").title, /^Software a medida/);
 
 	const maintenance = getSpanishMeta("web-wordpress:1");

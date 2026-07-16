@@ -2254,7 +2254,8 @@ const commercialLandingPages = {
 		{
 			slug: "diseno-web-granada",
 			translationKey: "local-web-design",
-			metaTitle: "Diseño web Granada para captar clientes | José Miguel Fernández",
+			metaTitle:
+				"Diseño web Granada para captar clientes | José Miguel Fernández",
 			metaDescription:
 				"Diseño y desarrollo páginas web para negocios de Granada. Webs rápidas, claras y preparadas para convertir visitas en contactos.",
 			keywords: [

@@ -68,10 +68,7 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 		targets: {
 			es: {
 				primary: "diseño web WordPress",
-				secondary: [
-					"diseño web con WordPress",
-					"diseño web WordPress precio",
-				],
+				secondary: ["diseño web con WordPress", "diseño web WordPress precio"],
 				intent: "commercial",
 			},
 			en: {

@@ -5,7 +5,9 @@ import { commercialSeoClusters } from "../src/lib/seo-clusters.ts";
 
 test("assigns one owner to every commercial cluster per locale", () => {
 	for (const locale of ["es", "en"] as const) {
-		const owners = commercialSeoClusters.map((cluster) => cluster.owner[locale]);
+		const owners = commercialSeoClusters.map(
+			(cluster) => cluster.owner[locale],
+		);
 		assert.equal(new Set(owners).size, owners.length);
 		for (const cluster of commercialSeoClusters) {
 			assert.ok(!cluster.supporting[locale].includes(cluster.owner[locale]));
