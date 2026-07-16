@@ -16,8 +16,18 @@ export const commercialSeoClusterKeys = [
 
 export type CommercialSeoClusterKey = (typeof commercialSeoClusterKeys)[number];
 
+export type CommercialSeoIntent = "commercial" | "informational" | "mixed";
+
+export interface CommercialSeoTarget {
+	primary: string | null;
+	secondary: string[];
+	intent: CommercialSeoIntent;
+}
+
 export interface CommercialSeoCluster {
 	key: CommercialSeoClusterKey;
+	priority: 1 | 2 | 3;
+	targets: Record<Locale, CommercialSeoTarget>;
 	owner: Record<Locale, string>;
 	supporting: Record<Locale, string[]>;
 }
@@ -25,6 +35,24 @@ export interface CommercialSeoCluster {
 export const commercialSeoClusters: CommercialSeoCluster[] = [
 	{
 		key: "local-web-design",
+		priority: 1,
+		targets: {
+			es: {
+				primary: "diseño web Granada",
+				secondary: [
+					"diseño web en Granada",
+					"desarrollo web Granada",
+					"diseño páginas web Granada",
+					"diseñador web Granada",
+				],
+				intent: "commercial",
+			},
+			en: {
+				primary: null,
+				secondary: ["web design Granada", "web development Granada"],
+				intent: "commercial",
+			},
+		},
 		owner: {
 			es: "/es/diseno-web-granada/",
 			en: "/en/web-design-granada/",
@@ -36,6 +64,22 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "wordpress",
+		priority: 1,
+		targets: {
+			es: {
+				primary: "diseño web WordPress",
+				secondary: [
+					"diseño web con WordPress",
+					"diseño web WordPress precio",
+				],
+				intent: "commercial",
+			},
+			en: {
+				primary: "WordPress web design",
+				secondary: ["WordPress website design"],
+				intent: "commercial",
+			},
+		},
 		owner: {
 			es: "/es/services/diseno-web-wordpress/",
 			en: "/en/services/wordpress-web-design/",
@@ -55,6 +99,23 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "custom-software",
+		priority: 1,
+		targets: {
+			es: {
+				primary: "software a medida",
+				secondary: [
+					"desarrollo de software a medida",
+					"software a medida para empresas",
+					"aplicaciones web a medida",
+				],
+				intent: "commercial",
+			},
+			en: {
+				primary: "custom software development",
+				secondary: ["custom software for businesses"],
+				intent: "commercial",
+			},
+		},
 		owner: {
 			es: "/es/services/software-a-medida/",
 			en: "/en/services/custom-software/",
@@ -69,6 +130,19 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "excel-replacement",
+		priority: 3,
+		targets: {
+			es: {
+				primary: "sustituir Excel por software",
+				secondary: ["alternativas a Excel para empresas"],
+				intent: "mixed",
+			},
+			en: {
+				primary: "replace Excel with software",
+				secondary: ["Excel replacement for business workflows"],
+				intent: "mixed",
+			},
+		},
 		owner: {
 			es: "/es/sustituir-excel-software/",
 			en: "/en/replace-excel-with-software/",
@@ -83,6 +157,22 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "process-automation",
+		priority: 2,
+		targets: {
+			es: {
+				primary: "automatización de procesos para empresas",
+				secondary: [
+					"automatización de procesos empresariales",
+					"automatización de tareas administrativas",
+				],
+				intent: "mixed",
+			},
+			en: {
+				primary: "business process automation",
+				secondary: ["administrative task automation"],
+				intent: "mixed",
+			},
+		},
 		owner: {
 			es: "/es/services/automatizacion-de-procesos/",
 			en: "/en/services/process-automation/",
@@ -94,6 +184,22 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "ai-automation",
+		priority: 2,
+		targets: {
+			es: {
+				primary: "automatización con IA para empresas",
+				secondary: [
+					"automatización de procesos con IA",
+					"agentes de IA para empresas",
+				],
+				intent: "mixed",
+			},
+			en: {
+				primary: "AI automation for businesses",
+				secondary: ["AI agents for businesses"],
+				intent: "mixed",
+			},
+		},
 		owner: {
 			es: "/es/services/automatizaciones-con-ia/",
 			en: "/en/services/ai-automations/",
@@ -111,6 +217,19 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "api-integrations",
+		priority: 2,
+		targets: {
+			es: {
+				primary: "integración API",
+				secondary: ["integración CRM", "integración ERP"],
+				intent: "mixed",
+			},
+			en: {
+				primary: "API integration services",
+				secondary: ["CRM integration", "ERP integration"],
+				intent: "commercial",
+			},
+		},
 		owner: {
 			es: "/es/services/integraciones-api/",
 			en: "/en/services/api-integrations/",
@@ -128,6 +247,19 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "spring-boot-development",
+		priority: 3,
+		targets: {
+			es: {
+				primary: "desarrollo backend Spring Boot",
+				secondary: ["backend Spring Boot"],
+				intent: "mixed",
+			},
+			en: {
+				primary: "Spring Boot backend development",
+				secondary: ["Spring Boot developer"],
+				intent: "mixed",
+			},
+		},
 		owner: {
 			es: "/es/services/backend-spring-boot/",
 			en: "/en/services/backend-spring-boot/",
@@ -145,6 +277,19 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "spring-boot-maintenance",
+		priority: 3,
+		targets: {
+			es: {
+				primary: "mantenimiento Spring Boot",
+				secondary: ["soporte Spring Boot"],
+				intent: "commercial",
+			},
+			en: {
+				primary: "Spring Boot maintenance",
+				secondary: ["Spring Boot support"],
+				intent: "commercial",
+			},
+		},
 		owner: {
 			es: "/es/mantenimiento-spring-boot/",
 			en: "/en/spring-boot-maintenance/",
@@ -156,6 +301,19 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "legacy-modernization",
+		priority: 3,
+		targets: {
+			es: {
+				primary: "modernización backend legacy",
+				secondary: ["modernización de aplicaciones"],
+				intent: "mixed",
+			},
+			en: {
+				primary: "legacy backend modernization",
+				secondary: ["legacy application modernization"],
+				intent: "mixed",
+			},
+		},
 		owner: {
 			es: "/es/modernizacion-backend-legacy/",
 			en: "/en/legacy-backend-modernization/",
@@ -173,6 +331,19 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 	},
 	{
 		key: "technical-audit",
+		priority: 3,
+		targets: {
+			es: {
+				primary: "auditoría backend y API",
+				secondary: ["auditoría de software", "segunda opinión tecnológica"],
+				intent: "commercial",
+			},
+			en: {
+				primary: "backend and API audit",
+				secondary: ["software architecture audit"],
+				intent: "commercial",
+			},
+		},
 		owner: {
 			es: "/es/auditoria-backend-api-arquitectura/",
 			en: "/en/backend-api-architecture-audit/",
