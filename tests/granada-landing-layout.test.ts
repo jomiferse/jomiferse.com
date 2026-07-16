@@ -7,13 +7,19 @@ const routeSource = readFileSync(
 	"utf8",
 );
 
-test("uses the home-derived presentation only for local web design", () => {
+test("uses the Granada presentation only for local web design", () => {
 	assert.match(routeSource, /GranadaWebDesignLanding/);
 	assert.match(routeSource, /page\.translationKey === "local-web-design"/);
 	assert.match(routeSource, /commercial-landing/);
 });
 
-test("defines the compact home-derived Granada composition", () => {
+test("resolves pricing and offers for the local web design service", () => {
+	assert.match(routeSource, /web-wordpress:0/);
+	assert.match(routeSource, /Granada web design commercial source not found/);
+	assert.match(routeSource, /offers:\s*granadaWebDesignService/);
+});
+
+test("defines the Granada service-page composition at the home width", () => {
 	const componentUrl = new URL(
 		"../src/components/landings/GranadaWebDesignLanding.astro",
 		import.meta.url,
@@ -22,17 +28,35 @@ test("defines the compact home-derived Granada composition", () => {
 	const componentSource = readFileSync(componentUrl, "utf8");
 
 	for (const marker of [
-		"data-granada-hero",
-		"data-granada-decision",
-		"data-granada-services",
-		"data-granada-proof",
-		"data-granada-process",
-		"data-granada-faq",
-		"data-granada-cta",
+		"data-granada-service-hero",
+		"data-granada-service-trust",
+		"data-granada-service-outcome",
+		"data-granada-service-pricing",
+		"data-granada-service-scope",
+		"data-granada-service-process",
+		"data-granada-service-proof",
+		"data-granada-related-services",
+		"data-granada-service-faq",
+		"data-granada-service-cta",
 	]) {
 		assert.match(componentSource, new RegExp(marker));
 	}
+	for (const component of [
+		"ServiceIconBadge",
+		"ServiceTrustStrip",
+		"ServicePricingGrid",
+		"ServiceProofCard",
+		"ConversionCta",
+	]) {
+		assert.match(componentSource, new RegExp(component));
+	}
+	assert.match(
+		componentSource,
+		/class="services-page service-detail-page granada-service-page"/,
+	);
 	assert.doesNotMatch(componentSource, /relatedPosts/);
-	assert.match(componentSource, /getServiceHref/);
-	assert.match(componentSource, /featuredProject/);
+	assert.doesNotMatch(
+		componentSource,
+		/granada-selector|data-granada-decision/,
+	);
 });

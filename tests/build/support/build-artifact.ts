@@ -261,13 +261,16 @@ export const auditBuildArtifact = async (
 		failures.push("Granada landing is missing its local areaServed schema");
 	}
 	const granadaMarkers = [
-		"data-granada-hero",
-		"data-granada-decision",
-		"data-granada-services",
-		"data-granada-proof",
-		"data-granada-process",
-		"data-granada-faq",
-		"data-granada-cta",
+		"data-granada-service-hero",
+		"data-granada-service-trust",
+		"data-granada-service-outcome",
+		"data-granada-service-pricing",
+		"data-granada-service-scope",
+		"data-granada-service-process",
+		"data-granada-service-proof",
+		"data-granada-related-services",
+		"data-granada-service-faq",
+		"data-granada-service-cta",
 	];
 	for (const path of ["/es/diseno-web-granada/", "/en/web-design-granada/"]) {
 		const page = canonicalMap.get(normalizePublicUrl(path));
@@ -276,9 +279,34 @@ export const auditBuildArtifact = async (
 				failures.push(`${path}: missing home-derived marker ${marker}`);
 			}
 		}
-		if (page?.html.includes("data-granada-related-posts")) {
-			failures.push(`${path}: still renders the removed related-post section`);
+		for (const removedMarker of [
+			"data-granada-decision",
+			"data-granada-related-posts",
+			"granada-selector",
+		]) {
+			if (page?.html.includes(removedMarker)) {
+				failures.push(`${path}: still renders removed content ${removedMarker}`);
+			}
 		}
+		const pricingOptions = page?.html.match(/data-pricing-option=/g) ?? [];
+		if (pricingOptions.length !== 3) {
+			failures.push(
+				`${path}: expected three visible pricing options, found ${pricingOptions.length}`,
+			);
+		}
+	}
+	const granadaServiceSchema = granadaPage
+		? findSchemas(granadaPage.schemas, "Service").find((schema) =>
+				Array.isArray(schema.offers),
+			)
+		: undefined;
+	const granadaOffers = Array.isArray(granadaServiceSchema?.offers)
+		? granadaServiceSchema.offers
+		: [];
+	if (granadaOffers.length !== 3) {
+		failures.push(
+			`Granada landing Service schema has ${granadaOffers.length} offers instead of three`,
+		);
 	}
 	for (const href of [
 		"/es/services/diseno-web-wordpress/",

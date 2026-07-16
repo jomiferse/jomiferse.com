@@ -35,6 +35,25 @@ const servicePages = getServicePages(locale);
 const contactHref = `/${locale}/contact/?sourceCategory=landing&sourcePath=${encodeURIComponent(landingPath)}`;
 const servicesHref = `/${locale}/services/`;
 const isGranadaWebDesign = page.translationKey === "local-web-design";
+const granadaWebDesignService = isGranadaWebDesign
+	? servicePages.find((service) => service.translationKey === "web-wordpress:0")
+	: undefined;
+if (isGranadaWebDesign && !granadaWebDesignService) {
+	throw new Error(`Granada web design commercial source not found: ${locale}`);
+}
+const granadaRelatedKeys = new Set(["web-wordpress:0", "web-wordpress:5"]);
+const granadaRelatedServices = isGranadaWebDesign
+	? servicePages.filter(
+			(service) =>
+				granadaRelatedKeys.has(service.translationKey) ||
+				service.slug === "website-redesign",
+		)
+	: [];
+const whatsappMessage =
+	locale === "es"
+		? `Hola José Miguel, quiero valorar un proyecto de ${page.title.toLowerCase()}.`
+		: `Hi José Miguel, I would like to discuss a ${page.title.toLowerCase()} project.`;
+const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(whatsappMessage)}`;
 const featuredProject = getProjectPages(locale).find(
 	(project) => project.id === "getyourticket-ticketing-platform",
 );
@@ -57,6 +76,16 @@ const structuredData = [
 		audience: page.schema.audience,
 		serviceType: page.schema.serviceType,
 		sameAs: [cv.links.linkedin, cv.links.github],
+		offers:
+			granadaWebDesignService?.pricingOptions.map((option) => ({
+				key: option.key,
+				name: option.label,
+				description: option.description,
+				price: option.amount,
+				currency: option.currency,
+				billingUnit: option.billingUnit,
+				path: landingPath,
+			})) ?? [],
 	}),
 	buildFaqPage(page.faq),
 	buildBreadcrumbList(site, [
@@ -79,9 +108,10 @@ const structuredData = [
 				locale={locale}
 				page={page}
 				contactHref={contactHref}
-				servicePages={servicePages}
+				whatsappHref={whatsappHref}
+				service={granadaWebDesignService!}
+				relatedServices={granadaRelatedServices}
 				featuredProject={featuredProject}
-				yearsWorking={cv.yearsWorking}
 			/>
 		) : (
 			<div class="commercial-landing">

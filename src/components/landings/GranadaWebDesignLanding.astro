@@ -1,5 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
+import ConversionCta from "@/components/common/ConversionCta.astro";
+import ServiceIconBadge from "@/components/services/ServiceIconBadge.astro";
+import ServicePricingGrid from "@/components/services/ServicePricingGrid.astro";
+import ServiceProofCard from "@/components/services/ServiceProofCard.astro";
+import ServiceTrustStrip from "@/components/services/ServiceTrustStrip.astro";
 import type { Locale } from "@/i18n";
 import type { CommercialLandingPage } from "@/lib/commercial-landings";
 import type { ProjectEntry } from "@/lib/projects";
@@ -9,335 +14,368 @@ interface Props {
 	locale: Locale;
 	page: CommercialLandingPage;
 	contactHref: string;
-	servicePages: ServiceItem[];
+	whatsappHref: string;
+	service: ServiceItem;
+	relatedServices: ServiceItem[];
 	featuredProject?: ProjectEntry;
-	yearsWorking: string;
 }
 
 const {
 	locale,
 	page,
 	contactHref,
-	servicePages,
+	whatsappHref,
+	service,
+	relatedServices,
 	featuredProject,
-	yearsWorking,
 } = Astro.props as Props;
 const es = locale === "es";
-const getService = (translationKey: string) =>
-	servicePages.find(
-		(service) =>
-			service.translationKey === translationKey ||
-			service.slug === translationKey,
-	);
-const getServiceHref = (service?: ServiceItem) =>
-	service
-		? (service.canonicalPath ?? `/${locale}/services/${service.slug}/`)
-		: `/${locale}/services/`;
 const projectHref = featuredProject
 	? `/${locale}/projects/${featuredProject.slug}/`
 	: `/${locale}/projects/`;
 const projectImage = featuredProject?.img?.imgStatic;
-
-const needs = [
-	{
-		icon: "globe",
-		title: es ? "Crear una web nueva" : "Build a new website",
-		text: es
-			? "Presentar bien el negocio y convertir las visitas en conversaciones útiles."
-			: "Present the business clearly and turn visits into useful conversations.",
-		service: getService("web-wordpress:0"),
-	},
-	{
-		icon: "layers",
-		title: es ? "Replantear la web actual" : "Rethink the current website",
-		text: es
-			? "Ordenar estructura, contenido, velocidad y experiencia móvil."
-			: "Improve structure, content, speed and the mobile experience.",
-		service: getService("website-redesign"),
-	},
-	{
-		icon: "wordpress",
-		title: es ? "Mejorar WordPress" : "Improve WordPress",
-		text: es
-			? "Dejar una instalación rápida, editable y sencilla de mantener."
-			: "Leave an installation that is fast, editable and straightforward to maintain.",
-		service: getService("web-wordpress:2"),
-	},
-	{
-		icon: "send",
-		title: es ? "Lanzar una campaña" : "Launch a campaign",
-		text: es
-			? "Crear una landing centrada en una oferta y una acción principal."
-			: "Create a landing page focused on one offer and one primary action.",
-		service: getService("web-wordpress:5"),
-	},
+const getServiceHref = (item: ServiceItem) =>
+	item.canonicalPath ?? `/${locale}/services/${item.slug}/`;
+const entryPrice = new Intl.NumberFormat(es ? "es-ES" : "en-GB", {
+	style: "currency",
+	currency: service.pricingOptions[0].currency,
+	maximumFractionDigits: 0,
+}).format(service.pricingOptions[0].amount);
+const boundaries = [
+	...new Set(service.pricingOptions.map((option) => option.boundary)),
 ];
+const includedScope = [
+	...new Set([...page.builds.items, ...service.builds]),
+].slice(0, 8);
 
-const typicalWork = page.cases.items.slice(0, 3).map((item, index) => ({
-	...item,
-	points: page.builds.items.slice(index, index + 2),
-	service: [
-		getService("web-wordpress:0"),
-		getService("web-wordpress:5"),
-		getService("website-redesign"),
-	][index],
-}));
-
-const decisionTitles = es
-	? [
-			"Google apenas muestra tu web",
-			"La oferta no se entiende",
-			"La base técnica frena cambios",
-		]
-	: [
-			"Google rarely shows your website",
-			"The offer is hard to understand",
-			"The technical base blocks changes",
-		];
+const copy = es
+	? {
+			back: "Volver a servicios",
+			eyebrow: "Servicio de diseño web en Granada",
+			assessment: "Valorar mi proyecto web",
+			whatsapp: "Consultar por WhatsApp",
+			summary: "Resumen del servicio",
+			price: "Inversión inicial",
+			from: "Desde",
+			tax: "IVA no incluido",
+			timeline: "Plazo orientativo",
+			compare: "Comparar modalidades",
+			trust: [
+				{
+					icon: "user",
+					title: "Trato directo",
+					text: "Hablas con quien diseña y desarrolla la web.",
+				},
+				{
+					icon: "circle-check-big",
+					title: "Alcance por escrito",
+					text: "Páginas, entregables y responsabilidades claras.",
+				},
+				{
+					icon: "badge-check",
+					title: "Tu web y tus accesos",
+					text: "Recibes propiedad, credenciales y documentación.",
+				},
+			],
+			outcomeEyebrow: "Qué debe resolver",
+			outcomeTitle: "Una web que explica tu negocio y facilita el contacto",
+			outcomeIntro:
+				"El diseño importa, pero la decisión de inversión parte de problemas que ya puedes reconocer en la web actual.",
+			problem: "El problema",
+			pricingEyebrow: "Modalidades y precios",
+			pricingTitle: "Una forma de empezar según el alcance",
+			pricingIntro:
+				"Los importes son orientativos y permiten separar una intervención concreta, un proyecto completo y el soporte posterior.",
+			pricing: {
+				mostCommon: "Más habitual",
+				from: "Desde",
+				tax: "IVA no incluido",
+				month: "/mes",
+				included: "Incluye",
+				boundary: "Límite:",
+			},
+			scopeEyebrow: "Alcance del trabajo",
+			scopeTitle: "Qué puede incluir y qué se presupuesta aparte",
+			scopeIntro:
+				"La propuesta concreta qué entra en cada modalidad. Esta lista sirve para preparar la conversación inicial.",
+			includedTitle: "Puede formar parte del proyecto",
+			boundaryTitle: "Depende del alcance contratado",
+			processEyebrow: "Forma de trabajo",
+			processIntro:
+				"Contenido, plataforma, revisiones y responsabilidades quedan definidos antes de desarrollar.",
+			processTitles: ["Entender", "Acotar", "Construir", "Publicar"],
+			proofEyebrow: "Trabajo real",
+			proofTitle: "Una plataforma web recuperada y operativa",
+			proofDescription:
+				"GetYourTicket muestra cómo abordo una base web existente, corrijo lo que impide usarla y dejo claros despliegue, pagos y mantenimiento.",
+			proofAction: "Ver el proyecto",
+			relatedEyebrow: "Servicios relacionados",
+			relatedTitle: "Otras formas de mejorar tu presencia web",
+			relatedIntro:
+				"WordPress, rediseño y páginas de campaña cubren puntos de partida distintos.",
+			relatedAction: "Ver servicio",
+			faqEyebrow: "Antes de decidir",
+			faqTitle: "Preguntas sobre el proyecto web",
+			faqIntro: "Reuniones, presupuesto, edición y plazos antes de empezar.",
+			services: "Ver todos los servicios",
+		}
+	: {
+			back: "Back to services",
+			eyebrow: "Web design service in Granada",
+			assessment: "Assess my website project",
+			whatsapp: "Ask on WhatsApp",
+			summary: "Service summary",
+			price: "Starting investment",
+			from: "From",
+			tax: "Tax not included",
+			timeline: "Typical timeline",
+			compare: "Compare options",
+			trust: [
+				{
+					icon: "user",
+					title: "Direct communication",
+					text: "You speak with the person designing and building the site.",
+				},
+				{
+					icon: "circle-check-big",
+					title: "Written scope",
+					text: "Pages, deliverables and responsibilities are clear.",
+				},
+				{
+					icon: "badge-check",
+					title: "Your site and access",
+					text: "You receive ownership, credentials and documentation.",
+				},
+			],
+			outcomeEyebrow: "What it should solve",
+			outcomeTitle:
+				"A website that explains the business and makes contact easy",
+			outcomeIntro:
+				"Design matters, but the investment decision starts with problems you can already recognise in the current website.",
+			problem: "The problem",
+			pricingEyebrow: "Options and prices",
+			pricingTitle: "A way to start that matches the scope",
+			pricingIntro:
+				"The figures are guides that separate a focused intervention, a complete project and ongoing support.",
+			pricing: {
+				mostCommon: "Most common",
+				from: "From",
+				tax: "Tax not included",
+				month: "/month",
+				included: "Included",
+				boundary: "Boundary:",
+			},
+			scopeEyebrow: "Scope of work",
+			scopeTitle: "What can be included and what needs a separate quote",
+			scopeIntro:
+				"The proposal states what belongs in each option. This list helps prepare the initial conversation.",
+			includedTitle: "Can form part of the project",
+			boundaryTitle: "Depends on the selected scope",
+			processEyebrow: "Working process",
+			processIntro:
+				"Content, platform, reviews and responsibilities are agreed before development.",
+			processTitles: ["Understand", "Define", "Build", "Launch"],
+			proofEyebrow: "Real work",
+			proofTitle: "A web platform recovered and made operational",
+			proofDescription:
+				"GetYourTicket shows how I approach an existing web base, fix what prevents its use and make deployment, payments and maintenance clear.",
+			proofAction: "View the project",
+			relatedEyebrow: "Related services",
+			relatedTitle: "Other ways to improve your web presence",
+			relatedIntro:
+				"WordPress, redesign and campaign pages suit different starting points.",
+			relatedAction: "View service",
+			faqEyebrow: "Before deciding",
+			faqTitle: "Questions about the website project",
+			faqIntro: "Meetings, budget, editing and timing before work starts.",
+			services: "View all services",
+		};
 ---
 
-<div class="granada-landing">
+<div class="services-page service-detail-page granada-service-page">
 	<section
-		data-granada-hero
-		class="granada-hero section-reveal"
-		aria-labelledby="granada-title"
+		data-granada-service-hero
+		class="granada-service-hero section-reveal"
+		aria-labelledby="granada-service-title"
 	>
-		<p class="eyebrow">{page.eyebrow}</p>
-		<h1 id="granada-title">{page.title}</h1>
-
-		<div class="granada-hero__columns">
-			<div class="granada-pitch">
-				<p class="granada-pitch__intro">{page.intro}</p>
-				<p class="granada-pitch__evidence">
-					<strong>
-						{yearsWorking}+ {
-							es
-								? "años desarrollando productos web"
-								: "years building web products"
-						}
-					</strong>
-					<span>
-						{
-							es
-								? "Hablas directamente con quien diseña, desarrolla y publica la web."
-								: "You speak directly with the person who designs, builds and launches the website."
-						}
-					</span>
-				</p>
-				<p class="granada-pitch__challenge">{page.problem.body[1]}</p>
-
-				<div class="granada-pitch__actions">
-					<a href={contactHref} class="button-action">
-						{page.primaryCta}
-						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-					</a>
-					<a href={projectHref} class="granada-pitch__project-link">
-						{page.secondaryCta}
-						<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
-					</a>
-				</div>
-				<p class="granada-pitch__note">
-					<Icon name="circle-check-big" class="h-4 w-4" aria-hidden="true" />
-					{
-						es
-							? "Primera valoración sin compromiso para acotar páginas, plataforma y prioridades."
-							: "An initial no-obligation assessment to define pages, platform and priorities."
-					}
-				</p>
+		<div class="granada-service-hero__copy">
+			<a href={`/${locale}/services/`} class="granada-service-hero__back">
+				<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
+				{copy.back}
+			</a>
+			<div class="granada-service-hero__identity">
+				<ServiceIconBadge name={service.icon} size="lg" />
+				<p class="eyebrow">{copy.eyebrow}</p>
 			</div>
+			<h1 id="granada-service-title">{page.title}</h1>
+			<p class="granada-service-hero__intro">{page.intro}</p>
+			<div class="granada-service-hero__actions">
+				<a href={contactHref} class="button-action">
+					{copy.assessment}
+					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+				<a
+					href={whatsappHref}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="button-secondary"
+				>
+					{copy.whatsapp}
+					<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+			</div>
+		</div>
 
-			<div class="granada-selector">
-				<header>
-					<h2>
-						{es ? "¿Qué necesita tu web?" : "What does your website need?"}
-					</h2>
-					<p>
-						{
-							es
-								? "El punto de partida determina el alcance y la tecnología."
-								: "The starting point determines the scope and technology."
-						}
-					</p>
-				</header>
-				<div class="granada-selector__grid">
+		<aside class="granada-service-summary" aria-label={copy.summary}>
+			<div class="granada-service-summary__topline">
+				<p class="eyebrow">{copy.summary}</p>
+				<span aria-hidden="true">01</span>
+			</div>
+			<div class="granada-service-summary__price">
+				<span>{copy.price}</span>
+				<p><small>{copy.from}</small><strong>{entryPrice}</strong></p>
+				<small>{copy.tax}</small>
+			</div>
+			<div class="granada-service-summary__timeline">
+				<Icon name="clock" class="h-5 w-5" aria-hidden="true" />
+				<span
+					><small>{copy.timeline}</small><strong>{service.timeline}</strong
+					></span
+				>
+			</div>
+			<a href="#granada-pricing-options" class="button-secondary">
+				{copy.compare}
+				<Icon name="arrow-right" class="h-4 w-4 rotate-90" aria-hidden="true" />
+			</a>
+		</aside>
+	</section>
+
+	<div data-granada-service-trust class="granada-service-trust">
+		<ServiceTrustStrip items={copy.trust} />
+	</div>
+
+	<section
+		data-granada-service-outcome
+		class="granada-service-outcome section-reveal"
+		aria-labelledby="granada-outcome-title"
+	>
+		<header class="granada-service-heading">
+			<div>
+				<p class="eyebrow">{copy.outcomeEyebrow}</p>
+				<h2 id="granada-outcome-title">{copy.outcomeTitle}</h2>
+			</div>
+			<p>{copy.outcomeIntro}</p>
+		</header>
+		<div class="granada-service-outcome__content">
+			<div class="granada-service-outcome__problem">
+				<p class="eyebrow">{copy.problem}</p>
+				<strong>{page.problem.body[0]}</strong>
+				<p>{page.problem.body[1]}</p>
+			</div>
+			<div class="granada-service-outcome__benefits">
+				{
+					page.cases.items.slice(0, 3).map((item, index) => (
+						<article>
+							<span aria-hidden="true">
+								{String(index + 1).padStart(2, "0")}
+							</span>
+							<h3>{item.title}</h3>
+							<p>{item.body}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section
+		id="granada-pricing-options"
+		data-granada-service-pricing
+		class="granada-service-pricing section-reveal"
+		aria-labelledby="granada-pricing-title"
+	>
+		<header class="granada-service-heading">
+			<div>
+				<p class="eyebrow">{copy.pricingEyebrow}</p>
+				<h2 id="granada-pricing-title">{copy.pricingTitle}</h2>
+			</div>
+			<p>{copy.pricingIntro}</p>
+		</header>
+		<ServicePricingGrid
+			locale={locale}
+			serviceSlug={service.slug}
+			options={service.pricingOptions}
+			contactHref={contactHref}
+			copy={copy.pricing}
+		/>
+	</section>
+
+	<section
+		data-granada-service-scope
+		class="granada-service-scope section-reveal"
+		aria-labelledby="granada-scope-title"
+	>
+		<header class="granada-service-heading">
+			<div>
+				<p class="eyebrow">{copy.scopeEyebrow}</p>
+				<h2 id="granada-scope-title">{copy.scopeTitle}</h2>
+			</div>
+			<p>{copy.scopeIntro}</p>
+		</header>
+		<div class="granada-service-scope__columns">
+			<article>
+				<Icon name="circle-check-big" class="h-6 w-6" aria-hidden="true" />
+				<h3>{copy.includedTitle}</h3>
+				<ul>
 					{
-						needs.map((need) => (
-							<a href={getServiceHref(need.service)} class="granada-option">
-								<Icon name={need.icon} class="h-6 w-6" aria-hidden="true" />
-								<span>
-									<strong>{need.title}</strong>
-									<small>{need.text}</small>
-								</span>
-								<Icon
-									name="arrow-right"
-									class="granada-option__arrow h-4 w-4"
-									aria-hidden="true"
-								/>
-							</a>
+						includedScope.map((item) => (
+							<li>
+								<>
+									<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+									<span>{item}</span>
+								</>
+							</li>
 						))
 					}
-				</div>
-			</div>
+				</ul>
+			</article>
+			<article>
+				<Icon name="info" class="h-6 w-6" aria-hidden="true" />
+				<h3>{copy.boundaryTitle}</h3>
+				<ul>
+					{
+						boundaries.map((item) => (
+							<li>
+								<>
+									<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+									<span>{item}</span>
+								</>
+							</li>
+						))
+					}
+				</ul>
+			</article>
 		</div>
 	</section>
 
 	<section
-		data-granada-decision
-		class="granada-decision section-reveal"
-		aria-labelledby="granada-decision-title"
-	>
-		<header class="granada-section-heading">
-			<div>
-				<p class="eyebrow">
-					{es ? "Decisión de inversión" : "Investment decision"}
-				</p>
-				<h2 id="granada-decision-title">{page.whenWorthIt.title}</h2>
-			</div>
-			<p>
-				{
-					es
-						? "Una web nueva tiene sentido cuando resuelve un problema comercial o de mantenimiento que ya puedes reconocer."
-						: "A new website makes sense when it solves a commercial or maintenance problem you can already recognise."
-				}
-			</p>
-		</header>
-		<ol>
-			{
-				page.whenWorthIt.items.slice(0, 3).map((item, index) => (
-					<li>
-						<span>{String(index + 1).padStart(2, "0")}</span>
-						<h3>{decisionTitles[index]}</h3>
-						<p>{item}</p>
-					</li>
-				))
-			}
-		</ol>
-	</section>
-
-	<section
-		data-granada-services
-		class="granada-services section-reveal"
-		aria-labelledby="granada-services-title"
-	>
-		<header class="granada-section-heading">
-			<div>
-				<p class="eyebrow">{es ? "Trabajo habitual" : "Typical work"}</p>
-				<h2 id="granada-services-title">{page.cases.title}</h2>
-			</div>
-			<p>{page.cases.intro}</p>
-		</header>
-		<div class="granada-services__grid">
-			{
-				typicalWork.map((item, index) => (
-					<article>
-						<div class="granada-services__topline">
-							<span>{String(index + 1).padStart(2, "0")}</span>
-							<Icon
-								name={["globe", "send", "layers"][index]}
-								class="h-7 w-7"
-								aria-hidden="true"
-							/>
-						</div>
-						<h3>{item.title}</h3>
-						<p>{item.body}</p>
-						<ul>
-							{item.points.map((point) => (
-								<li>
-									<Icon name="check" class="h-4 w-4" aria-hidden="true" />
-									{point}
-								</li>
-							))}
-						</ul>
-						<a href={getServiceHref(item.service)}>
-							{es ? "Ver servicio" : "View service"}
-							<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-						</a>
-					</article>
-				))
-			}
-		</div>
-	</section>
-
-	{
-		featuredProject && (
-			<section
-				data-granada-proof
-				class="granada-proof section-reveal"
-				aria-labelledby="granada-proof-title"
-			>
-				<div class="granada-proof__copy">
-					<p class="eyebrow">{es ? "Trabajo real" : "Real work"}</p>
-					<h2 id="granada-proof-title">
-						{es
-							? "Una base técnica que también debe funcionar después de publicar"
-							: "A technical base that still works after launch"}
-					</h2>
-					<p>
-						{es
-							? "Este proyecto muestra cómo abordo una plataforma web existente: entender la base, recuperar lo que aporta valor y dejarla operativa con responsabilidades claras."
-							: "This project shows how I approach an existing web platform: understand the base, recover what has value and leave it operational with clear responsibilities."}
-					</p>
-					<a href={projectHref} class="granada-proof__link">
-						{es ? "Ver el proyecto" : "View the project"}
-						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-					</a>
-				</div>
-				<a href={projectHref} class="granada-project-preview">
-					{projectImage ? (
-						<img
-							src={projectImage.src}
-							alt={projectImage.alt ?? featuredProject.title}
-							width="960"
-							height="600"
-							loading="lazy"
-							decoding="async"
-							sizes="(max-width: 48rem) calc(100vw - 2rem), 42rem"
-						/>
-					) : (
-						<span
-							class="granada-project-preview__fallback"
-							aria-hidden="true"
-						/>
-					)}
-					<span>
-						<strong>{featuredProject.title}</strong>
-						<small>{featuredProject.status}</small>
-					</span>
-				</a>
-			</section>
-		)
-	}
-
-	<section
-		data-granada-process
-		class="granada-process section-reveal"
+		data-granada-service-process
+		class="granada-service-process section-reveal"
 		aria-labelledby="granada-process-title"
 	>
-		<header class="granada-section-heading">
+		<header class="granada-service-heading">
 			<div>
-				<p class="eyebrow">{es ? "Forma de trabajo" : "Working process"}</p>
+				<p class="eyebrow">{copy.processEyebrow}</p>
 				<h2 id="granada-process-title">{page.process.title}</h2>
 			</div>
-			<p>
-				{
-					es
-						? "El alcance, los contenidos y las responsabilidades quedan claros antes de construir."
-						: "Scope, content and responsibilities are made clear before the build starts."
-				}
-			</p>
+			<p>{copy.processIntro}</p>
 		</header>
 		<ol>
 			{
 				page.process.steps.map((step, index) => (
 					<li>
-						<span>{String(index + 1).padStart(2, "0")}</span>
-						<h3>
-							{
-								(es
-									? ["Entender", "Acotar", "Construir", "Publicar"]
-									: ["Understand", "Define", "Build", "Launch"])[index]
-							}
-						</h3>
+						<span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+						<h3>{copy.processTitles[index]}</h3>
 						<p>{step}</p>
 					</li>
 				))
@@ -346,30 +384,71 @@ const decisionTitles = es
 	</section>
 
 	<section
-		data-granada-faq
-		class="granada-faq section-reveal"
+		data-granada-service-proof
+		class="granada-service-proof section-reveal"
+		aria-labelledby="granada-proof-title"
+	>
+		<header class="granada-service-heading">
+			<div>
+				<p class="eyebrow">{copy.proofEyebrow}</p>
+				<h2 id="granada-proof-title">{copy.proofTitle}</h2>
+			</div>
+			<p>{copy.proofDescription}</p>
+		</header>
+		<ServiceProofCard
+			eyebrow={copy.proofEyebrow}
+			title={featuredProject?.title ?? copy.proofTitle}
+			description={featuredProject?.summary ?? copy.proofDescription}
+			href={projectHref}
+			actionLabel={copy.proofAction}
+			image={projectImage
+				? { src: projectImage.src, alt: projectImage.alt }
+				: undefined}
+		/>
+	</section>
+
+	<section
+		data-granada-related-services
+		class="granada-related-services section-reveal"
+		aria-labelledby="granada-related-title"
+	>
+		<header class="granada-service-heading">
+			<div>
+				<p class="eyebrow">{copy.relatedEyebrow}</p>
+				<h2 id="granada-related-title">{copy.relatedTitle}</h2>
+			</div>
+			<p>{copy.relatedIntro}</p>
+		</header>
+		<div class="granada-related-services__grid">
+			{
+				relatedServices.map((item) => (
+					<article>
+						<ServiceIconBadge name={item.icon} size="md" />
+						<h3>{item.shortTitle}</h3>
+						<p>{item.description}</p>
+						<a href={getServiceHref(item)} class="button-secondary">
+							{copy.relatedAction}
+							<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+						</a>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<section
+		data-granada-service-faq
+		class="granada-service-faq section-reveal"
 		aria-labelledby="granada-faq-title"
 	>
-		<header class="granada-section-heading">
+		<header class="granada-service-heading">
 			<div>
-				<p class="eyebrow">{es ? "Antes de decidir" : "Before deciding"}</p>
-				<h2 id="granada-faq-title">
-					{
-						es
-							? "Preguntas sobre el proyecto web"
-							: "Questions about the website project"
-					}
-				</h2>
+				<p class="eyebrow">{copy.faqEyebrow}</p>
+				<h2 id="granada-faq-title">{copy.faqTitle}</h2>
 			</div>
-			<p>
-				{
-					es
-						? "Respuestas directas sobre reuniones, presupuesto, edición y tiempos."
-						: "Direct answers about meetings, budget, editing and timing."
-				}
-			</p>
+			<p>{copy.faqIntro}</p>
 		</header>
-		<div class="granada-faq__list">
+		<div class="granada-service-faq__list">
 			{
 				page.faq.map((item, index) => (
 					<details open={index === 0}>
@@ -384,421 +463,385 @@ const decisionTitles = es
 		</div>
 	</section>
 
-	<section
-		data-granada-cta
-		class="granada-final-cta section-reveal"
-		aria-labelledby="granada-cta-title"
-	>
-		<div>
-			<p class="eyebrow">{page.cta.eyebrow}</p>
-			<h2 id="granada-cta-title">{page.cta.title}</h2>
-			<p>{page.cta.text}</p>
-		</div>
-		<a href={contactHref} class="button-action">
-			{page.cta.button}
-			<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-		</a>
-	</section>
+	<div data-granada-service-cta>
+		<ConversionCta
+			eyebrow={page.cta.eyebrow}
+			title={page.cta.title}
+			text={page.cta.text}
+			primary={{ label: page.cta.button, href: contactHref }}
+			secondary={{ label: copy.services, href: `/${locale}/services/` }}
+			headingId="granada-service-conversion-title"
+		/>
+	</div>
 </div>
 
 <style>
-	.granada-landing {
-		--granada-rule: color-mix(
-			in srgb,
-			var(--home-navy) 13%,
-			var(--surface-border)
-		);
+	.granada-service-page {
+		--services-card-padding: clamp(1.35rem, 2vw, 1.75rem);
+		--granada-section-space: clamp(4.5rem, 7vw, 6.5rem);
 	}
 
-	.granada-landing .eyebrow {
+	.granada-service-page .eyebrow {
 		color: var(--action);
 	}
 
-	.granada-hero {
-		padding-block: 2rem 5.5rem;
-	}
-
-	.granada-hero > .eyebrow {
-		text-align: center;
-	}
-
-	.granada-hero > h1 {
-		max-width: 68rem;
-		margin: 1rem auto 0;
-		color: var(--home-navy);
-		font-size: clamp(2.7rem, 5.8vw, 5.5rem);
-		font-weight: 900;
-		letter-spacing: -0.06em;
-		line-height: 0.96;
-		text-align: center;
-		text-wrap: balance;
-	}
-
-	.granada-hero__columns {
+	.granada-service-hero {
 		display: grid;
-		grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-		gap: clamp(2.5rem, 6vw, 6rem);
-		margin-top: clamp(3rem, 6vw, 5rem);
+		grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+		gap: clamp(2rem, 5vw, 5rem);
 		align-items: start;
+		padding-block: 1rem var(--granada-section-space);
 	}
 
-	.granada-pitch__intro {
-		color: var(--text);
-		font-size: 1.15rem;
-		font-weight: 700;
-		line-height: 1.7;
-	}
-
-	.granada-pitch__evidence {
-		display: grid;
-		gap: 0.2rem;
-		margin-top: 2rem;
-		border-top: 1px solid var(--surface-border);
-		padding-top: 1.4rem;
-	}
-
-	.granada-pitch__evidence strong {
-		color: var(--action);
-		font-size: 1.1rem;
-	}
-
-	.granada-pitch__evidence span,
-	.granada-pitch__challenge {
+	.granada-service-hero__back {
+		display: inline-flex;
+		gap: 0.5rem;
+		align-items: center;
 		color: var(--text-muted);
-		line-height: 1.65;
+		font-size: 0.8rem;
+		font-weight: 850;
 	}
 
-	.granada-pitch__challenge {
-		margin-top: 1.2rem;
-		font-weight: 700;
+	.granada-service-hero__back:hover {
+		color: var(--action);
 	}
 
-	.granada-pitch__actions {
+	.granada-service-hero__identity {
 		display: flex;
-		flex-wrap: wrap;
 		gap: 1rem;
 		align-items: center;
 		margin-top: 2rem;
 	}
 
-	.granada-pitch__project-link,
-	.granada-proof__link,
-	.granada-services article > a {
-		display: inline-flex;
-		width: fit-content;
-		min-height: 2.75rem;
+	.granada-service-hero h1 {
+		max-width: 58rem;
+		margin-top: 1.5rem;
+		color: var(--home-navy);
+		font-size: clamp(3rem, 6vw, 5.8rem);
+		font-weight: 950;
+		letter-spacing: -0.065em;
+		line-height: 0.94;
+		text-wrap: balance;
+	}
+
+	.granada-service-hero__intro {
+		max-width: 48rem;
+		margin-top: 1.5rem;
+		color: var(--text-muted);
+		font-size: 1.1rem;
+		line-height: 1.75;
+	}
+
+	.granada-service-hero__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		margin-top: 2rem;
+	}
+
+	.granada-service-summary {
+		border: 1px solid var(--surface-border);
+		border-radius: 1.2rem;
+		background: var(--surface);
+		padding: clamp(1.35rem, 2.5vw, 2rem);
+		box-shadow: var(--shadow-card);
+	}
+
+	.granada-service-summary__topline {
+		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		border-bottom: 1px solid var(--surface-border);
-		color: var(--text);
-		font-size: 0.82rem;
-		font-weight: 900;
+		justify-content: space-between;
 	}
 
-	.granada-pitch__project-link:hover,
-	.granada-proof__link:hover,
-	.granada-services article > a:hover {
-		border-color: var(--action);
+	.granada-service-summary__topline > span {
 		color: var(--action);
+		font-size: 0.72rem;
+		font-weight: 900;
+		letter-spacing: 0.12em;
 	}
 
-	.granada-pitch__note {
+	.granada-service-summary__price {
+		display: grid;
+		gap: 0.25rem;
+		margin-top: 1.5rem;
+		border-block: 1px solid var(--surface-border);
+		padding-block: 1.4rem;
+	}
+
+	.granada-service-summary__price > span,
+	.granada-service-summary__price small,
+	.granada-service-summary__timeline small {
+		color: var(--text-muted);
+		font-size: 0.7rem;
+		font-weight: 750;
+	}
+
+	.granada-service-summary__price p {
 		display: flex;
 		gap: 0.5rem;
+		align-items: baseline;
+	}
+
+	.granada-service-summary__price strong {
+		color: var(--home-navy);
+		font-size: clamp(2.3rem, 4vw, 3.5rem);
+		font-weight: 950;
+		letter-spacing: -0.06em;
+	}
+
+	.granada-service-summary__timeline {
+		display: flex;
+		gap: 0.75rem;
 		align-items: center;
-		margin-top: 0.8rem;
-		color: var(--text-muted);
-		font-size: 0.75rem;
-	}
-
-	.granada-pitch__note :global(svg) {
-		flex: none;
+		padding-block: 1.3rem;
 		color: var(--action);
 	}
 
-	.granada-selector header h2 {
+	.granada-service-summary__timeline span {
+		display: grid;
+		gap: 0.2rem;
+	}
+
+	.granada-service-summary__timeline strong {
 		color: var(--text);
-		font-size: clamp(1.5rem, 2.6vw, 2.2rem);
-		font-weight: 900;
-		letter-spacing: -0.035em;
+		font-size: 0.9rem;
 	}
 
-	.granada-selector header p {
-		margin-top: 0.75rem;
-		color: var(--text-muted);
-		line-height: 1.6;
+	.granada-service-summary > a {
+		width: 100%;
 	}
 
-	.granada-selector__grid {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 0.8rem;
-		margin-top: 1.6rem;
+	.granada-service-trust {
+		margin-bottom: var(--granada-section-space);
 	}
 
-	.granada-option {
-		position: relative;
-		display: grid;
-		grid-template-columns: auto 1fr;
-		gap: 0.85rem;
-		min-height: 9.5rem;
-		border: 1px solid var(--surface-border);
-		border-radius: 0.9rem;
-		background: var(--surface-strong);
-		padding: 1.25rem;
-		box-shadow: 0 10px 32px rgba(20, 35, 52, 0.06);
-	}
-
-	.granada-option > :global(svg:first-child),
-	.granada-option__arrow {
-		color: var(--action);
-	}
-
-	.granada-option span {
-		display: grid;
-		align-content: start;
-		gap: 0.45rem;
-	}
-
-	.granada-option strong {
-		color: var(--text);
-		font-size: 1rem;
-		line-height: 1.25;
-	}
-
-	.granada-option small {
-		color: var(--text-muted);
-		line-height: 1.5;
-	}
-
-	.granada-option__arrow {
-		position: absolute;
-		right: 1rem;
-		bottom: 1rem;
-	}
-
-	.granada-option:hover {
-		transform: translateY(-2px);
-		border-color: color-mix(in srgb, var(--action) 45%, var(--surface-border));
-	}
-
-	.granada-section-heading {
+	.granada-service-heading {
 		display: grid;
 		grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
 		gap: 1.5rem 3rem;
 		align-items: end;
 	}
 
-	.granada-section-heading h2,
-	.granada-proof h2,
-	.granada-final-cta h2 {
-		margin-top: 1rem;
+	.granada-service-heading h2 {
+		max-width: 54rem;
+		margin-top: 0.9rem;
 		color: var(--home-navy);
-		font-size: clamp(2.2rem, 4.8vw, 4rem);
-		font-weight: 900;
+		font-size: clamp(2.2rem, 4.5vw, 4rem);
+		font-weight: 950;
 		letter-spacing: -0.055em;
 		line-height: 1;
 		text-wrap: balance;
 	}
 
-	.granada-section-heading > p,
-	.granada-proof__copy > p:not(.eyebrow),
-	.granada-final-cta div > p:last-child {
+	.granada-service-heading > p {
 		color: var(--text-muted);
 		line-height: 1.7;
 	}
 
-	.granada-decision {
-		width: 100vw;
-		margin-inline: calc(50% - 50vw);
-		background: var(--bg-band);
-		padding: clamp(4.5rem, 8vw, 7rem) max(1rem, calc((100vw - 88rem) / 2));
+	.granada-service-outcome,
+	.granada-service-scope,
+	.granada-service-process,
+	.granada-service-proof,
+	.granada-related-services,
+	.granada-service-faq {
+		padding-block: var(--granada-section-space);
 	}
 
-	.granada-decision ol,
-	.granada-services__grid {
+	.granada-service-outcome__content {
 		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1.25fr);
+		gap: clamp(2rem, 5vw, 5rem);
 		margin-top: 3rem;
-		border-block: 1px solid var(--surface-border);
 	}
 
-	.granada-decision li,
-	.granada-services article {
-		padding: 2rem;
+	.granada-service-outcome__problem {
+		border-top: 3px solid var(--action);
+		padding-top: 1.3rem;
 	}
 
-	.granada-decision li + li,
-	.granada-services article + article {
-		border-left: 1px solid var(--surface-border);
+	.granada-service-outcome__problem strong {
+		display: block;
+		margin-top: 1rem;
+		color: var(--text);
+		font-size: 1.25rem;
+		line-height: 1.55;
 	}
 
-	.granada-decision li > span,
-	.granada-services__topline span {
+	.granada-service-outcome__problem > p:last-child {
+		margin-top: 1rem;
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	.granada-service-outcome__benefits {
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.granada-service-outcome__benefits article {
+		display: grid;
+		grid-template-columns: 2.5rem minmax(10rem, 0.42fr) minmax(0, 0.58fr);
+		gap: 1rem;
+		border-bottom: 1px solid var(--surface-border);
+		padding-block: 1.25rem;
+	}
+
+	.granada-service-outcome__benefits span,
+	.granada-service-process li > span {
 		color: var(--action);
-		font-size: 0.75rem;
+		font-size: 0.72rem;
 		font-weight: 900;
 		letter-spacing: 0.12em;
 	}
 
-	.granada-decision h3,
-	.granada-services h3,
-	.granada-process h3 {
-		margin-top: 1rem;
+	.granada-service-outcome__benefits h3,
+	.granada-service-process h3,
+	.granada-related-services h3,
+	.granada-service-scope h3 {
 		color: var(--text);
-		font-size: 1.25rem;
+		font-size: 1.15rem;
 		font-weight: 900;
 	}
 
-	.granada-decision li p,
-	.granada-services article > p,
-	.granada-process li p {
-		margin-top: 0.65rem;
+	.granada-service-outcome__benefits p,
+	.granada-service-process li p,
+	.granada-related-services article > p {
 		color: var(--text-muted);
 		line-height: 1.65;
 	}
 
-	.granada-services,
-	.granada-process,
-	.granada-faq {
-		padding-block: clamp(5rem, 9vw, 8rem);
-	}
-
-	.granada-services__topline {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		color: var(--action);
-	}
-
-	.granada-services article {
-		display: flex;
-		min-width: 0;
-		flex-direction: column;
-	}
-
-	.granada-services article h3 {
-		margin-top: 2rem;
-		font-size: clamp(1.45rem, 2.3vw, 2rem);
-		letter-spacing: -0.04em;
-	}
-
-	.granada-services article ul {
-		display: grid;
-		gap: 0.7rem;
-		margin-top: 1.5rem;
-	}
-
-	.granada-services article li {
-		display: flex;
-		gap: 0.6rem;
-		align-items: flex-start;
-		color: var(--text);
-		font-size: 0.82rem;
-		font-weight: 700;
-		line-height: 1.5;
-	}
-
-	.granada-services article li :global(svg) {
-		margin-top: 0.12rem;
-		flex: none;
-		color: var(--action);
-	}
-
-	.granada-services article > a {
-		margin-top: auto;
-		padding-top: 2rem;
-	}
-
-	.granada-proof {
-		display: grid;
+	.granada-service-pricing {
 		width: 100vw;
-		grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-		gap: clamp(2.5rem, 6vw, 6rem);
-		align-items: center;
 		margin-inline: calc(50% - 50vw);
-		background: var(--surface-strong);
-		padding: clamp(4.5rem, 8vw, 7rem) max(1rem, calc((100vw - 88rem) / 2));
-	}
-
-	.granada-proof__link {
-		margin-top: 1.5rem;
-	}
-
-	.granada-project-preview {
-		display: grid;
-		grid-template-columns: 10rem minmax(0, 1fr);
-		gap: 1rem;
-		align-items: center;
-		border: 1px solid var(--surface-border);
-		background: var(--surface);
-		padding: 0.75rem;
-	}
-
-	.granada-project-preview img,
-	.granada-project-preview__fallback {
-		width: 100%;
-		aspect-ratio: 16 / 10;
-		object-fit: cover;
 		background: var(--bg-band);
+		padding: var(--granada-section-space) max(1rem, calc((100vw - 88rem) / 2));
 	}
 
-	.granada-project-preview > span:last-child {
+	.granada-service-pricing > :global(.service-pricing-grid) {
+		margin-top: 3rem;
+	}
+
+	.granada-service-scope__columns {
 		display: grid;
-		gap: 0.35rem;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 3rem;
 	}
 
-	.granada-project-preview strong {
-		color: var(--text);
-		line-height: 1.3;
+	.granada-service-scope__columns article {
+		border: 1px solid var(--surface-border);
+		border-radius: 1.1rem;
+		background: var(--surface);
+		padding: clamp(1.4rem, 2.5vw, 2rem);
 	}
 
-	.granada-project-preview small {
+	.granada-service-scope__columns article > :global(svg) {
+		color: var(--action);
+	}
+
+	.granada-service-scope h3 {
+		margin-top: 1rem;
+	}
+
+	.granada-service-scope ul {
+		display: grid;
+		gap: 0.75rem;
+		margin-top: 1.25rem;
+	}
+
+	.granada-service-scope li {
+		display: flex;
+		gap: 0.65rem;
+		align-items: flex-start;
 		color: var(--text-muted);
+		line-height: 1.55;
 	}
 
-	.granada-process ol {
+	.granada-service-scope li :global(svg) {
+		flex: none;
+		margin-top: 0.2rem;
+		color: var(--action);
+	}
+
+	.granada-service-process ol {
 		display: grid;
 		grid-template-columns: repeat(4, minmax(0, 1fr));
-		margin-top: 3.5rem;
+		margin-top: 3rem;
 		border-top: 1px solid var(--surface-border);
 	}
 
-	.granada-process li {
-		padding: 2rem 1.5rem 0 0;
+	.granada-service-process li {
+		padding: 1.7rem 1.4rem 0 0;
 	}
 
-	.granada-process li + li {
+	.granada-service-process li + li {
 		border-left: 1px solid var(--surface-border);
-		padding-left: 1.5rem;
+		padding-left: 1.4rem;
 	}
 
-	.granada-process li > span {
-		display: inline-grid;
-		width: 2.3rem;
-		height: 2.3rem;
-		place-items: center;
-		border-radius: 50%;
-		background: color-mix(in srgb, var(--action) 13%, transparent);
-		color: var(--action);
-		font-size: 0.7rem;
-		font-weight: 900;
+	.granada-service-process h3 {
+		margin-top: 1rem;
 	}
 
-	.granada-faq {
-		padding-top: 2rem;
+	.granada-service-process li p {
+		margin-top: 0.65rem;
 	}
 
-	.granada-faq__list {
+	.granada-service-proof {
+		padding-top: 1rem;
+	}
+
+	.granada-service-proof > :global(.service-proof-card) {
 		margin-top: 3rem;
-		border-top: 1px solid var(--granada-rule);
 	}
 
-	.granada-faq details {
-		border-bottom: 1px solid var(--granada-rule);
+	.granada-related-services {
+		width: 100vw;
+		margin-inline: calc(50% - 50vw);
+		background: var(--surface-strong);
+		padding: var(--granada-section-space) max(1rem, calc((100vw - 88rem) / 2));
 	}
 
-	.granada-faq summary {
+	.granada-related-services__grid {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 3rem;
+	}
+
+	.granada-related-services article {
+		display: flex;
+		min-width: 0;
+		flex-direction: column;
+		border: 1px solid var(--surface-border);
+		border-radius: 1rem;
+		background: var(--surface);
+		padding: 1.5rem;
+	}
+
+	.granada-related-services h3 {
+		margin-top: 1.2rem;
+	}
+
+	.granada-related-services article > p {
+		margin-top: 0.7rem;
+	}
+
+	.granada-related-services article > a {
+		width: 100%;
+		margin-top: auto;
+		padding-top: 1rem;
+	}
+
+	.granada-service-faq__list {
+		margin-top: 3rem;
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.granada-service-faq details {
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.granada-service-faq summary {
 		display: flex;
 		min-height: 4.5rem;
 		cursor: pointer;
@@ -811,161 +854,77 @@ const decisionTitles = es
 		font-weight: 900;
 	}
 
-	.granada-faq summary::-webkit-details-marker {
+	.granada-service-faq summary::-webkit-details-marker {
 		display: none;
 	}
 
-	.granada-faq summary :global(svg) {
+	.granada-service-faq summary :global(svg) {
 		flex: none;
 		color: var(--action);
 		transition: transform 180ms ease;
 	}
 
-	.granada-faq details[open] summary :global(svg) {
+	.granada-service-faq details[open] summary :global(svg) {
 		transform: rotate(45deg);
 	}
 
-	.granada-faq details > p {
+	.granada-service-faq details > p {
 		max-width: 60rem;
 		padding: 0 2.5rem 1.5rem 0;
 		color: var(--text-muted);
 		line-height: 1.75;
 	}
 
-	.granada-final-cta {
-		position: relative;
-		display: grid;
-		width: 100vw;
-		grid-template-columns: minmax(0, 1fr) auto;
-		gap: 3rem;
-		align-items: center;
-		margin: 0 calc(50% - 50vw) -5rem;
-		overflow: hidden;
-		background: var(--surface-strong);
-		padding: clamp(4rem, 8vw, 6.5rem) max(1rem, calc((100vw - 88rem) / 2));
-	}
-
-	.granada-final-cta::before {
-		position: absolute;
-		top: -7rem;
-		right: max(1rem, calc((100vw - 88rem) / 2));
-		width: 18rem;
-		height: 18rem;
-		border: 3.5rem solid color-mix(in srgb, var(--action) 14%, transparent);
-		border-radius: 50%;
-		content: "";
-		pointer-events: none;
-	}
-
-	.granada-final-cta > * {
-		position: relative;
-		z-index: 1;
-	}
-
-	.granada-final-cta h2 {
-		max-width: 47rem;
-		font-size: clamp(2.4rem, 5.5vw, 4.8rem);
-		line-height: 0.98;
-	}
-
-	.granada-final-cta div > p:last-child {
-		max-width: 42rem;
-		margin-top: 1.25rem;
-	}
-
-	.granada-option:focus-visible,
-	.granada-project-preview:focus-visible,
-	.granada-faq summary:focus-visible,
-	.granada-pitch__project-link:focus-visible,
-	.granada-proof__link:focus-visible,
-	.granada-services article > a:focus-visible {
+	.granada-service-hero__back:focus-visible,
+	.granada-service-faq summary:focus-visible {
 		outline: 2px solid var(--focus-ring);
 		outline-offset: 4px;
 	}
 
 	@media (max-width: 900px) {
-		.granada-hero__columns,
-		.granada-proof {
+		.granada-service-hero,
+		.granada-service-outcome__content {
 			grid-template-columns: 1fr;
 		}
 	}
 
 	@media (max-width: 760px) {
-		.granada-hero {
-			padding-top: 1rem;
-			padding-bottom: 4rem;
+		.granada-service-hero {
+			padding-top: 0;
 		}
 
-		.granada-hero > .eyebrow,
-		.granada-hero > h1 {
-			text-align: left;
+		.granada-service-hero h1 {
+			font-size: clamp(2.7rem, 13vw, 4.2rem);
 		}
 
-		.granada-hero > h1 {
-			font-size: clamp(2.7rem, 13vw, 4rem);
-		}
-
-		.granada-hero__columns {
-			margin-top: 2.5rem;
-		}
-
-		.granada-pitch__actions {
+		.granada-service-hero__actions {
 			align-items: stretch;
 			flex-direction: column;
 		}
 
-		.granada-pitch__project-link {
-			justify-content: center;
-		}
-
-		.granada-selector__grid,
-		.granada-section-heading,
-		.granada-decision ol,
-		.granada-services__grid,
-		.granada-process ol,
-		.granada-final-cta {
+		.granada-service-heading,
+		.granada-service-scope__columns,
+		.granada-service-process ol,
+		.granada-related-services__grid {
 			grid-template-columns: 1fr;
 		}
 
-		.granada-option {
-			min-height: auto;
+		.granada-service-outcome__benefits article {
+			grid-template-columns: 2.5rem minmax(0, 1fr);
 		}
 
-		.granada-decision li,
-		.granada-services article {
+		.granada-service-outcome__benefits article p {
+			grid-column: 2;
+		}
+
+		.granada-service-process li,
+		.granada-service-process li + li {
+			border-left: 0;
 			padding: 1.5rem 0;
 		}
 
-		.granada-decision li + li,
-		.granada-services article + article {
+		.granada-service-process li + li {
 			border-top: 1px solid var(--surface-border);
-			border-left: 0;
-		}
-
-		.granada-services article > a {
-			margin-top: 0;
-		}
-
-		.granada-project-preview {
-			grid-template-columns: 1fr;
-		}
-
-		.granada-process li,
-		.granada-process li + li {
-			border-left: 0;
-			padding: 1.6rem 0;
-		}
-
-		.granada-process li + li {
-			border-top: 1px solid var(--surface-border);
-		}
-
-		.granada-final-cta {
-			margin-bottom: -3.5rem;
-		}
-
-		.granada-final-cta > a {
-			width: 100%;
 		}
 	}
 </style>
