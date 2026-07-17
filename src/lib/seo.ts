@@ -2,6 +2,7 @@ import type { Locale } from "@/i18n";
 import type { BillingUnit, PricingKey } from "@/lib/service-commercial";
 
 const DEFAULT_IMAGE = "/images/og/portfolio-og.png";
+const PROFILE_IMAGE = "/images/avatar.avif";
 
 export type StructuredData = Record<string, unknown>;
 
@@ -15,6 +16,8 @@ export interface PersonSeo {
 	description: string;
 	email: string;
 	location: string;
+	jobTitle?: string;
+	image?: string;
 	links: {
 		linkedin: string;
 		github: string;
@@ -48,6 +51,7 @@ export interface CreativeWorkSeo {
 	description: string;
 	technologies?: string[];
 	path: string;
+	image?: string;
 }
 
 export interface ServiceSeo {
@@ -97,25 +101,139 @@ export interface FaqSeo {
 	answer: string;
 }
 
+export const normalizePagePath = (path: string) => {
+	const pathname = /^https?:\/\//.test(path) ? new URL(path).pathname : path;
+	const cleanPath = pathname.split(/[?#]/, 1)[0] || "/";
+	const withLeadingSlash = cleanPath.startsWith("/")
+		? cleanPath
+		: `/${cleanPath}`;
+
+	return withLeadingSlash === "/"
+		? "/"
+		: `${withLeadingSlash.replace(/\/+$/, "")}/`;
+};
+
 export const absoluteUrl = (site: string, path: string) =>
 	new URL(path, site).toString();
 
+export const absolutePageUrl = (site: string, path: string) =>
+	absoluteUrl(site, normalizePagePath(path));
+
 export const getSeoEntityIds = (site: string, path: string) => ({
-	website: `${absoluteUrl(site, "/")}#website`,
-	person: `${absoluteUrl(site, "/")}#person`,
-	page: `${absoluteUrl(site, path)}#webpage`,
+	website: `${absolutePageUrl(site, "/")}#website`,
+	person: `${absolutePageUrl(site, "/")}#person`,
+	page: `${absolutePageUrl(site, path)}#webpage`,
 });
+
+const withoutContext = (node: StructuredData): StructuredData => {
+	const { "@context": _context, ...value } = node;
+	return value;
+};
+
+export const buildStructuredDataGraph = (
+	nodes: StructuredData[],
+): StructuredData => ({
+	"@context": "https://schema.org",
+	"@graph": nodes.map(withoutContext),
+});
+
+export const buildPerson = (
+	site: string,
+	locale: Locale,
+	person: PersonSeo,
+): StructuredData => ({
+	"@type": "Person",
+	"@id": getSeoEntityIds(site, "/").person,
+	name: person.name,
+	jobTitle: person.jobTitle,
+	description: person.description,
+	url: absolutePageUrl(site, `/${locale}/about/`),
+	email: `mailto:${person.email}`,
+	image: absoluteUrl(site, person.image ?? PROFILE_IMAGE),
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: "Granada",
+		addressRegion: locale === "es" ? "Andalucía" : "Andalusia",
+		addressCountry: "ES",
+	},
+	sameAs: [person.links.linkedin, person.links.github],
+	knowsLanguage: ["es", "en"],
+	hasOccupation: {
+		"@type": "Occupation",
+		name:
+			locale === "es"
+				? "Desarrollador web freelance en Granada"
+				: "Freelance web developer in Granada",
+		occupationLocation: {
+			"@type": "Country",
+			name: locale === "es" ? "España" : "Spain",
+		},
+		skills:
+			"Full-stack development, internal tools, workflow automation, API integrations, Java, Spring Boot, TypeScript, Astro",
+	},
+	knowsAbout: [
+		"Java",
+		"Spring Boot",
+		"Distributed Systems",
+		"Product Engineering",
+		"Systems Engineering",
+		"Automation",
+		"Internal Tooling",
+		"Kubernetes",
+		"Docker",
+		"PostgreSQL",
+		"CI/CD",
+		"Backend Architecture",
+	],
+});
+
+export const buildWebSite = (site: string, name: string): StructuredData => ({
+	"@type": "WebSite",
+	"@id": getSeoEntityIds(site, "/").website,
+	name,
+	url: absolutePageUrl(site, "/"),
+	inLanguage: ["es", "en"],
+	publisher: { "@id": getSeoEntityIds(site, "/").person },
+});
+
+export const buildWebPage = (
+	site: string,
+	path: string,
+	locale: Locale,
+	name: string,
+	description: string,
+): StructuredData => {
+	const ids = getSeoEntityIds(site, path);
+
+	return {
+		"@type": "WebPage",
+		"@id": ids.page,
+		name,
+		description,
+		url: absolutePageUrl(site, path),
+		inLanguage: locale,
+		isPartOf: { "@id": ids.website },
+		author: { "@id": ids.person },
+	};
+};
 
 const buildStartingPriceOffer = (
 	site: string,
 	offer: StartingPriceOfferSeo,
-	service?: { name: string; description: string; provider?: StructuredData },
+	service?: {
+		id: string;
+		name: string;
+		description: string;
+		url: string;
+		provider?: StructuredData;
+	},
 ): StructuredData => ({
 	"@type": "Offer",
-	"@id": `${absoluteUrl(site, offer.path)}#offer-${offer.key}`,
+	"@id": `${absolutePageUrl(site, offer.path)}#offer-${offer.key}`,
 	name: offer.name,
 	description: [offer.description, offer.priceNote].filter(Boolean).join(" "),
-	url: absoluteUrl(site, `${offer.path}#pricing-options`),
+	url: `${absolutePageUrl(site, offer.path)}#pricing-options`,
+	price: offer.price,
 	priceCurrency: offer.currency,
 	priceSpecification: {
 		"@type": "UnitPriceSpecification",
@@ -126,8 +244,10 @@ const buildStartingPriceOffer = (
 	itemOffered: service
 		? {
 				"@type": "Service",
+				"@id": service.id,
 				name: service.name,
 				description: service.description,
+				url: service.url,
 				provider: service.provider,
 			}
 		: undefined,
@@ -136,45 +256,35 @@ const buildStartingPriceOffer = (
 export const buildBreadcrumbList = (
 	site: string,
 	items: BreadcrumbItem[],
-): StructuredData => ({
-	"@context": "https://schema.org",
-	"@type": "BreadcrumbList",
-	itemListElement: items.map((item, index) => ({
-		"@type": "ListItem",
-		position: index + 1,
-		name: item.name,
-		item: absoluteUrl(site, item.path),
-	})),
-});
+): StructuredData => {
+	if (items.length < 2) {
+		throw new RangeError("Breadcrumb items must contain at least two entries");
+	}
+
+	return {
+		"@type": "BreadcrumbList",
+		itemListElement: items.map((item, index) => ({
+			"@type": "ListItem",
+			position: index + 1,
+			name: item.name,
+			item: absolutePageUrl(site, item.path),
+		})),
+	};
+};
 
 export const buildProfilePage = (
 	site: string,
 	locale: Locale,
-	person: PersonSeo,
+	_person: PersonSeo,
 ): StructuredData => {
-	const path = `/${locale}/`;
-	const ids = getSeoEntityIds(site, path);
+	const ids = getSeoEntityIds(site, `/${locale}/about/`);
 
 	return {
-		"@context": "https://schema.org",
 		"@type": "ProfilePage",
 		"@id": ids.page,
-		name: person.name,
-		description: person.description,
-		url: absoluteUrl(site, path),
-		inLanguage: locale,
-		isPartOf: { "@id": ids.website },
 		mainEntity: {
 			"@type": "Person",
 			"@id": ids.person,
-			name: person.name,
-			description: person.description,
-			email: `mailto:${person.email}`,
-			address: {
-				"@type": "PostalAddress",
-				addressLocality: person.location,
-			},
-			sameAs: [person.links.linkedin, person.links.github],
 		},
 	};
 };
@@ -184,13 +294,27 @@ export const buildCollectionPage = (
 	path: string,
 	name: string,
 	description: string,
+	mainEntityId?: string,
 ): StructuredData => ({
-	"@context": "https://schema.org",
 	"@type": "CollectionPage",
 	"@id": getSeoEntityIds(site, path).page,
 	name,
 	description,
-	url: absoluteUrl(site, path),
+	url: absolutePageUrl(site, path),
+	mainEntity: mainEntityId ? { "@id": mainEntityId } : undefined,
+});
+
+export const buildContactPage = (
+	site: string,
+	path: string,
+	name: string,
+	description: string,
+): StructuredData => ({
+	"@type": "ContactPage",
+	"@id": getSeoEntityIds(site, path).page,
+	name,
+	description,
+	url: absolutePageUrl(site, path),
 });
 
 const readingTimeToIsoDuration = (readingTime?: string) => {
@@ -208,16 +332,21 @@ export const buildBlogPosting = ({
 	description,
 	datePublished,
 	dateModified,
+	author,
 	tags = [],
 	readingTime,
 	image = DEFAULT_IMAGE,
 }: BlogPostingSeo): StructuredData => {
 	const ids = getSeoEntityIds(site, path);
+	const pageUrl = absolutePageUrl(site, path);
+	const authorEntity =
+		author === "José Miguel Fernández"
+			? { "@id": ids.person }
+			: { "@type": "Person", name: author };
 
 	return {
-		"@context": "https://schema.org",
 		"@type": "BlogPosting",
-		"@id": `${absoluteUrl(site, path)}#article`,
+		"@id": `${pageUrl}#article`,
 		headline: title,
 		description,
 		datePublished: datePublished.toISOString(),
@@ -225,7 +354,7 @@ export const buildBlogPosting = ({
 		inLanguage: locale,
 		mainEntityOfPage: { "@id": ids.page },
 		isPartOf: { "@id": ids.website },
-		author: { "@id": ids.person },
+		author: authorEntity,
 		publisher: { "@id": ids.person },
 		image: absoluteUrl(site, image),
 		keywords: tags.join(", "),
@@ -236,12 +365,11 @@ export const buildBlogPosting = ({
 export const buildSoftwareApplication = (
 	project: SoftwareProjectSeo,
 ): StructuredData => ({
-	"@context": "https://schema.org",
 	"@type": "SoftwareApplication",
 	name: project.name,
 	description: project.description,
 	applicationCategory: project.category ?? "DeveloperApplication",
-	url: project.url ? project.url : undefined,
+	url: project.url,
 	operatingSystem: "Web",
 	creator: {
 		"@type": "Person",
@@ -253,17 +381,43 @@ export const buildSoftwareApplication = (
 export const buildCreativeWork = (
 	site: string,
 	project: CreativeWorkSeo,
+): StructuredData => {
+	const pageUrl = absolutePageUrl(site, project.path);
+	const ids = getSeoEntityIds(site, project.path);
+
+	return {
+		"@type": "CreativeWork",
+		"@id": `${pageUrl}#creative-work`,
+		name: project.name,
+		description: project.description,
+		creator: { "@id": ids.person },
+		mainEntityOfPage: { "@id": ids.page },
+		keywords: project.technologies?.join(", "),
+		url: pageUrl,
+		image: project.image ? absoluteUrl(site, project.image) : undefined,
+	};
+};
+
+export const buildItemList = (
+	site: string,
+	path: string,
+	name: string,
+	items: Array<{ name: string; path: string }>,
 ): StructuredData => ({
-	"@context": "https://schema.org",
-	"@type": "CreativeWork",
-	name: project.name,
-	description: project.description,
-	creator: {
-		"@type": "Person",
-		name: "José Miguel Fernández",
-	},
-	keywords: project.technologies?.join(", "),
-	url: absoluteUrl(site, project.path),
+	"@type": "ItemList",
+	"@id": `${absolutePageUrl(site, path)}#item-list`,
+	name,
+	numberOfItems: items.length,
+	itemListElement: items.map((item, index) => ({
+		"@type": "ListItem",
+		position: index + 1,
+		item: {
+			"@type": "CreativeWork",
+			"@id": `${absolutePageUrl(site, item.path)}#creative-work`,
+			name: item.name,
+			url: absolutePageUrl(site, item.path),
+		},
+	})),
 });
 
 export const buildServicePage = ({
@@ -280,6 +434,8 @@ export const buildServicePage = ({
 	offers = [],
 }: ServiceSeo): StructuredData => {
 	const ids = getSeoEntityIds(site, path);
+	const pageUrl = absolutePageUrl(site, path);
+	const serviceId = `${pageUrl}#service`;
 	const provider = {
 		"@type": "Person",
 		"@id": ids.person,
@@ -287,14 +443,21 @@ export const buildServicePage = ({
 		url: providerUrl,
 		sameAs,
 	};
-
-	return {
-		"@context": "https://schema.org",
-		"@type": "Service",
-		"@id": `${absoluteUrl(site, path)}#service`,
+	const service = {
+		id: serviceId,
 		name,
 		description,
-		url: absoluteUrl(site, path),
+		url: pageUrl,
+		provider,
+	};
+
+	return {
+		"@type": "Service",
+		"@id": serviceId,
+		name,
+		description,
+		url: pageUrl,
+		mainEntityOfPage: { "@id": ids.page },
 		serviceType: serviceType ?? name,
 		areaServed,
 		audience: audience.map((audienceType) => ({
@@ -303,7 +466,7 @@ export const buildServicePage = ({
 		})),
 		provider,
 		offers: offers.map((offer) =>
-			buildStartingPriceOffer(site, offer, { name, description, provider }),
+			buildStartingPriceOffer(site, offer, service),
 		),
 	};
 };
@@ -319,44 +482,54 @@ export const buildProfessionalService = ({
 	sameAs,
 	services,
 }: ProfessionalServiceSeo): StructuredData => {
+	const ids = getSeoEntityIds(site, path);
+	const pageUrl = absolutePageUrl(site, path);
 	const provider = {
 		"@type": "Person",
-		"@id": getSeoEntityIds(site, path).person,
+		"@id": ids.person,
 		name: providerName,
 		url: providerUrl,
 		sameAs,
 	};
-	const offers = services.flatMap((service) =>
-		service.offers?.length
+	const offers = services.flatMap((service) => {
+		const serviceUrl = absolutePageUrl(site, service.path);
+		const serviceEntity = {
+			id: `${serviceUrl}#service`,
+			name: service.name,
+			description: service.description,
+			url: serviceUrl,
+			provider,
+		};
+
+		return service.offers?.length
 			? service.offers.map((offer) =>
-					buildStartingPriceOffer(site, offer, {
-						name: service.name,
-						description: service.description,
-						provider,
-					}),
+					buildStartingPriceOffer(site, offer, serviceEntity),
 				)
 			: [
 					{
 						"@type": "Offer",
-						url: absoluteUrl(site, service.path),
+						url: serviceUrl,
 						itemOffered: {
 							"@type": "Service",
+							"@id": serviceEntity.id,
 							name: service.name,
 							description: service.description,
+							url: serviceUrl,
 							provider,
 						},
 					},
-				],
-	);
+				];
+	});
 
 	return {
-		"@context": "https://schema.org",
 		"@type": "ProfessionalService",
-		"@id": `${absoluteUrl(site, path)}#professional-service`,
+		"@id": `${pageUrl}#professional-service`,
 		name,
 		description,
-		url: absoluteUrl(site, path),
+		url: pageUrl,
+		mainEntityOfPage: { "@id": ids.page },
 		areaServed,
+		sameAs,
 		founder: provider,
 		hasOfferCatalog: {
 			"@type": "OfferCatalog",
@@ -368,7 +541,6 @@ export const buildProfessionalService = ({
 };
 
 export const buildFaqPage = (faqs: FaqSeo[]): StructuredData => ({
-	"@context": "https://schema.org",
 	"@type": "FAQPage",
 	mainEntity: faqs.map((faq) => ({
 		"@type": "Question",

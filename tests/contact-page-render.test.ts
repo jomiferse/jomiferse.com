@@ -78,6 +78,35 @@ test("renders validated contact selection and status from the request URL", asyn
 			selectedHtml,
 			/data-required-note[^>]*>\s*Fields marked with \* are required\./,
 		);
+		assert.match(
+			selectedHtml,
+			/<link rel="canonical" href="https:\/\/www\.jomiferse\.com\/en\/contact\/"/,
+		);
+		const jsonLdSource = selectedHtml.match(
+			/<script type="application\/ld\+json">([\s\S]*?)<\/script>/,
+		)?.[1];
+		assert.ok(jsonLdSource);
+		const jsonLd = JSON.parse(jsonLdSource) as {
+			"@context": string;
+			"@graph": Array<Record<string, unknown>>;
+		};
+		assert.equal(jsonLd["@context"], "https://schema.org");
+		const contactPage = jsonLd["@graph"].find(
+			(node) => node["@type"] === "ContactPage",
+		);
+		assert.equal(
+			contactPage?.["@id"],
+			"https://www.jomiferse.com/en/contact/#webpage",
+		);
+		const breadcrumb = jsonLd["@graph"].find(
+			(node) => node["@type"] === "BreadcrumbList",
+		);
+		const breadcrumbItems = breadcrumb?.itemListElement as
+			Array<Record<string, unknown>> | undefined;
+		assert.equal(
+			breadcrumbItems?.at(-1)?.item,
+			"https://www.jomiferse.com/en/contact/",
+		);
 
 		const invalidHtml = await render(
 			"https://www.jomiferse.com/en/contact?service=unknown-service&scope=project",

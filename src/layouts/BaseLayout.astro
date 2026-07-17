@@ -12,7 +12,13 @@ import {
 	type ExitIntentContext,
 } from "@/lib/exit-intent";
 import type { PricingKey } from "@/lib/service-commercial";
-import { getSeoEntityIds } from "@/lib/seo";
+import {
+	absolutePageUrl,
+	buildPerson,
+	buildStructuredDataGraph,
+	buildWebPage,
+	buildWebSite,
+} from "@/lib/seo";
 import { getCv } from "@cv";
 
 type PopupContext = {
@@ -54,6 +60,7 @@ const {
 
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
+const schemaSite = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const showExitIntent = !isExitIntentRouteExcluded(Astro.url.pathname);
 const resolvedPopupContext = {
 	kind: popupContext?.kind ?? getExitIntentContext(Astro.url.pathname),
@@ -62,9 +69,8 @@ const resolvedPopupContext = {
 	scope: popupContext?.scope,
 };
 
-const canonicalUrl = Astro.site
-	? new URL(canonicalPath ?? Astro.url.pathname, Astro.site).toString()
-	: (canonicalPath ?? Astro.url.pathname);
+const pagePath = canonicalPath ?? Astro.url.pathname;
+const canonicalUrl = absolutePageUrl(schemaSite, pagePath);
 
 const buildFallbackAlternatePath = (loc: Locale) => {
 	const pathname = Astro.url.pathname.replace(/^\/(en|es)/, "");
@@ -75,7 +81,7 @@ const buildAlternatePath = (loc: Locale) =>
 	alternatePaths?.[loc] ?? buildFallbackAlternatePath(loc);
 const buildAlternateUrl = (loc: Locale) => {
 	const path = buildAlternatePath(loc);
-	return Astro.site ? new URL(path, Astro.site).toString() : path;
+	return absolutePageUrl(schemaSite, path);
 };
 
 const alternateEn = buildAlternateUrl("en");
@@ -96,104 +102,18 @@ const seoTitle =
 	title.length > 65
 		? title.replace(/\s+\|\s+José Miguel Fernández$/, "")
 		: title;
-const schemaSite = Astro.site?.toString() ?? "https://www.jomiferse.com";
-const schemaIds = getSeoEntityIds(
-	schemaSite,
-	canonicalPath ?? Astro.url.pathname,
-);
-const localizedOffers =
-	locale === "es"
-		? [
-				["Diseño web para negocios", "/es/services/diseno-web-wordpress/"],
-				["Software a medida", "/es/services/software-a-medida/"],
-				["Herramientas internas", "/es/services/internal-tools/"],
-				[
-					"Automatización de procesos",
-					"/es/services/automatizacion-de-procesos/",
-				],
-				["Integraciones API", "/es/services/integraciones-api/"],
-				["Backends con Spring Boot", "/es/services/backend-spring-boot/"],
-			]
-		: [
-				["Business websites", "/en/services/wordpress-web-design/"],
-				["Custom software", "/en/services/custom-software/"],
-				["Internal tools", "/en/services/internal-tools/"],
-				["Process automation", "/en/services/process-automation/"],
-				["API integrations", "/en/services/api-integrations/"],
-				["Spring Boot backends", "/en/services/backend-spring-boot/"],
-			];
 
 const baseStructuredData = [
-	{
-		"@context": "https://schema.org",
-		"@type": "Person",
-		"@id": schemaIds.person,
+	buildPerson(schemaSite, locale, {
 		name: cv.name,
 		jobTitle: cv.currentRole,
 		description: cv.tagline,
-		url: Astro.site
-			? new URL(`/${locale}`, Astro.site).toString()
-			: `/${locale}`,
-		email: `mailto:${cv.email}`,
-		address: {
-			"@type": "PostalAddress",
-			addressLocality: cv.location,
-		},
-		sameAs: [cv.links.linkedin, cv.links.github],
-		knowsLanguage: locale === "es" ? ["es", "en"] : ["en", "es"],
-		hasOccupation: {
-			"@type": "Occupation",
-			name:
-				locale === "es"
-					? "Desarrollador web freelance en Granada"
-					: "Freelance web developer in Granada",
-			occupationLocation: {
-				"@type": "Country",
-				name: locale === "es" ? "España" : "Spain",
-			},
-			skills:
-				"Full-stack development, internal tools, workflow automation, API integrations, Java, Spring Boot, TypeScript, Astro",
-		},
-		makesOffer: localizedOffers.map(([name, path]) => ({
-			"@type": "Offer",
-			url: new URL(path, schemaSite).toString(),
-			itemOffered: { "@type": "Service", name },
-		})),
-		knowsAbout: [
-			"Java",
-			"Spring Boot",
-			"Distributed Systems",
-			"Product Engineering",
-			"Systems Engineering",
-			"Automation",
-			"Internal Tooling",
-			"Kubernetes",
-			"Docker",
-			"PostgreSQL",
-			"CI/CD",
-			"Backend Architecture",
-		],
-	},
-	{
-		"@context": "https://schema.org",
-		"@type": "WebSite",
-		"@id": schemaIds.website,
-		name: cv.name,
-		url: Astro.site?.toString() ?? "/",
-		inLanguage: locale,
-		publisher: { "@id": schemaIds.person },
-	},
-	{
-		"@context": "https://schema.org",
-		"@type": "WebPage",
-		"@id": schemaIds.page,
-		name: seoTitle,
-		description,
-		url: canonicalUrl,
-		inLanguage: locale,
-		isPartOf: { "@id": schemaIds.website },
-		about: { "@id": schemaIds.person },
-	},
+		email: cv.email,
+		location: cv.location,
+		links: cv.links,
+	}),
+	buildWebSite(schemaSite, cv.name),
+	buildWebPage(schemaSite, pagePath, locale, seoTitle, description),
 ];
 
 const extraStructuredData = structuredData
@@ -202,7 +122,9 @@ const extraStructuredData = structuredData
 		: [structuredData]
 	: [];
 
-const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
+const jsonLd = JSON.stringify(
+	buildStructuredDataGraph([...baseStructuredData, ...extraStructuredData]),
+);
 ---
 
 <html lang={locale} class="min-h-screen scroll-smooth antialiased">

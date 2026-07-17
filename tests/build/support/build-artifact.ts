@@ -76,7 +76,10 @@ const findSchemas = (
 	}
 	if (!value || typeof value !== "object") return [];
 	const object = value as Record<string, unknown>;
-	const current = object["@type"] === type ? [object] : [];
+	const objectTypes = Array.isArray(object["@type"])
+		? object["@type"]
+		: [object["@type"]];
+	const current = objectTypes.includes(type) ? [object] : [];
 	return [
 		...current,
 		...Object.values(object).flatMap((item) => findSchemas(item, type)),
@@ -140,6 +143,14 @@ const parsePage = (
 		}
 	}
 	if (!schemas.length) failures.push(`${label}: missing JSON-LD`);
+	const graphDocument = schemas[0] as Record<string, unknown> | undefined;
+	if (
+		schemas.length !== 1 ||
+		graphDocument?.["@context"] !== "https://schema.org" ||
+		!Array.isArray(graphDocument?.["@graph"])
+	) {
+		failures.push(`${label}: expected one schema.org @graph document`);
+	}
 	if (
 		!findSchemas(schemas, "Person").some(
 			(item) => item["@id"] === `${SITE}/#person`,
@@ -156,10 +167,120 @@ const parsePage = (
 	}
 
 	const route = canonical ? publicPath(canonical) : "";
+	const canonicalPageId = canonical ? `${canonical}#webpage` : "";
+	if (
+		canonicalPageId &&
+		!findSchemas(schemas, "WebPage").some(
+			(schema) => schema["@id"] === canonicalPageId,
+		)
+	) {
+		failures.push(`${label}: WebPage @id does not match the canonical URL`);
+	}
+
+	const stablePerson = findSchemas(schemas, "Person").find(
+		(schema) => schema["@id"] === `${SITE}/#person`,
+	);
+	if (stablePerson && Object.hasOwn(stablePerson, "makesOffer")) {
+		failures.push(`${label}: stable Person repeats page-independent offers`);
+	}
+	const address = stablePerson?.address as Record<string, unknown> | undefined;
+	if (
+		stablePerson &&
+		(address?.addressLocality !== "Granada" ||
+			address.addressCountry !== "ES" ||
+			!address.addressRegion)
+	) {
+		failures.push(`${label}: stable Person has an incomplete postal address`);
+	}
+	if (!stablePerson?.image) {
+		failures.push(`${label}: stable Person is missing a profile image`);
+	}
+	if (
+		stablePerson?.url &&
+		findSchemas(schemas, "Person").some(
+			(schema) =>
+				schema["@id"] === `${SITE}/#person` &&
+				schema.url &&
+				schema.url !== stablePerson.url,
+		)
+	) {
+		failures.push(`${label}: stable Person has conflicting profile URLs`);
+	}
+
+	const stableWebsite = findSchemas(schemas, "WebSite").find(
+		(schema) => schema["@id"] === `${SITE}/#website`,
+	);
+	const websiteLanguages = Array.isArray(stableWebsite?.inLanguage)
+		? stableWebsite.inLanguage
+		: [];
+	if (
+		!websiteLanguages.includes("es") ||
+		!websiteLanguages.includes("en")
+	) {
+		failures.push(`${label}: stable WebSite must declare both site languages`);
+	}
+
+	for (const breadcrumb of findSchemas(schemas, "BreadcrumbList")) {
+		const items = Array.isArray(breadcrumb.itemListElement)
+			? breadcrumb.itemListElement
+			: [];
+		if (items.length < 2) {
+			failures.push(`${label}: breadcrumb must contain at least two items`);
+			continue;
+		}
+		const lastItem = items.at(-1) as Record<string, unknown> | undefined;
+		if (lastItem?.item !== canonical) {
+			failures.push(`${label}: breadcrumb does not end at the canonical URL`);
+		}
+	}
+
+	const profilePages = findSchemas(schemas, "ProfilePage");
+	const isAboutPage = /^\/(en|es)\/about\/$/.test(route);
+	if (isAboutPage && profilePages.length !== 1) {
+		failures.push(`${label}: about page must contain one ProfilePage`);
+	}
+	if (!isAboutPage && profilePages.length) {
+		failures.push(`${label}: ProfilePage is only valid on localized about pages`);
+	}
+	for (const profilePage of profilePages) {
+		if (profilePage["@id"] !== canonicalPageId) {
+			failures.push(`${label}: ProfilePage @id does not match the canonical URL`);
+		}
+	}
+
+	for (const collectionPage of findSchemas(schemas, "CollectionPage")) {
+		if (collectionPage["@id"] !== canonicalPageId) {
+			failures.push(`${label}: CollectionPage @id does not match the canonical URL`);
+		}
+	}
+	if (/^\/(en|es)\/projects\/$/.test(route)) {
+		const itemListId = `${canonical}#item-list`;
+		const itemLists = findSchemas(schemas, "ItemList");
+		const collectionPage = findSchemas(schemas, "CollectionPage")[0];
+		if (itemLists.length !== 1 || itemLists[0]["@id"] !== itemListId) {
+			failures.push(`${label}: projects archive must contain one canonical ItemList`);
+		}
+		if (
+			(collectionPage?.mainEntity as Record<string, unknown> | undefined)?.[
+				"@id"
+			] !== itemListId
+		) {
+			failures.push(`${label}: projects CollectionPage must reference its ItemList`);
+		}
+	}
+
 	if (/\/(en|es)\/blog\/(?!page\/|$)/.test(route)) {
 		const postings = findSchemas(schemas, "BlogPosting");
 		if (postings.length !== 1) {
 			failures.push(`${label}: expected one BlogPosting schema`);
+		} else if (
+			(postings[0].mainEntityOfPage as Record<string, unknown> | undefined)?.[
+				"@id"
+			] !== canonicalPageId
+		) {
+			failures.push(
+				`${label}: BlogPosting mainEntityOfPage does not match the canonical URL`,
+			);
 		} else if (
 			!String(postings[0].image ?? "").includes("/images/blog/covers/")
 		) {

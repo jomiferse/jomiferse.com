@@ -5,7 +5,7 @@ import ContactForm from "@/components/forms/ContactForm.astro";
 import { Icon } from "astro-icon/components";
 import { getTranslations, t, type Locale } from "@/i18n";
 import { getCv } from "@cv";
-import { buildBreadcrumbList } from "@/lib/seo";
+import { buildBreadcrumbList, buildContactPage } from "@/lib/seo";
 import { pricingKeys, type PricingKey } from "@/lib/service-commercial";
 import { getServicePages } from "@/lib/services";
 
@@ -37,17 +37,12 @@ const status =
 		? "sent"
 		: Astro.url.searchParams.get("error");
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const contactPath = `/${locale}/contact/`;
 const structuredData = [
-	{
-		"@context": "https://schema.org",
-		"@type": "ContactPage",
-		name: pageTitle,
-		description: pageDescription,
-		url: new URL(`/${locale}/contact`, site).toString(),
-	},
+	buildContactPage(site, contactPath, pageTitle, pageDescription),
 	buildBreadcrumbList(site, [
-		{ name: t(locale, "nav.home"), path: `/${locale}` },
-		{ name: t(locale, "nav.contact"), path: `/${locale}/contact` },
+		{ name: t(locale, "nav.home"), path: `/${locale}/` },
+		{ name: t(locale, "nav.contact"), path: contactPath },
 	]),
 ];
 ---
@@ -55,6 +50,7 @@ const structuredData = [
 <BaseLayout
 	title={pageTitle}
 	description={pageDescription}
+	canonicalPath={contactPath}
 	structuredData={structuredData}
 >
 	<div class="contact-page">

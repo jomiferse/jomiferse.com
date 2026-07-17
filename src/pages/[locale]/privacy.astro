@@ -14,17 +14,11 @@ const { locale } = Astro.params;
 const page = getTranslations(locale).privacy;
 const cv = getCv(locale);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const privacyPath = `/${locale}/privacy/`;
 const structuredData = [
-	{
-		"@context": "https://schema.org",
-		"@type": "WebPage",
-		name: page.meta.title,
-		description: page.meta.description,
-		url: new URL(`/${locale}/privacy`, site).toString(),
-	},
 	buildBreadcrumbList(site, [
-		{ name: t(locale, "nav.home"), path: `/${locale}` },
-		{ name: page.meta.title, path: `/${locale}/privacy` },
+		{ name: t(locale, "nav.home"), path: `/${locale}/` },
+		{ name: page.meta.title, path: privacyPath },
 	]),
 ];
 
@@ -65,6 +59,7 @@ const providerLabel = (name: string) =>
 	title={page.meta.title}
 	description={page.meta.description}
 	noindex
+	canonicalPath={privacyPath}
 	structuredData={structuredData}
 >
 	<div data-privacy-page class="privacy-page">

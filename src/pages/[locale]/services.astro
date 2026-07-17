@@ -49,7 +49,7 @@ const structuredData = [
 		name: page.schema.name,
 		description: page.schema.description,
 		providerName: cv.name,
-		providerUrl: new URL(`/${locale}/`, site).toString(),
+		providerUrl: new URL(`/${locale}/about/`, site).toString(),
 		areaServed: page.schema.areaServed,
 		sameAs: [cv.links.linkedin, cv.links.github],
 		services: areas.map((area) => ({

@@ -8,6 +8,7 @@ import {
 	buildBreadcrumbList,
 	buildCollectionPage,
 	buildCreativeWork,
+	buildItemList,
 } from "@/lib/seo";
 
 export function getStaticPaths() {
@@ -21,12 +22,29 @@ const pageTitle = page.meta.title;
 const pageDescription = page.meta.description;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const archivePath = `/${locale}/projects/`;
+const projectItems = projects.map((project) => ({
+	name: project.title,
+	path: `/${locale}/projects/${project.slug}/`,
+}));
+const projectItemList = buildItemList(
+	site,
+	archivePath,
+	pageTitle,
+	projectItems,
+);
 const structuredData = [
-	buildCollectionPage(site, archivePath, pageTitle, pageDescription),
+	buildCollectionPage(
+		site,
+		archivePath,
+		pageTitle,
+		pageDescription,
+		projectItemList["@id"] as string,
+	),
 	buildBreadcrumbList(site, [
 		{ name: t(locale, "nav.home"), path: `/${locale}/` },
 		{ name: t(locale, "nav.projects"), path: archivePath },
 	]),
+	projectItemList,
 	...projects.map((project) => {
 		const path = `/${locale}/projects/${project.slug}/`;
 
@@ -35,6 +53,7 @@ const structuredData = [
 			description: project.summary,
 			technologies: project.technologies,
 			path,
+			image: project.img?.imgStatic?.src,
 		});
 	}),
 ];

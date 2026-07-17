@@ -7,10 +7,9 @@ import HomeSpecializedServices from "@/components/home/HomeSpecializedServices.a
 import HomeTrust from "@/components/home/HomeTrust.astro";
 import TechnologyMarquee from "@/components/common/TechnologyMarquee.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
+import { getLocaleStaticPaths, getTranslations } from "@/i18n";
 import { getCv } from "@cv";
 import { getProjectPages } from "@/lib/projects";
-import { buildBreadcrumbList, buildProfilePage } from "@/lib/seo";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
@@ -23,29 +22,12 @@ const featuredProject =
 	projects.find(
 		(project) => project.id === "getyourticket-ticketing-platform",
 	) ?? projects[0];
-const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const page = getTranslations(locale).home.page;
 const pageTitle = page.meta.title;
 const pageDescription = page.meta.description;
-const structuredData = [
-	buildProfilePage(site, locale, {
-		name: cv.name,
-		description: pageDescription,
-		email: cv.email,
-		location: cv.location,
-		links: cv.links,
-	}),
-	buildBreadcrumbList(site, [
-		{ name: t(locale, "nav.home"), path: `/${locale}` },
-	]),
-];
 ---
 
-<BaseLayout
-	title={pageTitle}
-	description={pageDescription}
-	structuredData={structuredData}
->
+<BaseLayout title={pageTitle} description={pageDescription}>
 	<HomeHero
 		locale={locale}
 		content={page.consultancyHero}

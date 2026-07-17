@@ -6,7 +6,7 @@ import ConversionCta from "@/components/common/ConversionCta.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
-import { buildBreadcrumbList, buildCollectionPage } from "@/lib/seo";
+import { buildBreadcrumbList, buildProfilePage } from "@/lib/seo";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
@@ -16,16 +16,19 @@ const { locale } = Astro.params;
 const page = getTranslations(locale).about.page;
 const cv = getCv(locale);
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
+const aboutPath = `/${locale}/about/`;
 const structuredData = [
-	buildCollectionPage(
-		site,
-		`/${locale}/about`,
-		page.meta.title,
-		page.meta.description,
-	),
+	buildProfilePage(site, locale, {
+		name: cv.name,
+		description: page.meta.description,
+		email: cv.email,
+		location: cv.location,
+		image: "/images/avatar.avif",
+		links: cv.links,
+	}),
 	buildBreadcrumbList(site, [
-		{ name: t(locale, "nav.home"), path: `/${locale}` },
-		{ name: t(locale, "nav.about"), path: `/${locale}/about` },
+		{ name: t(locale, "nav.home"), path: `/${locale}/` },
+		{ name: t(locale, "nav.about"), path: aboutPath },
 	]),
 ];
 ---
@@ -33,6 +36,7 @@ const structuredData = [
 <BaseLayout
 	title={page.meta.title}
 	description={page.meta.description}
+	canonicalPath={aboutPath}
 	structuredData={structuredData}
 >
 	<div class="about-page">
