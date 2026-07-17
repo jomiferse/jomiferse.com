@@ -1,4 +1,9 @@
 export const CONSENT_STORAGE_KEY = "jomiferse.cookie-consent.v1";
+export const ANALYTICS_READY_EVENT = "jomiferse:analytics-ready";
+
+export type AnalyticsReadyDetail = {
+	analyticsEnabled: boolean;
+};
 
 export type CookieConsentPreferences = {
 	analytics: boolean;

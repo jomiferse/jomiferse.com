@@ -47,3 +47,25 @@ test("contact-page redirects can reveal a status without JavaScript", async () =
 	assert.match(page, /id="contact-status-send"/);
 	assert.match(page, /\.contact-status:target/);
 });
+
+test("waits for analytics consent to be applied before tracking a lead", async () => {
+	const [page, cookieConsent] = await Promise.all([
+		readFile(
+			new URL("../src/pages/[locale]/contact.astro", import.meta.url),
+			"utf8",
+		),
+		readFile(
+			new URL("../src/components/common/CookieConsent.astro", import.meta.url),
+			"utf8",
+		),
+	]);
+
+	assert.match(
+		cookieConsent,
+		/updateConsentMode\(preferences\);\s*loadGoogleAnalytics\(preferences\);\s*announceAnalyticsReady\(preferences\);/,
+	);
+	assert.match(
+		page,
+		/window\.addEventListener\(\s*ANALYTICS_READY_EVENT,\s*trackConfirmedContactLead/,
+	);
+});

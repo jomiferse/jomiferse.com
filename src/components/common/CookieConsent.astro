@@ -138,12 +138,14 @@ const privacyHref = `/${locale}/privacy`;
 
 <script>
 	import {
+		ANALYTICS_READY_EVENT,
 		CONSENT_STORAGE_KEY,
 		buildConsentModeState,
 		getInitialAnalyticsPreference,
 		getShouldLoadAnalytics,
 		parseStoredCookieConsent,
 		serializeCookieConsent,
+		type AnalyticsReadyDetail,
 		type CookieConsentPreferences,
 	} from "@/lib/cookie-consent";
 
@@ -188,6 +190,22 @@ const privacyHref = `/${locale}/privacy`;
 
 		window.gtag?.("js", new Date());
 		window.gtag?.("config", measurementId, { anonymize_ip: true });
+	};
+
+	const announceAnalyticsReady = (preferences: CookieConsentPreferences) => {
+		window.dispatchEvent(
+			new CustomEvent<AnalyticsReadyDetail>(ANALYTICS_READY_EVENT, {
+				detail: {
+					analyticsEnabled: getShouldLoadAnalytics(preferences, measurementId),
+				},
+			}),
+		);
+	};
+
+	const applyAnalyticsPreferences = (preferences: CookieConsentPreferences) => {
+		updateConsentMode(preferences);
+		loadGoogleAnalytics(preferences);
+		announceAnalyticsReady(preferences);
 	};
 
 	const hideBanner = () => {
@@ -237,8 +255,7 @@ const privacyHref = `/${locale}/privacy`;
 			CONSENT_STORAGE_KEY,
 			serializeCookieConsent(preferences),
 		);
-		updateConsentMode(preferences);
-		loadGoogleAnalytics(preferences);
+		applyAnalyticsPreferences(preferences);
 		hideBanner();
 		closeSettings();
 	};
@@ -276,8 +293,7 @@ const privacyHref = `/${locale}/privacy`;
 
 	const storedPreferences = getStoredPreferences();
 	if (storedPreferences) {
-		updateConsentMode(storedPreferences);
-		loadGoogleAnalytics(storedPreferences);
+		applyAnalyticsPreferences(storedPreferences);
 		hideBanner();
 	} else {
 		showBanner();

@@ -174,8 +174,8 @@ const structuredData = [
 	<script>
 		import { consumeContactLeadRedirect } from "@/lib/contact-analytics";
 		import {
-			CONSENT_STORAGE_KEY,
-			parseStoredCookieConsent,
+			ANALYTICS_READY_EVENT,
+			type AnalyticsReadyDetail,
 		} from "@/lib/cookie-consent";
 
 		const params = new URLSearchParams(window.location.search);
@@ -186,12 +186,11 @@ const structuredData = [
 				?.classList.add("contact-status--visible");
 		}
 
-		const trackConfirmedContactLead = () => {
-			const preferences = parseStoredCookieConsent(
-				localStorage.getItem(CONSENT_STORAGE_KEY),
-			);
+		const trackConfirmedContactLead = (event: Event) => {
+			const { analyticsEnabled } = (event as CustomEvent<AnalyticsReadyDetail>)
+				.detail;
 			const cleanContactUrl = consumeContactLeadRedirect(window.location.href, {
-				analyticsEnabled: preferences?.analytics === true,
+				analyticsEnabled,
 				gtag: window.gtag,
 			});
 			if (cleanContactUrl) {
@@ -199,13 +198,7 @@ const structuredData = [
 			}
 		};
 
-		if (document.readyState === "loading") {
-			document.addEventListener("DOMContentLoaded", trackConfirmedContactLead, {
-				once: true,
-			});
-		} else {
-			trackConfirmedContactLead();
-		}
+		window.addEventListener(ANALYTICS_READY_EVENT, trackConfirmedContactLead);
 	</script>
 </BaseLayout>
 
