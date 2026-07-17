@@ -254,6 +254,21 @@ export const auditBuildArtifact = async (
 	const granadaPage = canonicalMap.get(
 		normalizePublicUrl("/es/diseno-web-granada/"),
 	);
+	if (!granadaPage?.html.includes('href="/es/contact/')) {
+		failures.push("Granada landing is missing its localized contact link");
+	}
+	for (const page of pages) {
+		if (page.html.includes("data-global-contact-dialog")) {
+			failures.push(
+				`${relative(root, page.file)}: still renders the global contact dialog`,
+			);
+		}
+		if (page.html.includes("data-contact-dialog-open")) {
+			failures.push(
+				`${relative(root, page.file)}: still renders a contact dialog trigger`,
+			);
+		}
+	}
 	if (
 		!granadaPage ||
 		!JSON.stringify(granadaPage.schemas).includes("Granada, España y remoto")

@@ -172,12 +172,39 @@ const structuredData = [
 	</div>
 
 	<script>
+		import { consumeContactLeadRedirect } from "@/lib/contact-analytics";
+		import {
+			CONSENT_STORAGE_KEY,
+			parseStoredCookieConsent,
+		} from "@/lib/cookie-consent";
+
 		const params = new URLSearchParams(window.location.search);
 		const status = params.get("sent") === "1" ? "sent" : params.get("error");
 		if (status) {
 			document
 				.querySelector<HTMLElement>(`[data-contact-status="${status}"]`)
 				?.classList.add("contact-status--visible");
+		}
+
+		const trackConfirmedContactLead = () => {
+			const preferences = parseStoredCookieConsent(
+				localStorage.getItem(CONSENT_STORAGE_KEY),
+			);
+			const cleanContactUrl = consumeContactLeadRedirect(window.location.href, {
+				analyticsEnabled: preferences?.analytics === true,
+				gtag: window.gtag,
+			});
+			if (cleanContactUrl) {
+				window.history.replaceState(window.history.state, "", cleanContactUrl);
+			}
+		};
+
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", trackConfirmedContactLead, {
+				once: true,
+			});
+		} else {
+			trackConfirmedContactLead();
 		}
 	</script>
 </BaseLayout>

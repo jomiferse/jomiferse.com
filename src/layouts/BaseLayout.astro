@@ -1,7 +1,6 @@
 ---
 import Footer from "@/components/common/Footer.astro";
 import CookieConsent from "@/components/common/CookieConsent.astro";
-import GlobalContactDialog from "@/components/common/GlobalContactDialog.astro";
 import GlobalExitIntent from "@/components/common/GlobalExitIntent.astro";
 import GoogleAnalytics from "@/components/common/GoogleAnalytics.astro";
 import Header from "@/components/common/Header.astro";
@@ -55,7 +54,7 @@ const {
 
 const locale: Locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
-const showGlobalContact = !isExitIntentRouteExcluded(Astro.url.pathname);
+const showExitIntent = !isExitIntentRouteExcluded(Astro.url.pathname);
 const resolvedPopupContext = {
 	kind: popupContext?.kind ?? getExitIntentContext(Astro.url.pathname),
 	title: popupContext?.title,
@@ -295,20 +294,14 @@ const jsonLd = JSON.stringify([...baseStructuredData, ...extraStructuredData]);
 		</main>
 		<Footer locale={locale} />
 		{
-			showGlobalContact ? (
-				<>
-					<GlobalContactDialog
-						locale={locale}
-						sourcePath={Astro.url.pathname}
-					/>
-					<GlobalExitIntent
-						locale={locale}
-						context={resolvedPopupContext.kind}
-						contextTitle={resolvedPopupContext.title}
-						service={resolvedPopupContext.service}
-						scope={resolvedPopupContext.scope}
-					/>
-				</>
+			showExitIntent ? (
+				<GlobalExitIntent
+					locale={locale}
+					context={resolvedPopupContext.kind}
+					contextTitle={resolvedPopupContext.title}
+					service={resolvedPopupContext.service}
+					scope={resolvedPopupContext.scope}
+				/>
 			) : null
 		}
 		<CookieConsent locale={locale} />
