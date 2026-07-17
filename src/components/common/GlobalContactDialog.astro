@@ -199,6 +199,7 @@ const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
 </style>
 
 <script>
+	import { trackContactLead } from "@/lib/contact-analytics";
 	import { parseContactSubmissionResult } from "@/lib/contact-submission";
 
 	const contactDialog = document.getElementById("global-contact-dialog");
@@ -393,6 +394,7 @@ const whatsappHref = `https://wa.me/34609221290?text=${encodeURIComponent(
 			});
 			const result = parseContactSubmissionResult(response.url);
 			showContactStatus(result);
+			trackContactLead(result, window.gtag);
 			if (result === "success") {
 				form.reset();
 				contactRoot
