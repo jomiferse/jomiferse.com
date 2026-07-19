@@ -150,8 +150,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("es", {
 			slug: "mantenimiento-spring-boot",
 			translationKey: "spring-boot-maintenance",
-			metaTitle:
-				"Mantenimiento Spring Boot para empresas | José Miguel Fernández",
+			metaTitle: "Mantenimiento Spring Boot para empresas",
 			metaDescription:
 				"Mantenimiento y evolución de aplicaciones Java Spring Boot: incidencias, APIs, rendimiento, seguridad, deuda técnica y entregas controladas.",
 			keywords: [
@@ -260,8 +259,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("es", {
 			slug: "modernizacion-backend-legacy",
 			translationKey: "legacy-backend-modernization",
-			metaTitle:
-				"Modernización de backend legacy por fases | José Miguel Fernández",
+			metaTitle: "Modernización de backend legacy por fases",
 			metaDescription:
 				"Modernización de backends legacy sin reescrituras a ciegas: diagnóstico, límites, migración incremental, pruebas y convivencia por fases.",
 			keywords: [
@@ -370,8 +368,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("es", {
 			slug: "auditoria-backend-api-arquitectura",
 			translationKey: "backend-api-architecture-audit",
-			metaTitle:
-				"Auditoría de backend, API y arquitectura | José Miguel Fernández",
+			metaTitle: "Auditoría de backend, API y arquitectura",
 			metaDescription:
 				"Auditoría técnica de backend, APIs y arquitectura para priorizar riesgos, rendimiento, seguridad, mantenibilidad y próximos pasos.",
 			keywords: [
@@ -477,8 +474,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("es", {
 			slug: "integracion-crm-formularios-pagos-erp",
 			translationKey: "crm-forms-payments-erp-integration",
-			metaTitle:
-				"Integración de CRM, formularios, pagos y ERP | José Miguel Fernández",
+			metaTitle: "Integración de CRM, formularios, pagos y ERP",
 			metaDescription:
 				"Integración de CRM, formularios web, pagos, ERP y hojas de cálculo con validación, reintentos, alertas y trazabilidad.",
 			keywords: [
@@ -588,8 +584,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("es", {
 			slug: "automatizacion-ia-operaciones-documentos",
 			translationKey: "ai-automation-operations-documents",
-			metaTitle:
-				"Automatización con IA para operaciones y documentos | José Miguel Fernández",
+			metaTitle: "Automatización con IA para operaciones y documentos",
 			metaDescription:
 				"Automatización con IA para clasificar mensajes, extraer datos, revisar documentos y preparar borradores con control humano.",
 			keywords: [
@@ -697,8 +692,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("es", {
 			slug: "dashboards-paneles-internos",
 			translationKey: "dashboards-internal-admin-panels",
-			metaTitle:
-				"Dashboards y paneles internos a medida | José Miguel Fernández",
+			metaTitle: "Dashboards y paneles internos a medida",
 			metaDescription:
 				"Dashboards y paneles internos para consultar datos, revisar trabajo, gestionar estados y operar sin depender de hojas dispersas.",
 			keywords: [
@@ -805,8 +799,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("es", {
 			slug: "sustituir-excel-software",
 			translationKey: "replace-excel-with-software",
-			metaTitle:
-				"Sustituir Excel por software a medida | José Miguel Fernández",
+			metaTitle: "Sustituir Excel por software a medida",
 			metaDescription:
 				"Software para sustituir hojas Excel críticas con datos centralizados, validación, permisos, historial e integraciones por fases.",
 			keywords: [
@@ -917,8 +910,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("en", {
 			slug: "spring-boot-maintenance",
 			translationKey: "spring-boot-maintenance",
-			metaTitle:
-				"Spring Boot Maintenance for Companies | José Miguel Fernández",
+			metaTitle: "Spring Boot Maintenance for Companies",
 			metaDescription:
 				"Java Spring Boot maintenance and application evolution covering incidents, APIs, performance, security, technical debt and controlled delivery.",
 			keywords: [
@@ -1021,7 +1013,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("en", {
 			slug: "legacy-backend-modernization",
 			translationKey: "legacy-backend-modernization",
-			metaTitle: "Phased Legacy Backend Modernization | José Miguel Fernández",
+			metaTitle: "Phased Legacy Backend Modernization",
 			metaDescription:
 				"Legacy backend modernization without blind rewrites: diagnosis, boundaries, incremental migration, characterization tests and phased coexistence.",
 			keywords: [
@@ -1125,7 +1117,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("en", {
 			slug: "backend-api-architecture-audit",
 			translationKey: "backend-api-architecture-audit",
-			metaTitle: "Backend, API and Architecture Audit | José Miguel Fernández",
+			metaTitle: "Backend, API and Architecture Audit",
 			metaDescription:
 				"Technical backend, API and architecture audit to prioritize risks, performance, security, maintainability and practical next steps.",
 			keywords: ["backend audit", "API audit", "software architecture review"],
@@ -1223,8 +1215,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("en", {
 			slug: "crm-forms-payments-erp-integration",
 			translationKey: "crm-forms-payments-erp-integration",
-			metaTitle:
-				"CRM, Forms, Payments and ERP Integration | José Miguel Fernández",
+			metaTitle: "CRM, Forms, Payments and ERP Integration",
 			metaDescription:
 				"Integrate CRM, website forms, payments, ERP and spreadsheets with validation, retries, alerts and traceable data movement.",
 			keywords: [
@@ -1333,8 +1324,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("en", {
 			slug: "ai-automation-operations-documents",
 			translationKey: "ai-automation-operations-documents",
-			metaTitle:
-				"AI Automation for Operations and Documents | José Miguel Fernández",
+			metaTitle: "AI Automation for Operations and Documents",
 			metaDescription:
 				"AI automation for classifying messages, extracting data, reviewing documents and preparing drafts with human control.",
 			keywords: [
@@ -1436,8 +1426,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("en", {
 			slug: "dashboards-internal-admin-panels",
 			translationKey: "dashboards-internal-admin-panels",
-			metaTitle:
-				"Custom Dashboards and Internal Admin Panels | José Miguel Fernández",
+			metaTitle: "Custom Dashboards and Internal Admin Panels",
 			metaDescription:
 				"Custom dashboards and internal panels for reviewing data, managing work, tracking states and operating without scattered spreadsheets.",
 			keywords: [
@@ -1544,7 +1533,7 @@ const focusedCommercialLandingPages: Record<Locale, CommercialLandingPage[]> = {
 		createFocusedLanding("en", {
 			slug: "replace-excel-with-software",
 			translationKey: "replace-excel-with-software",
-			metaTitle: "Replace Excel with Custom Software | José Miguel Fernández",
+			metaTitle: "Replace Excel with Custom Software",
 			metaDescription:
 				"Software for replacing critical Excel workflows with centralized data, validation, permissions, history and phased integrations.",
 			keywords: [
@@ -1650,7 +1639,7 @@ const commercialLandingPages = {
 		{
 			slug: "software-a-medida-pymes",
 			translationKey: "custom-software-small-businesses",
-			metaTitle: "Software a medida para pymes | José Miguel Fernández",
+			metaTitle: "Software a medida para pymes",
 			metaDescription:
 				"Software a medida para pymes que necesitan ordenar procesos, sustituir Excel o conectar herramientas sin crear complejidad innecesaria.",
 			keywords: [
@@ -1801,8 +1790,7 @@ const commercialLandingPages = {
 		{
 			slug: "automatizacion-tareas-administrativas",
 			translationKey: "administrative-task-automation",
-			metaTitle:
-				"Automatización de tareas administrativas | José Miguel Fernández",
+			metaTitle: "Automatización de tareas administrativas",
 			metaDescription:
 				"Automatización de tareas administrativas para reducir copia manual, emails repetidos, reportes y movimientos de datos entre herramientas.",
 			keywords: [
@@ -1952,8 +1940,7 @@ const commercialLandingPages = {
 		{
 			slug: "consultor-tecnologico-pequenas-empresas",
 			translationKey: "technology-consultant-small-businesses",
-			metaTitle:
-				"Consultor tecnológico para pequeñas empresas | José Miguel Fernández",
+			metaTitle: "Consultor tecnológico para pequeñas empresas",
 			metaDescription:
 				"Consultor tecnológico para pequeñas empresas que necesitan decidir qué construir, revisar proveedores o acotar una inversión digital.",
 			keywords: [
@@ -2103,8 +2090,7 @@ const commercialLandingPages = {
 		{
 			slug: "integracion-herramientas-negocio",
 			translationKey: "business-tools-integration",
-			metaTitle:
-				"Integración de herramientas de negocio | José Miguel Fernández",
+			metaTitle: "Integración de herramientas de negocio",
 			metaDescription:
 				"Integración de herramientas de negocio para conectar CRM, formularios, pagos, hojas de cálculo, APIs y sistemas internos.",
 			keywords: [
@@ -2254,8 +2240,7 @@ const commercialLandingPages = {
 		{
 			slug: "diseno-web-granada",
 			translationKey: "local-web-design",
-			metaTitle:
-				"Diseño web Granada para captar clientes | José Miguel Fernández",
+			metaTitle: "Diseño web Granada para captar clientes",
 			metaDescription:
 				"Diseño y desarrollo páginas web para negocios de Granada. Webs rápidas, claras y preparadas para convertir visitas en contactos.",
 			keywords: [
@@ -2413,7 +2398,7 @@ const commercialLandingPages = {
 		{
 			slug: "custom-software-small-businesses",
 			translationKey: "custom-software-small-businesses",
-			metaTitle: "Custom Software for Small Businesses | José Miguel Fernández",
+			metaTitle: "Custom Software for Small Businesses",
 			metaDescription:
 				"Custom software for small businesses that need to organize workflows, replace spreadsheets or connect tools without unnecessary complexity.",
 			keywords: [
@@ -2563,7 +2548,7 @@ const commercialLandingPages = {
 		{
 			slug: "administrative-task-automation",
 			translationKey: "administrative-task-automation",
-			metaTitle: "Administrative Task Automation | José Miguel Fernández",
+			metaTitle: "Administrative Task Automation",
 			metaDescription:
 				"Administrative task automation for reducing manual copying, repeated emails, reports and data movement between business tools.",
 			keywords: [
@@ -2713,8 +2698,7 @@ const commercialLandingPages = {
 		{
 			slug: "technology-consultant-small-businesses",
 			translationKey: "technology-consultant-small-businesses",
-			metaTitle:
-				"Technology Consultant for Small Businesses | José Miguel Fernández",
+			metaTitle: "Technology Consultant for Small Businesses",
 			metaDescription:
 				"Technology consultant for small businesses that need to decide what to build, review providers or scope a digital investment.",
 			keywords: [
@@ -2864,7 +2848,7 @@ const commercialLandingPages = {
 		{
 			slug: "business-tools-integration",
 			translationKey: "business-tools-integration",
-			metaTitle: "Business Tools Integration | José Miguel Fernández",
+			metaTitle: "Business Tools Integration",
 			metaDescription:
 				"Business tools integration for connecting CRMs, forms, payments, spreadsheets, APIs and internal systems with reliable data flow.",
 			keywords: [
@@ -3014,7 +2998,7 @@ const commercialLandingPages = {
 		{
 			slug: "web-design-granada",
 			translationKey: "local-web-design",
-			metaTitle: "Web design in Granada for businesses | José Miguel Fernández",
+			metaTitle: "Web design in Granada for businesses",
 			metaDescription:
 				"Web design and development for businesses in Granada. Fast, clear websites built to turn visits into useful enquiries.",
 			keywords: [

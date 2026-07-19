@@ -123,91 +123,89 @@ const offeringMeta: Partial<
 > = {
 	es: {
 		"web-wordpress:0": {
-			title: "Diseño web WordPress para negocios | José Miguel Fernández",
+			title: "Diseño web WordPress para negocios",
 			description:
 				"Diseño web WordPress para negocios que necesitan una web clara, editable, rápida y preparada para captar contactos cualificados.",
 		},
 		"web-wordpress:1": {
-			title: "Servicio de mantenimiento WordPress | José Miguel Fernández",
+			title: "Servicio de mantenimiento WordPress",
 			description:
 				"Servicio de mantenimiento WordPress con planes mensuales para actualizaciones, copias, seguridad, errores y soporte técnico.",
 		},
 		"web-wordpress:2": {
-			title:
-				"Optimización WordPress, velocidad y Core Web Vitals | José Miguel Fernández",
+			title: "Optimización WordPress, velocidad y Core Web Vitals",
 			description:
 				"Optimización WordPress para mejorar velocidad, plugins, Core Web Vitals, estructura técnica y estabilidad de una web existente.",
 		},
 		"web-wordpress:3": {
-			title: "WooCommerce para tiendas online | José Miguel Fernández",
+			title: "WooCommerce para tiendas online",
 			description:
 				"Desarrollo y mejora de tiendas WooCommerce con catálogo, pagos, envíos, rendimiento e integraciones útiles para vender mejor.",
 		},
 		"web-wordpress:4": {
-			title:
-				"Migración a WordPress sin perder claridad | José Miguel Fernández",
+			title: "Migración a WordPress sin perder claridad",
 			description:
 				"Migración a WordPress de webs antiguas o difíciles de mantener, cuidando contenido, estructura, SEO básico y base técnica.",
 		},
 		"it-consulting:4": {
-			title: "Integraciones API para empresas | José Miguel Fernández",
+			title: "Integraciones API para empresas",
 			description:
 				"Integraciones API para conectar webs, CRMs, pagos, formularios, ERPs y herramientas internas sin copiar datos a mano.",
 		},
 		"it-consulting:5": {
-			title: "Automatización de procesos para empresas | José Miguel Fernández",
+			title: "Automatización de procesos para empresas",
 			description:
 				"Automatización de procesos para reducir tareas manuales, mover datos entre herramientas y hacer visibles errores operativos.",
 		},
 		"ai-automation:0": {
-			title: "IA para empresas con casos prácticos | José Miguel Fernández",
+			title: "IA para empresas con casos prácticos",
 			description:
 				"IA para empresas aplicada a procesos reales: clasificación, búsqueda, asistencia interna, reporting y reducción de trabajo manual.",
 		},
 		"ai-automation:1": {
-			title: "Chatbots para empresas y asistentes | José Miguel Fernández",
+			title: "Chatbots para empresas y asistentes",
 			description:
 				"Chatbots para empresas que responden dudas, filtran contactos o consultan documentación con límites y revisión humana.",
 		},
 		"ai-automation:2": {
-			title: "Automatizaciones con IA para empresas | José Miguel Fernández",
+			title: "Automatizaciones con IA para empresas",
 			description:
 				"Automatizaciones con IA para emails, formularios, clasificación de mensajes, extracción de datos y reporting operativo.",
 		},
 		"ai-automation:3": {
-			title: "Agentes de IA para empresas | José Miguel Fernández",
+			title: "Agentes de IA para empresas",
 			description:
 				"Agentes de IA para empresas que conectan datos y herramientas para ejecutar flujos concretos con permisos, trazabilidad y control humano.",
 		},
 		"it-consulting:3": {
-			title: "Software a medida para empresas | José Miguel Fernández",
+			title: "Software a medida para empresas",
 			description:
 				"Software a medida para crear herramientas internas, APIs, paneles y soluciones concretas adaptadas al flujo real del negocio.",
 		},
 	},
 	en: {
 		"web-wordpress:0": {
-			title: "WordPress Web Design for Businesses | José Miguel Fernández",
+			title: "WordPress Web Design for Businesses",
 			description:
 				"WordPress web design for businesses that need a clear, editable, fast website built to generate qualified conversations.",
 		},
 		"web-wordpress:1": {
-			title: "WordPress Maintenance Service | José Miguel Fernández",
+			title: "WordPress Maintenance Service",
 			description:
 				"WordPress maintenance plans covering updates, backups, security checks, bug fixes and practical support for business websites.",
 		},
 		"ai-automation:1": {
-			title: "Chatbots for Businesses and Assistants | José Miguel Fernández",
+			title: "Chatbots for Businesses and Assistants",
 			description:
 				"Chatbots for businesses that answer questions, qualify enquiries or search documents with clear limits and human review.",
 		},
 		"ai-automation:3": {
-			title: "AI Agents for Businesses | José Miguel Fernández",
+			title: "AI Agents for Businesses",
 			description:
 				"AI agents for businesses that connect tools and data to run defined workflows with permissions, traceability and human oversight.",
 		},
 		"it-consulting:5": {
-			title: "Process Automation for Companies | José Miguel Fernández",
+			title: "Process Automation for Companies",
 			description:
 				"Process automation for reducing manual tasks, moving data between tools and making operational errors visible.",
 		},
@@ -220,9 +218,7 @@ const getOfferingMetaTitle = (
 	title: string,
 ) =>
 	offeringMeta[locale]?.[translationKey]?.title ??
-	(locale === "es"
-		? `${title} para empresas | José Miguel Fernández`
-		: `${title} for businesses | José Miguel Fernández`);
+	(locale === "es" ? `${title} para empresas` : `${title} for businesses`);
 
 const getOfferingMetaDescription = (
 	locale: Locale,

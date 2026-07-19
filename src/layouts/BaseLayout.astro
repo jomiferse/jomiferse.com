@@ -98,10 +98,7 @@ const ogImageType = image.endsWith(".png")
 			? "image/jpeg"
 			: undefined;
 const robots = noindex ? "noindex,follow" : "index,follow";
-const seoTitle =
-	title.length > 65
-		? title.replace(/\s+\|\s+José Miguel Fernández$/, "")
-		: title;
+const seoTitle = title;
 
 const baseStructuredData = [
 	buildPerson(schemaSite, locale, {
