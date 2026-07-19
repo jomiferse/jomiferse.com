@@ -142,7 +142,7 @@ test("redirects a valid submission to success and preserves its selection", asyn
 	assert.equal(response.status, 303);
 	assert.equal(
 		response.headers.get("location"),
-		"/en/contact?sent=1&service=business-website&scope=project#contact-status-sent",
+		"/en/contact/?sent=1&service=business-website&scope=project#contact-status-sent",
 	);
 	assert.equal(harness.messages.length, 1);
 	assert.equal(harness.messages[0]?.from, environment.from);
@@ -185,7 +185,7 @@ test("redirects empty, malformed and excessive bodies to validation", async () =
 		assert.equal(response.status, 303);
 		assert.equal(
 			response.headers.get("location"),
-			"/es/contact?error=missing#contact-status-missing",
+			"/es/contact/?error=missing#contact-status-missing",
 		);
 	}
 	assert.equal(harness.messages.length, 0);
@@ -200,7 +200,7 @@ test("returns neutral success without sending when the honeypot is filled", asyn
 	assert.equal(response.status, 303);
 	assert.equal(
 		response.headers.get("location"),
-		"/en/contact?sent=1&service=business-website&scope=project#contact-status-sent",
+		"/en/contact/?sent=1&service=business-website&scope=project#contact-status-sent",
 	);
 	assert.equal(harness.messages.length, 0);
 });
@@ -212,7 +212,7 @@ test("returns the same neutral success when the client is rate limited", async (
 	assert.equal(response.status, 303);
 	assert.equal(
 		response.headers.get("location"),
-		"/en/contact?sent=1&service=business-website&scope=project#contact-status-sent",
+		"/en/contact/?sent=1&service=business-website&scope=project#contact-status-sent",
 	);
 	assert.equal(harness.messages.length, 0);
 });
@@ -229,7 +229,7 @@ test("redirects controlled configuration and provider failures", async () => {
 		assert.equal(response.status, 303);
 		assert.equal(
 			response.headers.get("location"),
-			"/en/contact?error=send&service=business-website&scope=project#contact-status-send",
+			"/en/contact/?error=send&service=business-website&scope=project#contact-status-send",
 		);
 	}
 	assert.equal(missingConfig.messages.length, 0);

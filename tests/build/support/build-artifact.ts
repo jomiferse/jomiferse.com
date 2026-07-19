@@ -484,6 +484,16 @@ export const auditBuildArtifact = async (
 				continue;
 			}
 			if (url.origin !== SITE) continue;
+			if (
+				url.pathname !== "/" &&
+				!url.pathname.endsWith("/") &&
+				!url.pathname.startsWith("/api/") &&
+				!extname(url.pathname)
+			) {
+				failures.push(
+					`${relative(root, page.file)}: internal HTML link is not canonical ${href}`,
+				);
+			}
 			const path = `${url.pathname.replace(/\/+$/, "") || "/"}/`;
 			if (aliasPaths.has(path)) {
 				failures.push(
@@ -542,6 +552,11 @@ export const auditBuildArtifact = async (
 		const canonical = normalizePublicUrl(page.canonical);
 		if (!sitemapUrls.has(canonical))
 			failures.push(`sitemap missing ${canonical}`);
+	}
+	for (const contactPath of ["/es/contact/", "/en/contact/"]) {
+		if (!sitemapUrls.has(normalizePublicUrl(contactPath))) {
+			failures.push(`sitemap missing indexable contact page ${contactPath}`);
+		}
 	}
 	for (const alias of aliasPaths) {
 		if (sitemapUrls.has(normalizePublicUrl(alias))) {

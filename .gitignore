@@ -42,5 +42,6 @@ pnpm-store/
 .agents/
 .superpowers/
 .hermes/
+.seo-cache/
 skills-lock.json
 AGENTS.md

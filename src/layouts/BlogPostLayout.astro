@@ -7,6 +7,7 @@ import {
 	resolveBlogCommercialCta,
 	type BlogCommercialContext,
 } from "@/lib/blog-commercial";
+import { getCv } from "@cv";
 
 interface Frontmatter {
 	title: string;
@@ -42,6 +43,9 @@ const wasUpdated =
 	frontmatter.dateModified &&
 	frontmatter.dateModified.getTime() !== frontmatter.date.getTime();
 const postCopy = getTranslations(locale).blog.post;
+const cv = getCv(locale);
+const showAuthorCredential =
+	!frontmatter.author || frontmatter.author === cv.name;
 const commercialCta = resolveBlogCommercialCta(
 	locale,
 	frontmatter.commercial,
@@ -177,6 +181,32 @@ const commercialCta = resolveBlogCommercialCta(
 				>
 					{frontmatter.description}
 				</p>
+			) : null
+		}
+
+		{
+			showAuthorCredential ? (
+				<a
+					data-blog-author-credential
+					href={`/${locale}/about/`}
+					class="mx-auto mt-6 flex max-w-3xl items-center justify-center gap-3 border-t border-[var(--surface-border)] pt-5 text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
+				>
+					<Icon
+						name="user"
+						class="h-5 w-5 text-[var(--action)]"
+						aria-hidden="true"
+					/>
+					<span class="text-sm leading-6 text-[var(--text-muted)]">
+						<strong class="text-[var(--text)]">
+							{frontmatter.author ?? cv.name}
+						</strong>
+						{" · "}
+						{cv.currentRole}
+						{" · "}
+						{cv.yearsWorking}+{" "}
+						{locale === "es" ? "años de experiencia" : "years of experience"}
+					</span>
+				</a>
 			) : null
 		}
 	</header>

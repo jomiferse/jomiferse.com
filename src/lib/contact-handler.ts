@@ -150,7 +150,7 @@ const redirectToContact = (
 	return new Response(null, {
 		status: 303,
 		headers: {
-			Location: `/${redirect.locale}/contact?${params.toString()}#contact-status-${statusTarget}`,
+			Location: `/${redirect.locale}/contact/?${params.toString()}#contact-status-${statusTarget}`,
 		},
 	});
 };

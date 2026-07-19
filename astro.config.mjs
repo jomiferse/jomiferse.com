@@ -88,11 +88,11 @@ function rehypeEditorialImages() {
 }
 
 export default defineConfig({
+	trailingSlash: "always",
 	redirects: {
 		"/": "/es/",
-		"/contact": "/es/contact",
-		"/es/experience": "/es/about",
-		"/en/experience": "/en/about",
+		"/es/experience": "/es/about/",
+		"/en/experience": "/en/about/",
 		...legacyRedirects,
 	},
 	vite: {
@@ -108,6 +108,10 @@ export default defineConfig({
 	integrations: [
 		icon(),
 		sitemap({
+			customPages: [
+				"https://www.jomiferse.com/en/contact/",
+				"https://www.jomiferse.com/es/contact/",
+			],
 			filter: (page) => {
 				const pathname = new URL(page, siteUrl).pathname;
 

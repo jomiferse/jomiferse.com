@@ -48,6 +48,14 @@ test("contact-page redirects can reveal a status without JavaScript", async () =
 	assert.match(page, /\.contact-status:target/);
 });
 
+test("redirects invalid locales to the canonical Spanish contact URL", async () => {
+	const page = await readFile(
+		new URL("../src/pages/[locale]/contact.astro", import.meta.url),
+		"utf8",
+	);
+	assert.match(page, /Astro\.redirect\("\/es\/contact\/", 302\)/);
+});
+
 test("waits for analytics consent to be applied before tracking a lead", async () => {
 	const [page, cookieConsent] = await Promise.all([
 		readFile(

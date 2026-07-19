@@ -307,9 +307,31 @@ const getServiceHref = (slug: string) =>
 		.consultancy-option {
 			min-height: auto;
 		}
+		.consultancy-pitch {
+			display: flex;
+			flex-direction: column;
+		}
+		.consultancy-pitch__intro {
+			order: 1;
+		}
 		.consultancy-pitch__actions {
+			order: 2;
 			align-items: stretch;
 			flex-direction: column;
+			margin-top: 1.25rem;
+		}
+		.consultancy-pitch__note {
+			order: 3;
+		}
+		.consultancy-pitch__evidence {
+			order: 4;
+			margin-top: 1.6rem;
+		}
+		.consultancy-pitch__challenge {
+			order: 5;
+		}
+		.consultancy-case-preview {
+			order: 6;
 		}
 		.consultancy-pitch__case-link {
 			justify-content: center;

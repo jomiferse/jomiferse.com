@@ -13,7 +13,7 @@ export const prerender = false;
 
 const localeParam = Astro.params.locale;
 if (localeParam !== "en" && localeParam !== "es") {
-	return Astro.redirect("/es/contact", 302);
+	return Astro.redirect("/es/contact/", 302);
 }
 const locale: Locale = localeParam;
 const cv = getCv(locale);

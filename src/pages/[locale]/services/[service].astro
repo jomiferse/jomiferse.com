@@ -8,6 +8,7 @@ import ServiceProofCard from "@/components/services/ServiceProofCard.astro";
 import ServiceTrustStrip from "@/components/services/ServiceTrustStrip.astro";
 import { getTranslations, locales, t, type Locale } from "@/i18n";
 import { getProjectPages } from "@/lib/projects";
+import { getServiceSectionTitles } from "@/lib/service-section-titles";
 import {
 	getRelatedServices,
 	getService,
@@ -35,6 +36,7 @@ if (!service) throw new Error(`Service not found: ${locale}/${slug}`);
 const cv = getCv(locale);
 const translations = getTranslations(locale);
 const serviceCopy = translations.services.detail;
+const sectionTitles = getServiceSectionTitles(locale, service.title);
 const commercial = translations.services.commercial;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const servicePath = `/${locale}/services/${service.slug}/`;
@@ -193,7 +195,7 @@ const structuredData = [
 			<header class="service-detail-heading">
 				<div>
 					<p class="eyebrow">{serviceCopy.outcomeEyebrow}</p>
-					<h2 id="service-outcome-title">{serviceCopy.outcomeTitle}</h2>
+					<h2 id="service-outcome-title">{sectionTitles.outcome}</h2>
 				</div>
 				<p>{serviceCopy.outcomeIntro}</p>
 			</header>
@@ -231,7 +233,7 @@ const structuredData = [
 			<header class="service-detail-heading">
 				<div>
 					<p class="eyebrow">{serviceCopy.pricingEyebrow}</p>
-					<h2 id="service-pricing-title">{serviceCopy.pricingTitle}</h2>
+					<h2 id="service-pricing-title">{sectionTitles.pricing}</h2>
 				</div>
 				<p>{serviceCopy.pricingIntro}</p>
 			</header>
@@ -253,7 +255,7 @@ const structuredData = [
 			<header class="service-detail-heading">
 				<div>
 					<p class="eyebrow">{serviceCopy.scopeEyebrow}</p>
-					<h2 id="service-scope-title">{serviceCopy.scopeTitle}</h2>
+					<h2 id="service-scope-title">{sectionTitles.scope}</h2>
 				</div>
 				<p>{serviceCopy.pricingNote}</p>
 			</header>
@@ -302,7 +304,7 @@ const structuredData = [
 			<header class="service-detail-heading">
 				<div>
 					<p class="eyebrow">{serviceCopy.process}</p>
-					<h2 id="service-process-title">{serviceCopy.processTitle}</h2>
+					<h2 id="service-process-title">{sectionTitles.process}</h2>
 				</div>
 				<p>{service.whyMe[0]}</p>
 			</header>
@@ -329,7 +331,7 @@ const structuredData = [
 			<header class="service-detail-heading">
 				<div>
 					<p class="eyebrow">{serviceCopy.proofEyebrow}</p>
-					<h2 id="service-proof-title">{serviceCopy.proofTitle}</h2>
+					<h2 id="service-proof-title">{sectionTitles.proof}</h2>
 				</div>
 				<p>{serviceCopy.blogText}</p>
 			</header>
@@ -408,7 +410,7 @@ const structuredData = [
 			<header class="service-detail-heading">
 				<div>
 					<p class="eyebrow">{serviceCopy.faq}</p>
-					<h2 id="service-faq-title">{serviceCopy.faqIntro}</h2>
+					<h2 id="service-faq-title">{sectionTitles.faq}</h2>
 				</div>
 			</header>
 

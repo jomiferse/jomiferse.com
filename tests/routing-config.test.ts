@@ -12,6 +12,20 @@ test("keeps the Spanish default locale under the public /es prefix", () => {
 	);
 });
 
-test("redirects the short contact path to the Spanish contact page", () => {
-	assert.equal(astroConfig.redirects?.["/contact"], "/es/contact");
+test("generates canonical directory-style public URLs", () => {
+	assert.equal(astroConfig.trailingSlash, "always");
+});
+
+test("redirects public routes to canonical trailing-slash destinations", () => {
+	for (const [source, destination] of Object.entries(
+		astroConfig.redirects ?? {},
+	)) {
+		const target =
+			typeof destination === "string" ? destination : destination.destination;
+		const pathname = new URL(target, "https://www.jomiferse.com").pathname;
+		assert.ok(
+			pathname === "/" || pathname.endsWith("/"),
+			`${source} redirects to non-canonical ${target}`,
+		);
+	}
 });

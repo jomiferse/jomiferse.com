@@ -147,13 +147,13 @@ export const buildPerson = (
 	name: person.name,
 	jobTitle: person.jobTitle,
 	description: person.description,
-	url: absolutePageUrl(site, `/${locale}/about/`),
+	url: absolutePageUrl(site, "/es/about/"),
 	email: `mailto:${person.email}`,
 	image: absoluteUrl(site, person.image ?? PROFILE_IMAGE),
 	address: {
 		"@type": "PostalAddress",
 		addressLocality: "Granada",
-		addressRegion: locale === "es" ? "Andalucía" : "Andalusia",
+		addressRegion: "Andalucía",
 		addressCountry: "ES",
 	},
 	sameAs: [person.links.linkedin, person.links.github],
@@ -426,7 +426,6 @@ export const buildServicePage = ({
 	name,
 	description,
 	providerName,
-	providerUrl,
 	areaServed = "Remote",
 	audience = [],
 	serviceType,
@@ -440,7 +439,7 @@ export const buildServicePage = ({
 		"@type": "Person",
 		"@id": ids.person,
 		name: providerName,
-		url: providerUrl,
+		url: absolutePageUrl(site, "/es/about/"),
 		sameAs,
 	};
 	const service = {
@@ -477,7 +476,6 @@ export const buildProfessionalService = ({
 	name,
 	description,
 	providerName,
-	providerUrl,
 	areaServed,
 	sameAs,
 	services,
@@ -488,7 +486,7 @@ export const buildProfessionalService = ({
 		"@type": "Person",
 		"@id": ids.person,
 		name: providerName,
-		url: providerUrl,
+		url: absolutePageUrl(site, "/es/about/"),
 		sameAs,
 	};
 	const offers = services.flatMap((service) => {

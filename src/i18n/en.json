@@ -73,13 +73,13 @@
   "home": {
     "page": {
       "meta": {
-        "title": "Freelance Web Developer in Granada",
-        "description": "Freelance web developer in Granada. I build business websites, internal tools, automation workflows, API integrations and maintainable backend systems."
+        "title": "Freelance IT Consultant and Developer in Granada",
+        "description": "José Miguel Fernández provides freelance IT consulting and development in Granada: websites, custom software, automation, API integrations and Spring Boot."
       },
       "consultancyHero": {
         "eyebrow": "Independent IT consultant",
-        "title": "IT consulting to improve how your business works.",
-        "intro": "I combine development and technical judgment to solve real needs: attracting clients with a better website, automating work, connecting tools or building custom software.",
+        "title": "Freelance IT consulting and development in Granada.",
+        "intro": "I am José Miguel Fernández. I combine development and technical judgment to help small businesses improve their websites, automate work, connect tools or build custom software.",
         "experience": "More than six years building and improving production software.",
         "yearsSuffix": "years",
         "challenge": "Have a challenge? Let us see whether technology can solve it in a practical way.",
@@ -443,7 +443,7 @@
     "page": {
       "meta": {
         "title": "Client case studies and software projects",
-        "description": "Real client cases covering platforms, internal tools and systems built to solve business needs."
+        "description": "Real client case studies covering web platforms, internal tools and backend systems built to solve concrete business and operational needs."
       },
       "eyebrow": "Client case studies",
       "title": "Projects built to solve real business needs",
@@ -647,7 +647,7 @@
   "contact": {
     "page": {
       "meta": {
-        "title": "Contact",
+        "title": "Contact a Freelance IT Consultant",
         "description": "Contact José Miguel Fernández for freelance full-stack development, internal tools, automation workflows, API integrations and backend systems."
       },
       "eyebrow": "Free initial assessment",
@@ -958,7 +958,7 @@
     "page": {
       "meta": {
         "title": "Web development and software blog",
-        "description": "Practical guides to web design, WordPress, custom software, automation, API integrations and backend work for businesses."
+        "description": "Practical guides for businesses on web design, WordPress, custom software, automation, API integrations and maintainable backend systems."
       },
       "eyebrow": "Writing",
       "title": "Notes from",
@@ -1050,8 +1050,8 @@
   "about": {
     "page": {
       "meta": {
-        "title": "About and experience",
-        "description": "Meet José Miguel Fernández, a consultant and full-stack developer with over six years of experience in websites, automation, custom software and backend systems."
+        "title": "About José Miguel Fernández and Experience",
+        "description": "Profile of José Miguel Fernández, a freelance IT consultant and full-stack developer with 6+ years building websites, automation, software and backends."
       },
       "eyebrow": "About",
       "title": "I turn business problems into",
@@ -2092,7 +2092,7 @@
     },
     "hub": {
       "meta": {
-        "title": "Freelance IT Consulting",
+        "title": "Freelance IT Consulting and Development",
         "description": "Freelance web design, WordPress, custom software, automation and API integration services for businesses that need to move forward."
       },
       "schema": {

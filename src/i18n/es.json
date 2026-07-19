@@ -73,13 +73,13 @@
   "home": {
     "page": {
       "meta": {
-        "title": "Desarrollador web freelance en Granada",
-        "description": "Desarrollador web freelance en Granada. Construyo webs, herramientas internas, automatizaciones, integraciones API y backend mantenible."
+        "title": "Consultor informático freelance y desarrollador en Granada",
+        "description": "José Miguel Fernández ofrece consultoría y desarrollo freelance en Granada: webs, software a medida, automatización, integraciones API y Spring Boot."
       },
       "consultancyHero": {
         "eyebrow": "Consultor informático independiente",
-        "title": "Consultoría informática para mejorar cómo funciona tu negocio.",
-        "intro": "Combino desarrollo y criterio técnico para resolver necesidades reales: captar clientes con una mejor web, automatizar trabajo, conectar herramientas o construir software a medida.",
+        "title": "Consultoría informática y desarrollo freelance en Granada.",
+        "intro": "Soy José Miguel Fernández. Combino desarrollo y criterio técnico para ayudar a pymes a mejorar su web, automatizar trabajo, conectar herramientas o construir software a medida.",
         "experience": "Más de seis años construyendo y mejorando software en producción.",
         "yearsSuffix": "años",
         "challenge": "¿Tienes un reto? Revisemos si la tecnología puede resolverlo de forma razonable.",
@@ -647,7 +647,7 @@
   "contact": {
     "page": {
       "meta": {
-        "title": "Contacto",
+        "title": "Contacto para consultoría y desarrollo",
         "description": "Contacta con José Miguel Fernández para desarrollo full-stack freelance, herramientas internas, automatizaciones, integraciones API y backend."
       },
       "eyebrow": "Primera valoración gratuita",
@@ -958,7 +958,7 @@
     "page": {
       "meta": {
         "title": "Blog sobre desarrollo web y software",
-        "description": "Guías sobre diseño web, WordPress, software a medida, automatización, integraciones API y backend para empresas."
+        "description": "Guías prácticas para empresas sobre diseño web, WordPress, software a medida, automatización, integraciones API y sistemas backend mantenibles."
       },
       "eyebrow": "Escritura",
       "title": "Notas de",
@@ -1050,8 +1050,8 @@
   "about": {
     "page": {
       "meta": {
-        "title": "Sobre mí y experiencia",
-        "description": "Conoce a José Miguel Fernández, consultor y desarrollador full-stack con más de seis años de experiencia en webs, automatización, software a medida y backend."
+        "title": "Sobre José Miguel Fernández y experiencia",
+        "description": "Perfil de José Miguel Fernández, consultor informático freelance y desarrollador full-stack con más de seis años creando webs, automatización y software."
       },
       "eyebrow": "Sobre mí",
       "title": "Convierto problemas de negocio en",
@@ -2092,7 +2092,7 @@
     },
     "hub": {
       "meta": {
-        "title": "Consultoría informática freelance",
+        "title": "Consultoría informática y desarrollo freelance",
         "description": "Servicios freelance de diseño web, WordPress, software a medida, automatización e integraciones API para negocios que quieren avanzar."
       },
       "schema": {
