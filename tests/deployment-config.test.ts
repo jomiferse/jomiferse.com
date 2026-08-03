@@ -41,6 +41,57 @@ test("redirects both global contact aliases before framework routing", async () 
 	}
 });
 
+test("redirects every legacy path variant before trailing-slash normalization", async () => {
+	const config = JSON.parse(
+		await readFile(new URL("../vercel.json", import.meta.url), "utf8"),
+	) as {
+		redirects?: Array<{
+			source: string;
+			destination: string;
+			permanent: boolean;
+		}>;
+	};
+	const expectedRedirects = [
+		["/en/services/business-website", "/en/services/wordpress-web-design/"],
+		["/en/services/custom-web-application", "/en/services/custom-software/"],
+		["/en/services/automation-workflows", "/en/services/process-automation/"],
+		[
+			"/en/services/maintenance-support",
+			"/en/services/maintenance-and-technical-support/",
+		],
+		["/es/services/business-website", "/es/services/diseno-web-wordpress/"],
+		["/es/services/custom-web-application", "/es/services/software-a-medida/"],
+		[
+			"/es/services/automation-workflows",
+			"/es/services/automatizacion-de-procesos/",
+		],
+		["/es/services/api-integrations", "/es/services/integraciones-api/"],
+		[
+			"/es/services/maintenance-support",
+			"/es/services/mantenimiento-y-soporte-tecnico/",
+		],
+		[
+			"/en/blog/cuando-deberia-una-empresa-migrar-un-backend-legacy-a-java-spring-boot",
+			"/en/blog/when-should-a-company-migrate-a-legacy-backend-to-java-spring-boot/",
+		],
+		["/es/blog/building-cv-studio", "/es/blog/creando-cv-studio/"],
+		["/es/desarrollador-freelance-espana", "/es/diseno-web-granada/"],
+		["/en/freelance-developer-spain", "/en/web-design-granada/"],
+		["/es/experience", "/es/about/"],
+		["/en/experience", "/en/about/"],
+	] as const;
+
+	for (const [source, destination] of expectedRedirects) {
+		for (const variant of [source, `${source}/`]) {
+			assert.deepEqual(
+				config.redirects?.find((redirect) => redirect.source === variant),
+				{ source: variant, destination, permanent: true },
+				`${variant} must redirect directly to ${destination}`,
+			);
+		}
+	}
+});
+
 test("repeats private route disallows in every named AI crawler group", async () => {
 	const robots = await readFile(
 		new URL("../public/robots.txt", import.meta.url),
