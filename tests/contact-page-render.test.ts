@@ -36,16 +36,28 @@ test("renders validated contact selection and status from the request URL", asyn
 	try {
 		const page = await vite.ssrLoadModule("/src/pages/[locale]/contact.astro");
 		const container = await AstroContainer.create();
-		const render = (url: string) =>
+		const render = (locale: "en" | "es", url: string) =>
 			container.renderToString(page.default, {
 				request: new Request(url),
-				params: { locale: "en" },
+				params: { locale },
 				partial: false,
 			});
 
 		const selectedHtml = await render(
+			"en",
 			"https://www.jomiferse.com/en/contact?error=missing&service=business-website&scope=project",
 		);
+		assert.match(
+			selectedHtml,
+			/<title>Contact a Freelance IT Consultant<\/title>/,
+		);
+		assert.match(
+			selectedHtml,
+			/<meta name="description" content="Contact José Miguel Fernández for freelance full-stack development, internal tools, automation workflows, API integrations and backend systems\."/,
+		);
+		assert.match(selectedHtml, /data-lead-service="business-website"/);
+		assert.match(selectedHtml, /data-lead-locale="en"/);
+		assert.match(selectedHtml, /data-lead-scope="project"/);
 		assert.match(
 			selectedHtml,
 			/name="service" value="business-website" data-selected-service/,
@@ -109,10 +121,30 @@ test("renders validated contact selection and status from the request URL", asyn
 		);
 
 		const invalidHtml = await render(
+			"en",
 			"https://www.jomiferse.com/en/contact?service=unknown-service&scope=project",
 		);
 		assert.match(invalidHtml, /name="service" value data-selected-service/);
 		assert.doesNotMatch(invalidHtml, /value="unknown-service"/);
+
+		const spanishHtml = await render(
+			"es",
+			"https://www.jomiferse.com/es/contact?sent=1",
+		);
+		assert.match(
+			spanishHtml,
+			/<title>Contacto para consultoría y desarrollo<\/title>/,
+		);
+		assert.match(
+			spanishHtml,
+			/<link rel="canonical" href="https:\/\/www\.jomiferse\.com\/es\/contact\/"/,
+		);
+		assert.match(spanishHtml, /hreflang="es"/);
+		assert.match(spanishHtml, /hreflang="en"/);
+		assert.match(spanishHtml, /hreflang="x-default"/);
+		assert.match(spanishHtml, /data-lead-service="unspecified"/);
+		assert.match(spanishHtml, /data-lead-locale="es"/);
+		assert.match(spanishHtml, /data-lead-scope="unspecified"/);
 	} finally {
 		await vite.close();
 	}
