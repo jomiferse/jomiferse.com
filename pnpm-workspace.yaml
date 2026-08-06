@@ -4,4 +4,4 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - "@astrojs/markdown-satteri"
   - astro
-  - '@astrojs/vercel'
+  - "@astrojs/vercel"
