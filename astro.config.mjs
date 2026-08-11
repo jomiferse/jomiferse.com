@@ -5,6 +5,7 @@ import vercel from "@astrojs/vercel";
 import sitemap from "@astrojs/sitemap";
 import { unified } from "@astrojs/markdown-remark";
 import sharp from "sharp";
+import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { legacyRedirects } from "./src/lib/legacy-redirects.ts";
 import { getEditorialImageAttributes } from "./src/lib/media-delivery.ts";
@@ -12,6 +13,26 @@ import { getEditorialImageAttributes } from "./src/lib/media-delivery.ts";
 const siteUrl = new URL("https://www.jomiferse.com");
 const internalHosts = new Set([siteUrl.hostname, "jomiferse.com"]);
 const imageDimensions = new Map();
+const blogLastModified = new Map();
+for (const locale of ["en", "es"]) {
+	const blogDirectory = fileURLToPath(
+		new URL(`./src/content/blog/${locale}/`, import.meta.url),
+	);
+	for (const entry of readdirSync(blogDirectory).filter((name) =>
+		name.endsWith(".md"),
+	)) {
+		const source = readFileSync(`${blogDirectory}/${entry}`, "utf8");
+		const modified = source.match(/^dateModified:\s*["']?([^"'\n]+)["']?/m);
+		const published = source.match(/^date:\s*["']?([^"'\n]+)["']?/m);
+		const date = modified?.[1] ?? published?.[1];
+		if (date) {
+			blogLastModified.set(
+				`/${locale}/blog/${entry.replace(/\.md$/, "")}/`,
+				new Date(date).toISOString(),
+			);
+		}
+	}
+}
 function isExternalHref(href) {
 	try {
 		const url = new URL(href, siteUrl);
@@ -108,6 +129,11 @@ export default defineConfig({
 	integrations: [
 		icon(),
 		sitemap({
+			serialize(item) {
+				const pathname = new URL(item.url).pathname;
+				const lastmod = blogLastModified.get(pathname);
+				return lastmod ? { ...item, lastmod } : item;
+			},
 			customPages: [
 				"https://www.jomiferse.com/en/contact/",
 				"https://www.jomiferse.com/es/contact/",

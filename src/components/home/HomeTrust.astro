@@ -1,14 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
-import { getTranslations } from "@/i18n";
+import { getTranslations, type Locale } from "@/i18n";
+import type { ProjectEntry } from "@/lib/projects";
 
 type HomePage = ReturnType<typeof getTranslations>["home"]["page"];
 
 interface Props {
 	content: HomePage["proof"];
+	locale: Locale;
+	project?: ProjectEntry;
 }
 
-const { content } = Astro.props as Props;
+const { content, locale, project } = Astro.props as Props;
 ---
 
 <section class="home-proof section-reveal" aria-labelledby="proof-title">
@@ -28,6 +31,29 @@ const { content } = Astro.props as Props;
 			))
 		}
 	</ul>
+
+	{
+		project ? (
+			<aside
+				class="home-proof__case"
+				aria-label={locale === "es" ? "Caso publicado" : "Published case study"}
+			>
+				<div>
+					<p class="eyebrow">
+						{locale === "es" ? "Caso publicado" : "Published case study"}
+					</p>
+					<h3>{project.title}</h3>
+					<p>{project.impact}</p>
+				</div>
+				<a href={`/${locale}/projects/${project.slug}/`}>
+					{locale === "es"
+						? "Ver contexto y resultado"
+						: "See context and outcome"}
+					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+			</aside>
+		) : null
+	}
 </section>
 
 <style>
@@ -76,6 +102,46 @@ const { content } = Astro.props as Props;
 		color: var(--action);
 	}
 
+	.home-proof__case {
+		grid-column: 1 / -1;
+		display: flex;
+		gap: 1.5rem;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 1.5rem;
+		padding: 1.25rem 1.35rem;
+		border: 1px solid var(--surface-border);
+		border-left: 3px solid var(--action);
+		background: var(--surface);
+	}
+
+	.home-proof__case h3 {
+		margin-top: 0.35rem;
+		color: var(--home-navy);
+		font-size: 1.2rem;
+		font-weight: 900;
+	}
+
+	.home-proof__case > div > p:last-child {
+		margin-top: 0.35rem;
+		color: var(--text-muted);
+		line-height: 1.55;
+	}
+
+	.home-proof__case > a {
+		display: inline-flex;
+		flex: 0 0 auto;
+		gap: 0.45rem;
+		align-items: center;
+		color: var(--text);
+		font-size: 0.86rem;
+		font-weight: 900;
+	}
+
+	.home-proof__case > a:hover {
+		color: var(--action);
+	}
+
 	@media (min-width: 761px) {
 		.home-proof {
 			padding-block: clamp(4.5rem, 7vw, 6.5rem);
@@ -85,6 +151,11 @@ const { content } = Astro.props as Props;
 	@media (max-width: 760px) {
 		.home-proof {
 			grid-template-columns: 1fr;
+		}
+
+		.home-proof__case {
+			align-items: flex-start;
+			flex-direction: column;
 		}
 	}
 </style>

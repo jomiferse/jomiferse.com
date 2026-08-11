@@ -487,6 +487,39 @@ const privacyHref = `/${locale}/privacy`;
 	}
 
 	@media (max-width: 32rem) {
+		.cookie-consent {
+			right: 0.5rem;
+			bottom: 0.5rem;
+			left: 0.5rem;
+		}
+
+		.cookie-consent__banner {
+			gap: 0.65rem;
+			padding: 0.75rem;
+			border-radius: 0.85rem;
+		}
+
+		.cookie-consent__signal {
+			display: none;
+		}
+
+		.cookie-consent__text {
+			font-size: 0.76rem;
+			line-height: 1.4;
+		}
+
+		.cookie-consent__actions {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 0.35rem;
+		}
+
+		.cookie-consent__actions button {
+			min-height: 2.5rem;
+			padding-inline: 0.35rem;
+			font-size: 0.68rem;
+			line-height: 1.15;
+		}
+
 		.cookie-consent__option {
 			align-items: flex-start;
 			flex-direction: column;
