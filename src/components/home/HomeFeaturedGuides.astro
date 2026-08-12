@@ -1,0 +1,278 @@
+---
+import { Icon } from "astro-icon/components";
+import { getTranslations, type Locale } from "@/i18n";
+import { getLocalBlogSlug, type BlogPost } from "@/lib/blog";
+
+type HomePage = ReturnType<typeof getTranslations>["home"]["page"];
+
+interface Props {
+	content: HomePage["featuredGuides"];
+	locale: Locale;
+	posts: BlogPost[];
+}
+
+const { content, locale, posts } = Astro.props as Props;
+---
+
+<section
+	class="home-guides section-reveal"
+	aria-labelledby="home-guides-title"
+	data-home-guides
+>
+	<header class="home-guides__heading">
+		<div>
+			<p class="eyebrow">{content.eyebrow}</p>
+			<h2 id="home-guides-title">{content.title}</h2>
+			<p>{content.intro}</p>
+		</div>
+		<a href={`/${locale}/blog/`}>
+			{content.viewAll}
+			<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+		</a>
+	</header>
+
+	<ol class="home-guides__list">
+		{
+			posts.map((post, index) => (
+				<li data-home-guide>
+					<a href={`/${locale}/blog/${getLocalBlogSlug(post.id, locale)}/`}>
+						<span class="home-guides__number" aria-hidden="true">
+							{String(index + 1).padStart(2, "0")}
+						</span>
+						<div class="home-guides__cover">
+							<img
+								src={post.data.cover.src}
+								alt={post.data.cover.alt}
+								width="1600"
+								height="900"
+								loading="lazy"
+								decoding="async"
+								sizes="(max-width: 40rem) 5.5rem, (max-width: 60rem) 10rem, 13rem"
+							/>
+						</div>
+						<div class="home-guides__copy">
+							<div class="home-guides__meta">
+								<span>{content.guideLabel}</span>
+								{post.data.readingTime ? (
+									<span>{post.data.readingTime}</span>
+								) : null}
+							</div>
+							<h3>{post.data.title}</h3>
+							<p>{post.data.description}</p>
+						</div>
+						<span class="home-guides__read">
+							<span>{content.read}</span>
+							<Icon name="arrow-right" class="h-5 w-5" aria-hidden="true" />
+						</span>
+					</a>
+				</li>
+			))
+		}
+	</ol>
+</section>
+
+<style>
+	.home-guides {
+		padding-block: clamp(5rem, 9vw, 7.5rem);
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.home-guides__heading {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+	}
+
+	.home-guides__heading .eyebrow {
+		color: var(--action);
+	}
+
+	.home-guides h2 {
+		max-width: 52rem;
+		margin-top: 1rem;
+		color: var(--home-navy);
+		font-size: clamp(2.2rem, 4.8vw, 4rem);
+		font-weight: 900;
+		letter-spacing: -0.055em;
+		line-height: 1;
+		text-wrap: balance;
+	}
+
+	.home-guides__heading div > p:last-child {
+		max-width: 47rem;
+		margin-top: 1.25rem;
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	.home-guides__heading > a,
+	.home-guides__read {
+		display: inline-flex;
+		min-height: 2.75rem;
+		align-items: center;
+		gap: 0.55rem;
+		color: var(--text);
+		font-size: 0.84rem;
+		font-weight: 900;
+	}
+
+	.home-guides__heading > a {
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.home-guides__heading > a:hover {
+		border-color: var(--action);
+		color: var(--action);
+	}
+
+	.home-guides__list {
+		margin-top: clamp(2.5rem, 5vw, 4rem);
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.home-guides__list li {
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.home-guides__list li > a {
+		display: grid;
+		grid-template-columns: 3rem minmax(10rem, 13rem) minmax(0, 1fr) auto;
+		gap: clamp(1.25rem, 3vw, 2.5rem);
+		align-items: center;
+		padding-block: 1.4rem;
+	}
+
+	.home-guides__list li > a:hover .home-guides__cover img {
+		transform: scale(1.035);
+	}
+
+	.home-guides__list li > a:hover h3,
+	.home-guides__list li > a:hover .home-guides__read {
+		color: var(--action);
+	}
+
+	.home-guides__number {
+		align-self: start;
+		padding-top: 0.2rem;
+		color: var(--action);
+		font-size: 0.72rem;
+		font-weight: 900;
+		letter-spacing: 0.14em;
+	}
+
+	.home-guides__cover {
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+		border: 1px solid var(--surface-border);
+		background: var(--bg-band);
+	}
+
+	.home-guides__cover img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 300ms ease;
+	}
+
+	.home-guides__copy {
+		min-width: 0;
+	}
+
+	.home-guides__meta {
+		display: flex;
+		gap: 0.75rem;
+		align-items: center;
+		color: var(--text-muted);
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+	}
+
+	.home-guides__meta span + span::before {
+		margin-right: 0.75rem;
+		color: var(--action);
+		content: "·";
+	}
+
+	.home-guides h3 {
+		margin-top: 0.6rem;
+		color: var(--home-navy);
+		font-size: clamp(1.25rem, 2vw, 1.75rem);
+		font-weight: 900;
+		letter-spacing: -0.035em;
+		line-height: 1.16;
+		text-wrap: balance;
+	}
+
+	.home-guides__copy > p {
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		margin-top: 0.65rem;
+		color: var(--text-muted);
+		font-size: 0.9rem;
+		line-height: 1.6;
+	}
+
+	.home-guides__read {
+		justify-self: end;
+	}
+
+	@media (max-width: 900px) {
+		.home-guides__list li > a {
+			grid-template-columns: 2.5rem 10rem minmax(0, 1fr);
+		}
+
+		.home-guides__read {
+			grid-column: 3;
+			justify-self: start;
+			min-height: auto;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.home-guides__heading {
+			grid-template-columns: 1fr;
+			gap: 1.25rem;
+		}
+
+		.home-guides__heading > a {
+			width: fit-content;
+		}
+
+		.home-guides__list li > a {
+			grid-template-columns: 1.75rem 5.5rem minmax(0, 1fr);
+			gap: 0.85rem;
+			padding-block: 1rem;
+		}
+
+		.home-guides__number {
+			font-size: 0.65rem;
+		}
+
+		.home-guides__meta {
+			font-size: 0.6rem;
+		}
+
+		.home-guides h3 {
+			display: -webkit-box;
+			overflow: hidden;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
+			font-size: 1.03rem;
+		}
+
+		.home-guides__copy > p,
+		.home-guides__read span {
+			display: none;
+		}
+
+		.home-guides__read {
+			grid-column: 3;
+			color: var(--action);
+		}
+	}
+</style>

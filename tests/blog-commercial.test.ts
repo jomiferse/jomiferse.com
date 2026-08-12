@@ -75,6 +75,24 @@ test("resolves the Granada web design owner", () => {
 	assert.match(result.secondary.href, /service=diseno-web-wordpress/);
 });
 
+test("resolves the localized website redesign owner", () => {
+	assert.equal(typeof resolveBlogCommercialCta, "function");
+	const result = resolveBlogCommercialCta(
+		"en",
+		{
+			role: "buyer-led",
+			audience: "business",
+			cluster: "website-redesign",
+		},
+		"/en/blog/redesign-website-or-rebuild/",
+		copy,
+	);
+
+	assert.equal(result.primary.href, "/en/services/website-redesign/");
+	assert.equal(result.primary.label, "Explore website redesign");
+	assert.match(result.secondary.href, /service=website-redesign/);
+});
+
 test("rejects an article path from another locale", () => {
 	assert.equal(typeof resolveBlogCommercialCta, "function");
 	assert.throws(

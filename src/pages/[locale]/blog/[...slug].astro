@@ -64,6 +64,14 @@ const structuredData = [
 	buildBreadcrumbList(site, [
 		{ name: t(locale, "nav.home"), path: `/${locale}` },
 		{ name: t(locale, "nav.blog"), path: `/${locale}/blog` },
+		...(post.data.commercial.audience === "technical"
+			? [
+					{
+						name: t(locale, "blog.technicalArchive.breadcrumb"),
+						path: `/${locale}/blog/technical`,
+					},
+				]
+			: []),
 		{ name: post.data.title, path: postPath },
 	]),
 ];

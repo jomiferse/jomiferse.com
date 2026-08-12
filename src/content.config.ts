@@ -20,6 +20,7 @@ const blog = defineCollection({
 		author: z.string().optional(),
 		readingTime: z.string().optional(),
 		featured: z.boolean().optional(),
+		homeFeatured: z.number().int().min(1).max(3).optional(),
 		draft: z.boolean().optional(),
 		translationSlug: z.string().optional(),
 		commercial: z.object({

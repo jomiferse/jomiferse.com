@@ -3,6 +3,7 @@ import type { Locale } from "@/i18n";
 export const commercialSeoClusterKeys = [
 	"local-web-design",
 	"wordpress",
+	"website-redesign",
 	"custom-software",
 	"excel-replacement",
 	"process-automation",
@@ -92,6 +93,34 @@ export const commercialSeoClusters: CommercialSeoCluster[] = [
 				"/en/services/wordpress-optimization/",
 				"/en/services/woocommerce/",
 			],
+		},
+	},
+	{
+		key: "website-redesign",
+		priority: 1,
+		targets: {
+			es: {
+				primary: "rediseño web",
+				secondary: [
+					"rediseñar página web",
+					"rediseño de páginas web",
+					"rehacer página web",
+				],
+				intent: "commercial",
+			},
+			en: {
+				primary: "website redesign",
+				secondary: ["website redesign service", "redesign or rebuild website"],
+				intent: "commercial",
+			},
+		},
+		owner: {
+			es: "/es/services/website-redesign/",
+			en: "/en/services/website-redesign/",
+		},
+		supporting: {
+			es: ["/es/services/business-website/", "/es/diseno-web-granada/"],
+			en: ["/en/services/business-website/", "/en/web-design-granada/"],
 		},
 	},
 	{

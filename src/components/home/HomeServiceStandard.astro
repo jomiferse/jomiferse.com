@@ -1,0 +1,205 @@
+---
+import { getTranslations } from "@/i18n";
+
+type HomePage = ReturnType<typeof getTranslations>["home"]["page"];
+
+interface Props {
+	content: HomePage["serviceStandard"];
+}
+
+const { content } = Astro.props as Props;
+const stars = Array.from({ length: 5 });
+---
+
+<section
+	class="service-standard section-reveal"
+	aria-labelledby="service-standard-title"
+	data-service-standard
+>
+	<div class="service-standard__signal">
+		<div class="service-standard__stars" aria-hidden="true">
+			{stars.map(() => <span>★</span>)}
+		</div>
+		<p>{content.signal}</p>
+	</div>
+
+	<div class="service-standard__content">
+		<header>
+			<p class="eyebrow">{content.eyebrow}</p>
+			<h2 id="service-standard-title">{content.title}</h2>
+			<p>{content.intro}</p>
+		</header>
+
+		<ol>
+			{
+				content.items.map((item, index) => (
+					<li data-service-commitment>
+						<span>{String(index + 1).padStart(2, "0")}</span>
+						<div>
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
+						</div>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.service-standard {
+		display: grid;
+		grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.28fr);
+		gap: clamp(3rem, 8vw, 7rem);
+		align-items: start;
+		padding-block: clamp(5rem, 9vw, 7.5rem);
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.service-standard__signal {
+		position: relative;
+		padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+		border-block: 1px solid var(--surface-border);
+	}
+
+	.service-standard__signal::before {
+		position: absolute;
+		top: -1px;
+		left: 0;
+		width: 4.5rem;
+		height: 3px;
+		background: var(--action);
+		content: "";
+	}
+
+	.service-standard__stars {
+		display: flex;
+		gap: clamp(0.28rem, 0.8vw, 0.6rem);
+		color: var(--action);
+		font-size: clamp(1.7rem, 3.2vw, 2.7rem);
+		line-height: 1;
+	}
+
+	.service-standard__signal > p {
+		max-width: 18rem;
+		margin-top: 1.25rem;
+		color: var(--home-navy);
+		font-size: 0.82rem;
+		font-weight: 900;
+		letter-spacing: 0.12em;
+		line-height: 1.5;
+		text-transform: uppercase;
+	}
+
+	.service-standard__content .eyebrow {
+		color: var(--action);
+	}
+
+	.service-standard h2 {
+		max-width: 52rem;
+		margin-top: 1rem;
+		color: var(--home-navy);
+		font-size: clamp(2.2rem, 4.8vw, 4rem);
+		font-weight: 900;
+		letter-spacing: -0.055em;
+		line-height: 1;
+		text-wrap: balance;
+	}
+
+	.service-standard header > p:last-child {
+		max-width: 46rem;
+		margin-top: 1.25rem;
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	.service-standard ol {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		margin-top: clamp(2.5rem, 5vw, 3.5rem);
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.service-standard li {
+		display: grid;
+		grid-template-columns: 2rem minmax(0, 1fr);
+		gap: 1rem;
+		padding: 1.4rem 1.4rem 1.4rem 0;
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.service-standard li:nth-child(even) {
+		padding-right: 0;
+		padding-left: 1.4rem;
+		border-left: 1px solid var(--surface-border);
+	}
+
+	.service-standard li:last-child {
+		grid-column: 1 / -1;
+		padding-right: 0;
+	}
+
+	.service-standard li > span {
+		padding-top: 0.2rem;
+		color: var(--action);
+		font-size: 0.68rem;
+		font-weight: 900;
+		letter-spacing: 0.12em;
+	}
+
+	.service-standard h3 {
+		color: var(--text);
+		font-size: 1.05rem;
+		font-weight: 900;
+		line-height: 1.25;
+	}
+
+	.service-standard li p {
+		margin-top: 0.45rem;
+		color: var(--text-muted);
+		font-size: 0.88rem;
+		line-height: 1.6;
+	}
+
+	@media (max-width: 860px) {
+		.service-standard {
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+		}
+
+		.service-standard__signal {
+			display: flex;
+			gap: 1.5rem;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.service-standard__signal > p {
+			margin-top: 0;
+			text-align: right;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.service-standard__signal {
+			display: block;
+		}
+
+		.service-standard__signal > p {
+			margin-top: 1rem;
+			text-align: left;
+		}
+
+		.service-standard ol {
+			grid-template-columns: 1fr;
+		}
+
+		.service-standard li,
+		.service-standard li:nth-child(even),
+		.service-standard li:last-child {
+			grid-column: auto;
+			padding: 1.25rem 0;
+			border-left: 0;
+		}
+	}
+</style>

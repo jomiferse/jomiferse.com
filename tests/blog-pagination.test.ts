@@ -3,6 +3,7 @@ import { test } from "node:test";
 
 import {
 	BLOG_POSTS_PER_PAGE,
+	getBlogArchivePath,
 	getBlogPagePath,
 	getPageItems,
 	getTotalPages,
@@ -34,6 +35,16 @@ test("keeps the first blog page at the base path", () => {
 test("builds static paths for later pages", () => {
 	assert.equal(getBlogPagePath("en", 2), "/en/blog/page/2");
 	assert.equal(getBlogPagePath("es", 3), "/es/blog/page/3");
+});
+
+test("builds technical archive and pagination paths", () => {
+	assert.equal(getBlogArchivePath("en", "technical"), "/en/blog/technical");
+	assert.equal(getBlogArchivePath("es", "technical"), "/es/blog/technical");
+	assert.equal(getBlogPagePath("en", 1, "technical"), "/en/blog/technical");
+	assert.equal(
+		getBlogPagePath("es", 3, "technical"),
+		"/es/blog/technical/page/3",
+	);
 });
 
 test("builds translated blog post paths from translation slugs", () => {

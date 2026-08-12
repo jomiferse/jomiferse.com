@@ -1,8 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 import HomeHero from "@/components/home/HomeHero.astro";
+import HomeFeaturedGuides from "@/components/home/HomeFeaturedGuides.astro";
 import HomeProcess from "@/components/home/HomeProcess.astro";
 import HomeServicePaths from "@/components/home/HomeServicePaths.astro";
+import HomeServiceStandard from "@/components/home/HomeServiceStandard.astro";
 import HomeSpecializedServices from "@/components/home/HomeSpecializedServices.astro";
 import HomeTrust from "@/components/home/HomeTrust.astro";
 import TechnologyMarquee from "@/components/common/TechnologyMarquee.astro";
@@ -10,6 +12,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations } from "@/i18n";
 import { getCv } from "@cv";
 import { getProjectPages } from "@/lib/projects";
+import { getHomeFeaturedBlogPosts } from "@/lib/blog";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
@@ -23,6 +26,7 @@ const featuredProject =
 		(project) => project.id === "getyourticket-ticketing-platform",
 	) ?? projects[0];
 const page = getTranslations(locale).home.page;
+const featuredGuides = await getHomeFeaturedBlogPosts(locale);
 const pageTitle = page.meta.title;
 const pageDescription = page.meta.description;
 ---
@@ -49,6 +53,12 @@ const pageDescription = page.meta.description;
 
 	<HomeProcess content={page.process} />
 	<HomeTrust content={page.proof} locale={locale} project={featuredProject} />
+	<HomeFeaturedGuides
+		content={page.featuredGuides}
+		locale={locale}
+		posts={featuredGuides}
+	/>
+	<HomeServiceStandard content={page.serviceStandard} />
 
 	<section
 		class="home-final-cta section-reveal"

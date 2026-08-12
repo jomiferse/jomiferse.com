@@ -269,7 +269,12 @@ const parsePage = (
 		}
 	}
 
-	if (/\/(en|es)\/blog\/(?!page\/|$)/.test(route)) {
+	const isBlogArticle =
+		/\/(en|es)\/blog\/.+/.test(route) &&
+		!/\/(en|es)\/blog\/(?:page\/\d+|technical(?:\/page\/\d+)?)\/?$/.test(
+			route,
+		);
+	if (isBlogArticle) {
 		const postings = findSchemas(schemas, "BlogPosting");
 		if (postings.length !== 1) {
 			failures.push(`${label}: expected one BlogPosting schema`);
@@ -356,6 +361,8 @@ export const auditBuildArtifact = async (
 	for (const [path, title] of [
 		["/es/blog/", "Blog sobre desarrollo web y software"],
 		["/en/blog/", "Web development and software blog"],
+		["/es/blog/technical/", "Archivo técnico de desarrollo de software"],
+		["/en/blog/technical/", "Software engineering technical archive"],
 	] as const) {
 		const page = canonicalMap.get(normalizePublicUrl(path));
 		if (!page) {
@@ -369,6 +376,48 @@ export const auditBuildArtifact = async (
 		const page = canonicalMap.get(normalizePublicUrl(path));
 		if (!page?.html.includes('href="/es/diseno-web-granada/"')) {
 			failures.push(`${path}: missing Granada web design link`);
+		}
+	}
+
+	const homeFeaturedGuides = {
+		es: [
+			"cuanto-cuesta-pagina-web-pyme",
+			"redisenar-web-o-hacerla-de-nuevo",
+			"automatizar-procesos-empresa-cuando-merece-la-pena",
+		],
+		en: [
+			"how-much-does-small-business-website-cost",
+			"redesign-website-or-rebuild",
+			"when-business-process-automation-is-worth-it",
+		],
+	};
+	for (const [locale, slugs] of Object.entries(homeFeaturedGuides)) {
+		const path = `/${locale}/`;
+		const page = canonicalMap.get(normalizePublicUrl(path));
+		if (!page?.html.includes("data-home-guides")) {
+			failures.push(`${path}: missing featured guides section`);
+		}
+		const guideCount = page?.html.match(/data-home-guide(?:\s|>)/g) ?? [];
+		if (guideCount.length !== 3) {
+			failures.push(
+				`${path}: expected three featured guides, found ${guideCount.length}`,
+			);
+		}
+		for (const slug of slugs) {
+			const href = `/${locale}/blog/${slug}/`;
+			if (!page?.html.includes(`href="${href}"`)) {
+				failures.push(`${path}: missing featured guide ${href}`);
+			}
+		}
+		if (!page?.html.includes("data-service-standard")) {
+			failures.push(`${path}: missing five-commitment service standard`);
+		}
+		const commitmentCount =
+			page?.html.match(/data-service-commitment(?:\s|>)/g) ?? [];
+		if (commitmentCount.length !== 5) {
+			failures.push(
+				`${path}: expected five service commitments, found ${commitmentCount.length}`,
+			);
 		}
 	}
 
@@ -568,9 +617,11 @@ export const auditBuildArtifact = async (
 	}
 	if (
 		!sitemap.includes("/en/blog/page/2/") ||
-		!sitemap.includes("/es/blog/page/2/")
+		!sitemap.includes("/es/blog/page/2/") ||
+		!sitemap.includes("/en/blog/technical/page/2/") ||
+		!sitemap.includes("/es/blog/technical/page/2/")
 	) {
-		failures.push("sitemap is missing indexable blog pagination");
+		failures.push("sitemap is missing indexable blog archive pagination");
 	}
 
 	const robots = await readFile(join(dist, "robots.txt"), "utf8");

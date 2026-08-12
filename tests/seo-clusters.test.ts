@@ -38,6 +38,7 @@ test("prioritizes the DataForSEO-backed acquisition owners", () => {
 	assert.deepEqual(priorityOne, [
 		"local-web-design",
 		"wordpress",
+		"website-redesign",
 		"custom-software",
 	]);
 

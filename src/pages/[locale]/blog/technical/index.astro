@@ -19,27 +19,28 @@ export function getStaticPaths() {
 }
 
 const { locale } = Astro.params;
-const posts = await getPublishedBlogPostsByAudience(locale, "business");
+const posts = await getPublishedBlogPostsByAudience(locale, "technical");
 const { primaryFeatured, archivePosts } = getBlogPostGroups(posts);
 const currentPage = 1;
 const totalPages = getTotalPages(archivePosts.length);
 const latestPosts = getPageItems(archivePosts, currentPage);
 
 const blogBasePath = `/${locale}/blog`;
+const archivePath = `${blogBasePath}/technical`;
 const dateLocale = locale === "es" ? "es-ES" : "en-GB";
-const page = getTranslations(locale).blog.page;
-const sections = getTranslations(locale).blog.sections;
+const blogPage = getTranslations(locale).blog.page;
+const archive = getTranslations(locale).blog.technicalArchive;
 const empty = getTranslations(locale).blog.empty;
 const pagination = getTranslations(locale).blog.pagination;
-const archiveSwitch = getTranslations(locale).blog.archiveSwitch;
-const pageTitle = page.meta.title;
-const pageDescription = page.meta.description;
+const pageTitle = archive.meta.title;
+const pageDescription = archive.meta.description;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const structuredData = [
-	buildCollectionPage(site, blogBasePath, pageTitle, pageDescription),
+	buildCollectionPage(site, archivePath, pageTitle, pageDescription),
 	buildBreadcrumbList(site, [
 		{ name: t(locale, "nav.home"), path: `/${locale}` },
 		{ name: t(locale, "nav.blog"), path: blogBasePath },
+		{ name: archive.breadcrumb, path: archivePath },
 	]),
 ];
 ---
@@ -47,6 +48,11 @@ const structuredData = [
 <BaseLayout
 	title={pageTitle}
 	description={pageDescription}
+	canonicalPath={archivePath}
+	alternatePaths={{
+		en: "/en/blog/technical",
+		es: "/es/blog/technical",
+	}}
 	structuredData={structuredData}
 >
 	<div class="blog-page">
@@ -54,19 +60,17 @@ const structuredData = [
 			class="section-reveal grid gap-8 pt-5 pb-12 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.42fr)] md:items-end md:pt-8 md:pb-16"
 		>
 			<div>
-				<p class="eyebrow text-[var(--action)]">{page.eyebrow}</p>
+				<p class="eyebrow text-[var(--action)]">{archive.eyebrow}</p>
 				<h1
 					class="mt-4 max-w-5xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
 				>
-					{page.title}
-					{" "}
-					{page.titleAccent}
+					{archive.title}
 				</h1>
 			</div>
 			<div>
-				<p class="muted-copy text-lg leading-8">{page.intro}</p>
-				<a href="#blog-archive" class="button-action mt-6">
-					{page.browseArticles}
+				<p class="muted-copy text-lg leading-8">{archive.intro}</p>
+				<a href="#technical-archive" class="button-action mt-6">
+					{archive.browseArticles}
 					<Icon
 						name="arrow-right"
 						class="h-4 w-4 rotate-90"
@@ -93,8 +97,8 @@ const structuredData = [
 						)}
 						readingTime={primaryFeatured.data.readingTime}
 						cover={primaryFeatured.data.cover}
-						featuredLabel={page.featuredEyebrow}
-						readLabel={page.readArticle}
+						featuredLabel={archive.featuredEyebrow}
+						readLabel={blogPage.readArticle}
 					/>
 				) : (
 					<div class="dark-card p-6 text-[var(--text-muted)]">
@@ -104,12 +108,12 @@ const structuredData = [
 			}
 		</section>
 
-		<section id="blog-archive" class="section-reveal pb-16 md:pb-24">
+		<section id="technical-archive" class="section-reveal pb-16 md:pb-24">
 			<div class="mb-7 flex flex-col gap-2">
 				<h2 class="text-3xl font-black text-[var(--text)] md:text-4xl">
-					{sections.latest.title}
+					{archive.latestTitle}
 				</h2>
-				<p class="muted-copy">{sections.latest.subtitle}</p>
+				<p class="muted-copy">{archive.latestSubtitle}</p>
 			</div>
 			{
 				latestPosts.length > 0 ? (
@@ -118,12 +122,12 @@ const structuredData = [
 						locale={locale}
 						blogBasePath={blogBasePath}
 						dateLocale={dateLocale}
-						label={sections.latest.title}
-						copy={page}
+						label={archive.latestTitle}
+						copy={blogPage}
 					/>
 				) : (
 					<div class="dark-card p-6 text-[var(--text-muted)]">
-						{posts.length > 0 ? empty.latest : page.empty}
+						{empty.latest}
 					</div>
 				)
 			}
@@ -132,28 +136,29 @@ const structuredData = [
 				currentPage={currentPage}
 				totalPages={totalPages}
 				labels={pagination}
+				audience="technical"
 			/>
 			<div class="mt-10 border-t border-[var(--surface-border)] pt-7">
 				<a
-					href={`/${locale}/blog/technical/`}
+					href={`${blogBasePath}/`}
 					class="inline-flex items-center gap-2 text-sm font-black text-[var(--text)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
 				>
-					{archiveSwitch.technicalLabel}
-					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+					<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
+					{archive.businessLabel}
 				</a>
 				<p class="muted-copy mt-2 max-w-2xl text-sm leading-6">
-					{archiveSwitch.technicalDescription}
+					{archive.businessDescription}
 				</p>
 			</div>
 		</section>
 
 		<ConversionCta
-			eyebrow={page.cta.eyebrow}
-			title={page.cta.title}
-			text={page.cta.text}
-			primary={{ label: page.cta.services, href: `/${locale}/services` }}
-			secondary={{ label: page.cta.contact, href: `/${locale}/contact` }}
-			headingId="blog-conversion-title"
+			eyebrow={blogPage.cta.eyebrow}
+			title={blogPage.cta.title}
+			text={blogPage.cta.text}
+			primary={{ label: blogPage.cta.services, href: `/${locale}/services` }}
+			secondary={{ label: blogPage.cta.contact, href: `/${locale}/contact` }}
+			headingId="technical-blog-conversion-title"
 		/>
 	</div>
 </BaseLayout>

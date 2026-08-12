@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n";
+import type { BlogAudience } from "@/lib/blog-commercial";
 
 export const BLOG_POSTS_PER_PAGE = 6;
 
@@ -18,6 +19,20 @@ export function getPageItems<T>(
 	return items.slice(start, start + pageSize);
 }
 
-export function getBlogPagePath(locale: Locale, page: number) {
-	return page <= 1 ? `/${locale}/blog` : `/${locale}/blog/page/${page}`;
+export function getBlogArchivePath(
+	locale: Locale,
+	audience: BlogAudience = "business",
+) {
+	return audience === "technical"
+		? `/${locale}/blog/technical`
+		: `/${locale}/blog`;
+}
+
+export function getBlogPagePath(
+	locale: Locale,
+	page: number,
+	audience: BlogAudience = "business",
+) {
+	const archivePath = getBlogArchivePath(locale, audience);
+	return page <= 1 ? archivePath : `${archivePath}/page/${page}`;
 }

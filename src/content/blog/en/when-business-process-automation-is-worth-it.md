@@ -6,6 +6,7 @@ date: 2026-05-26
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+homeFeatured: 3
 translationSlug: "automatizar-procesos-empresa-cuando-merece-la-pena"
 commercial:
   role: buyer-led

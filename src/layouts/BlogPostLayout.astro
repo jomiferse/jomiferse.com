@@ -36,7 +36,18 @@ const { frontmatter, headings } = Astro.props as {
 	headings: Heading[];
 };
 
-const blogPath = `/${locale}/blog`;
+const blogPath =
+	frontmatter.commercial.audience === "technical"
+		? `/${locale}/blog/technical/`
+		: `/${locale}/blog/`;
+const backCopy =
+	frontmatter.commercial.audience === "technical"
+		? getTranslations(locale).blog.technicalArchive.backToArchive
+		: t(locale, "blog.post.back");
+const backToListCopy =
+	frontmatter.commercial.audience === "technical"
+		? getTranslations(locale).blog.technicalArchive.backToArchive
+		: t(locale, "blog.post.backToList");
 const articlePath = Astro.url.pathname;
 const dateLocale = locale === "es" ? "es-ES" : "en-GB";
 const wasUpdated =
@@ -61,7 +72,7 @@ const commercialCta = resolveBlogCommercialCta(
 			class="inline-flex items-center gap-2 text-sm font-black text-[var(--text)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
 		>
 			<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
-			{t(locale, "blog.post.back")}
+			{backCopy}
 		</a>
 	</nav>
 
@@ -153,7 +164,7 @@ const commercialCta = resolveBlogCommercialCta(
 				) : null
 			}
 			{
-				frontmatter.author ? (
+				frontmatter.author && !showAuthorCredential ? (
 					<span class="inline-flex items-center gap-2">
 						<span
 							data-blog-article-meta-separator
@@ -241,7 +252,7 @@ const commercialCta = resolveBlogCommercialCta(
 			class="inline-flex items-center gap-2 text-sm font-black text-[var(--text)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
 		>
 			<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
-			{t(locale, "blog.post.backToList")}
+			{backToListCopy}
 		</a>
 	</footer>
 </article>

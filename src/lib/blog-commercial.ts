@@ -63,6 +63,16 @@ const clusterCtaConfiguration: Record<
 			en: "wordpress-web-design",
 		},
 	},
+	"website-redesign": {
+		label: {
+			es: "Ver servicio de rediseño web",
+			en: "Explore website redesign",
+		},
+		contactService: {
+			es: "website-redesign",
+			en: "website-redesign",
+		},
+	},
 	"custom-software": {
 		label: { es: "Ver software a medida", en: "Explore custom software" },
 		contactService: { es: "software-a-medida", en: "custom-software" },

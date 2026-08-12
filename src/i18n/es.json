@@ -16,7 +16,7 @@
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "mobileNav": "Navegación móvil",
-    "role": "Desarrollador full-stack",
+    "role": "Desarrollador freelance",
     "availability": "Disponible para nuevos proyectos",
     "preferences": "Preferencias",
     "contactCta": "Empezar un proyecto",
@@ -297,6 +297,42 @@
           "Elijo la solución según la necesidad, no según una tecnología de moda.",
           "Pienso en rendimiento, mantenimiento y evolución desde el principio.",
           "Puedo moverme de la interfaz al backend y la infraestructura."
+        ]
+      },
+      "featuredGuides": {
+        "eyebrow": "Guías prácticas",
+        "title": "Guías para decidir antes de invertir.",
+        "intro": "Costes, riesgos y criterios concretos para valorar una web, un rediseño o una automatización antes de pedir presupuesto.",
+        "guideLabel": "Guía",
+        "read": "Leer guía",
+        "viewAll": "Ver todas las guías"
+      },
+      "serviceStandard": {
+        "eyebrow": "Estándar de servicio",
+        "title": "Cinco compromisos en cada proyecto.",
+        "intro": "La calidad no termina cuando una web o una herramienta se publica. También importa cómo se define el trabajo, cómo se comunica y qué base queda después de la entrega.",
+        "signal": "Mi estándar de servicio · cinco compromisos",
+        "items": [
+          {
+            "title": "Alcance claro",
+            "text": "Sabrás qué incluye el proyecto, qué queda fuera y qué decisión hay que tomar después."
+          },
+          {
+            "title": "Comunicación directa",
+            "text": "Hablas conmigo durante todo el proceso, sin intermediarios ni respuestas que pierdan el contexto."
+          },
+          {
+            "title": "Criterio antes que moda",
+            "text": "La tecnología se elige según el problema, el presupuesto y el mantenimiento que necesita el negocio."
+          },
+          {
+            "title": "Entrega mantenible",
+            "text": "Recibes accesos, una base ordenada y el contexto necesario para que el proyecto pueda evolucionar."
+          },
+          {
+            "title": "Seguimiento responsable",
+            "text": "Si aparece una incidencia relacionada con la entrega, la reviso con contexto y propongo un siguiente paso concreto."
+          }
         ]
       },
       "eyebrow": "Desarrollo full-stack freelance · Backend · Automatización",
@@ -960,10 +996,10 @@
         "title": "Blog sobre desarrollo web y software",
         "description": "Guías prácticas para empresas sobre diseño web, WordPress, software a medida, automatización, integraciones API y sistemas backend mantenibles."
       },
-      "eyebrow": "Escritura",
-      "title": "Notas de",
-      "titleAccent": "construir software.",
-      "intro": "Notas cortas sobre proyectos, herramientas, backend y cosas que aprendo mientras construyo.",
+      "eyebrow": "Guías para negocios",
+      "title": "Decisiones web y software",
+      "titleAccent": "sin perderte en lo técnico.",
+      "intro": "Guías prácticas para valorar una web, una automatización o una herramienta interna antes de invertir tiempo y presupuesto.",
       "featuredEyebrow": "Artículo destacado",
       "readArticle": "Leer artículo",
       "browseArticles": "Ver artículos",
@@ -974,7 +1010,7 @@
       "cta": {
         "eyebrow": "¿Tienes un proyecto en mente?",
         "title": "¿Buscas ayuda con una web o herramienta?",
-        "text": "Estos artículos muestran cómo pienso al construir. Si tienes un problema concreto, puedes ver servicios o escribirme directamente.",
+        "text": "Si una guía se parece a tu situación, podemos revisar el alcance y decidir un siguiente paso proporcionado antes de construir.",
         "services": "Ver servicios",
         "contact": "Contactar"
       }
@@ -1023,14 +1059,39 @@
         }
       }
     },
+    "archiveSwitch": {
+      "technicalLabel": "Ir al archivo técnico",
+      "technicalDescription": "Arquitectura, APIs, Spring Boot, infraestructura y notas de ingeniería para equipos técnicos."
+    },
+    "technicalArchive": {
+      "meta": {
+        "title": "Archivo técnico de desarrollo de software",
+        "description": "Artículos técnicos sobre arquitectura de software, APIs, Spring Boot, infraestructura, rendimiento y decisiones de ingeniería."
+      },
+      "eyebrow": "Ingeniería de software",
+      "title": "Archivo técnico",
+      "intro": "Notas de implementación y arquitectura para quien necesita revisar decisiones de backend, APIs, infraestructura y mantenimiento.",
+      "breadcrumb": "Archivo técnico",
+      "browseArticles": "Ver notas técnicas",
+      "featuredEyebrow": "Nota técnica destacada",
+      "latestTitle": "Publicaciones técnicas",
+      "latestSubtitle": "Arquitectura, backend, APIs e infraestructura.",
+      "businessLabel": "Volver a las guías para negocios",
+      "businessDescription": "Costes, alcance y decisiones prácticas sobre webs, automatización y software para pequeñas empresas.",
+      "backToArchive": "Volver al archivo técnico",
+      "pagination": {
+        "metaTitle": "Archivo técnico | Página {page}",
+        "metaDescription": "Página {page} del archivo técnico sobre arquitectura de software, APIs, Spring Boot, infraestructura y rendimiento."
+      }
+    },
     "sections": {
       "featured": {
         "title": "Notas seleccionadas",
         "subtitle": "Artículos destacados."
       },
       "latest": {
-        "title": "Escritura reciente",
-        "subtitle": "Publicaciones más recientes."
+        "title": "Guías recientes",
+        "subtitle": "Contenido pensado para tomar mejores decisiones antes de contratar o construir."
       }
     },
     "pagination": {
@@ -1040,7 +1101,7 @@
       "page": "Página",
       "pageLabel": "Página {current} de {total}",
       "metaTitle": "Blog | Página {page}",
-      "metaDescription": "Página {page} de notas breves sobre software engineering, sistemas, herramientas y construcción práctica de producto."
+      "metaDescription": "Página {page} de guías para empresas sobre diseño web, automatización, herramientas internas y software a medida."
     },
     "empty": {
       "featured": "Todavía no hay artículos destacados.",

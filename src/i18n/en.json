@@ -16,7 +16,7 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "mobileNav": "Mobile navigation",
-    "role": "Full-stack developer",
+    "role": "Freelance developer",
     "availability": "Available for new projects",
     "preferences": "Preferences",
     "contactCta": "Start a project",
@@ -297,6 +297,42 @@
           "I choose the solution around the need, not a fashionable technology.",
           "Performance, maintenance and future changes are considered from the start.",
           "I can work from the interface through to backend and infrastructure."
+        ]
+      },
+      "featuredGuides": {
+        "eyebrow": "Practical guides",
+        "title": "Guides for deciding before you invest.",
+        "intro": "Costs, risks and practical criteria for assessing a website, a redesign or an automation project before requesting a quote.",
+        "guideLabel": "Guide",
+        "read": "Read guide",
+        "viewAll": "View all guides"
+      },
+      "serviceStandard": {
+        "eyebrow": "Service standard",
+        "title": "Five commitments in every project.",
+        "intro": "Quality does not end when a website or tool goes live. It also depends on how the work is defined, how decisions are communicated and what remains after handover.",
+        "signal": "My service standard · five commitments",
+        "items": [
+          {
+            "title": "Clear scope",
+            "text": "You will know what the project includes, what sits outside it and which decision comes next."
+          },
+          {
+            "title": "Direct communication",
+            "text": "You work with me throughout the process, without intermediaries or answers that lose the context."
+          },
+          {
+            "title": "Judgment before trends",
+            "text": "Technology is chosen around the problem, the budget and the level of maintenance the business needs."
+          },
+          {
+            "title": "Maintainable handover",
+            "text": "You receive access, an orderly foundation and enough context for the project to keep evolving."
+          },
+          {
+            "title": "Responsible follow-up",
+            "text": "If an issue relates to the delivered work, I review it with context and recommend a practical next step."
+          }
         ]
       },
       "eyebrow": "Freelance full-stack development · Backend · Automation",
@@ -960,10 +996,10 @@
         "title": "Web development and software blog",
         "description": "Practical guides for businesses on web design, WordPress, custom software, automation, API integrations and maintainable backend systems."
       },
-      "eyebrow": "Writing",
-      "title": "Notes from",
-      "titleAccent": "building software.",
-      "intro": "Short notes about projects, tools, backend work and things I learn while building.",
+      "eyebrow": "Guides for businesses",
+      "title": "Website and software decisions",
+      "titleAccent": "without the technical fog.",
+      "intro": "Practical guides for assessing a website, automation workflow or internal tool before committing time and budget.",
       "featuredEyebrow": "Featured article",
       "readArticle": "Read article",
       "browseArticles": "Browse articles",
@@ -974,7 +1010,7 @@
       "cta": {
         "eyebrow": "Have a project in mind?",
         "title": "Need help with a website or tool?",
-        "text": "These notes show how I think while building. If you have a concrete problem, you can view services or contact me directly.",
+        "text": "If a guide sounds like your situation, we can review the scope and choose a proportionate next step before building.",
         "services": "View services",
         "contact": "Contact me"
       }
@@ -1023,14 +1059,39 @@
         }
       }
     },
+    "archiveSwitch": {
+      "technicalLabel": "Go to the technical archive",
+      "technicalDescription": "Architecture, APIs, Spring Boot, infrastructure and engineering notes for technical teams."
+    },
+    "technicalArchive": {
+      "meta": {
+        "title": "Software engineering technical archive",
+        "description": "Technical articles on software architecture, APIs, Spring Boot, infrastructure, performance and engineering decisions."
+      },
+      "eyebrow": "Software engineering",
+      "title": "Technical archive",
+      "intro": "Implementation and architecture notes for people reviewing backend, API, infrastructure and maintenance decisions.",
+      "breadcrumb": "Technical archive",
+      "browseArticles": "Browse technical notes",
+      "featuredEyebrow": "Featured technical note",
+      "latestTitle": "Technical writing",
+      "latestSubtitle": "Architecture, backend work, APIs and infrastructure.",
+      "businessLabel": "Back to guides for businesses",
+      "businessDescription": "Costs, scope and practical decisions about websites, automation and software for small businesses.",
+      "backToArchive": "Back to the technical archive",
+      "pagination": {
+        "metaTitle": "Technical archive | Page {page}",
+        "metaDescription": "Page {page} of the technical archive on software architecture, APIs, Spring Boot, infrastructure and performance."
+      }
+    },
     "sections": {
       "featured": {
         "title": "Selected notes",
         "subtitle": "Hand-picked posts."
       },
       "latest": {
-        "title": "Recent writing",
-        "subtitle": "Most recent writing."
+        "title": "Recent guides",
+        "subtitle": "Content for making better decisions before hiring or building."
       }
     },
     "pagination": {
@@ -1040,7 +1101,7 @@
       "page": "Page",
       "pageLabel": "Page {current} of {total}",
       "metaTitle": "Blog | Page {page}",
-      "metaDescription": "Page {page} of short notes about software engineering, systems, tools and practical product building."
+      "metaDescription": "Page {page} of business guides on web design, automation, internal tools and custom software."
     },
     "empty": {
       "featured": "No featured posts yet.",

@@ -6,6 +6,7 @@ date: 2026-05-26
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "7 min"
+homeFeatured: 3
 translationSlug: "when-business-process-automation-is-worth-it"
 commercial:
   role: buyer-led
