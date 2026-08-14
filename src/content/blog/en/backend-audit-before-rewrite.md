@@ -1,8 +1,9 @@
 ---
 title: "What to review in a backend before deciding to rewrite"
 description: "A practical audit before rewriting: behavior, incidents, dependencies, data, contracts, delivery and transition cost."
+metaDescription: "What a managed backend is, which risks it reduces and what to audit before choosing incremental modernization or a full rewrite."
 date: 2026-07-11
-dateModified: 2026-07-12
+dateModified: 2026-08-14
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "auditoria-backend-antes-reescribir"
@@ -19,6 +20,12 @@ tags: [backend, audit, architecture, legacy, rewrite]
 Rewriting a backend sounds decisive when code is hard to change, incidents recur, or the technology is old. Yet a rewrite does not automatically remove complexity. It requires the team to rediscover business rules, reproduce contracts, migrate data, and operate two systems through a transition. The useful question is not “is the code ugly?” but “which business constraint must we remove, and what is the least risky way to remove it?”
 
 A pre-rewrite audit turns impressions into evidence. It separates product, architecture, operational, and organisational problems; compares replacement with incremental alternatives; and produces a decision that leaders and engineers can defend. It may still conclude that rewriting is right. Its purpose is not to prevent that answer, but to prevent the company from choosing it without understanding the full cost.
+
+## What "managed backend" means before a rewrite
+
+The term can describe a backend-as-a-service product that provides data, authentication, storage and APIs. It can also describe a custom backend whose hosting and day-to-day operation are handled by a provider. Both models can reduce infrastructure work and shorten a migration, but neither removes responsibility for business rules, data ownership, integrations or an exit plan.
+
+A managed backend reduces rewrite risk when it replaces a well-understood technical concern and the team has tested data export, service limits, security controls and failure handling. It can increase risk when business logic becomes tied to proprietary features or the provider cannot reproduce a critical contract. Treat it as one option in the audit, then compare its transition and operating costs with an incremental modernization and a full replacement.
 
 ## 1. Define the problem before assessing a solution
 

@@ -2,7 +2,7 @@
 title: "Cómo integrar CRM, formularios web y pagos sin perder datos"
 description: "Diseño práctico de una integración entre formularios, CRM y pagos con validación, idempotencia, reintentos y revisión de errores."
 date: 2026-07-11
-dateModified: 2026-07-12
+dateModified: 2026-08-14
 author: "José Miguel Fernández"
 readingTime: "12 min"
 translationSlug: "integrate-crm-forms-payments"
@@ -19,6 +19,18 @@ tags: [crm, formularios, pagos, integraciones-api, webhooks]
 Conectar un formulario con un CRM parece un trabajo de “si ocurre esto, crea aquello”. En producción aparecen envíos repetidos, campos incompletos, contactos existentes, APIs caídas, pagos tardíos y reembolsos. Una integración fiable no es la flecha entre tres logos: es el conjunto de decisiones que conserva el significado del dato cuando algo falla.
 
 El objetivo tampoco es sincronizar todo con todo. Es completar recorridos concretos —por ejemplo, solicitud válida, oportunidad comercial y pago confirmado— con propiedad clara, trazabilidad y recuperación. Eso reduce pérdidas silenciosas sin convertir el proyecto en una plataforma innecesaria.
+
+## Si los formularios no llegan al CRM
+
+Comprueba el recorrido en este orden:
+
+1. Confirma que el servidor acepta el envío y guarda un registro antes de llamar al CRM.
+2. Asigna un ID de correlación para seguir el mismo caso en formulario, cola y CRM.
+3. Separa errores de validación (4xx) de timeouts, límites de tasa y fallos 5xx que sí admiten reintento.
+4. Revisa el mapeo de campos obligatorios, consentimiento, propietario y etapa comercial.
+5. Compara formularios aceptados con registros creados y casos pendientes en la cola de errores.
+
+Si no existe registro local, el fallo ocurre antes de la integración. Si el envío está guardado pero el contacto no aparece en el CRM, la escritura externa ha fallado y debe poder reintentarse sin duplicar el contacto. Esa distinción evita buscar el problema en el conector equivocado.
 
 ## Define el recorrido antes de elegir conectores
 

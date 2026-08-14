@@ -1,8 +1,10 @@
 ---
 title: "Astro 7: What Changed, Performance, and Why It Matters for the Modern Web"
-metaTitle: "Astro 7: Performance, Routing and Upgrade Trade-offs"
+metaTitle: "Astro 7 Upgrade Guide: Breaking Changes and Performance"
 description: "A practical technical guide to Astro 7: Vite 8, the Rust compiler, Sätteri, Advanced Routing, DX, performance, and when to upgrade."
+metaDescription: "Astro 7 upgrade guide covering breaking changes, migration checks, Vite 8, Sätteri, routing and measured build performance."
 date: 2026-06-23
+dateModified: 2026-08-14
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "12 min"

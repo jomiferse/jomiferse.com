@@ -3,7 +3,7 @@ title: "How to integrate CRM, website forms and payments without losing data"
 metaTitle: "CRM, Forms and Payments: A Reliable Integration Design"
 description: "A practical design for forms, CRM and payment integration with validation, idempotency, retries and error review."
 date: 2026-07-11
-dateModified: 2026-07-12
+dateModified: 2026-08-14
 author: "José Miguel Fernández"
 readingTime: "12 min"
 translationSlug: "integrar-crm-formularios-pagos"
@@ -20,6 +20,18 @@ tags: [crm, forms, payments, api-integrations, webhooks]
 Connecting a form to a CRM looks like “when this happens, create that”. Production adds repeated submissions, incomplete fields, existing contacts, unavailable APIs, delayed payments and refunds. A dependable integration is not the arrow between three logos. It is the set of decisions that preserves data meaning when something fails.
 
 The goal is not to synchronise everything with everything. It is to complete defined journeys—such as valid enquiry, sales opportunity and confirmed payment—with clear ownership, traceability and recovery. That prevents silent loss without turning a focused project into an unnecessary platform.
+
+## If website forms are not reaching the CRM
+
+Check the journey in this order:
+
+1. Confirm that the server accepts the submission and stores a record before calling the CRM.
+2. Assign a correlation ID so the same case can be traced through the form, queue and CRM.
+3. Separate validation errors (4xx) from timeouts, rate limits and 5xx failures that can be retried.
+4. Check the mapping for required fields, consent, account owner and sales stage.
+5. Compare accepted submissions with created records and cases waiting in the error queue.
+
+If there is no local record, the failure happens before the integration. If the submission is stored but the contact is missing from the CRM, the external write failed and should be retryable without creating a duplicate. This distinction keeps the investigation focused on the right part of the flow.
 
 ## Define the journey before selecting connectors
 

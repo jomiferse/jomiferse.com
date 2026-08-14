@@ -1,8 +1,9 @@
 ---
 title: "Qué revisar en un backend antes de decidir una reescritura"
 description: "Una auditoría práctica antes de reescribir: comportamiento, incidencias, dependencias, datos, contratos, entrega y coste de transición."
+metaDescription: "Qué implica un backend gestionado, qué riesgos reduce y qué auditar antes de modernizar por fases o plantear una reescritura."
 date: 2026-07-11
-dateModified: 2026-07-12
+dateModified: 2026-08-14
 author: "José Miguel Fernández"
 readingTime: "11 min"
 translationSlug: "backend-audit-before-rewrite"
@@ -19,6 +20,12 @@ tags: [backend, auditoria, arquitectura, legacy, reescritura]
 Reescribir un backend parece una solución clara cuando el código es difícil de cambiar, las incidencias se repiten o la tecnología ha quedado atrás. Sin embargo, una reescritura no elimina automáticamente la complejidad: obliga a descubrir de nuevo reglas de negocio, reproducir contratos, migrar datos y operar dos sistemas durante una transición. La pregunta útil no es «¿es feo el código?», sino «¿qué obstáculo de negocio queremos retirar y cuál es la forma menos arriesgada de hacerlo?».
 
 Una auditoría previa convierte impresiones en evidencia. Permite separar problemas del producto, la arquitectura, la operación y la organización; comparar una sustitución completa con alternativas incrementales; y producir una decisión que dirección y equipo técnico puedan defender. También puede concluir que reescribir sí es lo correcto. Su valor no está en evitar esa respuesta, sino en evitar que se adopte sin conocer el coste total.
+
+## Qué significa "backend gestionado" antes de una reescritura
+
+El término puede referirse a un servicio que proporciona base de datos, autenticación, almacenamiento y APIs. También puede describir un backend propio cuyo alojamiento y operación diaria asume un proveedor. Ambos modelos reducen trabajo de infraestructura y pueden acortar una migración, pero no eliminan la responsabilidad sobre reglas de negocio, propiedad de los datos, integraciones ni estrategia de salida.
+
+Un backend gestionado reduce el riesgo de reescritura cuando sustituye una preocupación técnica bien entendida y el equipo ha probado la exportación de datos, los límites del servicio, los controles de seguridad y la respuesta ante fallos. Puede aumentar el riesgo si la lógica de negocio queda ligada a funciones propietarias o el proveedor no reproduce un contrato crítico. Conviene tratarlo como una opción de la auditoría y comparar su transición y coste operativo con una modernización por fases y una sustitución completa.
 
 ## 1. Definir el problema antes de evaluar la solución
 

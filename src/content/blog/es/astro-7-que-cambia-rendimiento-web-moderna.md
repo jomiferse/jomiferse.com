@@ -1,8 +1,10 @@
 ---
 title: "Astro 7: qué cambia, rendimiento y por qué importa para la web moderna"
-metaTitle: "Astro 7: rendimiento, routing y cuándo migrar"
+metaTitle: "Guía para migrar a Astro 7: cambios y rendimiento"
 description: "Una guía técnica y práctica sobre Astro 7: Vite 8, compilador en Rust, Sätteri, Advanced Routing, DX, rendimiento y cuándo conviene migrar."
+metaDescription: "Guía para migrar a Astro 7: cambios incompatibles, comprobaciones, Vite 8, Sätteri, routing y rendimiento medido."
 date: 2026-06-23
+dateModified: 2026-08-14
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "12 min"
