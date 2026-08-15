@@ -17,11 +17,11 @@
 
   <text x="112" y="112" fill="#A93424" font-family="Noto Sans, Segoe UI, sans-serif" font-size="20" font-weight="800" letter-spacing="3.8">JOSÉ MIGUEL FERNÁNDEZ</text>
 
-  <text x="108" y="258" fill="#102D4F" font-family="Noto Sans, Segoe UI, sans-serif" font-size="67" font-weight="850" letter-spacing="-2.2">Desarrollador</text>
-  <text x="108" y="338" fill="#102D4F" font-family="Noto Sans, Segoe UI, sans-serif" font-size="67" font-weight="850" letter-spacing="-2.2">freelance</text>
+  <text x="108" y="258" fill="#102D4F" font-family="Noto Sans, Segoe UI, sans-serif" font-size="72" font-weight="850" letter-spacing="-2.3">Freelance</text>
+  <text x="108" y="342" fill="#102D4F" font-family="Noto Sans, Segoe UI, sans-serif" font-size="72" font-weight="850" letter-spacing="-2.3">developer</text>
 
   <rect x="112" y="402" width="52" height="6" rx="3" fill="#C8432F"/>
-  <text x="112" y="458" fill="#4D596B" font-family="Noto Sans, Segoe UI, sans-serif" font-size="25" font-weight="600">Web · Software · Automatización</text>
+  <text x="112" y="458" fill="#4D596B" font-family="Noto Sans, Segoe UI, sans-serif" font-size="25" font-weight="600">Web · Software · Automation</text>
 
   <text x="112" y="555" fill="#102D4F" font-family="Noto Sans, Segoe UI, sans-serif" font-size="21" font-weight="750">jomiferse.com</text>
 

@@ -43,13 +43,19 @@ interface LayoutProps {
 	popupContext?: PopupContext;
 }
 
+const locale: Locale = getLocaleFromPath(Astro.url.pathname);
+const defaultOgImage =
+	locale === "en"
+		? "/images/og/portfolio-og-en.png"
+		: "/images/og/portfolio-og.png";
+
 const {
 	title,
 	description,
-	image = "/images/og/portfolio-og.png",
+	image = defaultOgImage,
 	imageAlt = title,
-	imageWidth = image === "/images/og/portfolio-og.png" ? 1200 : undefined,
-	imageHeight = image === "/images/og/portfolio-og.png" ? 630 : undefined,
+	imageWidth = image === defaultOgImage ? 1200 : undefined,
+	imageHeight = image === defaultOgImage ? 630 : undefined,
 	noindex = false,
 	structuredData,
 	ogType = "website",
@@ -58,7 +64,6 @@ const {
 	popupContext,
 } = Astro.props as LayoutProps;
 
-const locale: Locale = getLocaleFromPath(Astro.url.pathname);
 const cv = getCv(locale);
 const schemaSite = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const showExitIntent = !isExitIntentRouteExcluded(Astro.url.pathname);
