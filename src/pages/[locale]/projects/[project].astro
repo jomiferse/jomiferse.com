@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import ConversionCta from "@/components/common/ConversionCta.astro";
+import ResponsiveImage from "@/components/common/ResponsiveImage.astro";
 import ProjectServiceCard from "@/components/projects/ProjectServiceCard.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getTranslations, locales, t, type Locale } from "@/i18n";
@@ -10,6 +11,7 @@ import {
 	getProjectContactHref,
 	getProjectPages,
 } from "@/lib/projects";
+import { getServicePages } from "@/lib/services";
 import { buildBreadcrumbList, buildCreativeWork } from "@/lib/seo";
 
 export function getStaticPaths() {
@@ -33,6 +35,29 @@ const archivePath = `/${locale}/projects/`;
 const alternatePaths = getProjectAlternatePaths(project);
 const image = project.img?.imgStatic;
 const caseStudy = project.caseStudy;
+const relatedService = getServicePages(locale).find((service) => {
+	const href = service.canonicalPath ?? `/${locale}/services/${service.slug}/`;
+	return href === caseStudy?.serviceHref;
+});
+const relatedArticle = relatedService?.relatedPosts?.[0];
+const evidenceCopy =
+	locale === "es"
+		? {
+				eyebrow: "Evidencia y alcance",
+				title: "Qué documenta este caso",
+				image: "Captura propia del producto o sistema descrito",
+				record: "Rol, periodo, restricciones y decisiones documentadas",
+				outcome: "Resultado declarado sin atribuir métricas no medidas",
+				article: "Lectura técnica relacionada",
+			}
+		: {
+				eyebrow: "Evidence and scope",
+				title: "What this case documents",
+				image: "First-party image of the product or system described",
+				record: "Documented role, period, constraints and decisions",
+				outcome: "Stated outcome without adding unmeasured metrics",
+				article: "Related technical reading",
+			};
 const facts = [
 	project.clientLabel
 		? { label: copy.client, value: project.clientLabel }
@@ -57,6 +82,18 @@ const narrativeSections = [
 ].filter((section): section is { title: string; body: string } =>
 	Boolean(section.body),
 );
+const evidenceSummary = [
+	locale === "es"
+		? `Mi papel en ${project.title} fue ${project.role} durante ${project.timeframe}.`
+		: `My role on ${project.title} was ${project.role} during ${project.timeframe}.`,
+	project.context,
+	caseStudy?.problem,
+	caseStudy?.decisions,
+	caseStudy?.delivered,
+	caseStudy?.outcome,
+]
+	.filter(Boolean)
+	.join(" ");
 const contactHref = getProjectContactHref(locale, project);
 const structuredData = [
 	buildCreativeWork(site, {
@@ -133,7 +170,7 @@ const structuredData = [
 			>
 				{
 					image ? (
-						<img
+						<ResponsiveImage
 							src={image.src}
 							alt={image.alt ?? project.title}
 							width="1200"
@@ -151,6 +188,61 @@ const structuredData = [
 						</div>
 					)
 				}
+			</div>
+		</section>
+
+		<section
+			data-project-evidence
+			class="project-evidence section-reveal border-y border-[var(--surface-border)] py-8 md:py-10"
+			aria-labelledby="project-evidence-title"
+		>
+			<div
+				class="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:items-start"
+			>
+				<div>
+					<p class="eyebrow text-[var(--action)]">{evidenceCopy.eyebrow}</p>
+					<h2
+						id="project-evidence-title"
+						class="mt-3 text-3xl font-black text-[var(--home-navy)] md:text-4xl"
+					>
+						{evidenceCopy.title}
+					</h2>
+					<p class="muted-copy mt-5 max-w-4xl leading-8">{evidenceSummary}</p>
+				</div>
+				<ul class="border-t border-[var(--surface-border)]">
+					{
+						image ? (
+							<li class="flex gap-3 border-b border-[var(--surface-border)] py-4 text-sm leading-6 text-[var(--text-muted)]">
+								<Icon
+									name="badge-check"
+									class="mt-0.5 h-4 w-4 shrink-0 text-[var(--action)]"
+									aria-hidden="true"
+								/>
+								<span>{evidenceCopy.image}</span>
+							</li>
+						) : null
+					}
+					<li
+						class="flex gap-3 border-b border-[var(--surface-border)] py-4 text-sm leading-6 text-[var(--text-muted)]"
+					>
+						<Icon
+							name="briefcase-business"
+							class="mt-0.5 h-4 w-4 shrink-0 text-[var(--action)]"
+							aria-hidden="true"
+						/>
+						<span>{evidenceCopy.record}</span>
+					</li>
+					<li
+						class="flex gap-3 border-b border-[var(--surface-border)] py-4 text-sm leading-6 text-[var(--text-muted)]"
+					>
+						<Icon
+							name="circle-check-big"
+							class="mt-0.5 h-4 w-4 shrink-0 text-[var(--action)]"
+							aria-hidden="true"
+						/>
+						<span>{evidenceCopy.outcome}</span>
+					</li>
+				</ul>
 			</div>
 		</section>
 
@@ -199,10 +291,12 @@ const structuredData = [
 				serviceHref={caseStudy?.serviceHref}
 				serviceLabel={caseStudy?.serviceLabel || copy.relatedService}
 				externalHref={project.link}
+				relatedArticle={relatedArticle}
 				copy={{
 					...copy.serviceCard,
 					technologies: copy.technologies,
 					externalLink: copy.externalLink,
+					relatedArticle: evidenceCopy.article,
 				}}
 			/>
 		</div>

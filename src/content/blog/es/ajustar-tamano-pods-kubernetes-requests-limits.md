@@ -211,6 +211,8 @@ Reduce trabajo manual, sí, pero sigues necesitando entender qué recomienda y p
 **¿Con HPA basta?**  
 No. HPA escala réplicas. No arregla malos `requests` ni malos límites de memoria.
 
+Para relacionar estos límites con una aplicación concreta, consulta la [checklist de Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/) y la guía sobre [cambios de rendimiento Spring Boot que conviene medir](/es/blog/rendimiento-spring-boot-cambios-que-de-verdad-se-notan/).
+
 ## Fuentes y verificación
 
 - Kubernetes: Resource Management for Pods and Containers — https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/

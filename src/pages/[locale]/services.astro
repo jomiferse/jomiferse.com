@@ -8,6 +8,7 @@ import ServiceAreaCard from "@/components/services/ServiceAreaCard.astro";
 import ServiceDirectory from "@/components/services/ServiceDirectory.astro";
 import { getLocaleStaticPaths, getTranslations, t, type Locale } from "@/i18n";
 import { getProjectPages } from "@/lib/projects";
+import { getCommercialBuyerPaths } from "@/lib/commercial-linking";
 import { getCanonicalServicePages, getServiceAreas } from "@/lib/services";
 import {
 	buildBreadcrumbList,
@@ -27,6 +28,7 @@ const commercial = getTranslations(locale).services.commercial;
 const cv = getCv(locale);
 const areas = getServiceAreas(locale);
 const services = getCanonicalServicePages(locale);
+const buyerPaths = getCommercialBuyerPaths(locale);
 const selectedProjectIds = new Set([
 	"cv-studio",
 	"educash-affiliate-platform",
@@ -159,6 +161,51 @@ const structuredData = [
 				mostCommonLabel={commercial.common.mostCommon}
 			/>
 		</div>
+
+		<section
+			data-commercial-buyer-paths
+			class="services-buyer-paths section-reveal"
+			aria-labelledby="services-buyer-paths-title"
+		>
+			<header class="services-section-heading">
+				<div>
+					<p class="eyebrow">
+						{locale === "es" ? "Necesidades concretas" : "Specific needs"}
+					</p>
+					<h2 id="services-buyer-paths-title">
+						{
+							locale === "es"
+								? "Tres decisiones habituales antes de construir"
+								: "Three common decisions before you build"
+						}
+					</h2>
+				</div>
+				<p>
+					{
+						locale === "es"
+							? "Recorridos breves para entender el problema, el alcance razonable y cuándo merece la pena invertir."
+							: "Short paths for understanding the problem, a sensible scope and when the investment is worthwhile."
+					}
+				</p>
+			</header>
+
+			<div class="services-buyer-paths__list">
+				{
+					buyerPaths.map((path, index) => (
+						<a href={path.href} class="services-buyer-paths__item">
+							<span aria-hidden="true">
+								{String(index + 1).padStart(2, "0")}
+							</span>
+							<div>
+								<h3>{path.title}</h3>
+								<p>{path.description}</p>
+							</div>
+							<Icon name="arrow-right" class="h-5 w-5" aria-hidden="true" />
+						</a>
+					))
+				}
+			</div>
+		</section>
 
 		<section
 			data-services-proof
@@ -379,6 +426,7 @@ const structuredData = [
 	}
 
 	.services-areas,
+	.services-buyer-paths,
 	.services-process,
 	.services-faq {
 		padding-block: var(--services-section-space);
@@ -426,6 +474,59 @@ const structuredData = [
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: 1rem;
 		margin-top: var(--services-content-gap);
+	}
+
+	.services-buyer-paths__list {
+		margin-top: var(--services-content-gap);
+		border-top: 1px solid var(--surface-border);
+	}
+
+	.services-buyer-paths__item {
+		display: grid;
+		grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+		gap: 1rem;
+		align-items: center;
+		padding-block: 1.35rem;
+		border-bottom: 1px solid var(--surface-border);
+	}
+
+	.services-buyer-paths__item > span {
+		color: var(--action);
+		font-size: 0.7rem;
+		font-weight: 900;
+		letter-spacing: 0.16em;
+	}
+
+	.services-buyer-paths__item h3 {
+		color: var(--home-navy);
+		font-size: 1.15rem;
+		font-weight: 900;
+	}
+
+	.services-buyer-paths__item p {
+		max-width: 58rem;
+		margin-top: 0.35rem;
+		color: var(--text-muted);
+		font-size: 0.9rem;
+		line-height: 1.65;
+	}
+
+	.services-buyer-paths__item > :global(svg) {
+		color: var(--action);
+		transition: transform 180ms ease;
+	}
+
+	.services-buyer-paths__item:hover h3 {
+		color: var(--action);
+	}
+
+	.services-buyer-paths__item:hover > :global(svg) {
+		transform: translateX(0.25rem);
+	}
+
+	.services-buyer-paths__item:focus-visible {
+		outline: 2px solid var(--focus-ring);
+		outline-offset: 4px;
 	}
 
 	.services-process__steps {
@@ -580,6 +681,14 @@ const structuredData = [
 		.services-process__steps li:nth-child(4) {
 			border-top: 1px solid var(--surface-border);
 			border-left: 0;
+		}
+
+		.services-buyer-paths__item {
+			grid-template-columns: 2rem minmax(0, 1fr);
+		}
+
+		.services-buyer-paths__item > :global(svg) {
+			display: none;
 		}
 	}
 </style>

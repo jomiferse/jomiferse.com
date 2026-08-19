@@ -100,6 +100,8 @@ Problems appear when an event is repeated, arrives out of order or a supplier is
 
 Measure discrepancies between systems, reconciliation time and pending failures. Where several APIs and custom rules are involved, an [API integration](/en/services/api-integrations/) is often healthier than adding manual exports to the chain.
 
+If the problem is the full journey across several applications rather than one isolated API, this guide to [business tools integration](/en/business-tools-integration/) explains how to choose the source of truth, expose failures and keep the first phase bounded.
+
 ### Classifying a shared inbox
 
 A support, orders or administration inbox can link messages to a customer, extract references and suggest a category or reply. Rules work well for predictable senders and subjects. AI can help where language varies considerably.

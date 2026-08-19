@@ -3,6 +3,7 @@ title: "How much does a custom internal tool cost, and when is it worth it?"
 metaTitle: "Custom Internal Tool Cost: What Changes the Budget"
 description: "A practical guide to estimating the cost of a custom internal tool, understanding what drives the budget, and deciding whether a small first version makes sense."
 date: 2026-05-26
+dateModified: 2026-08-18
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "6 min"
@@ -37,6 +38,8 @@ For a small or mid-sized company, a well-scoped first version is often more usef
 ## Rough budget ranges
 
 These ranges are not fixed prices. They are a way to bring some order before asking for quotes or deciding whether the project is worth exploring.
+
+They were reviewed in August 2026 and describe freelance or small-team projects for businesses in Spain and Europe. They are not an official market average. The assumptions are a defined scope, remote delivery and code handover; VAT, third-party licences, unassessed data migration and ongoing support normally sit outside the figures. A real estimate still needs users, permissions, integrations and the consequences of failure to be reviewed.
 
 A simple internal tool can roughly sit between **EUR 2,000 and EUR 6,000** if it solves one specific workflow: a form, a list, basic statuses, validation, export and an interface for a small number of people.
 
@@ -90,6 +93,8 @@ A useful question before building is this:
 > If this tool existed tomorrow, which decision, task or mistake would change in a concrete way?
 
 If there is no clear answer, it is probably too early.
+
+When the difficult part is choosing scope, supplier or priority rather than writing code, a review with a [technology consultant for small businesses](/en/technology-consultant-small-businesses/) can prevent a premature estimate and turn the problem into a testable brief.
 
 ## How to scope a first version
 

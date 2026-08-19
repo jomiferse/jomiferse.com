@@ -100,6 +100,8 @@ Los problemas aparecen cuando el evento se repite, llega fuera de orden o un pro
 
 Mide las diferencias entre sistemas, el tiempo de conciliación y los errores pendientes. Cuando hay varias APIs y reglas propias, una [integración entre sistemas](/es/services/integraciones-api/) suele ser una solución más sana que añadir exportaciones manuales a la cadena.
 
+Si el problema no es una API aislada sino el recorrido completo entre varias aplicaciones, esta guía sobre [integración de herramientas de negocio](/es/integracion-herramientas-negocio/) ayuda a decidir qué sistema debe conservar cada dato, qué errores deben quedar visibles y qué conviene dejar fuera de la primera fase.
+
 ### Clasificación de un buzón compartido
 
 Un buzón de soporte, pedidos o administración puede asociar mensajes a un cliente, extraer referencias y proponer una categoría o una respuesta. Las reglas funcionan bien para remitentes y asuntos previsibles. La IA puede ayudar cuando el lenguaje varía mucho.

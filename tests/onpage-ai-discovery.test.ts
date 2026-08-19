@@ -92,8 +92,8 @@ test("keeps the shared person identity invariant across localized pages", () => 
 	const spanish = buildPerson("https://www.jomiferse.com", "es", person);
 
 	assert.equal(english["@id"], spanish["@id"]);
-	assert.equal(english.url, "https://www.jomiferse.com/es/about/");
-	assert.equal(spanish.url, "https://www.jomiferse.com/es/about/");
+	assert.equal(english.url, "https://www.jomiferse.com/");
+	assert.equal(spanish.url, "https://www.jomiferse.com/");
 	assert.deepEqual(english.address, spanish.address);
 	assert.deepEqual(english.address, {
 		"@type": "PostalAddress",
@@ -114,7 +114,7 @@ test("keeps embedded service providers on the same stable person URL", () => {
 	});
 	assert.equal(
 		(service.provider as Record<string, unknown>).url,
-		"https://www.jomiferse.com/es/about/",
+		"https://www.jomiferse.com/",
 	);
 });
 

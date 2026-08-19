@@ -212,6 +212,8 @@ It can reduce manual work, but you still need to understand what it is recommend
 **Is HPA enough?**  
 No. HPA scales replicas. It does not fix bad requests or memory limits.
 
+To connect these limits to an application-level review, use the [Spring Boot production checklist](/en/blog/spring-boot-production-devops-checklist/) and the guide to [Spring Boot performance changes worth measuring](/en/blog/spring-boot-performance-tuning/).
+
 ## Sources and verification notes
 
 - Kubernetes: Resource Management for Pods and Containers — https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/

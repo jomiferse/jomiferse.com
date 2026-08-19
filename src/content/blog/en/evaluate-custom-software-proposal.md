@@ -223,3 +223,7 @@ Prioritise one main journey, write exclusions down and confirm each change's imp
 ### Should maintenance be included in the initial proposal?
 
 You should at least understand which maintenance will be needed and what it costs. You can contract it later, but it should not be a surprise when the first update or incident happens.
+
+## Reading to challenge the scope
+
+Compare the proposal with [custom internal-tool cost drivers](/en/blog/how-much-does-a-custom-internal-tool-cost/) and the criteria for [building an internal tool instead of continuing with Excel](/en/blog/when-to-build-an-internal-tool-instead-of-using-excel/). If the document depends on a new architecture, a [backend and API audit](/en/backend-api-architecture-audit/) can separate verifiable risk from technical preference.

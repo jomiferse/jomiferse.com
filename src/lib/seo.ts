@@ -147,7 +147,7 @@ export const buildPerson = (
 	name: person.name,
 	jobTitle: person.jobTitle,
 	description: person.description,
-	url: absolutePageUrl(site, "/es/about/"),
+	url: absolutePageUrl(site, "/"),
 	email: `mailto:${person.email}`,
 	image: absoluteUrl(site, person.image ?? PROFILE_IMAGE),
 	address: {
@@ -439,7 +439,7 @@ export const buildServicePage = ({
 		"@type": "Person",
 		"@id": ids.person,
 		name: providerName,
-		url: absolutePageUrl(site, "/es/about/"),
+		url: absolutePageUrl(site, "/"),
 		sameAs,
 	};
 	const service = {
@@ -481,12 +481,11 @@ export const buildProfessionalService = ({
 	services,
 }: ProfessionalServiceSeo): StructuredData => {
 	const ids = getSeoEntityIds(site, path);
-	const pageUrl = absolutePageUrl(site, path);
 	const provider = {
 		"@type": "Person",
 		"@id": ids.person,
 		name: providerName,
-		url: absolutePageUrl(site, "/es/about/"),
+		url: absolutePageUrl(site, "/"),
 		sameAs,
 	};
 	const offers = services.flatMap((service) => {
@@ -506,6 +505,7 @@ export const buildProfessionalService = ({
 			: [
 					{
 						"@type": "Offer",
+						"@id": `${serviceUrl}#offer`,
 						url: serviceUrl,
 						itemOffered: {
 							"@type": "Service",
@@ -521,10 +521,10 @@ export const buildProfessionalService = ({
 
 	return {
 		"@type": "ProfessionalService",
-		"@id": `${pageUrl}#professional-service`,
+		"@id": `${absolutePageUrl(site, "/")}#professional-service`,
 		name,
 		description,
-		url: pageUrl,
+		url: absolutePageUrl(site, "/"),
 		mainEntityOfPage: { "@id": ids.page },
 		areaServed,
 		sameAs,
@@ -534,7 +534,7 @@ export const buildProfessionalService = ({
 			name,
 			itemListElement: offers,
 		},
-		makesOffer: offers,
+		makesOffer: offers.map((offer) => ({ "@id": offer["@id"] })),
 	};
 };
 

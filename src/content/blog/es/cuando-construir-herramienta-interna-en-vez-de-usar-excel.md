@@ -75,6 +75,8 @@ Si esas respuestas no están claras, construir software solo va a esconder la co
 
 La primera versión debería ser pequeña. Por ejemplo:
 
+Si la necesidad principal es consultar estados, permisos e indicadores sin editar la hoja original, conviene revisar primero si basta con un [dashboard o panel interno](/es/dashboards-paneles-internos/) antes de plantear una aplicación más amplia.
+
 - login si hay datos privados
 - una vista principal con los registros importantes
 - formulario para crear o actualizar datos

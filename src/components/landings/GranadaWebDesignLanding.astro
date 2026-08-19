@@ -1,12 +1,14 @@
 ---
 import { Icon } from "astro-icon/components";
 import ConversionCta from "@/components/common/ConversionCta.astro";
+import EvidencePassage from "@/components/common/EvidencePassage.astro";
 import ServiceIconBadge from "@/components/services/ServiceIconBadge.astro";
 import ServicePricingGrid from "@/components/services/ServicePricingGrid.astro";
 import ServiceProofCard from "@/components/services/ServiceProofCard.astro";
 import ServiceTrustStrip from "@/components/services/ServiceTrustStrip.astro";
 import type { Locale } from "@/i18n";
 import type { CommercialLandingPage } from "@/lib/commercial-landings";
+import { getEvidenceProfile } from "@/lib/proof-evidence";
 import type { ProjectEntry } from "@/lib/projects";
 import type { ServiceItem } from "@/lib/services";
 
@@ -30,6 +32,7 @@ const {
 	featuredProject,
 } = Astro.props as Props;
 const es = locale === "es";
+const evidence = getEvidenceProfile(locale, "granada");
 const projectHref = featuredProject
 	? `/${locale}/projects/${featuredProject.slug}/`
 	: `/${locale}/projects/`;
@@ -405,6 +408,15 @@ const copy = es
 				? { src: projectImage.src, alt: projectImage.alt }
 				: undefined}
 		/>
+		{
+			featuredProject ? (
+				<EvidencePassage
+					profile={evidence}
+					project={featuredProject}
+					href={projectHref}
+				/>
+			) : null
+		}
 	</section>
 
 	<section

@@ -147,3 +147,7 @@ Con herramientas de solo lectura: documentación, logs, búsqueda o inspección.
 
 **¿Tiene sentido para freelancers?**  
 Sí, si construyen herramientas internas, dashboards o automatizaciones que pueden conectarse después a varios asistentes.
+
+## Siguiente lectura
+
+Antes de dar permisos de escritura, conviene aplicar los límites descritos en [usar IA en un producto sin humo](/es/blog/usar-ia-en-tu-producto-sin-humo/) y revisar cómo una [automatización con IA](/es/blog/que-incluye-proyecto-automatizacion-ia/) define evaluación, revisión humana y errores. Para la parte de sistemas, [idempotencia en APIs](/es/blog/apis-idempotentes-que-sobreviven-a-reintentos/) evita que un reintento convierta una herramienta útil en una acción duplicada.

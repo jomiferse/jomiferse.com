@@ -1,0 +1,50 @@
+---
+import { Icon } from "astro-icon/components";
+import type { ServicePresentationProfile } from "@/lib/service-section-titles";
+
+interface Props {
+	profile: ServicePresentationProfile;
+}
+
+const { profile } = Astro.props as Props;
+---
+
+<section
+	data-service-decision-guide
+	class="service-decision-guide section-reveal"
+	aria-labelledby="service-decision-guide-title"
+>
+	<header>
+		<p class="eyebrow">{profile.eyebrow}</p>
+		<h2 id="service-decision-guide-title">{profile.title}</h2>
+		<p>{profile.intro}</p>
+	</header>
+	<div class="service-decision-guide__columns">
+		<article>
+			<h3>{profile.failureTitle}</h3>
+			<ul>
+				{
+					profile.failureModes.map((item) => (
+						<li>
+							<Icon name="info" class="h-4 w-4" aria-hidden="true" />
+							<span>{item}</span>
+						</li>
+					))
+				}
+			</ul>
+		</article>
+		<article>
+			<h3>{profile.acceptanceTitle}</h3>
+			<ul>
+				{
+					profile.acceptanceCriteria.map((item) => (
+						<li>
+							<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+							<span>{item}</span>
+						</li>
+					))
+				}
+			</ul>
+		</article>
+	</div>
+</section>

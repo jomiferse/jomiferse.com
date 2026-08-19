@@ -223,3 +223,7 @@ Prioriza un recorrido principal, deja exclusiones por escrito y confirma el impa
 ### ¿Debo incluir mantenimiento en el presupuesto inicial?
 
 Al menos debes entender qué mantenimiento hará falta y qué coste tendrá. Puede contratarse después, pero no debería ser una sorpresa cuando llegue la primera actualización o incidencia.
+
+## Lecturas para contrastar el alcance
+
+Compara la propuesta con [cuánto cuesta una herramienta interna a medida](/es/blog/cuanto-cuesta-crear-herramienta-interna-a-medida/) y con los criterios para [construir una herramienta interna en vez de seguir con Excel](/es/blog/cuando-construir-herramienta-interna-en-vez-de-usar-excel/). Si el documento depende de una arquitectura nueva, una [auditoría de backend y API](/es/auditoria-backend-api-arquitectura/) puede separar riesgos verificables de preferencias técnicas.

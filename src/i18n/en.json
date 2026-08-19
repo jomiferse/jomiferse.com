@@ -441,7 +441,7 @@
     "about": {
       "eyebrow": "Positioning",
       "title": "Backend depth with full-stack range.",
-      "intro": "I work across backend systems, web products, internal tools and automation. The goal is always the same: useful software that stays clear as it grows."
+      "intro": "I work across backend systems, web products, internal tools and automation. I focus on software that remains useful and understandable as it grows."
     },
     "experience": {
       "eyebrow": "Experience",
@@ -484,7 +484,7 @@
       "eyebrow": "Client case studies",
       "title": "Projects built to solve real business needs",
       "titleAccent": ".",
-      "intro": "A selection of platforms, internal tools and digital products built for clients and companies. Each case explains the challenge, solution and outcome at the level of detail the project allows.",
+      "intro": "A selection of platforms, internal tools and digital products. Each case records the challenge, my role, key decisions and the outcome that can be stated honestly.",
       "browseCases": "View client cases",
       "fallbackImage": "Technical preview unavailable",
       "viewWork": "View work",
@@ -531,7 +531,7 @@
       "eyebrow": "Experience",
       "title": "Real systems, real teams and",
       "titleAccent": "practical software.",
-      "intro": "I work on products and platforms where clarity, reliability and maintainability matter. Backend is my base, with enough full-stack range to move where the product needs me.",
+      "intro": "I work on products and platforms that need to stay clear and reliable. Backend is my base, and I cover the frontend or infrastructure when the product needs it.",
       "currentLabel": "Now",
       "timelineLabel": "Timeline",
       "yearsSuffix": "years building software",
@@ -2178,12 +2178,12 @@
       "areasIntro": "Start with the need that looks most like yours. Each area contains specific services, indicative timelines and three levels of scope.",
       "proofEyebrow": "Selected work",
       "proofShowcaseTitle": "Real projects, from web products to backend systems.",
-      "proofShowcaseIntro": "Cases that show how I handle interfaces, business logic, integrations and technical operations with the same delivery responsibility.",
+      "proofShowcaseIntro": "These cases show what I built, the constraints I worked within and the decisions I made across interfaces, business logic, integrations and operations.",
       "viewProject": "View case",
       "processIntro": "Every project is different, but the order of decisions should not be. We clarify the outcome first, then choose the technical solution.",
       "faqIntro": "Direct answers about scope, technology, ownership and ways of working before you request an assessment.",
       "bestForLead": "Best for:",
-      "bestForText": "people looking to hire a freelance developer with technical judgment, direct communication and the ability to take a solution from idea to deployment.",
+      "bestForText": "people who want to work directly with a freelance developer. I can assess the need, explain the trade-offs and take the selected solution through deployment.",
       "definitionEyebrow": "What it is",
       "definitionTitle": "Technical services for turning a digital problem into a useful solution.",
       "definitionBody": [

@@ -1,7 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import ResponsiveImage from "@/components/common/ResponsiveImage.astro";
 import { t, type Locale } from "@/i18n";
 import type { ProjectEntry } from "@/lib/projects";
+import { getResponsiveImageSources } from "@/lib/responsive-images";
 
 interface Props {
 	project: ProjectEntry;
@@ -13,6 +15,9 @@ const { project, locale, viewLabel } = Astro.props as Props;
 const href = `/${locale}/projects/${project.slug}/`;
 const staticImage = project.img?.imgStatic;
 const hoverImage = project.img?.imgHover;
+const hoverSources = hoverImage
+	? getResponsiveImageSources(hoverImage.src)
+	: undefined;
 const problem = project.caseStudy.problem;
 const copy = {
 	viewLabel,
@@ -31,7 +36,7 @@ const copy = {
 			{
 				staticImage ? (
 					<>
-						<img
+						<ResponsiveImage
 							src={staticImage.src}
 							alt={staticImage.alt ?? project.title}
 							width="640"
@@ -45,6 +50,7 @@ const copy = {
 							<img
 								data-hover-preview
 								data-hover-src={hoverImage.src}
+								data-hover-srcset={hoverSources?.avif}
 								alt=""
 								width="640"
 								height="360"
@@ -107,12 +113,12 @@ const copy = {
 </article>
 
 <script>
-	import { loadHoverPreviews } from "@/lib/media-delivery";
+	import { bindHoverPreviewIntent } from "@/lib/media-delivery";
 
 	const connection = (
 		navigator as Navigator & { connection?: { saveData?: boolean } }
 	).connection;
-	loadHoverPreviews(document, {
+	bindHoverPreviewIntent(document, {
 		hover: window.matchMedia("(hover: hover) and (pointer: fine)").matches,
 		saveData: connection?.saveData === true,
 	});

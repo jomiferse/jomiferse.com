@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import ResponsiveImage from "@/components/common/ResponsiveImage.astro";
 
 interface Props {
 	href: string;
@@ -35,7 +36,7 @@ const {
 		<div
 			class="overflow-hidden border-b border-[var(--surface-border)] lg:border-r lg:border-b-0"
 		>
-			<img
+			<ResponsiveImage
 				src={cover.src}
 				alt={cover.alt}
 				width="1600"

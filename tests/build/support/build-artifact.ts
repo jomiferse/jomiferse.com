@@ -318,6 +318,19 @@ const parsePage = (
 		if (tag.includes("data-hover-preview") && getAttribute(tag, "src")) {
 			failures.push(`${label}: hover preview must not ship with a network src`);
 		}
+		const imageSource =
+			getAttribute(tag, "src") ?? getAttribute(tag, "data-hover-src") ?? "";
+		const needsResponsiveSource =
+			imageSource === "/images/avatar.avif" ||
+			imageSource.startsWith("/images/projects/") ||
+			imageSource.startsWith("/images/blog/covers/");
+		if (
+			needsResponsiveSource &&
+			!getAttribute(tag, "srcset") &&
+			!getAttribute(tag, "data-hover-srcset")
+		) {
+			failures.push(`${label}: responsive image missing srcset ${imageSource}`);
+		}
 	}
 
 	return { file, html, canonical, indexable, alternates, schemas };
@@ -348,6 +361,11 @@ export const auditBuildArtifact = async (
 	);
 	const canonicalMap = new Map<string, BuiltPage>();
 	for (const page of pages) {
+		if (page.html.includes("/cdn-cgi/l/email-protection")) {
+			failures.push(
+				`${relative(root, page.file)}: contains Cloudflare email-protection crawl target`,
+			);
+		}
 		if (/<meta\s+[^>]*name=["']keywords["']/i.test(page.html)) {
 			failures.push(`${relative(root, page.file)}: obsolete meta keywords tag`);
 		}
@@ -356,6 +374,25 @@ export const auditBuildArtifact = async (
 		if (canonicalMap.has(normalized))
 			failures.push(`duplicate canonical: ${normalized}`);
 		canonicalMap.set(normalized, page);
+	}
+
+	const buyerPathTargets = [
+		"/es/integracion-herramientas-negocio/",
+		"/en/business-tools-integration/",
+		"/es/dashboards-paneles-internos/",
+		"/en/dashboards-internal-admin-panels/",
+		"/es/consultor-tecnologico-pequenas-empresas/",
+		"/en/technology-consultant-small-businesses/",
+	];
+	for (const target of buyerPathTargets) {
+		const inboundPages = pages.filter((page) =>
+			page.html.includes(`href="${target}"`),
+		);
+		if (inboundPages.length < 3) {
+			failures.push(
+				`${target}: expected at least three contextual inbound pages, found ${inboundPages.length}`,
+			);
+		}
 	}
 
 	for (const [path, title] of [
@@ -574,6 +611,21 @@ export const auditBuildArtifact = async (
 				failures.push(
 					`${relative(root, page.file)}: missing image asset ${source}`,
 				);
+			}
+			const responsiveSet =
+				getAttribute(tag, "srcset") ?? getAttribute(tag, "data-hover-srcset");
+			if (responsiveSet) {
+				for (const candidate of responsiveSet.split(",")) {
+					const candidatePath = candidate.trim().split(/\s+/, 1)[0];
+					if (
+						candidatePath?.startsWith("/") &&
+						!(await exists(join(dist, candidatePath.replace(/^\//, ""))))
+					) {
+						failures.push(
+							`${relative(root, page.file)}: missing responsive image asset ${candidatePath}`,
+						);
+					}
+				}
 			}
 		}
 		for (const tag of [

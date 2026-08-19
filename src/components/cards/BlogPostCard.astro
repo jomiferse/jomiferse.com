@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import ResponsiveImage from "@/components/common/ResponsiveImage.astro";
 
 interface Props {
 	href: string;
@@ -24,7 +25,7 @@ const { href, title, description, dateLabel, readLabel, readingTime, cover } =
 		class="flex h-full flex-col overflow-hidden rounded-[1.15rem] border border-[var(--surface-border)] bg-[var(--surface)] shadow-[0_12px_35px_rgba(20,35,52,0.05)] transition duration-300 hover:border-[color-mix(in_srgb,var(--action)_42%,var(--surface-border))] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)] motion-safe:hover:-translate-y-1"
 	>
 		<div class="aspect-[16/9] overflow-hidden bg-[var(--bg-band)]">
-			<img
+			<ResponsiveImage
 				src={cover.src}
 				alt={cover.alt}
 				width="1600"

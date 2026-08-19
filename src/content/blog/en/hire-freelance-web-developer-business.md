@@ -221,3 +221,7 @@ You should be able to obtain access to the domain, hosting, repository, data, co
 ### Is maintenance needed after launch?
 
 It depends on the technology and integrations, but every website needs at least a review of access, renewals, forms and content. An application or website with external services usually needs a more continuous plan.
+
+## Before requesting proposals
+
+To prepare a useful scope, review [what a small-business website costs](/en/blog/how-much-does-small-business-website-cost/) and [what a professional website needs to win clients](/en/blog/what-a-professional-website-needs-to-get-clients/). If the site already exists, the choice between [redesigning and rebuilding](/en/blog/redesign-website-or-rebuild/) helps separate content, design and technical-foundation problems.

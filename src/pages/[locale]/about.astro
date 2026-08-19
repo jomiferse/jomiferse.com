@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import AboutExperience from "@/components/about/AboutExperience.astro";
 import AboutHelp from "@/components/about/AboutHelp.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
+import ResponsiveImage from "@/components/common/ResponsiveImage.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations, t } from "@/i18n";
 import { getCv } from "@cv";
@@ -75,7 +76,7 @@ const structuredData = [
 				class="about-portrait relative mx-auto w-full max-w-[23rem] lg:mr-2"
 			>
 				<div class="about-portrait__frame" aria-hidden="true"></div>
-				<img
+				<ResponsiveImage
 					src="/images/avatar.avif"
 					alt={page.avatarAlt}
 					width="640"

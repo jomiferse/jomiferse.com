@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import ResponsiveImage from "@/components/common/ResponsiveImage.astro";
 import { getTranslations, type Locale } from "@/i18n";
 import { getLocalBlogSlug, type BlogPost } from "@/lib/blog";
 
@@ -40,7 +41,7 @@ const { content, locale, posts } = Astro.props as Props;
 							{String(index + 1).padStart(2, "0")}
 						</span>
 						<div class="home-guides__cover">
-							<img
+							<ResponsiveImage
 								src={post.data.cover.src}
 								alt={post.data.cover.alt}
 								width="1600"

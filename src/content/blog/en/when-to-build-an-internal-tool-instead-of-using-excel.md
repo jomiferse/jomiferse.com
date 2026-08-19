@@ -66,6 +66,8 @@ If those answers are unclear, software will only hide confusion behind new scree
 
 The first version should be small. For example:
 
+If the main need is to inspect statuses, permissions and useful indicators without editing the original spreadsheet, first consider whether an [internal dashboard or admin panel](/en/dashboards-internal-admin-panels/) is enough before commissioning a broader application.
+
 - login if private data is involved
 - one main view with the important records
 - a form to create or update data

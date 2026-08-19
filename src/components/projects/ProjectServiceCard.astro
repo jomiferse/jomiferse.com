@@ -7,16 +7,27 @@ interface Props {
 	serviceHref?: string;
 	serviceLabel?: string;
 	externalHref?: string;
+	relatedArticle?: {
+		title: string;
+		href: string;
+	};
 	copy: {
 		eyebrow: string;
 		body: string;
 		technologies: string;
 		externalLink: string;
+		relatedArticle: string;
 	};
 }
 
-const { technologies, serviceHref, serviceLabel, externalHref, copy } =
-	Astro.props as Props;
+const {
+	technologies,
+	serviceHref,
+	serviceLabel,
+	externalHref,
+	relatedArticle,
+	copy,
+} = Astro.props as Props;
 
 const hasService = Boolean(serviceHref && serviceLabel);
 ---
@@ -66,6 +77,25 @@ const hasService = Boolean(serviceHref && serviceLabel);
 	>
 		<TechnologyGrid technologies={technologies} label={copy.technologies} />
 	</section>
+
+	{
+		relatedArticle ? (
+			<section class="mt-6 border-t border-[var(--surface-border)] pt-6">
+				<p class="eyebrow text-[var(--action)]">{copy.relatedArticle}</p>
+				<a
+					href={relatedArticle.href}
+					class="mt-3 inline-flex items-start gap-2 text-sm leading-6 font-black text-[var(--text)] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
+				>
+					<span>{relatedArticle.title}</span>
+					<Icon
+						name="arrow-right"
+						class="mt-1 h-4 w-4 shrink-0"
+						aria-hidden="true"
+					/>
+				</a>
+			</section>
+		) : null
+	}
 
 	{
 		externalHref ? (

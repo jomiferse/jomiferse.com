@@ -147,3 +147,7 @@ With read-only tools: documentation, logs, search or inspection. It is the safes
 
 **Does MCP make sense for freelancers?**  
 Yes, when they build internal tools, dashboards or automations that can later connect to several assistants.
+
+## What to read next
+
+Before granting write access, apply the boundaries described in [using AI in a product without hype](/en/blog/using-ai-in-your-product-without-hype/) and review how an [AI automation project](/en/blog/what-ai-automation-project-should-include/) defines evaluation, human review and failures. At the system boundary, [API idempotency](/en/blog/idempotent-apis-that-survive-retries/) prevents a retry from turning a useful tool into a duplicated action.

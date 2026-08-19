@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import BlogArticleToc from "@/components/common/BlogArticleToc.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
+import ResponsiveImage from "@/components/common/ResponsiveImage.astro";
 import { getLocaleFromPath, getTranslations, type Locale, t } from "@/i18n";
 import {
 	resolveBlogCommercialCta,
@@ -88,7 +89,7 @@ const commercialCta = resolveBlogCommercialCta(
 			data-blog-article-cover
 			class="mx-auto mt-8 max-w-4xl overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_46%),var(--bg-band)] shadow-[var(--shadow-card)] md:mt-10"
 		>
-			<img
+			<ResponsiveImage
 				src={frontmatter.cover.src}
 				alt={frontmatter.cover.alt}
 				width="1600"

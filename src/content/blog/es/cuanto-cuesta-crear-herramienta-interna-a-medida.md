@@ -3,6 +3,7 @@ title: "Cuánto cuesta crear una herramienta interna a medida y cuándo merece l
 metaTitle: "Cuánto cuesta una herramienta interna a medida"
 description: "Una guía práctica para estimar el coste de una herramienta interna a medida, entender qué encarece el proyecto y decidir si compensa construir una primera versión."
 date: 2026-05-26
+dateModified: 2026-08-18
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "6 min"
@@ -37,6 +38,8 @@ En una empresa pequeña o mediana, casi siempre compensa más una primera versi�
 ## Rangos orientativos
 
 Estos rangos no son una tarifa cerrada. Sirven para poner orden antes de pedir presupuestos o decidir si merece la pena seguir explorando.
+
+Están revisados en agosto de 2026 y describen proyectos freelance o de equipos pequeños para empresas en España y Europa. No son una media oficial del mercado. Asumen un alcance definido, trabajo remoto y entrega de código; normalmente no incluyen IVA, licencias de terceros, migraciones de datos no evaluadas ni soporte continuado. Para estimar un caso real hay que revisar usuarios, permisos, integraciones y consecuencia de los errores.
 
 Una herramienta interna sencilla puede moverse aproximadamente entre **2.000 y 6.000 euros** si resuelve un flujo concreto: formulario, listado, estados básicos, validaciones, exportación y una interfaz pensada para pocas personas.
 
@@ -90,6 +93,8 @@ Una buena pregunta antes de construir es esta:
 > Si esta herramienta existiera mañana, ¿qué decisión, tarea o error cambiaría de forma concreta?
 
 Si no hay una respuesta clara, probablemente es pronto.
+
+Cuando el bloqueo está en decidir alcance, proveedor o prioridad —y no todavía en programar— una revisión con un [consultor tecnológico para pymes](/es/consultor-tecnologico-pequenas-empresas/) puede ahorrar una estimación prematura y convertir el problema en un encargo comprobable.
 
 ## Cómo plantear una primera versión
 

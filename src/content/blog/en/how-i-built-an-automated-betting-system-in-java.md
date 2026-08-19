@@ -26,8 +26,6 @@ Betx came from a specific need raised by a client in the gambling sector. They w
 
 The solution was a terminal-based backend application. Its main workflow runs through commands, configuration stays outside the code and data is stored locally. The client gets a direct operational tool without adding a frontend as a separate moving part.
 
-![Technical view of the Betx project](/images/projects/betx.avif)
-
 ## Why a command-line interface
 
 For this scope, a web interface would have added navigation, browser state and visual work. A CLI kept input and output explicit while reducing the number of parts to build and maintain.
@@ -95,3 +93,7 @@ It provides simple, sufficient persistence for the current use. The layer bounda
 **Does the configuration contain secrets?**
 
 It can reference sensitive local values, but those details are not published or included in the repository.
+
+## Related reading
+
+Retry-safe commands are easier to reason about alongside [API idempotency](/en/blog/idempotent-apis-that-survive-retries/), while the operational side is covered by the [Spring Boot production checklist](/en/blog/spring-boot-production-devops-checklist/). The work is also documented as the [Betx case study](/en/projects/betx/), including role, constraints and the stated outcome.

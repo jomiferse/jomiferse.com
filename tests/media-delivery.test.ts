@@ -3,7 +3,7 @@ import { test } from "node:test";
 
 import {
 	getEditorialImageAttributes,
-	loadHoverPreviews,
+	bindHoverPreviewIntent,
 } from "../src/lib/media-delivery.ts";
 
 test("builds a stable lazy-loading contract for editorial images", () => {
@@ -16,24 +16,54 @@ test("builds a stable lazy-loading contract for editorial images", () => {
 	});
 });
 
-test("loads hover previews only on capable connections and pointers", () => {
+test("binds hover previews without loading them before pointer intent", () => {
+	let pointerIntent: (() => void) | undefined;
 	const preview = {
-		dataset: { hoverSrc: "/preview.avif" },
-		hasAttribute: () => false,
-		setAttribute(name: string, value: string) {
-			assert.equal(name, "src");
-			assert.equal(value, "/preview.avif");
-			this.loaded = true;
+		dataset: {
+			hoverSrc: "/preview.avif",
+			hoverSrcset: "/preview-320.avif 320w, /preview-640.avif 640w",
 		},
-		loaded: false,
+		attributes: new Map<string, string>(),
+		hasAttribute(name: string) {
+			return this.attributes.has(name);
+		},
+		setAttribute(name: string, value: string) {
+			this.attributes.set(name, value);
+		},
+		parentElement: {
+			addEventListener(
+				type: "pointerenter",
+				listener: () => void,
+				options: { once: true; passive: true },
+			) {
+				assert.equal(type, "pointerenter");
+				assert.deepEqual(options, { once: true, passive: true });
+				pointerIntent = listener;
+			},
+		},
 	};
 	const root = {
 		querySelectorAll: () => [preview],
 	};
 
-	assert.equal(loadHoverPreviews(root, { hover: false, saveData: false }), 0);
-	assert.equal(preview.loaded, false);
-	assert.equal(loadHoverPreviews(root, { hover: true, saveData: true }), 0);
-	assert.equal(loadHoverPreviews(root, { hover: true, saveData: false }), 1);
-	assert.equal(preview.loaded, true);
+	assert.equal(
+		bindHoverPreviewIntent(root, { hover: false, saveData: false }),
+		0,
+	);
+	assert.equal(preview.attributes.has("src"), false);
+	assert.equal(
+		bindHoverPreviewIntent(root, { hover: true, saveData: true }),
+		0,
+	);
+	assert.equal(
+		bindHoverPreviewIntent(root, { hover: true, saveData: false }),
+		1,
+	);
+	assert.equal(preview.attributes.has("src"), false);
+	pointerIntent?.();
+	assert.equal(preview.attributes.get("src"), "/preview.avif");
+	assert.equal(
+		preview.attributes.get("srcset"),
+		"/preview-320.avif 320w, /preview-640.avif 640w",
+	);
 });

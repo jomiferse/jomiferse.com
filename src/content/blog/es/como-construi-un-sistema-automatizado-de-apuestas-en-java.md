@@ -27,8 +27,6 @@ Betx surgió de una necesidad concreta de un cliente del sector gambling. Querí
 
 La solución fue una aplicación backend de terminal. El flujo principal se opera mediante comandos, la configuración se mantiene fuera del código y los datos se guardan de forma local. Así, el cliente puede trabajar con una herramienta directa sin añadir un frontend como pieza separada.
 
-![Vista técnica del proyecto Betx](/images/projects/betx.avif)
-
 ## Por qué una interfaz de terminal
 
 Para este alcance, una interfaz web habría añadido navegación, estado en el navegador y trabajo visual. Una CLI mantenía la entrada y la salida explícitas y reducía las piezas que había que desarrollar y mantener.
@@ -96,3 +94,7 @@ Para el uso actual ofrece persistencia sencilla y suficiente. La separación ent
 **¿La configuración incluye secretos?**
 
 Puede referenciar valores sensibles del entorno local, pero esos datos no se publican ni se incluyen en el repositorio.
+
+## Lecturas relacionadas
+
+El diseño de comandos reintentables se entiende mejor junto a [idempotencia en APIs](/es/blog/apis-idempotentes-que-sobreviven-a-reintentos/) y la operación del backend se completa con la [checklist de Spring Boot en producción](/es/blog/spring-boot-produccion-checklist-devops/). El proyecto también está documentado como [caso Betx](/es/projects/betx/), con rol, restricciones y resultado declarado.

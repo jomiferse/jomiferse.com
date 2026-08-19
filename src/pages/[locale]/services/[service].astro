@@ -2,13 +2,20 @@
 import { Icon } from "astro-icon/components";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ConversionCta from "@/components/common/ConversionCta.astro";
+import EvidencePassage from "@/components/common/EvidencePassage.astro";
+import ServiceDecisionGuide from "@/components/services/ServiceDecisionGuide.astro";
 import ServiceIconBadge from "@/components/services/ServiceIconBadge.astro";
 import ServicePricingGrid from "@/components/services/ServicePricingGrid.astro";
 import ServiceProofCard from "@/components/services/ServiceProofCard.astro";
 import ServiceTrustStrip from "@/components/services/ServiceTrustStrip.astro";
 import { getTranslations, locales, t, type Locale } from "@/i18n";
 import { getProjectPages } from "@/lib/projects";
-import { getServiceSectionTitles } from "@/lib/service-section-titles";
+import { getCommercialBuyerPathForService } from "@/lib/commercial-linking";
+import { getServiceEvidenceProfile } from "@/lib/proof-evidence";
+import {
+	getServicePresentation,
+	getServiceSectionTitles,
+} from "@/lib/service-section-titles";
 import {
 	getRelatedServices,
 	getService,
@@ -36,7 +43,12 @@ if (!service) throw new Error(`Service not found: ${locale}/${slug}`);
 const cv = getCv(locale);
 const translations = getTranslations(locale);
 const serviceCopy = translations.services.detail;
-const sectionTitles = getServiceSectionTitles(locale, service.title);
+const presentation = getServicePresentation(locale, service.translationKey);
+const sectionTitles = getServiceSectionTitles(
+	locale,
+	service.translationKey,
+	service.title,
+);
 const commercial = translations.services.commercial;
 const site = Astro.site?.toString() ?? "https://www.jomiferse.com";
 const servicePath = `/${locale}/services/${service.slug}/`;
@@ -68,7 +80,20 @@ const project = getProjectPages(locale).find((item) => {
 	const proofServiceHref = item.caseStudy?.serviceHref;
 	return proofServiceHref === canonicalPath || proofServiceHref === servicePath;
 });
+const evidenceProfile = getServiceEvidenceProfile(
+	locale,
+	service.translationKey,
+);
+const evidenceProject = evidenceProfile
+	? getProjectPages(locale).find(
+			(item) => item.id === evidenceProfile.projectId,
+		)
+	: undefined;
 const article = service.relatedPosts?.[0];
+const buyerPath = getCommercialBuyerPathForService(
+	locale,
+	service.translationKey,
+);
 const projectImage = project?.img?.imgStatic;
 const structuredData = [
 	buildServicePage({
@@ -224,6 +249,12 @@ const structuredData = [
 			</div>
 		</section>
 
+		{
+			presentation?.placement === "before-pricing" ? (
+				<ServiceDecisionGuide profile={presentation} />
+			) : null
+		}
+
 		<section
 			id="pricing-options"
 			data-service-pricing
@@ -296,6 +327,12 @@ const structuredData = [
 			</div>
 		</section>
 
+		{
+			presentation?.placement === "after-scope" ? (
+				<ServiceDecisionGuide profile={presentation} />
+			) : null
+		}
+
 		<section
 			data-service-process
 			class="service-detail-process section-reveal"
@@ -322,6 +359,12 @@ const structuredData = [
 				}
 			</ol>
 		</section>
+
+		{
+			presentation?.placement === "before-proof" ? (
+				<ServiceDecisionGuide profile={presentation} />
+			) : null
+		}
 
 		<section
 			data-service-proof
@@ -368,6 +411,16 @@ const structuredData = [
 					/>
 				)
 			}
+
+			{
+				evidenceProfile && evidenceProject ? (
+					<EvidencePassage
+						profile={evidenceProfile}
+						project={evidenceProject}
+						href={`/${locale}/projects/${evidenceProject.slug}/`}
+					/>
+				) : null
+			}
 		</section>
 
 		<section
@@ -401,6 +454,28 @@ const structuredData = [
 				}
 			</div>
 		</section>
+
+		{
+			buyerPath ? (
+				<section
+					data-service-buyer-path
+					class="service-buyer-path section-reveal"
+					aria-labelledby="service-buyer-path-title"
+				>
+					<div>
+						<p class="eyebrow">
+							{locale === "es" ? "Guía de decisión" : "Decision guide"}
+						</p>
+						<h2 id="service-buyer-path-title">{buyerPath.title}</h2>
+						<p>{buyerPath.description}</p>
+					</div>
+					<a href={buyerPath.href} class="button-secondary">
+						{locale === "es" ? "Revisar esta necesidad" : "Explore this need"}
+						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+					</a>
+				</section>
+			) : null
+		}
 
 		<section
 			data-service-faq
@@ -600,8 +675,45 @@ const structuredData = [
 	.service-detail-process,
 	.service-detail-proof,
 	.related-services,
+	.service-buyer-path,
 	.service-detail-faq {
 		padding-block: var(--services-section-space);
+	}
+
+	.service-buyer-path {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		gap: 2rem;
+		align-items: end;
+		border-block: 1px solid var(--surface-border);
+	}
+
+	.service-buyer-path h2 {
+		max-width: 24ch;
+		margin-top: 0.75rem;
+		color: var(--home-navy);
+		font-size: clamp(1.8rem, 3vw, 2.8rem);
+		font-weight: 950;
+		letter-spacing: -0.045em;
+		line-height: 1.05;
+	}
+
+	.service-buyer-path p:last-child {
+		max-width: 52rem;
+		margin-top: 1rem;
+		color: var(--text-muted);
+		line-height: 1.7;
+	}
+
+	@media (max-width: 760px) {
+		.service-buyer-path {
+			grid-template-columns: 1fr;
+			align-items: start;
+		}
+
+		.service-buyer-path .button-secondary {
+			width: 100%;
+		}
 	}
 
 	.service-detail-heading {

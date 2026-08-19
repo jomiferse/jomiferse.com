@@ -10,29 +10,47 @@ export const getEditorialImageAttributes = (width: number, height: number) => ({
 });
 
 interface HoverPreviewTarget {
-	dataset: { hoverSrc?: string };
+	dataset: { hoverSrc?: string; hoverSrcset?: string };
 	hasAttribute(name: string): boolean;
 	setAttribute(name: string, value: string): void;
+	parentElement?: {
+		addEventListener(
+			type: "pointerenter",
+			listener: () => void,
+			options: { once: true; passive: true },
+		): void;
+	} | null;
 }
 
 interface HoverPreviewRoot {
 	querySelectorAll(selector: string): Iterable<unknown>;
 }
 
-export const loadHoverPreviews = (
+export const bindHoverPreviewIntent = (
 	root: HoverPreviewRoot,
 	capabilities: { hover: boolean; saveData: boolean },
 ) => {
 	if (!capabilities.hover || capabilities.saveData) return 0;
 
-	let loaded = 0;
+	let bound = 0;
 	for (const candidate of root.querySelectorAll("[data-hover-preview]")) {
 		const preview = candidate as HoverPreviewTarget;
 		const src = preview.dataset.hoverSrc;
-		if (!src || preview.hasAttribute("src")) continue;
-		preview.setAttribute("src", src);
-		loaded += 1;
+		const trigger = preview.parentElement;
+		if (!src || !trigger || preview.hasAttribute("src")) continue;
+
+		trigger.addEventListener(
+			"pointerenter",
+			() => {
+				if (preview.hasAttribute("src")) return;
+				const srcset = preview.dataset.hoverSrcset;
+				if (srcset) preview.setAttribute("srcset", srcset);
+				preview.setAttribute("src", src);
+			},
+			{ once: true, passive: true },
+		);
+		bound += 1;
 	}
 
-	return loaded;
+	return bound;
 };

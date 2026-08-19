@@ -8,6 +8,7 @@ import {
 	buildCollectionPage,
 	buildCreativeWork,
 	buildProfilePage,
+	buildProfessionalService,
 	getSeoEntityIds,
 } from "../src/lib/seo.ts";
 
@@ -116,4 +117,53 @@ test("links creative work to its canonical entity and stable creator", () => {
 	assert.deepEqual(schema.creator, {
 		"@id": "https://www.jomiferse.com/#person",
 	});
+});
+
+test("uses one professional-service identity and references offers without duplication", () => {
+	const buildHub = (path: string) =>
+		buildProfessionalService({
+			site: "https://www.jomiferse.com",
+			path,
+			name: "Software services",
+			description: "Practical software services.",
+			providerName: "José Miguel Fernández",
+			providerUrl: "https://www.jomiferse.com/en/about/",
+			areaServed: "Spain and remote",
+			sameAs: [],
+			services: [
+				{
+					name: "API integrations",
+					description: "Connect business systems.",
+					path: "/en/services/api-integrations/",
+					offers: [
+						{
+							key: "intervention",
+							name: "Review",
+							description: "A bounded review.",
+							price: 90,
+							currency: "EUR",
+							billingUnit: "one-off",
+							path: "/en/services/api-integrations/",
+						},
+					],
+				},
+			],
+		});
+
+	const english = buildHub("/en/services/");
+	const spanish = buildHub("/es/services/");
+	assert.equal(
+		english["@id"],
+		"https://www.jomiferse.com/#professional-service",
+	);
+	assert.equal(english["@id"], spanish["@id"]);
+	assert.equal(english.url, "https://www.jomiferse.com/");
+
+	const catalog = english.hasOfferCatalog as Record<string, unknown>;
+	const fullOffers = catalog.itemListElement as Record<string, unknown>[];
+	const references = english.makesOffer as Record<string, unknown>[];
+	assert.equal(fullOffers.length, 1);
+	assert.equal(references.length, 1);
+	assert.deepEqual(references[0], { "@id": fullOffers[0]["@id"] });
+	assert.equal(Object.keys(references[0]).length, 1);
 });

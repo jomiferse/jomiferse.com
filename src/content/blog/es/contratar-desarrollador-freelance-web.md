@@ -221,3 +221,7 @@ Deberías poder obtener acceso al dominio, hosting, repositorio, datos, configur
 ### ¿Hace falta mantenimiento después de publicar?
 
 Depende de la tecnología y de las integraciones, pero toda web necesita al menos revisar accesos, renovaciones, formularios y contenido. Una aplicación o una web con servicios externos suele necesitar un plan más continuo.
+
+## Antes de pedir propuestas
+
+Para preparar un alcance, revisa [cuánto cuesta una web para una pyme](/es/blog/cuanto-cuesta-pagina-web-pyme/) y [qué necesita una web profesional para captar clientes](/es/blog/que-debe-tener-web-profesional-para-captar-clientes/). Si la web ya existe, la comparación entre [rediseñar o reconstruir](/es/blog/redisenar-web-o-hacerla-de-nuevo/) ayuda a separar problemas de contenido, diseño y base técnica.

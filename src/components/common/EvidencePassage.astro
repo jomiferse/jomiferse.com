@@ -1,0 +1,35 @@
+---
+import { Icon } from "astro-icon/components";
+import type { EvidenceProfile } from "@/lib/proof-evidence";
+import type { ProjectEntry } from "@/lib/projects";
+
+interface Props {
+	profile: EvidenceProfile;
+	project: ProjectEntry;
+	href: string;
+}
+
+const { profile, project, href } = Astro.props as Props;
+---
+
+<aside class="evidence-passage" data-evidence-passage>
+	<div class="evidence-passage__copy">
+		<p class="eyebrow">{profile.eyebrow}</p>
+		<h3>{profile.title}</h3>
+		<p>{profile.body}</p>
+	</div>
+	<dl>
+		<div>
+			<dt>{project.role}</dt>
+			<dd>{project.timeframe}</dd>
+		</div>
+		<div>
+			<dt>{project.sector}</dt>
+			<dd>{project.technologies.slice(0, 4).join(" · ")}</dd>
+		</div>
+	</dl>
+	<a href={href}>
+		{profile.action}
+		<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+	</a>
+</aside>

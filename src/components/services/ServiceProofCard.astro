@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import ResponsiveImage from "@/components/common/ResponsiveImage.astro";
 
 interface Props {
 	eyebrow: string;
@@ -22,7 +23,7 @@ const { eyebrow, title, description, href, actionLabel, image } =
 		{
 			image ? (
 				<div class="service-proof-card__image">
-					<img
+					<ResponsiveImage
 						src={image.src}
 						alt={image.alt ?? title}
 						width="720"
