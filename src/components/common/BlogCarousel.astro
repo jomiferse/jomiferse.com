@@ -73,7 +73,6 @@ const initialPosition = copy.carouselPosition
 			posts.map((post, index) => (
 				<li
 					class="flex w-[86%] shrink-0 snap-start sm:w-auto sm:shrink"
-					role="group"
 					aria-label={copy.carouselPosition
 						.replace("{current}", String(index + 1))
 						.replace("{total}", String(posts.length))}
