@@ -6,7 +6,6 @@ import HomeProcess from "@/components/home/HomeProcess.astro";
 import HomeServicePaths from "@/components/home/HomeServicePaths.astro";
 import HomeServiceStandard from "@/components/home/HomeServiceStandard.astro";
 import HomeSpecializedServices from "@/components/home/HomeSpecializedServices.astro";
-import HomeTrust from "@/components/home/HomeTrust.astro";
 import TechnologyMarquee from "@/components/common/TechnologyMarquee.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getLocaleStaticPaths, getTranslations } from "@/i18n";
@@ -52,7 +51,6 @@ const pageDescription = page.meta.description;
 	/>
 
 	<HomeProcess content={page.process} />
-	<HomeTrust content={page.proof} locale={locale} project={featuredProject} />
 	<HomeFeaturedGuides
 		content={page.featuredGuides}
 		locale={locale}

@@ -288,17 +288,6 @@
           }
         ]
       },
-      "proof": {
-        "eyebrow": "Why work with me",
-        "title": "Technical judgment without losing sight of the business.",
-        "intro": "I combine production-systems experience with the flexibility to build a website, automate a workflow or deliver a complete product.",
-        "points": [
-          "You work directly with me throughout the project.",
-          "I choose the solution around the need, not a fashionable technology.",
-          "Performance, maintenance and future changes are considered from the start.",
-          "I can work from the interface through to backend and infrastructure."
-        ]
-      },
       "featuredGuides": {
         "eyebrow": "Practical guides",
         "title": "Guides for deciding before you invest.",

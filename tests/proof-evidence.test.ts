@@ -8,7 +8,6 @@ import {
 } from "../src/lib/proof-evidence.ts";
 
 const contexts: EvidenceContext[] = [
-	"home",
 	"granada",
 	"api-integrations",
 	"it-advisory",

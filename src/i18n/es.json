@@ -288,17 +288,6 @@
           }
         ]
       },
-      "proof": {
-        "eyebrow": "Por qué trabajar conmigo",
-        "title": "Criterio técnico sin perder de vista el negocio.",
-        "intro": "Combino experiencia en sistemas de producción con la flexibilidad necesaria para construir una web, automatizar un flujo o entregar un producto completo.",
-        "points": [
-          "Hablas directamente conmigo durante todo el proyecto.",
-          "Elijo la solución según la necesidad, no según una tecnología de moda.",
-          "Pienso en rendimiento, mantenimiento y evolución desde el principio.",
-          "Puedo moverme de la interfaz al backend y la infraestructura."
-        ]
-      },
       "featuredGuides": {
         "eyebrow": "Guías prácticas",
         "title": "Guías para decidir antes de invertir.",

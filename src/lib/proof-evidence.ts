@@ -1,7 +1,7 @@
 import type { Locale } from "@/i18n";
 
 export type EvidenceContext =
-	"home" | "granada" | "api-integrations" | "it-advisory" | "custom-software";
+	"granada" | "api-integrations" | "it-advisory" | "custom-software";
 
 export interface EvidenceProfile {
 	projectId: string;
@@ -13,13 +13,6 @@ export interface EvidenceProfile {
 
 const profiles: Record<Locale, Record<EvidenceContext, EvidenceProfile>> = {
 	es: {
-		home: {
-			projectId: "getyourticket-ticketing-platform",
-			eyebrow: "Evidencia de trabajo",
-			title: "Recuperar primero, ampliar después",
-			body: "GetYourTicket partía de Attendize, una base de ticketing sin mantenimiento que no estaba preparada para operar eventos reales. Mi trabajo consistió en recuperar el código existente, corregir bloqueos, contenerizar el despliegue con Docker y configurar una VPS con HTTPS. También adapté el registro para gestores de eventos e integré Stripe, manteniendo después la plataforma conforme se incorporaban nuevos eventos. La decisión importante fue conservar la funcionalidad útil y reparar el sistema antes de plantear una reescritura. El resultado que puede comprobarse en el caso publicado es una plataforma que continúa en producción y ha gestionado más de diez eventos, cada uno con más de mil asistentes. No se presenta como una promesa para otros proyectos: documenta el contexto, las restricciones, las decisiones y el alcance concreto de este trabajo.",
-			action: "Ver el caso completo",
-		},
 		granada: {
 			projectId: "getyourticket-ticketing-platform",
 			eyebrow: "Prueba de ejecución",
@@ -50,13 +43,6 @@ const profiles: Record<Locale, Record<EvidenceContext, EvidenceProfile>> = {
 		},
 	},
 	en: {
-		home: {
-			projectId: "getyourticket-ticketing-platform",
-			eyebrow: "Work evidence",
-			title: "Recover first, extend second",
-			body: "GetYourTicket started from Attendize, an unmaintained ticketing codebase that was not ready to operate live events. My work covered recovering the existing application, removing blockers, containerising deployment with Docker and configuring a VPS with HTTPS. I also adapted registration for event managers, integrated Stripe and continued maintaining the platform as new events were added. The important decision was to preserve useful functionality and repair the system before considering a rewrite. The published case records a concrete result: the platform remains in production and has handled more than ten events, each with over one thousand attendees. This is not presented as a promise for another project. It documents the context, constraints, decisions and exact scope of one piece of work so a prospective client can assess how I approach an existing product.",
-			action: "View the complete case",
-		},
 		granada: {
 			projectId: "getyourticket-ticketing-platform",
 			eyebrow: "Delivery evidence",
