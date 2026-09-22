@@ -24,6 +24,8 @@ Entre ambas opciones hay una tercera que suele ser más prudente: modernizar por
 
 La antigüedad no basta para elegir. He visto webs veteranas con una estructura útil y webs recién publicadas que ya eran difíciles de mantener. Antes de pedir un rediseño completo, hay que separar lo que se ve de lo que sostiene el sitio.
 
+Si ya has decidido renovar la web, prepara el lanzamiento con esta [checklist para rediseñar sin perder SEO](/es/blog/redisenar-web-sin-perder-seo/): inventario de URLs, pruebas y seguimiento.
+
 ## Respuesta rápida
 
 | Situación                                                                                   | Opción más razonable                     |

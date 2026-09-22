@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="1030" viewBox="0 0 640 1030" role="img" aria-labelledby="title desc">
+<title id="title">De contactos a margen mensual</title><desc id="desc">Cifras ficticias para explicar el método. El coste mensual se resta después.</desc>
+<rect width="640" height="1030" fill="#fbf7ee"/>
+<rect x="24" y="24" width="592" height="982" rx="24" fill="#fffdfa" stroke="#c8d0d2" stroke-width="2"/>
+<style>text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#10283a}.kicker{font-size:18px;font-weight:700;letter-spacing:1.5px;fill:#b2582e}.title{font-size:31px;font-weight:750}.label{font-size:30px;font-weight:700}.body{font-size:24px;fill:#485f6e}.number{font-size:21px;font-weight:750;fill:#b2582e}.foot{font-size:19px;fill:#485f6e}</style>
+<text class="kicker" x="48" y="72">EJEMPLO ILUSTRATIVO</text>
+<text class="title" x="48" y="126">De contactos a margen mensual</text>
+<rect x="48" y="180" width="544" height="205" rx="18" fill="#f3f4f1" stroke="#cbd2d5" stroke-width="2"/>
+<text class="number" x="72" y="225">01</text>
+<text class="label" x="72" y="279">10 contactos</text>
+<text class="body" x="72" y="323">Cualificados y adicionales</text>
+<text class="body" x="72" y="357">en un mes</text>
+<path d="M320 390 v16 m-10 -10 10 10 10 -10" fill="none" stroke="#b2582e" stroke-width="4" stroke-linejoin="round"/>
+<rect x="48" y="410" width="544" height="205" rx="18" fill="#f3f4f1" stroke="#cbd2d5" stroke-width="2"/>
+<text class="number" x="72" y="455">02</text>
+<text class="label" x="72" y="509">2 clientes</text>
+<text class="body" x="72" y="553">Tasa de cierre del 20 %</text>
+<text class="body" x="72" y="587">sobre esos contactos</text>
+<path d="M320 620 v16 m-10 -10 10 10 10 -10" fill="none" stroke="#b2582e" stroke-width="4" stroke-linejoin="round"/>
+<rect x="48" y="640" width="544" height="205" rx="18" fill="#f3f4f1" stroke="#cbd2d5" stroke-width="2"/>
+<text class="number" x="72" y="685">03</text>
+<text class="label" x="72" y="739">500 € de margen</text>
+<text class="body" x="72" y="783">2 clientes × 250 €</text>
+<text class="body" x="72" y="817">antes del coste web</text>
+<text class="foot" x="48" y="926">Cifras ficticias para explicar el método.</text>
+<text class="foot" x="48" y="956">El coste mensual se resta después.</text>
+</svg>

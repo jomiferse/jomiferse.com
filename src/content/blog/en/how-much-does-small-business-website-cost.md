@@ -37,6 +37,8 @@ A business website with five clear sections can start at around EUR 490 when the
 
 The starting price does not tell you whether a proposal is good value. A EUR 700 landing page can be carefully delivered. A EUR 4,000 site can still arrive without finished copy, measurement or a clear maintenance plan. Look at the individual responsibilities.
 
+To assess whether the budget makes sense for your business, [calculate website ROI](/en/blog/small-business-website-roi/) using customer margin, running costs and a cautious scenario.
+
 ## What changes the budget
 
 ### The amount and state of the content

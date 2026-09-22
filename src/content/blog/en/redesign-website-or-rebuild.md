@@ -25,6 +25,8 @@ There is a useful third choice: modernize in phases. Fix the pages and journeys 
 
 Age alone does not settle the question. Some older sites have a sound structure. Some recently launched sites are already hard to maintain. Separate the visible design from the system underneath before commissioning a complete rebuild.
 
+Once you have decided to renew the site, use this [website redesign SEO checklist](/en/blog/website-redesign-seo-checklist/) to prepare the URL inventory, launch checks and follow-up.
+
 ## The short answer
 
 | Situation                                                                                      | Likely approach               |

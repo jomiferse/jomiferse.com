@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="640" viewBox="0 0 1600 640" role="img" aria-labelledby="title desc">
+<title id="title">Mapa de una URL que cambia</title><desc id="desc">La URL antigua debe llevar a la página nueva equivalente, no a una portada genérica.</desc>
+<rect width="1600" height="640" fill="#fbf7ee"/>
+<rect x="40" y="40" width="1520" height="560" rx="26" fill="#fffdfa" stroke="#c8d0d2" stroke-width="2"/>
+<style>text{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#10283a}.kicker{font-size:20px;font-weight:700;letter-spacing:2px;fill:#b2582e}.title{font-size:43px;font-weight:750}.label{font-size:25px;font-weight:700}.body{font-size:20px;fill:#485f6e}.number{font-size:20px;font-weight:750;fill:#b2582e}.foot{font-size:18px;fill:#485f6e}</style>
+<text class="kicker" x="92" y="109">EJEMPLO DE TRABAJO</text>
+<text class="title" x="92" y="170">Mapa de una URL que cambia</text>
+<rect x="92" y="226" width="405" height="220" rx="18" fill="#f3f4f1" stroke="#cbd2d5" stroke-width="2"/>
+<text class="number" x="120" y="276">01</text>
+<text class="label" x="120" y="334">Inventario</text>
+<text class="body" x="120" y="382">/empresa/contacta.html</text>
+<text class="body" x="120" y="412">Página antigua existente</text>
+<path d="M508 337 H563 m-16 -13 16 13 -16 13" fill="none" stroke="#b2582e" stroke-width="4" stroke-linejoin="round"/>
+<rect x="575" y="226" width="405" height="220" rx="18" fill="#f3f4f1" stroke="#cbd2d5" stroke-width="2"/>
+<text class="number" x="603" y="276">02</text>
+<text class="label" x="603" y="334">Redirección 301</text>
+<text class="body" x="603" y="382">Comprobar respuesta HTTP</text>
+<text class="body" x="603" y="412">y destino previsto</text>
+<path d="M991 337 H1046 m-16 -13 16 13 -16 13" fill="none" stroke="#b2582e" stroke-width="4" stroke-linejoin="round"/>
+<rect x="1058" y="226" width="405" height="220" rx="18" fill="#f3f4f1" stroke="#cbd2d5" stroke-width="2"/>
+<text class="number" x="1086" y="276">03</text>
+<text class="label" x="1086" y="334">Destino útil</text>
+<text class="body" x="1086" y="382">/contacto/</text>
+<text class="body" x="1086" y="412">Contenido y formulario vivos</text>
+<text class="foot" x="92" y="538">La URL antigua debe llevar a la página nueva equivalente, no a una portada genérica.</text>
+</svg>

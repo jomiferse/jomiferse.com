@@ -21,11 +21,11 @@ const profiles: Record<Locale, Record<EvidenceContext, EvidenceProfile>> = {
 			action: "Revisar contexto y resultado",
 		},
 		"api-integrations": {
-			projectId: "realtime-websocket-gateway",
-			eyebrow: "Evidencia técnica",
-			title: "Contratos y eventos visibles antes de escalar",
-			body: "La prueba de concepto de gateway en tiempo real debía coordinar conexiones WebSocket, usuarios agrupados por salas y eventos procedentes de servicios internos. Mi contribución se centró en separar la gestión de conexiones del intercambio de eventos, utilizar Redis pub/sub para difundir mensajes entre instancias y gRPC para los contratos internos. El entorno incluía Micrometer, Docker, Helm y Kubernetes, además de escenarios documentados para ejecutar y probar el servicio localmente. El resultado no se expresa como una mejora comercial inventada: la evidencia es técnica y acotada. La PoC permitió validar la gestión de sesiones y el intercambio de eventos entre instancias con una ejecución reproducible. Ese mismo criterio —contratos claros, fallos observables y pruebas antes de ampliar el volumen— es el que aplico al integrar APIs y herramientas de negocio.",
-			action: "Ver decisiones del proyecto",
+			projectId: "getyourticket-ticketing-platform",
+			eyebrow: "Integración en producción",
+			title: "Pagos con Stripe en una plataforma de eventos recuperada",
+			body: "GetYourTicket partía de una instalación de Attendize que no estaba lista para operar. El trabajo incluyó corregir la base existente, preparar Docker, VPS y HTTPS, adaptar el registro de gestores e integrar pagos con Stripe para la venta de entradas. La decisión fue recuperar la funcionalidad de ticketing que ya tenía Attendize, sin rehacer el producto completo. El caso documenta el alcance y las decisiones de recuperación, junto con un resultado observable: la plataforma continúa en producción y ha gestionado más de diez eventos, cada uno con más de mil asistentes. Ese dato describe el uso de la plataforma completa; no mide por separado el efecto de la integración de pagos ni demuestra una reducción de errores. Permite revisar una integración externa dentro de un flujo comercial real, con despliegue y mantenimiento a cargo del mismo profesional.",
+			action: "Ver el caso y su alcance",
 		},
 		"it-advisory": {
 			projectId: "microservices-modernization",
@@ -51,11 +51,11 @@ const profiles: Record<Locale, Record<EvidenceContext, EvidenceProfile>> = {
 			action: "Review context and outcome",
 		},
 		"api-integrations": {
-			projectId: "realtime-websocket-gateway",
-			eyebrow: "Technical evidence",
-			title: "Make contracts and events visible before scaling",
-			body: "The real-time gateway proof of concept had to coordinate WebSocket connections, users grouped into rooms and events arriving from internal services. My contribution separated connection management from event exchange, used Redis pub/sub to broadcast messages across instances and gRPC for internal contracts. The environment also included Micrometer, Docker, Helm and Kubernetes, with documented scenarios for running and testing the service locally. The result is not described as an invented commercial improvement: the evidence is technical and bounded. The PoC validated session management and cross-instance event exchange in a reproducible setup. I apply the same discipline to business API integrations: explicit contracts, observable failures and a testable flow before adding volume or allowing an integration to become an invisible operational dependency.",
-			action: "View the project decisions",
+			projectId: "getyourticket-ticketing-platform",
+			eyebrow: "Integration in production",
+			title: "Stripe payments in a recovered event platform",
+			body: "GetYourTicket began with an Attendize installation that was not ready to operate. The work included repairing the existing codebase, preparing Docker, VPS hosting and HTTPS, adapting event-manager registration and integrating Stripe payments for ticket sales. The decision was to retain the ticketing features already present in Attendize and repair the existing system instead of rebuilding the product. The case documents the scope and recovery decisions alongside an observable result: the platform remains in production and has managed more than ten events, each with over one thousand attendees. That figure describes use of the whole platform; it does not isolate the effect of payment integration or establish an error reduction. The case shows an external integration inside a live commercial flow, with deployment and ongoing maintenance handled by the same developer.",
+			action: "Review the case and scope",
 		},
 		"it-advisory": {
 			projectId: "microservices-modernization",

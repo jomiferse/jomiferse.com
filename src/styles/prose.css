@@ -196,6 +196,16 @@
 	box-shadow: var(--shadow-card);
 }
 
+.prose-wrapper picture {
+	display: block;
+}
+
+.prose-wrapper picture img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
 .prose-wrapper figure {
 	margin-block: 2rem;
 }

@@ -37,6 +37,8 @@ Una web de negocio con cinco secciones claras puede empezar alrededor de 490 eur
 
 El precio de salida no dice por sí solo si una propuesta es cara o barata. Una landing de 700 euros puede estar bien resuelta y una web de 4.000 puede llegar sin textos, medición ni mantenimiento claro. Conviene revisar las partidas.
 
+Para valorar si ese presupuesto encaja con el negocio, puedes [calcular la rentabilidad de la web](/es/blog/calcular-rentabilidad-web-pyme/) con margen por cliente, costes recurrentes y un escenario prudente.
+
 ## Qué cambia el presupuesto
 
 ### La cantidad y el estado del contenido
