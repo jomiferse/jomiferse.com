@@ -23,27 +23,23 @@ const { profile } = Astro.props as Props;
 		<article>
 			<h3>{profile.failureTitle}</h3>
 			<ul>
-				{
-					profile.failureModes.map((item) => (
-						<li>
-							<Icon name="info" class="h-4 w-4" aria-hidden="true" />
-							<span>{item}</span>
-						</li>
-					))
-				}
+				{profile.failureModes.map((item) => (
+					<li>
+						<Icon name="info" class="h-4 w-4" aria-hidden="true" />
+						<span>{item}</span>
+					</li>
+				))}
 			</ul>
 		</article>
 		<article>
 			<h3>{profile.acceptanceTitle}</h3>
 			<ul>
-				{
-					profile.acceptanceCriteria.map((item) => (
-						<li>
-							<Icon name="check" class="h-4 w-4" aria-hidden="true" />
-							<span>{item}</span>
-						</li>
-					))
-				}
+				{profile.acceptanceCriteria.map((item) => (
+					<li>
+						<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+						<span>{item}</span>
+					</li>
+				))}
 			</ul>
 		</article>
 	</div>

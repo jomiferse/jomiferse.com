@@ -33,34 +33,24 @@ const dateLabel = `${education.startDate} - ${education.endDate}`;
 	</div>
 
 	<div class="min-w-0">
-		<h3
-			class="text-2xl leading-tight font-black text-[var(--home-navy)] md:text-3xl"
-		>
+		<h3 class="text-2xl leading-tight font-black text-[var(--home-navy)] md:text-3xl">
 			{education.degree}
 		</h3>
 
-		<p class="muted-copy mt-4 max-w-3xl leading-7">
-			{education.description}
-		</p>
+		<p class="muted-copy mt-4 max-w-3xl leading-7">{education.description}</p>
 
-		<div
-			class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[var(--text-muted)]"
-		>
-			{
-				education.notes ? (
-					<p>
-						<strong class="text-[var(--text)]">
-							{t(locale, "educationCard.gradeLabel")}
-						</strong>{" "}
-						{education.notes}
-					</p>
-				) : null
-			}
-			{
-				education.skills
-					?.slice(0, 4)
-					.map((skill) => <span class="font-semibold">{skill}</span>)
-			}
+		<div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-[var(--text-muted)]">
+			{education.notes ? (
+				<p>
+					<strong class="text-[var(--text)]">
+						{t(locale, "educationCard.gradeLabel")}
+					</strong>{" "}
+					{education.notes}
+				</p>
+			) : null}
+			{education.skills?.slice(0, 4).map((skill) => (
+				<span class="font-semibold">{skill}</span>
+			))}
 		</div>
 	</div>
 </article>

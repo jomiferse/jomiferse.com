@@ -68,17 +68,15 @@ const navigationItems = links.map((link, index) => ({
 			</a>
 
 			<nav class="header-desktop-nav" aria-label="Main">
-				{
-					navigationItems.map((link) => (
-						<a
-							href={link.href}
-							class="header-nav-link"
-							aria-current={link.active ? "page" : undefined}
-						>
-							{link.label}
-						</a>
-					))
-				}
+				{navigationItems.map((link) => (
+					<a
+						href={link.href}
+						class="header-nav-link"
+						aria-current={link.active ? "page" : undefined}
+					>
+						{link.label}
+					</a>
+				))}
 			</nav>
 
 			<div class="header-desktop-actions">

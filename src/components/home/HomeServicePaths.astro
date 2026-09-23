@@ -21,29 +21,25 @@ const { locale, content } = Astro.props as Props;
 		<p>{content.intro}</p>
 	</header>
 	<ol>
-		{
-			content.items.map((item) => (
-				<li>
-					<>
-						<span>{item.number}</span>
-						<h3>{item.title}</h3>
-						<p>{item.text}</p>
-					</>
-				</li>
-			))
-		}
+		{content.items.map((item) => (
+			<li>
+				<>
+					<span>{item.number}</span>
+					<h3>{item.title}</h3>
+					<p>{item.text}</p>
+				</>
+			</li>
+		))}
 	</ol>
 	<div class="assessment__footer">
 		<p>
-			<Icon name="info" class="h-5 w-5" aria-hidden="true" />{content.boundary}
+			<Icon name="info" class="h-5 w-5" aria-hidden="true" />
+			{content.boundary}
 		</p>
-		<a href={`/${locale}/contact?service=assessment`} class="button-action"
-			>{content.button}<Icon
-				name="arrow-right"
-				class="h-4 w-4"
-				aria-hidden="true"
-			/></a
-		>
+		<a href={`/${locale}/contact?service=assessment`} class="button-action">
+			{content.button}
+			<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+		</a>
 	</div>
 </section>
 

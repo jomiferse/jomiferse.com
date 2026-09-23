@@ -216,7 +216,7 @@ Ejemplo:
 Si necesitabas un espacio entre ambos, mejor hacerlo explícito:
 
 ```astro
-<span>Hola</span>{" "}<em>mundo</em>
+<span>Hola</span> <em>mundo</em>
 ```
 
 Este repo ya configura `compressHTML: true`, así que conserva el comportamiento anterior. Aun así, en cualquier migración real revisaría cabeceras, botones, links inline, badges y componentes compactos.

@@ -24,23 +24,21 @@ const [intervention, project, support] = options;
 ---
 
 <div data-service-pricing class="service-pricing-grid">
-	{
-		[intervention, project, support].map((option) => (
-			<ServicePricingCard
-				locale={locale}
-				serviceSlug={serviceSlug}
-				option={option}
-				featured={option.key === "project"}
-				contactHref={contactHref}
-				mostCommonLabel={copy.mostCommon}
-				pricePrefix={copy.from}
-				taxLabel={copy.tax}
-				monthLabel={copy.month}
-				includedLabel={copy.included}
-				boundaryLabel={copy.boundary}
-			/>
-		))
-	}
+	{[intervention, project, support].map((option) => (
+		<ServicePricingCard
+			locale={locale}
+			serviceSlug={serviceSlug}
+			option={option}
+			featured={option.key === "project"}
+			contactHref={contactHref}
+			mostCommonLabel={copy.mostCommon}
+			pricePrefix={copy.from}
+			taxLabel={copy.tax}
+			monthLabel={copy.month}
+			includedLabel={copy.included}
+			boundaryLabel={copy.boundary}
+		/>
+	))}
 </div>
 
 <style>

@@ -18,7 +18,9 @@ const stars = Array.from({ length: 5 });
 >
 	<div class="service-standard__signal">
 		<div class="service-standard__stars" aria-hidden="true">
-			{stars.map(() => <span>★</span>)}
+			{stars.map(() => (
+				<span>★</span>
+			))}
 		</div>
 		<p>{content.signal}</p>
 	</div>
@@ -31,17 +33,15 @@ const stars = Array.from({ length: 5 });
 		</header>
 
 		<ol>
-			{
-				content.items.map((item, index) => (
-					<li data-service-commitment>
-						<span>{String(index + 1).padStart(2, "0")}</span>
-						<div>
-							<h3>{item.title}</h3>
-							<p>{item.text}</p>
-						</div>
-					</li>
-				))
-			}
+			{content.items.map((item, index) => (
+				<li data-service-commitment>
+					<span>{String(index + 1).padStart(2, "0")}</span>
+					<div>
+						<h3>{item.title}</h3>
+						<p>{item.text}</p>
+					</div>
+				</li>
+			))}
 		</ol>
 	</div>
 </section>

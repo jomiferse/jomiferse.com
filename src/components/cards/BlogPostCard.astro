@@ -38,9 +38,7 @@ const { href, title, description, dateLabel, readLabel, readingTime, cover } =
 		</div>
 
 		<div class="flex flex-1 flex-col p-4 sm:p-5">
-			<div
-				class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-bold text-[var(--text-muted)]"
-			>
+			<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-bold text-[var(--text-muted)]">
 				<span class="inline-flex items-center gap-1.5">
 					<Icon
 						name="calendar"
@@ -49,23 +47,19 @@ const { href, title, description, dateLabel, readLabel, readingTime, cover } =
 					/>
 					<time>{dateLabel}</time>
 				</span>
-				{
-					readingTime ? (
-						<span class="inline-flex items-center gap-1.5">
-							<Icon
-								name="clock"
-								class="h-3.5 w-3.5 text-[var(--action)]"
-								aria-hidden="true"
-							/>
-							{readingTime}
-						</span>
-					) : null
-				}
+				{readingTime ? (
+					<span class="inline-flex items-center gap-1.5">
+						<Icon
+							name="clock"
+							class="h-3.5 w-3.5 text-[var(--action)]"
+							aria-hidden="true"
+						/>
+						{readingTime}
+					</span>
+				) : null}
 			</div>
 
-			<h2
-				class="mt-4 line-clamp-2 text-xl leading-tight font-black text-[var(--home-navy)]"
-			>
+			<h2 class="mt-4 line-clamp-2 text-xl leading-tight font-black text-[var(--home-navy)]">
 				{title}
 			</h2>
 			<p class="muted-copy mt-3 line-clamp-3 text-sm leading-6">

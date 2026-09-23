@@ -41,14 +41,10 @@ const structuredData = [
 	structuredData={structuredData}
 >
 	<div class="about-page">
-		<section
-			class="about-hero section-reveal grid gap-12 pt-6 pb-16 md:pt-10 md:pb-18 lg:grid-cols-[minmax(0,1.08fr)_minmax(19rem,0.72fr)] lg:items-center lg:gap-18"
-		>
+		<section class="about-hero section-reveal grid gap-12 pt-6 pb-16 md:pt-10 md:pb-18 lg:grid-cols-[minmax(0,1.08fr)_minmax(19rem,0.72fr)] lg:items-center lg:gap-18">
 			<div>
 				<p class="eyebrow">{page.eyebrow}</p>
-				<h1
-					class="mt-5 max-w-4xl text-5xl leading-[0.98] font-black sm:text-6xl md:text-7xl"
-				>
+				<h1 class="mt-5 max-w-4xl text-5xl leading-[0.98] font-black sm:text-6xl md:text-7xl">
 					{page.title}
 					<span class="block">{page.titleAccent}</span>
 				</h1>
@@ -72,9 +68,7 @@ const structuredData = [
 				</div>
 			</div>
 
-			<figure
-				class="about-portrait relative mx-auto w-full max-w-[23rem] lg:mr-2"
-			>
+			<figure class="about-portrait relative mx-auto w-full max-w-[23rem] lg:mr-2">
 				<div class="about-portrait__frame" aria-hidden="true"></div>
 				<ResponsiveImage
 					src="/images/avatar.avif"
@@ -93,14 +87,12 @@ const structuredData = [
 		</section>
 
 		<section class="about-trust" aria-label={page.eyebrow}>
-			{
-				page.trustSignals.map((signal) => (
-					<div class="about-trust__item">
-						<p class="text-lg font-black text-[var(--text)]">{signal.value}</p>
-						<p class="muted-copy mt-1 text-sm">{signal.label}</p>
-					</div>
-				))
-			}
+			{page.trustSignals.map((signal) => (
+				<div class="about-trust__item">
+					<p class="text-lg font-black text-[var(--text)]">{signal.value}</p>
+					<p class="muted-copy mt-1 text-sm">{signal.label}</p>
+				</div>
+			))}
 		</section>
 
 		<AboutHelp content={page.help} />
@@ -123,30 +115,24 @@ const structuredData = [
 						{page.workingStyle.intro}
 					</p>
 				</header>
-				<div
-					class="divide-y divide-[var(--surface-border)] border-y border-[var(--surface-border)]"
-				>
-					{
-						page.workingStyle.items.map((item) => (
-							<article class="grid gap-3 py-6 sm:grid-cols-[3rem_1fr] md:py-7">
-								<p class="font-black text-[var(--action)]">{item.number}</p>
-								<div>
-									<h3 class="text-xl font-black text-[var(--text)]">
-										{item.title}
-									</h3>
-									<p class="muted-copy mt-2 leading-7">{item.body}</p>
-								</div>
-							</article>
-						))
-					}
+				<div class="divide-y divide-[var(--surface-border)] border-y border-[var(--surface-border)]">
+					{page.workingStyle.items.map((item) => (
+						<article class="grid gap-3 py-6 sm:grid-cols-[3rem_1fr] md:py-7">
+							<p class="font-black text-[var(--action)]">{item.number}</p>
+							<div>
+								<h3 class="text-xl font-black text-[var(--text)]">
+									{item.title}
+								</h3>
+								<p class="muted-copy mt-2 leading-7">{item.body}</p>
+							</div>
+						</article>
+					))}
 				</div>
 			</div>
 		</section>
 
 		<section class="section-reveal py-16 md:py-18">
-			<div
-				class="grid gap-7 border-y border-[var(--surface-border)] py-9 md:grid-cols-[0.34fr_1fr_auto] md:items-center md:py-11"
-			>
+			<div class="grid gap-7 border-y border-[var(--surface-border)] py-9 md:grid-cols-[0.34fr_1fr_auto] md:items-center md:py-11">
 				<p class="eyebrow">{page.educationSummary.eyebrow}</p>
 				<div>
 					<h2 class="text-2xl font-black md:text-3xl">

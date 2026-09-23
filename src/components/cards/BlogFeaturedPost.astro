@@ -33,9 +33,7 @@ const {
 		href={href}
 		class="grid overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[var(--surface)] shadow-[var(--shadow-card)] transition duration-300 hover:border-[color-mix(in_srgb,var(--action)_42%,var(--surface-border))] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)] motion-safe:hover:-translate-y-1 lg:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)]"
 	>
-		<div
-			class="overflow-hidden border-b border-[var(--surface-border)] lg:border-r lg:border-b-0"
-		>
+		<div class="overflow-hidden border-b border-[var(--surface-border)] lg:border-r lg:border-b-0">
 			<ResponsiveImage
 				src={cover.src}
 				alt={cover.alt}
@@ -50,9 +48,7 @@ const {
 		</div>
 		<div class="flex min-w-0 flex-col p-6 md:p-8 lg:p-10">
 			<p class="eyebrow text-[var(--action)]">{featuredLabel}</p>
-			<div
-				class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-bold text-[var(--text-muted)]"
-			>
+			<div class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-bold text-[var(--text-muted)]">
 				<span class="inline-flex items-center gap-2">
 					<Icon
 						name="calendar"
@@ -61,22 +57,18 @@ const {
 					/>
 					<time>{dateLabel}</time>
 				</span>
-				{
-					readingTime ? (
-						<span class="inline-flex items-center gap-2">
-							<Icon
-								name="clock"
-								class="h-4 w-4 text-[var(--action)]"
-								aria-hidden="true"
-							/>
-							{readingTime}
-						</span>
-					) : null
-				}
+				{readingTime ? (
+					<span class="inline-flex items-center gap-2">
+						<Icon
+							name="clock"
+							class="h-4 w-4 text-[var(--action)]"
+							aria-hidden="true"
+						/>
+						{readingTime}
+					</span>
+				) : null}
 			</div>
-			<h2
-				class="mt-4 text-3xl leading-tight font-black text-[var(--home-navy)] md:text-4xl"
-			>
+			<h2 class="mt-4 text-3xl leading-tight font-black text-[var(--home-navy)] md:text-4xl">
 				{title}
 			</h2>
 			<p class="muted-copy mt-4 line-clamp-3 leading-7">{description}</p>

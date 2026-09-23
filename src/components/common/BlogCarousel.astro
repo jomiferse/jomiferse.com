@@ -69,31 +69,29 @@ const initialPosition = copy.carouselPosition
 		class="stagger-children -mx-4 flex snap-x snap-mandatory [scrollbar-width:none] items-stretch gap-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden"
 		data-carousel-track
 	>
-		{
-			posts.map((post, index) => (
-				<li
-					class="flex w-[86%] shrink-0 snap-start sm:w-auto sm:shrink"
-					aria-label={copy.carouselPosition
-						.replace("{current}", String(index + 1))
-						.replace("{total}", String(posts.length))}
-					data-blog-slide
-				>
-					<BlogPostCard
-						href={`${blogBasePath}/${getLocalBlogSlug(post.id, locale)}`}
-						title={post.data.title}
-						description={post.data.description}
-						dateLabel={post.data.date.toLocaleDateString(dateLocale, {
-							year: "numeric",
-							month: "short",
-							day: "numeric",
-						})}
-						readLabel={copy.readArticle}
-						readingTime={post.data.readingTime}
-						cover={post.data.cover}
-					/>
-				</li>
-			))
-		}
+		{posts.map((post, index) => (
+			<li
+				class="flex w-[86%] shrink-0 snap-start sm:w-auto sm:shrink"
+				aria-label={copy.carouselPosition
+					.replace("{current}", String(index + 1))
+					.replace("{total}", String(posts.length))}
+				data-blog-slide
+			>
+				<BlogPostCard
+					href={`${blogBasePath}/${getLocalBlogSlug(post.id, locale)}`}
+					title={post.data.title}
+					description={post.data.description}
+					dateLabel={post.data.date.toLocaleDateString(dateLocale, {
+						year: "numeric",
+						month: "short",
+						day: "numeric",
+					})}
+					readLabel={copy.readArticle}
+					readingTime={post.data.readingTime}
+					cover={post.data.cover}
+				/>
+			</li>
+		))}
 	</ol>
 </div>
 

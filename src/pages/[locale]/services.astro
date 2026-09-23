@@ -114,16 +114,16 @@ const structuredData = [
 					<span aria-hidden="true">01</span>
 					<Icon name="badge-check" class="h-7 w-7" aria-hidden="true" />
 				</div>
-				<p><strong>{page.bestForLead}</strong> {page.bestForText}</p>
+				<p>
+					<strong>{page.bestForLead}</strong> {page.bestForText}
+				</p>
 				<ul>
-					{
-						page.heroSignals.map((signal) => (
-							<li>
-								<Icon name="check" class="h-4 w-4" aria-hidden="true" />
-								<span>{signal}</span>
-							</li>
-						))
-					}
+					{page.heroSignals.map((signal) => (
+						<li>
+							<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+							<span>{signal}</span>
+						</li>
+					))}
 				</ul>
 			</aside>
 		</section>
@@ -142,16 +142,14 @@ const structuredData = [
 			</header>
 
 			<div class="services-areas__grid stagger-children">
-				{
-					areas.map((area, index) => (
-						<ServiceAreaCard
-							locale={locale}
-							area={area}
-							number={String(index + 1).padStart(2, "0")}
-							copy={commercial.common}
-						/>
-					))
-				}
+				{areas.map((area, index) => (
+					<ServiceAreaCard
+						locale={locale}
+						area={area}
+						number={String(index + 1).padStart(2, "0")}
+						copy={commercial.common}
+					/>
+				))}
 			</div>
 		</section>
 
@@ -173,37 +171,29 @@ const structuredData = [
 						{locale === "es" ? "Necesidades concretas" : "Specific needs"}
 					</p>
 					<h2 id="services-buyer-paths-title">
-						{
-							locale === "es"
-								? "Tres decisiones habituales antes de construir"
-								: "Three common decisions before you build"
-						}
+						{locale === "es"
+							? "Tres decisiones habituales antes de construir"
+							: "Three common decisions before you build"}
 					</h2>
 				</div>
 				<p>
-					{
-						locale === "es"
-							? "Recorridos breves para entender el problema, el alcance razonable y cuándo merece la pena invertir."
-							: "Short paths for understanding the problem, a sensible scope and when the investment is worthwhile."
-					}
+					{locale === "es"
+						? "Recorridos breves para entender el problema, el alcance razonable y cuándo merece la pena invertir."
+						: "Short paths for understanding the problem, a sensible scope and when the investment is worthwhile."}
 				</p>
 			</header>
 
 			<div class="services-buyer-paths__list">
-				{
-					buyerPaths.map((path, index) => (
-						<a href={path.href} class="services-buyer-paths__item">
-							<span aria-hidden="true">
-								{String(index + 1).padStart(2, "0")}
-							</span>
-							<div>
-								<h3>{path.title}</h3>
-								<p>{path.description}</p>
-							</div>
-							<Icon name="arrow-right" class="h-5 w-5" aria-hidden="true" />
-						</a>
-					))
-				}
+				{buyerPaths.map((path, index) => (
+					<a href={path.href} class="services-buyer-paths__item">
+						<span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+						<div>
+							<h3>{path.title}</h3>
+							<p>{path.description}</p>
+						</div>
+						<Icon name="arrow-right" class="h-5 w-5" aria-hidden="true" />
+					</a>
+				))}
 			</div>
 		</section>
 
@@ -221,15 +211,13 @@ const structuredData = [
 			</header>
 
 			<div class="services-proof__grid stagger-children">
-				{
-					proofProjects.map((project) => (
-						<ProjectArchiveCard
-							project={project}
-							locale={locale}
-							viewLabel={page.viewProject}
-						/>
-					))
-				}
+				{proofProjects.map((project) => (
+					<ProjectArchiveCard
+						project={project}
+						locale={locale}
+						viewLabel={page.viewProject}
+					/>
+				))}
 			</div>
 		</section>
 
@@ -247,17 +235,13 @@ const structuredData = [
 			</header>
 
 			<ol class="services-process__steps">
-				{
-					page.process.map((step, index) => (
-						<li>
-							<span aria-hidden="true">
-								{String(index + 1).padStart(2, "0")}
-							</span>
-							<h3>{step.title}</h3>
-							<p>{step.body}</p>
-						</li>
-					))
-				}
+				{page.process.map((step, index) => (
+					<li>
+						<span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+						<h3>{step.title}</h3>
+						<p>{step.body}</p>
+					</li>
+				))}
 			</ol>
 		</section>
 
@@ -283,17 +267,15 @@ const structuredData = [
 			</header>
 
 			<div class="services-faq__list">
-				{
-					page.faq.map((item, index) => (
-						<details open={index === 0}>
-							<summary>
-								<span>{item.question}</span>
-								<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
-							</summary>
-							<p>{item.answer}</p>
-						</details>
-					))
-				}
+				{page.faq.map((item, index) => (
+					<details open={index === 0}>
+						<summary>
+							<span>{item.question}</span>
+							<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
+						</summary>
+						<p>{item.answer}</p>
+					</details>
+				))}
 			</div>
 		</section>
 

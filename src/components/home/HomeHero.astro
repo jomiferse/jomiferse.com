@@ -30,7 +30,9 @@ const getServiceHref = (slug: string) =>
 		<div class="consultancy-pitch">
 			<p class="consultancy-pitch__intro">{content.intro}</p>
 			<p class="consultancy-pitch__evidence">
-				<strong>{yearsWorking}+ {content.yearsSuffix}</strong>
+				<strong>
+					{yearsWorking}+ {content.yearsSuffix}
+				</strong>
 				<span>{content.experience}</span>
 			</p>
 			<p class="consultancy-pitch__challenge">{content.challenge}</p>
@@ -50,36 +52,34 @@ const getServiceHref = (slug: string) =>
 				{content.assessmentNote}
 			</p>
 
-			{
-				project && (
-					<a
-						href={`/${locale}/projects/${project.slug}/`}
-						class="consultancy-case-preview"
-					>
-						{projectImage ? (
-							<ResponsiveImage
-								src={projectImage.src}
-								alt={projectImage.alt ?? project.title}
-								width="640"
-								height="400"
-								loading="eager"
-								decoding="async"
-								fetchpriority="high"
-								sizes="(max-width: 64rem) calc(100vw - 2rem), 40rem"
-							/>
-						) : (
-							<span
-								class="consultancy-case-preview__fallback"
-								aria-hidden="true"
-							/>
-						)}
-						<span>
-							<strong>{project.title}</strong>
-							<small>{project.status}</small>
-						</span>
-					</a>
-				)
-			}
+			{project && (
+				<a
+					href={`/${locale}/projects/${project.slug}/`}
+					class="consultancy-case-preview"
+				>
+					{projectImage ? (
+						<ResponsiveImage
+							src={projectImage.src}
+							alt={projectImage.alt ?? project.title}
+							width="640"
+							height="400"
+							loading="eager"
+							decoding="async"
+							fetchpriority="high"
+							sizes="(max-width: 64rem) calc(100vw - 2rem), 40rem"
+						/>
+					) : (
+						<span
+							class="consultancy-case-preview__fallback"
+							aria-hidden="true"
+						/>
+					)}
+					<span>
+						<strong>{project.title}</strong>
+						<small>{project.status}</small>
+					</span>
+				</a>
+			)}
 		</div>
 
 		<div class="consultancy-selector">
@@ -88,22 +88,20 @@ const getServiceHref = (slug: string) =>
 				<p>{selector.intro}</p>
 			</header>
 			<div class="consultancy-selector__grid">
-				{
-					selector.items.map((item) => (
-						<a href={getServiceHref(item.slug)} class="consultancy-option">
-							<Icon name={item.icon} class="h-7 w-7" aria-hidden="true" />
-							<span>
-								<strong>{item.title}</strong>
-								<small>{item.text}</small>
-							</span>
-							<Icon
-								name="arrow-right"
-								class="consultancy-option__arrow h-4 w-4"
-								aria-hidden="true"
-							/>
-						</a>
-					))
-				}
+				{selector.items.map((item) => (
+					<a href={getServiceHref(item.slug)} class="consultancy-option">
+						<Icon name={item.icon} class="h-7 w-7" aria-hidden="true" />
+						<span>
+							<strong>{item.title}</strong>
+							<small>{item.text}</small>
+						</span>
+						<Icon
+							name="arrow-right"
+							class="consultancy-option__arrow h-4 w-4"
+							aria-hidden="true"
+						/>
+					</a>
+				))}
 			</div>
 		</div>
 	</div>

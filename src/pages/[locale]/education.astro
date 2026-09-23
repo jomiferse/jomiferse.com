@@ -44,9 +44,7 @@ const structuredData = [
 	<div data-education-page class="education-page">
 		<section class="section-reveal pt-6 pb-14 md:pt-10 md:pb-18">
 			<p class="eyebrow text-[var(--action)]">{page.eyebrow}</p>
-			<h1
-				class="mt-5 max-w-5xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
-			>
+			<h1 class="mt-5 max-w-5xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl">
 				{page.title}
 			</h1>
 			<p class="muted-copy mt-7 max-w-3xl text-lg leading-8 md:text-xl">
@@ -58,27 +56,21 @@ const structuredData = [
 			class="education-summary border-y border-[var(--surface-border)]"
 			aria-label={page.eyebrow}
 		>
-			{
-				summaryItems.map((item) => (
-					<div class="education-summary__item">
-						<p class="text-2xl font-black text-[var(--home-navy)]">
-							{item.value}
-						</p>
-						<p class="muted-copy mt-1 text-sm">{item.label}</p>
-					</div>
-				))
-			}
+			{summaryItems.map((item) => (
+				<div class="education-summary__item">
+					<p class="text-2xl font-black text-[var(--home-navy)]">
+						{item.value}
+					</p>
+					<p class="muted-copy mt-1 text-sm">{item.label}</p>
+				</div>
+			))}
 		</section>
 
 		<section data-applied-learning class="section-reveal py-16 md:py-20">
 			<header class="grid gap-5 lg:grid-cols-[0.34fr_0.66fr] lg:gap-14">
 				<div>
-					<p class="eyebrow text-[var(--action)]">
-						{page.applied.eyebrow}
-					</p>
-					<h2
-						class="mt-4 text-4xl font-black text-[var(--home-navy)] md:text-5xl"
-					>
+					<p class="eyebrow text-[var(--action)]">{page.applied.eyebrow}</p>
+					<h2 class="mt-4 text-4xl font-black text-[var(--home-navy)] md:text-5xl">
 						{page.applied.title}
 					</h2>
 				</div>
@@ -87,22 +79,18 @@ const structuredData = [
 				</p>
 			</header>
 
-			<div
-				class="mt-10 divide-y divide-[var(--surface-border)] border-y border-[var(--surface-border)]"
-			>
-				{
-					page.applied.items.map((item) => (
-						<article class="grid gap-4 py-6 md:grid-cols-[4rem_minmax(0,0.35fr)_minmax(0,0.65fr)] md:items-start md:py-7">
-							<span class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,var(--surface-border))] text-[var(--action)]">
-								<Icon name={item.icon} class="h-5 w-5" aria-hidden="true" />
-							</span>
-							<h3 class="text-xl font-black text-[var(--home-navy)]">
-								{item.title}
-							</h3>
-							<p class="muted-copy max-w-2xl leading-7">{item.body}</p>
-						</article>
-					))
-				}
+			<div class="mt-10 divide-y divide-[var(--surface-border)] border-y border-[var(--surface-border)]">
+				{page.applied.items.map((item) => (
+					<article class="grid gap-4 py-6 md:grid-cols-[4rem_minmax(0,0.35fr)_minmax(0,0.65fr)] md:items-start md:py-7">
+						<span class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[color-mix(in_srgb,var(--action)_28%,var(--surface-border))] text-[var(--action)]">
+							<Icon name={item.icon} class="h-5 w-5" aria-hidden="true" />
+						</span>
+						<h3 class="text-xl font-black text-[var(--home-navy)]">
+							{item.title}
+						</h3>
+						<p class="muted-copy max-w-2xl leading-7">{item.body}</p>
+					</article>
+				))}
 			</div>
 		</section>
 
@@ -112,24 +100,15 @@ const structuredData = [
 					<p class="eyebrow text-[var(--action)]">
 						{page.certifications.eyebrow}
 					</p>
-					<h2
-						class="mt-4 text-4xl font-black text-[var(--home-navy)] md:text-5xl"
-					>
+					<h2 class="mt-4 text-4xl font-black text-[var(--home-navy)] md:text-5xl">
 						{page.certifications.title}
 					</h2>
-					<p class="muted-copy mt-5 leading-7">
-						{page.certifications.text}
-					</p>
+					<p class="muted-copy mt-5 leading-7">{page.certifications.text}</p>
 				</header>
 				<div>
-					{
-						certifications.map((certification) => (
-							<CertificationCard
-								certification={certification}
-								locale={locale}
-							/>
-						))
-					}
+					{certifications.map((certification) => (
+						<CertificationCard certification={certification} locale={locale} />
+					))}
 				</div>
 			</div>
 		</section>
@@ -138,19 +117,15 @@ const structuredData = [
 			<div class="grid gap-10 lg:grid-cols-[0.3fr_minmax(0,0.7fr)] lg:gap-16">
 				<header>
 					<p class="eyebrow text-[var(--action)]">{page.education.eyebrow}</p>
-					<h2
-						class="mt-4 text-4xl font-black text-[var(--home-navy)] md:text-5xl"
-					>
+					<h2 class="mt-4 text-4xl font-black text-[var(--home-navy)] md:text-5xl">
 						{page.education.title}
 					</h2>
 					<p class="muted-copy mt-5 leading-7">{page.education.text}</p>
 				</header>
 				<div>
-					{
-						education.map((item) => (
-							<EducationCard education={item} locale={locale} />
-						))
-					}
+					{education.map((item) => (
+						<EducationCard education={item} locale={locale} />
+					))}
 				</div>
 			</div>
 		</section>

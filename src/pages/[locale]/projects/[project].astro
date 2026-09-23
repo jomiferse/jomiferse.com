@@ -130,64 +130,54 @@ const structuredData = [
 			{copy.back}
 		</a>
 
-		<section
-			class="project-detail-hero section-reveal grid gap-9 py-10 md:py-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(24rem,1.08fr)] lg:items-center lg:gap-14"
-		>
+		<section class="project-detail-hero section-reveal grid gap-9 py-10 md:py-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(24rem,1.08fr)] lg:items-center lg:gap-14">
 			<div>
 				<p class="eyebrow text-[var(--action)]">
 					{copy.caseLabel} · {project.sector}
 				</p>
-				<h1
-					class="mt-4 max-w-4xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
-				>
+				<h1 class="mt-4 max-w-4xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl">
 					{project.title}
 				</h1>
 				<p class="muted-copy mt-6 max-w-3xl text-lg leading-8">
 					{project.summary}
 				</p>
 
-				{
-					facts.length ? (
-						<dl
-							class="mt-8 grid gap-4 border-y border-[var(--surface-border)] py-5 sm:grid-cols-3"
-							aria-label={copy.facts}
-						>
-							{facts.map((fact) => (
-								<div>
-									<dt class="eyebrow text-[var(--action)]">{fact.label}</dt>
-									<dd class="mt-2 text-sm leading-6 font-bold text-[var(--text)]">
-										{fact.value}
-									</dd>
-								</div>
-							))}
-						</dl>
-					) : null
-				}
+				{facts.length ? (
+					<dl
+						class="mt-8 grid gap-4 border-y border-[var(--surface-border)] py-5 sm:grid-cols-3"
+						aria-label={copy.facts}
+					>
+						{facts.map((fact) => (
+							<div>
+								<dt class="eyebrow text-[var(--action)]">{fact.label}</dt>
+								<dd class="mt-2 text-sm leading-6 font-bold text-[var(--text)]">
+									{fact.value}
+								</dd>
+							</div>
+						))}
+					</dl>
+				) : null}
 			</div>
 
-			<div
-				class="overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_46%),var(--bg-band)] shadow-[var(--shadow-card)]"
-			>
-				{
-					image ? (
-						<ResponsiveImage
-							src={image.src}
-							alt={image.alt ?? project.title}
-							width="1200"
-							height="675"
-							class="aspect-[16/9] h-full w-full object-cover"
-							fetchpriority="high"
-							decoding="async"
-							sizes="(max-width: 64rem) calc(100vw - 2rem), 75rem"
-						/>
-					) : (
-						<div class="flex aspect-[16/9] items-end p-6">
-							<span class="eyebrow text-[var(--text-muted)]">
-								{t(locale, "projects.page.fallbackImage")}
-							</span>
-						</div>
-					)
-				}
+			<div class="overflow-hidden rounded-[1.35rem] border border-[var(--surface-border)] bg-[radial-gradient(circle_at_20%_10%,color-mix(in_srgb,var(--action)_12%,transparent),transparent_46%),var(--bg-band)] shadow-[var(--shadow-card)]">
+				{image ? (
+					<ResponsiveImage
+						src={image.src}
+						alt={image.alt ?? project.title}
+						width="1200"
+						height="675"
+						class="aspect-[16/9] h-full w-full object-cover"
+						fetchpriority="high"
+						decoding="async"
+						sizes="(max-width: 64rem) calc(100vw - 2rem), 75rem"
+					/>
+				) : (
+					<div class="flex aspect-[16/9] items-end p-6">
+						<span class="eyebrow text-[var(--text-muted)]">
+							{t(locale, "projects.page.fallbackImage")}
+						</span>
+					</div>
+				)}
 			</div>
 		</section>
 
@@ -196,9 +186,7 @@ const structuredData = [
 			class="project-evidence section-reveal border-y border-[var(--surface-border)] py-8 md:py-10"
 			aria-labelledby="project-evidence-title"
 		>
-			<div
-				class="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:items-start"
-			>
+			<div class="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,0.65fr)] lg:items-start">
 				<div>
 					<p class="eyebrow text-[var(--action)]">{evidenceCopy.eyebrow}</p>
 					<h2
@@ -210,21 +198,17 @@ const structuredData = [
 					<p class="muted-copy mt-5 max-w-4xl leading-8">{evidenceSummary}</p>
 				</div>
 				<ul class="border-t border-[var(--surface-border)]">
-					{
-						image ? (
-							<li class="flex gap-3 border-b border-[var(--surface-border)] py-4 text-sm leading-6 text-[var(--text-muted)]">
-								<Icon
-									name="badge-check"
-									class="mt-0.5 h-4 w-4 shrink-0 text-[var(--action)]"
-									aria-hidden="true"
-								/>
-								<span>{evidenceCopy.image}</span>
-							</li>
-						) : null
-					}
-					<li
-						class="flex gap-3 border-b border-[var(--surface-border)] py-4 text-sm leading-6 text-[var(--text-muted)]"
-					>
+					{image ? (
+						<li class="flex gap-3 border-b border-[var(--surface-border)] py-4 text-sm leading-6 text-[var(--text-muted)]">
+							<Icon
+								name="badge-check"
+								class="mt-0.5 h-4 w-4 shrink-0 text-[var(--action)]"
+								aria-hidden="true"
+							/>
+							<span>{evidenceCopy.image}</span>
+						</li>
+					) : null}
+					<li class="flex gap-3 border-b border-[var(--surface-border)] py-4 text-sm leading-6 text-[var(--text-muted)]">
 						<Icon
 							name="briefcase-business"
 							class="mt-0.5 h-4 w-4 shrink-0 text-[var(--action)]"
@@ -232,9 +216,7 @@ const structuredData = [
 						/>
 						<span>{evidenceCopy.record}</span>
 					</li>
-					<li
-						class="flex gap-3 border-b border-[var(--surface-border)] py-4 text-sm leading-6 text-[var(--text-muted)]"
-					>
+					<li class="flex gap-3 border-b border-[var(--surface-border)] py-4 text-sm leading-6 text-[var(--text-muted)]">
 						<Icon
 							name="circle-check-big"
 							class="mt-0.5 h-4 w-4 shrink-0 text-[var(--action)]"
@@ -246,44 +228,38 @@ const structuredData = [
 			</div>
 		</section>
 
-		<div
-			class="grid gap-10 border-t border-[var(--surface-border)] py-14 md:py-18 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-16"
-		>
+		<div class="grid gap-10 border-t border-[var(--surface-border)] py-14 md:py-18 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-16">
 			<div class="project-narrative grid gap-12">
-				{
-					narrativeSections.map((section, index) => (
-						<section>
-							<p class="eyebrow text-[var(--action)]">
-								{String(index + 1).padStart(2, "0")}
-							</p>
-							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
-								{section.title}
-							</h2>
-							<p class="muted-copy mt-4 max-w-3xl leading-8">{section.body}</p>
-						</section>
-					))
-				}
+				{narrativeSections.map((section, index) => (
+					<section>
+						<p class="eyebrow text-[var(--action)]">
+							{String(index + 1).padStart(2, "0")}
+						</p>
+						<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
+							{section.title}
+						</h2>
+						<p class="muted-copy mt-4 max-w-3xl leading-8">{section.body}</p>
+					</section>
+				))}
 
-				{
-					project.highlights?.length ? (
-						<section>
-							<p class="eyebrow text-[var(--action)]">
-								{String(narrativeSections.length + 1).padStart(2, "0")}
-							</p>
-							<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
-								{copy.highlights}
-							</h2>
-							<ul class="mt-6 grid gap-4 sm:grid-cols-2">
-								{project.highlights.map((highlight) => (
-									<li class="flex gap-3 border-t border-[var(--surface-border)] pt-4 text-sm leading-7 text-[var(--text-muted)]">
-										<span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action)]" />
-										<span>{highlight}</span>
-									</li>
-								))}
-							</ul>
-						</section>
-					) : null
-				}
+				{project.highlights?.length ? (
+					<section>
+						<p class="eyebrow text-[var(--action)]">
+							{String(narrativeSections.length + 1).padStart(2, "0")}
+						</p>
+						<h2 class="mt-3 text-3xl font-black text-[var(--home-navy)]">
+							{copy.highlights}
+						</h2>
+						<ul class="mt-6 grid gap-4 sm:grid-cols-2">
+							{project.highlights.map((highlight) => (
+								<li class="flex gap-3 border-t border-[var(--surface-border)] pt-4 text-sm leading-7 text-[var(--text-muted)]">
+									<span class="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--action)]" />
+									<span>{highlight}</span>
+								</li>
+							))}
+						</ul>
+					</section>
+				) : null}
 			</div>
 
 			<ProjectServiceCard

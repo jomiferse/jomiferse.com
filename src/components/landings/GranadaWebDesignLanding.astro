@@ -236,15 +236,18 @@ const copy = es
 			</div>
 			<div class="granada-service-summary__price">
 				<span>{copy.price}</span>
-				<p><small>{copy.from}</small><strong>{entryPrice}</strong></p>
+				<p>
+					<small>{copy.from}</small>
+					<strong>{entryPrice}</strong>
+				</p>
 				<small>{copy.tax}</small>
 			</div>
 			<div class="granada-service-summary__timeline">
 				<Icon name="clock" class="h-5 w-5" aria-hidden="true" />
-				<span
-					><small>{copy.timeline}</small><strong>{service.timeline}</strong
-					></span
-				>
+				<span>
+					<small>{copy.timeline}</small>
+					<strong>{service.timeline}</strong>
+				</span>
 			</div>
 			<a href="#granada-pricing-options" class="button-secondary">
 				{copy.compare}
@@ -276,17 +279,13 @@ const copy = es
 				<p>{page.problem.body[1]}</p>
 			</div>
 			<div class="granada-service-outcome__benefits">
-				{
-					page.cases.items.slice(0, 3).map((item, index) => (
-						<article>
-							<span aria-hidden="true">
-								{String(index + 1).padStart(2, "0")}
-							</span>
-							<h3>{item.title}</h3>
-							<p>{item.body}</p>
-						</article>
-					))
-				}
+				{page.cases.items.slice(0, 3).map((item, index) => (
+					<article>
+						<span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+						<h3>{item.title}</h3>
+						<p>{item.body}</p>
+					</article>
+				))}
 			</div>
 		</div>
 	</section>
@@ -330,32 +329,28 @@ const copy = es
 				<Icon name="circle-check-big" class="h-6 w-6" aria-hidden="true" />
 				<h3>{copy.includedTitle}</h3>
 				<ul>
-					{
-						includedScope.map((item) => (
-							<li>
-								<>
-									<Icon name="check" class="h-4 w-4" aria-hidden="true" />
-									<span>{item}</span>
-								</>
-							</li>
-						))
-					}
+					{includedScope.map((item) => (
+						<li>
+							<>
+								<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+								<span>{item}</span>
+							</>
+						</li>
+					))}
 				</ul>
 			</article>
 			<article>
 				<Icon name="info" class="h-6 w-6" aria-hidden="true" />
 				<h3>{copy.boundaryTitle}</h3>
 				<ul>
-					{
-						boundaries.map((item) => (
-							<li>
-								<>
-									<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-									<span>{item}</span>
-								</>
-							</li>
-						))
-					}
+					{boundaries.map((item) => (
+						<li>
+							<>
+								<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+								<span>{item}</span>
+							</>
+						</li>
+					))}
 				</ul>
 			</article>
 		</div>
@@ -374,15 +369,13 @@ const copy = es
 			<p>{copy.processIntro}</p>
 		</header>
 		<ol>
-			{
-				page.process.steps.map((step, index) => (
-					<li>
-						<span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-						<h3>{copy.processTitles[index]}</h3>
-						<p>{step}</p>
-					</li>
-				))
-			}
+			{page.process.steps.map((step, index) => (
+				<li>
+					<span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+					<h3>{copy.processTitles[index]}</h3>
+					<p>{step}</p>
+				</li>
+			))}
 		</ol>
 	</section>
 
@@ -404,19 +397,19 @@ const copy = es
 			description={featuredProject?.summary ?? copy.proofDescription}
 			href={projectHref}
 			actionLabel={copy.proofAction}
-			image={projectImage
-				? { src: projectImage.src, alt: projectImage.alt }
-				: undefined}
+			image={
+				projectImage
+					? { src: projectImage.src, alt: projectImage.alt }
+					: undefined
+			}
 		/>
-		{
-			featuredProject ? (
-				<EvidencePassage
-					profile={evidence}
-					project={featuredProject}
-					href={projectHref}
-				/>
-			) : null
-		}
+		{featuredProject ? (
+			<EvidencePassage
+				profile={evidence}
+				project={featuredProject}
+				href={projectHref}
+			/>
+		) : null}
 	</section>
 
 	<section
@@ -432,19 +425,17 @@ const copy = es
 			<p>{copy.relatedIntro}</p>
 		</header>
 		<div class="granada-related-services__grid">
-			{
-				relatedServices.map((item) => (
-					<article>
-						<ServiceIconBadge name={item.icon} size="md" />
-						<h3>{item.shortTitle}</h3>
-						<p>{item.description}</p>
-						<a href={getServiceHref(item)} class="button-secondary">
-							{copy.relatedAction}
-							<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-						</a>
-					</article>
-				))
-			}
+			{relatedServices.map((item) => (
+				<article>
+					<ServiceIconBadge name={item.icon} size="md" />
+					<h3>{item.shortTitle}</h3>
+					<p>{item.description}</p>
+					<a href={getServiceHref(item)} class="button-secondary">
+						{copy.relatedAction}
+						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+					</a>
+				</article>
+			))}
 		</div>
 	</section>
 
@@ -461,17 +452,15 @@ const copy = es
 			<p>{copy.faqIntro}</p>
 		</header>
 		<div class="granada-service-faq__list">
-			{
-				page.faq.map((item, index) => (
-					<details open={index === 0}>
-						<summary>
-							<span>{item.question}</span>
-							<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
-						</summary>
-						<p>{item.answer}</p>
-					</details>
-				))
-			}
+			{page.faq.map((item, index) => (
+				<details open={index === 0}>
+					<summary>
+						<span>{item.question}</span>
+						<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
+					</summary>
+					<p>{item.answer}</p>
+				</details>
+			))}
 		</div>
 	</section>
 

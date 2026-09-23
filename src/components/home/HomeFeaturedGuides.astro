@@ -33,42 +33,40 @@ const { content, locale, posts } = Astro.props as Props;
 	</header>
 
 	<ol class="home-guides__list">
-		{
-			posts.map((post, index) => (
-				<li data-home-guide>
-					<a href={`/${locale}/blog/${getLocalBlogSlug(post.id, locale)}/`}>
-						<span class="home-guides__number" aria-hidden="true">
-							{String(index + 1).padStart(2, "0")}
-						</span>
-						<div class="home-guides__cover">
-							<ResponsiveImage
-								src={post.data.cover.src}
-								alt={post.data.cover.alt}
-								width="1600"
-								height="900"
-								loading="lazy"
-								decoding="async"
-								sizes="(max-width: 40rem) 5.5rem, (max-width: 60rem) 10rem, 13rem"
-							/>
+		{posts.map((post, index) => (
+			<li data-home-guide>
+				<a href={`/${locale}/blog/${getLocalBlogSlug(post.id, locale)}/`}>
+					<span class="home-guides__number" aria-hidden="true">
+						{String(index + 1).padStart(2, "0")}
+					</span>
+					<div class="home-guides__cover">
+						<ResponsiveImage
+							src={post.data.cover.src}
+							alt={post.data.cover.alt}
+							width="1600"
+							height="900"
+							loading="lazy"
+							decoding="async"
+							sizes="(max-width: 40rem) 5.5rem, (max-width: 60rem) 10rem, 13rem"
+						/>
+					</div>
+					<div class="home-guides__copy">
+						<div class="home-guides__meta">
+							<span>{content.guideLabel}</span>
+							{post.data.readingTime ? (
+								<span>{post.data.readingTime}</span>
+							) : null}
 						</div>
-						<div class="home-guides__copy">
-							<div class="home-guides__meta">
-								<span>{content.guideLabel}</span>
-								{post.data.readingTime ? (
-									<span>{post.data.readingTime}</span>
-								) : null}
-							</div>
-							<h3>{post.data.title}</h3>
-							<p>{post.data.description}</p>
-						</div>
-						<span class="home-guides__read">
-							<span>{content.read}</span>
-							<Icon name="arrow-right" class="h-5 w-5" aria-hidden="true" />
-						</span>
-					</a>
-				</li>
-			))
-		}
+						<h3>{post.data.title}</h3>
+						<p>{post.data.description}</p>
+					</div>
+					<span class="home-guides__read">
+						<span>{content.read}</span>
+						<Icon name="arrow-right" class="h-5 w-5" aria-hidden="true" />
+					</span>
+				</a>
+			</li>
+		))}
 	</ol>
 </section>
 

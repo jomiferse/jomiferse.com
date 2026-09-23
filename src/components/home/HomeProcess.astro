@@ -18,15 +18,13 @@ const { content } = Astro.props as Props;
 	</header>
 
 	<ol>
-		{
-			content.steps.map((step) => (
-				<li>
-					<span>{step.number}</span>
-					<h3>{step.title}</h3>
-					<p>{step.text}</p>
-				</li>
-			))
-		}
+		{content.steps.map((step) => (
+			<li>
+				<span>{step.number}</span>
+				<h3>{step.title}</h3>
+				<p>{step.text}</p>
+			</li>
+		))}
 	</ol>
 </section>
 

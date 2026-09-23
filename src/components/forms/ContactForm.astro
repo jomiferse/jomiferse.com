@@ -97,53 +97,49 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 				{contactCopy.selectedServiceLabel}
 			</label>
 			<select id={`${idPrefix}-service-fallback`} name="serviceFallback">
-				<option value="" selected={!resolvedService}>—</option>
-				{
-					serviceOptions.map((option) => (
-						<option
-							value={option.value}
-							selected={resolvedService?.value === option.value}
-						>
-							{option.label}
-						</option>
-					))
-				}
+				<option value="" selected={!resolvedService}>
+					—
+				</option>
+				{serviceOptions.map((option) => (
+					<option
+						value={option.value}
+						selected={resolvedService?.value === option.value}
+					>
+						{option.label}
+					</option>
+				))}
 			</select>
 			<label for={`${idPrefix}-scope-fallback`}>
 				{contactCopy.selectedScopeLabel}
 			</label>
 			<select id={`${idPrefix}-scope-fallback`} name="scopeFallback">
-				<option value="" selected={!resolvedScope}>—</option>
-				{
-					pricingKeys.map((scope) => (
-						<option value={scope} selected={resolvedScope === scope}>
-							{scopeLabels[scope]}
-						</option>
-					))
-				}
+				<option value="" selected={!resolvedScope}>
+					—
+				</option>
+				{pricingKeys.map((scope) => (
+					<option value={scope} selected={resolvedScope === scope}>
+						{scopeLabels[scope]}
+					</option>
+				))}
 			</select>
 		</div>
 	</noscript>
-	{
-		serviceOptions.map((option) => (
-			<span
-				hidden
-				data-service-option
-				data-service-value={option.value}
-				data-service-label={option.label}
-			/>
-		))
-	}
-	{
-		pricingKeys.map((scope) => (
-			<span
-				hidden
-				data-scope-option
-				data-scope-value={scope}
-				data-scope-label={scopeLabels[scope]}
-			/>
-		))
-	}
+	{serviceOptions.map((option) => (
+		<span
+			hidden
+			data-service-option
+			data-service-value={option.value}
+			data-service-label={option.label}
+		/>
+	))}
+	{pricingKeys.map((scope) => (
+		<span
+			hidden
+			data-scope-option
+			data-scope-value={scope}
+			data-scope-label={scopeLabels[scope]}
+		/>
+	))}
 
 	<section
 		hidden={!resolvedService}
@@ -249,7 +245,8 @@ const scopeLabels: Record<PricingKey, string> = contactCopy.scopes;
 					maxlength="5000"
 					rows={variant === "modal" ? 4 : 6}
 					placeholder={t(locale, "contactForm.messagePlaceholder")}
-					class="form-input form-textarea leading-7"></textarea>
+					class="form-input form-textarea leading-7"
+				></textarea>
 			</div>
 			<p
 				id={`${idPrefix}-message-error`}

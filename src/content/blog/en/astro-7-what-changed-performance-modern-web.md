@@ -216,7 +216,7 @@ Example:
 If you need a space between them, make it explicit:
 
 ```astro
-<span>Hello</span>{" "}<em>world</em>
+<span>Hello</span> <em>world</em>
 ```
 
 This repository already sets `compressHTML: true`, so it keeps the previous behavior. Even then, in a real migration I would inspect headings, buttons, inline links, badges, and compact UI components.

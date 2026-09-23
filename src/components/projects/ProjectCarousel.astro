@@ -66,24 +66,22 @@ const initialPosition = copy.carouselPosition
 		class="projects-carousel-track -mx-4 flex snap-x snap-mandatory [scrollbar-width:none] gap-4 overflow-x-auto px-4 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 lg:gap-6 [&::-webkit-scrollbar]:hidden"
 		data-carousel-track
 	>
-		{
-			projects.map((project, index) => (
-				<li
-					class="w-[86%] shrink-0 snap-start sm:w-auto sm:shrink"
-					role="group"
-					aria-label={copy.carouselPosition
-						.replace("{current}", String(index + 1))
-						.replace("{total}", String(projects.length))}
-					data-project-slide
-				>
-					<ProjectArchiveCard
-						project={project}
-						locale={locale}
-						viewLabel={copy.viewCase}
-					/>
-				</li>
-			))
-		}
+		{projects.map((project, index) => (
+			<li
+				class="w-[86%] shrink-0 snap-start sm:w-auto sm:shrink"
+				role="group"
+				aria-label={copy.carouselPosition
+					.replace("{current}", String(index + 1))
+					.replace("{total}", String(projects.length))}
+				data-project-slide
+			>
+				<ProjectArchiveCard
+					project={project}
+					locale={locale}
+					viewLabel={copy.viewCase}
+				/>
+			</li>
+		))}
 	</ol>
 </section>
 

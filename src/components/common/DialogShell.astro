@@ -31,12 +31,10 @@ const hasFooter = Astro.slots.has("footer");
 		<div class="dialog-shell__body">
 			<slot />
 		</div>
-		{
-			hasFooter ? (
-				<footer class="dialog-shell__footer">
-					<slot name="footer" />
-				</footer>
-			) : null
-		}
+		{hasFooter ? (
+			<footer class="dialog-shell__footer">
+				<slot name="footer" />
+			</footer>
+		) : null}
 	</div>
 </dialog>

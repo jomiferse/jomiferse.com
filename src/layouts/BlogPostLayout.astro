@@ -113,119 +113,105 @@ const commercialCta = resolveBlogCommercialCta(
 					aria-hidden="true"
 				/>
 				<time datetime={frontmatter.date.toISOString()}>
-					{
-						frontmatter.date.toLocaleDateString(dateLocale, {
+					{frontmatter.date.toLocaleDateString(dateLocale, {
+						year: "numeric",
+						month: "long",
+						day: "numeric",
+					})}
+				</time>
+			</span>
+			{wasUpdated ? (
+				<span class="inline-flex items-center gap-2">
+					<span
+						data-blog-article-meta-separator
+						aria-hidden="true"
+						class="text-base leading-none text-[var(--action)]"
+					>
+						·
+					</span>
+					<time datetime={frontmatter.dateModified?.toISOString()}>
+						{locale === "es" ? "Actualizado" : "Updated"}{" "}
+						{frontmatter.dateModified?.toLocaleDateString(dateLocale, {
 							year: "numeric",
 							month: "long",
 							day: "numeric",
-						})
-					}
-				</time>
-			</span>
-			{
-				wasUpdated ? (
-					<span class="inline-flex items-center gap-2">
-						<span
-							data-blog-article-meta-separator
-							aria-hidden="true"
-							class="text-base leading-none text-[var(--action)]"
-						>
-							·
-						</span>
-						<time datetime={frontmatter.dateModified?.toISOString()}>
-							{locale === "es" ? "Actualizado" : "Updated"}{" "}
-							{frontmatter.dateModified?.toLocaleDateString(dateLocale, {
-								year: "numeric",
-								month: "long",
-								day: "numeric",
-							})}
-						</time>
+						})}
+					</time>
+				</span>
+			) : null}
+			{frontmatter.readingTime ? (
+				<span class="inline-flex items-center gap-2">
+					<span
+						data-blog-article-meta-separator
+						aria-hidden="true"
+						class="text-base leading-none text-[var(--action)]"
+					>
+						·
 					</span>
-				) : null
-			}
-			{
-				frontmatter.readingTime ? (
 					<span class="inline-flex items-center gap-2">
-						<span
-							data-blog-article-meta-separator
+						<Icon
+							name="clock"
+							class="h-4 w-4 text-[var(--action)]"
 							aria-hidden="true"
-							class="text-base leading-none text-[var(--action)]"
-						>
-							·
-						</span>
-						<span class="inline-flex items-center gap-2">
-							<Icon
-								name="clock"
-								class="h-4 w-4 text-[var(--action)]"
-								aria-hidden="true"
-							/>
-							{frontmatter.readingTime}
-						</span>
+						/>
+						{frontmatter.readingTime}
 					</span>
-				) : null
-			}
-			{
-				frontmatter.author && !showAuthorCredential ? (
-					<span class="inline-flex items-center gap-2">
-						<span
-							data-blog-article-meta-separator
-							aria-hidden="true"
-							class="text-base leading-none text-[var(--action)]"
-						>
-							·
-						</span>
-						<a
-							href={`/${locale}/about`}
-							class="hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
-						>
-							{frontmatter.author}
-						</a>
+				</span>
+			) : null}
+			{frontmatter.author && !showAuthorCredential ? (
+				<span class="inline-flex items-center gap-2">
+					<span
+						data-blog-article-meta-separator
+						aria-hidden="true"
+						class="text-base leading-none text-[var(--action)]"
+					>
+						·
 					</span>
-				) : null
-			}
+					<a
+						href={`/${locale}/about`}
+						class="hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
+					>
+						{frontmatter.author}
+					</a>
+				</span>
+			) : null}
 		</div>
 
-		{
-			frontmatter.description ? (
-				<p
-					data-blog-article-description
-					class="muted-copy mx-auto mt-5 max-w-3xl text-left text-lg leading-8 sm:text-center"
-				>
-					{frontmatter.description}
-				</p>
-			) : null
-		}
+		{frontmatter.description ? (
+			<p
+				data-blog-article-description
+				class="muted-copy mx-auto mt-5 max-w-3xl text-left text-lg leading-8 sm:text-center"
+			>
+				{frontmatter.description}
+			</p>
+		) : null}
 
-		{
-			showAuthorCredential ? (
-				<a
-					data-blog-author-credential
-					href={`/${locale}/about/`}
-					class="mx-auto mt-6 flex max-w-3xl items-center justify-center gap-3 border-t border-[var(--surface-border)] pt-5 text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
-				>
-					<Icon
-						name="user"
-						class="h-5 w-5 text-[var(--action)]"
-						aria-hidden="true"
-					/>
-					<span class="text-sm leading-6 text-[var(--text-muted)]">
-						<strong class="text-[var(--text)]">
-							{frontmatter.author ?? cv.name}
-						</strong>
-						{" · "}
-						{cv.currentRole}
-						{" · "}
-						{cv.yearsWorking}+{" "}
-						{locale === "es" ? "años de experiencia" : "years of experience"}
-					</span>
-				</a>
-			) : null
-		}
+		{showAuthorCredential ? (
+			<a
+				data-blog-author-credential
+				href={`/${locale}/about/`}
+				class="mx-auto mt-6 flex max-w-3xl items-center justify-center gap-3 border-t border-[var(--surface-border)] pt-5 text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)]"
+			>
+				<Icon
+					name="user"
+					class="h-5 w-5 text-[var(--action)]"
+					aria-hidden="true"
+				/>
+				<span class="text-sm leading-6 text-[var(--text-muted)]">
+					<strong class="text-[var(--text)]">
+						{frontmatter.author ?? cv.name}
+					</strong>
+					{" · "}
+					{cv.currentRole}
+					{" · "}
+					{cv.yearsWorking}+{" "}
+					{locale === "es" ? "años de experiencia" : "years of experience"}
+				</span>
+			</a>
+		) : null}
 	</header>
 
-	<div
-		class="grid items-start gap-6 border-t border-[var(--surface-border)] py-10 md:py-14 lg:grid-cols-[22rem_minmax(0,52rem)] lg:justify-center lg:gap-10 xl:gap-12"
-	>
+	<div class="grid items-start gap-6 border-t border-[var(--surface-border)] py-10 md:py-14 lg:grid-cols-[22rem_minmax(0,52rem)] lg:justify-center lg:gap-10 xl:gap-12">
 		<BlogArticleToc
 			headings={headings}
 			label={postCopy.toc}

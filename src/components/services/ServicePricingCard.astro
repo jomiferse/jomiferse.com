@@ -68,20 +68,20 @@ const selectionHref = `${contactHref}${separator}service=${encodeURIComponent(se
 	<div class="service-pricing-card__deliverables">
 		<p>{includedLabel}</p>
 		<ul>
-			{
-				option.deliverables.map((deliverable) => (
-					<li>
-						<Icon name="check" class="h-4 w-4" aria-hidden="true" />
-						<span>{deliverable}</span>
-					</li>
-				))
-			}
+			{option.deliverables.map((deliverable) => (
+				<li>
+					<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+					<span>{deliverable}</span>
+				</li>
+			))}
 		</ul>
 	</div>
 
 	<p data-pricing-boundary class="service-pricing-card__boundary">
 		<Icon name="info" class="h-4 w-4" aria-hidden="true" />
-		<span><strong>{boundaryLabel}</strong> {option.boundary}</span>
+		<span>
+			<strong>{boundaryLabel}</strong> {option.boundary}
+		</span>
 	</p>
 
 	<a

@@ -65,18 +65,12 @@ const providerLabel = (name: string) =>
 	<div data-privacy-page class="privacy-page">
 		<section class="privacy-hero section-reveal pt-8 pb-10 md:pt-12 md:pb-14">
 			<p class="eyebrow text-[var(--action)]">{page.eyebrow}</p>
-			<div
-				class="mt-4 grid gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end"
-			>
+			<div class="mt-4 grid gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
 				<div class="max-w-4xl">
-					<h1
-						class="text-[clamp(2.65rem,13vw,4.5rem)] leading-[0.96] font-black tracking-[-0.055em] text-[var(--home-navy)]"
-					>
+					<h1 class="text-[clamp(2.65rem,13vw,4.5rem)] leading-[0.96] font-black tracking-[-0.055em] text-[var(--home-navy)]">
 						{page.title}
 					</h1>
-					<p
-						class="muted-copy mt-5 max-w-3xl text-base leading-7 sm:text-lg md:text-xl md:leading-8"
-					>
+					<p class="muted-copy mt-5 max-w-3xl text-base leading-7 sm:text-lg md:text-xl md:leading-8">
 						{page.intro}
 					</p>
 					<p class="mt-4 text-sm font-bold text-[var(--text-muted)]">
@@ -99,24 +93,20 @@ const providerLabel = (name: string) =>
 			class="privacy-summary border-y border-[var(--surface-border)]"
 			aria-label={page.eyebrow}
 		>
-			{
-				summaryItems.map((item) => (
-					<div class="privacy-summary__item">
-						<Icon
-							name={item.icon}
-							class="h-5 w-5 text-[var(--action)]"
-							aria-hidden="true"
-						/>
-						<p class="eyebrow mt-4 text-[var(--action)]">{item.label}</p>
-						<p class="mt-2 font-black text-[var(--home-navy)]">{item.value}</p>
-					</div>
-				))
-			}
+			{summaryItems.map((item) => (
+				<div class="privacy-summary__item">
+					<Icon
+						name={item.icon}
+						class="h-5 w-5 text-[var(--action)]"
+						aria-hidden="true"
+					/>
+					<p class="eyebrow mt-4 text-[var(--action)]">{item.label}</p>
+					<p class="mt-2 font-black text-[var(--home-navy)]">{item.value}</p>
+				</div>
+			))}
 		</section>
 
-		<div
-			class="privacy-content section-reveal grid gap-9 py-10 lg:grid-cols-[minmax(15rem,0.27fr)_minmax(0,0.73fr)] lg:gap-16 lg:py-18"
-		>
+		<div class="privacy-content section-reveal grid gap-9 py-10 lg:grid-cols-[minmax(15rem,0.27fr)_minmax(0,0.73fr)] lg:gap-16 lg:py-18">
 			<SectionToc
 				items={sectionEntries}
 				label={page.navigation.label}
@@ -136,7 +126,9 @@ const providerLabel = (name: string) =>
 						</div>
 						<div>
 							<dt>{page.summary.contact}</dt>
-							<dd><a href={privacyEmailHref}>{cv.email}</a></dd>
+							<dd>
+								<a href={privacyEmailHref}>{cv.email}</a>
+							</dd>
 						</div>
 					</dl>
 				</section>
@@ -146,14 +138,12 @@ const providerLabel = (name: string) =>
 					<h2>{page.sections.data.title}</h2>
 					<p>{page.sections.data.intro}</p>
 					<ul class="privacy-check-list">
-						{
-							page.sections.data.items.map((item) => (
-								<li>
-									<Icon name="check" class="h-4 w-4" aria-hidden="true" />
-									<span>{item}</span>
-								</li>
-							))
-						}
+						{page.sections.data.items.map((item) => (
+							<li>
+								<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+								<span>{item}</span>
+							</li>
+						))}
 					</ul>
 				</section>
 
@@ -161,14 +151,12 @@ const providerLabel = (name: string) =>
 					<p class="eyebrow text-[var(--action)]">03</p>
 					<h2>{page.sections.purposes.title}</h2>
 					<div class="privacy-editorial-list">
-						{
-							page.sections.purposes.items.map((item) => (
-								<div>
-									<h3>{item.title}</h3>
-									<p>{item.body}</p>
-								</div>
-							))
-						}
+						{page.sections.purposes.items.map((item) => (
+							<div>
+								<h3>{item.title}</h3>
+								<p>{item.body}</p>
+							</div>
+						))}
 					</div>
 				</section>
 
@@ -183,27 +171,25 @@ const providerLabel = (name: string) =>
 					<h2>{page.sections.providers.title}</h2>
 					<p>{page.sections.providers.intro}</p>
 					<div class="privacy-editorial-list">
-						{
-							page.sections.providers.items.map((provider) => (
-								<div>
-									<h3>{provider.name}</h3>
-									<p>{provider.purpose}</p>
-									<a
-										href={provider.href}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="privacy-source-link"
-									>
-										{providerLabel(provider.name)}
-										<Icon
-											name="move-up-right"
-											class="h-4 w-4"
-											aria-hidden="true"
-										/>
-									</a>
-								</div>
-							))
-						}
+						{page.sections.providers.items.map((provider) => (
+							<div>
+								<h3>{provider.name}</h3>
+								<p>{provider.purpose}</p>
+								<a
+									href={provider.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="privacy-source-link"
+								>
+									{providerLabel(provider.name)}
+									<Icon
+										name="move-up-right"
+										class="h-4 w-4"
+										aria-hidden="true"
+									/>
+								</a>
+							</div>
+						))}
 					</div>
 				</section>
 
@@ -255,24 +241,18 @@ const providerLabel = (name: string) =>
 								</tr>
 							</thead>
 							<tbody>
-								{
-									page.storageTable.rows.map((row) => (
-										<tr>
-											<th scope="row">
-												<code>{row.name}</code>
-											</th>
-											<td data-label={storageHeaders.type}>{row.type}</td>
-											<td data-label={storageHeaders.provider}>
-												{row.provider}
-											</td>
-											<td data-label={storageHeaders.purpose}>{row.purpose}</td>
-											<td data-label={storageHeaders.duration}>
-												{row.duration}
-											</td>
-											<td data-label={storageHeaders.consent}>{row.consent}</td>
-										</tr>
-									))
-								}
+								{page.storageTable.rows.map((row) => (
+									<tr>
+										<th scope="row">
+											<code>{row.name}</code>
+										</th>
+										<td data-label={storageHeaders.type}>{row.type}</td>
+										<td data-label={storageHeaders.provider}>{row.provider}</td>
+										<td data-label={storageHeaders.purpose}>{row.purpose}</td>
+										<td data-label={storageHeaders.duration}>{row.duration}</td>
+										<td data-label={storageHeaders.consent}>{row.consent}</td>
+									</tr>
+								))}
 							</tbody>
 						</table>
 					</div>

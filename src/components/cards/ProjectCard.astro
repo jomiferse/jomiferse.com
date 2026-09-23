@@ -58,40 +58,36 @@ const projectMeta = [
 
 <article class="project-dialog-card group">
 	<div class="project-dialog-card__media">
-		{
-			baseSrc ? (
-				<>
+		{baseSrc ? (
+			<>
+				<Image
+					src={baseSrc}
+					alt={coverAlt}
+					width={720}
+					height={600}
+					loading="lazy"
+					quality={92}
+					class="project-dialog-card__image"
+				/>
+				{hoverSrc ? (
 					<Image
-						src={baseSrc}
-						alt={coverAlt}
+						src={hoverSrc}
+						alt={previewAlt}
 						width={720}
 						height={600}
 						loading="lazy"
 						quality={92}
-						class="project-dialog-card__image"
+						class="project-dialog-card__image project-dialog-card__image--preview"
 					/>
-					{hoverSrc ? (
-						<Image
-							src={hoverSrc}
-							alt={previewAlt}
-							width={720}
-							height={600}
-							loading="lazy"
-							quality={92}
-							class="project-dialog-card__image project-dialog-card__image--preview"
-						/>
-					) : null}
-				</>
-			) : (
-				<div class="project-dialog-card__placeholder" aria-hidden="true" />
-			)
-		}
+				) : null}
+			</>
+		) : (
+			<div class="project-dialog-card__placeholder" aria-hidden="true" />
+		)}
 		<div class="project-dialog-card__shade" aria-hidden="true"></div>
-		{
-			project.status ? (
-				<span class="project-dialog-card__status">{project.status}</span>
-			) : null
-		}
+		{project.status ? (
+			<span class="project-dialog-card__status">{project.status}</span>
+		) : null}
 		<span class="project-dialog-card__open-signal" aria-hidden="true">
 			<Icon name="plus" class="h-5 w-5" />
 		</span>
@@ -126,12 +122,12 @@ const projectMeta = [
 			<p class="dialog-shell__eyebrow">
 				{project.status ?? t(locale, "projectCard.status")}
 			</p>
-			<h2 id={titleId} class="dialog-shell__title">{project.title}</h2>
-			{
-				projectMeta.length ? (
-					<p class="project-detail-dialog__meta">{projectMeta.join(" · ")}</p>
-				) : null
-			}
+			<h2 id={titleId} class="dialog-shell__title">
+				{project.title}
+			</h2>
+			{projectMeta.length ? (
+				<p class="project-detail-dialog__meta">{projectMeta.join(" · ")}</p>
+			) : null}
 		</div>
 		<form method="dialog">
 			<button
@@ -144,16 +140,14 @@ const projectMeta = [
 	</div>
 
 	<div data-project-dialog class="project-detail-dialog__content">
-		{
-			project.context ? (
-				<section class="project-detail-dialog__section">
-					<p class="project-detail-dialog__label">
-						{t(locale, "projectCard.context")}
-					</p>
-					<p>{project.context}</p>
-				</section>
-			) : null
-		}
+		{project.context ? (
+			<section class="project-detail-dialog__section">
+				<p class="project-detail-dialog__label">
+					{t(locale, "projectCard.context")}
+				</p>
+				<p>{project.context}</p>
+			</section>
+		) : null}
 
 		<section class="project-detail-dialog__section">
 			<p class="project-detail-dialog__label">
@@ -162,55 +156,49 @@ const projectMeta = [
 			<p id={descriptionId}>{project.summary}</p>
 		</section>
 
-		{
-			project.highlights?.length ? (
-				<section class="project-detail-dialog__section">
-					<p class="project-detail-dialog__label">
-						{t(locale, "projectCard.highlights")}
-					</p>
-					<ul class="project-detail-dialog__highlights">
-						{project.highlights.map((highlight) => (
-							<li>
-								<Icon name="check" class="h-4 w-4" aria-hidden="true" />
-								<span>{highlight}</span>
-							</li>
-						))}
-					</ul>
-				</section>
-			) : null
-		}
+		{project.highlights?.length ? (
+			<section class="project-detail-dialog__section">
+				<p class="project-detail-dialog__label">
+					{t(locale, "projectCard.highlights")}
+				</p>
+				<ul class="project-detail-dialog__highlights">
+					{project.highlights.map((highlight) => (
+						<li>
+							<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+							<span>{highlight}</span>
+						</li>
+					))}
+				</ul>
+			</section>
+		) : null}
 
-		{
-			project.technologies.length ? (
-				<section class="project-detail-dialog__section">
-					<p class="project-detail-dialog__label">
-						{t(locale, "projectCard.technologies")}
-					</p>
-					<div class="project-detail-dialog__technologies">
-						{project.technologies.map((technology) => (
-							<span>{technology}</span>
-						))}
-					</div>
-				</section>
-			) : null
-		}
+		{project.technologies.length ? (
+			<section class="project-detail-dialog__section">
+				<p class="project-detail-dialog__label">
+					{t(locale, "projectCard.technologies")}
+				</p>
+				<div class="project-detail-dialog__technologies">
+					{project.technologies.map((technology) => (
+						<span>{technology}</span>
+					))}
+				</div>
+			</section>
+		) : null}
 	</div>
 
-	{
-		project.link ? (
-			<div slot="footer" class="project-detail-dialog__footer">
-				<a
-					href={project.link}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="button-action"
-				>
-					{t(locale, "projectCard.viewProject")}
-					<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
-				</a>
-			</div>
-		) : null
-	}
+	{project.link ? (
+		<div slot="footer" class="project-detail-dialog__footer">
+			<a
+				href={project.link}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="button-action"
+			>
+				{t(locale, "projectCard.viewProject")}
+				<Icon name="move-up-right" class="h-4 w-4" aria-hidden="true" />
+			</a>
+		</div>
+	) : null}
 </DialogShell>
 
 <style>

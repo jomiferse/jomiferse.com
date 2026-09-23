@@ -33,11 +33,9 @@ const technologies = [
 >
 	<p class="eyebrow">{eyebrow}</p>
 	<h2 id={headingId}>{title}</h2>
-	{
-		description ? (
-			<p class="technology-marquee__description">{description}</p>
-		) : null
-	}
+	{description ? (
+		<p class="technology-marquee__description">{description}</p>
+	) : null}
 	<div
 		class="technology-marquee__viewport"
 		tabindex="0"
@@ -46,24 +44,20 @@ const technologies = [
 	>
 		<div class="technology-marquee__track">
 			<ul class="technology-marquee__list">
-				{
-					technologies.map((technology) => (
-						<li>
-							<Icon name={technology.icon} aria-hidden="true" />
-							<span>{technology.label}</span>
-						</li>
-					))
-				}
+				{technologies.map((technology) => (
+					<li>
+						<Icon name={technology.icon} aria-hidden="true" />
+						<span>{technology.label}</span>
+					</li>
+				))}
 			</ul>
 			<ul class="technology-marquee__list" aria-hidden="true">
-				{
-					technologies.map((technology) => (
-						<li>
-							<Icon name={technology.icon} aria-hidden="true" />
-							<span>{technology.label}</span>
-						</li>
-					))
-				}
+				{technologies.map((technology) => (
+					<li>
+						<Icon name={technology.icon} aria-hidden="true" />
+						<span>{technology.label}</span>
+					</li>
+				))}
 			</ul>
 		</div>
 	</div>

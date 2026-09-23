@@ -33,39 +33,37 @@ const getItemHref = (item: (typeof content.items)[number]) =>
 	</header>
 
 	<div class="specialized-services__grid">
-		{
-			content.items.map((item) => (
-				<article class="specialized-service">
-					<div class="specialized-service__topline">
-						<span>{item.number}</span>
-						<Icon name={item.icon} class="h-8 w-8" aria-hidden="true" />
-					</div>
-					<h3>{item.title}</h3>
-					<p>{item.text}</p>
-					<ul>
-						{item.points.map((point) => (
-							<li>
-								<Icon name="check" class="h-4 w-4" aria-hidden="true" />
-								{point}
-							</li>
-						))}
-					</ul>
-					<a href={getItemHref(item)}>
-						{item.link}
+		{content.items.map((item) => (
+			<article class="specialized-service">
+				<div class="specialized-service__topline">
+					<span>{item.number}</span>
+					<Icon name={item.icon} class="h-8 w-8" aria-hidden="true" />
+				</div>
+				<h3>{item.title}</h3>
+				<p>{item.text}</p>
+				<ul>
+					{item.points.map((point) => (
+						<li>
+							<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+							{point}
+						</li>
+					))}
+				</ul>
+				<a href={getItemHref(item)}>
+					{item.link}
+					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+				{"secondaryLink" in item && item.secondaryLink ? (
+					<a
+						class="specialized-service__secondary"
+						href={item.secondaryLink.href}
+					>
+						{item.secondaryLink.label}
 						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
 					</a>
-					{"secondaryLink" in item && item.secondaryLink ? (
-						<a
-							class="specialized-service__secondary"
-							href={item.secondaryLink.href}
-						>
-							{item.secondaryLink.label}
-							<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-						</a>
-					) : null}
-				</article>
-			))
-		}
+				) : null}
+			</article>
+		))}
 	</div>
 </section>
 

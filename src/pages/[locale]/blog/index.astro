@@ -50,17 +50,11 @@ const structuredData = [
 	structuredData={structuredData}
 >
 	<div class="blog-page">
-		<section
-			class="section-reveal grid gap-8 pt-5 pb-12 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.42fr)] md:items-end md:pt-8 md:pb-16"
-		>
+		<section class="section-reveal grid gap-8 pt-5 pb-12 md:grid-cols-[minmax(0,1fr)_minmax(18rem,0.42fr)] md:items-end md:pt-8 md:pb-16">
 			<div>
 				<p class="eyebrow text-[var(--action)]">{page.eyebrow}</p>
-				<h1
-					class="mt-4 max-w-5xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl"
-				>
-					{page.title}
-					{" "}
-					{page.titleAccent}
+				<h1 class="mt-4 max-w-5xl text-5xl leading-[0.98] font-black text-[var(--home-navy)] sm:text-6xl md:text-7xl">
+					{page.title} {page.titleAccent}
 				</h1>
 			</div>
 			<div>
@@ -77,31 +71,26 @@ const structuredData = [
 		</section>
 
 		<section class="section-reveal pb-12 md:pb-16">
-			{
-				primaryFeatured ? (
-					<BlogFeaturedPost
-						href={`${blogBasePath}/${getLocalBlogSlug(primaryFeatured.id, locale)}`}
-						title={primaryFeatured.data.title}
-						description={primaryFeatured.data.description}
-						dateLabel={primaryFeatured.data.date.toLocaleDateString(
-							dateLocale,
-							{
-								year: "numeric",
-								month: "short",
-								day: "numeric",
-							},
-						)}
-						readingTime={primaryFeatured.data.readingTime}
-						cover={primaryFeatured.data.cover}
-						featuredLabel={page.featuredEyebrow}
-						readLabel={page.readArticle}
-					/>
-				) : (
-					<div class="dark-card p-6 text-[var(--text-muted)]">
-						{empty.featured}
-					</div>
-				)
-			}
+			{primaryFeatured ? (
+				<BlogFeaturedPost
+					href={`${blogBasePath}/${getLocalBlogSlug(primaryFeatured.id, locale)}`}
+					title={primaryFeatured.data.title}
+					description={primaryFeatured.data.description}
+					dateLabel={primaryFeatured.data.date.toLocaleDateString(dateLocale, {
+						year: "numeric",
+						month: "short",
+						day: "numeric",
+					})}
+					readingTime={primaryFeatured.data.readingTime}
+					cover={primaryFeatured.data.cover}
+					featuredLabel={page.featuredEyebrow}
+					readLabel={page.readArticle}
+				/>
+			) : (
+				<div class="dark-card p-6 text-[var(--text-muted)]">
+					{empty.featured}
+				</div>
+			)}
 		</section>
 
 		<section id="blog-archive" class="section-reveal pb-16 md:pb-24">
@@ -111,22 +100,20 @@ const structuredData = [
 				</h2>
 				<p class="muted-copy">{sections.latest.subtitle}</p>
 			</div>
-			{
-				latestPosts.length > 0 ? (
-					<BlogCarousel
-						posts={latestPosts}
-						locale={locale}
-						blogBasePath={blogBasePath}
-						dateLocale={dateLocale}
-						label={sections.latest.title}
-						copy={page}
-					/>
-				) : (
-					<div class="dark-card p-6 text-[var(--text-muted)]">
-						{posts.length > 0 ? empty.latest : page.empty}
-					</div>
-				)
-			}
+			{latestPosts.length > 0 ? (
+				<BlogCarousel
+					posts={latestPosts}
+					locale={locale}
+					blogBasePath={blogBasePath}
+					dateLocale={dateLocale}
+					label={sections.latest.title}
+					copy={page}
+				/>
+			) : (
+				<div class="dark-card p-6 text-[var(--text-muted)]">
+					{posts.length > 0 ? empty.latest : page.empty}
+				</div>
+			)}
 			<BlogPagination
 				locale={locale}
 				currentPage={currentPage}

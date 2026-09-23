@@ -8,7 +8,9 @@ const page = getTranslations(locale).notFound.page;
 
 <section class="not-found section-reveal" aria-labelledby="not-found-title">
 	<div class="not-found__hero">
-		<p class="not-found__code" aria-hidden="true">{page.code}</p>
+		<p class="not-found__code" aria-hidden="true">
+			{page.code}
+		</p>
 
 		<div class="not-found__message">
 			<p class="eyebrow">{page.eyebrow}</p>
@@ -36,23 +38,19 @@ const page = getTranslations(locale).notFound.page;
 	<div class="not-found__destinations-inner">
 		<h2 id="not-found-destinations-title">{page.destinationsLabel}</h2>
 		<nav aria-label={page.destinationsLabel}>
-			{
-				page.destinations.map((destination) => (
-					<a
-						href={`/${locale}/${destination.href}/`}
-						class="not-found__destination"
-					>
-						<span class="not-found__destination-number">
-							{destination.label}
-						</span>
-						<span class="not-found__destination-copy">
-							<strong>{destination.title}</strong>
-							<small>{destination.body}</small>
-						</span>
-						<Icon name="arrow-right" class="h-5 w-5" aria-hidden="true" />
-					</a>
-				))
-			}
+			{page.destinations.map((destination) => (
+				<a
+					href={`/${locale}/${destination.href}/`}
+					class="not-found__destination"
+				>
+					<span class="not-found__destination-number">{destination.label}</span>
+					<span class="not-found__destination-copy">
+						<strong>{destination.title}</strong>
+						<small>{destination.body}</small>
+					</span>
+					<Icon name="arrow-right" class="h-5 w-5" aria-hidden="true" />
+				</a>
+			))}
 		</nav>
 	</div>
 </section>

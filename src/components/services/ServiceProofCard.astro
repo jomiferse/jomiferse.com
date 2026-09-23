@@ -20,26 +20,24 @@ const { eyebrow, title, description, href, actionLabel, image } =
 
 <article data-service-proof class="service-proof-card group">
 	<a href={href}>
-		{
-			image ? (
-				<div class="service-proof-card__image">
-					<ResponsiveImage
-						src={image.src}
-						alt={image.alt ?? title}
-						width="720"
-						height="405"
-						loading="lazy"
-						decoding="async"
-						sizes="(max-width: 48rem) calc(100vw - 2rem), 45rem"
-					/>
-				</div>
-			) : (
-				<div class="service-proof-card__illustration" aria-hidden="true">
-					<Icon name="book-open" class="h-9 w-9" />
-					<span />
-				</div>
-			)
-		}
+		{image ? (
+			<div class="service-proof-card__image">
+				<ResponsiveImage
+					src={image.src}
+					alt={image.alt ?? title}
+					width="720"
+					height="405"
+					loading="lazy"
+					decoding="async"
+					sizes="(max-width: 48rem) calc(100vw - 2rem), 45rem"
+				/>
+			</div>
+		) : (
+			<div class="service-proof-card__illustration" aria-hidden="true">
+				<Icon name="book-open" class="h-9 w-9" />
+				<span />
+			</div>
+		)}
 
 		<div class="service-proof-card__body">
 			<p class="eyebrow">{eyebrow}</p>

@@ -68,16 +68,14 @@ const getTechnologyIcon = (technology: string) => {
 </div>
 
 <div data-project-technology-list class="mt-4 grid grid-cols-2 gap-2">
-	{
-		technologies.map((technology) => (
-			<span class="flex min-w-0 items-center gap-2 rounded-xl border border-[var(--surface-border)] bg-[color-mix(in_srgb,var(--surface-strong)_72%,transparent)] px-2.5 py-2 text-[0.72rem] leading-tight font-bold text-[var(--text-muted)]">
-				<Icon
-					name={getTechnologyIcon(technology)}
-					class="h-3.5 w-3.5 shrink-0 text-[var(--action)]"
-					aria-hidden="true"
-				/>
-				<span class="min-w-0 break-words">{technology}</span>
-			</span>
-		))
-	}
+	{technologies.map((technology) => (
+		<span class="flex min-w-0 items-center gap-2 rounded-xl border border-[var(--surface-border)] bg-[color-mix(in_srgb,var(--surface-strong)_72%,transparent)] px-2.5 py-2 text-[0.72rem] leading-tight font-bold text-[var(--text-muted)]">
+			<Icon
+				name={getTechnologyIcon(technology)}
+				class="h-3.5 w-3.5 shrink-0 text-[var(--action)]"
+				aria-hidden="true"
+			/>
+			<span class="min-w-0 break-words">{technology}</span>
+		</span>
+	))}
 </div>

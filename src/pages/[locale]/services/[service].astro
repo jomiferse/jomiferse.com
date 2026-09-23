@@ -186,17 +186,15 @@ const structuredData = [
 					<strong>{formattedEntryPrice}</strong>
 					<small>{commercial.common.tax}</small>
 				</div>
-				{
-					service.timeline ? (
-						<div class="service-detail-summary__timeline">
-							<Icon name="clock" class="h-5 w-5" aria-hidden="true" />
-							<span>
-								<small>{serviceCopy.summaryTimeline}</small>
-								<strong>{service.timeline}</strong>
-							</span>
-						</div>
-					) : null
-				}
+				{service.timeline ? (
+					<div class="service-detail-summary__timeline">
+						<Icon name="clock" class="h-5 w-5" aria-hidden="true" />
+						<span>
+							<small>{serviceCopy.summaryTimeline}</small>
+							<strong>{service.timeline}</strong>
+						</span>
+					</div>
+				) : null}
 				<a href="#pricing-options" class="button-secondary">
 					{serviceCopy.compareOptions}
 					<Icon
@@ -230,30 +228,28 @@ const structuredData = [
 					<p class="eyebrow">{serviceCopy.problem}</p>
 					<strong>{service.problem}</strong>
 					<div>
-						{service.overview.map((paragraph) => <p>{paragraph}</p>)}
+						{service.overview.map((paragraph) => (
+							<p>{paragraph}</p>
+						))}
 					</div>
 				</div>
 				<div class="service-outcome__benefits">
-					{
-						service.benefits.map((benefit, index) => (
-							<article>
-								<span aria-hidden="true">
-									{String(index + 1).padStart(2, "0")}
-								</span>
-								<h3>{benefit.title}</h3>
-								<p>{benefit.body}</p>
-							</article>
-						))
-					}
+					{service.benefits.map((benefit, index) => (
+						<article>
+							<span aria-hidden="true">
+								{String(index + 1).padStart(2, "0")}
+							</span>
+							<h3>{benefit.title}</h3>
+							<p>{benefit.body}</p>
+						</article>
+					))}
 				</div>
 			</div>
 		</section>
 
-		{
-			presentation?.placement === "before-pricing" ? (
-				<ServiceDecisionGuide profile={presentation} />
-			) : null
-		}
+		{presentation?.placement === "before-pricing" ? (
+			<ServiceDecisionGuide profile={presentation} />
+		) : null}
 
 		<section
 			id="pricing-options"
@@ -298,14 +294,12 @@ const structuredData = [
 					</div>
 					<h3>{serviceCopy.includedTitle}</h3>
 					<ul>
-						{
-							service.builds.map((item) => (
-								<li>
-									<Icon name="check" class="h-4 w-4" aria-hidden="true" />
-									<span>{item}</span>
-								</li>
-							))
-						}
+						{service.builds.map((item) => (
+							<li>
+								<Icon name="check" class="h-4 w-4" aria-hidden="true" />
+								<span>{item}</span>
+							</li>
+						))}
 					</ul>
 				</article>
 				<article>
@@ -314,24 +308,20 @@ const structuredData = [
 					</div>
 					<h3>{serviceCopy.excludedTitle}</h3>
 					<ul>
-						{
-							boundaries.map((item) => (
-								<li>
-									<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-									<span>{item}</span>
-								</li>
-							))
-						}
+						{boundaries.map((item) => (
+							<li>
+								<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+								<span>{item}</span>
+							</li>
+						))}
 					</ul>
 				</article>
 			</div>
 		</section>
 
-		{
-			presentation?.placement === "after-scope" ? (
-				<ServiceDecisionGuide profile={presentation} />
-			) : null
-		}
+		{presentation?.placement === "after-scope" ? (
+			<ServiceDecisionGuide profile={presentation} />
+		) : null}
 
 		<section
 			data-service-process
@@ -347,24 +337,18 @@ const structuredData = [
 			</header>
 
 			<ol>
-				{
-					service.process.map((step, index) => (
-						<li>
-							<span aria-hidden="true">
-								{String(index + 1).padStart(2, "0")}
-							</span>
-							<p>{step}</p>
-						</li>
-					))
-				}
+				{service.process.map((step, index) => (
+					<li>
+						<span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+						<p>{step}</p>
+					</li>
+				))}
 			</ol>
 		</section>
 
-		{
-			presentation?.placement === "before-proof" ? (
-				<ServiceDecisionGuide profile={presentation} />
-			) : null
-		}
+		{presentation?.placement === "before-proof" ? (
+			<ServiceDecisionGuide profile={presentation} />
+		) : null}
 
 		<section
 			data-service-proof
@@ -379,48 +363,44 @@ const structuredData = [
 				<p>{serviceCopy.blogText}</p>
 			</header>
 
-			{
-				project ? (
-					<ServiceProofCard
-						eyebrow={serviceCopy.proofProject}
-						title={project.title}
-						description={project.summary}
-						href={`/${locale}/projects/${project.slug}/`}
-						actionLabel={serviceCopy.viewCase}
-						image={
-							projectImage
-								? { src: projectImage.src, alt: projectImage.alt }
-								: undefined
-						}
-					/>
-				) : article ? (
-					<ServiceProofCard
-						eyebrow={serviceCopy.proofArticle}
-						title={article.title}
-						description={article.description}
-						href={article.href}
-						actionLabel={serviceCopy.readArticle}
-					/>
-				) : (
-					<ServiceProofCard
-						eyebrow={serviceCopy.proofArticle}
-						title={serviceCopy.blogTitle}
-						description={serviceCopy.blogText}
-						href={`/${locale}/blog/`}
-						actionLabel={serviceCopy.blogButton}
-					/>
-				)
-			}
+			{project ? (
+				<ServiceProofCard
+					eyebrow={serviceCopy.proofProject}
+					title={project.title}
+					description={project.summary}
+					href={`/${locale}/projects/${project.slug}/`}
+					actionLabel={serviceCopy.viewCase}
+					image={
+						projectImage
+							? { src: projectImage.src, alt: projectImage.alt }
+							: undefined
+					}
+				/>
+			) : article ? (
+				<ServiceProofCard
+					eyebrow={serviceCopy.proofArticle}
+					title={article.title}
+					description={article.description}
+					href={article.href}
+					actionLabel={serviceCopy.readArticle}
+				/>
+			) : (
+				<ServiceProofCard
+					eyebrow={serviceCopy.proofArticle}
+					title={serviceCopy.blogTitle}
+					description={serviceCopy.blogText}
+					href={`/${locale}/blog/`}
+					actionLabel={serviceCopy.blogButton}
+				/>
+			)}
 
-			{
-				evidenceProfile && evidenceProject ? (
-					<EvidencePassage
-						profile={evidenceProfile}
-						project={evidenceProject}
-						href={`/${locale}/projects/${evidenceProject.slug}/`}
-					/>
-				) : null
-			}
+			{evidenceProfile && evidenceProject ? (
+				<EvidencePassage
+					profile={evidenceProfile}
+					project={evidenceProject}
+					href={`/${locale}/projects/${evidenceProject.slug}/`}
+				/>
+			) : null}
 		</section>
 
 		<section
@@ -439,43 +419,39 @@ const structuredData = [
 			</header>
 
 			<div class="related-services__grid">
-				{
-					relatedServices.map((item) => (
-						<article>
-							<ServiceIconBadge name={item.icon} size="md" />
-							<h3>{item.title}</h3>
-							<p>{item.description}</p>
-							<a href={getServiceHref(item)} class="button-secondary">
-								{serviceCopy.viewRelatedService}
-								<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-							</a>
-						</article>
-					))
-				}
+				{relatedServices.map((item) => (
+					<article>
+						<ServiceIconBadge name={item.icon} size="md" />
+						<h3>{item.title}</h3>
+						<p>{item.description}</p>
+						<a href={getServiceHref(item)} class="button-secondary">
+							{serviceCopy.viewRelatedService}
+							<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+						</a>
+					</article>
+				))}
 			</div>
 		</section>
 
-		{
-			buyerPath ? (
-				<section
-					data-service-buyer-path
-					class="service-buyer-path section-reveal"
-					aria-labelledby="service-buyer-path-title"
-				>
-					<div>
-						<p class="eyebrow">
-							{locale === "es" ? "Guía de decisión" : "Decision guide"}
-						</p>
-						<h2 id="service-buyer-path-title">{buyerPath.title}</h2>
-						<p>{buyerPath.description}</p>
-					</div>
-					<a href={buyerPath.href} class="button-secondary">
-						{locale === "es" ? "Revisar esta necesidad" : "Explore this need"}
-						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-					</a>
-				</section>
-			) : null
-		}
+		{buyerPath ? (
+			<section
+				data-service-buyer-path
+				class="service-buyer-path section-reveal"
+				aria-labelledby="service-buyer-path-title"
+			>
+				<div>
+					<p class="eyebrow">
+						{locale === "es" ? "Guía de decisión" : "Decision guide"}
+					</p>
+					<h2 id="service-buyer-path-title">{buyerPath.title}</h2>
+					<p>{buyerPath.description}</p>
+				</div>
+				<a href={buyerPath.href} class="button-secondary">
+					{locale === "es" ? "Revisar esta necesidad" : "Explore this need"}
+					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+			</section>
+		) : null}
 
 		<section
 			data-service-faq
@@ -490,17 +466,15 @@ const structuredData = [
 			</header>
 
 			<div class="service-detail-faq__list">
-				{
-					service.faq.map((item, index) => (
-						<details open={index === 0}>
-							<summary>
-								<span>{item.question}</span>
-								<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
-							</summary>
-							<p>{item.answer}</p>
-						</details>
-					))
-				}
+				{service.faq.map((item, index) => (
+					<details open={index === 0}>
+						<summary>
+							<span>{item.question}</span>
+							<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
+						</summary>
+						<p>{item.answer}</p>
+					</details>
+				))}
 			</div>
 		</section>
 

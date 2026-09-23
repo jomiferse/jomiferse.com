@@ -36,36 +36,34 @@ const { content, mostCommonLabel } = Astro.props as Props;
 	</header>
 
 	<ol class="engagement-models__list">
-		{
-			content.models.map((model) => {
-				const featured = model.key === "project";
+		{content.models.map((model) => {
+			const featured = model.key === "project";
 
-				return (
-					<li class:list={{ "is-featured": featured }}>
-						<div class="engagement-models__topline">
-							<span aria-hidden="true">{model.number}</span>
-							<Icon
-								name={
-									model.key === "intervention"
-										? "lightbulb"
-										: model.key === "project"
-											? "briefcase-business"
-											: "circle-check-big"
-								}
-								class="h-6 w-6"
-								aria-hidden="true"
-							/>
-						</div>
-						{featured ? (
-							<p class="engagement-models__badge">{mostCommonLabel}</p>
-						) : null}
-						<h3>{model.title}</h3>
-						<p>{model.text}</p>
-						<strong>{model.price}</strong>
-					</li>
-				);
-			})
-		}
+			return (
+				<li class:list={{ "is-featured": featured }}>
+					<div class="engagement-models__topline">
+						<span aria-hidden="true">{model.number}</span>
+						<Icon
+							name={
+								model.key === "intervention"
+									? "lightbulb"
+									: model.key === "project"
+										? "briefcase-business"
+										: "circle-check-big"
+							}
+							class="h-6 w-6"
+							aria-hidden="true"
+						/>
+					</div>
+					{featured ? (
+						<p class="engagement-models__badge">{mostCommonLabel}</p>
+					) : null}
+					<h3>{model.title}</h3>
+					<p>{model.text}</p>
+					<strong>{model.price}</strong>
+				</li>
+			);
+		})}
 	</ol>
 </section>
 

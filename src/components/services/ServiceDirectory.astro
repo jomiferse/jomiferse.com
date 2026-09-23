@@ -33,40 +33,38 @@ const getHref = (service: ServiceItem) =>
 	</header>
 
 	<div class="service-directory__groups">
-		{
-			areas.map((area, index) => (
-				<details open={index === 0}>
-					<summary>
-						<ServiceIconBadge name={area.icon} size="sm" />
-						<span>
-							<strong>{area.title}</strong>
-							<small>
-								{String(area.services.length).padStart(2, "0")}{" "}
-								{content.servicesLabel}
-							</small>
-						</span>
-						<span class="service-directory__action">
-							<span class="sr-only">{content.openLabel}</span>
-							<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
-						</span>
-					</summary>
+		{areas.map((area, index) => (
+			<details open={index === 0}>
+				<summary>
+					<ServiceIconBadge name={area.icon} size="sm" />
+					<span>
+						<strong>{area.title}</strong>
+						<small>
+							{String(area.services.length).padStart(2, "0")}{" "}
+							{content.servicesLabel}
+						</small>
+					</span>
+					<span class="service-directory__action">
+						<span class="sr-only">{content.openLabel}</span>
+						<Icon name="plus" class="h-5 w-5" aria-hidden="true" />
+					</span>
+				</summary>
 
-					<ul>
-						{area.services.map((service) => (
-							<li>
-								<a href={getHref(service)}>
-									<span>
-										<strong>{service.title}</strong>
-										<small>{service.description}</small>
-									</span>
-									<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-								</a>
-							</li>
-						))}
-					</ul>
-				</details>
-			))
-		}
+				<ul>
+					{area.services.map((service) => (
+						<li>
+							<a href={getHref(service)}>
+								<span>
+									<strong>{service.title}</strong>
+									<small>{service.description}</small>
+								</span>
+								<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+							</a>
+						</li>
+					))}
+				</ul>
+			</details>
+		))}
 	</div>
 </section>
 

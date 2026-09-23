@@ -66,14 +66,12 @@ const structuredData = [
 				<h1>{page.title}</h1>
 				<p class="contact-hero__intro">{page.intro}</p>
 				<ul class="contact-signals" aria-label={page.eyebrow}>
-					{
-						page.signals.map((signal) => (
-							<li>
-								<Icon name="check" aria-hidden="true" />
-								{signal}
-							</li>
-						))
-					}
+					{page.signals.map((signal) => (
+						<li>
+							<Icon name="check" aria-hidden="true" />
+							{signal}
+						</li>
+					))}
 				</ul>
 
 				<div data-contact-methods class="contact-methods">

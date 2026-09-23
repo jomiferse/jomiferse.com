@@ -31,7 +31,9 @@ const formattedPrice = new Intl.NumberFormat(locale, {
 <article data-service-area-card class="service-area-card">
 	<header class="service-area-card__header">
 		<ServiceIconBadge name={area.icon} size="lg" />
-		<span class="service-area-card__number" aria-hidden="true">{number}</span>
+		<span class="service-area-card__number" aria-hidden="true">
+			{number}
+		</span>
 	</header>
 
 	<div class="service-area-card__intro">
@@ -40,23 +42,21 @@ const formattedPrice = new Intl.NumberFormat(locale, {
 	</div>
 
 	<ul class="service-area-card__services">
-		{
-			area.featuredServices.map((service) => (
-				<li>
-					<a
-						href={getHref(service)}
-						aria-label={`${copy.viewService}: ${service.title}`}
-					>
-						<ServiceIconBadge name={service.icon} size="sm" />
-						<span>
-							<strong>{service.title}</strong>
-							<small>{service.description}</small>
-						</span>
-						<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-					</a>
-				</li>
-			))
-		}
+		{area.featuredServices.map((service) => (
+			<li>
+				<a
+					href={getHref(service)}
+					aria-label={`${copy.viewService}: ${service.title}`}
+				>
+					<ServiceIconBadge name={service.icon} size="sm" />
+					<span>
+						<strong>{service.title}</strong>
+						<small>{service.description}</small>
+					</span>
+					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+				</a>
+			</li>
+		))}
 	</ul>
 
 	<footer class="service-area-card__footer">

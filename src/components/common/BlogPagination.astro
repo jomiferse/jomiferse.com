@@ -33,73 +33,71 @@ const pageLabel = labels.pageLabel
 	.replace("{total}", String(totalPages));
 ---
 
-{
-	totalPages > 1 ? (
-		<nav
-			data-blog-pagination
-			class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-[var(--surface-border)] pt-7 sm:flex-row"
-			aria-label={labels.ariaLabel}
-		>
-			{currentPage > 1 ? (
-				<a
-					href={getBlogPagePath(locale, previousPage, audience)}
-					class="button-secondary w-full sm:w-auto"
-				>
-					<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
-					{labels.previous}
-				</a>
-			) : (
-				<span
-					class="button-secondary pointer-events-none w-full opacity-45 sm:w-auto"
-					aria-disabled="true"
-				>
-					<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
-					{labels.previous}
-				</span>
-			)}
+{totalPages > 1 ? (
+	<nav
+		data-blog-pagination
+		class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-[var(--surface-border)] pt-7 sm:flex-row"
+		aria-label={labels.ariaLabel}
+	>
+		{currentPage > 1 ? (
+			<a
+				href={getBlogPagePath(locale, previousPage, audience)}
+				class="button-secondary w-full sm:w-auto"
+			>
+				<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
+				{labels.previous}
+			</a>
+		) : (
+			<span
+				class="button-secondary pointer-events-none w-full opacity-45 sm:w-auto"
+				aria-disabled="true"
+			>
+				<Icon name="arrow-left" class="h-4 w-4" aria-hidden="true" />
+				{labels.previous}
+			</span>
+		)}
 
-			<p class="muted-copy text-sm font-bold sm:hidden">{pageLabel}</p>
+		<p class="muted-copy text-sm font-bold sm:hidden">{pageLabel}</p>
 
-			<ol class="hidden items-center gap-2 sm:flex">
-				{pages.map((page) => (
-					<li>
-						{page === currentPage ? (
-							<span
-								class="flex size-11 items-center justify-center rounded-full border border-[var(--action)] bg-[color-mix(in_srgb,var(--action)_12%,var(--surface))] text-sm font-black text-[var(--action)]"
-								aria-current="page"
-							>
-								{page}
-							</span>
-						) : (
-							<a
-								href={getBlogPagePath(locale, page, audience)}
-								class="flex size-11 items-center justify-center rounded-full border border-[var(--surface-border)] bg-[var(--surface)] text-sm font-bold text-[var(--text-muted)] transition hover:border-[color-mix(in_srgb,var(--action)_42%,var(--surface-border))] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)] motion-safe:hover:-translate-y-0.5"
-								aria-label={`${labels.page} ${page}`}
-							>
-								{page}
-							</a>
-						)}
-					</li>
-				))}
-			</ol>
+		<ol class="hidden items-center gap-2 sm:flex">
+			{pages.map((page) => (
+				<li>
+					{page === currentPage ? (
+						<span
+							class="flex size-11 items-center justify-center rounded-full border border-[var(--action)] bg-[color-mix(in_srgb,var(--action)_12%,var(--surface))] text-sm font-black text-[var(--action)]"
+							aria-current="page"
+						>
+							{page}
+						</span>
+					) : (
+						<a
+							href={getBlogPagePath(locale, page, audience)}
+							class="flex size-11 items-center justify-center rounded-full border border-[var(--surface-border)] bg-[var(--surface)] text-sm font-bold text-[var(--text-muted)] transition hover:border-[color-mix(in_srgb,var(--action)_42%,var(--surface-border))] hover:text-[var(--action)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--action)] motion-safe:hover:-translate-y-0.5"
+							aria-label={`${labels.page} ${page}`}
+						>
+							{page}
+						</a>
+					)}
+				</li>
+			))}
+		</ol>
 
-			{currentPage < totalPages ? (
-				<a
-					href={getBlogPagePath(locale, nextPage, audience)}
-					class="button-secondary w-full sm:w-auto"
-				>
-					{labels.next}
-					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-				</a>
-			) : (
-				<span
-					class="button-secondary pointer-events-none w-full opacity-45 sm:w-auto"
-					aria-disabled="true"
-				>
-					{labels.next}
-					<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
-				</span>
-			)}
-		</nav>
-	) : null
-}
+		{currentPage < totalPages ? (
+			<a
+				href={getBlogPagePath(locale, nextPage, audience)}
+				class="button-secondary w-full sm:w-auto"
+			>
+				{labels.next}
+				<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+			</a>
+		) : (
+			<span
+				class="button-secondary pointer-events-none w-full opacity-45 sm:w-auto"
+				aria-disabled="true"
+			>
+				{labels.next}
+				<Icon name="arrow-right" class="h-4 w-4" aria-hidden="true" />
+			</span>
+		)}
+	</nav>
+) : null}
