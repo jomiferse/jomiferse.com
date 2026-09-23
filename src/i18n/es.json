@@ -2274,7 +2274,7 @@
             },
             {
               "title": "Optimización WordPress",
-              "description": "Mejora de velocidad, plugins, Core Web Vitals y estructura técnica.",
+              "description": "Diagnóstico y mejoras medibles en páginas, plugins, imágenes y caché, teniendo en cuenta los límites del hosting.",
               "service": "website-redesign"
             },
             {

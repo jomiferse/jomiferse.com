@@ -55,7 +55,34 @@ const profiles: Record<Locale, Record<string, ServicePresentationProfile>> = {
 				scope: "Qué información y entregables forman parte de la asesoría",
 				process: "Cómo convierto incertidumbre en una decisión comprobable",
 				proof: "Criterio técnico aplicado en sistemas reales",
-				faq: "Preguntas antes de pedir una segunda opinión técnica",
+				faq: "Preguntas antes de contratar asesoría informática",
+			},
+		},
+		"web-wordpress:2": {
+			placement: "before-pricing",
+			eyebrow: "Rendimiento medible",
+			title: "Qué limita la velocidad de tu WordPress",
+			intro:
+				"Medimos páginas concretas y distinguimos los problemas del sitio de los límites del hosting y los servicios externos.",
+			failureTitle: "Causas que conviene comprobar",
+			failureModes: [
+				"Imágenes, fuentes o recursos que bloquean la carga.",
+				"Plugins, tema o configuración de caché con trabajo innecesario.",
+				"Respuesta del servidor o servicios externos fuera del sitio.",
+			],
+			acceptanceTitle: "Qué comprobar después de los cambios",
+			acceptanceCriteria: [
+				"Las mismas páginas se miden en condiciones comparables.",
+				"Las mejoras acordadas no rompen formularios ni recorridos clave.",
+				"Los límites pendientes quedan documentados.",
+			],
+			titles: {
+				outcome: "Qué mejora cuando WordPress carga de forma fiable",
+				pricing: "Qué determina el alcance de una optimización WordPress",
+				scope: "Qué páginas y problemas revisamos",
+				process: "Cómo mido y valido las mejoras",
+				proof: "Trabajo técnico aplicado a una web existente",
+				faq: "Preguntas sobre velocidad y rendimiento en WordPress",
 			},
 		},
 		"it-consulting:4": {
@@ -197,7 +224,34 @@ profiles.en = {
 			scope: "Which inputs and deliverables belong in the advisory work?",
 			process: "How I turn uncertainty into a testable decision",
 			proof: "Technical judgement applied to real systems",
-			faq: "Questions before requesting a technical second opinion",
+			faq: "Questions before booking IT advisory",
+		},
+	},
+	"web-wordpress:2": {
+		...profiles.es["web-wordpress:2"],
+		eyebrow: "Measurable performance",
+		title: "What is limiting your WordPress site's speed?",
+		intro:
+			"I measure specific pages and separate site issues from hosting and external-service limits.",
+		failureTitle: "Causes worth checking",
+		failureModes: [
+			"Images, fonts or resources delaying page rendering.",
+			"Plugins, theme or caching configuration doing unnecessary work.",
+			"Server response or external services outside the site.",
+		],
+		acceptanceTitle: "What to check after the changes",
+		acceptanceCriteria: [
+			"The same pages are measured under comparable conditions.",
+			"Agreed improvements do not break forms or key journeys.",
+			"Remaining limits are documented.",
+		],
+		titles: {
+			outcome: "What improves when WordPress loads reliably?",
+			pricing: "What determines the scope of WordPress optimization?",
+			scope: "Which pages and issues do we review?",
+			process: "How I measure and validate improvements",
+			proof: "Technical work applied to an existing website",
+			faq: "Questions about WordPress speed and performance",
 		},
 	},
 	"it-consulting:4": {

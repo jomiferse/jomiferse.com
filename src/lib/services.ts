@@ -8,6 +8,7 @@ import {
 	type ServiceAreaSlug,
 } from "@/lib/service-commercial";
 import { getServiceAliasRedirect } from "@/lib/service-aliases";
+import { getServiceOfferingCopy } from "@/lib/service-offering-copy";
 
 export type ServiceSlug =
 	| "business-website"
@@ -235,6 +236,14 @@ const relatedPostsByLocale: Record<
 	Record<string, NonNullable<ServiceItem["relatedPosts"]>>
 > = {
 	es: {
+		"base:website-redesign": [
+			{
+				title: "Rediseñar una web sin perder SEO: checklist de migración",
+				description:
+					"Inventario de URLs, redirecciones, pruebas de lanzamiento y seguimiento para preparar un rediseño web.",
+				href: "/es/blog/redisenar-web-sin-perder-seo/",
+			},
+		],
 		"base:backend-spring-boot": [
 			{
 				title: "Spring Boot en producción",
@@ -323,6 +332,14 @@ const relatedPostsByLocale: Record<
 		],
 	},
 	en: {
+		"base:website-redesign": [
+			{
+				title: "Website redesign SEO checklist",
+				description:
+					"URL inventory, redirects, launch checks and follow-up for a website redesign.",
+				href: "/en/blog/website-redesign-seo-checklist/",
+			},
+		],
 		"base:backend-spring-boot": [
 			{
 				title: "Spring Boot in production",
@@ -544,6 +561,16 @@ export const getServicePages = (locale: Locale): ServiceItem[] => {
 				offering.translationKey,
 			);
 
+			const offeringCopy = getServiceOfferingCopy(
+				locale,
+				offering.translationKey,
+			);
+			const {
+				metaTitle: offeringMetaTitle,
+				metaDescription: offeringMetaDescription,
+				...offeringBodyCopy
+			} = offeringCopy ?? {};
+
 			pagesBySlug.set(offering.slug, {
 				...offering.service,
 				slug: offering.slug,
@@ -552,16 +579,16 @@ export const getServicePages = (locale: Locale): ServiceItem[] => {
 				title: offering.title,
 				shortTitle: offering.title,
 				description: offering.description,
-				metaTitle: getOfferingMetaTitle(
-					locale,
-					offering.translationKey,
-					offering.title,
-				),
-				metaDescription: getOfferingMetaDescription(
-					locale,
-					offering.translationKey,
-					offering.description,
-				),
+				metaTitle:
+					offeringMetaTitle ??
+					getOfferingMetaTitle(locale, offering.translationKey, offering.title),
+				metaDescription:
+					offeringMetaDescription ??
+					getOfferingMetaDescription(
+						locale,
+						offering.translationKey,
+						offering.description,
+					),
 				canonicalSlug: offering.service.canonicalSlug,
 				canonicalPath: undefined,
 				isOffering: true,
@@ -571,6 +598,7 @@ export const getServicePages = (locale: Locale): ServiceItem[] => {
 				pricingOptions: resolvePricingOptions(locale, offering.translationKey),
 				timeline: getCommercialTimeline(locale, offering.translationKey),
 				relatedPosts: getRelatedPosts(locale, offering.translationKey),
+				...offeringBodyCopy,
 			});
 		}
 	}
