@@ -2165,7 +2165,7 @@
       "areasEyebrow": "Áreas de servicio",
       "areasTitle": "Cuatro formas de mejorar la parte digital de tu negocio.",
       "areasIntro": "Empieza por la necesidad que más se parece a la tuya. Dentro encontrarás servicios concretos, plazos orientativos y tres niveles de alcance.",
-      "proofEyebrow": "Trabajo seleccionado",
+      "proofEyebrow": "Por qué trabajar conmigo",
       "proofShowcaseTitle": "Proyectos reales, desde producto web hasta sistemas backend.",
       "proofShowcaseIntro": "Casos que muestran cómo abordo interfaz, lógica de negocio, integraciones y operación técnica con una misma responsabilidad de entrega.",
       "viewProject": "Ver caso",
@@ -2391,7 +2391,6 @@
         "Proyectos que ya requieren un equipo completo de producto, diseño, datos y operaciones desde el primer día.",
         "Ideas todavía demasiado abiertas, sin una prioridad clara ni disposición a empezar por una versión pequeña y verificable."
       ],
-      "proofEyebrow": "Por qué trabajar conmigo",
       "proofTitle": "Un perfil técnico cercano, con visión de producto y ejecución full-stack.",
       "proofText": "No trabajo como una agencia genérica. Trabajo como desarrollador freelance: escucho el problema, aterrizo el alcance y construyo con cuidado la parte web, backend o de automatización que necesita el proyecto.",
       "proofPoints": [
@@ -3119,6 +3118,80 @@
           {
             "question": "¿Puedes mantener una web o aplicación que no has desarrollado?",
             "answer": "Sí, si puedo revisar la base, los accesos y el estado actual antes de comprometer un alcance. La primera intervención suele servir para obtener ese contexto."
+          }
+        ]
+      }
+    },
+    "offeringDetails": {
+      "wordpressWebDesign": {
+        "metaTitle": "Diseño web WordPress para negocios",
+        "metaDescription": "Diseño web WordPress para negocios que necesitan una web clara, editable, rápida y preparada para captar contactos cualificados.",
+        "overview": [
+          "Diseño webs WordPress para negocios que necesitan presentar sus servicios y actualizar textos, imágenes o artículos desde su propio panel. Acordamos las páginas y quién prepara cada contenido antes de construir.",
+          "El proyecto incluye la configuración de WordPress, el diseño de las páginas acordadas y una guía de edición. Definimos también el hosting, las licencias y quién se ocupa de las actualizaciones después de publicar."
+        ],
+        "problem": "Necesitas una web profesional que tu equipo pueda editar sin depender de un desarrollador para cada cambio de texto o imagen.",
+        "benefits": [
+          {
+            "title": "Contenido que puedes editar",
+            "body": "Organizo las páginas y los bloques de WordPress para que puedas actualizar los contenidos acordados desde el panel. Recibes accesos y una guía para hacerlo."
+          },
+          {
+            "title": "Una base técnica revisada",
+            "body": "Reviso la vista móvil, los formularios, las imágenes, los títulos y los enlaces antes de publicar. El tema y los plugins se eligen según lo que necesita la web."
+          },
+          {
+            "title": "Costes y responsabilidades claros",
+            "body": "La propuesta separa el desarrollo de los gastos de dominio, hosting y licencias. También deja por escrito qué mantenimiento queda a tu cargo o se contrata aparte."
+          }
+        ],
+        "whenNeeded": [
+          "Necesitas publicar servicios o artículos y actualizar el contenido desde un panel.",
+          "Tu equipo cambia textos e imágenes con frecuencia y quiere hacerlo sin tocar código.",
+          "Quieres crear una web de negocio con formularios y páginas de servicio bien definidas."
+        ],
+        "whoFor": [
+          "Pequeños negocios que necesitan una web WordPress editable.",
+          "Profesionales y consultores que publican servicios o artículos.",
+          "Equipos que quieren gestionar su contenido y conservar sus accesos."
+        ],
+        "builds": [
+          "Configuración de WordPress, tema y plugins necesarios para el alcance acordado.",
+          "Diseño responsive de las páginas de servicio, inicio y contacto incluidas en la propuesta.",
+          "Formulario de contacto, revisión de imágenes, títulos, descripciones y enlaces internos.",
+          "Publicación, entrega de accesos y guía para editar los contenidos acordados."
+        ],
+        "process": [
+          "Acordar páginas, contenidos, formularios y responsables de preparar los materiales.",
+          "Definir el diseño y elegir tema, plugins y hosting, separando las licencias de pago.",
+          "Configurar WordPress y construir las páginas con revisión de la edición desde el panel.",
+          "Comprobar móvil y formularios, publicar y entregar accesos y guía de edición."
+        ],
+        "whyMe": [
+          "Reviso contigo qué necesita poder editar tu equipo y preparo la entrega alrededor de esas tareas.",
+          "Explico qué depende del hosting, del tema o de una licencia antes de incorporarlo al proyecto.",
+          "Dejo documentados los accesos y las responsabilidades de mantenimiento."
+        ],
+        "faq": [
+          {
+            "question": "¿Cuánto cuesta una web WordPress completa?",
+            "answer": "El proyecto completo parte de 590 € más IVA. El presupuesto depende de las páginas, los contenidos, los idiomas y las integraciones. La intervención desde 120 € es una revisión con una corrección prioritaria sobre una web existente; no incluye construir todo el sitio."
+          },
+          {
+            "question": "¿Podré cambiar los textos y las imágenes?",
+            "answer": "Sí. Las páginas acordadas se preparan para que puedas editar sus contenidos desde WordPress. Entrego los accesos y una guía de edición; añadir nuevas funciones o cambiar el diseño puede requerir trabajo adicional."
+          },
+          {
+            "question": "¿Incluye dominio, hosting y plugins de pago?",
+            "answer": "La propuesta indica qué necesitas y quién lo contrata. Dominio, hosting y licencias de pago se presupuestan por separado salvo que se incluyan expresamente. Recibes tus accesos al entregar el proyecto."
+          },
+          {
+            "question": "¿Qué ocurre con el mantenimiento después de publicar?",
+            "answer": "WordPress, el tema y los plugins necesitan actualizaciones y copias de seguridad. Acordamos quién se ocupa de ellas. Puedes contratar soporte mensual desde 69 € más IVA al mes, con el alcance indicado en la propuesta."
+          },
+          {
+            "question": "¿Puedo añadir una tienda o migrar una web existente?",
+            "answer": "Sí, pero se valora como un alcance específico. Una tienda WooCommerce necesita revisar catálogo, pagos y envíos; una migración requiere inventario de contenido, URLs y comprobaciones antes de publicar."
           }
         ]
       }

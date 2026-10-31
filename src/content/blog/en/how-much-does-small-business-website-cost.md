@@ -3,6 +3,7 @@ title: "How much does a small-business website cost?"
 metaTitle: "How Much Does a Small-Business Website Cost?"
 description: "Practical price ranges, cost drivers and examples for estimating a small-business website without paying for features you do not need."
 date: 2026-08-12
+dateModified: 2026-10-31
 language: "en"
 author: "José Miguel Fernández"
 readingTime: "9 min"
@@ -33,7 +34,7 @@ The ranges below were updated in August 2026. They describe indicative freelance
 | Catalogue, booking or multilingual site | EUR 2,500 to 6,000 | More content, templates, external integration, migration and journey testing  |
 | Website with custom functionality       |     From EUR 6,000 | Accounts, business rules, private data, payments or bespoke integrations      |
 
-A business website with five clear sections can start at around EUR 490 when the content and journey are simple. A [WordPress web design project](/en/services/wordpress-web-design/) usually grows when the team needs to edit many pages, relies on specific plugins or has existing content to migrate.
+My [WordPress web design service](/en/services/wordpress-web-design/) starts at EUR 590 excluding VAT for a complete project with a defined scope. The intervention from EUR 120 does not include building the whole site. More pages, languages, integrations or content to migrate increase the quote; domain registration, hosting and licences are listed separately.
 
 The starting price does not tell you whether a proposal is good value. A EUR 700 landing page can be carefully delivered. A EUR 4,000 site can still arrive without finished copy, measurement or a clear maintenance plan. Look at the individual responsibilities.
 

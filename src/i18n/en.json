@@ -2165,7 +2165,7 @@
       "areasEyebrow": "Service areas",
       "areasTitle": "Four ways to improve the digital side of your business.",
       "areasIntro": "Start with the need that looks most like yours. Each area contains specific services, indicative timelines and three levels of scope.",
-      "proofEyebrow": "Selected work",
+      "proofEyebrow": "Why work with me",
       "proofShowcaseTitle": "Real projects, from web products to backend systems.",
       "proofShowcaseIntro": "These cases show what I built, the constraints I worked within and the decisions I made across interfaces, business logic, integrations and operations.",
       "viewProject": "View case",
@@ -2391,7 +2391,6 @@
         "Projects that already need a full product, design, data and operations team from day one.",
         "Ideas that are still too open, without a clear priority or willingness to start with a small, verifiable version."
       ],
-      "proofEyebrow": "Why work with me",
       "proofTitle": "A close technical profile with product judgment and full-stack execution.",
       "proofText": "I do not work like a generic agency. I work as a freelance developer: I listen to the problem, shape the scope and carefully build the website, backend or automation the project needs.",
       "proofPoints": [
@@ -3119,6 +3118,80 @@
           {
             "question": "Can you maintain a website or application you did not build?",
             "answer": "Yes, provided I can review the codebase, access and current state before committing to a scope. The initial intervention usually provides that context."
+          }
+        ]
+      }
+    },
+    "offeringDetails": {
+      "wordpressWebDesign": {
+        "metaTitle": "WordPress web design for businesses",
+        "metaDescription": "WordPress web design for businesses that need a clear, editable, fast website built to generate qualified enquiries.",
+        "overview": [
+          "I build WordPress websites for businesses that need to present their services and update text, images or articles through their own dashboard. We agree the pages and who supplies each piece of content before the build starts.",
+          "The project covers WordPress setup, design of the agreed pages and an editing guide. We also define hosting, licences and who handles updates after launch."
+        ],
+        "problem": "You need a professional website your team can edit without calling a developer for every text or image change.",
+        "benefits": [
+          {
+            "title": "Content your team can edit",
+            "body": "I organize WordPress pages and blocks so you can update the agreed content from the dashboard. You receive account access and an editing guide."
+          },
+          {
+            "title": "A checked technical setup",
+            "body": "I check mobile layouts, forms, images, titles and links before launch. Themes and plugins are chosen for the functions the site actually needs."
+          },
+          {
+            "title": "Clear costs and responsibilities",
+            "body": "The proposal separates development from domain, hosting and licence costs. It also states which maintenance tasks you handle or commission separately."
+          }
+        ],
+        "whenNeeded": [
+          "You need to publish services or articles and update them from a dashboard.",
+          "Your team changes text and images regularly and wants to do so without editing code.",
+          "You need a business website with forms and a defined set of service pages."
+        ],
+        "whoFor": [
+          "Small businesses that need an editable WordPress website.",
+          "Professionals and consultants who publish services or articles.",
+          "Teams that want to manage their content and retain account access."
+        ],
+        "builds": [
+          "WordPress configuration, theme and plugins required for the agreed scope.",
+          "Responsive design for the service, home and contact pages included in the proposal.",
+          "Contact form, image review, page titles, descriptions and internal links.",
+          "Launch, account handover and a guide to editing the agreed content."
+        ],
+        "process": [
+          "Agree the pages, content, forms and who supplies each piece of material.",
+          "Define the design and choose a theme, plugins and hosting, with paid licences listed separately.",
+          "Configure WordPress and build the pages, checking how content is edited in the dashboard.",
+          "Check mobile layouts and forms, launch the site and hand over accounts and an editing guide."
+        ],
+        "whyMe": [
+          "I check what your team needs to edit and plan the handover around those tasks.",
+          "I explain hosting, theme and licence dependencies before including them in the project.",
+          "I document account access and maintenance responsibilities."
+        ],
+        "faq": [
+          {
+            "question": "How much does a complete WordPress website cost?",
+            "answer": "A complete project starts at €590 excluding VAT. The quote depends on pages, content, languages and integrations. The intervention from €120 covers a review and one priority fix on an existing site; it does not include building the whole website."
+          },
+          {
+            "question": "Will I be able to change text and images?",
+            "answer": "Yes. The agreed pages are set up so you can edit their content in WordPress. I hand over account access and an editing guide. New features or design changes may need additional work."
+          },
+          {
+            "question": "Are the domain, hosting and paid plugins included?",
+            "answer": "The proposal lists what you need and who buys it. Domain registration, hosting and paid licences are priced separately unless explicitly included. You receive your account access at handover."
+          },
+          {
+            "question": "Who maintains the website after launch?",
+            "answer": "WordPress, themes and plugins need updates and backups. We agree who handles them. Monthly support starts at €69 excluding VAT per month, within the scope set out in the proposal."
+          },
+          {
+            "question": "Can you add a shop or migrate an existing website?",
+            "answer": "Yes, with a separate scope. A WooCommerce shop needs catalogue, payment and shipping decisions. A migration needs an inventory of content and URLs, followed by checks before launch."
           }
         ]
       }

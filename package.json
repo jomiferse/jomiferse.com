@@ -21,26 +21,26 @@
     "quality": "pnpm run format:check && pnpm run lint && pnpm run test && pnpm run check && pnpm run build && pnpm run test:build"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@astrojs/markdown-remark": "^7.3.1",
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/markdown-remark": "^7.3.5",
     "@astrojs/sitemap": "^3.7.4",
-    "@astrojs/vercel": "^11.0.11",
-    "astro": "^7.3.4",
+    "@astrojs/vercel": "^11.0.17",
+    "astro": "^7.4.4",
     "astro-icon": "^1.2.0",
-    "resend": "^6.28.1",
-    "sharp": "^0.35.4"
+    "resend": "^6.35.0",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
-    "@types/node": "^26.6.2",
-    "@typescript-eslint/parser": "^8.70.1",
-    "eslint": "^10.11.0",
+    "@types/node": "^26.6.6",
+    "@typescript-eslint/parser": "^8.72.1",
+    "eslint": "^10.13.0",
     "eslint-plugin-astro": "^3.2.1",
-    "prettier": "^3.9.8",
-    "prettier-plugin-astro": "^1.0.1",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.2",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5.9.3",
-    "vercel": "^59.25.4"
+    "typescript": "^6.0.3",
+    "vercel": "^65.8.0"
   }
 }

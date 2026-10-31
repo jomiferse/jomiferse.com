@@ -236,6 +236,14 @@ const relatedPostsByLocale: Record<
 	Record<string, NonNullable<ServiceItem["relatedPosts"]>>
 > = {
 	es: {
+		"web-wordpress:0": [
+			{
+				title: "Cuánto cuesta una página web para una pyme",
+				description:
+					"Precios orientativos, costes de hosting y licencias, y preguntas para comparar presupuestos web.",
+				href: "/es/blog/cuanto-cuesta-pagina-web-pyme/",
+			},
+		],
 		"base:website-redesign": [
 			{
 				title: "Rediseñar una web sin perder SEO: checklist de migración",
@@ -332,6 +340,14 @@ const relatedPostsByLocale: Record<
 		],
 	},
 	en: {
+		"web-wordpress:0": [
+			{
+				title: "How much does a small-business website cost?",
+				description:
+					"Indicative prices, hosting and licence costs, and questions for comparing website proposals.",
+				href: "/en/blog/how-much-does-small-business-website-cost/",
+			},
+		],
 		"base:website-redesign": [
 			{
 				title: "Website redesign SEO checklist",

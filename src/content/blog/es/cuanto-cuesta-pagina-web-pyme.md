@@ -3,6 +3,7 @@ title: "Cuánto cuesta una página web para una pyme en España"
 metaTitle: "Cuánto cuesta una página web para una pyme"
 description: "Precios orientativos, partidas y ejemplos para calcular cuánto cuesta una página web para una pyme sin pagar por funciones que no necesita."
 date: 2026-08-12
+dateModified: 2026-10-31
 language: "es"
 author: "José Miguel Fernández"
 readingTime: "9 min"
@@ -33,7 +34,7 @@ Los rangos de esta guía están actualizados en agosto de 2026. Son escenarios o
 | Web con catálogo, reservas o idiomas |   2.500 a 6.000 € | Más contenido, plantillas, integración externa, migración y pruebas de varios recorridos       |
 | Web con funcionalidad a medida       |     Desde 6.000 € | Área privada, reglas de negocio, datos propios, pagos o integraciones que necesitan desarrollo |
 
-Una web de negocio con cinco secciones claras puede empezar alrededor de 490 euros si el contenido y el recorrido son sencillos. Un proyecto de [diseño web WordPress](/es/services/diseno-web-wordpress/) suele subir cuando el equipo necesita editar muchas páginas, trabajar con plugins concretos o migrar contenido existente.
+Mi servicio de [diseño web WordPress](/es/services/diseno-web-wordpress/) parte de 590 euros más IVA para un proyecto completo con alcance acotado. La revisión puntual desde 120 euros no incluye construir toda la web. El presupuesto aumenta cuando hay más páginas, idiomas, integraciones o contenido que migrar; dominio, hosting y licencias se detallan por separado.
 
 El precio de salida no dice por sí solo si una propuesta es cara o barata. Una landing de 700 euros puede estar bien resuelta y una web de 4.000 puede llegar sin textos, medición ni mantenimiento claro. Conviene revisar las partidas.
 

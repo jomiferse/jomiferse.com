@@ -1,4 +1,4 @@
-import type { Locale } from "@/i18n";
+import { getTranslations, type Locale } from "@/i18n";
 import type { ServiceItem } from "@/lib/services";
 
 type ServiceOfferingCopy = Pick<
@@ -306,4 +306,9 @@ const copy: Record<Locale, Record<string, ServiceOfferingCopy>> = {
 export const getServiceOfferingCopy = (
 	locale: Locale,
 	translationKey: string,
-) => copy[locale][translationKey];
+): ServiceOfferingCopy | undefined => {
+	if (translationKey === "web-wordpress:0") {
+		return getTranslations(locale).services.offeringDetails.wordpressWebDesign;
+	}
+	return copy[locale][translationKey];
+};

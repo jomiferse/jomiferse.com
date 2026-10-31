@@ -728,18 +728,31 @@ export const auditBuildArtifact = async (
 		failures.push("root path is not a permanent redirect to /es/");
 	}
 	for (const [source, destination] of Object.entries(legacyRedirects)) {
-		const routeSource = `^${source.replace(/\/$/, "")}$`;
-		if (
-			!redirects.some(
-				(route) =>
-					route.src === routeSource &&
-					route.status === 301 &&
-					route.headers?.Location === destination,
-			)
-		) {
-			failures.push(
-				`missing permanent alias redirect ${source} -> ${destination}`,
-			);
+		for (const variant of [source, source.replace(/\/$/, "")]) {
+			let current = variant;
+			for (let hop = 0; hop < 3 && current !== destination; hop += 1) {
+				const route = redirects.find(
+					(candidate) =>
+						candidate.src &&
+						new RegExp(candidate.src).test(current),
+				);
+				if (
+					!route?.src ||
+					![301, 308].includes(route.status ?? 0) ||
+					!route.headers?.Location
+				) {
+					break;
+				}
+				current = current.replace(
+					new RegExp(route.src),
+					route.headers.Location,
+				);
+			}
+			if (current !== destination) {
+				failures.push(
+					`missing permanent alias redirect ${variant} -> ${destination} (resolved to ${current})`,
+				);
+			}
 		}
 	}
 
